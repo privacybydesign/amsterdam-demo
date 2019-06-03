@@ -19,8 +19,8 @@ services:
     restart: always
     container_name: voting_node
     build: "./voting_node"
-    ports:
-      - "8081:8000"
+    # ports:
+    #   - "8081:8000"
       
   irma:
     restart: always
