@@ -54,7 +54,6 @@ async function irmaSession(req, res) {
     irmaServer,
     request: JSON.stringify(request),
     authmethod,
-    skey,
     requestorname
   });
 
