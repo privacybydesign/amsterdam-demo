@@ -1,8 +1,10 @@
 FROM node:10
 
-COPY ./server /code
-WORKDIR /code
+COPY ./server /server
+COPY ./web /web
+
+WORKDIR /server
 
 RUN npm install
 
-CMD ["npx", "nodemon", "index.js"]
+CMD ["npx", "nodemon", "index.js", "--verbose"]

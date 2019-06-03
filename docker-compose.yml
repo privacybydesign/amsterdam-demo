@@ -20,5 +20,11 @@ services:
     container_name: voting_node
     build: "./voting_node"
     ports:
-    - "8081:80"
+      - "8081:8000"
     
+  irma:
+    restart: always
+    container_name: irma_server
+    build: "./irma_server"
+    ports:
+      - "8088:8088"
