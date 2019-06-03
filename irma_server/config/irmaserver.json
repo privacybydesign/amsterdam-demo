@@ -1,5 +1,5 @@
 {
-    "url": "http://37.97.148.6:8088",
+    "url": "https://irma.amsterdam",
     "no_auth": false,
     "requestors": {
         "openstad_voting_token": {
