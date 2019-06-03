@@ -1,9 +1,9 @@
 
 
-const voteHost = "http://37.97.148.6";
+const voteHost = "https://irma.amsterdam";
 
 // const irmaServer = 'https://acc.fixxx10.amsterdam.nl';
-const irmaServer = 'http://37.97.148.6:8088';
+const irmaServer = 'http://irma.amsterdam';
 
 
 poll();
