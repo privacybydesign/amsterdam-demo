@@ -1,0 +1,911 @@
+body.preload * {
+  animation-duration: 0s !important;
+  -webkit-animation-duration: 0s !important;
+  transition: background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s, margin 0s !important;
+}
+.tpl {
+  display: none      !important;
+  left: -9999px !important;
+  position: absolute !important;
+  top: -9999px !important;
+  visibility: hidden !important;
+}
+.pageContent.proclaimer .primary h1 {
+  margin-top: 10px;
+}
+.pageContent.proclaimer .primary #summary {
+  line-height: 22px;
+  font-size: 14px;
+}
+.pageContent.proclaimer .primary #summary h3 {
+  font-size: 16px;
+}
+.pageContent.proclaimer .secondary .speechBubble {
+  margin-top: 5px;
+  margin-left: -15px;
+  width: 219px;
+}
+.pageContent.newIdea .primary #location > div {
+  height: 375px;
+}
+.pageContent.newIdea #posterImageUpload.dz-clickable {
+  position: relative;
+  background-color: #f6f7f7;
+}
+.pageContent.newIdea #posterImageUpload.dz-clickable::before {
+  position: absolute;
+  top: 45%;
+  width: 70%;
+  margin-left: 15%;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  color: #164995;
+  content: 'Let op: Stuur alleen een foto mee die je zelf gemaakt hebt! Foto\'s van anderen kunnen auteursrechtelijk beschermd zijn. Je hebt toestemming nodig van de fotograaf om die foto te uploaden.';
+}
+@media only screen and (max-width: 700px) {
+  .pageContent.newIdea #posterImageUpload.dz-clickable::before {
+    margin-top: 20px;
+    margin-left: 10%;
+    width: 80%;
+  }
+}
+.pageContent.newIdea #posterImageUpload.dz-clickable[style]:before {
+  content: '';
+}
+.pageContent.newIdea #posterImageUpload.dz-clickable::after {
+  position: absolute;
+  top: 35%;
+  font-size: 14px;
+  height: auto;
+  display: block;
+  padding: 0;
+  content: 'Klik hier om een afbeelding te uploaden.';
+}
+.pageContent.newIdea .secondary .speechBubble {
+  margin-top: 0;
+  margin-left: -15px;
+  width: 219px;
+}
+.pageContent .speechBubble {
+  box-sizing: border-box;
+  position: relative;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: calc(1em + 28px) !important;
+  padding: 15px 10px;
+  color: #000;
+  width: 220px;
+  height: 205px;
+  background-position: 47px 110px;
+  background-size: 127px 55px;
+  background-repeat: no-repeat;
+  background-image: url('/img/eberhardvanderlaan/signature.png');
+}
+@media only screen and (max-width: 700px) {
+  .pageContent .speechBubble {
+    background-position: center 110px;
+    margin-top: 20px;
+    margin-left: 10%;
+    width: 80%;
+  }
+}
+.pageContent .speechBubble .small {
+  position: relative;
+  top: 20px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: normal;
+}
+.pageContent #banner {
+  width: 100%;
+  position: relative;
+  height: 375px;
+  overflow: hidden;
+}
+@media only screen and (max-width: 700px) {
+  .pageContent #banner {
+    display: block;
+    width: calc(100% + 30px);
+    height: auto;
+  }
+}
+.pageContent #banner .banner-image {
+  position: relative;
+  width: calc(100% - 240px);
+  padding-top: calc((100% - 240px) * 0.536);
+  margin-bottom: 20px;
+  margin-right: 20px;
+  box-sizing: border-box;
+  float: left;
+  background-position: center;
+  background-size: cover;
+}
+.pageContent #banner .banner-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+@media only screen and (max-width: 700px) {
+  .pageContent #banner .banner-image {
+    width: 100%;
+    padding-top: calc(100% * 0.536);
+    float: none;
+  }
+}
+.pageContent #banner #homemap {
+  width: calc(100% - 240px);
+  height: 375px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  box-sizing: border-box;
+  float: left;
+}
+.pageContent #banner #homemap #map {
+  position: relative;
+  z-index: 1;
+  height: 375px;
+}
+@media only screen and (max-width: 700px) {
+  .pageContent #banner #homemap {
+    float: none;
+    width: 100%;
+  }
+}
+.pageContent #banner #buttons {
+  position: relative;
+  float: left;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+  width: 215px;
+  height: 375px;
+}
+@media only screen and (max-width: 700px) {
+  .pageContent #banner #buttons {
+    float: none;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+.pageContent #banner #buttons a.no-of-locations {
+  margin-top: -8px;
+  width: 200px;
+}
+@media only screen and (max-width: 700px) {
+  .pageContent #banner #buttons a.no-of-locations {
+    display: none;
+  }
+}
+.pageContent #banner #buttons a.page-button {
+  margin-top: 1px;
+  padding-top: 9px;
+  padding-left: 40px;
+  line-height: 24px;
+  height: 68px;
+  width: 220px;
+  background-position: 12px 14px;
+  background-size: 36px 40px;
+  background-repeat: no-repeat;
+  background-image: url('/img/info-pin.svg');
+}
+@media only screen and (max-width: 700px) {
+  .pageContent #banner #buttons a.page-button {
+    display: none;
+  }
+}
+.pageContent.index .text {
+  padding-right: 20px;
+}
+@media only screen and (max-width: 700px) {
+  .pageContent.index .text {
+    padding-right: 0;
+  }
+}
+.pageContent .header-extra-alinea {
+  width: calc(100% - 240px);
+  margin-top: 0px;
+  margin-bottom: 35px;
+}
+@media only screen and (max-width: 700px) {
+  .pageContent .header-extra-alinea {
+    width: 100%;
+  }
+}
+.pageContent.index #banner .text {
+  padding: 15px 20px;
+  background-color: #164995;
+  left: 20px;
+  width: 270px;
+  height: 60px;
+  font-size: 24px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 34px;
+  letter-spacing: normal;
+  color: #ffffff;
+  z-index: 10000;
+}
+@media only screen and (max-width: 700px) {
+  .pageContent.index #banner .text {
+    position: absolute;
+    bottom: 30px;
+    left: 6%;
+    font-size: 20px;
+    max-width: 88%;
+    width: 88%;
+    margin: 40px 0 -20px 0;
+    height: 20px;
+    padding: 5px 20px;
+    padding-bottom: 43px;
+    line-height: 40px;
+  }
+}
+.pageContent.index #banner .text a.page-button {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  right: -29px;
+  font-size: 20px;
+  font-weight: 600;
+  width: 270px;
+  max-width: 270px;
+  line-height: 44px;
+}
+@media only screen and (max-width: 700px) {
+  .pageContent.index #banner .text a.page-button {
+    font-size: 18px;
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    right: 0;
+    margin: 0;
+    padding-left: 0;
+    background-image: none;
+  }
+}
+.pageContent.index #banner .text a.stuur-je-locatie-button {
+  display: none;
+}
+.pageContent.index #banner .text a.page-button-flag {
+  padding-left: 15px;
+  background-position: 5px 12px;
+  background-size: auto 18px;
+  background-repeat: no-repeat;
+  background-image: url('/img/flag_small.svg');
+}
+@media only screen and (max-width: 700px) {
+  .pageContent.index #banner .text a.page-button-flag {
+    background-position: 0px 12px;
+  }
+}
+.pageContent.ideasList .primary h1 select {
+  padding-right: 40px;
+  text-align: center;
+  width: 220px;
+}
+@media only screen and (max-width: 700px) {
+  .pageContent.ideasList .primary h1 select {
+    margin: 5px 0 20px 0;
+  }
+}
+.pageContent.ideasList #map {
+  height: 375px;
+  margin-bottom: 20px;
+}
+.pageContent.idea #map-with-buttons-container {
+  margin-top: 35px;
+}
+.pageContent a.page-button {
+  margin-top: 20px;
+  margin-right: 30px;
+  width: 100%;
+  max-width: 280px;
+  display: inline-block;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: black;
+  line-height: 46px;
+  border-radius: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 700px) {
+  .pageContent a.page-button {
+    width: calc(100%);
+    max-width: 100%;
+  }
+}
+.pageContent a.page-button-grey {
+  color: black;
+  background: #e8e8e8;
+}
+.pageContent a.page-button-blue {
+  background-color: #164995;
+  color: white;
+}
+.pageContent a.page-button-flag {
+  padding-left: 25px;
+  background-position: 20px 10px;
+  background-size: auto 25px;
+  background-repeat: no-repeat;
+  background-image: url('/img/flag_small.svg');
+}
+.pageContent a.stuur-je-locatie-button {
+  display: none;
+}
+.pageContent .margin-top {
+  margin-top: 35px;
+}
+#ideas.primary {
+  box-sizing: content-box;
+  width: calc(100% + 20px);
+  padding: 0;
+}
+@media only screen and (max-width: 700px) {
+  #ideas.primary {
+    width: 100%;
+  }
+}
+#ideas.primary .tile {
+  width: calc(25% - 20px);
+}
+#ideas.primary .tile .duration {
+  box-sizing: border-box;
+  position: relative;
+  margin-top: -6px;
+  width: 100%;
+  line-height: 26px;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #434343;
+  padding-left: 26px;
+  background-repeat: no-repeat;
+  background-size: 6px 6px;
+  background-position: 10px 10px;
+  background-image: url('/img/bullet.svg');
+}
+#ideas.primary .tile .ranking {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  color: white;
+  background-color: #164995;
+  background-repeat: no-repeat;
+  background-size: 22px 22px;
+  background-position: 10px 5px;
+  background-image: url('/img/trophy.svg');
+  z-index: 100;
+}
+#ideas.primary .tile .ranking .label {
+  position: absolute;
+  top: 32px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  line-height: 10px;
+  font-size: 10px;
+}
+@media only screen and (max-width: 700px) {
+  #ideas.primary .tile {
+    width: 100%;
+  }
+}
+#howDoesItWork {
+  position: relative;
+  width: 100%;
+  background-color: #f3f3f3;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  z-index: 100;
+}
+#howDoesItWork a {
+  color: #004699;
+  font-weight: bold;
+}
+#howDoesItWork #howDoesItWorkButton {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  line-height: 46px;
+  border-radius: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+#howDoesItWork .pageContent {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 970px;
+  padding: 0 15px 20px;
+}
+#howDoesItWork .steps {
+  box-sizing: content-box;
+  width: calc(100% + 20px);
+  padding: 0;
+}
+#howDoesItWork .step {
+  width: calc(25% - 21px);
+  display: inline-block;
+  vertical-align: top;
+  font-size: 14px;
+  line-height: 1.57;
+  margin-left: 0;
+  margin-right: 17px;
+  padding: 0;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 700px) {
+  #howDoesItWork .step {
+    width: calc(100% - 20px);
+  }
+}
+#howDoesItWork .step .step-image {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#howDoesItWork .step .step-image-1 {
+  background-size: 140px 77px;
+  background-image: url(/img/eberhardvanderlaan/howto-1.svg);
+}
+#howDoesItWork .step .step-image-2 {
+  background-size: 106px 74px;
+  background-image: url(/img/eberhardvanderlaan/howto-2.svg);
+}
+#howDoesItWork .step .step-image-3 {
+  background-size: 50px 72px;
+  background-image: url(/img/eberhardvanderlaan/howto-3.svg);
+}
+#howDoesItWork .step .step-image-4 {
+  background-size: 129px 70px;
+  background-image: url(/img/eberhardvanderlaan/howto-4.svg);
+}
+#howDoesItWork .step .step-header {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+#howDoesItWork.closed .pageContent {
+  display: none;
+}
+#howDoesItWork.closed #arrow {
+  transform: rotate(0deg);
+}
+#howDoesItWork.open .pageContent {
+  display: block;
+}
+#howDoesItWork.open #arrow {
+  transform: rotate(180deg);
+}
+a.meldjeaanknop {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  text-decoration: none;
+  width: 380px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background: none;
+  background-color: #164995;
+  line-height: 20px;
+  text-align: center;
+}
+@media only screen and (max-width: 700px) {
+  a.meldjeaanknop {
+    width: 100%;
+  }
+}
+#end-date-bar {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  background-color: #bdd131;
+  z-index: 100;
+  line-height: 46px;
+  text-align: center;
+  margin: -10px auto 0 auto;
+  padding: 0 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+#end-date-bar #end-date-bar-start-text {
+  padding-right: 12px;
+}
+#end-date-bar #end-date-bar-end-text {
+  padding-left: 8px;
+}
+#inspiration {
+  position: relative;
+  width: 100%;
+  background-color: #f3f3f3;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  z-index: 100;
+}
+@media only screen and (max-width: 700px) {
+  #inspiration .pageContent {
+    padding-top: 1px;
+  }
+}
+#inspiration .pageContent #inspiration-images {
+  width: calc(100% + 20px);
+}
+#inspiration .pageContent .inspiration-image {
+  display: inline-block;
+  margin-right: 17px;
+  width: 220px;
+  height: 220px;
+  background-position: center;
+  background-size: cover;
+}
+#inspiration .pageContent .inspiration-image img {
+  width: 220px;
+  height: 220px;
+  visibility: hidden;
+}
+@media only screen and (max-width: 700px) {
+  #inspiration .pageContent .inspiration-image {
+    width: calc(100% - 20px);
+    height: auto;
+    margin-bottom: 20px;
+  }
+  #inspiration .pageContent .inspiration-image img {
+    width: calc(100% - 20px);
+    height: auto;
+    visibility: visible;
+  }
+}
+#inspiration .pageContent #inspiration-1 {
+  background-image: url('/img/eberhardvanderlaan/inspiratie.1.jpg');
+}
+#inspiration .pageContent #inspiration-2 {
+  background-image: url('/img/eberhardvanderlaan/inspiratie.2.jpg');
+}
+#inspiration .pageContent #inspiration-3 {
+  background-image: url('/img/eberhardvanderlaan/inspiratie.3.jpg');
+}
+#inspiration .pageContent #inspiration-4 {
+  background-image: url('/img/eberhardvanderlaan/inspiratie.4.jpg');
+}
+/* aantal locaties: sort of gekopieerd uit javabrug */
+.no-of-votes-for,
+.no-of-votes-against,
+a.no-of-locations {
+  box-sizing: border-box;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 20px;
+  height: 43px;
+}
+.no-of-votes-for,
+.no-of-votes-against {
+  float: left;
+  margin-bottom: 4px;
+}
+.no-of-votes-for-content,
+.no-of-votes-against-content,
+.no-of-locations-content {
+  box-sizing: border-box;
+  width: calc(100% + 20px);
+  padding: 7px 6px 7px 10px;
+  background: #004699;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+  text-decoration: none;
+  height: 43px;
+}
+.no-of-votes-for-caption,
+.no-of-votes-against-caption {
+  display: none;
+}
+.no-of-locations-caption {
+  box-sizing: border-box;
+  float: left;
+  line-height: 31px;
+  margin-left: -5px;
+}
+.disabled .no-of-votes-for-content,
+.disabled .no-of-votes-against-content,
+.disabled .no-of-locations-content {
+  background-color: #bebebe;
+}
+.no-of-votes-for-content,
+.no-of-votes-against-content {
+  box-sizing: border-box;
+  width: 90px;
+  margin-right: 2px;
+}
+#end-date-bar .number-plates,
+.no-of-votes-for-content .number-plates,
+.no-of-votes-against-content .number-plates {
+  font-size: 0px;
+  margin-right: 0px;
+}
+.no-of-locations-content .number-plates {
+  font-size: 0px;
+  float: left;
+  margin-right: 15px;
+}
+#end-date-bar .number-plate,
+.no-of-votes-for-content .number-plate,
+.no-of-votes-against-content .number-plate,
+.no-of-locations-content .number-plate {
+  margin-right: 4px;
+  font-size: 18px;
+  background: #e8e8e8;
+  background: linear-gradient(#e8e8e8 50%, #ffffff 50%);
+  padding: 0;
+  display: inline-block;
+  height: 29px;
+  line-height: 31px;
+  width: 20px;
+  text-align: center;
+  color: black;
+  border-radius: 3px;
+  font-weight: 800;
+  vertical-align: middle;
+}
+ul.share {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+ul.share li {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+ul.share li a {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  display: inline-block;
+  font-size: 0;
+  height: 30px;
+  width: 30px;
+}
+ul.share li a.facebook {
+  background-image: url('/img/share-facebook.svg');
+}
+ul.share li a.twitter {
+  background-image: url('/img/share-twitter.svg');
+}
+ul.share li a.email {
+  background-image: url('/img/share-email.svg');
+}
+#mainMenu > div ul li:nth-child(2) a:before {
+  content: '';
+}
+#title {
+  margin-bottom: 0;
+}
+#title .primary {
+  height: 375px;
+  z-index: 10;
+}
+#title .primary .image {
+  z-index: 10;
+}
+#title .primary .ranking {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  color: white;
+  background-color: #164995;
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: 12px 6px;
+  background-image: url('/img/trophy.svg');
+  z-index: 100;
+}
+@media only screen and (max-width: 700px) {
+  #title .primary .ranking {
+    right: 0;
+  }
+}
+#title .primary .ranking .label {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  line-height: 10px;
+  font-size: 10px;
+}
+#title .primary .ranking.DENIED {
+  display: none;
+}
+#title .secondary .controls .time-left {
+  position: relative;
+  height: 52px;
+  margin-bottom: 30px;
+}
+#title .secondary .controls .time-left .barcontainer {
+  background-image: url('/img/clock_gray.svg');
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: 0 0;
+  height: 20px;
+  margin-bottom: 9px;
+}
+#title .secondary .controls .time-left .barcontainer #bar {
+  box-sizing: border-box;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 20px;
+  margin-left: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+#title .secondary .controls .time-left .barcontainer #bar #bar-blue {
+  display: inline-block;
+  border-radius: 10px 0 0 10px;
+  background: #004699;
+  width: 100px;
+  height: 18px;
+}
+#title .secondary .controls .time-left .barcontainer #bar #bar-blue-end {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+}
+#title .secondary .controls .time-left #time-left-caption {
+  position: absolute;
+  font-size: 13px;
+  line-height: 28px;
+  bottom: 0px;
+}
+#title .secondary .controls ul.share {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+#title .secondary .controls ul.share li {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+#title .secondary .controls ul.share li a {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  display: inline-block;
+  font-size: 0;
+  height: 30px;
+  width: 30px;
+}
+#title .secondary .controls ul.share li a.facebook {
+  background-image: url('/img/share-facebook.svg');
+}
+#title .secondary .controls ul.share li a.twitter {
+  background-image: url('/img/share-twitter.svg');
+}
+#title .secondary .controls ul.share li a.email {
+  background-image: url('/img/share-email.svg');
+}
+#map-with-buttons-container {
+  position: relative;
+  z-index: 1;
+}
+#map-with-buttons-container #mapcontainer {
+  width: 100%;
+  height: 375px;
+}
+#map-with-buttons-container a.page-button {
+  position: absolute;
+  border-radius: 2px;
+  padding-right: 10px;
+  left: 15px;
+  top: 243px;
+  line-height: 44px;
+  width: 215px;
+  z-index: 10000;
+}
+#map-with-buttons-container a.page-button-flag {
+  background-position: 11px 10px;
+}
+#map-with-buttons-container a.no-of-locations {
+  position: absolute;
+  left: 15px;
+  top: 316px;
+  width: 215px;
+  z-index: 10000;
+  border-radius: 2px;
+  background-color: #164995;
+}
+#map-with-buttons-container a.no-of-locations div {
+  background-color: transparent;
+}
+/* tijdlijn: gekopieerd uit javabrug */
+.box-grey {
+  padding: 15px 15px;
+  background: #f3f3f3;
+}
+.agenda-period,
+.agenda-day {
+  padding: 10px 20px 20px 50px;
+  position: relative;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.agenda-period ul,
+.agenda-day ul {
+  padding: 0px 15px;
+}
+.agenda-period h3,
+.agenda-day h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+.agenda-period::before,
+.agenda-day::before {
+  content: '';
+  width: 10px;
+  background: #323333;
+  left: 15px;
+  top: -10px;
+  bottom: 0;
+  position: absolute;
+}
+.agenda-period:first-child::before,
+.agenda-day:first-child::before {
+  top: 0;
+}
+.agenda-period::after,
+.agenda-day::after {
+  top: 50%;
+  position: absolute;
+  content: '';
+  background-repeat: no-repeat;
+  transform: translateY(-50%);
+}
+.agenda-period::after {
+  background-image: url('/img/stemtool/period.svg');
+  width: 22px;
+  height: 52px;
+  left: 10px;
+}
+.agenda-day::after {
+  background-image: url('../../img/stemtool/round-empty.svg');
+  width: 30px;
+  height: 30px;
+  left: 5px;
+}
+footer {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.38;
+}
+@media only screen and (max-width: 700px) {
+  footer {
+    padding-bottom: 60px;
+  }
+}
+footer h2 {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+footer a {
+  font-weight: 600;
+}

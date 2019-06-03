@@ -1,0 +1,100 @@
+body {
+    background-color: white;
+}
+
+.gardens {
+    --community: 57px;
+    --tech: 12px;
+    --zen: 31px;
+}
+
+.gardens, .gardens li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.gardens {
+    display: flex;
+    margin: 76px 0;
+}
+
+.gardens li {
+    margin-right: 20px;
+}
+
+.community {
+    position: relative;
+    width: 220px;
+    height: 283px;
+    background: #F3F3F3 url(community.jpg) no-repeat;
+    border-radius: 4px;
+}
+
+.tech {
+    position: relative;
+    width: 220px;
+    height: 283px;
+    background: #F3F3F3 url(tech.jpg) no-repeat;
+    border-radius: 4px;
+}
+
+.zen {
+    position: relative;
+    width: 220px;
+    height: 283px;
+    background: #F3F3F3 url(zen.jpg) no-repeat;
+    border-radius: 4px;
+}
+
+.gardens .title {
+    position: absolute;
+    left: 15px;
+    top: 218px;
+    color: #555555;
+    font-weight: bold;
+}
+
+.rating-container {
+    position: absolute;
+    left: 15px;
+    top: 261px;
+    width: 190px;
+    height: 8px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.rating {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 8px;
+    background-color: #184B98;
+    border-radius: 4px;
+}
+
+.perc {
+    position: absolute;
+    left: 83px;
+    top: -27px;
+    width: 54px;
+    height: 54px;
+    border-radius: 27px;
+    color: #555555;
+    background-color: #F3F3F3;
+    text-align: center;
+    line-height: 54px;
+}
+
+.community .rating {
+    width: calc(var(--community) * 1.9);
+}
+
+.tech .rating {
+    width: calc(var(--tech) * 1.9);
+}
+
+.zen .rating {
+    width: calc(var(--zen) * 1.9);
+}
