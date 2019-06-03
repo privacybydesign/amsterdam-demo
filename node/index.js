@@ -4,7 +4,7 @@ const app = express();
 const cors = require("cors");
 const storage = require("node-persist");
 const fs = require("fs");
-const skey = fs.readFileSync("./private_key.pem", "utf-8");
+const skey = fs.readFileSync("../config/private_key.pem", "utf-8");
 
 const port = 8000;
 
@@ -29,14 +29,14 @@ async function init() {
     app.use(express.json());
 
     app.get("/hello", (req, res) => res.send("Hello World!"));
-    app.get("/", (req, res) => res.send("REST API Server"));
+    // app.get("/", (req, res) => res.send("REST API Server"));
 
     app.options("/vote", cors());
     app.post("/vote", cors(), vote);
     app.get("/stats", cors(), stats);
     app.get("/getsession", cors(), irmaSession);
 
-    // app.use(express.static('public'));
+    app.use(express.static('../web'));
 
     app.listen(port, () =>
       console.log(`Voting app listening on port ${port}.`)
