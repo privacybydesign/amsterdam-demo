@@ -1,30 +1,15 @@
 <!DOCTYPE html>
-<!-- saved from url=(0024)http://localhost/stemmen -->
 <html lang="nl">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="http://localhost/img/favicon.ico"
-    />
-
     <title>
-      Ingestuurde ontwerpen — Zorg goed voor onze stad en voor elkaar - Gemeente
-      Amsterdam
+      Stem voor een tuin op de Weesperstraat
     </title>
 
     <meta name="viewport" content="initial-scale=1" />
 
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="all"
-      href="assets/all.css"
-    />
+    <link rel="stylesheet" type="text/css" media="all" href="assets/all.css" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -50,6 +35,8 @@
       href="assets/print.css"
     />
     <link rel="stylesheet" type="text/css" media="all" href="new/style.css" />
+    <script src="js/irma.js"></script>
+    <script src="js/demo.js"></script>
   </head>
   <body class="">
     <div id="page">
@@ -61,7 +48,7 @@
             Amsterdam
           </div>
 
-          <h1><span>Zorg goed voor onze stad en voor elkaar</span></h1>
+          <h1><span>Stem voor een tuin op de Weesperstraat</span></h1>
         </a>
       </header>
 
@@ -93,41 +80,44 @@
 
     <div style="clear: both"></div>
 
-    <div id="content3" class="pageContent ideasList">
+    <!-- ######################################################### -->
+
+    <div id="content3" class="pageContent ideasList voting-results">
       <h4>Stemresultaten</h4>
 
       <p>Het voorstel voor de <b>gemeenschapstuin</b> heeft gewonnen!</p>
 
       <ul class="gardens">
-        <li>
-          <div class="community">
+        <li class="selected">
+          <div class="garden community">
             <p class="title">Gemeenschapstuin</p>
-            <div class="rating-container">
-              <div class="rating"></div>
-            </div>
-            <div class="perc">57%</div>
+            <div class="description">Kweek je eigen eten</div>
+            <div class="perc"></div>
           </div>
         </li>
         <li>
-          <div class="tech">
+          <div class="garden tech">
             <p class="title">Slimme tuin</p>
-            <div class="rating-container">
-              <div class="rating"></div>
-            </div>
-            <div class="perc">12%</div>
+            <div class="description">Inspireren en geïnspireerd raken</div>
+            <div class="perc"></div>
           </div>
         </li>
         <li>
-          <div class="zen">
+          <div class="garden zen">
             <p class="title">Zentuin</p>
-            <div class="rating-container">
-              <div class="rating"></div>
-            </div>
-            <div class="perc">31%</div>
+            <div class="description">Neem een moment en ontspan</div>
+            <div class="perc"></div>
           </div>
         </li>
       </ul>
+
+      <div class="vote-bottom">
+        <button class="vote-button">Stemmen</button>
+        <div class="vote-irma">met IRMA</div>
+      </div>
     </div>
+
+    <!-- ######################################################### -->
 
     <div style="clear: both; height: 40px;"></div>
     <footer>
