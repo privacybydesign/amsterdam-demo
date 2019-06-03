@@ -4,7 +4,7 @@ const voteHost = "http://localhost:8081";
 
 
 // const irmaServer = 'https://acc.fixxx10.amsterdam.nl';
-const irmaServer = 'http://localhost:8088';
+const irmaServer = 'http://37.97.148.6:8088';
 
 
 poll();

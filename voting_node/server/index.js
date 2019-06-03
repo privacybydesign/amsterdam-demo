@@ -11,7 +11,7 @@ const port = 8000;
 init();
 
 // const irmaServer = "https://acc.fixxx10.amsterdam.nl";
-const irmaServer = 'http://localhost:8088';
+const irmaServer = 'http://irma:8088';
 
 
 const request = {
@@ -56,7 +56,7 @@ async function irmaSession(req, res) {
     irmaServer,
     request: JSON.stringify(request),
     authmethod,
-    skey,
+    // skey,
     requestorname
   });
 
