@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  voting:
+    restart: always
+    container_name: voting_static
+    image: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/nginx.conf:ro
+      - ./default.conf:/etc/nginx/conf.d/default.conf # override default conf, else in conflict with new conf
+      - ./logs:/var/log/nginx
+      - ./voting_page:/var/www
+      # - ./certs:/certs
