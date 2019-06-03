@@ -6,7 +6,7 @@ services:
     container_name: voting_static
     image: nginx
     ports:
-      - "80:80"
+      - "8080:8080"
       # - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/nginx.conf:ro
@@ -14,3 +14,11 @@ services:
       - ./logs:/var/log/nginx
       - ./voting_page:/var/www
       # - ./certs:/certs
+  
+  node:
+    restart: always
+    container_name: voting_node
+    build: "./voting_node"
+    ports:
+    - "8081:80"
+    
