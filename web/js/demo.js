@@ -31,7 +31,7 @@ async function stem(event) {
 
     const { sessionPtr, token } = session;
 
-    const result = await irma.handleSession(sessionPtr, { server: irmaServer, token });
+    const result = await irma.handleSession(sessionPtr, { server: irmaServer, token, language: 'nl' });
 
     console.log("IRMA result", result);
 
