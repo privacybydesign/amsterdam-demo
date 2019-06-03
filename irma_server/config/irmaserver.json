@@ -1,4 +1,5 @@
 {
+    "url": "https://37.97.148.6:8088",
     "no_auth": false,
     "requestors": {
         "openstad_voting_token": {
