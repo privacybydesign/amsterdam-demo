@@ -1,1 +1,3 @@
 /.idea
+/config/private_key.pem
+/node/node_modules
