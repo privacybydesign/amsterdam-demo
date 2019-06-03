@@ -9,6 +9,6 @@ RUN apk update && apk add --no-cache ca-certificates
 COPY --from=builder /go/bin/irma /usr/bin
 
 COPY ./config ./config
-CMD ["irma", "server", "-vv", "--config", "./config/irmaserver.json"]
+CMD ["irma", "server", "-vvv", "--config", "./config/irmaserver.json"]
 
 EXPOSE 8088

@@ -1,7 +1,6 @@
 
 
-const voteHost = "http://37.97.148.6:8081";
-
+const voteHost = "http://37.97.148.6";
 
 // const irmaServer = 'https://acc.fixxx10.amsterdam.nl';
 const irmaServer = 'http://37.97.148.6:8088';
