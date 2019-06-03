@@ -3,7 +3,7 @@
 const voteHost = "https://irma.amsterdam";
 
 // const irmaServer = 'https://acc.fixxx10.amsterdam.nl';
-const irmaServer = 'http://irma.amsterdam';
+const irmaServer = 'https://irma.amsterdam';
 
 
 poll();
