@@ -15,7 +15,7 @@ services:
       - ./test_page:/var/www
       - ./certs:/certs
       - ./domains:/domains
-
+  
   node:
     restart: always
     container_name: voting_node
