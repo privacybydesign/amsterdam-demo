@@ -1,6 +1,5 @@
-const voteHost = "localhost:8000";
-const voteServerPost = `http://${voteHost}/vote`;
-const voteServerStats = `http://${voteHost}/stats`;
+const voteHost = "http://localhost:8000";
+const irmaServer = 'https://acc.fixxx10.amsterdam.nl';
 
 poll();
 
@@ -13,11 +12,6 @@ async function stem(event) {
     return;
   }
 
-  const server = window.location.href.substr(
-    0,
-    window.location.href.length - 1
-  );
-
   const request = {
     type: "disclosing",
     content: [
@@ -29,7 +23,7 @@ async function stem(event) {
   };
 
   try {
-    const irmaResponse = await fetch(`http://${voteHost}/getsession`, {
+    const irmaResponse = await fetch(`${voteHost}/getsession`, {
       mode: "cors"
     });
 
@@ -37,16 +31,16 @@ async function stem(event) {
 
     const { sessionPtr, token } = session;
 
-    const result = await irma.handleSession(sessionPtr, { server, token });
+    const result = await irma.handleSession(sessionPtr, { irmaServer, token });
 
     console.log("IRMA result", result);
 
     const email = result.disclosed[0].value.nl;
     const vote = voteInput.value;
 
-    console.log(`Post to ${voteServerPost}`);
+    console.log(`Post vote`);
 
-    const response = await fetch(voteServerPost, {
+    const response = await fetch(`${voteHost}/vote`, {
       method: "POST",
       mode: "cors",
       body: JSON.stringify({ email, vote }),
@@ -74,7 +68,7 @@ async function stem(event) {
 }
 
 async function poll() {
-  const voteServerStatsUrl = new URL(voteServerStats);
+  const voteServerStatsUrl = new URL(`${voteHost}/stats`);
 
   const items = Array.from(document.querySelectorAll(".vote-list input"))
     .map(el => el.value)
@@ -82,7 +76,7 @@ async function poll() {
 
   voteServerStatsUrl.searchParams.set("items", items);
 
-  setInterval(fetchPoll, 2000);
+  setInterval(fetchPoll, 60000);
   fetchPoll();
 
   async function fetchPoll() {

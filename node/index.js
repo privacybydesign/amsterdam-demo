@@ -10,7 +10,7 @@ const port = 8000;
 
 init();
 
-const irmaServer = "http://irma:8088";
+const irmaServer = "https://acc.fixxx10.amsterdam.nl";
 
 const request = {
   type: "disclosing",
@@ -36,7 +36,7 @@ async function init() {
     app.get("/stats", cors(), stats);
     app.get("/getsession", cors(), irmaSession);
 
-    app.use(express.static('../openstad'));
+    app.use(express.static("../web"));
 
     app.listen(port, () =>
       console.log(`Voting app listening on port ${port}.`)
@@ -50,7 +50,13 @@ async function irmaSession(req, res) {
   const authmethod = "publickey";
   const requestorname = "openstad_voting_pk";
 
-  // console.log('irma.startSession', {irmaServer, request:JSON.stringify(request), authmethod, skey, requestorname});
+  console.log("irma.startSession", {
+    irmaServer,
+    request: JSON.stringify(request),
+    authmethod,
+    skey,
+    requestorname
+  });
 
   try {
     const session = await irma.startSession(
@@ -73,26 +79,26 @@ async function vote(req, res) {
     console.log(req.body.email, "alreadyVoted", alreadyVoted);
 
     if (!alreadyVoted || true) {
-    storage.setItem(req.body.email, true);
+      storage.setItem(req.body.email, true);
 
-    console.log("Voted for", req.body.vote);
+      console.log("Voted for", req.body.vote);
 
-    let currentVote = await storage.getItem(req.body.vote);
+      let currentVote = await storage.getItem(req.body.vote);
 
-    if (!currentVote) {
-      currentVote = 0;
-    }
+      if (!currentVote) {
+        currentVote = 0;
+      }
 
-    currentVote++;
+      currentVote++;
 
-    /*******************************************
-     *
-     * This is demo code, not for production.
-     *
-     * Reading and writing a vote should be an atomic operation.
-     *
-     *******************************************/
-    storage.setItem(req.body.vote, currentVote);
+      /*******************************************
+       *
+       * This is demo code, not for production.
+       *
+       * Reading and writing a vote should be an atomic operation.
+       *
+       *******************************************/
+      storage.setItem(req.body.vote, currentVote);
     }
 
     res.json({ alreadyVoted, vote: req.body.vote });
