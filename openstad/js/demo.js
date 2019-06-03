@@ -1,18 +1,18 @@
 const voteHost = "http://localhost:8000";
-const irmaServer = "https://acc.fixxx10.amsterdam.nl";
+const irmaServer = "http://56cb112a.eu.ngrok.io";
 
 console.log("OK");
 
-poll();
-
 document.addEventListener("DOMContentLoaded", () => {
+  const votingResults = document.querySelector(".voting-results");
+  poll(votingResults);
   voteSelect();
 });
 
 async function stem(event) {
   event.preventDefault();
 
-  const voteInput = document.querySelector(".vote-list input:checked");
+  const voteInput = document.querySelector(".gardens input:checked");
   if (!voteInput) {
     console.log("No vote");
     return;
@@ -68,7 +68,7 @@ async function stem(event) {
       message = `U heeft gestemd voor ${voteResult.vote}`;
     }
 
-    document.querySelector("#result").textContent = message;
+    document.querySelector(".status").textContent = message;
 
     console.log("result", voteResult);
   } catch (e) {
@@ -77,16 +77,17 @@ async function stem(event) {
   }
 }
 
-async function poll() {
-  const voteServerStatsUrl = new URL(`${voteHost}/stats`);
+async function poll(votingResults) {
+  if (!votingResults) {
+    return;
+  }
 
-  const items = Array.from(document.querySelectorAll(".vote-list input"))
-    .map(el => el.value)
-    .join(",");
+  const voteServerStatsUrl = new URL(`${voteHost}/stats`);
+  const items = ["community", "tech", "zen"];
 
   voteServerStatsUrl.searchParams.set("items", items);
 
-  setInterval(fetchPoll, 60000);
+  setInterval(fetchPoll, 2000);
   fetchPoll();
 
   async function fetchPoll() {
@@ -95,26 +96,39 @@ async function poll() {
     });
     let json = await response.json();
 
-    const html = Object.entries(json.votes)
-      .map(voteKv => `<p class="votes">${voteKv[0]}: ${voteKv[1]}</p>`)
-      .join("");
+    let total = items.reduce((acc, item) => acc + (json.votes[item] || 0), 0);
 
-    document.querySelector("#results").innerHTML = html;
+    const html = items.forEach(item => {
+      votingResults.style.setProperty(
+        `--${item}`,
+        `${total == 0 ? 0 : (100 * json.votes[item]) / total}px`
+      );
+      document.querySelector(`.${item} .perc`).textContent = `${Math.round(
+        100 * (json.votes[item] || 0)
+       / total)}%`;
+    });
   }
 }
 
 function voteSelect() {
-  const items = document.querySelectorAll(".voting-results .gardens li");
+  const items = document.querySelectorAll(".voting-form .gardens li");
+  if (!items) {
+    return;
+  }
 
   Array.from(items).forEach(item => {
     item.addEventListener("click", selectItem);
   });
 
   function selectItem(event) {
-    console.log("event", event);
-    const li = event.target.closest('li');
+    const li = event.target.closest("li");
     const selected = document.querySelector(".selected");
-    selected.classList.remove("selected");
+    if (selected) {
+      selected.classList.remove("selected");
+    }
     li.classList.add("selected");
+
+    const radio = li.querySelector(`input[type=radio]`);
+    radio.checked = true;
   }
 }

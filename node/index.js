@@ -10,7 +10,7 @@ const port = 8000;
 
 init();
 
-const irmaServer = "https://acc.fixxx10.amsterdam.nl";
+const irmaServer = "http://56cb112a.eu.ngrok.io";
 
 const request = {
   type: "disclosing",
@@ -36,7 +36,7 @@ async function init() {
     app.get("/stats", cors(), stats);
     app.get("/getsession", cors(), irmaSession);
 
-    app.use(express.static("../openstad"));
+    // app.use(express.static("../openstad"));
 
     app.listen(port, () =>
       console.log(`Voting app listening on port ${port}.`)

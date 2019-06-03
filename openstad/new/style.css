@@ -2,10 +2,10 @@ body {
     background-color: white;
 }
 
-.gardens {
-    --community: 57px;
-    --tech: 12px;
-    --zen: 31px;
+.voting-results {
+    --community: 0px;
+    --tech: 0px;
+    --zen: 0px;
 }
 
 .gardens, .gardens li {
@@ -193,4 +193,8 @@ body {
     height: 28px;
     margin-right: 10px;
     background: url(logo-irma.png);
+}
+
+.gardens input[type=radio] {
+    opacity: 0;
 }

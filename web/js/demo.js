@@ -1,5 +1,5 @@
 const voteHost = "http://localhost:8000";
-const irmaServer = 'https://acc.fixxx10.amsterdam.nl';
+const irmaServer = 'http://56cb112a.eu.ngrok.io';
 
 poll();
 
