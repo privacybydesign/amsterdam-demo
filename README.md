@@ -4,6 +4,10 @@
 
 - Install ngrok: https://ngrok.com/download
 
+- Copy-paste the ngrok forwarding url port 8088 to `irmaserver.json`, to the `irmaServer` variable in `demo.js` and `index.js`,
+- Copy-paste the ngrok forwarding url port 8000 to `node_server/public/js/demo.js`, to the `voteHost` varia ble in `demo.js`.
+
+
 ```shell
 cd node
 npm install
@@ -21,8 +25,6 @@ npm install
 cd irma_dev
 ./ngrok.sh
 ```
-
-- Copy-paste the ngrok forwarding url port 8088 to `irmaserver.json`.
 
 ### Run IRMA
 
