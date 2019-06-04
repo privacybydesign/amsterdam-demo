@@ -1,7 +1,13 @@
-const voteHost = "http://localhost:8000";
-const irmaServer = "http://56cb112a.eu.ngrok.io";
+const voteHost = "http://23578376.eu.ngrok.io";
+const irmaServer = "http://1f78c887.eu.ngrok.io";
 
 console.log("OK");
+
+const names = {
+  community: "Gemeenschapstuin",
+  tech: "Slimme tuin",
+  zen: "Zentuin",
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   const votingResults = document.querySelector(".voting-results");
@@ -65,10 +71,12 @@ async function stem(event) {
     if (voteResult.alreadyVoted) {
       message = "U heeft al eerder gestemd!";
     } else {
-      message = `U heeft gestemd voor ${voteResult.vote}`;
+      message = `U heeft gestemd op ${names[voteResult.vote]}.`;
     }
 
-    document.querySelector(".status").textContent = message;
+    message += " Bekijk de <a href='results.html'>resultaten</a>."
+
+    document.querySelector(".status").innerHTML = message;
 
     console.log("result", voteResult);
   } catch (e) {
