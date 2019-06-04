@@ -4,5 +4,7 @@ COPY ./server /server
 COPY ./openstad /openstad
 WORKDIR /server
 
+ARG development
+
 RUN npm install
 CMD ["npx", "nodemon", "index.js", "--verbose"]

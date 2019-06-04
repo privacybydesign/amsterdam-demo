@@ -10,11 +10,16 @@ const port = 8000;
 
 init();
 
-const irmaServer = 'http://irma:8088';
+const dev = process.env.development;
+
+let irmaServer = 'http://irma:8088';
+
+if(dev === 1) {
+  irmaServer = 'https://irma.amsterdam';
+}
 
 // DEBUG:
 // const irmaServer = "https://acc.fixxx10.amsterdam.nl";
-
 
 
 const request = {
@@ -40,6 +45,7 @@ async function init() {
     app.post("/vote", cors(), vote);
     app.get("/stats", cors(), stats);
     app.get("/getsession", cors(), irmaSession);
+    app.get("/env", cors(), getEnv)
 
     app.use(express.static("../openstad"));
 
@@ -82,7 +88,7 @@ async function vote(req, res) {
 
     console.log(req.body.email, "alreadyVoted", alreadyVoted);
 
-    if (!alreadyVoted || true) {
+    if (!alreadyVoted) {
       storage.setItem(req.body.email, true);
 
       console.log("Voted for", req.body.vote);
@@ -126,6 +132,10 @@ async function stats(req, res) {
   } catch (e) {
     error(e, res);
   }
+}
+
+async function getEnv(req, res) {
+  res.json({dev})
 }
 
 function error(e, res) {

@@ -1,10 +1,6 @@
-const voteHost = "https://irma.amsterdam";
-const irmaServer = 'https://irma.amsterdam';
-
-// DEBUG:
-// const voteHost = "http://localhost";
-// const irmaServer = "https://acc.fixxx10.amsterdam.nl";
-
+let dev;
+let voteHost;
+let irmaServer;
 
 console.log("OK");
 
@@ -14,10 +10,25 @@ const names = {
   zen: "Zentuin",
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  ({dev} = await setEnv());
+
+  voteHost = "https://irma.amsterdam";
+  irmaServer = 'https://irma.amsterdam';
+
+  // DEBUG:
+  // irmaServer = "https://acc.fixxx10.amsterdam.nl";
+
+
+  if(dev === 1) {
+    voteHost = "http://localhost";
+    irmaServer = 'https://irma.amsterdam';
+  }
+
   const votingResults = document.querySelector(".voting-results");
   poll(votingResults);
   voteSelect();
+
 });
 
 async function stem(event) {
@@ -144,4 +155,13 @@ function voteSelect() {
     const radio = li.querySelector(`input[type=radio]`);
     radio.checked = true;
   }
+}
+
+async function setEnv() {
+  let voteServerEnvUrl = new URL(`${document.location.href}`);
+  voteServerEnvUrl.pathname = '/env';
+  const response = await fetch(voteServerEnvUrl, {
+    mode: "cors"
+  });
+  return await response.json();
 }
