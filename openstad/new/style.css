@@ -143,6 +143,10 @@ body {
     box-shadow: inset 2px 2px 10px rgba(67, 67, 67, 0.17);
 }
 
+.rating {
+    transition: width 0.25s ease;
+}
+
 .community .rating {
     width: calc(var(--community) * 1.9);
 }
