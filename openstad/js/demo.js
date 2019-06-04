@@ -1,5 +1,5 @@
-const voteHost = "http://23578376.eu.ngrok.io";
-const irmaServer = "http://1f78c887.eu.ngrok.io";
+const voteHost = "http://f1213baf.eu.ngrok.io";
+const irmaServer = "http://de4c96f4.eu.ngrok.io";
 
 console.log("OK");
 

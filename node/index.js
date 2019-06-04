@@ -10,7 +10,7 @@ const port = 8000;
 
 init();
 
-const irmaServer = "http://1f78c887.eu.ngrok.io";
+const irmaServer = "http://de4c96f4.eu.ngrok.io";
 
 const request = {
   type: "disclosing",

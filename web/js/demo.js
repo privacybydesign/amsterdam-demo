@@ -1,5 +1,5 @@
-const voteHost = "http://localhost:8000";
-const irmaServer = 'http://56cb112a.eu.ngrok.io';
+const voteHost = "http://f1213baf.eu.ngrok.io";
+const irmaServer = 'http://de4c96f4.eu.ngrok.io';
 
 poll();
 
