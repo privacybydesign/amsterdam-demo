@@ -3,6 +3,12 @@ const irmaServer = 'https://irma.amsterdam';
 
 console.log("OK");
 
+const names = {
+  community: "Gemeenschapstuin",
+  tech: "Slimme tuin",
+  zen: "Zentuin",
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   const votingResults = document.querySelector(".voting-results");
   poll(votingResults);
@@ -65,10 +71,12 @@ async function stem(event) {
     if (voteResult.alreadyVoted) {
       message = "U heeft al eerder gestemd!";
     } else {
-      message = `U heeft gestemd voor ${voteResult.vote}`;
+      message = `U heeft gestemd op ${names[voteResult.vote]}.`;
     }
 
-    document.querySelector(".status").textContent = message;
+    message += " Bekijk de <a href='results.html'>resultaten</a>."
+
+    document.querySelector(".status").innerHTML = message;
 
     console.log("result", voteResult);
   } catch (e) {
