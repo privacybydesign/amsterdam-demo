@@ -27,5 +27,5 @@ services:
     restart: always
     container_name: irma_server
     build: "./irma_server"
-    ports:
-      - "8088:8088"
+    # ports:
+    #   - "8088:8088"
