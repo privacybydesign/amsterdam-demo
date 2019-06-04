@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-ngrok start -config ngrok.yml irma
+ngrok start -config ngrok.yml irma server
