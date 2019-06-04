@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  nginx:
+    restart: always
+    container_name: nginx_proxy
+    image: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/nginx.conf:ro
+      - ./default.conf:/etc/nginx/conf.d/default.conf # override default conf, else in conflict with new conf
+      - ./logs:/var/log/nginx
+      - ./test_page:/var/www
+      - ./certs:/certs
+      - ./domains:/domains
+  
+  node:
+    restart: always
+    container_name: voting_node
+    build: "./voting_node"
+    # ports:
+    #   - "8081:8000"
+
+  irma:
+    restart: always
+    container_name: irma_server
+    build: "./irma_server"
+    # ports:
+    #   - "8088:8088"
