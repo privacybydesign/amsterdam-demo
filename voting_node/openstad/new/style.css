@@ -74,6 +74,10 @@ body {
     border-radius: 4px;
 }
 
+.voting-form .gardens {
+    margin-left: 10px;
+}
+
 .gardens .title {
     position: absolute;
     left: 15px;
