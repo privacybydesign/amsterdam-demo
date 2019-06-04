@@ -12,14 +12,15 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/nginx.conf:ro
       - ./default.conf:/etc/nginx/conf.d/default.conf # override default conf, else in conflict with new conf
       - ./logs:/var/log/nginx
-      - ./test_page:/var/www
       - ./certs:/certs
       - ./domains:/domains
-  
+      - ./test_page:/var/www # for debug purposes only
+      
   node:
     restart: always
     container_name: voting_node
     build: "./voting_node"
+    # CONTAINER ACCESABLE THROUGH NGINX REVERSED PROXY
     # ports:
     #   - "8081:8000"
 
@@ -27,5 +28,6 @@ services:
     restart: always
     container_name: irma_server
     build: "./irma_server"
+    # CONTAINER ACCESABLE THROUGH NGINX REVERSED PROXY
     # ports:
     #   - "8088:8088"

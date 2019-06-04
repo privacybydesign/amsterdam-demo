@@ -1,6 +1,11 @@
 const voteHost = "https://irma.amsterdam";
 const irmaServer = 'https://irma.amsterdam';
 
+// DEBUG:
+// const voteHost = "http://localhost";
+// const irmaServer = "https://acc.fixxx10.amsterdam.nl";
+
+
 console.log("OK");
 
 document.addEventListener("DOMContentLoaded", () => {

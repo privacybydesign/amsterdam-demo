@@ -10,8 +10,11 @@ const port = 8000;
 
 init();
 
-// const irmaServer = "https://acc.fixxx10.amsterdam.nl";
 const irmaServer = 'http://irma:8088';
+
+// DEBUG:
+// const irmaServer = "https://acc.fixxx10.amsterdam.nl";
+
 
 
 const request = {
