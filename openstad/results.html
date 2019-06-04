@@ -3,8 +3,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="http://localhost/img/favicon.ico"
+    />
+
     <title>
-      Stem op de tuin in de Weesperstraat
+      Stem op de tuin in de Weesperstraat - resultaten
     </title>
 
     <meta name="viewport" content="initial-scale=1" />
@@ -80,49 +88,39 @@
 
     <div style="clear: both"></div>
 
-    <!-- ######################################################### -->
+    <div id="content3" class="pageContent ideasList voting-results">
+      <h4>Stemresultaten</h4>
 
-    <div id="content3" class="pageContent ideasList voting-form">
-      <h4>Stemmen</h4>
-
-      <p class="status">Kies je favoriete tuin.</p>
-
-      <form>
-        <ul class="gardens">
-          <li>
-            <input type="radio" name="vote" value="community" />
-            <div class="garden community">
-              <p class="title">Gemeenschapstuin</p>
-              <div class="description">Kweek je eigen eten</div>
-              <div class="perc"></div>
+      <ul class="gardens">
+        <li>
+          <div class="community">
+            <p class="title">Gemeenschapstuin</p>
+            <div class="rating-container">
+              <div class="rating"></div>
             </div>
-          </li>
-          <li>
-            <input type="radio" name="vote" value="tech" />
-            <div class="garden tech">
-              <p class="title">Slimme tuin</p>
-              <div class="description">Inspireren en geïnspireerd raken</div>
-              <div class="perc"></div>
+            <div class="perc">57%</div>
+          </div>
+        </li>
+        <li>
+          <div class="tech">
+            <p class="title">Slimme tuin</p>
+            <div class="rating-container">
+              <div class="rating"></div>
             </div>
-          </li>
-          <li>
-            <input type="radio" name="vote" value="zen" />
-            <div class="garden zen">
-              <p class="title">Zentuin</p>
-              <div class="description">Neem een moment en ontspan</div>
-              <div class="perc"></div>
+            <div class="perc">12%</div>
+          </div>
+        </li>
+        <li>
+          <div class="zen">
+            <p class="title">Zentuin</p>
+            <div class="rating-container">
+              <div class="rating"></div>
             </div>
-          </li>
-        </ul>
-
-        <div class="vote-bottom">
-          <button class="vote-button" onclick="stem(event)">Stemmen</button>
-          <div class="vote-irma">met IRMA</div>
-        </div>
-      </form>
+            <div class="perc">31%</div>
+          </div>
+        </li>
+      </ul>
     </div>
-
-    <!-- ######################################################### -->
 
     <div style="clear: both; height: 40px;"></div>
     <footer>
@@ -157,28 +155,37 @@
     </footer>
 
     <div id="mobile-menu" class="visible-xs">
-      <a href="#top" class="mobile-menu-item scroll-link">
+      <a href="http://localhost/#top" class="mobile-menu-item scroll-link">
         <img
           src="assets/mobiel-nav-home.svg"
           style="width: 20px; height: 20px; margin-bottom: 2px; min-width: 20px; min-height: 20px; transform: scale(1)"
         />
         Start
       </a>
-      <a href="#achtergrondinformatie" class="mobile-menu-item scroll-link">
+      <a
+        href="http://localhost/#achtergrondinformatie"
+        class="mobile-menu-item scroll-link"
+      >
         <img
           src="assets/mobiel-nav-info.svg"
           style="width: 20px; height: 22px; min-width: 20px; min-height: 22px; transform: scale(1)"
         />
         Info
       </a>
-      <a href="#top" class="mobile-menu-item scroll-link">
+      <a
+        href="javascript: void (function() { if ( window.location.href.match(/\/stemmen[/?#]/) ) { hideVoteCreator(); document.location.hash = &#39;#top&#39;; } else { window.location.href=&#39;/stemmen#closed&#39; }})()"
+        class="mobile-menu-item scroll-link"
+      >
         <img
           src="assets/mobiel-nav-ontwerpen.svg"
           style="width: 18px; height: 22px; min-width: 18px; min-height: 22px; transform: scale(1)"
         />
         Ontwerpen
       </a>
-      <a href="#top" class="mobile-menu-item scroll-link">
+      <a
+        href="javascript: void (function() { if ( window.location.href.match(/\/stemmen(?:[/?#]|$)/) ) { console.log(&#39;xxx1&#39;); showVoteCreator(); document.location.hash = &#39;vote-creator-anchor&#39;; } else { console.log(&#39;xxx2&#39;); window.location.href=&#39;/stemmen#vote-creator-anchor&#39; }})()"
+        class="mobile-menu-item scroll-link"
+      >
         <img
           src="assets/mobiel-nav-stemmen.svg"
           style="width: 22px; height: 22px; min-width: 22px; min-height: 22px; transform: scale(1)"

@@ -1,5 +1,5 @@
 const voteHost = "http://localhost:8000";
-const irmaServer = 'https://acc.fixxx10.amsterdam.nl';
+const irmaServer = 'http://56cb112a.eu.ngrok.io';
 
 poll();
 
@@ -31,7 +31,7 @@ async function stem(event) {
 
     const { sessionPtr, token } = session;
 
-    const result = await irma.handleSession(sessionPtr, { server: irmaServer, token });
+    const result = await irma.handleSession(sessionPtr, { server: irmaServer, token, language: 'nl' });
 
     console.log("IRMA result", result);
 

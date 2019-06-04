@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-irma server -vv --config ../config/irmaserver.json
+irma server -vv --config irmaserver.json
