@@ -38,7 +38,7 @@ async function init() {
     app.get("/stats", cors(), stats);
     app.get("/getsession", cors(), irmaSession);
 
-    app.use(express.static("../web"));
+    app.use(express.static("../openstad"));
 
     app.listen(port, () =>
       console.log(`Voting app listening on port ${port}.`)
@@ -56,7 +56,6 @@ async function irmaSession(req, res) {
     irmaServer,
     request: JSON.stringify(request),
     authmethod,
-    // skey,
     requestorname
   });
 
