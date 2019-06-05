@@ -185,21 +185,45 @@ function openPopup(popupId) {
     }
   });
 
+  const closeButtons = Array.from(
+    popupElement.querySelectorAll("[data-popup-close]")
+  );
+
   return new Promise(resolve => {
-    Array.from(popupElement.querySelectorAll("[data-popup-close]")).forEach(
-      element => {
-        element.addEventListener(
-          "click",
-          event => {
-            document.body.classList.remove("whitebox");
-            popupElement.classList.remove("visible");
-            resolve(element.dataset.popupClose);
-          },
-          {
-            once: true
-          }
-        );
+    setTimeout(() => {
+      window.addEventListener("click", desktop);
+    }, 0);
+    window.addEventListener("keyup", escape);
+
+    closeButtons.forEach(element => {
+      element.addEventListener("click", action);
+    });
+
+    function desktop(event) {
+      if (!popupElement.contains(event.target)) {
+        dismiss("escape");
       }
-    );
+    }
+    function escape(event) {
+      if (event.code === "Escape") {
+        dismiss("escape");
+      }
+    }
+
+    function action(event) {
+      dismiss(this.dataset.popupClose);
+    }
+
+    function dismiss(value) {
+      window.removeEventListener("click", desktop);
+      window.removeEventListener("keyup", escape);
+      closeButtons.forEach(element => {
+        element.removeEventListener("click", action);
+      });
+
+      document.body.classList.remove("whitebox");
+      popupElement.classList.remove("visible");
+      resolve(value);
+    }
   });
 }
