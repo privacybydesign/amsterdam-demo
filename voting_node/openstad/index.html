@@ -186,30 +186,30 @@
     <div id="logoutButton"></div>
 
     <div class="popup success" id="vote-success">
-      <button class="close" onclick="dismissPopup('close')"></button>
+      <button class="close" data-popup-close="close"></button>
       <img src="new/result/success.svg" alt="">
       <h4>Gestemd!</h4>
 
       <p class="status">Bedankt voor uw stem.<br>Uw mening doet er toe.</p>
-      <button class="primary-button" onclick="dismissPopup('ok')">Ga verder</button>
+      <button class="primary-button" data-popup-close="ok">Ga verder</button>
     </div>
 
     <div class="popup success" id="vote-error">
-      <button class="close" onclick="dismissPopup('close')"></button>
+      <button class="close" data-popup-close="close"></button>
       <img src="new/result/error.svg" alt="">
       <h4>Oeps…</h4>
 
       <p class="status">Er is iets mis gegaan.</p>
-      <button class="primary-button" onclick="dismissPopup('ok')">Probeer het opnieuw</button>
+      <button class="primary-button" data-popup-close="ok">Probeer het opnieuw</button>
     </div>
 
     <div class="popup success" id="vote-already-voted">
-      <button class="close" onclick="dismissPopup('close')"></button>
+      <button class="close" data-popup-close="close"></button>
       <img src="new/result/already-voted.svg" alt="">
       <h4>U heeft al gestemd!</h4>
 
       <p class="status">Helaas, je kunt voor dit project maar één keer stemmen.</p>
-      <button class="primary-button" onclick="dismissPopup('ok')">Ga terug</button>
+      <button class="primary-button" data-popup-close="ok">Ga terug</button>
     </div>
   </body>
 </html>

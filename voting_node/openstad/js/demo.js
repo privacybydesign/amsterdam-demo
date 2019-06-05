@@ -165,42 +165,41 @@ async function setEnv() {
   return await response.json();
 }
 
-let popupResolve;
-
 function openPopup(popupId) {
   const popupElement = document.getElementById(popupId);
   const scrollTop = document.scrollingElement.scrollTop;
   document.body.classList.add("whitebox");
   document.body.style.setProperty("--top", scrollTop);
-  focus();
 
   popupElement.classList.add("visible");
 
   document.body.addEventListener("focusin", event => {
     if (!popupElement.contains(event.target)) {
-      focus();
       document.scrollingElement.scrollTop = scrollTop;
+      const focusElement = popupElement.querySelector(
+        "a, button, input, textarea"
+      );
+      if (focusElement) {
+        focusElement.focus();
+      }
     }
   });
 
-  popupPromise = new Promise((resolve) => {
-    popupResolve = resolve;
-  });
-
-  return popupPromise;
-
-  function focus() {
-    const focusElement = popupElement.querySelector(
-      "a, button, input, textarea"
+  return new Promise(resolve => {
+    Array.from(popupElement.querySelectorAll("[data-popup-close]")).forEach(
+      element => {
+        element.addEventListener(
+          "click",
+          event => {
+            document.body.classList.remove("whitebox");
+            popupElement.classList.remove("visible");
+            resolve(element.dataset.popupClose);
+          },
+          {
+            once: true
+          }
+        );
+      }
     );
-    if (focusElement) {
-      focusElement.focus();
-    }
-  }
-}
-
-function dismissPopup(value) {
-  document.body.classList.remove("whitebox");
-  document.querySelector(".popup.visible").classList.remove("visible");
-  popupResolve(value);
+  });
 }
