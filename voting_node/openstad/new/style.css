@@ -244,15 +244,24 @@ body.whitebox::after {
   z-index: 3000;
 }
 
+@media (max-width: 645px) {
+  .popup {
+    left: 0;
+    top: calc(var(--top) * 1px);
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
 .close {
   position: absolute;
   right: 20px;
   top: 20px;
-  width: 14px;
-  height: 14px;
-  background: transparent url(cross.svg);
+  width: 40px;
+  height: 40px;
+  background: transparent url(cross.svg) no-repeat center;
   border: none;
-
+  padding: 0;
 }
 
 .visible {
