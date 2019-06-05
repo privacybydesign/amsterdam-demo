@@ -7,14 +7,14 @@ console.log("OK");
 const names = {
   community: "Gemeenschapstuin",
   tech: "Slimme tuin",
-  zen: "Zentuin",
+  zen: "Zentuin"
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
-  ({dev} = await setEnv());
+  ({ dev } = await setEnv());
 
   voteHost = "https://irma.amsterdam";
-  irmaServer = 'https://irma.amsterdam';
+  irmaServer = "https://irma.amsterdam";
 
   // LOCAL voteHost = "http://44e1cb66.eu.ngrok.io";
   // LOCAL irmaServer = 'http://874d4b8c.eu.ngrok.io';
@@ -22,16 +22,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   // DEBUG:
   // irmaServer = "https://acc.fixxx10.amsterdam.nl";
 
-
-  if(dev === 1) {
+  if (dev === 1) {
     voteHost = "http://localhost";
-    irmaServer = 'https://irma.amsterdam';
+    irmaServer = "https://irma.amsterdam";
   }
 
   const votingResults = document.querySelector(".voting-results");
   poll(votingResults);
   voteSelect();
-
 });
 
 async function stem(event) {
@@ -89,11 +87,13 @@ async function stem(event) {
     let message;
     if (voteResult.alreadyVoted) {
       message = "U heeft al eerder gestemd!";
+      openPopup("vote-success");
     } else {
       message = `U heeft gestemd op ${names[voteResult.vote]}.`;
+      openPopup("vote-success");
     }
 
-    message += " Bekijk de <a href='results.html'>resultaten</a>."
+    message += " Bekijk de <a href='results.html'>resultaten</a>.";
 
     document.querySelector(".status").innerHTML = message;
 
@@ -131,8 +131,8 @@ async function poll(votingResults) {
         `${total == 0 ? 0 : (100 * json.votes[item]) / total}px`
       );
       document.querySelector(`.${item} .perc`).textContent = `${Math.round(
-        100 * (json.votes[item] || 0)
-       / total)}%`;
+        (100 * (json.votes[item] || 0)) / total
+      )}%`;
     });
   }
 }
@@ -162,9 +162,40 @@ function voteSelect() {
 
 async function setEnv() {
   let voteServerEnvUrl = new URL(`${document.location.href}`);
-  voteServerEnvUrl.pathname = '/env';
+  voteServerEnvUrl.pathname = "/env";
   const response = await fetch(voteServerEnvUrl, {
     mode: "cors"
   });
   return await response.json();
+}
+
+function openPopup(popupId) {
+  const popupElement = document.getElementById(popupId);
+  const scrollTop = document.scrollingElement.scrollTop;
+  document.body.classList.add("whitebox");
+  document.body.style.setProperty("--top", scrollTop);
+  focus();
+
+  popupElement.classList.add("visible");
+
+  document.body.addEventListener("focusin", event => {
+    if (!popupElement.contains(event.target)) {
+      focus();
+      document.scrollingElement.scrollTop = scrollTop;
+    }
+  });
+
+  function focus() {
+    const focusElement = popupElement.querySelector(
+      "a, button, input, textarea"
+    );
+    if (focusElement) {
+      focusElement.focus();
+    }
+  }
+}
+
+function dismissPopup() {
+  document.body.classList.remove("whitebox");
+  document.querySelector(".popup.visible").classList.remove("visible");
 }

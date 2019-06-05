@@ -38,7 +38,7 @@
     <script src="js/irma.js"></script>
     <script src="js/demo.js"></script>
   </head>
-  <body class="">
+  <body>
     <div id="page">
       <header>
         <a href="/">
@@ -116,7 +116,7 @@
         </ul>
 
         <div class="vote-bottom">
-          <button class="vote-button" onclick="stem(event)">Stemmen</button>
+          <button class="primary-button vote-button" onclick="stem(event)">Stemmen</button>
           <div class="vote-irma">met IRMA</div>
         </div>
       </form>
@@ -131,7 +131,7 @@
           <h2>Dit is een demosite van het team Digitale Identiteit/Datapunt</h2>
         </div>
         <div>
-          <h2>Meer informatie</h2>
+          <h2 onclick="openPopup('vote-success')">Meer informatie</h2>
           <ul>
             <li>
 
@@ -184,5 +184,14 @@
     </div>
 
     <div id="logoutButton"></div>
+
+    <div class="popup success" id="vote-success">
+      <button class="close" onclick="dismissPopup()"></button>
+      <img src="new/result/success.svg" alt="">
+      <h4>Gestemd!</h4>
+
+      <p class="status">Bedankt voor uw stem.<br>Uw mening doet er toe.</p>
+      <button class="primary-button" onclick="dismissPopup()">Ga verder</button>
+    </div>
   </body>
 </html>
