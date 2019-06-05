@@ -3,3 +3,5 @@
 /node/node_modules
 
 logs/
+/voting_node/server/node_modules
+/voting_node/server/.node-persist

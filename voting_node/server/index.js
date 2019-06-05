@@ -14,6 +14,8 @@ const dev = process.env.development;
 
 let irmaServer = 'http://irma:8088';
 
+// LOCAL let irmaServer = 'http://localhost:8088';
+
 if(dev === 1) {
   irmaServer = 'https://irma.amsterdam';
 }

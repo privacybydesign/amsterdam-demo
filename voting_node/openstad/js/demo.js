@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   voteHost = "https://irma.amsterdam";
   irmaServer = 'https://irma.amsterdam';
 
+  // LOCAL voteHost = "http://44e1cb66.eu.ngrok.io";
+  // LOCAL irmaServer = 'http://874d4b8c.eu.ngrok.io';
+
   // DEBUG:
   // irmaServer = "https://acc.fixxx10.amsterdam.nl";
 
