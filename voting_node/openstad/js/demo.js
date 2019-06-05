@@ -86,21 +86,17 @@ async function stem(event) {
 
     let message;
     if (voteResult.alreadyVoted) {
-      message = "U heeft al eerder gestemd!";
-      openPopup("vote-success");
+      await openPopup("vote-already-voted");
     } else {
-      message = `U heeft gestemd op ${names[voteResult.vote]}.`;
-      openPopup("vote-success");
+      await openPopup("vote-success");
     }
-
-    message += " Bekijk de <a href='results.html'>resultaten</a>.";
-
-    document.querySelector(".status").innerHTML = message;
+    document.location = "/results.html";
 
     console.log("result", voteResult);
   } catch (e) {
-    console.log("Cancelled");
-    throw new Error(e);
+    console.error("Cancelled", e);
+    await openPopup("vote-error");
+    document.location.reload();
   }
 }
 
@@ -169,6 +165,8 @@ async function setEnv() {
   return await response.json();
 }
 
+let popupResolve;
+
 function openPopup(popupId) {
   const popupElement = document.getElementById(popupId);
   const scrollTop = document.scrollingElement.scrollTop;
@@ -185,6 +183,12 @@ function openPopup(popupId) {
     }
   });
 
+  popupPromise = new Promise((resolve) => {
+    popupResolve = resolve;
+  });
+
+  return popupPromise;
+
   function focus() {
     const focusElement = popupElement.querySelector(
       "a, button, input, textarea"
@@ -195,7 +199,8 @@ function openPopup(popupId) {
   }
 }
 
-function dismissPopup() {
+function dismissPopup(value) {
   document.body.classList.remove("whitebox");
   document.querySelector(".popup.visible").classList.remove("visible");
+  popupResolve(value);
 }

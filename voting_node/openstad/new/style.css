@@ -241,7 +241,7 @@ body.whitebox::after {
   padding: 40px;
   background-color: white;
   text-align: center;
-  z-index: 200;
+  z-index: 3000;
 }
 
 .close {
