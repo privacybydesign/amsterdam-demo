@@ -514,7 +514,6 @@ a.meldjeaanknop {
   position: relative;
   width: 100%;
   background-color: #bdd131;
-  z-index: 100;
   line-height: 46px;
   text-align: center;
   margin: -10px auto 0 auto;
