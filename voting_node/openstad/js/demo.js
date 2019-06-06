@@ -126,7 +126,7 @@ async function poll(votingResults) {
         `--${item}`,
         `${total == 0 ? 0 : (100 * json.votes[item]) / total}px`
       );
-      document.querySelector(`.${item} .perc`).textContent = `${Math.round(
+      document.querySelector(`.${item} .perc`).textContent = `${total == 0 ? 0 : Math.round(
         (100 * (json.votes[item] || 0)) / total
       )}%`;
     });
