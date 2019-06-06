@@ -95,8 +95,8 @@ async function stem(event) {
     console.log("result", voteResult);
   } catch (e) {
     console.error("Cancelled", e);
-    await openPopup("vote-error");
-    document.location.reload();
+    //await openPopup("vote-error");
+    //document.location.reload();
   }
 }
 
