@@ -1,12 +1,13 @@
-## Repository di_node_container
+# IRMA demo
 
-### Install
+## Install IRMA demo
+
+### Install ngrok
 
 - Install ngrok: https://ngrok.com/download
 
-- Copy-paste the ngrok forwarding url port 8088 to `irmaserver.json`, to the `irmaServer` variable in `demo.js` and `index.js`,
-- Copy-paste the ngrok forwarding url port 8000 to `node_server/public/js/demo.js`, to the `voteHost` variable in `demo.js`.
 
+### Install Node server
 
 ```shell
 cd node
@@ -19,25 +20,32 @@ npm install
 ./keygen.sh
 ```
 
+## Run IRMA demo
+
 ### Run ngrok
 
 ```shell
-cd irma_dev
+cd local
 ./ngrok.sh
 ```
 
+- Copy-paste the ngrok forwarding url port 8088 to `local/irmaserver.json`, to the `irmaServer` variable in `demo.js` and `index.js`,
+- Copy-paste the ngrok forwarding url port 8000 to `node_server/public/js/demo.js`, to the `voteHost` variable in `demo.js`.
+
 ### Run IRMA
 
-Make sure no IRMA is running.
+Make sure IRMA is not already running.
 
 ```shell
-cd irma_dev
+cd local
 ./irma.sh
 ```
 
 ### Run Nodejs
 
 ```shell
-cd node
-npx nodemon indexjs
+cd local
+./node.sh
 ```
+
+Visit the ngrok forwarding url to localhost port 8000.
