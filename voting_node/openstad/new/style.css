@@ -18,6 +18,7 @@ body {
 
 .gardens {
   display: flex;
+  justify-content: center;
   margin-bottom: 76px;
 }
 
@@ -40,7 +41,7 @@ body {
   box-shadow: 2px 2px 10px rgba(67, 67, 67, 0.17);
 }
 
-.selected .garden::after {
+.garden::after {
   content: "";
   position: absolute;
   left: -12px;
@@ -48,6 +49,20 @@ body {
   width: 248px;
   height: 338px;
   background: url(selected.png);
+  opacity: 0;
+  transition: all 0.25s ease;
+}
+
+:not(:checked) + .garden:hover::after {
+  opacity: 0.3;
+}
+
+:focus + .garden::after {
+  opacity: 0.3;
+}
+
+:checked + .garden::after {
+  opacity: 1;
 }
 
 .community {
@@ -80,7 +95,7 @@ body {
 
 .gardens .title {
   position: absolute;
-  left: 15px;
+  left: 10px;
   top: 218px;
   color: #555555;
   font-weight: bold;
@@ -107,7 +122,7 @@ body {
 
 .description {
   position: absolute;
-  left: 15px;
+  left: 10px;
   top: 257px;
   width: 190px;
   font-size: 14px;
@@ -128,14 +143,21 @@ body {
   line-height: 54px;
 }
 
-.selected .perc::after {
+.garden .perc::after {
   content: "";
   position: absolute;
   left: 18px;
-  top: 23px;
+  top: 28px;
   width: 18px;
   height: 13px;
   background: url(check.png);
+  transition: all 0.25s ease;
+  opacity: 0;
+}
+
+:checked + .garden .perc::after {
+  top: 23px;
+  opacity: 1;
 }
 
 .voting-results .perc {
@@ -160,7 +182,8 @@ body {
 }
 
 .vote-bottom {
-  padding-left: calc(50% - 87px);
+  margin-left: calc(50% - 87px);
+  display: inline-block;
 }
 
 .primary-button {

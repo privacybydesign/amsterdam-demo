@@ -63,8 +63,7 @@
           </ul>
         </div>
       </nav>
-    -->
-    </div>
+    --></div>
 
     <!--
     <div class="pageContent ideasList">
@@ -94,33 +93,41 @@
       <form>
         <ul class="gardens">
           <li>
-            <input type="radio" name="vote" value="community" />
-            <div class="garden community">
-              <p class="title">Gemeenschapstuin</p>
-              <div class="description">Kweek je eigen eten</div>
-              <div class="perc"></div>
-            </div>
+            <label>
+              <input type="radio" name="vote" value="community" />
+              <div class="garden community">
+                <p class="title">Gemeenschapstuin</p>
+                <div class="description">Kweek je eigen eten</div>
+                <div class="perc"></div>
+              </div>
+            </label>
           </li>
           <li>
-            <input type="radio" name="vote" value="tech" />
-            <div class="garden tech">
-              <p class="title">Slimme tuin</p>
-              <div class="description">Inspireren en geïnspireerd raken</div>
-              <div class="perc"></div>
-            </div>
+            <label>
+              <input type="radio" name="vote" value="tech" />
+              <div class="garden tech">
+                <p class="title">Slimme tuin</p>
+                <div class="description">Inspireren en geïnspireerd raken</div>
+                <div class="perc"></div>
+              </div>
+            </label>
           </li>
           <li>
-            <input type="radio" name="vote" value="zen" />
-            <div class="garden zen">
-              <p class="title">Zentuin</p>
-              <div class="description">Neem een moment en ontspan</div>
-              <div class="perc"></div>
-            </div>
+            <label>
+              <input type="radio" name="vote" value="zen" />
+              <div class="garden zen">
+                <p class="title">Zentuin</p>
+                <div class="description">Neem een moment en ontspan</div>
+                <div class="perc"></div>
+              </div>
+            </label>
           </li>
         </ul>
 
-        <div class="vote-bottom">
-          <button class="primary-button vote-button" onclick="stem(event)">Stemmen</button>
+        <div class="vote-bottom" onclick="stem(event)">
+          <button class="primary-button vote-button" onclick="stem(event)">
+            Stemmen
+          </button>
           <div class="vote-irma">met IRMA</div>
         </div>
       </form>
@@ -138,7 +145,6 @@
           <h2>Meer informatie</h2>
           <ul>
             <li>
-
               Volg de projectpagina op amsterdam.nl
             </li>
           </ul>
@@ -150,7 +156,9 @@
             horen het graag!
           </p>
           <ul>
-            <li><a href="mailto:mark.fonds@amsterdam.nl">Stuur een email</a></li>
+            <li>
+              <a href="mailto:mark.fonds@amsterdam.nl">Stuur een email</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -191,29 +199,44 @@
 
     <div class="popup success" id="vote-success">
       <button class="close" data-popup-close="close"></button>
-      <img src="new/result/success.svg" alt="">
+      <img src="new/result/success.svg" alt="" />
       <h4>Gestemd!</h4>
 
-      <p class="status">Bedankt voor uw stem.<br>Uw mening doet er toe.</p>
+      <p class="status">Bedankt voor uw stem.<br />Uw mening doet er toe.</p>
       <button class="primary-button" data-popup-close="ok">Ga verder</button>
     </div>
 
     <div class="popup success" id="vote-error">
       <button class="close" data-popup-close="close"></button>
-      <img src="new/result/error.svg" alt="">
+      <img src="new/result/error.svg" alt="" />
       <h4>Oeps…</h4>
 
       <p class="status">Er is iets mis gegaan.</p>
-      <button class="primary-button" data-popup-close="ok">Probeer het opnieuw</button>
+      <button class="primary-button" data-popup-close="ok">
+        Probeer het opnieuw
+      </button>
     </div>
 
     <div class="popup success" id="vote-already-voted">
       <button class="close" data-popup-close="close"></button>
-      <img src="new/result/already-voted.svg" alt="">
+      <img src="new/result/already-voted.svg" alt="" />
       <h4>U heeft al gestemd!</h4>
 
-      <p class="status">Helaas, je kunt voor dit project maar één keer stemmen.</p>
+      <p class="status">
+        Helaas, je kunt voor dit project maar één keer stemmen.
+      </p>
       <button class="primary-button" data-popup-close="ok">Ga terug</button>
+    </div>
+
+    <div class="popup success" id="vote-no-selection">
+      <button class="close" data-popup-close="close"></button>
+      <img src="new/result/error.svg" alt="" />
+      <h4>Oeps…</h4>
+
+      <p class="status">Je hebt nog geen keuze gemaakt.</p>
+      <button class="primary-button" data-popup-close="ok">
+        Probeer het opnieuw
+      </button>
     </div>
   </body>
 </html>
