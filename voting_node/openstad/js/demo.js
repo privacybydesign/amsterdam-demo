@@ -29,15 +29,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const votingResults = document.querySelector(".voting-results");
   poll(votingResults);
-  voteSelect();
 });
 
 async function stem(event) {
   event.preventDefault();
+  event.stopPropagation();
 
   const voteInput = document.querySelector(".gardens input:checked");
   if (!voteInput) {
     console.log("No vote");
+    openPopup("vote-no-selection");
     return;
   }
 
@@ -96,7 +97,7 @@ async function stem(event) {
   } catch (e) {
     console.error("Cancelled", e);
     //await openPopup("vote-error");
-    //document.location.reload();
+    document.location.reload();
   }
 }
 
@@ -130,29 +131,6 @@ async function poll(votingResults) {
         (100 * (json.votes[item] || 0)) / total
       )}%`;
     });
-  }
-}
-
-function voteSelect() {
-  const items = document.querySelectorAll(".voting-form .gardens li");
-  if (!items) {
-    return;
-  }
-
-  Array.from(items).forEach(item => {
-    item.addEventListener("click", selectItem);
-  });
-
-  function selectItem(event) {
-    const li = event.target.closest("li");
-    const selected = document.querySelector(".selected");
-    if (selected) {
-      selected.classList.remove("selected");
-    }
-    li.classList.add("selected");
-
-    const radio = li.querySelector(`input[type=radio]`);
-    radio.checked = true;
   }
 }
 
