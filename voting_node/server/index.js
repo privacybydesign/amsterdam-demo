@@ -4,24 +4,13 @@ const app = express();
 const cors = require("cors");
 const storage = require("node-persist");
 const fs = require("fs");
-const skey = fs.readFileSync("./config/private_key.pem", "utf-8");
-const config = JSON.parse(fs.readFileSync("./config/config.json", "utf-8"));
 
-console.log('config', config);
+const skey = fs.readFileSync("config/private_key.pem", "utf-8");
+const config = JSON.parse(fs.readFileSync("config/config.json", "utf-8"));
 
 init();
 
 // const dev = process.env.development;
-
-const request = {
-  type: "disclosing",
-  content: [
-    {
-      label: "Uw emailadres",
-      attributes: ["pbdf.pbdf.email.email"]
-    }
-  ]
-};
 
 async function init() {
   try {
@@ -30,13 +19,12 @@ async function init() {
     app.use(express.json());
 
     app.get("/hello", (req, res) => res.send("Hello World!"));
-    // app.get("/", (req, res) => res.send("REST API Server"));
 
     app.options("/vote", cors());
     app.post("/vote", cors(), vote);
     app.get("/stats", cors(), stats);
     app.get("/getsession", cors(), irmaSession);
-    app.get("/env", cors(), getEnv);
+    app.get("/config", cors(), getConfig);
 
     app.use(express.static("../openstad"));
 
@@ -51,6 +39,15 @@ async function init() {
 async function irmaSession(req, res) {
   const authmethod = "publickey";
   const requestorname = "openstad_voting_pk";
+  const request = {
+    type: "disclosing",
+    content: [
+      {
+        label: "Uw emailadres",
+        attributes: ["pbdf.pbdf.email.email"]
+      }
+    ]
+  };
 
   console.log("irma.startSession", {
     url: config.irma,
@@ -113,6 +110,7 @@ async function stats(req, res) {
   const params = new URLSearchParams(search);
   const items = params.get("items").split(",");
   const votesPromises = items.map(item => storage.getItem(item));
+
   try {
     const votesArray = await Promise.all(votesPromises);
     const votes = items.reduce((acc, item, i) => {
@@ -125,8 +123,8 @@ async function stats(req, res) {
   }
 }
 
-async function getEnv(req, res) {
-  res.json({ dev });
+async function getConfig(req, res) {
+  res.json(config);
 }
 
 function error(e, res) {
