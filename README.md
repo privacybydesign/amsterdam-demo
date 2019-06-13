@@ -11,7 +11,7 @@ docker build -t voting_node .
 
 ```shell
 cd voting_node
-docker run -it -p8088:8088 voting_node
+docker run -it -p80:80 voting_node
 ```
 
 ### Run local
