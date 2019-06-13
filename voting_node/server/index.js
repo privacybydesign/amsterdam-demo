@@ -5,23 +5,13 @@ const cors = require("cors");
 const storage = require("node-persist");
 const fs = require("fs");
 const skey = fs.readFileSync("./config/private_key.pem", "utf-8");
+const config = JSON.parse(fs.readFileSync("./config/config.json", "utf-8"));
 
-const port = 80;
+console.log('config', config);
 
 init();
 
-const dev = process.env.development;
-
-let irmaServer = "http://irma:8088";
-
-irmaServer = "http://d47925aa.eu.ngrok.io";
-
-if (dev === 1) {
-  // irmaServer = 'https://irma.amsterdam';
-}
-
-// DEBUG:
-// const irmaServer = "https://acc.fixxx10.amsterdam.nl";
+// const dev = process.env.development;
 
 const request = {
   type: "disclosing",
@@ -50,8 +40,8 @@ async function init() {
 
     app.use(express.static("../openstad"));
 
-    app.listen(port, () =>
-      console.log(`Voting app listening on port ${port}.`)
+    app.listen(config.port, () =>
+      console.log(`Voting app listening on port ${config.port}.`)
     );
   } catch (e) {
     error(e);
@@ -63,7 +53,7 @@ async function irmaSession(req, res) {
   const requestorname = "openstad_voting_pk";
 
   console.log("irma.startSession", {
-    irmaServer,
+    url: config.irma,
     request: JSON.stringify(request),
     authmethod,
     requestorname
@@ -71,7 +61,7 @@ async function irmaSession(req, res) {
 
   try {
     const session = await irma.startSession(
-      irmaServer,
+      config.irma,
       request,
       authmethod,
       skey,
