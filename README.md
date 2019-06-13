@@ -2,40 +2,14 @@
 
 ### Install
 
-- Install ngrok: https://ngrok.com/download
-
 ```shell
-cd node
-npm install
+cd voting_node
+docker build -t voting_node .
 ```
 
-### Install key pair
+### Run
 
 ```shell
-./keygen.sh
-```
-
-### Run ngrok
-
-```shell
-cd irma_dev
-./ngrok.sh
-```
-
-- Copy-paste the ngrok forwarding url port 8088 to `irmaserver.json`.
-
-### Run IRMA
-
-Make sure no IRMA is running.
-
-```shell
-cd irma_dev
-./irma.sh
-```
-
-### Run Nodejs
-
-```shell
-cd node
-npx nodemon indexjs
+cd voting_node
+docker run -it -p8088:8088 voting_node
 ```
