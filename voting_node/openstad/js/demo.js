@@ -1,4 +1,3 @@
-let dev;
 let voteHost;
 let irmaServer;
 
@@ -11,24 +10,12 @@ const names = {
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
-  // ({ dev } = await setEnv());
+  const config = await getConfig();
 
-  // voteHost = "https://irma.amsterdam";
-  // irmaServer = "https://irma.amsterdam";
+  console.log('config', config);
 
-  // LOCAL voteHost = "http://44e1cb66.eu.ngrok.io";
-  // LOCAL irmaServer = 'http://874d4b8c.eu.ngrok.io';
-
-  // DEBUG:
-  // irmaServer = "https://acc.fixxx10.amsterdam.nl";
-
-  voteHost = "http://localhost";
-  irmaServer = "http://d47925aa.eu.ngrok.io";
-
-  if (dev === 1) {
-    // voteHost = "http://localhost";
-    // irmaServer = "https://irma.amsterdam";
-  }
+  voteHost = config.node;
+  irmaServer = config.irma;
 
   const votingResults = document.querySelector(".voting-results");
   poll(votingResults);
@@ -137,14 +124,14 @@ async function poll(votingResults) {
   }
 }
 
-// async function setEnv() {
-//   let voteServerEnvUrl = new URL(`${document.location.href}`);
-//   voteServerEnvUrl.pathname = "/env";
-//   const response = await fetch(voteServerEnvUrl, {
-//     mode: "cors"
-//   });
-//   return await response.json();
-// }
+async function getConfig() {
+  // let voteServerEnvUrl = new URL(`${document.location.href}`);
+  // voteServerEnvUrl.pathname = "/env";
+  const response = await fetch("/config", {
+    mode: "cors"
+  });
+  return await response.json();
+}
 
 function openPopup(popupId) {
   const popupElement = document.getElementById(popupId);
