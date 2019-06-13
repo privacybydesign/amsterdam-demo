@@ -8,3 +8,5 @@ ARG development
 
 RUN npm install
 CMD ["npx", "nodemon", "index.js", "--verbose"]
+
+EXPOSE 80

@@ -11,10 +11,10 @@ const names = {
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
-  ({ dev } = await setEnv());
+  // ({ dev } = await setEnv());
 
-  voteHost = "https://irma.amsterdam";
-  irmaServer = "https://irma.amsterdam";
+  // voteHost = "https://irma.amsterdam";
+  // irmaServer = "https://irma.amsterdam";
 
   // LOCAL voteHost = "http://44e1cb66.eu.ngrok.io";
   // LOCAL irmaServer = 'http://874d4b8c.eu.ngrok.io';
@@ -22,9 +22,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   // DEBUG:
   // irmaServer = "https://acc.fixxx10.amsterdam.nl";
 
+  voteHost = "http://localhost";
+  irmaServer = "http://d47925aa.eu.ngrok.io";
+
   if (dev === 1) {
-    voteHost = "http://localhost";
-    irmaServer = "https://irma.amsterdam";
+    // voteHost = "http://localhost";
+    // irmaServer = "https://irma.amsterdam";
   }
 
   const votingResults = document.querySelector(".voting-results");
@@ -127,21 +130,21 @@ async function poll(votingResults) {
         `--${item}`,
         `${total == 0 ? 0 : (100 * json.votes[item]) / total}px`
       );
-      document.querySelector(`.${item} .perc`).textContent = `${total == 0 ? 0 : Math.round(
-        (100 * (json.votes[item] || 0)) / total
-      )}%`;
+      document.querySelector(`.${item} .perc`).textContent = `${
+        total == 0 ? 0 : Math.round((100 * (json.votes[item] || 0)) / total)
+      }%`;
     });
   }
 }
 
-async function setEnv() {
-  let voteServerEnvUrl = new URL(`${document.location.href}`);
-  voteServerEnvUrl.pathname = "/env";
-  const response = await fetch(voteServerEnvUrl, {
-    mode: "cors"
-  });
-  return await response.json();
-}
+// async function setEnv() {
+//   let voteServerEnvUrl = new URL(`${document.location.href}`);
+//   voteServerEnvUrl.pathname = "/env";
+//   const response = await fetch(voteServerEnvUrl, {
+//     mode: "cors"
+//   });
+//   return await response.json();
+// }
 
 function openPopup(popupId) {
   const popupElement = document.getElementById(popupId);

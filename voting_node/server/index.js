@@ -6,23 +6,22 @@ const storage = require("node-persist");
 const fs = require("fs");
 const skey = fs.readFileSync("./config/private_key.pem", "utf-8");
 
-const port = 8000;
+const port = 80;
 
 init();
 
 const dev = process.env.development;
 
-let irmaServer = 'http://irma:8088';
+let irmaServer = "http://irma:8088";
 
-// LOCAL let irmaServer = 'http://localhost:8088';
+irmaServer = "http://d47925aa.eu.ngrok.io";
 
-if(dev === 1) {
-  irmaServer = 'https://irma.amsterdam';
+if (dev === 1) {
+  // irmaServer = 'https://irma.amsterdam';
 }
 
 // DEBUG:
 // const irmaServer = "https://acc.fixxx10.amsterdam.nl";
-
 
 const request = {
   type: "disclosing",
@@ -47,7 +46,7 @@ async function init() {
     app.post("/vote", cors(), vote);
     app.get("/stats", cors(), stats);
     app.get("/getsession", cors(), irmaSession);
-    app.get("/env", cors(), getEnv)
+    app.get("/env", cors(), getEnv);
 
     app.use(express.static("../openstad"));
 
@@ -137,7 +136,7 @@ async function stats(req, res) {
 }
 
 async function getEnv(req, res) {
-  res.json({dev})
+  res.json({ dev });
 }
 
 function error(e, res) {
