@@ -1,5 +1,5 @@
 {
     "irma": "http://d47925aa.eu.ngrok.io",
-    "node": "http://localhost/",
+    "node": "http://localhost",
     "port": 80
 }

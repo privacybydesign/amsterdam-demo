@@ -6,7 +6,7 @@ const storage = require("node-persist");
 const fs = require("fs");
 
 const skey = fs.readFileSync("config/private_key.pem", "utf-8");
-const config = JSON.parse(fs.readFileSync("config/config.json", "utf-8"));
+const config = JSON.parse(fs.readFileSync("config/config-dev.json", "utf-8"));
 
 init();
 
