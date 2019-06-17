@@ -1,6 +1,6 @@
 FROM node:10
 
-COPY ./server/package*.json /server
+COPY ./server/package*.json /server/
 WORKDIR /server
 
 ARG development
