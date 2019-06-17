@@ -3,17 +3,29 @@ const irma = require("@privacybydesign/irmajs");
 const app = express();
 const cors = require("cors");
 const storage = require("node-persist");
+const util = require("util");
 const fs = require("fs");
 
-const skey = fs.readFileSync("config/private_key.pem", "utf-8");
-const config = JSON.parse(fs.readFileSync("config/config-dev.json", "utf-8"));
+let skey;
+let isDev;
+let config;
 
 init();
 
-// const dev = process.env.development;
-
 async function init() {
   try {
+    skey = await util.promisify(fs.readFile)("config/private_key.pem", "utf-8");
+
+    isDev = process.env.STAGE === "dev";
+
+    const configFileName = isDev
+      ? "config/config-dev.json"
+      : "config/config-prod.json";
+    const json = await util.promisify(fs.readFile)(configFileName, "utf-8");
+    config = JSON.parse(json);
+
+    console.log('config', config);
+
     await storage.init();
 
     app.use(express.json());

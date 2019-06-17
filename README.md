@@ -7,11 +7,18 @@ cd voting_node
 docker build -t voting_node .
 ```
 
-### Run
+### Run production mode
 
 ```shell
 cd voting_node
 docker run -it -p80:80 voting_node
+```
+
+### Run development mode
+
+```shell
+cd voting_node
+docker run -it -p80:80 -e STAGE=dev voting_node
 ```
 
 ### Run local
@@ -19,5 +26,6 @@ docker run -it -p80:80 voting_node
 ```shell
 cd voting_node/server
 npm install
-npx nodemon index.js
+cd ..
+./start.sh
 ```
