@@ -5,6 +5,7 @@ const cors = require("cors");
 const storage = require("node-persist");
 const util = require("util");
 const fs = require("fs");
+const crypto = require("crypto");
 
 let skey;
 let isDev;
@@ -24,7 +25,7 @@ async function init() {
     const json = await util.promisify(fs.readFile)(configFileName, "utf-8");
     config = JSON.parse(json);
 
-    console.log('config', config);
+    console.log("config", config);
 
     await storage.init();
 
@@ -84,12 +85,14 @@ async function irmaSession(req, res) {
 
 async function vote(req, res) {
   try {
-    const alreadyVoted = await storage.getItem(req.body.email);
+    const emailHashed = hash(req.body.email);
 
-    console.log(req.body.email, "alreadyVoted", alreadyVoted);
+    const alreadyVoted = await storage.getItem(emailHashed);
+
+    console.log("alreadyVoted", alreadyVoted);
 
     if (!alreadyVoted) {
-      storage.setItem(req.body.email, true);
+      storage.setItem(emailHashed, true);
 
       console.log("Voted for", req.body.vote);
 
@@ -137,6 +140,13 @@ async function stats(req, res) {
 
 async function getConfig(req, res) {
   res.json(config);
+}
+
+function hash(str) {
+  return crypto
+    .createHash("sha256")
+    .update(str, "utf8")
+    .digest("hex");
 }
 
 function error(e, res) {
