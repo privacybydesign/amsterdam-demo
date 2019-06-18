@@ -3,12 +3,6 @@ let irmaServer;
 
 console.log("OK");
 
-const names = {
-  community: "Gemeenschapstuin",
-  tech: "Slimme tuin",
-  zen: "Zentuin"
-};
-
 document.addEventListener("DOMContentLoaded", async () => {
   const config = await getConfig();
 
@@ -31,16 +25,6 @@ async function stem(event) {
     openPopup("vote-no-selection");
     return;
   }
-
-  const request = {
-    type: "disclosing",
-    content: [
-      {
-        label: "Uw emailadres",
-        attributes: ["pbdf.pbdf.email.email"]
-      }
-    ]
-  };
 
   try {
     const irmaResponse = await fetch(`${voteHost}/getsession`, {
