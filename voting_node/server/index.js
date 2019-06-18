@@ -57,8 +57,8 @@ async function irmaSession(req, res) {
     type: "disclosing",
     content: [
       {
-        label: "Uw emailadres",
-        attributes: ["pbdf.pbdf.email.email"]
+        label: "Uw MyIRMA gebruikersnaam",
+        attributes: ["pbdf.pbdf.mijnirma.email"]
       }
     ]
   };
