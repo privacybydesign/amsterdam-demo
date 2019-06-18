@@ -5,7 +5,8 @@ const cors = require("cors");
 const storage = require("node-persist");
 const util = require("util");
 const fs = require("fs");
-const crypto = require("crypto");
+const uuidv5 = require("uuid/v5");
+const appNamespaceUuid = "06c5a013-4e71-439a-b8da-65e35b6419f0";
 
 let skey;
 let isDev;
@@ -85,16 +86,14 @@ async function irmaSession(req, res) {
 
 async function vote(req, res) {
   try {
-    const emailHashed = hash(req.body.email);
+    const emailHashed = uuidv5(req.body.email, appNamespaceUuid);
 
     const alreadyVoted = await storage.getItem(emailHashed);
-
-    console.log("alreadyVoted", alreadyVoted);
 
     if (!alreadyVoted) {
       storage.setItem(emailHashed, true);
 
-      console.log("Voted for", req.body.vote);
+      console.log("Voted");
 
       let currentVote = await storage.getItem(req.body.vote);
 
@@ -112,6 +111,8 @@ async function vote(req, res) {
        *
        *******************************************/
       storage.setItem(req.body.vote, currentVote);
+    } else {
+      console.log("Already voted");
     }
 
     res.json({ alreadyVoted, vote: req.body.vote });
@@ -140,13 +141,6 @@ async function stats(req, res) {
 
 async function getConfig(req, res) {
   res.json(config);
-}
-
-function hash(str) {
-  return crypto
-    .createHash("sha256")
-    .update(str, "utf8")
-    .digest("hex");
 }
 
 function error(e, res) {
