@@ -6,7 +6,7 @@ console.log("OK");
 document.addEventListener("DOMContentLoaded", async () => {
   const config = await getConfig();
 
-  console.log('config', config);
+  console.log("config", config);
 
   voteHost = config.node;
   irmaServer = config.irma;
@@ -35,11 +35,18 @@ async function stem(event) {
 
     const { sessionPtr, token } = session;
 
+    openPopup("vote-qr");
+
     const result = await irma.handleSession(sessionPtr, {
+      method: "canvas",
+      element: "qr",
+      showConnectedIcon: true,
       server: irmaServer,
       token,
       language: "nl"
     });
+
+    dissmissPopup();
 
     console.log("IRMA result", result);
 
@@ -109,8 +116,6 @@ async function poll(votingResults) {
 }
 
 async function getConfig() {
-  // let voteServerEnvUrl = new URL(`${document.location.href}`);
-  // voteServerEnvUrl.pathname = "/env";
   const response = await fetch("/config", {
     mode: "cors"
   });
@@ -178,4 +183,9 @@ function openPopup(popupId) {
       resolve(value);
     }
   });
+}
+
+function dissmissPopup() {
+  const event = new KeyboardEvent("keyup", { code: "Escape" });
+  window.dispatchEvent(event);
 }
