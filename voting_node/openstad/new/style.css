@@ -229,9 +229,10 @@ body {
   content: "";
   display: inline-block;
   width: 34px;
-  height: 28px;
+  height: 32px;
   margin-right: 10px;
-  background: url(logo-irma.png);
+  background: url(irma_logo.svg);
+  background-size: cover;
 }
 
 .gardens input[type="radio"] {
