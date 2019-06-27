@@ -35,16 +35,27 @@ async function stem(event) {
 
     const { sessionPtr, token } = session;
 
-    openPopup("vote-qr");
-
-    const result = await irma.handleSession(sessionPtr, {
+    const sessionOptions = {
       method: "canvas",
       element: "qr",
       showConnectedIcon: true,
       server: irmaServer,
       token,
       language: "nl"
-    });
+    };
+
+    if (isMobile()) {
+      sessionOptions.method = "mobile";
+    } else {
+      openPopup("vote-qr").then(result => {
+        if (result != "dismiss") {
+          /* Workaround for not being able to cancel irma.handleSession() */
+          document.location.reload();
+        }
+      });
+    }
+
+    const result = await irma.handleSession(sessionPtr, sessionOptions);
 
     dissmissPopup();
 
@@ -162,8 +173,8 @@ function openPopup(popupId) {
       }
     }
     function escape(event) {
-      if (event.code === "Escape") {
-        dismiss("escape");
+      if (event.code === "Escape" || event.code === "Dismiss") {
+        dismiss(event.code.toLowerCase());
       }
     }
 
@@ -186,6 +197,13 @@ function openPopup(popupId) {
 }
 
 function dissmissPopup() {
-  const event = new KeyboardEvent("keyup", { code: "Escape" });
+  const event = new KeyboardEvent("keyup", { code: "Dismiss" });
   window.dispatchEvent(event);
+}
+
+function isMobile() {
+  return (
+    /Android/i.test(window.navigator.userAgent) ||
+    /iPad|iPhone|iPod/.test(navigator.userAgent)
+  );
 }
