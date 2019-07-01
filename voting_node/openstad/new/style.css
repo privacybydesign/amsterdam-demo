@@ -288,6 +288,10 @@ body.whitebox::after {
   background-color: #184b98;
 }
 
+.popup-bottom a {
+  color: white;
+}
+
 a {
   text-decoration: underline;
 }
