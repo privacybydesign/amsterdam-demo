@@ -2,9 +2,24 @@
 
 ### Install
 
+
+
 ```shell
-cd voting_node
+cd voting_node/server
+npm install
+cd ..
 docker build -t voting_node .
+```
+
+### Run
+
+1. Make sure IRMA is running (see `irma_server_container`)
+2. Add the IP-address of IRMA to `server/config/*.json`)
+3. Make sure PostgreSQL is running:
+
+```shell
+cd db
+./postgres.sh
 ```
 
 ### Run production mode
