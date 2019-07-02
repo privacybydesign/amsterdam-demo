@@ -2,20 +2,24 @@ const express = require("express");
 const irma = require("@privacybydesign/irmajs");
 const app = express();
 const cors = require("cors");
-const storage = require("node-persist");
 const util = require("util");
 const fs = require("fs");
 const uuidv5 = require("uuid/v5");
 const appNamespaceUuid = "06c5a013-4e71-439a-b8da-65e35b6419f0";
+const pgp = require("pg-promise")();
 
 let skey;
 let isDev;
 let config;
+let db;
 
 init();
 
 async function init() {
   try {
+    db = pgp("postgres://postgres:hj21kjy@localhost/postgres");
+    await initDatabase();
+
     skey = await util.promisify(fs.readFile)("config/private_key.pem", "utf-8");
 
     isDev = process.env.STAGE === "dev";
@@ -27,8 +31,6 @@ async function init() {
     config = JSON.parse(json);
 
     console.log("config", config);
-
-    await storage.init();
 
     app.use(express.json());
 
@@ -86,33 +88,19 @@ async function irmaSession(req, res) {
 
 async function vote(req, res) {
   try {
-    const emailHashed = uuidv5(req.body.email, appNamespaceUuid);
+    const identHashed = uuidv5(req.body.email, appNamespaceUuid);
+    let alreadyVoted = false;
 
-    const alreadyVoted = await storage.getItem(emailHashed);
-
-    if (!alreadyVoted) {
-      storage.setItem(emailHashed, true);
-
-      console.log("Voted");
-
-      let currentVote = await storage.getItem(req.body.vote);
-
-      if (!currentVote) {
-        currentVote = 0;
-      }
-
-      currentVote++;
-
-      /*******************************************
-       *
-       * This is demo code, not for production.
-       *
-       * Reading and writing a vote should be an atomic operation.
-       *
-       *******************************************/
-      storage.setItem(req.body.vote, currentVote);
-    } else {
-      console.log("Already voted");
+    try {
+      await db.none("INSERT INTO voted (ident) VALUES ($1)", identHashed);
+      await db.none(
+        "UPDATE votes SET count=count+1 WHERE name=$1",
+        req.body.vote
+      );
+      console.log("Voted", req.body.vote);
+    } catch (e) {
+      alreadyVoted = true;
+      console.error("Not voted");
     }
 
     res.json({ alreadyVoted, vote: req.body.vote });
@@ -122,17 +110,14 @@ async function vote(req, res) {
 }
 
 async function stats(req, res) {
-  const search = req.url.substr(req.url.indexOf("?") + 1);
-  const params = new URLSearchParams(search);
-  const items = params.get("items").split(",");
-  const votesPromises = items.map(item => storage.getItem(item));
-
   try {
-    const votesArray = await Promise.all(votesPromises);
-    const votes = items.reduce((acc, item, i) => {
-      acc[item] = votesArray[i];
+    const data = await db.many("SELECT * FROM votes");
+
+    const votes = data.reduce((acc, item, i) => {
+      acc[item.name] = item.count;
       return acc;
     }, {});
+
     res.json({ votes });
   } catch (e) {
     error(e, res);
@@ -148,4 +133,18 @@ function error(e, res) {
   if (res) {
     res.json({ error: JSON.stringify(e) });
   }
+}
+
+async function initDatabase() {
+  try {
+    await db.none(
+      "CREATE TABLE votes (name VARCHAR (50) UNIQUE NOT null, count INT NOT null)"
+    );
+    await db.none("CREATE TABLE voted (ident VARCHAR (50) UNIQUE NOT null)");
+
+    await db.none(
+      "INSERT INTO votes (name, count) VALUES ('community', 0), ('tech', 0), ('zen', 0)"
+    );
+    console.log("Database initialized");
+  } catch (error) {}
 }

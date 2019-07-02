@@ -1,0 +1,10 @@
+region: eu
+tunnels:
+  irma:
+    proto: http
+    addr: 8088
+    bind_tls: false
+  server:
+    proto: http
+    addr: 80
+    bind_tls: false
