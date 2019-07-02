@@ -17,7 +17,11 @@ init();
 
 async function init() {
   try {
-    db = pgp("postgres://postgres:hj21kjy@localhost/postgres");
+    db = pgp(
+      `postgres://${process.env.POSTGRES_USER}:${
+        process.env.POSTGRES_PASSWORD
+      }@${process.env.POSTGRES_HOST}/${process.env.POSTGRES_DATABASE}`
+    );
     await initDatabase();
 
     skey = await util.promisify(fs.readFile)("config/private_key.pem", "utf-8");

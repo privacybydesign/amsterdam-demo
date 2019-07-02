@@ -33,7 +33,7 @@ docker run -it -p80:80 voting_node
 
 ```shell
 cd voting_node
-docker run -it -p80:80 -e STAGE=dev voting_node
+docker run -it -p80:80 -e STAGE=dev -e POSTGRES_HOST=localhost -e POSTGRES_DATABASE=postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=hj21kjy voting_node
 ```
 
 ### Run local
