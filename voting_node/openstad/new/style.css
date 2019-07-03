@@ -181,11 +181,6 @@ body {
   width: calc(var(--zen) * 1.9);
 }
 
-.vote-bottom {
-  margin-left: calc(50% - 87px);
-  display: inline-block;
-}
-
 .primary-button {
   position: relative;
   top: 4px;
@@ -198,6 +193,7 @@ body {
 }
 
 .vote-button {
+  margin-left: calc(50% - 87px);
   width: 174px;
 }
 
@@ -211,28 +207,58 @@ body {
   width: 7px;
   height: 12px;
   margin-left: 10px;
-  background: url(right.png);
+  background: url(chevron-right-white.svg);
 }
 
 .vote-irma {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 174px;
-  height: 45px;
+  width: 280px;
+  margin: 3em 0 0 calc(50% - 140px);
   color: #555555;
-  border: 1px solid #e1e6ef;
-  border-radius: 4px;
 }
 
 .vote-irma::before {
   content: "";
   display: inline-block;
-  width: 34px;
-  height: 32px;
-  margin-right: 10px;
+  width: 68px;
+  height: 64px;
+  margin-right: 15px;
   background: url(irma_logo.svg);
   background-size: cover;
+}
+
+.arrow::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 12px;
+  margin-right: 10px;
+  background: url(chevron-right-blue.svg);
+}
+
+.back {
+  margin-bottom: 2em;
+  display: block;
+}
+
+.back::before {
+  content: "";
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  margin-right: 8px;
+  background: url(chevron-right-blue.svg);
+  background-size: cover;
+  transform: rotate(180deg);
+}
+
+.use-irma {
+  margin: 0;
+  font-weight: bold;
 }
 
 .gardens input[type="radio"] {
@@ -339,4 +365,19 @@ a:visited {
 
 .visible {
   display: flex;
+}
+
+ol.space li {
+  margin: 1em 0;
+}
+
+.download {
+  position: relative;
+  margin-left: -20px;
+}
+
+.appstore {
+  position: absolute;
+  display: inline-block;
+  top: 20px;
 }
