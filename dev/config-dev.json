@@ -1,4 +1,5 @@
 {
+    "uuid": "06c5a013-4e71-439a-b8da-65e35b6419f0",
     "irma": "http://cf818b27.eu.ngrok.io",
     "node": "http://localhost",
     "port": 80

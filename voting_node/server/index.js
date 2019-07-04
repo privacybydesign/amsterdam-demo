@@ -5,7 +5,6 @@ const cors = require("cors");
 const util = require("util");
 const fs = require("fs");
 const uuidv5 = require("uuid/v5");
-const appNamespaceUuid = "06c5a013-4e71-439a-b8da-65e35b6419f0";
 const pgp = require("pg-promise")();
 
 let config;
@@ -83,7 +82,7 @@ async function irmaSession(req, res) {
 
 async function vote(req, res) {
   try {
-    const identHashed = uuidv5(req.body.email, appNamespaceUuid);
+    const identHashed = uuidv5(req.body.email, config.uuid);
     let alreadyVoted = false;
 
     try {
