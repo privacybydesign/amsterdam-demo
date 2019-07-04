@@ -28,15 +28,13 @@ async function init() {
 
     app.use(express.json());
 
-    app.get("/hello", (req, res) => res.send("Hello World!"));
-
     app.options("/vote", cors());
     app.post("/vote", cors(), vote);
     app.get("/stats", cors(), stats);
     app.get("/getsession", cors(), irmaSession);
     app.get("/config", cors(), getConfig);
 
-    app.use(express.static("../openstad"));
+    app.use(express.static("../openstad")); /***************/
 
     app.listen(config.port, () =>
       console.log(`Voting app listening on port ${config.port}.`)
@@ -48,7 +46,6 @@ async function init() {
 
 async function irmaSession(req, res) {
   const authmethod = "publickey";
-  const requestorname = "openstad_voting_pk";
   const request = {
     type: "disclosing",
     content: [
@@ -63,7 +60,6 @@ async function irmaSession(req, res) {
     url: config.irma,
     request: JSON.stringify(request),
     authmethod,
-    requestorname
   });
 
   try {
@@ -72,7 +68,7 @@ async function irmaSession(req, res) {
       request,
       authmethod,
       process.env.PRIVATE_KEY,
-      requestorname
+      config.requestorname
     );
     res.json(session);
   } catch (e) {
