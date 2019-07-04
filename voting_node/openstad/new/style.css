@@ -3,6 +3,10 @@ body {
   --top: 0;
 }
 
+.pageContent h1, .pageContent h2, .pageContent h3 {
+  color: #434343;
+}
+
 .voting-results {
   --community: 0px;
   --tech: 0px;
@@ -189,6 +193,7 @@ body {
   border-radius: 4px;
   color: white;
   background-color: #184b98;
+  border: none;
   font-size: 16px;
 }
 
@@ -239,8 +244,14 @@ body {
 }
 
 .back {
-  margin-bottom: 2em;
+  margin: 2em 0;
   display: block;
+}
+
+@media (min-width: 590px) {
+  .back {
+    margin-top: 0;
+  }
 }
 
 .back::before {
@@ -371,13 +382,35 @@ ol.space li {
   margin: 1em 0;
 }
 
+.voting-explanation {
+  color: #555555;
+}
+
 .download {
   position: relative;
   margin-left: -20px;
 }
 
-.appstore {
-  position: absolute;
+.download a {
   display: inline-block;
-  top: 20px;
+}
+
+.appstore {
+  margin-left: 20px;
+}
+
+@media (min-width: 590px) {
+  .appstore {
+    position: absolute;
+    display: inline-block;
+    top: 20px;
+    margin-left: 0;
+  }
+}
+
+.extra-video {
+  width: calc(100vw - 30px);
+  max-width: 560px;
+  height: calc(56vw - 16px);
+  max-height: 316px;
 }
