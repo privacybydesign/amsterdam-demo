@@ -34,7 +34,9 @@ async function init() {
     app.get("/getsession", cors(), irmaSession);
     app.get("/config", cors(), getConfig);
 
-    app.use(express.static("../openstad")); /***************/
+    if (config.docroot) {
+      app.use(express.static(config.docroot));
+    }
 
     app.listen(config.port, () =>
       console.log(`Voting app listening on port ${config.port}.`)
@@ -87,7 +89,7 @@ async function vote(req, res) {
         "UPDATE votes SET count=count+1 WHERE name=$1",
         req.body.vote
       );
-      console.log("Voted", req.body.vote);
+      console.log("Voted");
     } catch (e) {
       alreadyVoted = true;
       console.error("Not voted");
