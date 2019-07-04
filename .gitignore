@@ -1,2 +1,3 @@
 /.idea
 /voting_node/server/node_modules
+/dev/db/data
