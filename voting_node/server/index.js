@@ -9,7 +9,6 @@ const appNamespaceUuid = "06c5a013-4e71-439a-b8da-65e35b6419f0";
 const pgp = require("pg-promise")();
 
 let skey;
-let isDev;
 let config;
 let db;
 
@@ -26,12 +25,7 @@ async function init() {
 
     skey = await util.promisify(fs.readFile)("config/private_key.pem", "utf-8");
 
-    isDev = process.env.STAGE === "dev";
-
-    const configFileName = isDev
-      ? "config/config-dev.json"
-      : "config/config-prod.json";
-    const json = await util.promisify(fs.readFile)(configFileName, "utf-8");
+    const json = await util.promisify(fs.readFile)(process.env.CONFIG, "utf-8");
     config = JSON.parse(json);
 
     console.log("config", config);
