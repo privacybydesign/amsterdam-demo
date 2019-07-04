@@ -19,10 +19,11 @@ async function init() {
         process.env.POSTGRES_PASSWORD
       }@${process.env.POSTGRES_HOST}/${process.env.POSTGRES_DATABASE}`
     );
-    await initDatabase();
 
     const json = await util.promisify(fs.readFile)(process.env.CONFIG, "utf-8");
     config = JSON.parse(json);
+
+    await initDatabase();
 
     console.log("Using config", config);
 
@@ -61,7 +62,7 @@ async function irmaSession(req, res) {
   console.log("irma.startSession", {
     url: config.irma,
     request: JSON.stringify(request),
-    authmethod,
+    authmethod
   });
 
   try {
@@ -134,9 +135,11 @@ async function initDatabase() {
     );
     await db.none("CREATE TABLE voted (ident VARCHAR (50) UNIQUE NOT null)");
 
-    await db.none(
-      "INSERT INTO votes (name, count) VALUES ('community', 0), ('tech', 0), ('zen', 0)"
-    );
+    const votingOptions = config.voting_options
+      .map(opt => `('${opt}', 0)`)
+      .join(", ");
+
+    await db.none(`INSERT INTO votes (name, count) VALUES ${votingOptions}`);
     console.log("Database initialized");
   } catch (error) {}
 }

@@ -4,5 +4,6 @@
   "irma": "http://cf818b27.eu.ngrok.io",
   "node": "http://localhost",
   "port": 80,
-  "docroot": "../openstad"
+  "docroot": "../openstad",
+  "voting_options": ["community", "tech", "zen"]
 }
