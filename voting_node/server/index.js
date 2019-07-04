@@ -8,7 +8,6 @@ const uuidv5 = require("uuid/v5");
 const appNamespaceUuid = "06c5a013-4e71-439a-b8da-65e35b6419f0";
 const pgp = require("pg-promise")();
 
-let skey;
 let config;
 let db;
 
@@ -23,12 +22,10 @@ async function init() {
     );
     await initDatabase();
 
-    skey = await util.promisify(fs.readFile)("config/private_key.pem", "utf-8");
-
     const json = await util.promisify(fs.readFile)(process.env.CONFIG, "utf-8");
     config = JSON.parse(json);
 
-    console.log("config", config);
+    console.log("Using config", config);
 
     app.use(express.json());
 
@@ -75,7 +72,7 @@ async function irmaSession(req, res) {
       config.irma,
       request,
       authmethod,
-      skey,
+      process.env.PRIVATE_KEY,
       requestorname
     );
     res.json(session);
