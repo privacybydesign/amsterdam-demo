@@ -3,7 +3,7 @@
     "uuid": "06c5a013-4e71-439a-b8da-65e35b6419f0",
     "irma": "https://attr.auth.amsterdam.nl",
     "node": "http://localhost",
-    "port": 80,
+    "port": 8000,
     "docroot": "../openstad",
     "voting_options": ["community", "tech", "zen"]
 }
