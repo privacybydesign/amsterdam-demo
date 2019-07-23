@@ -1,5 +1,6 @@
 FROM node:10
 
+COPY ./server/config-prod.json /server/
 COPY ./server/package*.json /server/
 WORKDIR /server
 
