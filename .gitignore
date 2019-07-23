@@ -1,3 +1,4 @@
 /.idea
 /voting_node/server/node_modules
 /dev/db/data
+/voting_node/server/config-dev.json
