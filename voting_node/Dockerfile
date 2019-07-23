@@ -1,4 +1,4 @@
-FROM node:10
+FROM mhart/alpine-node:10
 
 COPY ./server/*.json /server/
 WORKDIR /server
