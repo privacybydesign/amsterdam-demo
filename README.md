@@ -22,7 +22,7 @@ cd db
 
 ```shell
 cd voting_node
-docker run -it -p80:80 -e CONFIG=config-prod.json -e PRIVATE_KEY="$(cat ../dev/private_key.pem)" -e POSTGRES_HOST=localhost -e POSTGRES_DATABASE=postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=hj21kjy voting_node
+docker run -it --rm -p80:80 -e CONFIG=config-prod.json -e PRIVATE_KEY="$(cat ../dev/private_key.pem)" -e POSTGRES_HOST=localhost -e POSTGRES_DATABASE=postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=hj21kjy --name voting_container voting_node
 ```
 
 ### Run development mode
@@ -31,7 +31,7 @@ docker run -it -p80:80 -e CONFIG=config-prod.json -e PRIVATE_KEY="$(cat ../dev/p
 cd voting_node
 cp ../dev/config-dev.json server
 docker build -t voting_node .
-docker run -it -p80:80 -e STAGE=dev -e CONFIG=config-dev.json -e PRIVATE_KEY="$(cat ../dev/private_key.pem)" -e POSTGRES_HOST=localhost -e POSTGRES_DATABASE=postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=hj21kjy voting_node
+docker run -it --rm -p80:80 -e STAGE=dev -e CONFIG=config-dev.json -e PRIVATE_KEY="$(cat ../dev/private_key.pem)" -e POSTGRES_HOST=localhost -e POSTGRES_DATABASE=postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=hj21kjy --name voting_container voting_node
 ```
 
 ### Run local without Docker
