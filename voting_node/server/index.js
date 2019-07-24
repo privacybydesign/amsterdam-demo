@@ -13,6 +13,10 @@ let db;
 init();
 
 async function init() {
+  if (!process.env.PRIVATE_KEY) {
+    throw new Error("PRIVATE_KEY is not set");
+  }
+
   try {
     db = pgp(
       `postgres://${process.env.POSTGRES_USER}:${
@@ -40,7 +44,9 @@ async function init() {
     }
 
     app.listen(config.port, () =>
-      console.log(`Voting app listening on port ${config.port}.`)
+      console.log(
+        `Voting app running in ${process.env.NODE_ENV || "development"} mode.`
+      )
     );
   } catch (e) {
     error(e);
@@ -98,6 +104,7 @@ async function vote(req, res) {
 
     res.json({ alreadyVoted, vote: req.body.vote });
   } catch (e) {
+    console.error("Could not connect to database.");
     error(e, res);
   }
 }
@@ -106,13 +113,14 @@ async function stats(req, res) {
   try {
     const data = await db.many("SELECT * FROM votes");
 
-    const votes = data.reduce((acc, item, i) => {
+    const votes = data.reduce((acc, item) => {
       acc[item.name] = item.count;
       return acc;
     }, {});
 
     res.json({ votes });
   } catch (e) {
+    console.error("Could not connect to database.");
     error(e, res);
   }
 }
