@@ -3,7 +3,9 @@ body {
   --top: 0;
 }
 
-.pageContent h1, .pageContent h2, .pageContent h3 {
+.pageContent h1,
+.pageContent h2,
+.pageContent h3 {
   color: #434343;
 }
 
@@ -413,4 +415,11 @@ ol.space li {
   max-width: 560px;
   height: calc(56vw - 16px);
   max-height: 316px;
+}
+
+.no-database {
+  padding: 40px;
+  margin: 40px;
+  background-color: red;
+  border: 8px dashed black;
 }

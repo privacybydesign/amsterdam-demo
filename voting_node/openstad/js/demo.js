@@ -1,19 +1,34 @@
 let voteHost;
 let irmaServer;
 
-console.log("OK");
-
 document.addEventListener("DOMContentLoaded", async () => {
   const config = await getConfig();
 
   console.log("config", config);
 
-  voteHost = config.node;
+  voteHost = `${config.node}${config.port == 80 ? "" : `:${config.port}`}`;
   irmaServer = config.irma;
 
   const votingResults = document.querySelector(".voting-results");
   poll(votingResults);
+  checkDatabase();
 });
+
+async function checkDatabase() {
+  const voteServerStatsUrl = new URL(`${voteHost}/stats`);
+  const items = ["community", "tech", "zen"];
+
+  voteServerStatsUrl.searchParams.set("items", items);
+
+  const response = await fetch(voteServerStatsUrl, {
+    mode: "cors"
+  });
+  let json = await response.json();
+
+  if (json.error) {
+    document.querySelector(".no-database").removeAttribute("hidden");
+  }
+}
 
 async function stem(event) {
   event.preventDefault();

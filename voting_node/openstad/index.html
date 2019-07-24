@@ -131,6 +131,11 @@
           </li>
         </ul>
 
+        <div class="no-database" hidden>
+          Er is momenteel geen verbindinge met de database. Stemmen kunnen
+          daardoor niet worden opgeslagen. Probeer het later nog eens.
+        </div>
+
         <div class="vote-bottom" onclick="stem(event)">
           <button class="primary-button vote-button" onclick="stem(event)">
             Stemmen
@@ -240,7 +245,9 @@
       <p class="status">
         Helaas, je kunt voor dit project maar één keer stemmen.
       </p>
-      <button class="primary-button" data-popup-close="ok">Tussenstand tonen</button>
+      <button class="primary-button" data-popup-close="ok">
+        Tussenstand tonen
+      </button>
     </div>
 
     <div class="popup success" id="vote-no-selection">
