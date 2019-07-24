@@ -1,11 +1,11 @@
 let config;
 
 document.addEventListener("DOMContentLoaded", async () => {
-  config = await getConfig();
+  config = await irmaVote.getConfig();
 
   console.log("config", config);
 
-  init(config);
+  irmaVote.init(config);
 
   const votingResults = document.querySelector(".voting-results");
   poll(votingResults);
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function showDatabaseErrorMessage() {
-  const dbError = await checkDbError();
+  const dbError = await irmaVote.checkDbError();
 
   if (dbError) {
     document.querySelector(".no-database").removeAttribute("hidden");
@@ -25,7 +25,7 @@ async function vote(event) {
   event.stopPropagation();
 
   if (!config) {
-    config = await getConfig();
+    config = await irmaVote.getConfig();
   }
 
   const voteInput = document.querySelector(".gardens input:checked");
@@ -36,14 +36,14 @@ async function vote(event) {
   }
 
   try {
-    const result = await irmaSession(config, "qr", irmaPopup);
+    const result = await irmaVote.irmaSession(config, "qr", irmaPopup);
 
     dissmissPopup();
 
     const identifier = result.disclosed[0].value.nl;
-    const vote = voteInput.value;
+    const voteValue = voteInput.value;
 
-    const voteResult = await sendVote(identifier, vote);
+    const voteResult = await irmaVote.sendVote(identifier, voteValue);
 
     console.log("voteResult", voteResult);
 
@@ -77,7 +77,7 @@ async function poll(votingResults) {
   getPoll();
 
   async function getPoll() {
-    const result = await fetchPoll();
+    const result = await irmaVote.fetchPoll();
 
     console.log("result", result);
 
