@@ -87,7 +87,7 @@ async function irmaSession(req, res) {
 
 async function vote(req, res) {
   try {
-    const identHashed = uuidv5(req.body.email, config.uuid);
+    const identHashed = uuidv5(req.body.identifier, config.uuid);
     let alreadyVoted = false;
 
     try {
@@ -99,7 +99,7 @@ async function vote(req, res) {
       console.log("Voted");
     } catch (e) {
       alreadyVoted = true;
-      console.error("Not voted");
+      console.log("Not voted");
     }
 
     res.json({ alreadyVoted, vote: req.body.vote });

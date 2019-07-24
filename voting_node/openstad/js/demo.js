@@ -1,38 +1,32 @@
-let voteHost;
-let irmaServer;
+let config;
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const config = await getConfig();
+  config = await getConfig();
 
   console.log("config", config);
 
-  voteHost = `${config.node}${config.port == 80 ? "" : `:${config.port}`}`;
-  irmaServer = config.irma;
+  init(config);
 
   const votingResults = document.querySelector(".voting-results");
   poll(votingResults);
-  checkDatabase();
+  showDatabaseErrorMessage();
 });
 
-async function checkDatabase() {
-  const voteServerStatsUrl = new URL(`${voteHost}/stats`);
-  const items = ["community", "tech", "zen"];
+async function showDatabaseErrorMessage() {
+  const dbError = await checkDbError();
 
-  voteServerStatsUrl.searchParams.set("items", items);
-
-  const response = await fetch(voteServerStatsUrl, {
-    mode: "cors"
-  });
-  let json = await response.json();
-
-  if (json.error) {
+  if (dbError) {
     document.querySelector(".no-database").removeAttribute("hidden");
   }
 }
 
-async function stem(event) {
+async function vote(event) {
   event.preventDefault();
   event.stopPropagation();
+
+  if (!config) {
+    config = await getConfig();
+  }
 
   const voteInput = document.querySelector(".gardens input:checked");
   if (!voteInput) {
@@ -42,70 +36,36 @@ async function stem(event) {
   }
 
   try {
-    const irmaResponse = await fetch(`${voteHost}/getsession`, {
-      mode: "cors"
-    });
-
-    const session = await irmaResponse.json();
-
-    const { sessionPtr, token } = session;
-
-    const sessionOptions = {
-      method: "canvas",
-      element: "qr",
-      showConnectedIcon: true,
-      server: irmaServer,
-      token,
-      language: "nl"
-    };
-
-    if (isMobile()) {
-      sessionOptions.method = "mobile";
-    } else {
-      openPopup("vote-qr").then(result => {
-        if (result != "dismiss") {
-          /* Workaround for not being able to cancel irma.handleSession() */
-          document.location.reload();
-        }
-      });
-    }
-
-    const result = await irma.handleSession(sessionPtr, sessionOptions);
+    const result = await irmaSession(config, "qr", irmaPopup);
 
     dissmissPopup();
 
-    console.log("IRMA result", result);
-
-    const email = result.disclosed[0].value.nl;
+    const identifier = result.disclosed[0].value.nl;
     const vote = voteInput.value;
 
-    console.log(`Post vote`);
+    const voteResult = await sendVote(identifier, vote);
 
-    const response = await fetch(`${voteHost}/vote`, {
-      method: "POST",
-      mode: "cors",
-      body: JSON.stringify({ email, vote }),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
+    console.log("voteResult", voteResult);
 
-    const voteResult = await response.json();
-
-    let message;
     if (voteResult.alreadyVoted) {
       await openPopup("vote-already-voted");
     } else {
       await openPopup("vote-success");
     }
     document.location = "/results.html";
-
-    console.log("result", voteResult);
   } catch (e) {
     console.error("Cancelled", e);
-    //await openPopup("vote-error");
     document.location.reload();
   }
+}
+
+function irmaPopup() {
+  openPopup("vote-qr").then(result => {
+    if (result != "dismiss") {
+      /* Workaround for not being able to cancel irma.handleSession() */
+      throw new Error("IRMA session cancelled");
+    }
+  });
 }
 
 async function poll(votingResults) {
@@ -113,39 +73,24 @@ async function poll(votingResults) {
     return;
   }
 
-  const voteServerStatsUrl = new URL(`${voteHost}/stats`);
-  const items = ["community", "tech", "zen"];
+  setInterval(getPoll, 2000);
+  getPoll();
 
-  voteServerStatsUrl.searchParams.set("items", items);
+  async function getPoll() {
+    const result = await fetchPoll();
 
-  setInterval(fetchPoll, 2000);
-  fetchPoll();
+    console.log("result", result);
 
-  async function fetchPoll() {
-    const response = await fetch(voteServerStatsUrl, {
-      mode: "cors"
-    });
-    let json = await response.json();
-
-    let total = items.reduce((acc, item) => acc + (json.votes[item] || 0), 0);
-
-    const html = items.forEach(item => {
+    config.voting_options.forEach(item => {
       votingResults.style.setProperty(
         `--${item}`,
-        `${total == 0 ? 0 : (100 * json.votes[item]) / total}px`
+        `${result.votes[item].perc}px`
       );
       document.querySelector(`.${item} .perc`).textContent = `${
-        total == 0 ? 0 : Math.round((100 * (json.votes[item] || 0)) / total)
+        result.votes[item].perc
       }%`;
     });
   }
-}
-
-async function getConfig() {
-  const response = await fetch("/config", {
-    mode: "cors"
-  });
-  return await response.json();
 }
 
 function openPopup(popupId) {
@@ -214,11 +159,4 @@ function openPopup(popupId) {
 function dissmissPopup() {
   const event = new KeyboardEvent("keyup", { code: "Dismiss" });
   window.dispatchEvent(event);
-}
-
-function isMobile() {
-  return (
-    /Android/i.test(window.navigator.userAgent) ||
-    /iPad|iPhone|iPod/.test(navigator.userAgent)
-  );
 }
