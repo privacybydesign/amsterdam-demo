@@ -2,7 +2,7 @@ FROM mhart/alpine-node:12
 
 RUN adduser -D irma
 
-COPY ./server/*.json /server/
+COPY ./server/package*.json /server/
 WORKDIR /server
 
 RUN npm install
