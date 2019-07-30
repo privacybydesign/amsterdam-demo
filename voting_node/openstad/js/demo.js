@@ -36,11 +36,10 @@ async function vote(event) {
   }
 
   try {
-    const result = await irmaVote.irmaSession(config, "qr", irmaPopup);
+    const identifier = await irmaVote.irmaSession(config.irma, "qr", irmaPopup);
 
     dissmissPopup();
 
-    const identifier = result.disclosed[0].value.nl;
     const voteValue = voteInput.value;
 
     const voteResult = await irmaVote.sendVote(identifier, voteValue);

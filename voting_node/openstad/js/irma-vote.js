@@ -61,12 +61,7 @@ const irmaVote = {
     return result;
   },
 
-    /*
-    TODO: accept config.irma
-    TODO: return result.disclosed[0].value.nl;
-     */
-
-  irmaSession: async function(config, element, popupCallback) {
+  irmaSession: async function(server, element, popupCallback) {
     const irmaResponse = await fetch(`${config.nodeUrl}/getsession`, {
       mode: "cors"
     });
@@ -79,7 +74,7 @@ const irmaVote = {
       method: "canvas",
       element,
       showConnectedIcon: true,
-      server: config.irma,
+      server,
       token,
       language: "nl"
     };
@@ -90,6 +85,8 @@ const irmaVote = {
       popupCallback();
     }
 
-    return await irma.handleSession(sessionPtr, sessionOptions);
+    const result = await irma.handleSession(sessionPtr, sessionOptions);
+
+    return result.disclosed[0].value.nl;
   }
 };

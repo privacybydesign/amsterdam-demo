@@ -32,11 +32,7 @@ Send in a vote from the user.
 const voteResult = await irmaVote.sendVote(identifier, voteValue);
 ```
 
-The parameter `identifier` is part of the result from the `irmaSession` call.
-
-```javascript
-const identifier = result.disclosed[0].value.nl;
-```
+The parameter `identifier` is the result from the `irmaSession` call.
 
 voteValue is a string and one of the `voting_options` from the
 configuration file.
@@ -56,20 +52,15 @@ TODO: describe result contents.
 Create a new session with the IRMA server.
 
 ```javascript
-const result = await irmaVote.irmaSession(config, "qr", irmaPopup);
+const identifier = await irmaVote.irmaSession(server, "qr", irmaPopup);
 ```
 
 This function requires three parameters:
 
-config: the object received from `irmaVote.getConfig()`
+server: config.irma, where config is returned by `irmaVote.getConfig()`
 
 "qr": the id of the canvas element the QR code can be drawn in to.
 
 irmaPopup: a callback to a function showing the canvas element for the QR code.
 
-The result contains the identifier for the session.
-
-```javascript
-const identifier = result.disclosed[0].value.nl;
-```
-
+The result is the identifier for the session.
