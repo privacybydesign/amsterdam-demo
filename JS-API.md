@@ -15,14 +15,6 @@ config = await irmaVote.getConfig();
 
 Get the contents of the configuration file.
 
-### init
-
-```javascript
-irmaVote.init(config);
-```
-
-Initialize the irmaVote script.
-
 ### checkDbError
 
 ```javascript

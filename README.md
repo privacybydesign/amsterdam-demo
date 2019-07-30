@@ -15,10 +15,10 @@ The `CONFIG` environment variable points to a configuration file.
     /* URL of the IRMA server */
     "irma": "https://attr.auth.amsterdam.nl",
 
-    /* URL of Node server, without port number */
-    "node": "http://localhost",
+    /* URL of Node server, optional with port number */
+    "nodeUrl": "http://localhost:8000",
 
-    /* Port number of Node server */
+    /* Port number the Node server listens to */
     "port": 8000,
 
     /* Document root of site to serve, only for demo */

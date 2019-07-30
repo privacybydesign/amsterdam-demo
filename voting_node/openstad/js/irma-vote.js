@@ -1,11 +1,4 @@
 const irmaVote = {
-  voteHost: "",
-  init: function(config) {
-    this.voteHost = `${config.node}${
-      config.port == 80 ? "" : `:${config.port}`
-    }`;
-  },
-
   getConfig: async function() {
     const response = await fetch("/config", {
       mode: "cors"
@@ -21,7 +14,7 @@ const irmaVote = {
   },
 
   checkDbError: async function() {
-    const response = await fetch(`${this.voteHost}/stats`, {
+    const response = await fetch(`${config.nodeUrl}/stats`, {
       mode: "cors"
     });
     const json = await response.json();
@@ -30,7 +23,7 @@ const irmaVote = {
   },
 
   sendVote: async function(identifier, vote) {
-    const response = await fetch(`${this.voteHost}/vote`, {
+    const response = await fetch(`${config.nodeUrl}/vote`, {
       method: "POST",
       mode: "cors",
       body: JSON.stringify({ identifier, vote }),
@@ -45,7 +38,7 @@ const irmaVote = {
   fetchPoll: async function() {
     let result = { total: 0, votes: [] };
 
-    const response = await fetch(`${this.voteHost}/stats`, {
+    const response = await fetch(`${config.nodeUrl}/stats`, {
       mode: "cors"
     });
     let json = await response.json();
@@ -68,8 +61,13 @@ const irmaVote = {
     return result;
   },
 
+    /*
+    TODO: accept config.irma
+    TODO: return result.disclosed[0].value.nl;
+     */
+
   irmaSession: async function(config, element, popupCallback) {
-    const irmaResponse = await fetch(`${this.voteHost}/getsession`, {
+    const irmaResponse = await fetch(`${config.nodeUrl}/getsession`, {
       mode: "cors"
     });
 
