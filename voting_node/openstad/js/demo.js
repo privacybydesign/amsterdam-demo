@@ -5,8 +5,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   console.log("config", config);
 
-  irmaVote.init(config);
-
   const votingResults = document.querySelector(".voting-results");
   poll(votingResults);
   showDatabaseErrorMessage();
