@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="174" height="178" viewBox="0 0 174 178">
+  <g fill="none" fill-rule="evenodd">
+    <ellipse cx="86.926" cy="86.594" fill="#194B98" fill-rule="nonzero" opacity=".17" rx="86.926" ry="86.471"/>
+    <rect width="96.872" height="69.972" x="38.49" y="107.021" fill="#FFF" fill-rule="nonzero" stroke="#231F20" stroke-width="1.271"/>
+    <polyline stroke="#E6E6E6" stroke-width="1.234" points="38.49 176.551 50.423 151.546 124.058 151.546 135.362 176.551"/>
+    <path stroke="#E6E6E6" stroke-width="1.234" d="M50.4229787 107.020966L50.4229787 151.545517M123.959574 107.020966L123.959574 151.545517"/>
+    <polygon fill="#B4B4B5" fill-rule="nonzero" points="38.49 107.021 135.362 107.021 135.362 113.159 38.49 118.069" opacity=".12"/>
+    <path fill="#194B98" fill-rule="nonzero" stroke="#231F20" stroke-width="1.197" d="M144.913617,94.9292414 L126.501702,69.3831724 C126.378736,69.2135445 126.181297,69.1131034 125.971064,69.1131034 L47.8931915,69.1131034 C47.6536065,69.1218653 47.4350061,69.251414 47.3131915,69.4568276 L28.9382979,94.9292414"/>
+    <polygon fill="#231F20" fill-rule="nonzero" points="113.877 81.843 59.974 81.843 61.06 79.511 112.791 79.511"/>
+    <rect width="115.79" height="11.858" x="29.037" y="95.162" fill="#1D4483" fill-rule="nonzero" stroke="#231F20" stroke-width="1.234"/>
+    <rect width="96.872" height="69.972" x="38.49" y="107.021" stroke="#231F20" stroke-width="1.271"/>
+    <polygon fill="#FFF" fill-rule="nonzero" stroke="#231F20" stroke-width="1.222" points="65.663 41.762 108.448 41.762 108.448 81.168 65.663 81.168"/>
+    <ellipse cx="99.748" cy="50.368" fill="#E6E6E6" fill-rule="nonzero" rx="4.356" ry="4.333"/>
+    <polyline stroke="#FFF" stroke-linecap="round" stroke-width=".716" points="97.489 50.945 98.6 52.062 102.006 48.674"/>
+  </g>
+</svg>

@@ -1,80 +1,68 @@
-const voteHost = "https://irma.amsterdam";
-const irmaServer = 'https://irma.amsterdam';
+let config;
 
-console.log("OK");
+document.addEventListener("DOMContentLoaded", async () => {
+  config = await irmaVote.getConfig();
 
-document.addEventListener("DOMContentLoaded", () => {
+  console.log("config", config);
+
   const votingResults = document.querySelector(".voting-results");
   poll(votingResults);
-  voteSelect();
+  showDatabaseErrorMessage();
 });
 
-async function stem(event) {
+async function showDatabaseErrorMessage() {
+  const dbError = await irmaVote.checkDbError();
+
+  if (dbError) {
+    document.querySelector(".no-database").removeAttribute("hidden");
+  }
+}
+
+async function vote(event) {
   event.preventDefault();
+  event.stopPropagation();
+
+  if (!config) {
+    config = await irmaVote.getConfig();
+  }
 
   const voteInput = document.querySelector(".gardens input:checked");
   if (!voteInput) {
     console.log("No vote");
+    openPopup("vote-no-selection");
     return;
   }
 
-  const request = {
-    type: "disclosing",
-    content: [
-      {
-        label: "Uw emailadres",
-        attributes: ["pbdf.pbdf.email.email"]
-      }
-    ]
-  };
-
   try {
-    const irmaResponse = await fetch(`${voteHost}/getsession`, {
-      mode: "cors"
-    });
+    const identifier = await irmaVote.irmaSession(config.irma, "qr", irmaPopup);
 
-    const session = await irmaResponse.json();
+    dissmissPopup();
 
-    const { sessionPtr, token } = session;
+    const voteValue = voteInput.value;
 
-    const result = await irma.handleSession(sessionPtr, {
-      server: irmaServer,
-      token,
-      language: "nl"
-    });
+    const voteResult = await irmaVote.sendVote(identifier, voteValue);
 
-    console.log("IRMA result", result);
+    console.log("voteResult", voteResult);
 
-    const email = result.disclosed[0].value.nl;
-    const vote = voteInput.value;
-
-    console.log(`Post vote`);
-
-    const response = await fetch(`${voteHost}/vote`, {
-      method: "POST",
-      mode: "cors",
-      body: JSON.stringify({ email, vote }),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
-
-    const voteResult = await response.json();
-
-    let message;
     if (voteResult.alreadyVoted) {
-      message = "U heeft al eerder gestemd!";
+      await openPopup("vote-already-voted");
     } else {
-      message = `U heeft gestemd voor ${voteResult.vote}`;
+      await openPopup("vote-success");
     }
-
-    document.querySelector(".status").textContent = message;
-
-    console.log("result", voteResult);
+    document.location = "/results.html";
   } catch (e) {
-    console.log("Cancelled");
-    throw new Error(e);
+    console.error("Cancelled", e);
+    document.location.reload();
   }
+}
+
+function irmaPopup() {
+  openPopup("vote-qr").then(result => {
+    if (result != "dismiss") {
+      /* Workaround for not being able to cancel irma.handleSession() */
+      throw new Error("IRMA session cancelled");
+    }
+  });
 }
 
 async function poll(votingResults) {
@@ -82,53 +70,90 @@ async function poll(votingResults) {
     return;
   }
 
-  const voteServerStatsUrl = new URL(`${voteHost}/stats`);
-  const items = ["community", "tech", "zen"];
+  setInterval(getPoll, 2000);
+  getPoll();
 
-  voteServerStatsUrl.searchParams.set("items", items);
+  async function getPoll() {
+    const result = await irmaVote.fetchPoll();
 
-  setInterval(fetchPoll, 2000);
-  fetchPoll();
+    console.log("result", result);
 
-  async function fetchPoll() {
-    const response = await fetch(voteServerStatsUrl, {
-      mode: "cors"
-    });
-    let json = await response.json();
-
-    let total = items.reduce((acc, item) => acc + (json.votes[item] || 0), 0);
-
-    const html = items.forEach(item => {
+    config.voting_options.forEach(item => {
       votingResults.style.setProperty(
         `--${item}`,
-        `${total == 0 ? 0 : (100 * json.votes[item]) / total}px`
+        `${result.votes[item].perc}px`
       );
-      document.querySelector(`.${item} .perc`).textContent = `${Math.round(
-        100 * (json.votes[item] || 0)
-       / total)}%`;
+      document.querySelector(`.${item} .perc`).textContent = `${
+        result.votes[item].perc
+      }%`;
     });
   }
 }
 
-function voteSelect() {
-  const items = document.querySelectorAll(".voting-form .gardens li");
-  if (!items) {
-    return;
-  }
+function openPopup(popupId) {
+  const popupElement = document.getElementById(popupId);
+  const scrollTop = document.scrollingElement.scrollTop;
+  document.body.classList.add("whitebox");
+  document.body.style.setProperty("--top", scrollTop);
 
-  Array.from(items).forEach(item => {
-    item.addEventListener("click", selectItem);
+  popupElement.classList.add("visible");
+
+  document.body.addEventListener("focusin", event => {
+    if (!popupElement.contains(event.target)) {
+      document.scrollingElement.scrollTop = scrollTop;
+      const focusElement = popupElement.querySelector(
+        "a, button, input, textarea"
+      );
+      if (focusElement) {
+        focusElement.focus();
+      }
+    }
   });
 
-  function selectItem(event) {
-    const li = event.target.closest("li");
-    const selected = document.querySelector(".selected");
-    if (selected) {
-      selected.classList.remove("selected");
-    }
-    li.classList.add("selected");
+  const closeButtons = Array.from(
+    popupElement.querySelectorAll("[data-popup-close]")
+  );
 
-    const radio = li.querySelector(`input[type=radio]`);
-    radio.checked = true;
-  }
+  return new Promise(resolve => {
+    setTimeout(() => {
+      window.addEventListener("click", desktop);
+    }, 0);
+    window.addEventListener("keyup", escape);
+
+    closeButtons.forEach(element => {
+      element.addEventListener("click", action);
+    });
+
+    function desktop(event) {
+      if (!popupElement.contains(event.target)) {
+        dismiss("escape");
+      }
+    }
+    function escape(event) {
+      if (event.code === "Escape" || event.code === "Dismiss") {
+        dismiss(event.code.toLowerCase());
+      }
+    }
+
+    function action(event) {
+      dismiss(this.dataset.popupClose);
+    }
+
+    function dismiss(value) {
+      window.removeEventListener("click", desktop);
+      window.removeEventListener("keyup", escape);
+      closeButtons.forEach(element => {
+        element.removeEventListener("click", action);
+      });
+
+      document.body.classList.remove("whitebox");
+      popupElement.classList.remove("visible");
+      resolve(value);
+    }
+  });
+}
+
+function dissmissPopup() {
+  const event = new KeyboardEvent("keyup", { code: "Dismiss" });
+  window.dispatchEvent(event);
 }

@@ -1,0 +1,9 @@
+{
+  "requestorname": "openstad_voting_pk",
+  "uuid": "06c5a013-4e71-439a-b8da-65e35b6419f0",
+  "irma": "http://8dc5386b.eu.ngrok.io",
+  "nodeUrl": "http://localhost:8000",
+  "port": 8000,
+  "docroot": "../openstad",
+  "voting_options": ["community", "tech", "zen"]
+}

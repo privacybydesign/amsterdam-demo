@@ -4,10 +4,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <title>
-      Stem op de tuin in de Weesperstraat
+      Stem mee voor een nieuwe binnentuin
     </title>
 
-    <meta name="viewport" content="initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" type="text/css" media="all" href="assets/all.css" />
     <link
@@ -36,34 +37,37 @@
     />
     <link rel="stylesheet" type="text/css" media="all" href="new/style.css" />
     <script src="js/irma.js"></script>
+    <script src="js/irma-vote.js"></script>
     <script src="js/demo.js"></script>
   </head>
-  <body class="">
+  <body>
     <div id="page">
       <header>
-        <a href="http://localhost/">
+        <a href="/">
           <img src="assets/andreas.svg" width="24" alt="" />
           <div id="amsterdam">
             Gemeente<br />
             Amsterdam
           </div>
 
-          <h1><span>Stem op de tuin in de Weesperstraat</span></h1>
+          <h1><span>Stem mee voor een nieuwe binnentuin</span></h1>
         </a>
       </header>
 
+      <!--
       <nav id="mainMenu" role="navigation" class="menuBar">
         <div>
           <ul>
-            <li class=""><a href="http://localhost/">Home</a></li>
+            <li class=""><a href="/">Home</a></li>
             <li class="active">
-              <a href="http://localhost/stemmen">Stemmen</a>
+              <a href="/">Stemmen</a>
             </li>
           </ul>
         </div>
       </nav>
-    </div>
+    --></div>
 
+    <!--
     <div class="pageContent ideasList">
       <div id="end-date-bar">
         <div id="ideas-anchor"></div>
@@ -77,47 +81,73 @@
         <span id="end-date-bar-end-text" class="text">dagen</span>
       </div>
     </div>
+    -->
 
     <div style="clear: both"></div>
 
     <!-- ######################################################### -->
 
     <div id="content3" class="pageContent ideasList voting-form">
-      <h4>Stemmen</h4>
+      <!-- <h4>Stemmen</h4> -->
 
-      <p class="status">Kies je favoriete tuin.</p>
+      <p class="status">
+        De parkeerplek achter het pand aan de Weesperstraat wordt volgend jaar
+        aangepakt. De ruimte die nu wordt ingenomen door blik en bakstenen
+        krijgt een nieuwe bestemming. Drie architecten hebben een ontwerp
+        gemaakt voor een tuin. Kies mee en laat met jouw stem weten welk van
+        deze drie jouw voorkeur heeft.
+      </p>
 
       <form>
         <ul class="gardens">
           <li>
-            <input type="radio" name="vote" value="community" />
-            <div class="garden community">
-              <p class="title">Gemeenschapstuin</p>
-              <div class="description">Kweek je eigen eten</div>
-              <div class="perc"></div>
-            </div>
+            <label>
+              <input type="radio" name="vote" value="community" />
+              <div class="garden community">
+                <p class="title">Gemeenschapstuin</p>
+                <div class="description">Samen eigen groenten kweken</div>
+                <div class="perc"></div>
+              </div>
+            </label>
           </li>
           <li>
-            <input type="radio" name="vote" value="tech" />
-            <div class="garden tech">
-              <p class="title">Slimme tuin</p>
-              <div class="description">Inspireren en geïnspireerd raken</div>
-              <div class="perc"></div>
-            </div>
+            <label>
+              <input type="radio" name="vote" value="tech" />
+              <div class="garden tech">
+                <p class="title">Slimme tuin</p>
+                <div class="description">Inspireren en geïnspireerd raken</div>
+                <div class="perc"></div>
+              </div>
+            </label>
           </li>
           <li>
-            <input type="radio" name="vote" value="zen" />
-            <div class="garden zen">
-              <p class="title">Zentuin</p>
-              <div class="description">Neem een moment en ontspan</div>
-              <div class="perc"></div>
-            </div>
+            <label>
+              <input type="radio" name="vote" value="zen" />
+              <div class="garden zen">
+                <p class="title">Zentuin</p>
+                <div class="description">Ontspan, weg van alle drukte</div>
+                <div class="perc"></div>
+              </div>
+            </label>
           </li>
         </ul>
 
-        <div class="vote-bottom">
-          <button class="vote-button" onclick="stem(event)">Stemmen</button>
-          <div class="vote-irma">met IRMA</div>
+        <div class="no-database" hidden>
+          Er is momenteel geen verbindinge met de database. Stemmen kunnen
+          daardoor niet worden opgeslagen. Probeer het later nog eens.
+        </div>
+
+        <div class="vote-bottom" onclick="vote(event)">
+          <button class="primary-button vote-button" onclick="vote(event)">
+            Stemmen
+          </button>
+        </div>
+
+        <div class="vote-irma">
+          <div>
+            <p class="use-irma">Gebruik IRMA<br />om te stemmen</p>
+            <a class="arrow" href="uitleg.html">Ik heb nog geen IRMA</a>
+          </div>
         </div>
       </form>
     </div>
@@ -128,18 +158,13 @@
     <footer>
       <div>
         <div>
-          <h2>Over deze site</h2>
-          <ul>
-            <li><a href="http://localhost/disclaimer">Disclaimer</a></li>
-          </ul>
+          <h2>Dit is een demosite van het team Digitale Identiteit/Datapunt</h2>
         </div>
         <div>
           <h2>Meer informatie</h2>
           <ul>
             <li>
-              <a href="https://www.amsterdam.nl/zorggoedvooronzestad"
-                >Volg de projectpagina op amsterdam.nl</a
-              >
+              Volg de projectpagina op amsterdam.nl
             </li>
           </ul>
         </div>
@@ -150,7 +175,9 @@
             horen het graag!
           </p>
           <ul>
-            <li><a href="mailto:niels@denes.nl">Stuur een email</a></li>
+            <li>
+              <a href="mailto:mark.fonds@amsterdam.nl">Stuur een email</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -188,5 +215,77 @@
     </div>
 
     <div id="logoutButton"></div>
+
+    <div class="popup success" id="vote-success">
+      <button class="close" data-popup-close="close"></button>
+      <img src="new/result/success.svg" alt="" />
+      <h4>Je hebt gestemd!</h4>
+
+      <p class="status">Bedankt voor je stem.<br />Jouw mening doet er toe.</p>
+      <button class="primary-button" data-popup-close="ok">
+        Tussenstand tonen
+      </button>
+    </div>
+
+    <div class="popup success" id="vote-error">
+      <button class="close" data-popup-close="close"></button>
+      <img src="new/result/error.svg" alt="" />
+      <h4>Oeps…</h4>
+
+      <p class="status">Er is iets mis gegaan.</p>
+      <button class="primary-button" data-popup-close="ok">
+        Probeer het opnieuw
+      </button>
+    </div>
+
+    <div class="popup success" id="vote-already-voted">
+      <button class="close" data-popup-close="close"></button>
+      <img src="new/result/already-voted.svg" alt="" />
+      <h4>Je hebt al gestemd!</h4>
+
+      <p class="status">
+        Helaas, je kunt voor dit project maar één keer stemmen.
+      </p>
+      <button class="primary-button" data-popup-close="ok">
+        Tussenstand tonen
+      </button>
+    </div>
+
+    <div class="popup success" id="vote-no-selection">
+      <button class="close" data-popup-close="close"></button>
+      <img src="new/result/error.svg" alt="" />
+      <h4>Oeps…</h4>
+
+      <p class="status">Je hebt nog geen keuze gemaakt.</p>
+      <button class="primary-button" data-popup-close="ok">
+        Probeer het opnieuw
+      </button>
+    </div>
+
+    <div class="popup success" id="vote-qr">
+      <button class="close" data-popup-close="close"></button>
+
+      <div class="qr-container">
+        <canvas id="qr"></canvas>
+      </div>
+
+      <p>
+        Scan de code met
+        <img
+          class="vote-qr-irma"
+          src="new/irma_logo.svg"
+          alt="IRMA"
+          width="34"
+          height="32"
+        />
+      </p>
+
+      <div class="popup-bottom">
+        Ik heb nog geen IRMA.
+        <a href="uitleg.html">
+          Download de IRMA-app
+        </a>
+      </div>
+    </div>
   </body>
 </html>

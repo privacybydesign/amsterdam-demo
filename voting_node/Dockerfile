@@ -1,8 +1,17 @@
-FROM node:10
+FROM mhart/alpine-node:12
 
-COPY ./server /server
-COPY ./openstad /openstad
+RUN adduser -D irma
+
+COPY ./server/package*.json /server/
 WORKDIR /server
 
 RUN npm install
+
+COPY ./server /server
+COPY ./openstad /openstad
+
+USER irma
+
 CMD ["npx", "nodemon", "index.js", "--verbose"]
+
+EXPOSE 8000

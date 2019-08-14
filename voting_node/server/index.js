@@ -2,46 +2,51 @@ const express = require("express");
 const irma = require("@privacybydesign/irmajs");
 const app = express();
 const cors = require("cors");
-const storage = require("node-persist");
+const util = require("util");
 const fs = require("fs");
-const skey = fs.readFileSync("./config/private_key.pem", "utf-8");
+const uuidv5 = require("uuid/v5");
+const pgp = require("pg-promise")();
 
-const port = 8000;
+let config;
+let db;
 
 init();
 
-// const irmaServer = "https://acc.fixxx10.amsterdam.nl";
-const irmaServer = 'http://irma:8088';
-
-
-const request = {
-  type: "disclosing",
-  content: [
-    {
-      label: "Uw emailadres",
-      attributes: ["pbdf.pbdf.email.email"]
-    }
-  ]
-};
-
 async function init() {
+  if (!process.env.PRIVATE_KEY) {
+    throw new Error("PRIVATE_KEY is not set");
+  }
+
   try {
-    await storage.init();
+    db = pgp(
+      `postgres://${process.env.POSTGRES_USER}:${
+        process.env.POSTGRES_PASSWORD
+      }@${process.env.POSTGRES_HOST}/${process.env.POSTGRES_DATABASE}`
+    );
+
+    const json = await util.promisify(fs.readFile)(process.env.CONFIG, "utf-8");
+    config = JSON.parse(json);
+
+    await initDatabase();
+
+    console.log("Using config", config);
 
     app.use(express.json());
-
-    app.get("/hello", (req, res) => res.send("Hello World!"));
-    // app.get("/", (req, res) => res.send("REST API Server"));
 
     app.options("/vote", cors());
     app.post("/vote", cors(), vote);
     app.get("/stats", cors(), stats);
     app.get("/getsession", cors(), irmaSession);
+    app.get("/config", cors(), getConfig);
 
-    app.use(express.static("../openstad"));
+    if (config.docroot) {
+      app.use(express.static(config.docroot));
+    }
 
-    app.listen(port, () =>
-      console.log(`Voting app listening on port ${port}.`)
+    app.listen(config.port, () =>
+      console.log(
+        `Voting app running in ${process.env.NODE_ENV || "development"} mode.`
+      )
     );
   } catch (e) {
     error(e);
@@ -50,22 +55,29 @@ async function init() {
 
 async function irmaSession(req, res) {
   const authmethod = "publickey";
-  const requestorname = "openstad_voting_pk";
+  const request = {
+    type: "disclosing",
+    content: [
+      {
+        label: "Uw MyIRMA gebruikersnaam",
+        attributes: ["pbdf.pbdf.mijnirma.email"]
+      }
+    ]
+  };
 
   console.log("irma.startSession", {
-    irmaServer,
+    url: config.irma,
     request: JSON.stringify(request),
-    authmethod,
-    requestorname
+    authmethod
   });
 
   try {
     const session = await irma.startSession(
-      irmaServer,
+      config.irma,
       request,
       authmethod,
-      skey,
-      requestorname
+      process.env.PRIVATE_KEY,
+      config.requestorname
     );
     res.json(session);
   } catch (e) {
@@ -75,54 +87,46 @@ async function irmaSession(req, res) {
 
 async function vote(req, res) {
   try {
-    const alreadyVoted = await storage.getItem(req.body.email);
+    const identHashed = uuidv5(req.body.identifier, config.uuid);
+    let alreadyVoted = false;
 
-    console.log(req.body.email, "alreadyVoted", alreadyVoted);
-
-    if (!alreadyVoted || true) {
-      storage.setItem(req.body.email, true);
-
-      console.log("Voted for", req.body.vote);
-
-      let currentVote = await storage.getItem(req.body.vote);
-
-      if (!currentVote) {
-        currentVote = 0;
-      }
-
-      currentVote++;
-
-      /*******************************************
-       *
-       * This is demo code, not for production.
-       *
-       * Reading and writing a vote should be an atomic operation.
-       *
-       *******************************************/
-      storage.setItem(req.body.vote, currentVote);
+    try {
+      await db.none("INSERT INTO voted (ident) VALUES ($1)", identHashed);
+      await db.none(
+        "UPDATE votes SET count=count+1 WHERE name=$1",
+        req.body.vote
+      );
+      console.log("Voted");
+    } catch (e) {
+      alreadyVoted = true;
+      console.log("Not voted");
     }
 
     res.json({ alreadyVoted, vote: req.body.vote });
   } catch (e) {
+    console.error("Could not connect to database.");
     error(e, res);
   }
 }
 
 async function stats(req, res) {
-  const search = req.url.substr(req.url.indexOf("?") + 1);
-  const params = new URLSearchParams(search);
-  const items = params.get("items").split(",");
-  const votesPromises = items.map(item => storage.getItem(item));
   try {
-    const votesArray = await Promise.all(votesPromises);
-    const votes = items.reduce((acc, item, i) => {
-      acc[item] = votesArray[i];
+    const data = await db.many("SELECT * FROM votes");
+
+    const votes = data.reduce((acc, item) => {
+      acc[item.name] = item.count;
       return acc;
     }, {});
+
     res.json({ votes });
   } catch (e) {
+    console.error("Could not connect to database.");
     error(e, res);
   }
+}
+
+async function getConfig(req, res) {
+  res.json(config);
 }
 
 function error(e, res) {
@@ -130,4 +134,20 @@ function error(e, res) {
   if (res) {
     res.json({ error: JSON.stringify(e) });
   }
+}
+
+async function initDatabase() {
+  try {
+    await db.none(
+      "CREATE TABLE votes (name VARCHAR (50) UNIQUE NOT null, count INT NOT null)"
+    );
+    await db.none("CREATE TABLE voted (ident VARCHAR (50) UNIQUE NOT null)");
+
+    const votingOptions = config.voting_options
+      .map(opt => `('${opt}', 0)`)
+      .join(", ");
+
+    await db.none(`INSERT INTO votes (name, count) VALUES ${votingOptions}`);
+    console.log("Database initialized");
+  } catch (error) {}
 }

@@ -1,6 +1,7 @@
 /.idea
-/config/private_key.pem
+/voting_node/server/node_modules
+/dev/db/data
+/voting_node/server/config-dev.json
 /node/node_modules
-
 logs/
 /node/.node-persist
