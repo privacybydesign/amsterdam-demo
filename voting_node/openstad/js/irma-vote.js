@@ -14,7 +14,7 @@ const irmaVote = {
   },
 
   checkDbError: async function() {
-    const response = await fetch(`${config.nodeUrl}/stats`, {
+    const response = await fetch("/stats", {
       mode: "cors"
     });
     const json = await response.json();
@@ -23,7 +23,7 @@ const irmaVote = {
   },
 
   sendVote: async function(identifier, vote) {
-    const response = await fetch(`${config.nodeUrl}/vote`, {
+    const response = await fetch("/vote", {
       method: "POST",
       mode: "cors",
       body: JSON.stringify({ identifier, vote }),
@@ -38,7 +38,7 @@ const irmaVote = {
   fetchPoll: async function() {
     let result = { total: 0, votes: [] };
 
-    const response = await fetch(`${config.nodeUrl}/stats`, {
+    const response = await fetch("/stats", {
       mode: "cors"
     });
     let json = await response.json();
@@ -62,7 +62,7 @@ const irmaVote = {
   },
 
   irmaSession: async function(server, element, popupCallback) {
-    const irmaResponse = await fetch(`${config.nodeUrl}/getsession`, {
+    const irmaResponse = await fetch("/getsession", {
       mode: "cors"
     });
 
