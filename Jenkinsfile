@@ -50,7 +50,7 @@ if (BRANCH == "master" || BRANCH == "accept") {
                 build job: 'Subtask_Openstack_Playbook',
                     parameters: [
                             [$class: 'StringParameterValue', name: 'INVENTORY', value: 'acceptance'],
-                            [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy-irma_frontend.yml'],
+                            [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy-irma-frontend.yml'],
                     ]
             }
         }
@@ -79,7 +79,7 @@ if (BRANCH == "master") {
                 build job: 'Subtask_Openstack_Playbook',
                 parameters: [
                     [$class: 'StringParameterValue', name: 'INVENTORY', value: 'production'],
-                    [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy-irma_frontend.yml'],
+                    [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy-irma-frontend.yml'],
                 ]
             }
         }
