@@ -24,7 +24,7 @@ node {
 
     stage("Build image") {
         tryStep "build", {
-            def image = docker.build("build.app.amsterdam.nl:5000/ois/irma_frontend:${env.BUILD_NUMBER}")
+            def image = docker.build("build.app.amsterdam.nl:5000/ois/irma_frontend:${env.BUILD_NUMBER}", "./voting_node/Dockerfile")
             image.push()
         }
     }
