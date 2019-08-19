@@ -1,6 +1,6 @@
 let config;
 
-document.addEventListener("DOMContentLoaded", async () => {
+async function init() {
   config = await irmaVote.getConfig();
 
   console.log("config", config);
@@ -8,7 +8,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   const votingResults = document.querySelector(".voting-results");
   poll(votingResults);
   showDatabaseErrorMessage();
-});
+}
+
+if (document.readyState == "interactive") {
+  init();
+} else {
+  document.addEventListener("DOMContentLoaded", init);
+}
 
 async function showDatabaseErrorMessage() {
   const dbError = await irmaVote.checkDbError();
