@@ -1,6 +1,6 @@
-## Repository di_node_container
+# Repository di_node_container
 
-### Config
+## Config
 
 The `CONFIG` environment variable points to a configuration file.
 
@@ -29,14 +29,14 @@ The `CONFIG` environment variable points to a configuration file.
 }
 ```
 
-### Install
+## Install
 
 ```shell
 cd voting_node
 docker build -t voting_node .
 ```
 
-### Run
+## Run
 
 1. Make sure IRMA is running (see `https://gitlab.com/stanguldemond/irma_server_container`)
 2. Add the URL of IRMA to `server/*.json`)
@@ -47,7 +47,7 @@ cd dev/db
 ./postgres.sh
 ```
 
-### Run locally without Docker
+## Run locally without Docker
 
 install ngrok
 
@@ -73,7 +73,7 @@ cd ../../dev
 ./start.sh
 ```
 
-### Run production mode
+## Run production mode
 
 ```shell
 cd voting_node
@@ -82,7 +82,7 @@ docker run --rm -p80:8000 -e NODE_ENV=production -e CONFIG=config-prod.json -e P
 
 Replace POSTGRES_HOST=localhost with IP address of Postgres.
 
-### Run development mode
+## Run development mode
 
 ```shell
 cd voting_node
