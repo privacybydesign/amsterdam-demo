@@ -49,6 +49,23 @@ cd dev/db
 
 ### Run locally without Docker
 
+install ngrok
+
+- run ./dev/ngrok/ngrok.sh
+- copy the url generated for port 8088 and set it in ./dev/config-dev.json (`irma` setting)
+- the ngrok tunnel will be available for 8 hours or until the ngrok session is exited. The update of the `irma` setting
+  in config-dev.json has to be done each time the ngrok session expires or is restarted.
+
+create and configure the certificates
+
+- run ./dev/keygen.sh to generate the certificates (public_key.pem en private_key.pem) in ./dev/keypair
+- in [irma_server_container](https://gitlab.com/stanguldemond/irma_server_container) project:
+  - copy the public_key.pem to the irma_server_container in de config folder
+  - configure "key_file": "./config/public_key.pem" in ./config/irmaserver.json
+- this project:
+  - copy private_key.pem to ./dev/
+  - copy
+
 ```shell
 cd voting_node/server
 npm install
@@ -75,5 +92,3 @@ docker run -it --rm -p80:8000 -e CONFIG=config-dev.json -e PRIVATE_KEY="$(cat ..
 ```
 
 Replace POSTGRES_HOST=localhost with IP address of Postgres.
-
-
