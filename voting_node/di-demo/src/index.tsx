@@ -15,12 +15,12 @@ const routing = (
   <Router>
     <div>
       <Route path="/" exact component={App} />
-      <Route path="/mijnamsterdam" component={MijnAmsterdamPage} />
-      <Route path="/openstad" component={OpenStadPage} />
-      <Route path="/halloijburg" component={HalloIJburgPage} />
-      <Route path="/alchoolkopen" component={AlchoolKopenPage} />
-      <Route path="/rommelmelden" component={RommelMeldenPage} />
-      <Route path="/kortingkrijgen" component={KortingKrijgenPage} />
+      <Route path="/mijnamsterdam/:theme" component={MijnAmsterdamPage} />
+      <Route path="/openstad/:theme" component={OpenStadPage} />
+      <Route path="/halloijburg/:theme" component={HalloIJburgPage} />
+      <Route path="/alchoolkopen/:theme" component={AlchoolKopenPage} />
+      <Route path="/rommelmelden/:theme" component={RommelMeldenPage} />
+      <Route path="/kortingkrijgen/:theme" component={KortingKrijgenPage} />
     </div>
   </Router>
 );
