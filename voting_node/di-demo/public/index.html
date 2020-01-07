@@ -1,237 +1,42 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <title>
-      Stem mee voor een nieuwe binnentuin
-    </title>
-
-    <meta name="robots" content="noindex, nofollow" />
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
 
-    <link rel="stylesheet" type="text/css" media="all" href="assets/all.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="assets/eberhardvanderlaan.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="assets/eberhardvanderlaan2.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="assets/eberhardvanderlaan3.css" />
-    <link rel="stylesheet" type="text/css" media="print" href="assets/print.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="new/style.css" />
-    <script src="js/irma.js" async></script>
-    <script src="js/irma-vote.js" async></script>
-    <script src="js/demo.js" async></script>
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
 
-    <div id="page">
-      <header>
-        <a href="/">
-          <img src="assets/andreas.svg" width="24" alt="" />
-          <div id="amsterdam">
-            Gemeente<br />
-            Amsterdam
-          </div>
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
 
-          <h1><span>Stem mee voor een nieuwe binnentuin</span></h1>
-        </a>
-      </header>
-    </div>
-
-    <div style="clear: both"></div>
-
-    <!-- ######################################################### -->
-
-    <div id="content3" class="pageContent ideasList voting-form">
-      <!-- <h4>Stemmen</h4> -->
-
-      <p class="status">
-        De parkeerplek achter het pand aan de Weesperstraat wordt volgend jaar aangepakt. De ruimte die nu wordt
-        ingenomen door blik en bakstenen krijgt een nieuwe bestemming. Drie architecten hebben een ontwerp gemaakt voor
-        een tuin. Kies mee en laat met jouw stem weten welk van deze drie jouw voorkeur heeft.
-      </p>
-
-      <form>
-        <ul class="gardens">
-          <li>
-            <label>
-              <input type="radio" name="vote-radio" value="community" />
-              <div class="garden community">
-                <p class="title">Gemeenschapstuin</p>
-                <div class="description">Samen eigen groenten kweken</div>
-                <div class="perc"></div>
-              </div>
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="radio" name="vote-radio" value="tech" />
-              <div class="garden tech">
-                <p class="title">Slimme tuin</p>
-                <div class="description">Inspireren en geïnspireerd raken</div>
-                <div class="perc"></div>
-              </div>
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="radio" name="vote-radio" value="zen" />
-              <div class="garden zen">
-                <p class="title">Zentuin</p>
-                <div class="description">Ontspan, weg van alle drukte</div>
-                <div class="perc"></div>
-              </div>
-            </label>
-          </li>
-        </ul>
-
-        <div class="no-database" hidden>
-          Er is momenteel geen verbinding met de database. Stemmen kunnen daardoor niet worden opgeslagen. Probeer het
-          later nog eens.
-        </div>
-
-        <div class="vote-bottom" onclick="vote(event)">
-          <button class="primary-button vote-button" onclick="vote(event)">
-            Stemmen
-          </button>
-        </div>
-
-        <div class="vote-irma">
-          <div>
-            <p class="use-irma">Gebruik IRMA<br />om te stemmen</p>
-            <a class="arrow" href="uitleg.html">Ik heb nog geen IRMA</a>
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <!-- ######################################################### -->
-
-    <div style="clear: both; height: 40px;"></div>
-    <footer>
-      <div>
-        <div>
-          <h2>Dit is een demosite van het team Digitale Identiteit/Datapunt</h2>
-        </div>
-        <div>
-          <h2>Meer informatie</h2>
-          <ul>
-            <li>
-              Volg de projectpagina op amsterdam.nl
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h2>Contact</h2>
-          <p>
-            Heb je een vraag over het gebruik of de werking van deze site? Wij horen het graag!
-          </p>
-          <ul>
-            <li>
-              <a href="mailto:mark.fonds@amsterdam.nl">Stuur een email</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </footer>
-
-    <div id="mobile-menu" class="visible-xs">
-      <a href="#top" class="mobile-menu-item scroll-link">
-        <img
-          src="assets/mobiel-nav-home.svg"
-          style="width: 20px; height: 20px; margin-bottom: 2px; min-width: 20px; min-height: 20px; transform: scale(1)"
-        />
-        Start
-      </a>
-      <a href="#achtergrondinformatie" class="mobile-menu-item scroll-link">
-        <img
-          src="assets/mobiel-nav-info.svg"
-          style="width: 20px; height: 22px; min-width: 20px; min-height: 22px; transform: scale(1)"
-        />
-        Info
-      </a>
-      <a href="#top" class="mobile-menu-item scroll-link">
-        <img
-          src="assets/mobiel-nav-ontwerpen.svg"
-          style="width: 18px; height: 22px; min-width: 18px; min-height: 22px; transform: scale(1)"
-        />
-        Ontwerpen
-      </a>
-      <a href="#top" class="mobile-menu-item scroll-link">
-        <img
-          src="assets/mobiel-nav-stemmen.svg"
-          style="width: 22px; height: 22px; min-width: 22px; min-height: 22px; transform: scale(1)"
-        />
-        Stemmen
-      </a>
-    </div>
-
-    <div id="logoutButton"></div>
-
-    <div class="popup success" id="vote-success">
-      <button class="close" data-popup-close="close"></button>
-      <img src="new/result/success.svg" alt="" />
-      <h4>Je hebt gestemd!</h4>
-
-      <p class="status">Bedankt voor je stem.<br />Jouw mening doet er toe.</p>
-      <button class="primary-button" data-popup-close="ok">
-        Tussenstand tonen
-      </button>
-    </div>
-
-    <div class="popup success" id="vote-error">
-      <button class="close" data-popup-close="close"></button>
-      <img src="new/result/error.svg" alt="" />
-      <h4>Oeps…</h4>
-
-      <p class="status">Er is iets mis gegaan.</p>
-      <button class="primary-button" data-popup-close="ok">
-        Probeer het opnieuw
-      </button>
-    </div>
-
-    <div class="popup success" id="vote-already-voted">
-      <button class="close" data-popup-close="close"></button>
-      <img src="new/result/already-voted.svg" alt="" />
-      <h4>Je hebt al gestemd!</h4>
-
-      <p class="status">
-        Helaas, je kunt voor dit project maar één keer stemmen.
-      </p>
-      <button class="primary-button" data-popup-close="ok">
-        Tussenstand tonen
-      </button>
-    </div>
-
-    <div class="popup success" id="vote-no-selection">
-      <button class="close" data-popup-close="close"></button>
-      <img src="new/result/error.svg" alt="" />
-      <h4>Oeps…</h4>
-
-      <p class="status">Je hebt nog geen keuze gemaakt.</p>
-      <button class="primary-button" data-popup-close="ok">
-        Probeer het opnieuw
-      </button>
-    </div>
-
-    <div class="popup success" id="vote-qr">
-      <button class="close" data-popup-close="close"></button>
-
-      <div class="qr-container">
-        <canvas id="qr"></canvas>
-      </div>
-
-      <p>
-        Scan de code met
-        <img class="vote-qr-irma" src="new/irma_logo.svg" alt="IRMA" width="34" height="32" />
-      </p>
-
-      <div class="popup-bottom">
-        Ik heb nog geen IRMA.
-        <a href="uitleg.html">
-          Download de IRMA-app
-        </a>
-      </div>
-    </div>
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
   </body>
 </html>
