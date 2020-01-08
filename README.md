@@ -77,3 +77,22 @@ docker run -it --rm -p80:8000 -e CONFIG=config-dev.json -e PRIVATE_KEY="$(cat ..
 Replace POSTGRES_HOST=localhost with IP address of Postgres.
 
 
+## How to spin up a local development enviroment from scratch
+
+generate the keys
+
+```bash
+$ ./dev/keygen.sh
+```
+
+copy the public_key.pem to irma_server_constainer/config/public_key.pem
+
+```bash
+$ cp ./dev/keypair/public_key.pem ../irma_server_container/config/public_key.pem
+```
+
+copy the private_key.pem the the local express server ./voting_node/server
+
+```bash
+$ cp ./dev/keypair/private_key.pem ./voting_node/server
+

@@ -11,6 +11,8 @@ const IrmaButtonStyle = styled(IrmaBaseButtonStyle)`
   left: 375px;
 `;
 
+
+
 const MijnAmsterdamPage: React.FC<{}> = () => {
   const { theme } = useParams();
   return (
