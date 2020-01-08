@@ -16,6 +16,10 @@ services:
       - "8000:8000"
     volumes:
       - ./voting_node/openstad:/openstad
+      # - ./voting_node/server:/server
+    depends_on:
+      - database
+      - irma_server
 
   database:
     image: amsterdam/postgres
@@ -24,12 +28,14 @@ services:
     environment:
       POSTGRES_PASSWORD: hj21kjy
     volumes:
-      - ./dev/db/data:/var/lib/postgresql/data
+     - ./dev/db/data:/var/lib/postgresql/data
+    container_name: postgres
 
   irma_server:
-    image: irma_server_container_irma
+    image: irmaservercontainer_irma
     ports:
       - "8088:8088"
     environment:
-      - BASE_URL=https://acc.attr.auth.amsterdam.nl
-    # container_name: postgres
+      # - BASE_URL=https://acc.attr.auth.amsterdam.nl
+      - BASE_URL=http://b963f628.eu.ngrok.io
+  

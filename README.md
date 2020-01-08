@@ -49,23 +49,6 @@ cd dev/db
 
 ## Run locally without Docker
 
-install ngrok
-
-- run ./dev/ngrok/ngrok.sh
-- copy the url generated for port 8088 and set it in ./dev/config-dev.json (`irma` setting)
-- the ngrok tunnel will be available for 8 hours or until the ngrok session is exited. The update of the `irma` setting
-  in config-dev.json has to be done each time the ngrok session expires or is restarted.
-
-create and configure the certificates
-
-- run ./dev/keygen.sh to generate the certificates (public_key.pem en private_key.pem) in ./dev/keypair
-- in [irma_server_container](https://gitlab.com/stanguldemond/irma_server_container) project:
-  - copy the public_key.pem to the irma_server_container in de config folder
-  - configure "key_file": "./config/public_key.pem" in ./config/irmaserver.json
-- this project:
-  - copy private_key.pem to ./dev/
-  - copy
-
 ```shell
 cd voting_node/server
 npm install
@@ -92,3 +75,52 @@ docker run -it --rm -p80:8000 -e CONFIG=config-dev.json -e PRIVATE_KEY="$(cat ..
 ```
 
 Replace POSTGRES_HOST=localhost with IP address of Postgres.
+
+
+## How to spin up a local development enviroment from scratch
+
+
+generate the keys
+
+```shell
+$ ./dev/keygen.sh
+```
+
+copy the public_key.pem to irma_server_constainer/config/public_key.pem
+
+```shell
+$ cp ./dev/keypair/public_key.pem ../irma_server_container/config/public_key.pem
+```
+
+copy the private_key.pem the the local express server ./voting_node/server
+
+```shell
+$ cp ./dev/keypair/private_key.pem ./voting_node/server
+```
+
+install ngrok
+
+- run ./dev/ngrok/ngrok.sh in a separate terminal
+- copy the url generated for port 8088 and set it in ./dev/config-dev.json (`irma` setting) and in the 
+  docker-compose.yml for the BASE_URL environment variable
+- the ngrok tunnel will be available for 8 hours or until the ngrok session is exited. The update of the `irma` setting
+  in config-dev.json has to be done each time the ngrok session expires or is restarted.
+
+create and configure the certificates
+
+- run ./dev/keygen.sh to generate the certificates (public_key.pem en private_key.pem) in ./dev/keypair
+- in [irma_server_container](https://gitlab.com/stanguldemond/irma_server_container) project:
+  - copy the public_key.pem to the irma_server_container in de config folder
+  - configure "key_file": "./config/public_key.pem" in ./config/irmaserver.json
+- this project:
+  - copy private_key.pem to ./dev/
+
+run the dockers
+
+- run `docker-compose build`
+- build the irma_server_container image and rename this to `irmaservercontainer_irma`
+    - docker rename `<old-name>` irmaservercontainer_irma
+
+- run `docker-compose up` and go to http://localhost:8000
+
+
