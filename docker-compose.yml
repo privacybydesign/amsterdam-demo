@@ -1,0 +1,35 @@
+version: "3.5"
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: ./voting_node/
+    environment:
+      - NODE_ENV=production
+      - CONFIG=config-dev.json
+      - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
+      - POSTGRES_HOST=database
+      - POSTGRES_DATABASE=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=hj21kjy
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./voting_node/openstad:/openstad
+
+  database:
+    image: amsterdam/postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: hj21kjy
+    volumes:
+      - ./dev/db/data:/var/lib/postgresql/data
+
+  irma_server:
+    image: irma_server_container_irma
+    ports:
+      - "8088:8088"
+    environment:
+      - BASE_URL=https://acc.attr.auth.amsterdam.nl
+    # container_name: postgres

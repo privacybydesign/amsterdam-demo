@@ -1,6 +1,6 @@
-## Repository di_node_container
+# Repository di_node_container
 
-### Config
+## Config
 
 The `CONFIG` environment variable points to a configuration file.
 
@@ -29,14 +29,14 @@ The `CONFIG` environment variable points to a configuration file.
 }
 ```
 
-### Install
+## Install
 
 ```shell
 cd voting_node
 docker build -t voting_node .
 ```
 
-### Run
+## Run
 
 1. Make sure IRMA is running (see `https://gitlab.com/stanguldemond/irma_server_container`)
 2. Add the URL of IRMA to `server/*.json`)
@@ -47,7 +47,24 @@ cd dev/db
 ./postgres.sh
 ```
 
-### Run locally without Docker
+## Run locally without Docker
+
+install ngrok
+
+- run ./dev/ngrok/ngrok.sh
+- copy the url generated for port 8088 and set it in ./dev/config-dev.json (`irma` setting)
+- the ngrok tunnel will be available for 8 hours or until the ngrok session is exited. The update of the `irma` setting
+  in config-dev.json has to be done each time the ngrok session expires or is restarted.
+
+create and configure the certificates
+
+- run ./dev/keygen.sh to generate the certificates (public_key.pem en private_key.pem) in ./dev/keypair
+- in [irma_server_container](https://gitlab.com/stanguldemond/irma_server_container) project:
+  - copy the public_key.pem to the irma_server_container in de config folder
+  - configure "key_file": "./config/public_key.pem" in ./config/irmaserver.json
+- this project:
+  - copy private_key.pem to ./dev/
+  - copy
 
 ```shell
 cd voting_node/server
@@ -56,7 +73,7 @@ cd ../../dev
 ./start.sh
 ```
 
-### Run production mode
+## Run production mode
 
 ```shell
 cd voting_node
@@ -65,7 +82,7 @@ docker run --rm -p80:8000 -e NODE_ENV=production -e CONFIG=config-prod.json -e P
 
 Replace POSTGRES_HOST=localhost with IP address of Postgres.
 
-### Run development mode
+## Run development mode
 
 ```shell
 cd voting_node
