@@ -1,0 +1,22 @@
+# development file created after:
+#    https://dev.to/numtostr/running-react-and-node-js-in-one-shot-with-docker-3o09
+version: "3.5"
+services:
+    frontend:
+        container_name: web
+        build:
+            context: ./client
+            dockerfile: Dockerfile
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./client:/usr/src/app
+    backend:
+        container_name: server
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+        ports:
+            - "5000:5000"
+        volumes:
+            - ./server:/usr/src/app

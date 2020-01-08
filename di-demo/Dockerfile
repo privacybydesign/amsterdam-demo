@@ -8,7 +8,7 @@ WORKDIR /server
 RUN npm install
 
 COPY ./server /server
-COPY ./web /web
+COPY ./client /client
 
 USER irma
 
