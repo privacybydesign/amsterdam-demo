@@ -1,4 +1,5 @@
 /.idea
+node_modules
 /voting_node/server/node_modules
 /dev/db/data
 /dev/keypair
@@ -7,3 +8,7 @@
 logs/
 /node/.node-persist
 /dev/keypair
+build
+/.vscode/
+/voting_node/di-demo/node_modules/
+/voting_node/di-demo/build/
