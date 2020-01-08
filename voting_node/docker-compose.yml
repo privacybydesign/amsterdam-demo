@@ -3,7 +3,7 @@ services:
   app:
     build:
       dockerfile: Dockerfile
-      context: ./voting_node/
+      context: ./
     environment:
       - NODE_ENV=production
       - CONFIG=config-dev.json
@@ -15,8 +15,8 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./voting_node/openstad:/openstad
-      # - ./voting_node/server:/server
+      - ./openstad:/openstad
+      # - ./server:/server
     depends_on:
       - database
       - irma_server
