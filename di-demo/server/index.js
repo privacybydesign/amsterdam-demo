@@ -5,49 +5,57 @@ const cors = require("cors");
 const util = require("util");
 const fs = require("fs");
 const uuidv5 = require("uuid/v5");
-const pgp = require("pg-promise")();
 var proxy = require("http-proxy-middleware");
 
+// global configuration variable.
 let config;
-let db;
 
-init();
+const REQUESTS = {
+  EMAIL: {
+    label: "Uw MyIRMA gebruikersnaam",
+    attributes: ["pbdf.pbdf.mijnirma.email", "pbdf.sidn-pbdf.irma.pseudonym"]
+  }
+};
 
-async function init() {
+const createIrmaRequest = ({ label, attributes }) => {
+  return {
+    type: "disclosing",
+    content: [{ label, attributes }]
+  };
+};
+
+const init = async () => {
   if (!process.env.PRIVATE_KEY) {
     throw new Error("PRIVATE_KEY is not set");
   }
 
   try {
-    db = pgp(
-      `postgres://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_HOST}/${process.env.POSTGRES_DATABASE}`
-    );
-
-    const json = await util.promisify(fs.readFile)(process.env.CONFIG, "utf-8");
-    config = JSON.parse(json);
-
-    await initDatabase();
-
-    console.log("Using config", config);
+    // read the config file only once each session
+    if (config === undefined) {
+      const json = await util.promisify(fs.readFile)(
+        process.env.CONFIG,
+        "utf-8"
+      );
+      console.log("Using config", json);
+      config = JSON.parse(json);
+    }
 
     app.use(express.json());
 
     app.options("/vote", cors());
     app.post("/vote", cors(), vote);
     app.get("/stats", cors(), stats);
-    app.get("/getsession", cors(), irmaSession);
+    app.get("/getsession/email", cors(), irmaDiscloseEmail);
     app.get("/config", cors(), getConfig);
 
     // proxy the root to the react app container
     app.use(
-      "/", 
-      proxy(
-        { 
-          target: "http://app:3000", 
-          changeOrigin: true 
-        }
-      )
-  );
+      "/",
+      proxy({
+        target: "http://app:3000",
+        changeOrigin: true
+      })
+    );
 
     app.listen(config.port, () =>
       console.log(
@@ -57,24 +65,13 @@ async function init() {
   } catch (e) {
     error(e);
   }
-}
+};
 
-async function irmaSession(req, res) {
+async function irmaDiscloseEmail(req, res) {
   const authmethod = "publickey";
-  const request = {
-    type: "disclosing",
-    content: [
-      {
-        label: "Uw MyIRMA gebruikersnaam",
-        attributes: [
-          "pbdf.pbdf.mijnirma.email",
-          "pbdf.sidn-pbdf.irma.pseudonym"
-        ]
-      }
-    ]
-  };
+  const request = createIrmaRequest(REQUESTS.EMAIL);
 
-  console.log("irma.startSession", {
+  console.log("irma.irmaDiscloseEmail called: ", {
     url: config.irma,
     request: JSON.stringify(request),
     authmethod
@@ -88,75 +85,44 @@ async function irmaSession(req, res) {
       process.env.PRIVATE_KEY,
       config.requestorname
     );
+
     res.json(session);
   } catch (e) {
     error(e, res);
   }
 }
 
-async function vote(req, res) {
+const vote = async (req, res) => {
   try {
     const identHashed = uuidv5(req.body.identifier, config.uuid);
     let alreadyVoted = false;
-
-    try {
-      await db.none("INSERT INTO voted (ident) VALUES ($1)", identHashed);
-      await db.none(
-        "UPDATE votes SET count=count+1 WHERE name=$1",
-        req.body.vote
-      );
-      console.log("Voted");
-    } catch (e) {
-      alreadyVoted = true;
-      console.log("Not voted");
-    }
-
+    console.log("Voted with id: ", identHashed);
     res.json({ alreadyVoted, vote: req.body.vote });
   } catch (e) {
-    console.error("Could not connect to database.");
     error(e, res);
   }
-}
+};
 
-async function stats(req, res) {
+const stats = async (req, res) => {
   try {
-    const data = await db.many("SELECT * FROM votes");
-
-    const votes = data.reduce((acc, item) => {
-      acc[item.name] = item.count;
-      return acc;
-    }, {});
-
+    const votes = "here are the votes";
     res.json({ votes });
   } catch (e) {
-    console.error("Could not connect to database.");
     error(e, res);
   }
-}
+};
 
-async function getConfig(req, res) {
+const getConfig = async (req, res) => {
+  console.log('get config', JSON.stringify(config));
   res.json(config);
-}
+};
 
-function error(e, res) {
-  console.error("Node error", e);
+const error = (e, res) => {
+  const jsonError = JSON.stringify(e);
+  console.error("Node error", jsonError);
   if (res) {
-    res.json({ error: JSON.stringify(e) });
+    res.json({ error: jsonError });
   }
-}
+};
 
-async function initDatabase() {
-  try {
-    await db.none(
-      "CREATE TABLE votes (name VARCHAR (50) UNIQUE NOT null, count INT NOT null)"
-    );
-    await db.none("CREATE TABLE voted (ident VARCHAR (50) UNIQUE NOT null)");
-
-    const votingOptions = config.voting_options
-      .map(opt => `('${opt}', 0)`)
-      .join(", ");
-
-    await db.none(`INSERT INTO votes (name, count) VALUES ${votingOptions}`);
-    console.log("Database initialized");
-  } catch (error) {}
-}
+init();

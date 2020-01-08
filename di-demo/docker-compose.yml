@@ -37,7 +37,7 @@ services:
             - "8088:8088"
         environment:
             # - BASE_URL=https://acc.attr.auth.amsterdam.nl
-            - BASE_URL=http://b963f628.eu.ngrok.io
+            - BASE_URL=http://0c3d2a6b.eu.ngrok.io
         
             
 
