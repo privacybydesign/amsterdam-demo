@@ -6,6 +6,7 @@ const util = require("util");
 const fs = require("fs");
 const uuidv5 = require("uuid/v5");
 const pgp = require("pg-promise")();
+var proxy = require("http-proxy-middleware");
 
 let config;
 let db;
@@ -19,9 +20,7 @@ async function init() {
 
   try {
     db = pgp(
-      `postgres://${process.env.POSTGRES_USER}:${
-        process.env.POSTGRES_PASSWORD
-      }@${process.env.POSTGRES_HOST}/${process.env.POSTGRES_DATABASE}`
+      `postgres://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_HOST}/${process.env.POSTGRES_DATABASE}`
     );
 
     const json = await util.promisify(fs.readFile)(process.env.CONFIG, "utf-8");
@@ -39,9 +38,16 @@ async function init() {
     app.get("/getsession", cors(), irmaSession);
     app.get("/config", cors(), getConfig);
 
-    if (config.docroot) {
-      app.use(express.static(config.docroot));
-    }
+    // proxy the root to the react app container
+    app.use(
+      "/", 
+      proxy(
+        { 
+          target: "http://app:3000", 
+          changeOrigin: true 
+        }
+      )
+  );
 
     app.listen(config.port, () =>
       console.log(
@@ -60,7 +66,10 @@ async function irmaSession(req, res) {
     content: [
       {
         label: "Uw MyIRMA gebruikersnaam",
-        attributes: ["pbdf.pbdf.mijnirma.email", "pbdf.sidn-pbdf.irma.pseudonym"]
+        attributes: [
+          "pbdf.pbdf.mijnirma.email",
+          "pbdf.sidn-pbdf.irma.pseudonym"
+        ]
       }
     ]
   };

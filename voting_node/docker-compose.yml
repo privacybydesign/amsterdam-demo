@@ -28,7 +28,7 @@ services:
     environment:
       POSTGRES_PASSWORD: hj21kjy
     volumes:
-     - ./dev/db/data:/var/lib/postgresql/data
+     - ../dev/db/data:/var/lib/postgresql/data
     container_name: postgres
 
   irma_server:

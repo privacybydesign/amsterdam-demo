@@ -11,7 +11,12 @@ const IrmaButtonStyle = styled(IrmaBaseButtonStyle)`
   left: 375px;
 `;
 
-
+const login = async () => {
+  // const response = await fetch("http://localhost:8000/stats");
+  const response = await fetch("/stats");
+  const data = await response.json();    
+  console.log('getIirmaInfo', data);
+};
 
 const MijnAmsterdamPage: React.FC<{}> = () => {
   const { theme } = useParams();
@@ -24,7 +29,7 @@ const MijnAmsterdamPage: React.FC<{}> = () => {
         width="1400"
         decoding="async"
       />
-      <IrmaButtonStyle onClick={() => alert("irma!")}></IrmaButtonStyle>
+      <IrmaButtonStyle onClick={login}></IrmaButtonStyle>
     </PageWrapper>
   );
 };

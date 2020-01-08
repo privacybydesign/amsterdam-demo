@@ -3,7 +3,5 @@
   "uuid": "06c5a013-4e71-439a-b8da-65e35b6419f0",
   "irma": " http://b963f628.eu.ngrok.io",
   "nodeUrl": "http://localhost:8000",
-  "port": 8000,
-  "docroot": "../web",
-  "voting_options": ["community", "tech", "zen"]
+  "port": 8000
 }
