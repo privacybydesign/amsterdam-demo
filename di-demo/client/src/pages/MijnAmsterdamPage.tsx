@@ -34,6 +34,7 @@ const ScanQR: React.FC = () => {
 const MijnAmsterdamPage: React.FC = () => {
   const { theme } = useParams();
   const [authorizing, setAuthorizing] = useState(false);
+  const [authorized, setAutorized] = useState(false);
   const history = useHistory();
 
   const login = async (event: React.MouseEvent) => {
@@ -48,22 +49,38 @@ const MijnAmsterdamPage: React.FC = () => {
         const identifier = await createIrmaSession("email", "irma-qr");
         console.log("irma session created", identifier);
         setAuthorizing(false);
-        setTimeout(() => history.push(AppRoutes.HOME.path), 300);
+        setAutorized(true)
+        // setTimeout(
+        //   // history.push(AppRoutes.HOME.path), 300
+        // );
       })();
     }
   }, [authorizing]);
 
   return (
     <PageWrapper>
-      <img
-        alt="Mijn Amsterdam"
-        src={`/assets/theme/${theme}/mijnamsterdam.png`}
-        height="1471"
-        width="1400"
-        decoding="async"
-      />
-      <IrmaButtonStyle onClick={login}></IrmaButtonStyle>
+      {!authorized && (
+        <>
+          <img
+            alt="Mijn Amsterdam"
+            src={`/assets/theme/${theme}/mijnamsterdam.png`}
+            height="1471"
+            width="1400"
+            decoding="async"
+          />
+          <IrmaButtonStyle onClick={login}></IrmaButtonStyle>
+        </>
+      )}
       {authorizing && <ScanQR />}
+      {authorized && (
+        <img
+          alt="Ingelogd | Mijn Amsterdam"
+          src={`/assets/theme/${theme}/mijnamsterdam-authorized.png`}
+          height="1068"
+          width="1400"
+          decoding="async"
+        />
+      )}
     </PageWrapper>
   );
 };
