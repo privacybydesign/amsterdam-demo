@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { PageWrapper, IrmaBaseButtonStyle } from "../AppStyle";
 import { createIrmaSession } from "../services/di";
-import AppRoutes from "../AppRoutes";
 
 const IrmaButtonStyle = styled(IrmaBaseButtonStyle)`
   width: 293px;
@@ -12,6 +11,22 @@ const IrmaButtonStyle = styled(IrmaBaseButtonStyle)`
   position: absolute;
   top: 675px;
   left: 375px;
+`;
+
+const HomeButtonStyle = styled(IrmaBaseButtonStyle)`
+  width: 154px;
+  height: 67px;
+  position: absolute;
+  top: 20px;
+  left: 200px;
+`;
+
+const BackButtonStyle = styled(IrmaBaseButtonStyle)`
+  width: 354px;
+  height: 32px;
+  position: absolute;
+  top: 10px;
+  left: 855px;
 `;
 
 const ScanQRStyle = styled.div`
@@ -43,16 +58,21 @@ const MijnAmsterdamPage: React.FC = () => {
     setAuthorizing(true);
   };
 
+  const goHome = () => {
+    history.push("/");
+  };
+
+  const goBack = () => {
+    setAutorized(false);
+  };
+
   useEffect(() => {
     if (authorizing) {
       (async () => {
         const identifier = await createIrmaSession("email", "irma-qr");
         console.log("irma session created", identifier);
         setAuthorizing(false);
-        setAutorized(true)
-        // setTimeout(
-        //   // history.push(AppRoutes.HOME.path), 300
-        // );
+        setAutorized(true);
       })();
     }
   }, [authorizing]);
@@ -71,15 +91,19 @@ const MijnAmsterdamPage: React.FC = () => {
           <IrmaButtonStyle onClick={login}></IrmaButtonStyle>
         </>
       )}
+      {!authorizing && <HomeButtonStyle onClick={goHome}></HomeButtonStyle>}
       {authorizing && <ScanQR />}
       {authorized && (
-        <img
-          alt="Ingelogd | Mijn Amsterdam"
-          src={`/assets/theme/${theme}/mijnamsterdam-authorized.png`}
-          height="1068"
-          width="1400"
-          decoding="async"
-        />
+        <>
+          <img
+            alt="Ingelogd | Mijn Amsterdam"
+            src={`/assets/theme/${theme}/mijnamsterdam-authorized.png`}
+            height="1068"
+            width="1400"
+            decoding="async"
+          />
+          <BackButtonStyle onClick={goBack}></BackButtonStyle>
+        </>
       )}
     </PageWrapper>
   );
