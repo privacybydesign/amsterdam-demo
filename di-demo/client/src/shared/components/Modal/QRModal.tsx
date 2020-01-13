@@ -40,7 +40,6 @@ const QRStyle = styled.div`
   width: 500px;
   left: 50%;
   transform: translateX(-50%);
-  
 
   ${styles.TopBarStyle} h4 {
     flex-direction: row-reverse;
@@ -64,13 +63,25 @@ const QRCodeStyle = styled(Paragraph)`
   align-items: center;
   margin-bottom: 0;
 
-  & > canvas {
-    margin-bottom: 24px;
-  }
-
   & > ${styles.HeadingStyle} {
     font-size: 18px;
   }
+`;
+
+const QRCanvasStyle = styled.div`
+  position: relative;
+  width: 270px;
+  height: 270px;
+  margin: 28px 0;
+  background: url(/assets/icons/qr.svg);
+  background-size: contain;
+
+  & > canvas {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+
 `;
 
 export const QRModal = ({ onClose }) => {
@@ -117,7 +128,9 @@ export const QRModal = ({ onClose }) => {
               </Acordeon>
             </Paragraph>
             <QRCodeStyle>
-              <canvas id="irma-qr" height="150" width="150"></canvas>
+              <QRCanvasStyle>
+                <canvas id="irma-qr" height="150" width="150"></canvas>
+              </QRCanvasStyle>
               <Heading as="h4">Scan de QR-code</Heading>
             </QRCodeStyle>
           </ModalBlock>
