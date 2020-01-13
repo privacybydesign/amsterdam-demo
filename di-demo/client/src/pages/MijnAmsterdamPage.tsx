@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
+import styled from "@datapunt/asc-core";
 import { PageWrapper, IrmaBaseButtonStyle } from "../AppStyle";
 import { createIrmaSession } from "../services/di";
+import { QRModal } from "../shared/components/Modal/QRModal";
 
 const IrmaButtonStyle = styled(IrmaBaseButtonStyle)`
   width: 293px;
@@ -29,23 +30,6 @@ const BackButtonStyle = styled(IrmaBaseButtonStyle)`
   left: 855px;
 `;
 
-const ScanQRStyle = styled.div`
-  width: 500px;
-  height: 400px;
-  position: absolute;
-  top: 300px;
-  left: 375px;
-  background-color: aqua;
-`;
-
-const ScanQR: React.FC = () => {
-  return (
-    <ScanQRStyle>
-      <canvas id="irma-qr"></canvas>
-    </ScanQRStyle>
-  );
-};
-
 const MijnAmsterdamPage: React.FC = () => {
   const { theme } = useParams();
   const [authorizing, setAuthorizing] = useState(false);
@@ -69,6 +53,7 @@ const MijnAmsterdamPage: React.FC = () => {
   useEffect(() => {
     if (authorizing) {
       (async () => {
+        console.log("authorizing changed: ", authorizing);
         const identifier = await createIrmaSession("email", "irma-qr");
         console.log("irma session created", identifier);
         setAuthorizing(false);
@@ -92,7 +77,9 @@ const MijnAmsterdamPage: React.FC = () => {
         </>
       )}
       {!authorizing && <HomeButtonStyle onClick={goHome}></HomeButtonStyle>}
-      {authorizing && <ScanQR />}
+
+      {authorizing && <QRModal onClose={() => setAuthorizing(false)} />}
+
       {authorized && (
         <>
           <img

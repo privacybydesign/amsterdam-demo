@@ -13,7 +13,11 @@ let config;
 const REQUESTS = {
   EMAIL: {
     label: "Uw MyIRMA gebruikersnaam",
-    attributes: ["pbdf.pbdf.mijnirma.email", "pbdf.sidn-pbdf.irma.pseudonym"]
+    attributes: ["pbdf.pbdf.email.email", "pbdf.sidn-pbdf.irma.pseudonym"],
+    // attributes: ["pbdf.pbdf.email.email"],
+    // attributes: ["irma-demo.nijmegen.bsn.bsn"],
+    // attributes: ["pbdf.nijmegen.address.zipcode"],
+    // attributes: ["pbdf.pbdf.mobilenumber"],
   }
 };
 

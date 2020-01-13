@@ -1,6 +1,6 @@
 import React from "react";
 import { PageWrapper, IrmaBaseButtonStyle } from "../AppStyle";
-import styled from "styled-components";
+import styled from '@datapunt/asc-core';
 import { useParams } from "react-router-dom";
 
 const IrmaButtonStyle = styled(IrmaBaseButtonStyle)`

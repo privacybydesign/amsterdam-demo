@@ -1,7 +1,7 @@
 {
   "requestorname": "openstad_voting_pk",
   "uuid": "06c5a013-4e71-439a-b8da-65e35b6419f0",
-  "irma": "http://0c3d2a6b.eu.ngrok.io",
+  "irma": "https://acc.attr.auth.amsterdam.nl",
   "nodeUrl": "http://localhost:8000",
   "port": 8000
 }

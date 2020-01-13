@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import styled from "styled-components";
+import styled from '@datapunt/asc-core';
 import "./App.css";
 import { PageWrapper } from "./AppStyle";
 
