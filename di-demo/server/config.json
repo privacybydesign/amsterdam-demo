@@ -3,5 +3,6 @@
   "uuid": "06c5a013-4e71-439a-b8da-65e35b6419f0",
   "irma": "https://acc.attr.auth.amsterdam.nl",
   "nodeUrl": "http://localhost:8000",
+  "docroot": "../client",
   "port": 8000
 }
