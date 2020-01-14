@@ -4,6 +4,7 @@ const app = express();
 const cors = require("cors");
 const util = require("util");
 const fs = require("fs");
+const path = require("path");
 const uuidv5 = require("uuid/v5");
 var proxy = require("http-proxy-middleware");
 
@@ -52,9 +53,12 @@ const init = async () => {
     app.get("/getsession/email", cors(), irmaDiscloseEmail);
     app.get("/config", cors(), getConfig);
 
-    console.log(process.env.NODE_ENV);
     if (process.env.NODE_ENV === "production") {
       app.use(express.static(config.docroot));
+      app.get('*', function (req, res) {
+        console.log(req,res);
+        res.sendFile(path.join(__dirname, config.docroot, 'index.html'));
+      });
     } else {
       console.log('Using proxy to the react app for development')
       // proxy the root to the react app container in development mode

@@ -11,6 +11,7 @@ services:
             - "3000:3000"
         volumes:
             - ./client:/usr/src/app
+    
     express:
         container_name: server
         build:
@@ -28,10 +29,11 @@ services:
             - app:app
         depends_on: 
             - app
-            - irma_server
+            - irma-server
           
 
-    irma_server:
+    irma-server:
+        container_name: irma-server
         image: irmaservercontainer_irma
         ports:
             - "8088:8088"
@@ -50,5 +52,7 @@ services:
     #         - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
     #     ports:
     #         - "8000:8000"
-    
+    #     volumes:
+    #         - ./server:/server
+        
       
