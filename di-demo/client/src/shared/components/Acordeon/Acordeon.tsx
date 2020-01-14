@@ -20,7 +20,6 @@ export type Props = {
   open?: boolean
 }
 
-
 const AcordeonStyle = styled.div<Props>`
   background-color: ${themeColor("tint", "level2")};
 
@@ -49,12 +48,12 @@ export const Acordeon = ({ title, children }) => {
   return (
     <AcordeonStyle open={open}>
       <>
-        <TopBar role="button" onClick={toggleContent}>
+        <header role="button" onClick={toggleContent} >
           <Heading as="h5">
             {title}
             <Icon size={13}>{open ? <ChevronUp /> : <ChevronDown />}</Icon>
           </Heading>
-        </TopBar>
+        </header>
         {open && <AcordeonContentStyle>{children}</AcordeonContentStyle>}
       </>
     </AcordeonStyle>
