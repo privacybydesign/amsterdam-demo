@@ -13,7 +13,7 @@ let config;
 const REQUESTS = {
   EMAIL: {
     label: "Uw MyIRMA gebruikersnaam",
-    attributes: ["pbdf.pbdf.email.email", "pbdf.sidn-pbdf.irma.pseudonym"],
+    attributes: ["pbdf.pbdf.email.email", "pbdf.sidn-pbdf.irma.pseudonym"]
     // attributes: ["pbdf.pbdf.email.email"],
     // attributes: ["irma-demo.nijmegen.bsn.bsn"],
     // attributes: ["pbdf.nijmegen.address.zipcode"],
@@ -52,14 +52,20 @@ const init = async () => {
     app.get("/getsession/email", cors(), irmaDiscloseEmail);
     app.get("/config", cors(), getConfig);
 
-    // proxy the root to the react app container
-    app.use(
-      "/",
-      proxy({
-        target: "http://app:3000",
-        changeOrigin: true
-      })
-    );
+    console.log(process.env.NODE_ENV);
+    if (process.env.NODE_ENV === "production") {
+      app.use(express.static(config.docroot));
+    } else {
+      console.log('Using proxy to the react app for development')
+      // proxy the root to the react app container in development mode
+      app.use(
+        "/",
+        proxy({
+          target: "http://app:3000",
+          changeOrigin: true
+        })
+      );
+    }
 
     app.listen(config.port, () =>
       console.log(
@@ -117,7 +123,7 @@ const stats = async (req, res) => {
 };
 
 const getConfig = async (req, res) => {
-  console.log('get config', JSON.stringify(config));
+  console.log("get config", JSON.stringify(config));
   res.json(config);
 };
 

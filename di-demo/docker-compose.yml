@@ -21,7 +21,7 @@ services:
         volumes:
             - ./server:/usr/src/app
         environment: 
-            - NODE_ENV=production
+            - NODE_ENV=development
             - CONFIG=config.json
             - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
         links:
@@ -40,5 +40,15 @@ services:
             # - BASE_URL=http://63115d13.eu.ngrok.io
         
             
-
+    # app-prod:
+    #     build:
+    #         dockerfile: Dockerfile
+    #         context: ./
+    #     environment:
+    #         - NODE_ENV=production
+    #         - CONFIG=config.json
+    #         - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
+    #     ports:
+    #         - "8000:8000"
+    
       

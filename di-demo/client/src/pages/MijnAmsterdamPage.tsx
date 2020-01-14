@@ -7,11 +7,11 @@ import { createIrmaSession } from "../services/di";
 import { QRModal } from "../shared/components/Modal/QRModal";
 
 const IrmaButtonStyle = styled(IrmaBaseButtonStyle)`
-  width: 293px;
-  height: 99px;
+  width: 224px;
+  height: 61px;
   position: absolute;
-  top: 675px;
-  left: 375px;
+  top: 744px;
+  left: 684px;
 `;
 
 const HomeButtonStyle = styled(IrmaBaseButtonStyle)`
@@ -69,7 +69,7 @@ const MijnAmsterdamPage: React.FC = () => {
           <img
             alt="Mijn Amsterdam"
             src={`/assets/theme/${theme}/mijnamsterdam.png`}
-            height="1471"
+            height="1926"
             width="1400"
             decoding="async"
           />
