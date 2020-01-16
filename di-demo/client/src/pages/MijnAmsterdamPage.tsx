@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import styled from "@datapunt/asc-core";
 import { PageWrapper, IrmaBaseButtonStyle } from "../AppStyle";
 import { createIrmaSession } from "../services/di";
-import { QRModal } from "../shared/components/Modal/QRModal";
+import { QRModal, MijnAmsterdamInfo } from "../shared/components/Modal/QRModal";
 
 const IrmaButtonStyle = styled(IrmaBaseButtonStyle)`
   width: 224px;
@@ -78,7 +78,7 @@ const MijnAmsterdamPage: React.FC = () => {
       )}
       {!authorizing && <HomeButtonStyle onClick={goHome}></HomeButtonStyle>}
 
-      {authorizing && <QRModal onClose={() => setAuthorizing(false)} />}
+      {authorizing && <QRModal onClose={() => setAuthorizing(false)} Info={MijnAmsterdamInfo} />}
 
       {authorized && (
         <>

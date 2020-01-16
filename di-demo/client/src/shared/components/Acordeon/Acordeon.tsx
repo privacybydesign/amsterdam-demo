@@ -23,7 +23,9 @@ export type Props = {
 const AcordeonStyle = styled.div<Props>`
   background-color: ${themeColor("tint", "level2")};
 
-  ${styles.TopBarStyle} {
+  & > header {
+    display: flex;
+    align-items: center;
     cursor: pointer;
     height: 40px;
     padding: 0 20px;
@@ -32,6 +34,8 @@ const AcordeonStyle = styled.div<Props>`
     h5 {
       font-size: 15px;
       font-weight: ${({ open }) => (open ? 700 : 400)};
+      margin-bottom: 0;
+      flex-grow: 1;
     }
   }
 `;
