@@ -22,7 +22,7 @@ services:
         volumes:
             - ./server:/usr/src/app
         environment: 
-            - NODE_ENV=production
+            - NODE_ENV=development
             - CONFIG=config.json
             - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
         links:

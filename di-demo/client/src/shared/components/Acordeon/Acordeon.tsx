@@ -1,17 +1,7 @@
-import React, { useState } from "react";
-import {
-  styles,
-  Divider,
-  Button,
-  Modal,
-  TopBar,
-  Heading,
-  Paragraph,
-  Icon,
-  themeColor
-} from "@datapunt/asc-ui";
 import { ChevronDown, ChevronUp } from "@datapunt/asc-assets";
 import styled from "@datapunt/asc-core";
+import { Heading, Icon, styles, themeColor, TopBar } from "@datapunt/asc-ui";
+import React, { useState } from "react";
 
 const AcordeonContentStyle = styled.div`
   padding: 10px 20px 1px;
@@ -26,11 +16,16 @@ const AcordeonContentStyle = styled.div`
     text-align: center;
   }
 `;
+export type Props = {
+  open?: boolean
+}
 
-const AcordeonStyle = styled.div`
+const AcordeonStyle = styled.div<Props>`
   background-color: ${themeColor("tint", "level2")};
 
-  ${styles.TopBarStyle} {
+  & > header {
+    display: flex;
+    align-items: center;
     cursor: pointer;
     height: 40px;
     padding: 0 20px;
@@ -39,6 +34,8 @@ const AcordeonStyle = styled.div`
     h5 {
       font-size: 15px;
       font-weight: ${({ open }) => (open ? 700 : 400)};
+      margin-bottom: 0;
+      flex-grow: 1;
     }
   }
 `;
@@ -55,12 +52,12 @@ export const Acordeon = ({ title, children }) => {
   return (
     <AcordeonStyle open={open}>
       <>
-        <TopBar role="button " onClick={toggleContent}>
+        <header role="button" onClick={toggleContent} >
           <Heading as="h5">
             {title}
             <Icon size={13}>{open ? <ChevronUp /> : <ChevronDown />}</Icon>
           </Heading>
-        </TopBar>
+        </header>
         {open && <AcordeonContentStyle>{children}</AcordeonContentStyle>}
       </>
     </AcordeonStyle>

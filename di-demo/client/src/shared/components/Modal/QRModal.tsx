@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 import {
   styles,
   Divider,
@@ -36,11 +36,10 @@ const QRStyle = styled.div`
   padding: 10px 0;
   position: absolute;
   background-color: white;
-  top: 300px;
+  top: 10%;
   width: 500px;
   left: 50%;
   transform: translateX(-50%);
-  
 
   ${styles.TopBarStyle} h4 {
     flex-direction: row-reverse;
@@ -64,16 +63,83 @@ const QRCodeStyle = styled(Paragraph)`
   align-items: center;
   margin-bottom: 0;
 
-  & > canvas {
-    margin-bottom: 24px;
-  }
-
   & > ${styles.HeadingStyle} {
     font-size: 18px;
   }
 `;
 
-export const QRModal = ({ onClose }) => {
+const QRCanvasStyle = styled.div`
+  position: relative;
+  width: 270px;
+  height: 270px;
+  margin: 28px 0;
+  background: url(/assets/icons/qr.svg);
+  background-size: contain;
+
+  & > canvas {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+`;
+
+export const MijnAmsterdamInfo = () => {
+  return (
+    <>
+      <Heading as="h2">Login bij Mijn Amsterdam met IRMA</Heading>
+      <Paragraph>
+        Om gebruik te kunnen maken van Mijn Amsterdam, moet u zich bekend maken
+        met
+        <ul>
+          <li>Uw Voornaam</li>
+          <li>Uw Achternaam</li>
+          <li>Uw Burgerservicenummer (BSN)</li>
+        </ul>
+        <Acordeon title="Waarom worden deze gegevens gevraagd?">
+          <Paragraph>
+            <Heading as="h5">Voornaam</Heading>
+            De gemeente wilt u bij uw voornaam aanspreken in Mijn Amsterdam.
+          </Paragraph>
+          <Paragraph>
+            <Heading as="h5">Achternaam</Heading>
+            De gemeente wilt u bij uw achternaam aanspreken in Mijn Amsterdam.
+          </Paragraph>
+          <Paragraph>
+            <Heading as="h5">Burgerservicenummer (BSN)</Heading>
+            De gemeente wilt zeker weten dat u het bent.
+          </Paragraph>
+        </Acordeon>
+      </Paragraph>
+    </>
+  );
+};
+
+export const OpeStadInfo = () => {
+  return (
+    <>
+      <Heading as="h2">Stuur uw keuze met IRMA</Heading>
+      <Paragraph>
+        Om uw stem uit te brengen, moet u zich bekend maken met:
+        <ul>
+          <li>Postcode</li>
+        </ul>
+        <Acordeon title="Waarom worden deze gegevens gevraagd?">
+          <Paragraph>
+            <Heading as="h5">Postcode</Heading>
+            De gemeente wilt zeker weten dat u in Amsterdam woont.
+          </Paragraph>
+        </Acordeon>
+      </Paragraph>
+    </>
+  );
+};
+
+interface Props {
+  onClose: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  Info: React.FC;
+}
+
+export const QRModal: React.FC<Props> = ({ onClose, Info }) => {
   return (
     <CompactThemeProvider>
       <QRWrapperStyle>
@@ -90,34 +156,11 @@ export const QRModal = ({ onClose }) => {
             </Heading>
           </TopBar>
           <ModalBlock>
-            <Heading as="h2">Login bij Mijn Amsterdam met IRMA</Heading>
-            <Paragraph>
-              Om gebruik te kunnen maken van Mijn Amsterdam, moet u zich bekend
-              maken met
-              <ul>
-                <li>Uw Voornaam</li>
-                <li>Uw Achternaam</li>
-                <li>Uw Burgerservicenummer (BSN)</li>
-              </ul>
-              <Acordeon title="Waarom worden deze gegevens gevraagd?">
-                <Paragraph>
-                  <Heading as="h5">Voornaam</Heading>
-                  De gemeente wilt u bij uw voornaam aanspreken in Mijn
-                  Amsterdam.
-                </Paragraph>
-                <Paragraph>
-                  <Heading as="h5">Achternaam</Heading>
-                  De gemeente wilt u bij uw achternaam aanspreken in Mijn
-                  Amsterdam.
-                </Paragraph>
-                <Paragraph>
-                  <Heading as="h5">Burgerservicenummer (BSN)</Heading>
-                  De gemeente wilt zeker weten dat u het bent.
-                </Paragraph>
-              </Acordeon>
-            </Paragraph>
+            <Info />
             <QRCodeStyle>
-              <canvas id="irma-qr" height="150" width="150"></canvas>
+              <QRCanvasStyle>
+                <canvas id="irma-qr" height="150" width="150"></canvas>
+              </QRCanvasStyle>
               <Heading as="h4">Scan de QR-code</Heading>
             </QRCodeStyle>
           </ModalBlock>

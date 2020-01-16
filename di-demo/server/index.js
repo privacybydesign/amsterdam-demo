@@ -14,11 +14,11 @@ let config;
 const REQUESTS = {
   EMAIL: {
     label: "Uw MyIRMA gebruikersnaam",
-    attributes: ["pbdf.pbdf.email.email", "pbdf.sidn-pbdf.irma.pseudonym"],
+    attributes: ["pbdf.sidn-pbdf.irma.pseudonym"]
     // attributes: ["pbdf.pbdf.email.email"],
-    // attributes: ["irma-demo.nijmegen.bsn.bsn"],
-    // attributes: ["pbdf.nijmegen.address.zipcode"],
-    // attributes: ["pbdf.pbdf.mobilenumber"],
+    // attributes: ["pbdf.gemeente.personalData.bsn"],
+    // attributes: ["pbdf.gemeente.address.zipcode"],
+    // attributes: ["pbdf.pbdf.mobilenumber.mobilenumber"],
   }
 };
 
@@ -127,7 +127,7 @@ const stats = async (req, res) => {
 };
 
 const getConfig = async (req, res) => {
-  console.log('get config', JSON.stringify(config));
+  console.log("get config", JSON.stringify(config));
   res.json(config);
 };
 
