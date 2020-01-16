@@ -1,7 +1,14 @@
 /.idea
+node_modules
 /voting_node/server/node_modules
 /dev/db/data
+/dev/keypair
 /voting_node/server/config-dev.json
 /node/node_modules
 logs/
 /node/.node-persist
+/dev/keypair
+build
+/.vscode/
+/voting_node/di-demo/node_modules/
+/voting_node/di-demo/build/

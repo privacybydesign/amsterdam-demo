@@ -1,0 +1,58 @@
+# development file created after:
+#    https://dev.to/numtostr/running-react-and-node-js-in-one-shot-with-docker-3o09
+version: "3.5"
+services:
+    app:
+        container_name: web
+        build:
+            context: ./client
+            dockerfile: Dockerfile
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./client:/usr/src/app
+    
+    express:
+        container_name: server
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./server:/usr/src/app
+        environment: 
+            - NODE_ENV=development
+            - CONFIG=config.json
+            - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
+        links:
+            - app:app
+        depends_on: 
+            - app
+            - irma-server
+          
+
+    irma-server:
+        container_name: irma-server
+        image: irmaservercontainer_irma
+        ports:
+            - "8088:8088"
+        environment:
+            - BASE_URL=https://acc.attr.auth.amsterdam.nl
+            # - BASE_URL=http://63115d13.eu.ngrok.io
+        
+            
+    # app-prod:
+    #     build:
+    #         dockerfile: Dockerfile
+    #         context: ./
+    #     environment:
+    #         - NODE_ENV=production
+    #         - CONFIG=config.json
+    #         - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
+    #     ports:
+    #         - "8000:8000"
+    #     volumes:
+    #         - ./server:/server
+        
+      
