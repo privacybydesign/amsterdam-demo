@@ -33,15 +33,15 @@ const HomeButtonStyle = styled(IrmaBaseButtonStyle)`
 
 const OpenStadPage: React.FC<{}> = () => {
   const { theme } = useParams();
-  const [authorizing, setAuthorizing] = useState(false);
-  const [authorized, setAutorized] = useState(false);
+  const [voting, setVoting] = useState(false);
+  const [voted, setVoted] = useState(false);
   const history = useHistory();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const vote = async (event: React.MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
-    setAuthorizing(true);
+    setVoting(true);
   };
 
   const goHome = () => {
@@ -49,20 +49,18 @@ const OpenStadPage: React.FC<{}> = () => {
   };
 
   useEffect(() => {
-    if (authorizing) {
+    if (voting) {
       (async () => {
-        console.log("voting changed: ", authorizing);
         const identifier = await createIrmaSession("email", "irma-qr");
-        console.log("irma session created", identifier);
-        setAuthorizing(false);
-        setAutorized(true);
+        setVoting(false);
+        setVoted(true);
       })();
     }
-  }, [authorizing]);
+  }, [voting]);
 
   return (
     <PageWrapper>
-      {!authorized && (
+      {!voted && (
         <>
           <img
             alt="Open Stad"
@@ -96,9 +94,21 @@ const OpenStadPage: React.FC<{}> = () => {
         </>
       )}
 
-      {!authorizing && <HomeButtonStyle onClick={goHome}></HomeButtonStyle>}
-      {authorizing && selectedOption && (
-        <QRModal onClose={() => setAuthorizing(false)} Info={OpeStadInfo} />
+      {!voting && <HomeButtonStyle onClick={goHome}></HomeButtonStyle>}
+      {voting && selectedOption && (
+        <QRModal onClose={() => setVoting(false)} Info={OpeStadInfo} />
+      )}
+
+      {voted && (
+        <>
+          <img
+            alt="Openstad"
+            src={`/assets/theme/${theme}/openstad-voted.png`}
+            height="1119"
+            width="1400"
+            decoding="async"
+          />
+        </>
       )}
     </PageWrapper>
   );
