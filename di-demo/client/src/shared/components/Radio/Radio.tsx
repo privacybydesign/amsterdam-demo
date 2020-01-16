@@ -1,70 +1,87 @@
-import React, { useState, useContext, useMemo, useEffect } from "react";
+import React, { useState, useContext, useMemo, useEffect } from 'react'
 import RadioStyle, {
   RadioWrapperStyle,
   RadioCircleStyle,
   Props,
-  PositionProps
-} from "./RadioStyle";
-import RadioContext from "./RadioContext";
+} from './RadioStyle'
+import RadioContext from './RadioContext'
+import LabelContext from '../Label/LabelContext'
 
-const Radio: React.FC<Props &
-  PositionProps &
-  React.HTMLAttributes<HTMLDivElement>> = ({
+const Radio: React.FC<Props & React.HTMLAttributes<HTMLDivElement>> = ({
   className,
   onChange,
+  variant,
+  disabled,
   id,
   checked: defaultChecked,
+  error: errorProp,
   value,
-  top,
-  left,
   ...otherProps
 }) => {
-  const [focus, setFocus] = useState(false);
-  const { setChecked, checked: checkedProp, name } = useContext(RadioContext);
-  const checked = checkedProp === id;
+  const [focus, setFocus] = useState(false)
+  const {
+    setChecked,
+    checked: checkedProp,
+    name,
+    error: errorGroup,
+  } = useContext(RadioContext)
+  const { setActive } = useContext(LabelContext)
+  const checked = checkedProp === id
+  const error = errorProp || errorGroup || false
+
+  // Make the label aware of changes in the checked state
+  useMemo(() => {
+    setActive(checked)
+  }, [checked, setActive])
 
   // Pass default `checked` to RadioGroup on load and when `id` changes
   useEffect(() => {
-    if (defaultChecked) setChecked(id);
-  }, [id]);
+    if (defaultChecked) setChecked(id)
+  }, [id])
 
   return (
     <RadioWrapperStyle
       {...{
         focus,
+        error,
         className,
+        variant,
+        disabled,
         checked,
-        top,
-        left
       }}
+      aria-disabled={disabled}
     >
       <RadioCircleStyle
         {...{
+          error,
+          disabled,
           focus,
-          checked
+          variant,
+          checked,
         }}
       />
       <RadioStyle
         {...{
           ...otherProps,
+          disabled,
           id,
           name,
           value,
-          checked
+          checked,
         }}
         onFocus={() => {
-          setFocus(true);
+          setFocus(true)
         }}
         onBlur={() => setFocus(false)}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           if (onChange) {
-            onChange(e);
+            onChange(e)
           }
-          setChecked(e.target.id);
+          setChecked(e.target.id)
         }}
       />
     </RadioWrapperStyle>
-  );
-};
+  )
+}
 
-export default Radio;
+export default Radio

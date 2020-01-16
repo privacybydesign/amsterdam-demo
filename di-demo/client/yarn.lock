@@ -886,6 +886,15 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
+"@datapunt/asc-assets@0.17.8-alpha.22":
+  version "0.17.8-alpha.22"
+  resolved "https://registry.yarnpkg.com/@datapunt/asc-assets/-/asc-assets-0.17.8-alpha.22.tgz#40d117318b7e103035cfbf76def7a3531d5f2cc0"
+  integrity sha512-29e8pqeDgwhrrNgFIvQWpMKomVNBY6BZZFaVCe+URgq04mB+morXQ7WndUbDERVjbM0fU33adE6t9gZ9rTeYqQ==
+  dependencies:
+    "@svgr/cli" "^4.3.2"
+    "@svgr/core" "^4.3.2"
+    svgo "^1.3.0"
+
 "@datapunt/asc-assets@^0.17.7":
   version "0.17.7"
   resolved "https://registry.yarnpkg.com/@datapunt/asc-assets/-/asc-assets-0.17.7.tgz#17d1e8e3f21971ddd8f9bb41ce6b59ee73a52ebe"
@@ -895,6 +904,13 @@
     "@svgr/core" "^4.3.2"
     svgo "^1.3.0"
 
+"@datapunt/asc-core@0.17.8-alpha.22":
+  version "0.17.8-alpha.22"
+  resolved "https://registry.yarnpkg.com/@datapunt/asc-core/-/asc-core-0.17.8-alpha.22.tgz#38b33cba5cbf5490e0b56e27bd64e413c2cbdbbe"
+  integrity sha512-cmwPgohhitYD2AyaMKG8+7h1UlQ4XgI9BaBKSJ4h/h4EvCQdhWUxGxIRGI4TjOqhJaEmP/86z4mJJaTLkLqGKA==
+  dependencies:
+    styled-components "^4.3.2"
+
 "@datapunt/asc-core@^0.17.7":
   version "0.17.7"
   resolved "https://registry.yarnpkg.com/@datapunt/asc-core/-/asc-core-0.17.7.tgz#142da00038582d0ca9b211a38d2eb21ffc7f78c6"
@@ -902,10 +918,10 @@
   dependencies:
     styled-components "^4.3.2"
 
-"@datapunt/asc-ui@^0.17.7":
-  version "0.17.7"
-  resolved "https://registry.yarnpkg.com/@datapunt/asc-ui/-/asc-ui-0.17.7.tgz#81ca45ed34f302fc8554426f9a5b5f1fc7d1f016"
-  integrity sha512-OeDwZ5pC+EHBd3RzGyBaTLLKIfWesAfNhb9jEbNiiRRJwYxhYc/fSF3SiXRnQjMkMT1CdijBgyzUfX/jd5CaSw==
+"@datapunt/asc-ui@0.17.8-alpha.29":
+  version "0.17.8-alpha.29"
+  resolved "https://registry.yarnpkg.com/@datapunt/asc-ui/-/asc-ui-0.17.8-alpha.29.tgz#c3a6540b88bf755c19b1f0be8ded52bfed844aca"
+  integrity sha512-mPwh7gKaCnC91ODAQFUad8wZi3gNVk8l+a7aCvNX7BzkKdudgQUDst/9wanh9bYNPh+Yc2JdIlWiUvsGeFNTxA==
   dependencies:
     "@datapunt/asc-assets" "^0.17.7"
     "@datapunt/asc-core" "^0.17.7"

@@ -4,7 +4,7 @@ import styled, { css } from "@datapunt/asc-core";
 import { useParams, useHistory } from "react-router-dom";
 import { createIrmaSession } from "../services/di";
 import { QRModal, OpeStadInfo } from "../shared/components/Modal/QRModal";
-import Radio, { RadioGroup } from "../shared/components/Radio";
+import Radio, { RadioGroup } from "../shared/components/RadioOS";
 
 const IrmaButtonStyle = styled(IrmaBaseButtonStyle)<{ isActive: boolean }>`
   width: 224px;
