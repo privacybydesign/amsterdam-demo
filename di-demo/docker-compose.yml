@@ -34,7 +34,7 @@ services:
 
     irma-server:
         container_name: irma-server
-        image: irmaservercontainer_irma
+        image: diirmaserver_irma
         ports:
             - "8088:8088"
         environment:
