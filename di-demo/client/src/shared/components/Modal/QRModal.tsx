@@ -4,7 +4,6 @@ import {
   Button,
   TopBar,
   Heading,
-  Paragraph,
   CompactThemeProvider
 } from "@datapunt/asc-ui";
 import { Close, ChevronDown, ChevronUp } from "@datapunt/asc-assets";
@@ -16,18 +15,6 @@ const ModalBlock = styled.div`
   padding: 0 40px;
   margin: 15px 0;
   text-align: left;
-
-  & > ${styles.ParagraphStyle} {
-    font-size: 16px;
-
-    ul {
-      padding-left: 30px;
-
-      li {
-        line-height: 30px;
-      }
-    }
-  }
 `;
 const QRStyle = styled.div`
   padding: 10px 0;

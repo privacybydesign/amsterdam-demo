@@ -1,27 +1,24 @@
 import React from "react";
-import {
-  Heading,
-  Paragraph,
-} from "@datapunt/asc-ui";
 import { Acordeon } from "../../shared/components/Acordeon/Acordeon";
+import styled from "@datapunt/asc-core";
+import AttributeList from "../../shared/components/AttributeList";
+import AttributeInfo from "../../shared/components/AttributeInfo";
+
+const OpeStadInfoStyle = styled.div``;
 
 const OpeStadInfo = () => {
   return (
-    <>
-      <Heading as="h2">Stuur uw keuze met IRMA</Heading>
-      <Paragraph>
+    <OpeStadInfoStyle>
+      <AttributeInfo title="Stuur uw keuze met IRMA" headingType="h2">
         Om uw stem uit te brengen, moet u zich bekend maken met:
-      </Paragraph>
-      <ul>
-        <li>Postcode</li>
-      </ul>
+      </AttributeInfo>
+      <AttributeList values={["Postcode"]}></AttributeList>
       <Acordeon title="Waarom worden deze gegevens gevraagd?">
-        <Heading as="h5">Postcode</Heading>
-        <Paragraph>
+        <AttributeInfo title="Postcode">
           De gemeente wilt zeker weten dat u in Amsterdam woont.
-        </Paragraph>
+        </AttributeInfo>
       </Acordeon>
-    </>
+    </OpeStadInfoStyle>
   );
 };
 
