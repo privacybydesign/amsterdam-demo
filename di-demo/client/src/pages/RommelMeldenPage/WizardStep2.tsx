@@ -48,9 +48,7 @@ const StyledTopBar = styled(TopBar)`
 
 const WizardStep2: React.FC = () => {
   const { theme } = useParams();
-  const { state } = useContext(RommelMeldenContext);
-
-  const { step } = state;
+  const { step } = useContext(RommelMeldenContext);
 
   return step === 2 ? (
     <PageWrapper maxWidth={360}>

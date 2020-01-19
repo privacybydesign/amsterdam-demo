@@ -48,16 +48,7 @@ const StyledTopBar = styled(TopBar)`
 
 const WizardStep1: React.FC = () => {
   const { theme } = useParams();
-  const { state, dispatch } = useContext(RommelMeldenContext);
-  const { step } = state;
-
-  const nextStep:
-    | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
-    | undefined = event => {
-    event.preventDefault();
-    event.stopPropagation();
-    dispatch({ type: SET_STEP, payload: 2 });
-  };
+  const { step, gotoStep } = useContext(RommelMeldenContext);
 
   return step === 1 ? (
     <PageWrapper maxWidth={360}>
@@ -105,7 +96,7 @@ const WizardStep1: React.FC = () => {
             variant="secondary"
             taskflow
             aria-label="Volgende"
-            onClick={nextStep}
+            onClick={e => gotoStep(e, 2)}
           >
             Volgende
           </Button>

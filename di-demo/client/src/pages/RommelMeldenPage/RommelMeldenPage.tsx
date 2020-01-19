@@ -1,23 +1,17 @@
-import React, { useReducer, useMemo } from "react";
+import React from "react";
 import { CompactThemeProvider } from "@datapunt/asc-ui";
 import WizardStep1 from "./WizardStep1";
-import RommelMeldenContext, { rommelMeldenReducer } from "./RomelMeldenContext";
+import RommelMeldenContext from "./RomelMeldenContext";
 import WizardStep2 from "./WizardStep2";
 import WizardStep3 from "./WizardStep3";
 import WizardStep4 from "./WizardStep4";
+import useWizardLogic from "./useWizardLogic";
 
 const RommelMeldenPage: React.FC<{}> = () => {
-  const [state, dispatch] = useReducer(rommelMeldenReducer, {step: 4});
-
-  const contextValue = useMemo(() => {
-    return { state, dispatch };
-  }, [state, dispatch]);
-  
-  console.log(contextValue.state.step);
-
+  const { step, gotoStep } = useWizardLogic();
   return (
     <CompactThemeProvider>
-      <RommelMeldenContext.Provider value={contextValue}>
+      <RommelMeldenContext.Provider value={{ step, gotoStep }}>
         <WizardStep1 />
         <WizardStep2 />
         <WizardStep3 />

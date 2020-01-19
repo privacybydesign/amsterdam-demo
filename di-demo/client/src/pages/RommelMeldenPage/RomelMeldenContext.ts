@@ -1,14 +1,16 @@
 import React from "react";
 
 interface StateType {
-  state: any;
-  dispatch: any;
+  step: number;
+  gotoStep: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    step: number
+  ) => void;
 }
 
-const defaultState: StateType = { state: {}, dispatch: (): void => {} };
+const defaultState: StateType = { step: 1, gotoStep: (): void => {} };
 
 const RommelMeldenContext = React.createContext<StateType>(defaultState);
-
 
 export const SET_STEP = 'SET_STEP';
 
