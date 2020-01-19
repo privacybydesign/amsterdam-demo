@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { PageWrapper, IrmaBaseButtonStyle } from "../AppStyle";
-import styled, { css } from "@datapunt/asc-core";
+import { PageWrapper } from "../../AppStyle";
 import { useParams, useHistory } from "react-router-dom";
-import { createIrmaSession } from "../services/di";
-import { QRModal, OpeStadInfo } from "../shared/components/Modal/QRModal";
-import Radio, { RadioGroup } from "../shared/components/RadioOS";
-import { ButtonStyleProps } from "../shared/components/Button/ButtonStyle";
-import Button from "../shared/components/Button/Button";
+import { createIrmaSession } from "../../services/di";
+import { QRModal} from "../../shared/components/Modal/QRModal";
+import Radio, { RadioGroup } from "../../shared/components/RadioOS";
+import { ButtonStyleProps } from "../../shared/components/Button/ButtonStyle";
+import Button from "../../shared/components/Button/Button";
+import OpeStadInfo from './OpenStadInfo'
 
 const loginButtonPosition: ButtonStyleProps = {
   width: 224,

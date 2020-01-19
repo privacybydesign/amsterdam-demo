@@ -1,13 +1,10 @@
 import React, { useState, Component } from "react";
 import {
   styles,
-  Divider,
   Button,
-  Modal,
   TopBar,
   Heading,
   Paragraph,
-  Icon,
   CompactThemeProvider
 } from "@datapunt/asc-ui";
 import { Close, ChevronDown, ChevronUp } from "@datapunt/asc-assets";
@@ -57,7 +54,7 @@ const QRWrapperStyle = styled.div`
   z-index: 10;
 `;
 
-const QRCodeStyle = styled(Paragraph)`
+const QRCodeStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,57 +79,6 @@ const QRCanvasStyle = styled.div`
     left: 20px;
   }
 `;
-
-export const MijnAmsterdamInfo = () => {
-  return (
-    <>
-      <Heading as="h2">Login bij Mijn Amsterdam met IRMA</Heading>
-      <Paragraph>
-        Om gebruik te kunnen maken van Mijn Amsterdam, moet u zich bekend maken
-        met
-        <ul>
-          <li>Uw Voornaam</li>
-          <li>Uw Achternaam</li>
-          <li>Uw Burgerservicenummer (BSN)</li>
-        </ul>
-        <Acordeon title="Waarom worden deze gegevens gevraagd?">
-          <Paragraph>
-            <Heading as="h5">Voornaam</Heading>
-            De gemeente wilt u bij uw voornaam aanspreken in Mijn Amsterdam.
-          </Paragraph>
-          <Paragraph>
-            <Heading as="h5">Achternaam</Heading>
-            De gemeente wilt u bij uw achternaam aanspreken in Mijn Amsterdam.
-          </Paragraph>
-          <Paragraph>
-            <Heading as="h5">Burgerservicenummer (BSN)</Heading>
-            De gemeente wilt zeker weten dat u het bent.
-          </Paragraph>
-        </Acordeon>
-      </Paragraph>
-    </>
-  );
-};
-
-export const OpeStadInfo = () => {
-  return (
-    <>
-      <Heading as="h2">Stuur uw keuze met IRMA</Heading>
-      <Paragraph>
-        Om uw stem uit te brengen, moet u zich bekend maken met:
-        <ul>
-          <li>Postcode</li>
-        </ul>
-        <Acordeon title="Waarom worden deze gegevens gevraagd?">
-          <Paragraph>
-            <Heading as="h5">Postcode</Heading>
-            De gemeente wilt zeker weten dat u in Amsterdam woont.
-          </Paragraph>
-        </Acordeon>
-      </Paragraph>
-    </>
-  );
-};
 
 interface Props {
   onClose: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;

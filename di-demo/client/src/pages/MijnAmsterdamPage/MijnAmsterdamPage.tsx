@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
-import { PageWrapper } from "../AppStyle";
-import { createIrmaSession } from "../services/di";
-import { QRModal, MijnAmsterdamInfo } from "../shared/components/Modal/QRModal";
-import { ButtonStyleProps } from "../shared/components/Button/ButtonStyle";
-import Button from "../shared/components/Button/Button";
+import { PageWrapper } from "../../AppStyle";
+import { createIrmaSession } from "../../services/di";
+import { QRModal } from "../../shared/components/Modal/QRModal";
+import { ButtonStyleProps } from "../../shared/components/Button/ButtonStyle";
+import Button from "../../shared/components/Button/Button";
+import MijnAmsterdamInfo from './MijnAmsterdamInfo'
 
 const loginButtonPosition: ButtonStyleProps = {
   width: 224,

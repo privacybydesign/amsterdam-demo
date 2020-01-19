@@ -5,7 +5,6 @@ import Radio, { RadioGroup } from "../../shared/components/Radio";
 import TextArea from "../../shared/components/TextArea";
 import Label from "../../shared/components/Label";
 import {
-  Paragraph,
   Heading,
   styles,
   themeSpacing,
