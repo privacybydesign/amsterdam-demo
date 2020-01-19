@@ -5,31 +5,22 @@ import { useParams, useHistory } from "react-router-dom";
 import { createIrmaSession } from "../services/di";
 import { QRModal, OpeStadInfo } from "../shared/components/Modal/QRModal";
 import Radio, { RadioGroup } from "../shared/components/RadioOS";
+import { ButtonStyleProps } from "../shared/components/Button/ButtonStyle";
+import Button from "../shared/components/Button/Button";
 
-const IrmaButtonStyle = styled(IrmaBaseButtonStyle)<{ isActive: boolean }>`
-  width: 224px;
-  height: 61px;
-  position: absolute;
-  top: 966px;
-  left: 586px;
+const loginButtonPosition: ButtonStyleProps = {
+  width: 224,
+  height: 61,
+  top: 966,
+  left: 586
+};
 
-  ${({ isActive }) =>
-    !isActive &&
-    css`
-      background-color: rgba(255, 255, 255, 0.5);
-      &:hover {
-        cursor: not-allowed;
-      }
-    `}
-`;
-
-const HomeButtonStyle = styled(IrmaBaseButtonStyle)`
-  width: 154px;
-  height: 67px;
-  position: absolute;
-  top: 20px;
-  left: 200px;
-`;
+const homeButtonPosition: ButtonStyleProps = {
+  width: 154,
+  height: 67,
+  top: 20,
+  left: 200
+};
 
 const OpenStadPage: React.FC<{}> = () => {
   const { theme } = useParams();
@@ -69,10 +60,11 @@ const OpenStadPage: React.FC<{}> = () => {
             width="1400"
             decoding="async"
           />
-          <IrmaButtonStyle
+          <Button
             onClick={vote}
-            isActive={selectedOption !== null}
-          ></IrmaButtonStyle>
+            inactive={selectedOption == null}
+            {...loginButtonPosition}
+          ></Button>
           <RadioGroup name="vote">
             <Radio
               id="brug"
@@ -94,7 +86,7 @@ const OpenStadPage: React.FC<{}> = () => {
         </>
       )}
 
-      {!voting && <HomeButtonStyle onClick={goHome}></HomeButtonStyle>}
+      {!voting && <Button onClick={goHome} {...homeButtonPosition}></Button>}
       {voting && selectedOption && (
         <QRModal onClose={() => setVoting(false)} Info={OpeStadInfo} />
       )}
