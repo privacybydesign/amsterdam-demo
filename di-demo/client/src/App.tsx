@@ -32,14 +32,6 @@ const Spacer = styled.div<{ height: number }>`
 const themeName = "amsterdam";
 const App: React.FC = () => {
 
-  useEffect(() => {
-    (async () => {
-      const response = await fetch("http://localhost:8000/stats");
-      const data = await response.json();
-      console.log("got", data);
-    })();
-  }, []);
-
   return (
     <MainContainerStyle>
       <PageWrapper>

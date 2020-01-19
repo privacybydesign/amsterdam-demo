@@ -3,7 +3,6 @@ import { styles } from "@datapunt/asc-ui";
 import styled from "@datapunt/asc-core";
 
 const { InputStyle } = styles;
-console.log(InputStyle.componentStyle.rules);
 interface Props {
   rows?: number;
 };

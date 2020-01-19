@@ -53,9 +53,7 @@ const MijnAmsterdamPage: React.FC = () => {
   useEffect(() => {
     if (authorizing) {
       (async () => {
-        console.log("authorizing changed: ", authorizing);
         const identifier = await createIrmaSession("email", "irma-qr");
-        console.log("irma session created", identifier);
         setAuthorizing(false);
         setAutorized(true);
       })();
