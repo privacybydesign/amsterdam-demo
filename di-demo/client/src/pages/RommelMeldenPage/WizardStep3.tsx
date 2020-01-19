@@ -1,54 +1,48 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { PageWrapper } from "../../AppStyle";
 import { useParams } from "react-router-dom";
 import Radio, { RadioGroup } from "../../shared/components/Radio";
 import TextArea from "../../shared/components/TextArea";
 import Label from "../../shared/components/Label";
-import {
-  Paragraph,
-  Heading,
-  styles,
-  themeSpacing,
-  TopBar,
-  Button,
-  themeColor
-} from "@datapunt/asc-ui";
-import styled from "@datapunt/asc-core";
 import RommelMeldenContext from "./RomelMeldenContext";
+import { ButtonStyleProps } from "../../shared/components/Button/ButtonStyle";
+import Button from "../../shared/components/Button/Button";
+import { createIrmaSession } from "../../services/di";
 
-interface ParagraphProps {
-  maxWidth?: number;
-}
+const loginButtonPosition: ButtonStyleProps = {
+  width: 224,
+  height: 65,
+  top: 597,
+  left: 15
+};
 
-const StyledParagraph = styled(Paragraph)<ParagraphProps>`
-  max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}px`};
-  margin-bottom: ${themeSpacing(9)};
-
-  & > ${styles.HeadingStyle} {
-    text-align: left;
-    margin-bottom: ${themeSpacing(1)};
-  }
-`;
-
-const FormStyle = styled.form`
-  position: absolute;
-  top: 715px;
-  /* this forces covering the image items */
-  background-color: rgba(255, 255, 255, 1);
-  width: 360px;
-  margin: ${themeSpacing(2)};
-`;
-
-const StyledTopBar = styled(TopBar)`
-  margin: ${themeSpacing(16, 6, 4, 0)};
-  background-color: ${themeColor("tint", "level3")};
-  flex-direction: row-reverse;
-  padding: ${themeSpacing(1)};
-`;
+const detailButtonPosition: ButtonStyleProps = {
+  width: 348,
+  height: 218,
+  top: 320,
+  left: 6
+};
 
 const WizardStep3: React.FC = () => {
   const { theme } = useParams();
-  const { step } = useContext(RommelMeldenContext);
+  const { step, gotoStep } = useContext(RommelMeldenContext);
+  const [sending, setSending] = useState(false);
+
+  const send = async (event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setSending(true);
+  };
+
+  useEffect(() => {
+    if (sending) {
+      (async () => {
+        const identifier = await createIrmaSession("email", "irma-qr");
+        setSending(false);
+        gotoStep(null, 4);
+      })();
+    }
+  }, [sending]);
 
   return step === 3 ? (
     <PageWrapper maxWidth={360}>
@@ -59,6 +53,9 @@ const WizardStep3: React.FC = () => {
         width="360"
         decoding="async"
       />
+      <Button onClick={e => gotoStep(e, 2)} {...detailButtonPosition}></Button>
+      <Button onClick={send} {...loginButtonPosition}></Button>
+      {sending && <canvas id="irma-qr"></canvas>}
     </PageWrapper>
   ) : null;
 };

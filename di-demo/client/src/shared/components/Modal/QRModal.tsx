@@ -159,7 +159,7 @@ export const QRModal: React.FC<Props> = ({ onClose, Info }) => {
             <Info />
             <QRCodeStyle>
               <QRCanvasStyle>
-                <canvas id="irma-qr" height="150" width="150"></canvas>
+                <canvas id="irma-qr"></canvas>
               </QRCanvasStyle>
               <Heading as="h4">Scan de QR-code</Heading>
             </QRCodeStyle>
@@ -169,39 +169,3 @@ export const QRModal: React.FC<Props> = ({ onClose, Info }) => {
     </CompactThemeProvider>
   );
 };
-
-// const QRModalASC = ({ open, handleClose, title, body }) => (
-//   <Modal
-//     aria-labelledby="feedback"
-//     aria-describedby="feedback"
-//     open={open}
-//     onClose={handleClose}
-//     hideOverFlow={false}
-//   >
-//     <TopBar>
-//       <Heading style={{ flexGrow: 1 }} as="h4">
-//         {title}
-//         <Button
-//           variant="blank"
-//           type="button"
-//           size={30}
-//           onClick={handleClose}
-//           icon={<Close />}
-//         />
-//       </Heading>
-//     </TopBar>
-//     <Divider />
-//     <ModalBlock>
-//       {/* <Paragraph className="infomodal__body" dangerouslySetInnerHTML={{ __html: body }} /> */}
-//       <ScanQR />
-//     </ModalBlock>
-//   </Modal>
-// );
-
-// QRModalASC.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   body: PropTypes.string.isRequired,
-//   ...modalPropTypes
-// };
-
-// export default withModalBehaviour(QRModalASC);

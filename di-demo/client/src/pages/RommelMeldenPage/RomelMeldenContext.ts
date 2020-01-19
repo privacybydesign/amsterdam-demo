@@ -3,7 +3,7 @@ import React from "react";
 interface StateType {
   step: number;
   gotoStep: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
     step: number
   ) => void;
 }

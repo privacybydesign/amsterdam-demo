@@ -14,7 +14,7 @@ import {
   themeColor
 } from "@datapunt/asc-ui";
 import styled from "@datapunt/asc-core";
-import RommelMeldenContext, { SET_STEP } from "./RomelMeldenContext";
+import RommelMeldenContext from "./RomelMeldenContext";
 
 interface ParagraphProps {
   maxWidth?: number;
