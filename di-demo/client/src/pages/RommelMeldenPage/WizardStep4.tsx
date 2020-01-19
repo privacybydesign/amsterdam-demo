@@ -7,7 +7,7 @@ import { ButtonStyleProps } from "../../shared/components/Button/ButtonStyle";
 
 const homeButtonPosition: ButtonStyleProps = {
   width: 360,
-  height: 620,
+  height: 112,
   top: 0,
   left: 0
 };

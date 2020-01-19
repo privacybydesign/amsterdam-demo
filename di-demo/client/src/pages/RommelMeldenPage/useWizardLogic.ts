@@ -1,8 +1,10 @@
 import React, { useReducer, useMemo, useCallback } from "react";
-import { rommelMeldenReducer, SET_STEP } from "./RomelMeldenContext";
+import { IStateType, rommelMeldenReducer, SET_STEP } from "./RomelMeldenContext";
 
-const useWizardLogic = () => {
-  const [state, dispatch] = useReducer(rommelMeldenReducer, { step: 4 });
+type useWizardLogicType = () => IStateType;
+
+const useWizardLogic: useWizardLogicType = () => {
+  const [state, dispatch] = useReducer(rommelMeldenReducer, { step: 1 });
 
   const contextValue = useMemo(() => {
     return { state, dispatch };
@@ -10,7 +12,10 @@ const useWizardLogic = () => {
 
   const gotoStep:
     | ((
-        event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,
+        event:
+          | React.MouseEvent<HTMLButtonElement, MouseEvent>
+          | null
+          | undefined,
         step: number
       ) => void)
     | undefined = useCallback((event, step) => {

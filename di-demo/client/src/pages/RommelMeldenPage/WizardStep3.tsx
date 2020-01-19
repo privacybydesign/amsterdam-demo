@@ -23,6 +23,13 @@ const detailButtonPosition: ButtonStyleProps = {
   left: 6
 };
 
+const homeButtonPosition: ButtonStyleProps = {
+  width: 360,
+  height: 112,
+  top: 0,
+  left: 0
+};
+
 const WizardStep3: React.FC = () => {
   const { theme } = useParams();
   const { step, gotoStep } = useContext(RommelMeldenContext);
@@ -53,6 +60,7 @@ const WizardStep3: React.FC = () => {
         width="360"
         decoding="async"
       />
+      <Button onClick={e => gotoStep(e, 1)} {...homeButtonPosition}></Button>
       <Button onClick={e => gotoStep(e, 2)} {...detailButtonPosition}></Button>
       <Button onClick={send} {...loginButtonPosition}></Button>
       {sending && <canvas id="irma-qr"></canvas>}

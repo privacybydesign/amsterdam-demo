@@ -16,13 +16,13 @@ import {
 import styled from "@datapunt/asc-core";
 import RommelMeldenContext from "./RomelMeldenContext";
 
-interface ParagraphProps {
+interface FormControlProps {
   maxWidth?: number;
 }
 
-const StyledParagraph = styled(Paragraph)<ParagraphProps>`
+const FormControlStyle = styled.div<FormControlProps>`
   max-width: ${({ maxWidth }) => maxWidth && `${maxWidth}px`};
-  margin-bottom: ${themeSpacing(9)};
+  margin-bottom: ${themeSpacing(10)};
 
   & > ${styles.HeadingStyle} {
     text-align: left;
@@ -32,18 +32,18 @@ const StyledParagraph = styled(Paragraph)<ParagraphProps>`
 
 const FormStyle = styled.form`
   position: absolute;
-  top: 715px;
-  /* this forces covering the image items */
+  top: 720px;
+  /* this forces covering the image items in the background */
   background-color: rgba(255, 255, 255, 1);
   width: 360px;
   margin: ${themeSpacing(2)};
 `;
 
 const StyledTopBar = styled(TopBar)`
-  margin: ${themeSpacing(16, 6, 4, 0)};
+  margin: ${themeSpacing(17, 6, 4, 0)};
   background-color: ${themeColor("tint", "level3")};
   flex-direction: row-reverse;
-  padding: ${themeSpacing(1)};
+  padding: ${themeSpacing(2)};
 `;
 
 const WizardStep1: React.FC = () => {
@@ -60,12 +60,12 @@ const WizardStep1: React.FC = () => {
         decoding="async"
       />
       <FormStyle>
-        <StyledParagraph maxWidth={340}>
+        <FormControlStyle maxWidth={340}>
           <Heading as="h4">Waar gaat het om?</Heading>
           <TextArea rows={6}></TextArea>
-        </StyledParagraph>
+        </FormControlStyle>
 
-        <StyledParagraph>
+        <FormControlStyle>
           <Heading as="h4">Geef het tijdstrip aan</Heading>
           <RadioGroup name="group-1" onChange={() => {}}>
             <Label htmlFor="nu" label="Nu">
@@ -75,9 +75,9 @@ const WizardStep1: React.FC = () => {
               <Radio id="eerder" value="eerder" />
             </Label>
           </RadioGroup>
-        </StyledParagraph>
+        </FormControlStyle>
 
-        <StyledParagraph maxWidth={280}>
+        <FormControlStyle maxWidth={280}>
           <Heading as="h4">
             Wilt u een bericht ontvangen als uw melding is opgelost?
           </Heading>
@@ -89,7 +89,7 @@ const WizardStep1: React.FC = () => {
               <Radio id="nee" value="nee" />
             </Label>
           </RadioGroup>
-        </StyledParagraph>
+        </FormControlStyle>
 
         <StyledTopBar>
           <Button
