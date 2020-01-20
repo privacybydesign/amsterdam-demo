@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { PageWrapper, IrmaBaseButtonStyle } from "../AppStyle";
-import styled from "@datapunt/asc-core";
+import styled, { css } from "@datapunt/asc-core";
 import { useParams, useHistory } from "react-router-dom";
 import { createIrmaSession } from "../services/di";
 import { QRModal, OpeStadInfo } from "../shared/components/Modal/QRModal";
-import Radio, { RadioGroup } from "@datapunt/asc-ui/lib/components/Radio/Radio";
+import Radio, { RadioGroup } from "../shared/components/Radio";
 
-const IrmaButtonStyle = styled(IrmaBaseButtonStyle)`
+const IrmaButtonStyle = styled(IrmaBaseButtonStyle)<{ isActive: boolean }>`
   width: 224px;
   height: 61px;
   position: absolute;
   top: 966px;
   left: 586px;
+
+  ${({ isActive }) =>
+    !isActive &&
+    css`
+      background-color: rgba(255, 255, 255, 0.5);
+      &:hover {
+        cursor: not-allowed;
+      }
+    `}
 `;
 
 const HomeButtonStyle = styled(IrmaBaseButtonStyle)`
@@ -22,24 +31,17 @@ const HomeButtonStyle = styled(IrmaBaseButtonStyle)`
   left: 200px;
 `;
 
-const StyledRadioGroup = styled(RadioGroup)`
-  position: absolute;
-  top: 200px;
-  left: 200px;
-  height: 100px;
-  width: 100%;
-`;
-
 const OpenStadPage: React.FC<{}> = () => {
   const { theme } = useParams();
-  const [authorizing, setAuthorizing] = useState(false);
-  const [authorized, setAutorized] = useState(false);
+  const [voting, setVoting] = useState(false);
+  const [voted, setVoted] = useState(false);
   const history = useHistory();
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const vote = async (event: React.MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
-    setAuthorizing(true);
+    setVoting(true);
   };
 
   const goHome = () => {
@@ -47,20 +49,18 @@ const OpenStadPage: React.FC<{}> = () => {
   };
 
   useEffect(() => {
-    if (authorizing) {
+    if (voting) {
       (async () => {
-        console.log("voting changed: ", authorizing);
         const identifier = await createIrmaSession("email", "irma-qr");
-        console.log("irma session created", identifier);
-        setAuthorizing(false);
-        setAutorized(true);
+        setVoting(false);
+        setVoted(true);
       })();
     }
-  }, [authorizing]);
+  }, [voting]);
 
   return (
     <PageWrapper>
-      {!authorized && (
+      {!voted && (
         <>
           <img
             alt="Open Stad"
@@ -69,17 +69,46 @@ const OpenStadPage: React.FC<{}> = () => {
             width="1400"
             decoding="async"
           />
-          <IrmaButtonStyle onClick={vote}></IrmaButtonStyle>
-          {/* <StyledRadioGroup horizontal={true} >
-            <Radio id="1" label={"test1"} name="name" value="test-1" />
-            <Radio id="2" label={"test2"} name="name2" value="test-2" />
-          </StyledRadioGroup> */}
+          <IrmaButtonStyle
+            onClick={vote}
+            isActive={selectedOption !== null}
+          ></IrmaButtonStyle>
+          <RadioGroup name="vote">
+            <Radio
+              id="brug"
+              name="brug"
+              value="test-1"
+              onChange={() => setSelectedOption("brug")}
+              top={845}
+              left={222}
+            />
+            <Radio
+              id="kabelbaan"
+              name="kabelbaan"
+              value="test-2"
+              onChange={() => setSelectedOption("kabelbaan")}
+              top={845}
+              left={596}
+            />
+          </RadioGroup>
         </>
       )}
 
-      {!authorizing && <HomeButtonStyle onClick={goHome}></HomeButtonStyle>}
-      {authorizing && (
-        <QRModal onClose={() => setAuthorizing(false)} Info={OpeStadInfo} />
+      {!voting && <HomeButtonStyle onClick={goHome}></HomeButtonStyle>}
+      {voting && selectedOption && (
+        <QRModal onClose={() => setVoting(false)} Info={OpeStadInfo} />
+      )}
+
+      {voted && (
+        <>
+          <img
+            alt="Openstad"
+            src={`/assets/theme/${theme}/openstad-voted.png`}
+            height="1119"
+            width="1400"
+            decoding="async"
+          />
+        </>
       )}
     </PageWrapper>
   );
