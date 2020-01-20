@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
 import { PageWrapper } from "../../AppStyle";
 import { useParams } from "react-router-dom";
-import Radio, { RadioGroup } from "../../shared/components/Radio";
 import TextArea from "../../shared/components/TextArea";
-import Label from "../../shared/components/Label";
 import {
   Heading,
   styles,
   themeSpacing,
   TopBar,
   Button,
-  themeColor
+  themeColor,
+  Radio,
+  RadioGroup,
+  Label
 } from "@datapunt/asc-ui";
 import styled from "@datapunt/asc-core";
 import RommelMeldenContext from "./RomelMeldenContext";

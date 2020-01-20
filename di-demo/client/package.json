@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@datapunt/asc-assets": "0.17.8-alpha.22",
-    "@datapunt/asc-core": "0.17.8-alpha.22",
-    "@datapunt/asc-ui": "0.17.8-alpha.29",
+    "@datapunt/asc-assets": "0.18.1",
+    "@datapunt/asc-core": "0.18.1",
+    "@datapunt/asc-ui": "0.18.1",
     "@privacybydesign/irmajs": "^0.1.8",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
