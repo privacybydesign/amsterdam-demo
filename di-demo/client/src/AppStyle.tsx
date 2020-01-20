@@ -1,11 +1,15 @@
 import styled from '@datapunt/asc-core';
 
-export const PageWrapper = styled.div`
+interface Props {
+  maxWidth?: number;
+}
+
+export const PageWrapper = styled.div<Props>`
   position: relative;
   text-align: center;
   min-height: 100vh;
   margin: 0 auto;
-  width: 1400px;
+  max-width: ${({maxWidth}) => maxWidth? `${maxWidth}px` : `1400px`};
 `;
 
 export const IrmaBaseButtonStyle = styled.button`

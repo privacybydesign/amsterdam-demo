@@ -1,34 +1,33 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
-import styled from "@datapunt/asc-core";
-import { PageWrapper, IrmaBaseButtonStyle } from "../AppStyle";
-import { createIrmaSession } from "../services/di";
-import { QRModal, MijnAmsterdamInfo } from "../shared/components/Modal/QRModal";
+import { PageWrapper } from "../../AppStyle";
+import { createIrmaSession } from "../../services/di";
+import { QRModal } from "../../shared/components/Modal/QRModal";
+import { ButtonStyleProps } from "../../shared/components/Button/ButtonStyle";
+import Button from "../../shared/components/Button/Button";
+import MijnAmsterdamInfo from './MijnAmsterdamInfo'
 
-const IrmaButtonStyle = styled(IrmaBaseButtonStyle)`
-  width: 224px;
-  height: 61px;
-  position: absolute;
-  top: 744px;
-  left: 684px;
-`;
+const loginButtonPosition: ButtonStyleProps = {
+  width: 224,
+  height: 61,
+  top: 744,
+  left: 684
+};
 
-const HomeButtonStyle = styled(IrmaBaseButtonStyle)`
-  width: 154px;
-  height: 67px;
-  position: absolute;
-  top: 20px;
-  left: 200px;
-`;
+const homeButtonPosition: ButtonStyleProps = {
+  width: 154,
+  height: 67,
+  top: 20,
+  left: 200
+};
 
-const BackButtonStyle = styled(IrmaBaseButtonStyle)`
-  width: 354px;
-  height: 32px;
-  position: absolute;
-  top: 10px;
-  left: 855px;
-`;
+const backButtonPosition: ButtonStyleProps = {
+  width: 354,
+  height: 32,
+  top: 10,
+  left: 855
+};
 
 const MijnAmsterdamPage: React.FC = () => {
   const { theme } = useParams();
@@ -53,9 +52,7 @@ const MijnAmsterdamPage: React.FC = () => {
   useEffect(() => {
     if (authorizing) {
       (async () => {
-        console.log("authorizing changed: ", authorizing);
         const identifier = await createIrmaSession("email", "irma-qr");
-        console.log("irma session created", identifier);
         setAuthorizing(false);
         setAutorized(true);
       })();
@@ -73,12 +70,19 @@ const MijnAmsterdamPage: React.FC = () => {
             width="1400"
             decoding="async"
           />
-          <IrmaButtonStyle onClick={login}></IrmaButtonStyle>
+          <Button onClick={login} {...loginButtonPosition}></Button>
         </>
       )}
-      {!authorizing && <HomeButtonStyle onClick={goHome}></HomeButtonStyle>}
+      {!authorizing && (
+        <Button onClick={goHome} {...homeButtonPosition}></Button>
+      )}
 
-      {authorizing && <QRModal onClose={() => setAuthorizing(false)} Info={MijnAmsterdamInfo} />}
+      {authorizing && (
+        <QRModal
+          onClose={() => setAuthorizing(false)}
+          Info={MijnAmsterdamInfo}
+        />
+      )}
 
       {authorized && (
         <>
@@ -89,7 +93,7 @@ const MijnAmsterdamPage: React.FC = () => {
             width="1400"
             decoding="async"
           />
-          <BackButtonStyle onClick={goBack}></BackButtonStyle>
+          <Button onClick={goBack} {...backButtonPosition}></Button>
         </>
       )}
     </PageWrapper>

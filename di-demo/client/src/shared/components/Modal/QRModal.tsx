@@ -1,13 +1,9 @@
 import React, { useState, Component } from "react";
 import {
   styles,
-  Divider,
   Button,
-  Modal,
   TopBar,
   Heading,
-  Paragraph,
-  Icon,
   CompactThemeProvider
 } from "@datapunt/asc-ui";
 import { Close, ChevronDown, ChevronUp } from "@datapunt/asc-assets";
@@ -19,18 +15,6 @@ const ModalBlock = styled.div`
   padding: 0 40px;
   margin: 15px 0;
   text-align: left;
-
-  & > ${styles.ParagraphStyle} {
-    font-size: 16px;
-
-    ul {
-      padding-left: 30px;
-
-      li {
-        line-height: 30px;
-      }
-    }
-  }
 `;
 const QRStyle = styled.div`
   padding: 10px 0;
@@ -57,7 +41,7 @@ const QRWrapperStyle = styled.div`
   z-index: 10;
 `;
 
-const QRCodeStyle = styled(Paragraph)`
+const QRCodeStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,57 +66,6 @@ const QRCanvasStyle = styled.div`
     left: 20px;
   }
 `;
-
-export const MijnAmsterdamInfo = () => {
-  return (
-    <>
-      <Heading as="h2">Login bij Mijn Amsterdam met IRMA</Heading>
-      <Paragraph>
-        Om gebruik te kunnen maken van Mijn Amsterdam, moet u zich bekend maken
-        met
-        <ul>
-          <li>Uw Voornaam</li>
-          <li>Uw Achternaam</li>
-          <li>Uw Burgerservicenummer (BSN)</li>
-        </ul>
-        <Acordeon title="Waarom worden deze gegevens gevraagd?">
-          <Paragraph>
-            <Heading as="h5">Voornaam</Heading>
-            De gemeente wilt u bij uw voornaam aanspreken in Mijn Amsterdam.
-          </Paragraph>
-          <Paragraph>
-            <Heading as="h5">Achternaam</Heading>
-            De gemeente wilt u bij uw achternaam aanspreken in Mijn Amsterdam.
-          </Paragraph>
-          <Paragraph>
-            <Heading as="h5">Burgerservicenummer (BSN)</Heading>
-            De gemeente wilt zeker weten dat u het bent.
-          </Paragraph>
-        </Acordeon>
-      </Paragraph>
-    </>
-  );
-};
-
-export const OpeStadInfo = () => {
-  return (
-    <>
-      <Heading as="h2">Stuur uw keuze met IRMA</Heading>
-      <Paragraph>
-        Om uw stem uit te brengen, moet u zich bekend maken met:
-        <ul>
-          <li>Postcode</li>
-        </ul>
-        <Acordeon title="Waarom worden deze gegevens gevraagd?">
-          <Paragraph>
-            <Heading as="h5">Postcode</Heading>
-            De gemeente wilt zeker weten dat u in Amsterdam woont.
-          </Paragraph>
-        </Acordeon>
-      </Paragraph>
-    </>
-  );
-};
 
 interface Props {
   onClose: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -159,7 +92,7 @@ export const QRModal: React.FC<Props> = ({ onClose, Info }) => {
             <Info />
             <QRCodeStyle>
               <QRCanvasStyle>
-                <canvas id="irma-qr" height="150" width="150"></canvas>
+                <canvas id="irma-qr"></canvas>
               </QRCanvasStyle>
               <Heading as="h4">Scan de QR-code</Heading>
             </QRCodeStyle>
@@ -169,39 +102,3 @@ export const QRModal: React.FC<Props> = ({ onClose, Info }) => {
     </CompactThemeProvider>
   );
 };
-
-// const QRModalASC = ({ open, handleClose, title, body }) => (
-//   <Modal
-//     aria-labelledby="feedback"
-//     aria-describedby="feedback"
-//     open={open}
-//     onClose={handleClose}
-//     hideOverFlow={false}
-//   >
-//     <TopBar>
-//       <Heading style={{ flexGrow: 1 }} as="h4">
-//         {title}
-//         <Button
-//           variant="blank"
-//           type="button"
-//           size={30}
-//           onClick={handleClose}
-//           icon={<Close />}
-//         />
-//       </Heading>
-//     </TopBar>
-//     <Divider />
-//     <ModalBlock>
-//       {/* <Paragraph className="infomodal__body" dangerouslySetInnerHTML={{ __html: body }} /> */}
-//       <ScanQR />
-//     </ModalBlock>
-//   </Modal>
-// );
-
-// QRModalASC.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   body: PropTypes.string.isRequired,
-//   ...modalPropTypes
-// };
-
-// export default withModalBehaviour(QRModalASC);
