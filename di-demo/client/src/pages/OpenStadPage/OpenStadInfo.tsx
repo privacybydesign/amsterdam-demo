@@ -4,11 +4,11 @@ import styled from "@datapunt/asc-core";
 import AttributeList from "../../shared/components/AttributeList";
 import AttributeInfo from "../../shared/components/AttributeInfo";
 
-const OpeStadInfoStyle = styled.div``;
+const OpenStadInfoStyle = styled.div``;
 
 const OpeStadInfo = () => {
   return (
-    <OpeStadInfoStyle>
+    <OpenStadInfoStyle>
       <AttributeInfo title="Stuur uw keuze met IRMA" headingType="h2">
         Om uw stem uit te brengen, moet u zich bekend maken met:
       </AttributeInfo>
@@ -18,7 +18,7 @@ const OpeStadInfo = () => {
           De gemeente wilt zeker weten dat u in Amsterdam woont.
         </AttributeInfo>
       </Acordeon>
-    </OpeStadInfoStyle>
+    </OpenStadInfoStyle>
   );
 };
 
