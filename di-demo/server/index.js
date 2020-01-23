@@ -27,6 +27,11 @@ const createIrmaRequest = ({ label, attributes }) => {
     type: "disclosing",
     content: [{ label, attributes }]
   };
+
+  // return {
+  //   "@context": "https://irma.app/ld/request/disclosure/v2",
+  //   disclose: [["pbdf.sidn-pbdf.irma.pseudonym"]]
+  // };
 };
 
 const init = async () => {
@@ -55,12 +60,12 @@ const init = async () => {
 
     if (process.env.NODE_ENV === "production") {
       app.use(express.static(config.docroot));
-      app.get('*', function (req, res) {
-        console.log(req,res);
-        res.sendFile(path.join(__dirname, config.docroot, 'index.html'));
+      app.get("*", function(req, res) {
+        console.log(req, res);
+        res.sendFile(path.join(__dirname, config.docroot, "index.html"));
       });
     } else {
-      console.log('Using proxy to the react app for development')
+      console.log("Using proxy to the react app for development");
       // proxy the root to the react app container in development mode
       app.use(
         "/",
@@ -92,6 +97,7 @@ async function irmaDiscloseEmail(req, res) {
   });
 
   try {
+    console.log(irma);
     const session = await irma.startSession(
       config.irma,
       request,
@@ -102,6 +108,7 @@ async function irmaDiscloseEmail(req, res) {
 
     res.json(session);
   } catch (e) {
+    console.log("irma.startSession error:", JSON.stringify(e));
     error(e, res);
   }
 }
