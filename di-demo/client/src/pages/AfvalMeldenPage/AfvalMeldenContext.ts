@@ -10,11 +10,11 @@ export interface IStateType {
 
 const defaultState: IStateType = { step: 1, gotoStep: (): void => {} };
 
-const RommelMeldenContext = React.createContext<IStateType>(defaultState);
+const AfvalMeldenContext = React.createContext<IStateType>(defaultState);
 
 export const SET_STEP = 'SET_STEP';
 
-export const rommelMeldenReducer = (state, action) => {
+export const afvalMeldenReducer = (state, action) => {
   switch (action.type) {
     case SET_STEP:
       return {...state, step: action.payload}
@@ -24,4 +24,4 @@ export const rommelMeldenReducer = (state, action) => {
   }
 }
 
-export default RommelMeldenContext;
+export default AfvalMeldenContext;

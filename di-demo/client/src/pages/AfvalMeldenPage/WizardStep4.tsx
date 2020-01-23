@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { PageWrapper } from "../../AppStyle";
 import { useParams } from "react-router-dom";
-import RommelMeldenContext from "./RomelMeldenContext";
+import AfvalMeldenContext from "./AfvalMeldenContext";
 import Button from "../../shared/components/Button/Button";
 import { ButtonStyleProps } from "../../shared/components/Button/ButtonStyle";
 
@@ -14,7 +14,7 @@ const homeButtonPosition: ButtonStyleProps = {
 
 const WizardStep4: React.FC = () => {
   const { theme } = useParams();
-  const { step, gotoStep } = useContext(RommelMeldenContext);
+  const { step, gotoStep } = useContext(AfvalMeldenContext);
 
   return step === 4 ? (
     <PageWrapper maxWidth={360}>

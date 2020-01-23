@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { PageWrapper } from "../../AppStyle";
 import { useParams } from "react-router-dom";
-import RommelMeldenContext from "./RomelMeldenContext";
+import AfvalMeldenContext from "./AfvalMeldenContext";
 import { ButtonStyleProps } from "../../shared/components/Button/ButtonStyle";
 import Button from "../../shared/components/Button/Button";
 import { createIrmaSession } from "../../services/di";
@@ -9,14 +9,14 @@ import { createIrmaSession } from "../../services/di";
 const loginButtonPosition: ButtonStyleProps = {
   width: 224,
   height: 65,
-  top: 597,
+  top: 455,
   left: 15
 };
 
 const detailButtonPosition: ButtonStyleProps = {
   width: 348,
-  height: 218,
-  top: 320,
+  height: 130,
+  top: 272,
   left: 6
 };
 
@@ -29,7 +29,7 @@ const homeButtonPosition: ButtonStyleProps = {
 
 const WizardStep3: React.FC = () => {
   const { theme } = useParams();
-  const { step, gotoStep } = useContext(RommelMeldenContext);
+  const { step, gotoStep } = useContext(AfvalMeldenContext);
   const [sending, setSending] = useState(false);
 
   const send = async (event: React.MouseEvent) => {

@@ -1,10 +1,10 @@
 import React, { useReducer, useMemo, useCallback } from "react";
-import { IStateType, rommelMeldenReducer, SET_STEP } from "./RomelMeldenContext";
+import { IStateType, afvalMeldenReducer, SET_STEP } from "./AfvalMeldenContext";
 
 type useWizardLogicType = () => IStateType;
 
 const useWizardLogic: useWizardLogicType = () => {
-  const [state, dispatch] = useReducer(rommelMeldenReducer, { step: 1 });
+  const [state, dispatch] = useReducer(afvalMeldenReducer, { step: 4 });
 
   const contextValue = useMemo(() => {
     return { state, dispatch };

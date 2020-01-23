@@ -14,7 +14,7 @@ import {
   Label
 } from "@datapunt/asc-ui";
 import styled from "@datapunt/asc-core";
-import RommelMeldenContext from "./RomelMeldenContext";
+import AfvalMeldenContext from "./AfvalMeldenContext";
 
 interface FormControlProps {
   maxWidth?: number;
@@ -48,7 +48,7 @@ const StyledTopBar = styled(TopBar)`
 
 const WizardStep1: React.FC = () => {
   const { theme } = useParams();
-  const { step, gotoStep } = useContext(RommelMeldenContext);
+  const { step, gotoStep } = useContext(AfvalMeldenContext);
 
   return step === 1 ? (
     <PageWrapper maxWidth={360}>

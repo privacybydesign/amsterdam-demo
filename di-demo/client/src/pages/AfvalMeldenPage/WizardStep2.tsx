@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { PageWrapper } from "../../AppStyle";
 import { useParams } from "react-router-dom";
-import RommelMeldenContext from "./RomelMeldenContext";
+import AfvalMeldenContext from "./AfvalMeldenContext";
 import { ButtonStyleProps } from "../../shared/components/Button/ButtonStyle";
 import Button from "../../shared/components/Button/Button";
 import { createIrmaSession } from "../../services/di";
@@ -9,14 +9,14 @@ import { createIrmaSession } from "../../services/di";
 const loginButtonPosition: ButtonStyleProps = {
   width: 224,
   height: 61,
-  top: 414,
+  top: 364,
   left: 17
 };
 
 const detailButtonPosition: ButtonStyleProps = {
   width: 348,
   height: 37,
-  top: 320,
+  top: 272,
   left: 6
 };
 
@@ -29,7 +29,7 @@ const homeButtonPosition: ButtonStyleProps = {
 
 const WizardStep2: React.FC = () => {
   const { theme } = useParams();
-  const { step, gotoStep } = useContext(RommelMeldenContext);
+  const { step, gotoStep } = useContext(AfvalMeldenContext);
   const [sending, setSending] = useState(false);
 
   const send = async (event: React.MouseEvent) => {
@@ -57,9 +57,9 @@ const WizardStep2: React.FC = () => {
         width="360"
         decoding="async"
       />
-      <Button onClick={e => gotoStep(e, 1)} {...homeButtonPosition}></Button>
+      <Button onClick={e => gotoStep(e, 1)} {...homeButtonPosition} ></Button>
       <Button onClick={e => gotoStep(e, 3)} {...detailButtonPosition}></Button>
-      <Button onClick={send} {...loginButtonPosition}></Button>
+      <Button onClick={send} {...loginButtonPosition} ></Button>
       {sending && <canvas id="irma-qr"></canvas>}
     </PageWrapper>
   ) : null;
