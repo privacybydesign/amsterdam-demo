@@ -32,7 +32,7 @@ const QRStyle = styled.div`
 
 const QRWrapperStyle = styled.div`
   display: block;
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;

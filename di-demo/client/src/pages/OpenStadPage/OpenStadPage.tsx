@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { PageWrapper } from "../../AppStyle";
 import { useParams, useHistory } from "react-router-dom";
 import { createIrmaSession } from "../../services/di";
-import { QRModal} from "../../shared/components/Modal/QRModal";
+import { QRModal } from "../../shared/components/Modal/QRModal";
 import Radio, { RadioGroup } from "../../shared/components/RadioOS";
 import { ButtonStyleProps } from "../../shared/components/Button/ButtonStyle";
 import Button from "../../shared/components/Button/Button";
-import OpeStadInfo from './OpenStadInfo'
+import OpeStadInfo from "./OpenStadInfo";
 import { scrollTop } from "../../services/layout";
 
 const loginButtonPosition: ButtonStyleProps = {
@@ -34,6 +34,7 @@ const OpenStadPage: React.FC<{}> = () => {
     event.preventDefault();
     event.stopPropagation();
     setVoting(true);
+    scrollTop();
   };
 
   const goHome = () => {
