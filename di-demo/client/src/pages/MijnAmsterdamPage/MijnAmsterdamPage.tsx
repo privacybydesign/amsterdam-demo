@@ -7,6 +7,7 @@ import { QRModal } from "../../shared/components/Modal/QRModal";
 import { ButtonStyleProps } from "../../shared/components/Button/ButtonStyle";
 import Button from "../../shared/components/Button/Button";
 import MijnAmsterdamInfo from './MijnAmsterdamInfo'
+import { scrollTop } from "../../services/layout";
 
 const loginButtonPosition: ButtonStyleProps = {
   width: 224,
@@ -39,22 +40,26 @@ const MijnAmsterdamPage: React.FC = () => {
     event.preventDefault();
     event.stopPropagation();
     setAuthorizing(true);
+    scrollTop();
   };
-
+  
   const goHome = () => {
     history.push("/");
+    scrollTop();
   };
-
+  
   const goBack = () => {
     setAutorized(false);
+    scrollTop();
   };
-
+  
   useEffect(() => {
     if (authorizing) {
       (async () => {
         const identifier = await createIrmaSession("email", "irma-qr");
         setAuthorizing(false);
         setAutorized(true);
+        scrollTop();
       })();
     }
   }, [authorizing]);

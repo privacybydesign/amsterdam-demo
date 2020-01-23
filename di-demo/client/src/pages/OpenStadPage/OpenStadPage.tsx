@@ -7,6 +7,7 @@ import Radio, { RadioGroup } from "../../shared/components/RadioOS";
 import { ButtonStyleProps } from "../../shared/components/Button/ButtonStyle";
 import Button from "../../shared/components/Button/Button";
 import OpeStadInfo from './OpenStadInfo'
+import { scrollTop } from "../../services/layout";
 
 const loginButtonPosition: ButtonStyleProps = {
   width: 224,
@@ -37,6 +38,7 @@ const OpenStadPage: React.FC<{}> = () => {
 
   const goHome = () => {
     history.push("/");
+    scrollTop();
   };
 
   useEffect(() => {
@@ -45,6 +47,7 @@ const OpenStadPage: React.FC<{}> = () => {
         const identifier = await createIrmaSession("email", "irma-qr");
         setVoting(false);
         setVoted(true);
+        scrollTop();
       })();
     }
   }, [voting]);

@@ -3,6 +3,7 @@ import { PageWrapper } from "../AppStyle";
 import { useParams, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { createIrmaSession } from "../services/di";
+import { scrollTop } from "../services/layout";
 
 const StyledPageWrapper = styled(PageWrapper)`
   background-color: black;
@@ -36,6 +37,7 @@ const AlchoolKopenPage: React.FC<{}> = () => {
       setAuthorizing(false);
       const success = true;
       setAutorized(success);
+      scrollTop();
     })();
   }, []);
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { scrollTop } from "../../services/layout";
 
 export interface IStateType {
   step: number;
@@ -17,6 +18,7 @@ export const SET_STEP = 'SET_STEP';
 export const afvalMeldenReducer = (state, action) => {
   switch (action.type) {
     case SET_STEP:
+      scrollTop();
       return {...state, step: action.payload}
       ;
     default:

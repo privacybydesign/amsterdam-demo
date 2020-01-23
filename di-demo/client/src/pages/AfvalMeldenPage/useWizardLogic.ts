@@ -4,7 +4,7 @@ import { IStateType, afvalMeldenReducer, SET_STEP } from "./AfvalMeldenContext";
 type useWizardLogicType = () => IStateType;
 
 const useWizardLogic: useWizardLogicType = () => {
-  const [state, dispatch] = useReducer(afvalMeldenReducer, { step: 4 });
+  const [state, dispatch] = useReducer(afvalMeldenReducer, { step: 1 });
 
   const contextValue = useMemo(() => {
     return { state, dispatch };
