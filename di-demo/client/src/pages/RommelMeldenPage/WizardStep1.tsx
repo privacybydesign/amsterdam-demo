@@ -66,7 +66,7 @@ const WizardStep1: React.FC = () => {
         </FormControlStyle>
 
         <FormControlStyle>
-          <Heading as="h4">Geef het tijdstrip aan</Heading>
+          <Heading as="h4">Geef het tijdstip aan</Heading>
           <RadioGroup name="group-1" onChange={() => {}}>
             <Label htmlFor="nu" label="Nu">
               <Radio id="nu" value="nu" />
