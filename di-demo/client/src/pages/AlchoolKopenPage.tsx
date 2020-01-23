@@ -1,19 +1,77 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PageWrapper } from "../AppStyle";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import styled from "styled-components";
+import { createIrmaSession } from "../services/di";
+
+const StyledPageWrapper = styled(PageWrapper)`
+  background-color: black;
+`;
+
+const QRStyle = styled.div`
+  position: absolute;
+  top: 445px;
+  left: 587px;
+`;
+
+const QR: React.FC = () => {
+  return (
+    <QRStyle>
+      <canvas id="irma-qr"></canvas>
+    </QRStyle>
+  );
+};
+
+const PageContainer: React.FC = styled.div`
+  background-color: black;
+`;
 
 const AlchoolKopenPage: React.FC<{}> = () => {
   const { theme } = useParams();
+  const [authorizing, setAuthorizing] = useState(true);
+  const [authorized, setAutorized] = useState(false);
+  useEffect(() => {
+    (async () => {
+      const identifier = await createIrmaSession("email", "irma-qr");
+      setAuthorizing(false);
+      const success = true;
+      setAutorized(success);
+    })();
+  }, []);
+
   return (
-    <PageWrapper>
-      <img
-        alt="Alcohol Kopen"
-        src={`/assets/theme/${theme}/alchoolkopen.png`}
-        height="1182"
-        width="1400"
-        decoding="async"
-      />
-    </PageWrapper>
+    <PageContainer>
+      <StyledPageWrapper>
+        {authorizing ? (
+          <>
+            <img
+              alt="Alcohol Kopen"
+              src={`/assets/theme/${theme}/alchoolkopen.png`}
+              height="1182"
+              width="1400"
+              decoding="async"
+            />
+            <QR />
+          </>
+        ) : authorized ? (
+          <img
+            alt="Alcohol Kopen"
+            src={`/assets/theme/${theme}/alchoolkopen-accept.png`}
+            height="1068"
+            width="1400"
+            decoding="async"
+          />
+        ) : (
+          <img
+            alt="Alcohol Kopen"
+            src={`/assets/theme/${theme}/alchoolkopen-reject.png`}
+            height="1068"
+            width="1400"
+            decoding="async"
+          />
+        )}
+      </StyledPageWrapper>
+    </PageContainer>
   );
 };
 
