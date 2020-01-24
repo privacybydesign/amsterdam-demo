@@ -1,26 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { PageWrapper } from "../../AppStyle";
-import { useParams, useHistory } from "react-router-dom";
-import { createIrmaSession } from "../../services/di";
-import { QRModal } from "../../shared/components/Modal/QRModal";
-import Radio, { RadioGroup } from "../../shared/components/RadioOS";
-import { ButtonStyleProps } from "../../shared/components/Button/ButtonStyle";
-import Button from "../../shared/components/Button/Button";
-import OpeStadInfo from "./OpenStadInfo";
-import { scrollTop } from "../../services/layout";
+import React, { useState, useEffect } from 'react';
+import { PageWrapper } from '../../AppStyle';
+import { useParams, useHistory } from 'react-router-dom';
+import { createIrmaSession } from '../../services/di';
+import { QRModal } from '../../shared/components/Modal/QRModal';
+import Radio, { RadioGroup } from '../../shared/components/RadioOS';
+import { ButtonStyleProps } from '../../shared/components/Button/ButtonStyle';
+import Button from '../../shared/components/Button/Button';
+import OpeStadInfo from './OpenStadInfo';
+import { scrollTop } from '../../services/layout';
+import { BackDrop } from '@datapunt/asc-ui';
 
 const loginButtonPosition: ButtonStyleProps = {
   width: 224,
   height: 61,
   top: 966,
-  left: 586
+  left: 586,
 };
 
 const homeButtonPosition: ButtonStyleProps = {
   width: 154,
   height: 67,
   top: 20,
-  left: 200
+  left: 200,
 };
 
 const OpenStadPage: React.FC<{}> = () => {
@@ -38,14 +39,14 @@ const OpenStadPage: React.FC<{}> = () => {
   };
 
   const goHome = () => {
-    history.push("/");
+    history.push('/');
     scrollTop();
   };
 
   useEffect(() => {
     if (voting) {
       (async () => {
-        const identifier = await createIrmaSession("email", "irma-qr");
+        const identifier = await createIrmaSession('email', 'irma-qr');
         setVoting(false);
         setVoted(true);
         scrollTop();
@@ -74,7 +75,7 @@ const OpenStadPage: React.FC<{}> = () => {
               id="brug"
               name="brug"
               value="test-1"
-              onChange={() => setSelectedOption("brug")}
+              onChange={() => setSelectedOption('brug')}
               top={845}
               left={222}
             />
@@ -82,19 +83,20 @@ const OpenStadPage: React.FC<{}> = () => {
               id="kabelbaan"
               name="kabelbaan"
               value="test-2"
-              onChange={() => setSelectedOption("kabelbaan")}
+              onChange={() => setSelectedOption('kabelbaan')}
               top={845}
               left={596}
             />
           </RadioGroup>
         </>
       )}
-
       {!voting && <Button onClick={goHome} {...homeButtonPosition}></Button>}
       {voting && selectedOption && (
         <QRModal onClose={() => setVoting(false)} Info={OpeStadInfo} />
       )}
-
+      {voting && selectedOption && (
+        <BackDrop onClick={() => {}} hideOverFlow={false} />
+      )}
       {voted && (
         <>
           <img

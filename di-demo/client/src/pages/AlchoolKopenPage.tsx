@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { PageWrapper } from "../AppStyle";
-import { useParams, useHistory } from "react-router-dom";
-import styled from "styled-components";
-import { createIrmaSession } from "../services/di";
-import { scrollTop } from "../services/layout";
+import React, { useEffect, useState } from 'react';
+import { PageWrapper } from '../AppStyle';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import { createIrmaSession } from '../services/di';
+import { scrollTop } from '../services/layout';
 
 const StyledPageWrapper = styled(PageWrapper)`
   background-color: black;
@@ -33,7 +33,7 @@ const AlchoolKopenPage: React.FC<{}> = () => {
   const [authorized, setAutorized] = useState(false);
   useEffect(() => {
     (async () => {
-      const identifier = await createIrmaSession("email", "irma-qr");
+      const identifier = await createIrmaSession('email', 'irma-qr');
       setAuthorizing(false);
       const success = true;
       setAutorized(success);

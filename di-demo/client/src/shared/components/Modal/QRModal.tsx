@@ -1,14 +1,13 @@
-import React, { useState, Component } from "react";
+import React from 'react';
 import {
   styles,
   Button,
   TopBar,
   Heading,
-  CompactThemeProvider
-} from "@datapunt/asc-ui";
-import { Close, ChevronDown, ChevronUp } from "@datapunt/asc-assets";
-import styled from "@datapunt/asc-core";
-import { Acordeon } from "../Acordeon/Acordeon";
+  CompactThemeProvider,
+} from '@datapunt/asc-ui';
+import { Close, ChevronDown, ChevronUp } from '@datapunt/asc-assets';
+import styled from '@datapunt/asc-core';
 
 const ModalBlock = styled.div`
   display: block;
@@ -16,6 +15,7 @@ const ModalBlock = styled.div`
   margin: 15px 0;
   text-align: left;
 `;
+
 const QRStyle = styled.div`
   padding: 10px 0;
   position: absolute;
@@ -34,11 +34,12 @@ const QRWrapperStyle = styled.div`
   display: block;
   position: absolute;
   top: 0;
+  left: 0;
   right: 0;
   bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 10;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 100;
 `;
 
 const QRCodeStyle = styled.div`
@@ -76,28 +77,28 @@ export const QRModal: React.FC<Props> = ({ onClose, Info }) => {
   return (
     <CompactThemeProvider>
       <QRWrapperStyle>
-        <QRStyle>
-          <TopBar>
-            <Heading as="h4">
-              <Button
-                variant="blank"
-                type="button"
-                size={30}
-                onClick={onClose}
-                icon={<Close />}
-              />
-            </Heading>
-          </TopBar>
-          <ModalBlock>
-            <Info />
-            <QRCodeStyle>
-              <QRCanvasStyle>
-                <canvas id="irma-qr"></canvas>
-              </QRCanvasStyle>
-              <Heading as="h4">Scan de QR-code</Heading>
-            </QRCodeStyle>
-          </ModalBlock>
-        </QRStyle>
+      <QRStyle>
+        <TopBar>
+          <Heading as="h4">
+            <Button
+              variant="blank"
+              type="button"
+              size={30}
+              onClick={onClose}
+              icon={<Close />}
+            />
+          </Heading>
+        </TopBar>
+        <ModalBlock>
+          <Info />
+          <QRCodeStyle>
+            <QRCanvasStyle>
+              <canvas id="irma-qr"></canvas>
+            </QRCanvasStyle>
+            <Heading as="h4">Scan de QR-code</Heading>
+          </QRCodeStyle>
+        </ModalBlock>
+      </QRStyle>
       </QRWrapperStyle>
     </CompactThemeProvider>
   );
