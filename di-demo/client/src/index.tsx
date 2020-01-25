@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { GlobalStyle, ThemeProvider } from '@datapunt/asc-ui';

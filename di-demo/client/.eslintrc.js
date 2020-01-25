@@ -3,7 +3,7 @@ module.exports = {
   extends: [
     'airbnb',
     'plugin:prettier/recommended',
-    'plugin:@typescript-eslint/recommended',
+    'plugin:jsx-a11y/recommended',
     'prettier/react',
     'prettier/standard',
   ],
@@ -11,15 +11,17 @@ module.exports = {
   rules: {
     'prettier/prettier': ['error'],
   },
+  env: {
+    browser: true
+  },
   globals: {
     window: true,
   },
   parserOptions: {
-    ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
-    sourceType: 'module', // Allows for the use of imports
     ecmaFeatures: {
       jsx: true,
     },
+    sourceType: 'module', // Allows for the use of imports
   },
   rules: {
     'no-console': 2,
@@ -45,16 +47,19 @@ module.exports = {
     'react/prop-types': 0,
 
     'import/prefer-default-export': 0,
+    "import/extensions": ["error", "ignorePackages", {
+      "ts": "never",
+      "tsx": "never",
+    }]
 
     // 'react-hooks/rules-of-hooks': 'error',
     // 'react-hooks/exhaustive-deps': 'warn',
   },
-  // settings: {
-  //   'import/extensions': ['.tx', '.tsx'],
-  //   'import/resolver': {
-  //     node: {
-  //       extensions: ['.js', '.ts', '.jsx', '.tsx'],
-  //     },
-  //   },
-  // },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.ts', '.tsx'],
+      },
+    },
+  },
 };

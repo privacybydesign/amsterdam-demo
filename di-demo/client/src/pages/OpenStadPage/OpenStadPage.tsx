@@ -46,7 +46,7 @@ const OpenStadPage: React.FC<{}> = () => {
   useEffect(() => {
     if (voting) {
       (async () => {
-        const identifier = await createIrmaSession('email', 'irma-qr');
+        await createIrmaSession('email', 'irma-qr');
         setVoting(false);
         setVoted(true);
         scrollTop();

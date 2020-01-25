@@ -1,4 +1,4 @@
-import styled, { css } from '@datapunt/asc-core';
+import styled from '@datapunt/asc-core';
 
 export interface ButtonStyleProps {
   width: number;

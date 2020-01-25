@@ -1,6 +1,6 @@
 import { ChevronDown, ChevronUp } from '@datapunt/asc-assets';
 import styled from '@datapunt/asc-core';
-import { Heading, Icon, styles, themeColor, TopBar } from '@datapunt/asc-ui';
+import { Heading, Icon, themeColor } from '@datapunt/asc-ui';
 import React, { useState } from 'react';
 
 const AcordeonContentStyle = styled.div`

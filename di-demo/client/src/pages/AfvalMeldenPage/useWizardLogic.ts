@@ -19,8 +19,11 @@ const useWizardLogic: useWizardLogicType = () => {
         step: number
       ) => void)
     | undefined = useCallback((event, step) => {
-    event && event.preventDefault();
-    event && event.stopPropagation();
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
     dispatch({ type: SET_STEP, payload: step });
   }, []);
 

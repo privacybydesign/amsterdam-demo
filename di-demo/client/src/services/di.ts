@@ -6,13 +6,13 @@ export const getConfig = async () => {
   const response = await fetch('/config', {
     mode: 'cors',
   });
-  return await response.json();
+  return response.json();
 };
 
 export const isMobile = () => {
   return (
     /Android/i.test(window.navigator.userAgent) ||
-    /iPad|iPhone|iPod/.test(navigator.userAgent)
+    /iPad|iPhone|iPod/.test(window.navigator.userAgent)
   );
 };
 
@@ -26,7 +26,7 @@ export const sendVote = async (identifier, vote) => {
     },
   });
 
-  return await response.json();
+  return response.json();
 };
 
 export const createIrmaSession = async (
@@ -56,7 +56,6 @@ export const createIrmaSession = async (
 
   if (isMobile()) {
     sessionOptions.method = 'mobile';
-  } else {
   }
 
   const result = await irma.handleSession(sessionPtr, sessionOptions);

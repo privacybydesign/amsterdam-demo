@@ -18,9 +18,17 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "noImplicitAny": false
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "composite": true
   },
   "include": [
     "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [
+    "custom.d.ts"
   ]
 }

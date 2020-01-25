@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { BackDrop } from '@datapunt/asc-ui';
 import { PageWrapper } from '../../AppStyle';
 import { createIrmaSession } from '../../services/di';
@@ -57,7 +56,7 @@ const MijnAmsterdamPage: React.FC = () => {
   useEffect(() => {
     if (authorizing) {
       (async () => {
-        const identifier = await createIrmaSession('email', 'irma-qr');
+        await createIrmaSession('email', 'irma-qr');
         setAuthorizing(false);
         setAutorized(true);
         scrollTop();
