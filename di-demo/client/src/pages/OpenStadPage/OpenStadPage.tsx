@@ -6,7 +6,7 @@ import { QRModal } from '../../shared/components/Modal/QRModal';
 import Radio, { RadioGroup } from '../../shared/components/RadioOS';
 import { ButtonStyleProps } from '../../shared/components/Button/ButtonStyle';
 import Button from '../../shared/components/Button/Button';
-import OpeStadInfo from './OpenStadInfo';
+import OpenStadInfo from './OpenStadInfo';
 import { scrollTop } from '../../services/layout';
 import { BackDrop } from '@datapunt/asc-ui';
 
@@ -92,7 +92,7 @@ const OpenStadPage: React.FC<{}> = () => {
       )}
       {!voting && <Button onClick={goHome} {...homeButtonPosition}></Button>}
       {voting && selectedOption && (
-        <QRModal onClose={() => setVoting(false)} Info={OpeStadInfo} />
+        <QRModal onClose={() => setVoting(false)} Info={OpenStadInfo} />
       )}
       {voting && selectedOption && (
         <BackDrop onClick={() => {}} hideOverFlow={false} />

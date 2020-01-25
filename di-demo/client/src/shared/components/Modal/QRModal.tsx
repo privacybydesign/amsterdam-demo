@@ -6,7 +6,7 @@ import {
   Heading,
   CompactThemeProvider,
 } from '@datapunt/asc-ui';
-import { Close, ChevronDown, ChevronUp } from '@datapunt/asc-assets';
+import { Close } from '@datapunt/asc-assets';
 import styled from '@datapunt/asc-core';
 
 const ModalBlock = styled.div`
@@ -77,28 +77,28 @@ export const QRModal: React.FC<Props> = ({ onClose, Info }) => {
   return (
     <CompactThemeProvider>
       <QRWrapperStyle>
-      <QRStyle>
-        <TopBar>
-          <Heading as="h4">
-            <Button
-              variant="blank"
-              type="button"
-              size={30}
-              onClick={onClose}
-              icon={<Close />}
-            />
-          </Heading>
-        </TopBar>
-        <ModalBlock>
-          <Info />
-          <QRCodeStyle>
-            <QRCanvasStyle>
-              <canvas id="irma-qr"></canvas>
-            </QRCanvasStyle>
-            <Heading as="h4">Scan de QR-code</Heading>
-          </QRCodeStyle>
-        </ModalBlock>
-      </QRStyle>
+        <QRStyle>
+          <TopBar>
+            <Heading as="h4">
+              <Button
+                variant="blank"
+                type="button"
+                size={30}
+                onClick={onClose}
+                icon={<Close />}
+              />
+            </Heading>
+          </TopBar>
+          <ModalBlock>
+            <Info />
+            <QRCodeStyle>
+              <QRCanvasStyle>
+                <canvas id="irma-qr"></canvas>
+              </QRCanvasStyle>
+              <Heading as="h4">Scan de QR-code</Heading>
+            </QRCodeStyle>
+          </ModalBlock>
+        </QRStyle>
       </QRWrapperStyle>
     </CompactThemeProvider>
   );
