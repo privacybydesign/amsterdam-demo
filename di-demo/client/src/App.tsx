@@ -1,7 +1,7 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext } from 'react';
 import styled from '@datapunt/asc-core';
-import "./App.css";
-import { PageWrapper } from "./AppStyle";
+import './App.css';
+import { PageWrapper } from './AppStyle';
 
 const MainContainerStyle = styled.div`
   background-color: #f2f5f8;
@@ -29,11 +29,10 @@ const Spacer = styled.div<{ height: number }>`
   height: ${({ height }) => height}px;
 `;
 
-const themeName = "amsterdam";
+const themeName = 'amsterdam';
 const App: React.FC = () => {
-
   return (
-    <MainContainerStyle>
+    <MainContainerStyle data-testid="main-container">
       <PageWrapper>
         <img
           alt="Home"
