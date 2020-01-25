@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useHistory } from 'react-router-dom';
+import { BackDrop } from '@datapunt/asc-ui';
 import { PageWrapper } from '../../AppStyle';
 import { createIrmaSession } from '../../services/di';
 import { QRModal } from '../../shared/components/Modal/QRModal';
@@ -8,7 +9,6 @@ import { ButtonStyleProps } from '../../shared/components/Button/ButtonStyle';
 import Button from '../../shared/components/Button/Button';
 import MijnAmsterdamInfo from './MijnAmsterdamInfo';
 import { scrollTop } from '../../services/layout';
-import { BackDrop } from '@datapunt/asc-ui';
 
 const loginButtonPosition: ButtonStyleProps = {
   width: 224,
@@ -84,12 +84,10 @@ const MijnAmsterdamPage: React.FC = () => {
               width="1400"
               decoding="async"
             />
-            <Button onClick={login} {...loginButtonPosition}></Button>
+            <Button onClick={login} {...loginButtonPosition} />
           </>
         )}
-        {!authorizing && (
-          <Button onClick={goHome} {...homeButtonPosition}></Button>
-        )}
+        {!authorizing && <Button onClick={goHome} {...homeButtonPosition} />}
 
         {authorized && (
           <>
@@ -100,7 +98,7 @@ const MijnAmsterdamPage: React.FC = () => {
               width="1400"
               decoding="async"
             />
-            <Button onClick={goBack} {...backButtonPosition}></Button>
+            <Button onClick={goBack} {...backButtonPosition} />
           </>
         )}
       </PageWrapper>

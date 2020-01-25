@@ -1,6 +1,6 @@
 import React from 'react';
-import { Acordeon } from '../../shared/components/Acordeon/Acordeon';
 import styled from '@datapunt/asc-core';
+import { Acordeon } from '../../shared/components/Acordeon/Acordeon';
 import AttributeList from '../../shared/components/AttributeList';
 import AttributeInfo from '../../shared/components/AttributeInfo';
 
@@ -19,7 +19,7 @@ const MijnAmsterdamInfo = () => {
           'Uw achternaam',
           'Uw burgerservicenummer (BSN)',
         ]}
-      ></AttributeList>
+      />
 
       <Acordeon title="Waarom worden deze gegevens gevraagd?">
         <AttributeInfo title="Voornaam">

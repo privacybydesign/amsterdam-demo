@@ -1,4 +1,4 @@
-import React, { useState, useContext, useMemo, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import RadioStyle, {
   RadioWrapperStyle,
   RadioCircleStyle,

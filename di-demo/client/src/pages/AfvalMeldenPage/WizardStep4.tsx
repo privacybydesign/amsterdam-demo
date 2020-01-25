@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { PageWrapper } from '../../AppStyle';
 import { useParams } from 'react-router-dom';
+import { PageWrapper } from '../../AppStyle';
 import AfvalMeldenContext from './AfvalMeldenContext';
 import Button from '../../shared/components/Button/Button';
 import { ButtonStyleProps } from '../../shared/components/Button/ButtonStyle';
@@ -25,7 +25,7 @@ const WizardStep4: React.FC = () => {
         width="360"
         decoding="async"
       />
-      <Button onClick={e => gotoStep(e, 1)} {...homeButtonPosition}></Button>
+      <Button onClick={e => gotoStep(e, 1)} {...homeButtonPosition} />
     </PageWrapper>
   ) : null;
 };

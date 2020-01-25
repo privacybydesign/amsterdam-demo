@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { PageWrapper } from '../../AppStyle';
 import { useParams, useHistory } from 'react-router-dom';
+import { BackDrop } from '@datapunt/asc-ui';
+import { PageWrapper } from '../../AppStyle';
 import { createIrmaSession } from '../../services/di';
 import { QRModal } from '../../shared/components/Modal/QRModal';
 import Radio, { RadioGroup } from '../../shared/components/RadioOS';
@@ -8,7 +9,6 @@ import { ButtonStyleProps } from '../../shared/components/Button/ButtonStyle';
 import Button from '../../shared/components/Button/Button';
 import OpenStadInfo from './OpenStadInfo';
 import { scrollTop } from '../../services/layout';
-import { BackDrop } from '@datapunt/asc-ui';
 
 const loginButtonPosition: ButtonStyleProps = {
   width: 224,
@@ -69,7 +69,7 @@ const OpenStadPage: React.FC<{}> = () => {
             onClick={vote}
             inactive={selectedOption == null}
             {...loginButtonPosition}
-          ></Button>
+          />
           <RadioGroup name="vote">
             <Radio
               id="brug"
@@ -90,7 +90,7 @@ const OpenStadPage: React.FC<{}> = () => {
           </RadioGroup>
         </>
       )}
-      {!voting && <Button onClick={goHome} {...homeButtonPosition}></Button>}
+      {!voting && <Button onClick={goHome} {...homeButtonPosition} />}
       {voting && selectedOption && (
         <QRModal onClose={() => setVoting(false)} Info={OpenStadInfo} />
       )}

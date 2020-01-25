@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { PageWrapper } from '../../AppStyle';
 import { useParams } from 'react-router-dom';
+import { PageWrapper } from '../../AppStyle';
 import AfvalMeldenContext from './AfvalMeldenContext';
 import { ButtonStyleProps } from '../../shared/components/Button/ButtonStyle';
 import Button from '../../shared/components/Button/Button';
@@ -57,10 +57,10 @@ const WizardStep2: React.FC = () => {
         width="360"
         decoding="async"
       />
-      <Button onClick={e => gotoStep(e, 1)} {...homeButtonPosition}></Button>
-      <Button onClick={e => gotoStep(e, 3)} {...detailButtonPosition}></Button>
-      <Button onClick={send} {...loginButtonPosition}></Button>
-      {sending && <canvas id="irma-qr"></canvas>}
+      <Button onClick={e => gotoStep(e, 1)} {...homeButtonPosition} />
+      <Button onClick={e => gotoStep(e, 3)} {...detailButtonPosition} />
+      <Button onClick={send} {...loginButtonPosition} />
+      {sending && <canvas id="irma-qr" />}
     </PageWrapper>
   ) : null;
 };

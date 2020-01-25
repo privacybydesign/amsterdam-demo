@@ -93,7 +93,7 @@ export const QRModal: React.FC<Props> = ({ onClose, Info }) => {
             <Info />
             <QRCodeStyle>
               <QRCanvasStyle>
-                <canvas id="irma-qr"></canvas>
+                <canvas id="irma-qr" />
               </QRCanvasStyle>
               <Heading as="h4">Scan de QR-code</Heading>
             </QRCodeStyle>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { PageWrapper } from '../AppStyle';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { PageWrapper } from '../AppStyle';
 import { createIrmaSession } from '../services/di';
 import { scrollTop } from '../services/layout';
 
@@ -18,7 +18,7 @@ const QRStyle = styled.div`
 const QR: React.FC = () => {
   return (
     <QRStyle>
-      <canvas id="irma-qr"></canvas>
+      <canvas id="irma-qr" />
     </QRStyle>
   );
 };

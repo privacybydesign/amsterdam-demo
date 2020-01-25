@@ -1,5 +1,5 @@
 import styled, { css } from '@datapunt/asc-core';
-import { themeColor, themeSpacing } from '@datapunt/asc-ui';
+import { themeSpacing } from '@datapunt/asc-ui';
 
 export type Props = {
   name?: string;

@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
-import { PageWrapper } from '../../AppStyle';
 import { useParams } from 'react-router-dom';
-import TextArea from '../../shared/components/TextArea';
 import {
   Heading,
   styles,
@@ -14,6 +12,8 @@ import {
   Label,
 } from '@datapunt/asc-ui';
 import styled from '@datapunt/asc-core';
+import TextArea from '../../shared/components/TextArea';
+import { PageWrapper } from '../../AppStyle';
 import AfvalMeldenContext from './AfvalMeldenContext';
 
 interface FormControlProps {
@@ -62,7 +62,7 @@ const WizardStep1: React.FC = () => {
       <FormStyle>
         <FormControlStyle maxWidth={340}>
           <Heading as="h4">Waar gaat het om?</Heading>
-          <TextArea rows={6}></TextArea>
+          <TextArea rows={6} />
         </FormControlStyle>
 
         <FormControlStyle>
