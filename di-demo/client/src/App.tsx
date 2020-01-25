@@ -63,7 +63,7 @@ const App: React.FC = () => {
   const history = useHistory();
 
   return (
-    <MainContainerStyle>
+    <MainContainerStyle data-testid="main-container">
       <PageWrapper>
         <img
           alt="Home"
