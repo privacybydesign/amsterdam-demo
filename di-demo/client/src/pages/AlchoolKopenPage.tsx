@@ -27,6 +27,27 @@ const PageContainer: React.FC = styled.div`
   background-color: black;
 `;
 
+const AlchoolResult: React.FC<{ authorized: boolean }> = ({ authorized }) => {
+  const { theme } = useParams();
+  return authorized ? (
+    <img
+      alt="Alcohol Kopen"
+      src={`/assets/theme/${theme}/alchoolkopen-accept.png`}
+      height="1068"
+      width="1400"
+      decoding="async"
+    />
+  ) : (
+    <img
+      alt="Alcohol Kopen"
+      src={`/assets/theme/${theme}/alchoolkopen-reject.png`}
+      height="1068"
+      width="1400"
+      decoding="async"
+    />
+  );
+};
+
 const AlchoolKopenPage: React.FC<{}> = () => {
   const { theme } = useParams();
   const [authorizing, setAuthorizing] = useState(true);
@@ -55,22 +76,8 @@ const AlchoolKopenPage: React.FC<{}> = () => {
             />
             <QR />
           </>
-        ) : authorized ? (
-          <img
-            alt="Alcohol Kopen"
-            src={`/assets/theme/${theme}/alchoolkopen-accept.png`}
-            height="1068"
-            width="1400"
-            decoding="async"
-          />
         ) : (
-          <img
-            alt="Alcohol Kopen"
-            src={`/assets/theme/${theme}/alchoolkopen-reject.png`}
-            height="1068"
-            width="1400"
-            decoding="async"
-          />
+          <AlchoolResult authorized={authorized} />
         )}
       </StyledPageWrapper>
     </PageContainer>

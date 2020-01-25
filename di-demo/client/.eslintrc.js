@@ -7,11 +7,12 @@ module.exports = {
     'prettier/react',
     'prettier/standard',
   ],
-  plugins: ['prettier', '@typescript-eslint'],
+  plugins: ['jest', 'prettier', '@typescript-eslint', 'react-hooks'],
   rules: {
     'prettier/prettier': ['error'],
   },
   env: {
+    'jest/globals': true,
     browser: true
   },
   globals: {

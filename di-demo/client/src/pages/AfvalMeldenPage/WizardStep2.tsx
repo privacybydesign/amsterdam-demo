@@ -41,7 +41,7 @@ const WizardStep2: React.FC = () => {
   useEffect(() => {
     if (sending) {
       (async () => {
-        const identifier = await createIrmaSession('email', 'irma-qr');
+        await createIrmaSession('email', 'irma-qr');
         setSending(false);
         gotoStep(null, 4);
       })();

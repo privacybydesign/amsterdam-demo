@@ -16,6 +16,7 @@ const AcordeonContentStyle = styled.div`
     text-align: center;
   }
 `;
+
 export type Props = {
   open?: boolean;
 };
@@ -52,7 +53,12 @@ export const Acordeon = ({ title, children }) => {
   return (
     <AcordeonStyle open={open}>
       <>
-        <header role="button" onClick={toggleContent}>
+        <header
+          role="button"
+          onClick={toggleContent}
+          onKeyDown={() => {}}
+          tabIndex={-1}
+        >
           <Heading as="h5">
             {title}
             <Icon size={13}>{open ? <ChevronUp /> : <ChevronDown />}</Icon>
