@@ -1,19 +1,20 @@
-import React, { useContext } from "react";
-import { PageWrapper } from "../../AppStyle";
-import { useParams } from "react-router-dom";
-import Radio, { RadioGroup } from "../../shared/components/Radio";
-import TextArea from "../../shared/components/TextArea";
-import Label from "../../shared/components/Label";
+import React, { useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import {
   Heading,
   styles,
   themeSpacing,
   TopBar,
   Button,
-  themeColor
-} from "@datapunt/asc-ui";
-import styled from "@datapunt/asc-core";
-import RommelMeldenContext from "./RomelMeldenContext";
+  themeColor,
+  Radio,
+  RadioGroup,
+  Label,
+} from '@datapunt/asc-ui';
+import styled from '@datapunt/asc-core';
+import TextArea from '../../shared/components/TextArea';
+import { PageWrapper } from '../../AppStyle';
+import AfvalMeldenContext from './AfvalMeldenContext';
 
 interface FormControlProps {
   maxWidth?: number;
@@ -40,14 +41,14 @@ const FormStyle = styled.form`
 
 const StyledTopBar = styled(TopBar)`
   margin: ${themeSpacing(17, 6, 4, 0)};
-  background-color: ${themeColor("tint", "level3")};
+  background-color: ${themeColor('tint', 'level3')};
   flex-direction: row-reverse;
   padding: ${themeSpacing(2)};
 `;
 
 const WizardStep1: React.FC = () => {
   const { theme } = useParams();
-  const { step, gotoStep } = useContext(RommelMeldenContext);
+  const { step, gotoStep } = useContext(AfvalMeldenContext);
 
   return step === 1 ? (
     <PageWrapper maxWidth={360}>
@@ -61,11 +62,11 @@ const WizardStep1: React.FC = () => {
       <FormStyle>
         <FormControlStyle maxWidth={340}>
           <Heading as="h4">Waar gaat het om?</Heading>
-          <TextArea rows={6}></TextArea>
+          <TextArea rows={6} />
         </FormControlStyle>
 
         <FormControlStyle>
-          <Heading as="h4">Geef het tijdstrip aan</Heading>
+          <Heading as="h4">Geef het tijdstip aan</Heading>
           <RadioGroup name="group-1" onChange={() => {}}>
             <Label htmlFor="nu" label="Nu">
               <Radio id="nu" value="nu" />

@@ -1,4 +1,4 @@
-import styled from "@datapunt/asc-core";
+import styled from '@datapunt/asc-core';
 
 export type Props = {
   name?: string;

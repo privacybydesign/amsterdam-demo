@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from "@datapunt/asc-core";
+import styled from '@datapunt/asc-core';
 
 const AttributeListStyle = styled.ul`
   font-size: 16px;
@@ -21,4 +21,4 @@ const AttributeList = ({ values }) => {
   );
 };
 
-export default AttributeList
+export default AttributeList;

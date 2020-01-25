@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import { scrollTop } from '../../services/layout';
 
 export interface IStateType {
   step: number;
@@ -10,18 +11,18 @@ export interface IStateType {
 
 const defaultState: IStateType = { step: 1, gotoStep: (): void => {} };
 
-const RommelMeldenContext = React.createContext<IStateType>(defaultState);
+const AfvalMeldenContext = React.createContext<IStateType>(defaultState);
 
 export const SET_STEP = 'SET_STEP';
 
-export const rommelMeldenReducer = (state, action) => {
+export const afvalMeldenReducer = (state, action) => {
   switch (action.type) {
     case SET_STEP:
-      return {...state, step: action.payload}
-      ;
+      scrollTop();
+      return { ...state, step: action.payload };
     default:
       return state;
   }
-}
+};
 
-export default RommelMeldenContext;
+export default AfvalMeldenContext;

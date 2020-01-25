@@ -1,32 +1,32 @@
-import * as irma from "@privacybydesign/irmajs";
+import * as irma from '@privacybydesign/irmajs';
 
 let config: any;
 
 export const getConfig = async () => {
-  const response = await fetch("/config", {
-    mode: "cors"
+  const response = await fetch('/config', {
+    mode: 'cors',
   });
-  return await response.json();
+  return response.json();
 };
 
 export const isMobile = () => {
   return (
     /Android/i.test(window.navigator.userAgent) ||
-    /iPad|iPhone|iPod/.test(navigator.userAgent)
+    /iPad|iPhone|iPod/.test(window.navigator.userAgent)
   );
 };
 
 export const sendVote = async (identifier, vote) => {
-  const response = await fetch("/vote", {
-    method: "POST",
-    mode: "cors",
+  const response = await fetch('/vote', {
+    method: 'POST',
+    mode: 'cors',
     body: JSON.stringify({ identifier, vote }),
     headers: {
-      "Content-Type": "application/json"
-    }
+      'Content-Type': 'application/json',
+    },
   });
 
-  return await response.json();
+  return response.json();
 };
 
 export const createIrmaSession = async (
@@ -39,24 +39,23 @@ export const createIrmaSession = async (
   }
 
   const irmaResponse = await fetch(`/getsession/${dataType}`, {
-    mode: "cors"
+    mode: 'cors',
   });
 
   const session = await irmaResponse.json();
   const { sessionPtr, token } = session;
 
   const sessionOptions = {
-    method: "canvas",
+    method: 'canvas',
     element: holderElementId,
     showConnectedIcon: true,
     server: config.irma,
     token,
-    language: "nl"
+    language: 'nl',
   };
 
   if (isMobile()) {
-    sessionOptions.method = "mobile";
-  } else {
+    sessionOptions.method = 'mobile';
   }
 
   const result = await irma.handleSession(sessionPtr, sessionOptions);

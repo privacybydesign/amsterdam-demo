@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-import RadioGroupStyle, { Props } from './RadioGroupStyle'
-import RadioContext from './RadioContext'
+import RadioGroupStyle, { Props } from './RadioGroupStyle';
+import RadioContext from './RadioContext';
 
 const RadioGroup: React.FC<Props & React.HTMLAttributes<HTMLDivElement>> = ({
   name,
   children,
   ...otherProps
 }) => {
-  const [checked, setChecked] = React.useState('')
+  const [checked, setChecked] = React.useState('');
   return (
     <RadioContext.Provider
       value={{
@@ -17,11 +17,9 @@ const RadioGroup: React.FC<Props & React.HTMLAttributes<HTMLDivElement>> = ({
         name,
       }}
     >
-      <RadioGroupStyle  {...otherProps}>
-        {children}
-      </RadioGroupStyle>
+      <RadioGroupStyle {...otherProps}>{children}</RadioGroupStyle>
     </RadioContext.Provider>
-  )
-}
+  );
+};
 
-export default RadioGroup
+export default RadioGroup;

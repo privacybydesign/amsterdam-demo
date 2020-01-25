@@ -1,39 +1,50 @@
-import React, { useEffect, useContext } from "react";
+import React from 'react';
 import styled from '@datapunt/asc-core';
-import "./App.css";
-import { PageWrapper } from "./AppStyle";
+import { useHistory } from 'react-router-dom';
+import './App.css';
+import { PageWrapper } from './AppStyle';
+import Button, {
+  ButtonStyleProps,
+} from './shared/components/Button/ButtonStyle';
 
 const MainContainerStyle = styled.div`
   background-color: #f2f5f8;
 `;
 
-const LinkListStyle = styled.div`
-  position: absolute;
-  top: 326px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+const mijnAmsterdamButtonPosition: ButtonStyleProps = {
+  width: 314,
+  height: 53,
+  top: 326,
+  left: 543,
+};
 
-const LinkStyle = styled.a`
-  // border: solid 1px grey;
-  width: 314px;
-  margin-bottom: 20px;
-  height: 53px;
-`;
+const openStadButtonPosition: ButtonStyleProps = {
+  width: 314,
+  height: 53,
+  top: 401,
+  left: 543,
+};
 
-const Spacer = styled.div<{ height: number }>`
-  height: ${({ height }) => height}px;
-`;
+const afvalMeldenButtonPosition: ButtonStyleProps = {
+  width: 314,
+  height: 53,
+  top: 476,
+  left: 543,
+};
 
-const themeName = "amsterdam";
+const alchoolButtonPosition: ButtonStyleProps = {
+  width: 314,
+  height: 53,
+  top: 551,
+  left: 543,
+};
+
+const themeName = 'amsterdam';
 const App: React.FC = () => {
+  const history = useHistory();
 
   return (
-    <MainContainerStyle>
+    <MainContainerStyle data-testid="main-container">
       <PageWrapper>
         <img
           alt="Home"
@@ -42,27 +53,22 @@ const App: React.FC = () => {
           width="1400"
           decoding="async"
         />
-        <LinkListStyle>
-          <LinkStyle href={`mijnamsterdam/${themeName}`}>
-            {/* Mijn Amsterdam */}
-          </LinkStyle>
-          <LinkStyle href={`openstad/${themeName}`}>
-            {/* Open stad */}
-          </LinkStyle>
-          <LinkStyle href={`halloijburg/${themeName}`}>
-            {/* Hallo IJburg */}
-          </LinkStyle>
-          <LinkStyle href={`alchoolkopen/${themeName}`}>
-            {/* Alchool kopen */}
-          </LinkStyle>
-          <LinkStyle href={`rommelmelden/${themeName}`}>
-            {/* Rommel melden */}
-          </LinkStyle>
-          <Spacer height={41} />
-          <LinkStyle href={`kortingkrijgen/${themeName}`}>
-            {/* Korting krijgen */}
-          </LinkStyle>
-        </LinkListStyle>
+        <Button
+          onClick={() => history.push(`mijnamsterdam/${themeName}`)}
+          {...mijnAmsterdamButtonPosition}
+        />
+        <Button
+          onClick={() => history.push(`openstad/${themeName}`)}
+          {...openStadButtonPosition}
+        />
+        <Button
+          onClick={() => history.push(`afvalmelden/${themeName}`)}
+          {...afvalMeldenButtonPosition}
+        />
+        <Button
+          onClick={() => history.push(`alchoolkopen/${themeName}`)}
+          {...alchoolButtonPosition}
+        />
       </PageWrapper>
     </MainContainerStyle>
   );

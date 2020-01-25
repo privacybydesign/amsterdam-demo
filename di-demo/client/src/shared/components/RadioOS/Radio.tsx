@@ -1,11 +1,11 @@
-import React, { useState, useContext, useMemo, useEffect } from "react";
+import React, { useState, useContext, useEffect } from 'react';
 import RadioStyle, {
   RadioWrapperStyle,
   RadioCircleStyle,
   Props,
-  PositionProps
-} from "./RadioStyle";
-import RadioContext from "./RadioContext";
+  PositionProps,
+} from './RadioStyle';
+import RadioContext from './RadioContext';
 
 const Radio: React.FC<Props &
   PositionProps &
@@ -35,13 +35,13 @@ const Radio: React.FC<Props &
         className,
         checked,
         top,
-        left
+        left,
       }}
     >
       <RadioCircleStyle
         {...{
           focus,
-          checked
+          checked,
         }}
       />
       <RadioStyle
@@ -50,7 +50,7 @@ const Radio: React.FC<Props &
           id,
           name,
           value,
-          checked
+          checked,
         }}
         onFocus={() => {
           setFocus(true);
