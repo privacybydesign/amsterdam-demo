@@ -1,8 +1,8 @@
-import React from "react";
-import { Acordeon } from "../../shared/components/Acordeon/Acordeon";
-import styled from "@datapunt/asc-core";
-import AttributeList from "../../shared/components/AttributeList";
-import AttributeInfo from "../../shared/components/AttributeInfo";
+import React from 'react';
+import { Acordeon } from '../../shared/components/Acordeon/Acordeon';
+import styled from '@datapunt/asc-core';
+import AttributeList from '../../shared/components/AttributeList';
+import AttributeInfo from '../../shared/components/AttributeInfo';
 
 const MijnAmsterdamInfoStyle = styled.div``;
 
@@ -15,9 +15,9 @@ const MijnAmsterdamInfo = () => {
       </AttributeInfo>
       <AttributeList
         values={[
-          "Uw voornaam",
-          "Uw achternaam",
-          "Uw burgerservicenummer (BSN)"
+          'Uw voornaam',
+          'Uw achternaam',
+          'Uw burgerservicenummer (BSN)',
         ]}
       ></AttributeList>
 

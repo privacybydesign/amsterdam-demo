@@ -1,5 +1,5 @@
-import styled, { css } from "@datapunt/asc-core";
-import { themeColor, themeSpacing } from "@datapunt/asc-ui";
+import styled, { css } from '@datapunt/asc-core';
+import { themeColor, themeSpacing } from '@datapunt/asc-ui';
 
 export type Props = {
   name?: string;
@@ -20,7 +20,7 @@ type StyleOnlyProps = {
 };
 
 const RadioStyle = styled.input.attrs({
-  type: "radio"
+  type: 'radio',
 })<Props>`
   top: 0;
   left: 0;
@@ -41,7 +41,7 @@ export const RadioCircleStyle = styled.span<StyleOnlyProps>`
   background-color: white;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     height: 28px;
     width: 28px;

@@ -1,4 +1,4 @@
-import styled, { css } from "@datapunt/asc-core";
+import styled, { css } from '@datapunt/asc-core';
 
 export interface ButtonStyleProps {
   width: number;
@@ -12,7 +12,7 @@ export interface ButtonStyleProps {
 const ButtonStyle = styled.button<ButtonStyleProps>`
   position: absolute
 
-  border: ${({ debug }) => (debug ? `3px solid black` : "0")};
+  border: ${({ debug }) => (debug ? `3px solid black` : '0')};
 
   width: ${({ width }) => `${width}px`}
   height: ${({ height }) => `${height}px`}
@@ -20,7 +20,7 @@ const ButtonStyle = styled.button<ButtonStyleProps>`
   left: ${({ left }) => `${left}px`}
 
   background-color: ${({ inactive }) =>
-    inactive ? "rgba(255, 255, 255, 0.5)" : "transparent"};
+    inactive ? 'rgba(255, 255, 255, 0.5)' : 'transparent'};
 
   &:focus {
       outline-width: 0px;
@@ -28,7 +28,7 @@ const ButtonStyle = styled.button<ButtonStyleProps>`
 
   &:hover {
     outline-width: 0px;
-    cursor: ${({ inactive }) => (inactive ? "not-allowed" : "pointer")};
+    cursor: ${({ inactive }) => (inactive ? 'not-allowed' : 'pointer')};
   }
 `;
 

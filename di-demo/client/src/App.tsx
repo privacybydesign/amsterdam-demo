@@ -1,11 +1,11 @@
-import React, { useEffect, useContext } from "react";
-import styled from "@datapunt/asc-core";
-import { useHistory } from "react-router-dom";
-import "./App.css";
-import { PageWrapper } from "./AppStyle";
+import React, { useEffect, useContext } from 'react';
+import styled from '@datapunt/asc-core';
+import { useHistory } from 'react-router-dom';
+import './App.css';
+import { PageWrapper } from './AppStyle';
 import Button, {
-  ButtonStyleProps
-} from "./shared/components/Button/ButtonStyle";
+  ButtonStyleProps,
+} from './shared/components/Button/ButtonStyle';
 
 const MainContainerStyle = styled.div`
   background-color: #f2f5f8;
@@ -37,28 +37,28 @@ const mijnAmsterdamButtonPosition: ButtonStyleProps = {
   width: 314,
   height: 53,
   top: 326,
-  left: 543
+  left: 543,
 };
 const openStadButtonPosition: ButtonStyleProps = {
   width: 314,
   height: 53,
   top: 401,
-  left: 543
+  left: 543,
 };
 const afvalMeldenButtonPosition: ButtonStyleProps = {
   width: 314,
   height: 53,
   top: 476,
-  left: 543
+  left: 543,
 };
 const alchoolButtonPosition: ButtonStyleProps = {
   width: 314,
   height: 53,
   top: 551,
-  left: 543
+  left: 543,
 };
 
-const themeName = "amsterdam";
+const themeName = 'amsterdam';
 const App: React.FC = () => {
   const history = useHistory();
 

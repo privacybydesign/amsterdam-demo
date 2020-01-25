@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { PageWrapper } from "../../AppStyle";
-import { useParams } from "react-router-dom";
-import TextArea from "../../shared/components/TextArea";
+import React, { useContext } from 'react';
+import { PageWrapper } from '../../AppStyle';
+import { useParams } from 'react-router-dom';
+import TextArea from '../../shared/components/TextArea';
 import {
   Heading,
   styles,
@@ -11,10 +11,10 @@ import {
   themeColor,
   Radio,
   RadioGroup,
-  Label
-} from "@datapunt/asc-ui";
-import styled from "@datapunt/asc-core";
-import AfvalMeldenContext from "./AfvalMeldenContext";
+  Label,
+} from '@datapunt/asc-ui';
+import styled from '@datapunt/asc-core';
+import AfvalMeldenContext from './AfvalMeldenContext';
 
 interface FormControlProps {
   maxWidth?: number;
@@ -41,7 +41,7 @@ const FormStyle = styled.form`
 
 const StyledTopBar = styled(TopBar)`
   margin: ${themeSpacing(17, 6, 4, 0)};
-  background-color: ${themeColor("tint", "level3")};
+  background-color: ${themeColor('tint', 'level3')};
   flex-direction: row-reverse;
   padding: ${themeSpacing(2)};
 `;

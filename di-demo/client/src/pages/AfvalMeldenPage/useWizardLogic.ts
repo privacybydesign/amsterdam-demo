@@ -1,5 +1,5 @@
-import React, { useReducer, useMemo, useCallback } from "react";
-import { IStateType, afvalMeldenReducer, SET_STEP } from "./AfvalMeldenContext";
+import React, { useReducer, useMemo, useCallback } from 'react';
+import { IStateType, afvalMeldenReducer, SET_STEP } from './AfvalMeldenContext';
 
 type useWizardLogicType = () => IStateType;
 
@@ -26,7 +26,7 @@ const useWizardLogic: useWizardLogicType = () => {
 
   return {
     step: contextValue.state.step,
-    gotoStep
+    gotoStep,
   };
 };
 

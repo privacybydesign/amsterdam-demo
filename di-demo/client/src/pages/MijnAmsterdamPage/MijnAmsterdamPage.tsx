@@ -69,13 +69,11 @@ const MijnAmsterdamPage: React.FC = () => {
     <>
       {authorizing && (
         <QRModal
-        onClose={() => setAuthorizing(false)}
-        Info={MijnAmsterdamInfo}
+          onClose={() => setAuthorizing(false)}
+          Info={MijnAmsterdamInfo}
         />
-        
-        )}
-      {authorizing && (
-        <BackDrop onClick={() => { }} hideOverFlow={false} />)}
+      )}
+      {authorizing && <BackDrop onClick={() => {}} hideOverFlow={false} />}
       <PageWrapper>
         {!authorized && (
           <>

@@ -9,7 +9,7 @@ export const PageWrapper = styled.div<Props>`
   text-align: center;
   min-height: 100vh;
   margin: 0 auto;
-  max-width: ${({maxWidth}) => maxWidth? `${maxWidth}px` : `1400px`};
+  max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : `1400px`)};
 `;
 
 export const IrmaBaseButtonStyle = styled.button`
@@ -25,4 +25,3 @@ export const IrmaBaseButtonStyle = styled.button`
     cursor: pointer;
   }
 `;
-
