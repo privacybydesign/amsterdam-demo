@@ -11,7 +11,7 @@ const MijnAmsterdamInfo = () => {
     <MijnAmsterdamInfoStyle>
       <AttributeInfo title="Login bij Mijn Amsterdam met IRMA" headingType="h2">
         Om gebruik te kunnen maken van Mijn Amsterdam, moet u zich bekend maken
-        met
+        met:
       </AttributeInfo>
       <AttributeList
         values={[

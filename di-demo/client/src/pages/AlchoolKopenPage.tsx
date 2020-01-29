@@ -69,7 +69,7 @@ const AlchoolResult: React.FC<{ authorized: boolean }> = ({ authorized }) => {
 
 const AlchoolKopenPage: React.FC<{}> = () => {
   const { theme } = useParams();
-  const [authorizing, setAuthorizing] = useState(false);
+  const [authorizing, setAuthorizing] = useState(true);
   const [authorized, setAutorized] = useState(true);
   useEffect(() => {
     (async () => {

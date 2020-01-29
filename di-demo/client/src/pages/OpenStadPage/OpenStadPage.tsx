@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { BackDrop } from '@datapunt/asc-ui';
+import styled from 'styled-components';
 import { PageWrapper } from '../../AppStyle';
 import { createIrmaSession } from '../../services/di';
 import { QRModal } from '../../shared/components/Modal/QRModal';
@@ -28,6 +29,7 @@ const OpenStadPage: React.FC<{}> = () => {
   const { theme } = useParams();
   const [voting, setVoting] = useState(false);
   const [voted, setVoted] = useState(false);
+  const [votedConfirmed, setVotedConfirmed] = useState(false);
   const history = useHistory();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
@@ -47,9 +49,12 @@ const OpenStadPage: React.FC<{}> = () => {
     if (voting) {
       (async () => {
         await createIrmaSession('email', 'irma-qr');
-        setVoting(false);
-        setVoted(true);
-        scrollTop();
+        setVotedConfirmed(true);
+        setTimeout(() => {
+          setVoting(false);
+          setVoted(true);
+          scrollTop();
+        }, 1000);
       })();
     }
   }, [voting]);
@@ -91,9 +96,14 @@ const OpenStadPage: React.FC<{}> = () => {
         </>
       )}
       {!voting && <Button onClick={goHome} {...homeButtonPosition} />}
-      {voting && selectedOption && (
-        <QRModal onClose={() => setVoting(false)} Info={OpenStadInfo} />
-      )}
+      {voting &&
+        selectedOption &&
+        (votedConfirmed ? (
+          <VotedConfirmed />
+        ) : (
+          <QRModal onClose={() => setVoting(false)} Info={OpenStadInfo} />
+        ))}
+
       {voting && selectedOption && (
         <BackDrop onClick={() => {}} hideOverFlow={false} />
       )}
@@ -102,18 +112,36 @@ const OpenStadPage: React.FC<{}> = () => {
   );
 };
 
+const VotedConfirmedStyle = styled.div`
+  display: block;
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 100;
+`;
+
+const VotedConfirmed = () => {
+  const { theme } = useParams();
+  return (
+    <VotedConfirmedStyle>
+      <img
+        alt="Openstad"
+        src={`/assets/theme/${theme}/openstad-voted-confirm.png`}
+        height="400"
+        width="500"
+        decoding="async"
+      />
+    </VotedConfirmedStyle>
+  );
+};
+
 const Voted = () => {
   const { theme } = useParams();
-  const [confirmed, setConfirmed] = useState(false);
-  return confirmed ? (
-    <img
-      alt="Openstad"
-      src={`/assets/theme/${theme}/openstad-voted.png`}
-      height="1119"
-      width="1400"
-      decoding="async"
-    />
-  ) : (
+  return (
     <img
       alt="Openstad"
       src={`/assets/theme/${theme}/openstad-voted.png`}
