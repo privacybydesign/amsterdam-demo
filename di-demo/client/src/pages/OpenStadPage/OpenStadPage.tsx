@@ -97,18 +97,30 @@ const OpenStadPage: React.FC<{}> = () => {
       {voting && selectedOption && (
         <BackDrop onClick={() => {}} hideOverFlow={false} />
       )}
-      {voted && (
-        <>
-          <img
-            alt="Openstad"
-            src={`/assets/theme/${theme}/openstad-voted.png`}
-            height="1119"
-            width="1400"
-            decoding="async"
-          />
-        </>
-      )}
+      {voted && <Voted />}
     </PageWrapper>
+  );
+};
+
+const Voted = () => {
+  const { theme } = useParams();
+  const [confirmed, setConfirmed] = useState(false);
+  return confirmed ? (
+    <img
+      alt="Openstad"
+      src={`/assets/theme/${theme}/openstad-voted.png`}
+      height="1119"
+      width="1400"
+      decoding="async"
+    />
+  ) : (
+    <img
+      alt="Openstad"
+      src={`/assets/theme/${theme}/openstad-voted.png`}
+      height="1119"
+      width="1400"
+      decoding="async"
+    />
   );
 };
 
