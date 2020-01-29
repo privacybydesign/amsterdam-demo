@@ -11,7 +11,7 @@ const AttributeInfo = ({
 }) => {
   return (
     <AttributeInfoStyle {...otherProps}>
-      <Heading as={headingType}>{title}-</Heading>
+      <Heading as={headingType}>{title}</Heading>
       <Paragraph>{children}</Paragraph>
     </AttributeInfoStyle>
   );
