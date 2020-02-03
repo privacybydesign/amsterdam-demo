@@ -56,7 +56,7 @@ const MijnAmsterdamPage: React.FC = () => {
   useEffect(() => {
     if (authorizing) {
       (async () => {
-        await createIrmaSession('email', 'irma-qr');
+        await createIrmaSession('bsn', 'irma-qr');
         setAuthorizing(false);
         setAutorized(true);
         scrollTop();

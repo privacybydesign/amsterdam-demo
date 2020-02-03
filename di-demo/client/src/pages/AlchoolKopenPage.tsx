@@ -73,7 +73,7 @@ const AlchoolKopenPage: React.FC<{}> = () => {
   const [authorized, setAutorized] = useState(true);
   useEffect(() => {
     (async () => {
-      await createIrmaSession('email', 'irma-qr');
+      await createIrmaSession('age', 'irma-qr');
       setAuthorizing(false);
       const success = true;
       setAutorized(success);

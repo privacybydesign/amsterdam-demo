@@ -48,7 +48,7 @@ const OpenStadPage: React.FC<{}> = () => {
   useEffect(() => {
     if (voting) {
       (async () => {
-        await createIrmaSession('email', 'irma-qr');
+        await createIrmaSession('postcode', 'irma-qr');
         setVotedConfirmed(true);
         setTimeout(() => {
           setVoting(false);
