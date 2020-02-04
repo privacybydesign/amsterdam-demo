@@ -50,6 +50,7 @@ const StyledTopBar = styled(TopBar)`
   background-color: ${themeColor('tint', 'level3')};
   flex-direction: row-reverse;
   padding: ${themeSpacing(2)};
+  min-height: 44px;
 `;
 
 const WizardStep1: React.FC = () => {
@@ -137,15 +138,16 @@ const WizardStep1: React.FC = () => {
         </FormControlStyle>
 
         <StyledTopBar>
-          <Button
-            variant="secondary"
-            taskflow
-            aria-label="Volgende"
-            onClick={handleOnClick}
-            disabled={!isFormValid()}
-          >
-            Volgende
-          </Button>
+          {isFormValid() && (
+            <Button
+              variant="secondary"
+              taskflow
+              aria-label="Volgende"
+              onClick={handleOnClick}
+            >
+              Volgende
+            </Button>
+          )}
         </StyledTopBar>
       </FormStyle>
     </PageWrapper>
