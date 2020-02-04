@@ -122,7 +122,7 @@ const irmaDiscloseRequest = async (req, res, requestType) => {
   const authmethod = 'publickey';
   const request = createIrmaRequest(requestType);
 
-  console.log('irma.irmaDisclosePostcode called: ', {
+  console.log('irma.irmaDiscloseRequest called: ', {
     url: config.irma,
     request: JSON.stringify(request),
     authmethod,

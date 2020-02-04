@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   Heading,
@@ -18,6 +18,12 @@ import AfvalMeldenContext from './AfvalMeldenContext';
 
 interface FormControlProps {
   maxWidth?: number;
+}
+
+interface FormValue {
+  description?: string;
+  time?: string;
+  whishUpdates?: boolean;
 }
 
 const FormControlStyle = styled.div<FormControlProps>`
@@ -49,6 +55,30 @@ const StyledTopBar = styled(TopBar)`
 const WizardStep1: React.FC = () => {
   const { theme } = useParams();
   const { step, gotoStep } = useContext(AfvalMeldenContext);
+  const [formValue, setFormValue] = useState<FormValue>({});
+
+  useEffect(() => {
+    setFormValue({});
+  }, []);
+
+  const isFormValid = () => {
+    const { description, time, whishUpdates } = formValue;
+    return description && time && whishUpdates !== undefined;
+  };
+
+  const handleOnClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    if (formValue.whishUpdates) {
+      gotoStep(e, 2);
+    } else {
+      gotoStep(e, 4);
+    }
+  };
+
+  const updateFormValue = (name: string, value: string | boolean) => {
+    setFormValue({ ...formValue, [name]: value });
+  };
 
   return step === 1 ? (
     <PageWrapper maxWidth={360}>
@@ -62,12 +92,22 @@ const WizardStep1: React.FC = () => {
       <FormStyle>
         <FormControlStyle maxWidth={340}>
           <Heading as="h4">Waar gaat het om?</Heading>
-          <TextArea rows={6} />
+          <TextArea
+            rows={6}
+            onChange={e =>
+              updateFormValue('description', e.currentTarget.value)
+            }
+          />
         </FormControlStyle>
 
         <FormControlStyle>
           <Heading as="h4">Geef het tijdstip aan</Heading>
-          <RadioGroup name="group-1" onChange={() => {}}>
+          <RadioGroup
+            name="group-1"
+            onChange={(e: any) => {
+              updateFormValue('time', e.target.value);
+            }}
+          >
             <Label htmlFor="nu" label="Nu">
               <Radio id="nu" value="nu" />
             </Label>
@@ -81,7 +121,12 @@ const WizardStep1: React.FC = () => {
           <Heading as="h4">
             Wilt u een bericht ontvangen als uw melding is opgelost?
           </Heading>
-          <RadioGroup name="group-2" onChange={() => {}}>
+          <RadioGroup
+            name="group-2"
+            onChange={(e: any) => {
+              updateFormValue('whishUpdates', e.target.value === 'ja');
+            }}
+          >
             <Label htmlFor="ja" label="Ja">
               <Radio id="ja" value="ja" />
             </Label>
@@ -96,7 +141,8 @@ const WizardStep1: React.FC = () => {
             variant="secondary"
             taskflow
             aria-label="Volgende"
-            onClick={e => gotoStep(e, 2)}
+            onClick={handleOnClick}
+            disabled={!isFormValid()}
           >
             Volgende
           </Button>
