@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { PageWrapper } from '../AppStyle';
+import { PageContainer, PageWrapper } from '../AppStyle';
 import { createIrmaSession } from '../services/di';
 import { scrollTop } from '../services/layout';
 import { ButtonStyleProps } from '../shared/components/Button/ButtonStyle';
 import Button from '../shared/components/Button/Button';
 
-const StyledPageWrapper = styled(PageWrapper)`
+const StyledPageContainer = styled(PageContainer)`
   background-color: black;
+`;
+
+const StyledPageWrapper = styled(PageWrapper)`
+  @media screen and (max-width: 1024px) {
+    top: -100px;
+  }
 `;
 
 const QRStyle = styled.div`
   position: absolute;
   top: 445px;
-  left: 587px;
+  left: calc((100% - 230px) / 2);
 `;
 
 const QR: React.FC = () => {
@@ -31,10 +37,6 @@ const homeButtonPosition: ButtonStyleProps = {
   top: 0,
   left: 0,
 };
-
-const PageContainer: React.FC = styled.div`
-  background-color: black;
-`;
 
 const AlchoolResult: React.FC<{ authorized: boolean }> = ({ authorized }) => {
   const history = useHistory();
@@ -82,7 +84,7 @@ const AlchoolKopenPage: React.FC<{}> = () => {
   }, []);
 
   return (
-    <PageContainer>
+    <StyledPageContainer>
       <StyledPageWrapper>
         {authorizing ? (
           <>
@@ -99,7 +101,7 @@ const AlchoolKopenPage: React.FC<{}> = () => {
           <AlchoolResult authorized={authorized} />
         )}
       </StyledPageWrapper>
-    </PageContainer>
+    </StyledPageContainer>
   );
 };
 

@@ -17,7 +17,7 @@ const WizardStep4: React.FC = () => {
   const { step, gotoStep } = useContext(AfvalMeldenContext);
 
   return step === 4 ? (
-    <PageWrapper maxWidth={360}>
+    <>
       <img
         alt="Rommel Melden"
         src={`/assets/theme/${theme}/rommelmelden-step4.png`}
@@ -26,7 +26,7 @@ const WizardStep4: React.FC = () => {
         decoding="async"
       />
       <Button onClick={e => gotoStep(e, 1)} {...homeButtonPosition} />
-    </PageWrapper>
+    </>
   ) : null;
 };
 

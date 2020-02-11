@@ -49,7 +49,7 @@ const WizardStep2: React.FC = () => {
   }, [sending]);
 
   return step === 2 ? (
-    <PageWrapper maxWidth={360}>
+    <>
       <img
         alt="Rommel Melden"
         src={`/assets/theme/${theme}/rommelmelden-step2.png`}
@@ -61,7 +61,7 @@ const WizardStep2: React.FC = () => {
       <Button onClick={e => gotoStep(e, 3)} {...detailButtonPosition} />
       <Button onClick={send} {...loginButtonPosition} />
       {sending && <canvas id="irma-qr" />}
-    </PageWrapper>
+    </>
   ) : null;
 };
 

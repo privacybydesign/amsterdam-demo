@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { BackDrop } from '@datapunt/asc-ui';
+import styled from '@datapunt/asc-core';
 import { PageWrapper } from '../../AppStyle';
 import { createIrmaSession } from '../../services/di';
 import { QRModal } from '../../shared/components/Modal/QRModal';
@@ -29,6 +30,18 @@ const backButtonPosition: ButtonStyleProps = {
   top: 10,
   left: 855,
 };
+
+const PageContainer: React.FC = styled.div`
+  background-color: transparant;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+`;
+
+const StyledPageWrapper = styled(PageWrapper)`
+  left: calc((100% - 1400px) / 2);
+  position: absolute;
+`;
 
 const MijnAmsterdamPage: React.FC = () => {
   const { theme } = useParams();
@@ -73,34 +86,36 @@ const MijnAmsterdamPage: React.FC = () => {
         />
       )}
       {authorizing && <BackDrop onClick={() => {}} hideOverFlow={false} />}
-      <PageWrapper>
-        {!authorized && (
-          <>
-            <img
-              alt="Mijn Amsterdam"
-              src={`/assets/theme/${theme}/mijnamsterdam.png`}
-              height="1926"
-              width="1400"
-              decoding="async"
-            />
-            <Button onClick={login} {...loginButtonPosition} />
-          </>
-        )}
-        {!authorizing && <Button onClick={goHome} {...homeButtonPosition} />}
+      <PageContainer>
+        <StyledPageWrapper>
+          {!authorized && (
+            <>
+              <img
+                alt="Mijn Amsterdam"
+                src={`/assets/theme/${theme}/mijnamsterdam.png`}
+                height="1926"
+                width="1400"
+                decoding="async"
+              />
+              <Button onClick={login} {...loginButtonPosition} />
+            </>
+          )}
+          {!authorizing && <Button onClick={goHome} {...homeButtonPosition} />}
 
-        {authorized && (
-          <>
-            <img
-              alt="Ingelogd | Mijn Amsterdam"
-              src={`/assets/theme/${theme}/mijnamsterdam-authorized.png`}
-              height="1068"
-              width="1400"
-              decoding="async"
-            />
-            <Button onClick={goBack} {...backButtonPosition} />
-          </>
-        )}
-      </PageWrapper>
+          {authorized && (
+            <>
+              <img
+                alt="Ingelogd | Mijn Amsterdam"
+                src={`/assets/theme/${theme}/mijnamsterdam-authorized.png`}
+                height="1068"
+                width="1400"
+                decoding="async"
+              />
+              <Button onClick={goBack} {...backButtonPosition} />
+            </>
+          )}
+        </StyledPageWrapper>
+      </PageContainer>
     </>
   );
 };

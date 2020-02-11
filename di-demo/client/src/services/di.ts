@@ -12,7 +12,7 @@ export const getConfig = async () => {
 export const isMobile = () => {
   return (
     /Android/i.test(window.navigator.userAgent) ||
-    /iPad|iPhone|iPod/.test(window.navigator.userAgent)
+    /iPhone/.test(window.navigator.userAgent)
   );
 };
 
@@ -52,10 +52,12 @@ export const createIrmaSession = async (
     server: config.irma,
     token,
     language: 'nl',
+    disableMobile: true,
   };
 
   if (isMobile()) {
     sessionOptions.method = 'mobile';
+    sessionOptions.disableMobile = false;
   }
 
   const result = await irma.handleSession(sessionPtr, sessionOptions);

@@ -4,8 +4,18 @@ interface Props {
   maxWidth?: number;
 }
 
-export const PageWrapper = styled.div<Props>`
+export const PageContainer: React.FC = styled.div`
+  background-color: transparant;
   position: relative;
+  width: 100%;
+  height: 100vh;
+`;
+
+export const PageWrapper = styled.div<Props>`
+  position: absolute;
+  left: calc(
+    (100% - ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : `1400px`)}) / 2
+  );
   text-align: center;
   min-height: 100vh;
   margin: 0 auto;

@@ -6,16 +6,21 @@ import WizardStep2 from './WizardStep2';
 import WizardStep3 from './WizardStep3';
 import WizardStep4 from './WizardStep4';
 import useWizardLogic from './useWizardLogic';
+import { PageContainer, PageWrapper } from '../../AppStyle';
 
 const AfvalMeldenPage: React.FC = () => {
   const { step, gotoStep }: IStateType = useWizardLogic();
   return (
     <CompactThemeProvider>
       <AfvalMeldenContext.Provider value={{ step, gotoStep }}>
-        <WizardStep1 />
-        <WizardStep2 />
-        <WizardStep3 />
-        <WizardStep4 />
+        {/* <PageContainer> */}
+        <PageWrapper maxWidth={360}>
+          <WizardStep1 />
+          <WizardStep2 />
+          <WizardStep3 />
+          <WizardStep4 />
+        </PageWrapper>
+        {/* </PageContainer> */}
       </AfvalMeldenContext.Provider>
     </CompactThemeProvider>
   );

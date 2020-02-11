@@ -13,7 +13,6 @@ import {
 } from '@datapunt/asc-ui';
 import styled from '@datapunt/asc-core';
 import TextArea from '../../shared/components/TextArea';
-import { PageWrapper } from '../../AppStyle';
 import AfvalMeldenContext from './AfvalMeldenContext';
 
 interface FormControlProps {
@@ -82,7 +81,7 @@ const WizardStep1: React.FC = () => {
   };
 
   return step === 1 ? (
-    <PageWrapper maxWidth={360}>
+    <>
       <img
         alt="Rommel Melden"
         src={`/assets/theme/${theme}/rommelmelden.png`}
@@ -150,7 +149,7 @@ const WizardStep1: React.FC = () => {
           )}
         </StyledTopBar>
       </FormStyle>
-    </PageWrapper>
+    </>
   ) : null;
 };
 

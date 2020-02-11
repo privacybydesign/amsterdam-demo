@@ -34,7 +34,6 @@ const AcordeonStyle = styled.div<Props>`
 
     h5 {
       font-size: 15px;
-      font-weight: ${({ open }) => (open ? 700 : 400)};
       margin-bottom: 0;
       flex-grow: 1;
     }
