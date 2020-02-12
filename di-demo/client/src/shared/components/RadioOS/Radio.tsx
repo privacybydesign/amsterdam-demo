@@ -26,6 +26,7 @@ const Radio: React.FC<Props &
   // Pass default `checked` to RadioGroup on load and when `id` changes
   useEffect(() => {
     if (defaultChecked) setChecked(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   return (

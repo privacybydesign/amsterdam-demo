@@ -64,7 +64,7 @@ const AlchoolResult: React.FC<{ authorized: boolean }> = ({ authorized }) => {
           decoding="async"
         />
       )}
-      <Button onClick={goHome} {...homeButtonPosition} />}
+      <Button onClick={goHome} {...homeButtonPosition} />
     </>
   );
 };

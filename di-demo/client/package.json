@@ -60,7 +60,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "CI-true yarn test --bail",
+      "pre-push": "CI=true yarn test --bail",
       "pre-commit": "lint-staged"
     }
   },

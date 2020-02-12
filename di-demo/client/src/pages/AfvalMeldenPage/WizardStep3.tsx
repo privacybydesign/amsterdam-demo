@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { PageWrapper } from '../../AppStyle';
 import AfvalMeldenContext from './AfvalMeldenContext';
 import { ButtonStyleProps } from '../../shared/components/Button/ButtonStyle';
 import Button from '../../shared/components/Button/Button';
@@ -46,6 +45,7 @@ const WizardStep3: React.FC = () => {
         gotoStep(null, 4);
       })();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sending]);
 
   return step === 3 ? (

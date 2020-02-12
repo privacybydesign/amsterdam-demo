@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { PageWrapper } from '../../AppStyle';
 import AfvalMeldenContext from './AfvalMeldenContext';
 import Button from '../../shared/components/Button/Button';
 import { ButtonStyleProps } from '../../shared/components/Button/ButtonStyle';
