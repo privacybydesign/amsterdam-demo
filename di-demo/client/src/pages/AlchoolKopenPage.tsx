@@ -19,7 +19,7 @@ const StyledPageWrapper = styled(PageWrapper)`
 
 const QRStyle = styled.div`
   position: absolute;
-  top: 445px;
+  top: 400px;
   left: calc((100% - 230px) / 2);
 `;
 
