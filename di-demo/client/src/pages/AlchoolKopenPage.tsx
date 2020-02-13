@@ -91,7 +91,7 @@ const AlchoolKopenPage: React.FC<{}> = () => {
             <img
               alt="Alcohol Kopen"
               src={`/assets/theme/${theme}/alchoolkopen.png`}
-              height="1182"
+              height="1068"
               width="1400"
               decoding="async"
             />
