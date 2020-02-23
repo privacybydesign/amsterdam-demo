@@ -16,19 +16,6 @@ export const isMobile = () => {
   );
 };
 
-export const sendVote = async (identifier, vote) => {
-  const response = await fetch('/vote', {
-    method: 'POST',
-    mode: 'cors',
-    body: JSON.stringify({ identifier, vote }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  return response.json();
-};
-
 export const createIrmaSession = async (
   dataType: string,
   holderElementId: string
@@ -61,6 +48,6 @@ export const createIrmaSession = async (
   }
 
   const result = await irma.handleSession(sessionPtr, sessionOptions);
-
-  return result.disclosed[0].value.nl;
+  console.log('result', result.disclosed[0][0].value);
+  return result.disclosed[0][0].value.nl;
 };

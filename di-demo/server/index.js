@@ -1,5 +1,5 @@
 const express = require('express');
-const irma = require('@privacybydesign/irmajs');
+const irma = require('@privacybydesign/irmajs/dist/irma.node_new');
 const app = express();
 const cors = require('cors');
 const util = require('util');
@@ -12,18 +12,24 @@ var proxy = require('http-proxy-middleware');
 let config;
 
 const REQUESTS = {
-  USER_NAME: [{
-    label: 'Uw gebruikersnaam',
-    attributes: ['pbdf.sidn-pbdf.irma.pseudonym'],
-  }],
-  POSTCODE: [{
-    label: 'Uw postcode',
-    attributes: ['pbdf.gemeente.address.zipcode'],
-  }],
-  AGE:[ {
-    label: 'Uw leeftijd',
-    attributes: ['pbdf.gemeente.personalData.over18'],
-  }],
+  USER_NAME: [
+    {
+      label: 'Uw gebruikersnaam',
+      attributes: ['pbdf.sidn-pbdf.irma.pseudonym'],
+    },
+  ],
+  POSTCODE: [
+    {
+      label: 'Uw postcode',
+      attributes: ['pbdf.gemeente.address.zipcode'],
+    },
+  ],
+  AGE: [
+    {
+      label: 'Uw leeftijd',
+      attributes: ['pbdf.gemeente.personalData.over18'],
+    },
+  ],
   EMAIL: [
     {
       label: 'Uw emailadres of telefoonnummer',
@@ -49,16 +55,50 @@ const REQUESTS = {
   ],
 };
 
-const createIrmaRequest = (content) => {
-  return {
-    type: 'disclosing',
-    content
-  };
+//
+//
+//
+
+/**
+ * Use this call to check the request:
+ * `curl -H "Content-Type: application/json" -H 'X-IRMA-MinProtocolVersion: "2.4"' -H 'X-IRMA-MaxProtocolVersion: "2.5"' https://acc.attr.auth.amsterdam.nl/irma/session/zhvALcNoCbCyU0MMZNz5`
+ * `curl -H "Content-Type: application/json" -H 'X-IRMA-MinProtocolVersion: "2.4"' -H 'X-IRMA-MaxProtocolVersion: "2.5"' http://localhost:8088/irma/session/WJGQXzbdepNfUg1dc3nT`
+ *
+ * The result should look like `{"@context":"https://irma.app/ld/request/disclosure/v2","context":"AQ==","nonce":"VItsL+3+GiBHyIt1hIRwSQ==","protocolVersion":"2.5","disclose":[[["pbdf.sidn-pbdf.irma.pseudonym"]]]}`
+ */
+
+const createIrmaRequest = content => {
+  // return {
+  //   type: 'disclosing',
+  //   content,
+  //   // clientReturnUrl: 'http://a983c5c1.eu.ngrok.io'
+  // };
 
   // Example with the new request format (not working)
+  // disclose: [
+  //   [[['pbdf.pbdf.email.email'], ['pbdf.pbdf.mobilenumber.mobilenumber']]]
+  // ],
+  return {
+    '@context': 'https://irma.app/ld/request/disclosure/v2',
+    disclose: [[['pbdf.sidn-pbdf.irma.pseudonym']]],
+    // disclose: [
+    //   [
+    //     ['pbdf.gemeente.personalData.over18'],
+    //     // ['pbdf.bzkpilot.personalData.over18'],
+    //     // ['irma-demo.digidproef.personalData.over18'],
+    //   ],
+    // ],
+  //   clientReturnUrl: 'http://194e9c69.eu.ngrok.io',
+  };
+
   // return {
-  //   '@context': 'https://irma.app/ld/request/disclosure/v2',
-  //   disclose: [[[{ type: 'pbdf.sidn-pbdf.irma.pseudonym' , value: null}]]],
+  //   '@context': 'https://irma.app/ld/request/issuance/v2',
+  //   credentials: [
+  //     {
+  //       credential: 'irma-demo.MijnOverheid.ageLower',
+  //       attributes: { over12: 'yes', over16: 'yes', over18: 'yes' },
+  //     },
+  //   ],
   // };
 };
 
@@ -87,7 +127,7 @@ const init = async () => {
     app.get('/getsession/postcode', cors(), irmaDisclosePostcode);
     app.get('/getsession/bsn', cors(), irmaDiscloseBsn);
     app.get('/getsession/age', cors(), irmaDiscloseAge);
-    app.get("/getsession/email", cors(), irmaDiscloseEmail);
+    app.get('/getsession/email', cors(), irmaDiscloseEmail);
     app.get('/config', cors(), getConfig);
 
     if (process.env.NODE_ENV === 'production') {

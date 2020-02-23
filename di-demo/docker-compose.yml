@@ -33,12 +33,12 @@ services:
 
   irma-server:
     container_name: irma-server
-    image: diirmaserver_irma
+    image: di-irma-server_irma
     ports:
       - '8088:8088'
     environment:
-      - BASE_URL=https://acc.attr.auth.amsterdam.nl
-      # - BASE_URL=http://63115d13.eu.ngrok.io
+      #- BASE_URL=https://acc.attr.auth.amsterdam.nl
+      - BASE_URL=http://d3064d0d.eu.ngrok.io
   # app-prod:
   #     build:
   #         dockerfile: Dockerfile
