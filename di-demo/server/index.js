@@ -13,18 +13,35 @@ let config;
 
 const REQUESTS = {
   USER_NAME: [['pbdf.sidn-pbdf.irma.pseudonym']],
-  POSTCODE: [['pbdf.gemeente.address.zipcode']],
+  POSTCODE: [
+    ['pbdf.gemeente.address.zipcode'],
+    ['irma-demo.digidproef.address.zipcode'],
+    ['pbdf.bzkpilot.address.zipcode'],
+  ],
   AGE: [
     ['pbdf.gemeente.personalData.over18'],
     ['pbdf.bzkpilot.personalData.over18'],
     ['irma-demo.digidproef.personalData.over18'],
   ],
-  EMAIL: [['pbdf.pbdf.email.email'], ['pbdf.pbdf.mobilenumber.mobilenumber']],
+  EMAIL: [
+    ['pbdf.pbdf.email.email'],
+    ['pbdf.pbdf.mobilenumber.mobilenumber'],
+  ],
   BSN: [
     [
       'pbdf.gemeente.personalData.firstnames',
       'pbdf.gemeente.personalData.familyname',
       'pbdf.gemeente.personalData.bsn',
+    ],
+    [
+      'irma-demo.digidproef.personalData.firstnames',
+      'irma-demo.digidproef.personalData.familyname',
+      'irma-demo.digidproef.personalData.bsn',
+    ],
+    [
+      'pbdf.bzkpilot.personalData.firstnames',
+      'pbdf.bzkpilot.personalData.familyname',
+      'pbdf.bzkpilot.personalData.bsn',
     ],
   ],
 };
