@@ -71,7 +71,7 @@ const init = async () => {
     if (config === undefined) {
       const json = await util.promisify(fs.readFile)(
         process.env.CONFIG,
-        'utf-8'
+        'utf-8',
       );
       console.log('Using config', json);
       config = JSON.parse(json);
@@ -89,7 +89,7 @@ const init = async () => {
 
     if (process.env.NODE_ENV === 'production') {
       app.use(express.static(config.docroot));
-      app.get('*', function(req, res) {
+      app.get('*', function (req, res) {
         console.log(req, res);
         res.sendFile(path.join(__dirname, config.docroot, 'index.html'));
       });
@@ -101,14 +101,14 @@ const init = async () => {
         proxy({
           target: 'http://app:3000',
           changeOrigin: true,
-        })
+        }),
       );
     }
 
     app.listen(config.port, () =>
       console.log(
-        `Voting app running in ${process.env.NODE_ENV || 'development'} mode.`
-      )
+        `Voting app running in ${process.env.NODE_ENV || 'development'} mode.`,
+      ),
     );
   } catch (e) {
     error(e);
@@ -133,7 +133,7 @@ const irmaDiscloseRequest = async (req, res, requestType, id) => {
       request,
       authmethod,
       process.env.PRIVATE_KEY,
-      config.requestorname
+      config.requestorname,
     );
 
     res.json(session);
