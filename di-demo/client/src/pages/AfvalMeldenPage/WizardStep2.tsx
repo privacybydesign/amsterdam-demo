@@ -30,7 +30,6 @@ const WizardStep2: React.FC = () => {
   const { theme } = useParams();
   const { step, gotoStep } = useContext(AfvalMeldenContext);
   const [sending, setSending] = useState(false);
-
   const send = async (event: React.MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();

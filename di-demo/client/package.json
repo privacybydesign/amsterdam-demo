@@ -6,7 +6,7 @@
     "@datapunt/asc-assets": "0.18.1",
     "@datapunt/asc-core": "0.18.1",
     "@datapunt/asc-ui": "0.18.1",
-    "@privacybydesign/irmajs": "^0.1.8",
+    "@privacybydesign/irmajs": "^0.1.9",
     "@testing-library/jest-dom": "^5.0.2",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "8.0.4",

@@ -1,5 +1,5 @@
 const express = require('express');
-const irma = require('@privacybydesign/irmajs/dist/irma.node_new');
+const irma = require('@privacybydesign/irmajs');
 const app = express();
 const cors = require('cors');
 const util = require('util');
@@ -12,52 +12,22 @@ var proxy = require('http-proxy-middleware');
 let config;
 
 const REQUESTS = {
-  USER_NAME: [
-    {
-      label: 'Uw gebruikersnaam',
-      attributes: ['pbdf.sidn-pbdf.irma.pseudonym'],
-    },
-  ],
-  POSTCODE: [
-    {
-      label: 'Uw postcode',
-      attributes: ['pbdf.gemeente.address.zipcode'],
-    },
-  ],
+  USER_NAME: [['pbdf.sidn-pbdf.irma.pseudonym']],
+  POSTCODE: [['pbdf.gemeente.address.zipcode']],
   AGE: [
-    {
-      label: 'Uw leeftijd',
-      attributes: ['pbdf.gemeente.personalData.over18'],
-    },
+    ['pbdf.gemeente.personalData.over18'],
+    ['pbdf.bzkpilot.personalData.over18'],
+    ['irma-demo.digidproef.personalData.over18'],
   ],
-  EMAIL: [
-    {
-      label: 'Uw emailadres of telefoonnummer',
-      attributes: [
-        'pbdf.pbdf.email.email',
-        'pbdf.pbdf.mobilenumber.mobilenumber',
-      ],
-    },
-  ],
+  EMAIL: [['pbdf.pbdf.email.email'], ['pbdf.pbdf.mobilenumber.mobilenumber']],
   BSN: [
-    {
-      label: 'Uw voornaam',
-      attributes: ['pbdf.gemeente.personalData.firstnames'],
-    },
-    {
-      label: 'Uw achternaam',
-      attributes: ['pbdf.gemeente.personalData.familyname'],
-    },
-    {
-      label: 'Uw burgerservicenummer (BSN)',
-      attributes: ['pbdf.gemeente.personalData.bsn'],
-    },
+    [
+      'pbdf.gemeente.personalData.firstnames',
+      'pbdf.gemeente.personalData.familyname',
+      'pbdf.gemeente.personalData.bsn',
+    ],
   ],
 };
-
-//
-//
-//
 
 /**
  * Use this call to check the request:
@@ -68,38 +38,10 @@ const REQUESTS = {
  */
 
 const createIrmaRequest = content => {
-  // return {
-  //   type: 'disclosing',
-  //   content,
-  //   // clientReturnUrl: 'http://a983c5c1.eu.ngrok.io'
-  // };
-
-  // Example with the new request format (not working)
-  // disclose: [
-  //   [[['pbdf.pbdf.email.email'], ['pbdf.pbdf.mobilenumber.mobilenumber']]]
-  // ],
   return {
     '@context': 'https://irma.app/ld/request/disclosure/v2',
-    disclose: [[['pbdf.sidn-pbdf.irma.pseudonym']]],
-    // disclose: [
-    //   [
-    //     ['pbdf.gemeente.personalData.over18'],
-    //     // ['pbdf.bzkpilot.personalData.over18'],
-    //     // ['irma-demo.digidproef.personalData.over18'],
-    //   ],
-    // ],
-  //   clientReturnUrl: 'http://194e9c69.eu.ngrok.io',
+    disclose: [[...content]],
   };
-
-  // return {
-  //   '@context': 'https://irma.app/ld/request/issuance/v2',
-  //   credentials: [
-  //     {
-  //       credential: 'irma-demo.MijnOverheid.ageLower',
-  //       attributes: { over12: 'yes', over16: 'yes', over18: 'yes' },
-  //     },
-  //   ],
-  // };
 };
 
 const init = async () => {
@@ -121,14 +63,12 @@ const init = async () => {
     app.use(express.json());
 
     app.options('/vote', cors());
-    app.post('/vote', cors(), vote);
-    app.get('/stats', cors(), stats);
-    // app.get("/getsession/user", cors(), irmaDiscloseUser);
     app.get('/getsession/postcode', cors(), irmaDisclosePostcode);
     app.get('/getsession/bsn', cors(), irmaDiscloseBsn);
     app.get('/getsession/age', cors(), irmaDiscloseAge);
     app.get('/getsession/email', cors(), irmaDiscloseEmail);
     app.get('/config', cors(), getConfig);
+    console.log('use express');
 
     if (process.env.NODE_ENV === 'production') {
       app.use(express.static(config.docroot));
@@ -158,9 +98,10 @@ const init = async () => {
   }
 };
 
-const irmaDiscloseRequest = async (req, res, requestType) => {
+const irmaDiscloseRequest = async (req, res, requestType, id) => {
   const authmethod = 'publickey';
-  const request = createIrmaRequest(requestType);
+  console.log(req);
+  const request = createIrmaRequest(requestType, req.query.clientReturnUrl);
 
   console.log('irma.irmaDiscloseRequest called: ', {
     url: config.irma,
@@ -200,26 +141,6 @@ async function irmaDiscloseBsn(req, res) {
 async function irmaDiscloseAge(req, res) {
   return irmaDiscloseRequest(req, res, REQUESTS.AGE);
 }
-
-const vote = async (req, res) => {
-  try {
-    const identHashed = uuidv5(req.body.identifier, config.uuid);
-    let alreadyVoted = false;
-    console.log('Voted with id: ', identHashed);
-    res.json({ alreadyVoted, vote: req.body.vote });
-  } catch (e) {
-    error(e, res);
-  }
-};
-
-const stats = async (req, res) => {
-  try {
-    const votes = 'here are the votes';
-    res.json({ votes });
-  } catch (e) {
-    error(e, res);
-  }
-};
 
 const getConfig = async (req, res) => {
   console.log('get config', JSON.stringify(config));
