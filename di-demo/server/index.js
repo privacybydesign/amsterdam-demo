@@ -21,7 +21,10 @@ const REQUESTS = {
   AGE: [
     ['pbdf.gemeente.personalData.over18'],
     ['pbdf.bzkpilot.personalData.over18'],
-    ['irma-demo.digidproef.personalData.over18'],
+    [
+      'irma-demo.digidproef.personalData.over18',
+      'irma-demo.digidproef.personalData.photo',
+    ],
   ],
   EMAIL: [['pbdf.pbdf.email.email'], ['pbdf.pbdf.mobilenumber.mobilenumber']],
   BSN: [
