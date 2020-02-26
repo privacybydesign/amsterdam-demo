@@ -19,12 +19,14 @@ const REQUESTS = {
     ['pbdf.bzkpilot.address.zipcode'],
   ],
   AGE: [
-    ['pbdf.gemeente.personalData.over18'],
-    ['pbdf.bzkpilot.personalData.over18'],
     [
       'irma-demo.digidproef.personalData.over18',
       'irma-demo.digidproef.personalData.photo',
     ],
+    [
+      'pbdf.gemeente.personalData.over18',
+    ],
+    ['pbdf.bzkpilot.personalData.over18'],
   ],
   EMAIL: [['pbdf.pbdf.email.email'], ['pbdf.pbdf.mobilenumber.mobilenumber']],
   BSN: [
@@ -135,6 +137,7 @@ const irmaDiscloseRequest = async (req, res, requestType, id) => {
       config.requestorname
     );
 
+    console.log('session result', session);
     res.json(session);
   } catch (e) {
     console.log('irma.startSession error:', JSON.stringify(e));

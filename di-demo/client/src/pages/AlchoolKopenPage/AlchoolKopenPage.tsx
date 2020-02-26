@@ -112,7 +112,7 @@ const AlchoolKopenPage: React.FC<{}> = () => {
       setAuthorizing(false);
       const response =
         Object.entries(data).find(([key]) => key.indexOf('over18') > -1) || [];
-      const success = response.length > 0 && response[1] === 'Yes';
+      const success = response.length > 0 && response[1].match(/yes/gi);
       setAutorized(success);
       scrollTop();
     })();
