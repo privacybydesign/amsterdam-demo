@@ -103,16 +103,20 @@ const AlchoolKopenPage: React.FC<{}> = () => {
   const [authorizing, setAuthorizing] = useState(true);
   const [authorized, setAutorized] = useState(false);
   const [photo, setPhoto] = useState(DEFAULT_PHOTO);
-
+  // throw {};
   useEffect(() => {
     (async () => {
       const data = await createIrmaSession('age', 'irma-qr');
+      console.log('data', data);
+      console.log(PHOTO_ATTRIBUTE, data[PHOTO_ATTRIBUTE]);
+      const response: [string, any] = Object.entries(data).find(
+        ([key]) => key.indexOf('over18') > -1
+      ) || ['', ''];
+      console.log('found over18', response);
+      const success = response.length > 0 && response[1].match(/yes/gi);
       // eslint-disable-next-line no-unused-expressions
       data[PHOTO_ATTRIBUTE] && setPhoto(data[PHOTO_ATTRIBUTE]);
       setAuthorizing(false);
-      const response =
-        Object.entries(data).find(([key]) => key.indexOf('over18') > -1) || [];
-      const success = response.length > 0 && response[1].match(/yes/gi);
       setAutorized(success);
       scrollTop();
     })();
