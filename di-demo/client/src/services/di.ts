@@ -48,6 +48,10 @@ export const createIrmaSession = async (
   }
 
   const result = await irma.handleSession(sessionPtr, sessionOptions);
-  console.log('result', result.disclosed[0][0].value);
-  return result.disclosed[0][0].value.nl;
+  const data = result.disclosed[0].reduce(
+    (acc, { id, rawvalue }) => ({ ...acc, [id]: rawvalue }),
+    {}
+  );
+  console.log('result', data);
+  return data;
 };
