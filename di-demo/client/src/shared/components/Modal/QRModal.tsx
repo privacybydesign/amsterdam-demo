@@ -61,10 +61,12 @@ const QRCanvasStyle = styled.div`
   background: url(/assets/icons/qr.svg);
   background-size: contain;
 
-  & > canvas {
+  & canvas {
     position: absolute;
     top: 20px;
     left: 20px;
+    height: 230px !important;
+    width: 230px !important;
   }
 `;
 
@@ -93,7 +95,7 @@ export const QRModal: React.FC<Props> = ({ onClose, Info }) => {
             <Info />
             <QRCodeStyle>
               <QRCanvasStyle>
-                <canvas id="irma-qr" />
+                <div id="irma-qr" />
               </QRCanvasStyle>
               <Heading as="h4">Scan de QR-code</Heading>
             </QRCodeStyle>

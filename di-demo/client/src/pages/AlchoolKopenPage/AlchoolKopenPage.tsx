@@ -23,12 +23,17 @@ const QRStyle = styled.div`
   position: absolute;
   top: 400px;
   left: calc((100% - 230px) / 2);
+
+  & canvas {
+    width: 230px !important;
+    height: 230px !important;
+  }
 `;
 
 const QR: React.FC = () => {
   return (
     <QRStyle>
-      <canvas id="irma-qr" />
+      <div id="irma-qr" />
     </QRStyle>
   );
 };

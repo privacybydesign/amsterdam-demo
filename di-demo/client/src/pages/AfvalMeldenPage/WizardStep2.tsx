@@ -59,7 +59,7 @@ const WizardStep2: React.FC = () => {
       <Button onClick={e => gotoStep(e, 1)} {...homeButtonPosition} />
       <Button onClick={e => gotoStep(e, 3)} {...detailButtonPosition} />
       <Button onClick={send} {...loginButtonPosition} />
-      {sending && <canvas id="irma-qr" />}
+      {sending && <div id="irma-qr" />}
     </>
   ) : null;
 };
