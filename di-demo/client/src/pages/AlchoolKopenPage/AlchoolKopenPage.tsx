@@ -52,7 +52,7 @@ const homeButtonPosition: ButtonStyleProps = {
   left: 0,
 };
 
-const PHOTO_ATTRIBUTE = 'irma-demo.digidproef.personalData.photo';
+const PHOTO_ATTRIBUTE = 'pbdf.bzkpilot.personalData.photo';
 
 const AlchoolResult: React.FC<{ authorized: boolean; photo: string }> = ({
   authorized,
