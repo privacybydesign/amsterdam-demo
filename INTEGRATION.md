@@ -18,7 +18,7 @@ Only for trying out the demo with a locally installed IRMA and Postgres.
 
 See `README.md` for installing the IRMA demo voting website.
 
-Visit `https://gitlab.com/stanguldemond/irma_server_container` for
+Visit `https://github.com/Amsterdam/di-irma-server` for
 installing IRMA.
 
 ### Postgres
