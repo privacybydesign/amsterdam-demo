@@ -1,7 +1,7 @@
 import App from './App';
 import MijnAmsterdamPage from './pages/MijnAmsterdamPage/MijnAmsterdamPage';
 import OpenStadPage from './pages/OpenStadPage/OpenStadPage';
-import AlcoholKopenPage from './pages/alcoholkopenPage';
+import AlcoholKopenPage from './pages/alcoholKopenPage';
 import AfvalMeldenPage from './pages/AfvalMeldenPage';
 
 const AppRoutes: any = {
