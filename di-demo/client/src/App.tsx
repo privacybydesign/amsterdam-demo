@@ -28,7 +28,7 @@ const afvalMeldenButtonPosition: ButtonStyleProps = {
   left: 543,
 };
 
-const alchoolButtonPosition: ButtonStyleProps = {
+const alcoholButtonPosition: ButtonStyleProps = {
   width: 314,
   height: 53,
   top: 551,
@@ -73,8 +73,8 @@ const App: React.FC = () => {
           {...afvalMeldenButtonPosition}
         />
         <Button
-          onClick={() => history.push(`alchoolkopen/${themeName}`)}
-          {...alchoolButtonPosition}
+          onClick={() => history.push(`alcoholkopen/${themeName}`)}
+          {...alcoholButtonPosition}
         />
       </StyledPageWrapper>
     </StyledPageContainer>

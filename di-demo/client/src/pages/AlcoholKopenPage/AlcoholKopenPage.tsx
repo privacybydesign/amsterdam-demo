@@ -59,7 +59,7 @@ const homeButtonPosition: ButtonStyleProps = {
 
 const PHOTO_ATTRIBUTE = 'pbdf.bzkpilot.personalData.photo';
 
-const AlchoolResult: React.FC<{ authorized: boolean; photo: string }> = ({
+const AlcoholResult: React.FC<{ authorized: boolean; photo: string }> = ({
   authorized,
   photo,
 }) => {
@@ -75,7 +75,7 @@ const AlchoolResult: React.FC<{ authorized: boolean; photo: string }> = ({
         <>
           <img
             alt="Alcohol Kopen"
-            src={`/assets/theme/${theme}/alchoolkopen-accept.png`}
+            src={`/assets/theme/${theme}/alcoholkopen-accept.png`}
             height="1068"
             width="1400"
             decoding="async"
@@ -92,7 +92,7 @@ const AlchoolResult: React.FC<{ authorized: boolean; photo: string }> = ({
       ) : (
         <img
           alt="Alcohol Kopen"
-          src={`/assets/theme/${theme}/alchoolkopen-reject.png`}
+          src={`/assets/theme/${theme}/alcoholkopen-reject.png`}
           height="1068"
           width="1400"
           decoding="async"
@@ -103,7 +103,7 @@ const AlchoolResult: React.FC<{ authorized: boolean; photo: string }> = ({
   );
 };
 
-const AlchoolKopenPage: React.FC<{}> = () => {
+const AlcoholKopenPage: React.FC<{}> = () => {
   const { theme } = useParams();
   const [authorizing, setAuthorizing] = useState(true);
   const [authorized, setAutorized] = useState(false);
@@ -134,7 +134,7 @@ const AlchoolKopenPage: React.FC<{}> = () => {
           <>
             <img
               alt="Alcohol Kopen"
-              src={`/assets/theme/${theme}/alchoolkopen.png`}
+              src={`/assets/theme/${theme}/alcoholkopen.png`}
               height="1068"
               width="1400"
               decoding="async"
@@ -142,11 +142,11 @@ const AlchoolKopenPage: React.FC<{}> = () => {
             <QR />
           </>
         ) : (
-          <AlchoolResult authorized={authorized} photo={photo} />
+          <AlcoholResult authorized={authorized} photo={photo} />
         )}
       </StyledPageWrapper>
     </StyledPageContainer>
   );
 };
 
-export default AlchoolKopenPage;
+export default AlcoholKopenPage;
