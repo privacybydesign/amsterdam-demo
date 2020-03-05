@@ -4,11 +4,11 @@ import { Acordeon } from '../../shared/components/Acordeon/Acordeon';
 import AttributeList from '../../shared/components/AttributeList';
 import AttributeInfo from '../../shared/components/AttributeInfo';
 
-const MijnAmsterdamInfoStyle = styled.div``;
+const MijnStadInfoStyle = styled.div``;
 
-const MijnAmsterdamInfo = () => {
+const MijnStadInfo = () => {
   return (
-    <MijnAmsterdamInfoStyle>
+    <MijnStadInfoStyle>
       <AttributeInfo title="Login bij Mijn Amsterdam met IRMA" headingType="h2">
         Om gebruik te kunnen maken van Mijn Amsterdam, moet u zich bekend maken
         met:
@@ -32,8 +32,8 @@ const MijnAmsterdamInfo = () => {
           De gemeente wil zeker weten dat u het bent.
         </AttributeInfo>
       </Acordeon>
-    </MijnAmsterdamInfoStyle>
+    </MijnStadInfoStyle>
   );
 };
 
-export default MijnAmsterdamInfo;
+export default MijnStadInfo;

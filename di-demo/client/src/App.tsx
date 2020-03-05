@@ -7,7 +7,7 @@ import Button, {
   ButtonStyleProps,
 } from './shared/components/Button/ButtonStyle';
 
-const mijnAmsterdamButtonPosition: ButtonStyleProps = {
+const mijnStadButtonPosition: ButtonStyleProps = {
   width: 314,
   height: 53,
   top: 326,
@@ -61,8 +61,8 @@ const App: React.FC = () => {
           decoding="async"
         />
         <Button
-          onClick={() => history.push(`mijnamsterdam/${themeName}`)}
-          {...mijnAmsterdamButtonPosition}
+          onClick={() => history.push(`mijnstad/${themeName}`)}
+          {...mijnStadButtonPosition}
         />
         <Button
           onClick={() => history.push(`openstad/${themeName}`)}

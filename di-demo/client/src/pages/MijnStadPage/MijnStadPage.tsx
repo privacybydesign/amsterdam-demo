@@ -7,7 +7,7 @@ import { createIrmaSession } from '../../services/di';
 import { QRModal } from '../../shared/components/Modal/QRModal';
 import { ButtonStyleProps } from '../../shared/components/Button/ButtonStyle';
 import Button from '../../shared/components/Button/Button';
-import MijnAmsterdamInfo from './MijnAmsterdamInfo';
+import MijnStadInfo from './MijnStadInfo';
 import { scrollTop } from '../../services/layout';
 
 const loginButtonPosition: ButtonStyleProps = {
@@ -43,7 +43,7 @@ const StyledPageWrapper = styled(PageWrapper)`
   position: absolute;
 `;
 
-const MijnAmsterdamPage: React.FC = () => {
+const MijnStadPage: React.FC = () => {
   const { theme } = useParams();
   const [authorizing, setAuthorizing] = useState(false);
   const [authorized, setAutorized] = useState(false);
@@ -80,10 +80,7 @@ const MijnAmsterdamPage: React.FC = () => {
   return (
     <>
       {authorizing && (
-        <QRModal
-          onClose={() => setAuthorizing(false)}
-          Info={MijnAmsterdamInfo}
-        />
+        <QRModal onClose={() => setAuthorizing(false)} Info={MijnStadInfo} />
       )}
       {authorizing && <BackDrop onClick={() => {}} hideOverFlow={false} />}
       <PageContainer>
@@ -92,7 +89,7 @@ const MijnAmsterdamPage: React.FC = () => {
             <>
               <img
                 alt="Mijn Amsterdam"
-                src={`/assets/theme/${theme}/mijnamsterdam.png`}
+                src={`/assets/theme/${theme}/mijnstad.png`}
                 height="1926"
                 width="1400"
                 decoding="async"
@@ -106,7 +103,7 @@ const MijnAmsterdamPage: React.FC = () => {
             <>
               <img
                 alt="Ingelogd | Mijn Amsterdam"
-                src={`/assets/theme/${theme}/mijnamsterdam-authorized.png`}
+                src={`/assets/theme/${theme}/mijnstad-authorized.png`}
                 height="1068"
                 width="1400"
                 decoding="async"
@@ -120,4 +117,4 @@ const MijnAmsterdamPage: React.FC = () => {
   );
 };
 
-export default MijnAmsterdamPage;
+export default MijnStadPage;
