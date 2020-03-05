@@ -46,7 +46,7 @@ const StyledPageWrapper = styled(PageWrapper)`
 }
 `;
 
-const themeName = 'amsterdam';
+const themeName = 'haarlem';
 const App: React.FC = () => {
   const history = useHistory();
 
