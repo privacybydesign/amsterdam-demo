@@ -37,8 +37,8 @@ import { scrollTop } from '../../services/layout';
 const loginButtonPosition: ButtonStyleProps = {
   width: 239,
   height: 76,
-  left: 59,
-  top: 318,
+  left: 59 + 78,
+  top: 318 + 157,
 };
 
 const homeButtonPosition: ButtonStyleProps = {
@@ -49,10 +49,10 @@ const homeButtonPosition: ButtonStyleProps = {
 };
 
 const backButtonPosition: ButtonStyleProps = {
-  width: 354,
-  height: 32,
-  top: 10,
-  left: 855,
+  width: 417,
+  height: 83,
+  top: 0,
+  left: 0,
 };
 
 const PageContainer: React.FC = styled.div`
