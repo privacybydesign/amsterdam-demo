@@ -10,11 +10,35 @@ import Button from '../../shared/components/Button/Button';
 import MijnStadInfo from './MijnStadInfo';
 import { scrollTop } from '../../services/layout';
 
+//
+// === Amsterdam ===
+//
+// const loginButtonPosition: ButtonStyleProps = {
+//   width: 224,
+//   height: 61,
+//   top: 744,
+//   left: 684,
+// };
+//
+// const homeButtonPosition: ButtonStyleProps = {
+//   width: 154,
+//   height: 67,
+//   top: 20,
+//   left: 200,
+// };
+//
+// const backButtonPosition: ButtonStyleProps = {
+//   width: 354,
+//   height: 32,
+//   top: 10,
+//   left: 855,
+// };
+
 const loginButtonPosition: ButtonStyleProps = {
-  width: 224,
-  height: 61,
-  top: 744,
-  left: 684,
+  width: 239,
+  height: 76,
+  left: 59,
+  top: 318,
 };
 
 const homeButtonPosition: ButtonStyleProps = {
