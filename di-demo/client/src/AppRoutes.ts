@@ -6,7 +6,7 @@ import AfvalMeldenPage from './pages/AfvalMeldenPage';
 
 const AppRoutes: any = {
   HOME: { path: '/', component: App },
-  MIJN_AMSTERDAM: {
+  MIJN_STAD: {
     path: '/mijnstad/:theme',
     component: MijnStadPage,
   },
