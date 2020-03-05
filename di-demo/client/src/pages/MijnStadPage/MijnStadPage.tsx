@@ -90,8 +90,8 @@ const MijnStadPage: React.FC = () => {
               <img
                 alt="Mijn Amsterdam"
                 src={`/assets/theme/${theme}/mijnstad.png`}
-                height="1926"
                 width="1400"
+                height="1926"
                 decoding="async"
               />
               <Button onClick={login} {...loginButtonPosition} />
@@ -104,8 +104,8 @@ const MijnStadPage: React.FC = () => {
               <img
                 alt="Ingelogd | Mijn Amsterdam"
                 src={`/assets/theme/${theme}/mijnstad-authorized.png`}
-                height="1400"
                 width="1400"
+                height="1400"
                 decoding="async"
               />
               <Button onClick={goBack} {...backButtonPosition} />
