@@ -104,7 +104,7 @@ const MijnStadPage: React.FC = () => {
               <img
                 alt="Ingelogd | Mijn Amsterdam"
                 src={`/assets/theme/${theme}/mijnstad-authorized.png`}
-                height="1068"
+                height="1400"
                 width="1400"
                 decoding="async"
               />
