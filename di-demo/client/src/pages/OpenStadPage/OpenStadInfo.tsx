@@ -15,7 +15,7 @@ const OpenStadInfo = () => {
       <AttributeList values={['Uw postcode']} />
       <Acordeon title="Waarom worden deze gegevens gevraagd?">
         <AttributeInfo title="Postcode">
-          De gemeente wil zeker weten dat u in Amsterdam woont.
+          De gemeente wil zeker weten dat u inwoner bent.
         </AttributeInfo>
       </Acordeon>
     </OpenStadInfoStyle>
