@@ -112,7 +112,7 @@ const MijnStadPage: React.FC = () => {
           {!authorized && (
             <>
               <img
-                alt="Mijn Stad"
+                alt="Mijn Haarlem"
                 src={`/assets/theme/${theme}/mijnstad.png`}
                 width="1400"
                 height="1926"
@@ -126,7 +126,7 @@ const MijnStadPage: React.FC = () => {
           {authorized && (
             <>
               <img
-                alt="Ingelogd | Mijn Stad"
+                alt="Ingelogd | Mijn Haarlem"
                 src={`/assets/theme/${theme}/mijnstad-authorized.png`}
                 width="1400"
                 height="1400"
