@@ -12,11 +12,17 @@ import OpenStadInfo from './OpenStadInfo';
 import { scrollTop } from '../../services/layout';
 
 const loginButtonPosition: ButtonStyleProps = {
-  width: 224,
+  width: 250,
   height: 61,
-  top: 966,
-  left: 586,
+  left: 456,
+  top: 1131,
 };
+
+// ams:
+// width: 224,
+// height: 61,
+// top: 966,
+// left: 586,
 
 const homeButtonPosition: ButtonStyleProps = {
   width: 154,
@@ -82,7 +88,7 @@ const OpenStadPage: React.FC<{}> = () => {
                 name="brug"
                 value="test-1"
                 onChange={() => setSelectedOption('brug')}
-                top={845}
+                top={1004} // ams: 845
                 left={222}
               />
               <Radio
@@ -90,7 +96,7 @@ const OpenStadPage: React.FC<{}> = () => {
                 name="kabelbaan"
                 value="test-2"
                 onChange={() => setSelectedOption('kabelbaan')}
-                top={845}
+                top={1004} // ams: 845
                 left={596}
               />
             </RadioGroup>
