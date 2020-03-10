@@ -53,7 +53,7 @@ const WizardStep3: React.FC = () => {
       <img
         alt="Rommel Melden"
         src={`/assets/theme/${theme}/rommelmelden-step3.png`}
-        height="1188"
+        height="1022" // ams 1188
         width="360"
         decoding="async"
       />

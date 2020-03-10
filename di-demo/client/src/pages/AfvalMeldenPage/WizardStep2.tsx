@@ -6,18 +6,30 @@ import Button from '../../shared/components/Button/Button';
 import { createIrmaSession } from '../../services/di';
 
 const loginButtonPosition: ButtonStyleProps = {
-  width: 224,
+  width: 271,
   height: 61,
-  top: 364,
+  top: 395,
   left: 17,
 };
+
+// ams loginButtonPosition
+// width: 224,
+// height: 61,
+// top: 364,
+// left: 17,
 
 const detailButtonPosition: ButtonStyleProps = {
   width: 348,
   height: 37,
-  top: 272,
+  top: 290,
   left: 6,
 };
+
+// ams detailButtonPosition
+// width: 348,
+// height: 37,
+// top: 272,
+// left: 6,
 
 const homeButtonPosition: ButtonStyleProps = {
   width: 360,
@@ -52,7 +64,7 @@ const WizardStep2: React.FC = () => {
       <img
         alt="Rommel Melden"
         src={`/assets/theme/${theme}/rommelmelden-step2.png`}
-        height="1009"
+        height="950" // ams: 1009
         width="360"
         decoding="async"
       />
