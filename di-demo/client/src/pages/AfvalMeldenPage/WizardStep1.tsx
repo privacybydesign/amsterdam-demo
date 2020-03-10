@@ -52,6 +52,15 @@ const StyledTopBar = styled(TopBar)`
   min-height: 44px;
 `;
 
+const StyledTextArea = styled(TextArea)`
+  border: none;
+  position: relative;
+  top: -64px;
+  width: 345px;
+  height: 163px;
+  margin: 0px;
+`;
+
 const WizardStep1: React.FC = () => {
   const { theme } = useParams();
   const { step, gotoStep } = useContext(AfvalMeldenContext);
@@ -91,8 +100,7 @@ const WizardStep1: React.FC = () => {
       />
       <FormStyle>
         <FormControlStyle maxWidth={340}>
-          <Heading as="h4">Waar gaat het om?</Heading>
-          <TextArea
+          <StyledTextArea
             rows={6}
             onChange={e =>
               updateFormValue('description', e.currentTarget.value)
