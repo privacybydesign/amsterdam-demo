@@ -37,7 +37,7 @@ const FormControlStyle = styled.div<FormControlProps>`
 
 const FormStyle = styled.form`
   position: absolute;
-  top: 720px;
+  top: 590px; /* ams 720 */
   /* this forces covering the image items in the background */
   background-color: rgba(255, 255, 255, 1);
   width: 360px;
@@ -56,7 +56,7 @@ const StyledTopBar = styled(TopBar)`
 const StyledTextArea = styled(TextArea)`
   border: none;
   position: relative;
-  top: -64px;
+  top: 0;
   width: 345px;
   height: 163px;
   margin: 0px;

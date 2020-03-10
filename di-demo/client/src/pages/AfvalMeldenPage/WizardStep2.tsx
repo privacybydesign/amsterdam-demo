@@ -8,7 +8,7 @@ import { createIrmaSession } from '../../services/di';
 const loginButtonPosition: ButtonStyleProps = {
   width: 271,
   height: 61,
-  top: 395,
+  top: 371,
   left: 17,
 };
 
