@@ -45,7 +45,8 @@ const FormStyle = styled.form`
 `;
 
 const StyledTopBar = styled(TopBar)`
-  margin: ${themeSpacing(17, 6, 4, 0)};
+  /* margin: ${themeSpacing(17, 6, 4, 0)}; */
+  margin: 40px 24px 16px 0px;
   background-color: ${themeColor('tint', 'level3')};
   flex-direction: row-reverse;
   padding: ${themeSpacing(2)};
@@ -94,7 +95,7 @@ const WizardStep1: React.FC = () => {
       <img
         alt="Rommel Melden"
         src={`/assets/theme/${theme}/rommelmelden.png`}
-        height="1566"
+        height="1411" // ams 1566
         width="360"
         decoding="async"
       />
