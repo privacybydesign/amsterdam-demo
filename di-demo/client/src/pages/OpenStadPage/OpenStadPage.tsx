@@ -67,8 +67,8 @@ const OpenStadPage: React.FC<{}> = () => {
             <img
               alt="Open Stad"
               src={`/assets/theme/${theme}/openstad.png`}
-              height="1458"
               width="1400"
+              height="1589" // ams: 1458
               decoding="async"
             />
             <Button
@@ -147,8 +147,8 @@ const Voted = () => {
     <img
       alt="Openstad"
       src={`/assets/theme/${theme}/openstad-voted.png`}
-      height="1119"
       width="1400"
+      height="1315" // ams: 1119
       decoding="async"
     />
   );
