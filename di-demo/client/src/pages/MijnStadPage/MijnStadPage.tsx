@@ -64,9 +64,11 @@ const PageContainer: React.FC = styled.div`
 
 const UserName: React.FC = styled.div`
   position: absolute;
-  left: 100px;
-  top: 100px;
-  font-size: 24px;
+  top: 290px;
+  left: 146px;
+  font-size: 51px;
+  color: #505454;
+  font-family: Rambla, sans-serif;
 `;
 
 const StyledPageWrapper = styled(PageWrapper)`
@@ -115,6 +117,10 @@ const MijnStadPage: React.FC = () => {
       )}
       {authorizing && <BackDrop onClick={() => {}} hideOverFlow={false} />}
       <PageContainer>
+        <link
+          href="https://fonts.googleapis.com/css?family=Rambla&display=swap"
+          rel="stylesheet"
+        />
         <StyledPageWrapper>
           {!authorized && (
             <>
