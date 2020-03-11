@@ -80,10 +80,10 @@ const MijnStadPage: React.FC = () => {
   const { theme } = useParams();
   const [authorizing, setAuthorizing] = useState(false);
   const [authorized, setAutorized] = useState(false);
+  const [username, setUsername] = useState('');
   const history = useHistory();
 
   let irmadata = {};
-  let username = '';
 
   const login = async (event: React.MouseEvent) => {
     event.preventDefault();
@@ -107,9 +107,9 @@ const MijnStadPage: React.FC = () => {
     if (authorizing) {
       (async () => {
         irmadata = await createIrmaSession('bsn', 'irma-qr');
-        console.log('irmadata', irmadata);
-        username = `${irmadata['pbdf.bzkpilot.personalData.firstnames']} ${irmadata['pbdf.bzkpilot.personalData.familyname']}`;
-        console.log('username', username);
+        setUsername(
+          `${irmadata['pbdf.bzkpilot.personalData.firstnames']} ${irmadata['pbdf.bzkpilot.personalData.familyname']}`
+        );
         setAuthorizing(false);
         setAutorized(true);
         scrollTop();
