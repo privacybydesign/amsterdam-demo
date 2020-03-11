@@ -82,6 +82,9 @@ const MijnStadPage: React.FC = () => {
   const [authorized, setAutorized] = useState(false);
   const history = useHistory();
 
+  let irmadata = {};
+  let username = '';
+
   const login = async (event: React.MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
@@ -103,7 +106,10 @@ const MijnStadPage: React.FC = () => {
   useEffect(() => {
     if (authorizing) {
       (async () => {
-        await createIrmaSession('bsn', 'irma-qr');
+        irmadata = await createIrmaSession('bsn', 'irma-qr');
+        console.log('irmadata', irmadata);
+        username = `${irmadata['pbdf.bzkpilot.personalData.firstnames']} ${irmadata['pbdf.bzkpilot.personalData.familyname']}`;
+        console.log('username', username);
         setAuthorizing(false);
         setAutorized(true);
         scrollTop();
@@ -147,7 +153,7 @@ const MijnStadPage: React.FC = () => {
                 decoding="async"
               />
               <Button onClick={goBack} {...backButtonPosition} />
-              <UserName>Welkom Jan Jansen</UserName>
+              <UserName>Welkom $username</UserName>
             </>
           )}
         </StyledPageWrapper>
