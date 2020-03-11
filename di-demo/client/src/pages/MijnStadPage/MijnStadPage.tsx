@@ -62,6 +62,13 @@ const PageContainer: React.FC = styled.div`
   height: 100vh;
 `;
 
+const UserName: React.FC = styled.div`
+  position: absolute;
+  left: 100px;
+  top: 100px;
+  font-size: 24px;
+`;
+
 const StyledPageWrapper = styled(PageWrapper)`
   left: calc((100% - 1400px) / 2);
   position: absolute;
@@ -133,6 +140,7 @@ const MijnStadPage: React.FC = () => {
                 decoding="async"
               />
               <Button onClick={goBack} {...backButtonPosition} />
+              <UserName>Welkom Jan Jansen</UserName>
             </>
           )}
         </StyledPageWrapper>
