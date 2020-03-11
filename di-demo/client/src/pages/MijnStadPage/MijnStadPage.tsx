@@ -146,9 +146,7 @@ const MijnStadPage: React.FC = () => {
                 decoding="async"
               />
               <Button onClick={goBack} {...backButtonPosition} />
-              <UserName>
-                Welkom Jan Jansen | ${JSON.stringify(MijnStadInfo)}
-              </UserName>
+              <UserName>Welkom Jan Jansen | ${MijnStadInfo}</UserName>
             </>
           )}
         </StyledPageWrapper>
