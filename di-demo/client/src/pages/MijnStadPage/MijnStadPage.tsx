@@ -98,7 +98,6 @@ const MijnStadPage: React.FC = () => {
   };
 
   const goBack = () => {
-    console.log('MijnStadInfo', MijnStadInfo);
     setAutorized(false);
     scrollTop();
   };
@@ -153,7 +152,7 @@ const MijnStadPage: React.FC = () => {
                 decoding="async"
               />
               <Button onClick={goBack} {...backButtonPosition} />
-              <UserName>Welkom ${username}</UserName>
+              <UserName>Welkom {username}</UserName>
             </>
           )}
         </StyledPageWrapper>
