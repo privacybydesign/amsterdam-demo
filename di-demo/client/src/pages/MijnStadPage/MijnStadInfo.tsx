@@ -13,20 +13,11 @@ const MijnStadInfo = () => {
         Om gebruik te kunnen maken van Mijn Haarlem, moet u zich bekend maken
         met:
       </AttributeInfo>
-      <AttributeList
-        values={[
-          'Uw voornaam',
-          'Uw achternaam',
-          'Uw burgerservicenummer (BSN)',
-        ]}
-      />
+      <AttributeList values={['Uw naam', 'Uw burgerservicenummer (BSN)']} />
 
       <Acordeon title="Waarom worden deze gegevens gevraagd?">
-        <AttributeInfo title="Voornaam">
-          De gemeente wil u bij uw voornaam aanspreken in Mijn Haarlem.
-        </AttributeInfo>
-        <AttributeInfo title="Achternaam">
-          De gemeente wil u bij uw achternaam aanspreken in Mijn Haarlem.
+        <AttributeInfo title="Naam">
+          De gemeente wil u bij uw naam aanspreken in Mijn Haarlem.
         </AttributeInfo>
         <AttributeInfo title="Burgerservicenummer (BSN)">
           De gemeente wil zeker weten dat u het bent.
