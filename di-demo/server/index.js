@@ -31,18 +31,15 @@ const REQUESTS = {
   EMAIL: [['pbdf.pbdf.email.email'], ['pbdf.pbdf.mobilenumber.mobilenumber']],
   BSN: [
     [
-      'pbdf.gemeente.personalData.firstnames',
-      'pbdf.gemeente.personalData.familyname',
+      'pbdf.gemeente.personalData.fullname',
       'pbdf.gemeente.personalData.bsn',
     ],
     [
-      'irma-demo.digidproef.personalData.firstnames',
-      'irma-demo.digidproef.personalData.familyname',
+      'irma-demo.digidproef.personalData.fullname',
       'irma-demo.digidproef.personalData.bsn',
     ],
     [
-      'pbdf.bzkpilot.personalData.firstnames',
-      'pbdf.bzkpilot.personalData.familyname',
+      'pbdf.bzkpilot.personalData.fullname',
       'pbdf.bzkpilot.personalData.bsn',
     ],
   ],

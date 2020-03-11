@@ -106,9 +106,7 @@ const MijnStadPage: React.FC = () => {
     if (authorizing) {
       (async () => {
         irmadata = await createIrmaSession('bsn', 'irma-qr');
-        setUsername(
-          `${irmadata['pbdf.bzkpilot.personalData.firstnames']} ${irmadata['pbdf.bzkpilot.personalData.familyname']}`
-        );
+        setUsername(irmadata['pbdf.bzkpilot.personalData.fullname']);
         setAuthorizing(false);
         setAutorized(true);
         scrollTop();
