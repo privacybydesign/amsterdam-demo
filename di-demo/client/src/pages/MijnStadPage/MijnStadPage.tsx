@@ -147,7 +147,7 @@ const MijnStadPage: React.FC = () => {
               />
               <Button onClick={goBack} {...backButtonPosition} />
               <UserName>
-                Welkom Jan Jansen {JSON.stringify(MijnStadInfo)}
+                Welkom Jan Jansen | ${JSON.stringify(MijnStadInfo)}
               </UserName>
             </>
           )}
