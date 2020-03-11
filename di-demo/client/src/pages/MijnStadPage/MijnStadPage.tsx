@@ -153,7 +153,7 @@ const MijnStadPage: React.FC = () => {
                 decoding="async"
               />
               <Button onClick={goBack} {...backButtonPosition} />
-              <UserName>Welkom $username</UserName>
+              <UserName>Welkom ${username}</UserName>
             </>
           )}
         </StyledPageWrapper>
