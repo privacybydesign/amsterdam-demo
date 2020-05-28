@@ -38,7 +38,7 @@ docker build -t voting_node .
 
 ### Run
 
-1. Make sure IRMA is running (see `https://gitlab.com/stanguldemond/irma_server_container`)
+1. Make sure IRMA is running (see `https://github.com/Amsterdam/di-irma-server`)
 2. Add the URL of IRMA to `server/*.json`)
 3. Make sure PostgreSQL is running and a user is created:
 
