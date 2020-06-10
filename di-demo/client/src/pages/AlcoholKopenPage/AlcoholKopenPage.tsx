@@ -46,10 +46,7 @@ const homeButtonPosition: ButtonStyleProps = {
 
 const PHOTO_ATTRIBUTE = 'pbdf.bzkpilot.personalData.photo';
 
-const AlcoholResult: React.FC<{ authorized: boolean; photo: string }> = ({
-  authorized,
-  photo,
-}) => {
+const AlcoholResult: React.FC<{ authorized: boolean }> = ({ authorized }) => {
   const history = useHistory();
   const goHome = () => {
     history.push('/');
