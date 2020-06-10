@@ -6,7 +6,6 @@ import { createIrmaSession } from '../../services/di';
 import { scrollTop } from '../../services/layout';
 import { ButtonStyleProps } from '../../shared/components/Button/ButtonStyle';
 import Button from '../../shared/components/Button/Button';
-import { DEFAULT_PHOTO } from './constants';
 
 const StyledPageContainer = styled(PageContainer)`
   background-color: black;
@@ -38,18 +37,6 @@ const QR: React.FC = () => {
   );
 };
 
-const PhotoStyle = styled.div`
-  position: absolute;
-  top: 269px;
-  left: calc((100% - 560px) / 2);
-  width: 210px;
-  height: 260px;
-
-  & > img {
-    width: 100%;
-  }
-`;
-
 const homeButtonPosition: ButtonStyleProps = {
   width: 1400,
   height: 1068,
@@ -80,14 +67,6 @@ const AlcoholResult: React.FC<{ authorized: boolean; photo: string }> = ({
             width="1400"
             decoding="async"
           />
-          <PhotoStyle>
-            <img
-              alt="Persoons foto"
-              src={`data:image/png;base64,${photo}`}
-              width="100%"
-              decoding="async"
-            />
-          </PhotoStyle>
         </>
       ) : (
         <img
@@ -107,7 +86,7 @@ const AlcoholKopenPage: React.FC<{}> = () => {
   const { theme } = useParams();
   const [authorizing, setAuthorizing] = useState(true);
   const [authorized, setAutorized] = useState(false);
-  const [photo, setPhoto] = useState(DEFAULT_PHOTO);
+  const [photo, setPhoto] = useState('');
   // throw {};
   useEffect(() => {
     (async () => {
