@@ -20,7 +20,8 @@ const REQUESTS = {
 
   EMAIL: [
     ['pbdf.pbdf.email.email'],
-    ['pbdf.pbdf.mobilenumber.mobilenumber']],
+    ['pbdf.pbdf.mobilenumber.mobilenumber']
+  ],
 
   BSN: [
     [
