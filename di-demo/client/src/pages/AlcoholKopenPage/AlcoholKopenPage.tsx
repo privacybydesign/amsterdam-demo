@@ -6,7 +6,6 @@ import { createIrmaSession } from '../../services/di';
 import { scrollTop } from '../../services/layout';
 import { ButtonStyleProps } from '../../shared/components/Button/ButtonStyle';
 import Button from '../../shared/components/Button/Button';
-import { DEFAULT_PHOTO } from './constants';
 
 const StyledPageContainer = styled(PageContainer)`
   background-color: black;
@@ -38,18 +37,6 @@ const QR: React.FC = () => {
   );
 };
 
-const PhotoStyle = styled.div`
-  position: absolute;
-  top: 269px;
-  left: calc((100% - 560px) / 2);
-  width: 210px;
-  height: 260px;
-
-  & > img {
-    width: 100%;
-  }
-`;
-
 const homeButtonPosition: ButtonStyleProps = {
   width: 1400,
   height: 1068,
@@ -57,12 +44,7 @@ const homeButtonPosition: ButtonStyleProps = {
   left: 0,
 };
 
-const PHOTO_ATTRIBUTE = 'pbdf.bzkpilot.personalData.photo';
-
-const AlcoholResult: React.FC<{ authorized: boolean; photo: string }> = ({
-  authorized,
-  photo,
-}) => {
+const AlcoholResult: React.FC<{ authorized: boolean }> = ({ authorized }) => {
   const history = useHistory();
   const goHome = () => {
     history.push('/');
@@ -80,14 +62,6 @@ const AlcoholResult: React.FC<{ authorized: boolean; photo: string }> = ({
             width="1400"
             decoding="async"
           />
-          <PhotoStyle>
-            <img
-              alt="Persoons foto"
-              src={`data:image/png;base64,${photo}`}
-              width="100%"
-              decoding="async"
-            />
-          </PhotoStyle>
         </>
       ) : (
         <img
@@ -107,20 +81,17 @@ const AlcoholKopenPage: React.FC<{}> = () => {
   const { theme } = useParams();
   const [authorizing, setAuthorizing] = useState(true);
   const [authorized, setAutorized] = useState(false);
-  const [photo, setPhoto] = useState(DEFAULT_PHOTO);
   // throw {};
   useEffect(() => {
     (async () => {
       const data = await createIrmaSession('age', 'irma-qr');
       console.log('data', data);
-      console.log(PHOTO_ATTRIBUTE, data[PHOTO_ATTRIBUTE]);
       const response: [string, any] = Object.entries(data).find(
         ([key]) => key.indexOf('over18') > -1
       ) || ['', ''];
       console.log('found over18', response);
       const success = response.length > 0 && response[1].match(/yes/gi);
       // eslint-disable-next-line no-unused-expressions
-      data[PHOTO_ATTRIBUTE] && setPhoto(data[PHOTO_ATTRIBUTE]);
       setAuthorizing(false);
       setAutorized(success);
       scrollTop();
@@ -142,7 +113,7 @@ const AlcoholKopenPage: React.FC<{}> = () => {
             <QR />
           </>
         ) : (
-          <AlcoholResult authorized={authorized} photo={photo} />
+          <AlcoholResult authorized={authorized} />
         )}
       </StyledPageWrapper>
     </StyledPageContainer>
