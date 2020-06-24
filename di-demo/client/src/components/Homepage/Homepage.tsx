@@ -3,9 +3,8 @@ import styled from 'styled-components';
 
 import { Button, Heading } from '@datapunt/asc-ui';
 
-const H1 = styled(Button)`
+const H1 = styled(Heading)`
     margin-bottom: 20px;
-    background-color: red;
 `;
 
 const Homepage: React.FC<unknown> = () => (
