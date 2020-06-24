@@ -1,3 +1,5 @@
+# TODO: Revise this README
+
 # Repository di_node_container
 
 ## Config
@@ -79,7 +81,6 @@ Replace POSTGRES_HOST=localhost with IP address of Postgres.
 
 ## How to spin up a local development enviroment from scratch
 
-
 generate the keys
 
 ```shell
@@ -101,7 +102,7 @@ $ cp ./dev/keypair/private_key.pem ./voting_node/server
 install ngrok
 
 - run ./dev/ngrok/ngrok.sh in a separate terminal
-- copy the url generated for port 8088 and set it in ./dev/config-dev.json (`irma` setting) and in the 
+- copy the url generated for port 8088 and set it in ./dev/config-dev.json (`irma` setting) and in the
   docker-compose.yml for the BASE_URL environment variable
 - the ngrok tunnel will be available for 8 hours or until the ngrok session is exited. The update of the `irma` setting
   in config-dev.json has to be done each time the ngrok session expires or is restarted.

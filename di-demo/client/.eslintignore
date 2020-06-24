@@ -1,5 +1,5 @@
-**/node_modules/
+.vscode
 *.d.ts
-build/
-node_modules
-serviceWorker.ts
+dist/
+node_modules/
+*.spec.{ts,tsx,js,jsx}
