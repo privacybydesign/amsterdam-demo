@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Button, Heading } from '@datapunt/asc-ui';
+import { Button, Heading, themeSpacing, themeColor } from '@datapunt/asc-ui';
 
 const H1 = styled(Heading)`
-    margin-bottom: 20px;
+    margin-bottom: ${themeSpacing(25)};
+    background-color: ${themeColor('tint', 'level4')};
 `;
 
 const Homepage: React.FC<unknown> = () => (
