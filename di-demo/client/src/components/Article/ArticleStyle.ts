@@ -1,5 +1,6 @@
 import { themeColor, themeSpacing } from '@datapunt/asc-ui';
 import styled from 'styled-components';
+
 import Article from './Article';
 
 const ArticleStyle = styled(Article)`

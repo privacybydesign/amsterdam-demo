@@ -10,8 +10,8 @@ const App: React.FC<unknown> = () => (
         <Router>
             <div>
                 {Object.keys(AppRoutes).map(key => {
-                    const { path, component } = AppRoutes[key];
-                    return <Route key={key} path={path} component={component} exact={key === 'HOME'} />;
+                    const { path, component, exact } = AppRoutes[key];
+                    return <Route key={key} path={path} component={component} exact={exact} />;
                 })}
             </div>
         </Router>

@@ -41,7 +41,7 @@ const Homepage: React.FC<unknown> = () => (
                         Bewijs dat u ouder bent dan 18 jaar zonder uw geboortedatum prijs te geven.
                     </Article>
 
-                    <Article imageSrc="/assets/demo_2.png" title="Demo 2: Ideeën voor uw buurt" href="/">
+                    <Article imageSrc="/assets/demo_2.png" title="Demo 2: Ideeën voor uw buurt" href="test2">
                         Bewijs dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.
                     </Article>
                 </div>
