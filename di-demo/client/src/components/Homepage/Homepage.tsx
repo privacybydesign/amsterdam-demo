@@ -1,22 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Heading, Row, Column, Paragraph } from '@datapunt/asc-ui';
+import { Accordion, Heading, Row, Column, Paragraph, themeSpacing } from '@datapunt/asc-ui';
 import Article from '../../components/Article';
 
 const StyledImage = styled.img`
     width: 100%;
-    margin-bottom: 12px;
+    margin-bottom: ${themeSpacing(3)};
 `;
 
 const StyledH1 = styled(Heading)`
-    margin-top: 16px;
-    margin-bottom: 24px;
+    margin-top: {themeSpacing(4)};
+    margin-bottom: ${themeSpacing(6)};
 `;
 
 const StyledH2 = styled(Heading)`
-    margin-bottom: 12px;
+    margin-bottom: ${themeSpacing(3)};
 `;
+
+const StyledAccorion = styled(Accordion)`
+    margin-bottom: ${themeSpacing(5)};
+`;
+
 const Homepage: React.FC<unknown> = () => (
     <>
         <Row hasMaxWidth={false}>
@@ -34,6 +39,17 @@ const Homepage: React.FC<unknown> = () => (
                     <Paragraph strong>Binnenkort kunt u IRMA gebruiken in Amsterdam. Waarom IRMA?</Paragraph>
 
                     <Paragraph strong>Ervaar nu vast wat u met IRMA kunt via verschillende demo's.</Paragraph>
+
+                    <StyledAccorion title="Wat heeft u nodig?" id="nodig">
+                        U kunt de demo's met IRMA doen als u de IRMA-app op uw telefoon heeft geïnstalleerd en als u de
+                        IRMA de volgende gegevens heeft toegevoegd:
+                        <ul>
+                            <li>Uw persoonsgegevens</li>
+                            <li>Uw adres</li>
+                            <li>Uw e-mailadres</li>
+                            <li>Uw telefoonnummer</li>
+                        </ul>
+                    </StyledAccorion>
 
                     <StyledH2>Aan de slag met IRMA</StyledH2>
 
