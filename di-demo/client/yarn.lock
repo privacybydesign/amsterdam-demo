@@ -952,6 +952,24 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@datapunt/asc-assets@^0.21.1":
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/@datapunt/asc-assets/-/asc-assets-0.21.1.tgz#fac82261ce555ce3845fdfff95c87b47ffd78429"
+  integrity sha512-zvrKl8KborzW1xNMJbFnGYTzg2onWpW9l+K6oPrRGPrcFcFg55DSqstTmvsubseVsmF4NCOa1S8dsGJxNZCXzA==
+
+"@datapunt/asc-ui@^0.21.1":
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/@datapunt/asc-ui/-/asc-ui-0.21.1.tgz#65cb5c6673872a251b53ffe2a69bb3650bbcd512"
+  integrity sha512-VxV9SWG7iNE02geTWD4bLOm3Qz+6M4eUeqQp5X2G8SyPYAXX/fkP4crMYPBLIx1zY8PqctbNPh0Fsws13kSS7g==
+  dependencies:
+    "@datapunt/asc-assets" "^0.21.1"
+    classnames "^2.2.6"
+    deepmerge "^4.2.2"
+    polished "^3.5.1"
+    react-uid "^2.2.0"
+  optionalDependencies:
+    objectFitPolyfill ">=2.3.0"
+
 "@emotion/is-prop-valid@^0.8.8":
   version "0.8.8"
   resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz#db28b1c4368a259b60a97311d6a952d4fd01ac1a"
@@ -2663,6 +2681,11 @@ class-utils@^0.3.5:
     define-property "^0.2.5"
     isobject "^3.0.0"
     static-extend "^0.1.1"
+
+classnames@^2.2.6:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
 
 clean-css@^4.2.3:
   version "4.2.3"
@@ -6759,6 +6782,11 @@ object.values@^1.1.1:
     function-bind "^1.1.1"
     has "^1.0.3"
 
+objectFitPolyfill@>=2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/objectFitPolyfill/-/objectFitPolyfill-2.3.0.tgz#e4c54df5943f5f65351ca07692c613c9da3b5536"
+  integrity sha512-VgF98xGs2upBxO6a4FKGEEip5kXQCYpIwrKSDQ6oyFvPAmTrm6nPD/Y/IetoHx62HE6N82hWvc7Tc0evEBkoyA==
+
 obuf@^1.0.0, obuf@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/obuf/-/obuf-1.1.2.tgz#09bea3343d41859ebd446292d11c9d4db619084e"
@@ -7168,6 +7196,13 @@ please-upgrade-node@^3.2.0:
   integrity sha512-gQR3WpIgNIKwBMVLkpMUeR3e1/E1y42bqDQZfql+kDeXd8COYfM8PQA4X6y7a8u9Ua9FHmsrrmirW2vHs45hWg==
   dependencies:
     semver-compare "^1.0.0"
+
+polished@^3.5.1:
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-3.6.5.tgz#dbefdde64c675935ec55119fe2a2ab627ca82e9c"
+  integrity sha512-VwhC9MlhW7O5dg/z7k32dabcAFW1VI2+7fSe8cE/kXcfL7mVdoa5UxciYGW2sJU78ldDLT6+ROEKIZKFNTnUXQ==
+  dependencies:
+    "@babel/runtime" "^7.9.2"
 
 portfinder@^1.0.26:
   version "1.0.26"
@@ -7584,6 +7619,13 @@ react-router@5.2.0:
     react-is "^16.6.0"
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
+
+react-uid@^2.2.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/react-uid/-/react-uid-2.3.0.tgz#bfd47cfd5ad3e37956ed1a8520964842d7bdcc6b"
+  integrity sha512-tsPZ77GR0pISGYmpCLHAbZTabKXZ7zBniKPVqVMMfnXFyo39zq5g/psIlD5vLTKkjQEhWOO8JhqcHnxkwNu6eA==
+  dependencies:
+    tslib "^1.10.0"
 
 react@^16.13.1:
   version "16.13.1"
@@ -8690,7 +8732,7 @@ style-search@^0.1.0:
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
   integrity sha1-eVjHk+R+MuB9K1yv5cC/jhLneQI=
 
-styled-components@^5.1.1:
+styled-components@>=4.4.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-5.1.1.tgz#96dfb02a8025794960863b9e8e365e3b6be5518d"
   integrity sha512-1ps8ZAYu2Husx+Vz8D+MvXwEwvMwFv+hqqUwhNlDN5ybg6A+3xyW1ECrAgywhvXapNfXiz79jJyU0x22z0FFTg==
