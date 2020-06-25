@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Button, Heading, themeSpacing, themeColor } from '@datapunt/asc-ui';
+import { Button, Heading, Row, Column, themeSpacing, themeColor } from '@datapunt/asc-ui';
 
 const H1 = styled(Heading)`
     margin-bottom: ${themeSpacing(25)};
@@ -10,8 +10,12 @@ const H1 = styled(Heading)`
 
 const Homepage: React.FC<unknown> = () => (
     <>
-        <H1>Homepage</H1>
-        <Button color="primary">Click me!</Button>
+        <Row hasMaxWidth={false}>
+            <Column span={{ small: 12, medium: 6, big: 6, large: 6, xLarge: 6 }}>
+                <H1>Homepage</H1>
+                <Button color="primary">Click me!</Button>
+            </Column>
+        </Row>
     </>
 );
 
