@@ -1,11 +1,20 @@
 import React from 'react';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { GlobalStyle, ThemeProvider } from '@datapunt/asc-ui';
-import Homepage from '../components/Homepage/Homepage';
+
+import AppRoutes from './AppRoutes';
 
 const App: React.FC<unknown> = () => (
     <ThemeProvider>
         <GlobalStyle />
-        <Homepage />
+        <Router>
+            <div>
+                {Object.keys(AppRoutes).map(key => {
+                    const { path, component } = AppRoutes[key];
+                    return <Route key={key} path={path} component={component} exact={key === 'HOME'} />;
+                })}
+            </div>
+        </Router>
     </ThemeProvider>
 );
 

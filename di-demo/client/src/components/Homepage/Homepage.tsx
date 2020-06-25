@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { Heading, Row, Column, Paragraph } from '@datapunt/asc-ui';
 import Article from '../../components/Article';
+
 const StyledImage = styled.img`
     width: 100%;
     margin-bottom: 12px;
@@ -36,13 +37,13 @@ const Homepage: React.FC<unknown> = () => (
 
                     <StyledH2>Aan de slag met IRMA</StyledH2>
 
-                    {/* <Article imageSrc="/assets/demo_1.png" title="Demo 1: Leeftijd aantonen" href="/">
+                    <Article imageSrc="/assets/demo_1.png" title="Demo 1: Leeftijd aantonen" href="test1">
                         Bewijs dat u ouder bent dan 18 jaar zonder uw geboortedatum prijs te geven.
                     </Article>
 
                     <Article imageSrc="/assets/demo_2.png" title="Demo 2: Ideeën voor uw buurt" href="/">
                         Bewijs dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.
-                    </Article> */}
+                    </Article>
                 </div>
             </Column>
         </Row>
