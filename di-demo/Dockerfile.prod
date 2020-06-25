@@ -1,36 +1,32 @@
-# TODO: Revise this
-FROM node:10.15-stretch AS builder
+# Build client frontend
+FROM node:14.4-alpine3.12 AS builder
 LABEL maintainer="datapunt@amsterdam.nl"
 
+ENV NODE_ENV=${ENVIRONMENT}
+ENV PATH /app/node_modules/.bin:$PATH
+
 WORKDIR /app
+COPY ./client/package.json ./
+COPY ./client/yarn.lock ./
 
-COPY ./client/package.json ./client/yarn.lock /app/
+RUN yarn install
 
-RUN yarn
-
-# Build dependencies
-COPY ./client /app/
-
-# Build
-ENV NODE_ENV=production
+COPY ./client ./
 RUN yarn build
 
+# Build server and include frontend (docroot is set to ../client in config.json)
+FROM node:14.4-alpine3.12
 
-FROM mhart/alpine-node:12
+WORKDIR /server
+COPY --from=builder /app/dist/. ./client
+COPY ./server/node/package.json ./server
+
+RUN yarn install
+COPY ./server/node /server
 
 RUN adduser -D irma
-
-COPY ./server/package*.json /server/
-WORKDIR /server
-
-RUN npm install
-
-COPY ./server /server
-
-COPY --from=builder /app/build/. /client
-
 USER irma
 
-CMD ["npx", "nodemon", "index.js", "--verbose"]
+CMD ["yarn", "nodemon", "index.js", "--verbose"]
 
 EXPOSE 8000

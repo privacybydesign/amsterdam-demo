@@ -8,26 +8,23 @@ services:
     volumes:
       - ./client:/usr/src/app
     ports:
-      - "3000:3000"
-
+      - "9000:9000"
   be:
     container_name: be
     build:
-      context: ./server
+      context: ./server/node
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
     volumes:
-      - ./server:/usr/src/app
+      - ./server/node:/usr/src/app
     environment:
       - NODE_ENV=development
       - CONFIG=config.json
       - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
     links:
-      - app:app
-    depends_on:
-      - app
-  #     - irma-server
+      - fe:app
+      # - irma-server
   # irma-server:
   #   container_name: irma-server
   #   image: di-irma-server_irma
@@ -35,16 +32,4 @@ services:
   #     - '8088:8088'
   #   environment:
   #     - BASE_URL=https://acc.attr.auth.amsterdam.nl
-  #     - BASE_URL=http://d3064d0d.eu.ngrok.io
-  # app-prod:
-  #     build:
-  #         dockerfile: Dockerfile.prod
-  #         context: ./
-  #     environment:
-  #         - NODE_ENV=production
-  #         - CONFIG=config.json
-  #         - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
-  #     ports:
-  #         - "8000:8000"
-  #     volumes:
-  #         - ./server:/server
+  # - BASE_URL=http://d3064d0d.eu.ngrok.io
