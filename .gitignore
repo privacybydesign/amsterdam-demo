@@ -3,8 +3,9 @@
 .settings/
 .vscode/
 dev/keypair
-**/.env
-**/.nyc_output
-**/node_modules
-**/dist
-**/coverage
+.env
+.nyc_output
+node_modules
+dist
+coverage
+.awcache
