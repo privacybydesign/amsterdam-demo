@@ -1,0 +1,13 @@
+version: "3.5"
+services:
+  di-demo:
+    container_name: di-demo
+    build:
+      dockerfile: Dockerfile.prod
+      context: ./
+    environment:
+      - NODE_ENV=production
+      - CONFIG=config.json
+      - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
+    ports:
+      - "8000:8000"

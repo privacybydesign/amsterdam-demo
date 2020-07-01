@@ -2,8 +2,563 @@
 
 exports[`App component should match snapshot 1`] = `
 <DocumentFragment>
-  <h1>
-    App!
-  </h1>
+  .c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  box-sizing: content-box;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.c18 > svg {
+  width: 20px;
+  height: 20px;
+}
+
+.c2 {
+  margin: 0;
+  color: #000000;
+  font-weight: 700;
+  font-size: 24px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 30px;
+  margin-bottom: 0;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+}
+
+.c3 {
+  margin-top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c6 {
+  margin: 0;
+  color: #000000;
+  font-weight: 400;
+  font-size: 16px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 22px;
+  margin-bottom: 20px;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+  font-weight: 700;
+  color: #000000;
+  margin-top: 0;
+  color: inherit;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  box-sizing: content-box;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  margin-left: 10px;
+}
+
+.c12 > svg {
+  width: 20px;
+  height: 20px;
+}
+
+.c7 {
+  height: 44px;
+  white-space: nowrap;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  padding: 12px 15px;
+  -webkit-transition: color 0.1s ease-in-out,background-color 0.1s ease-in-out;
+  transition: color 0.1s ease-in-out,background-color 0.1s ease-in-out;
+  background-color: #B4B4B4;
+}
+
+.c7.c7:focus {
+  outline-color: #FEC813;
+  outline-style: solid;
+  outline-offset: 0px;
+  outline-width: 3px;
+}
+
+.c7 svg circle,
+.c7 svg rect,
+.c7 svg polygon,
+.c7 svg path {
+  fill: #000000;
+}
+
+.c7:hover {
+  background-color: #9b9b9b;
+}
+
+.c7::after {
+  content: '';
+  display: block;
+  min-height: inherit;
+  font-size: 0;
+}
+
+.c7:disabled {
+  cursor: default;
+  outline: none;
+  border: none;
+  color: #B4B4B4;
+  background-color: #E6E6E6;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c7:disabled svg circle,
+.c7:disabled svg rect,
+.c7:disabled svg polygon,
+.c7:disabled svg path {
+  fill: #B4B4B4;
+}
+
+.c1 {
+  box-sizing: border-box;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+}
+
+.c0 {
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  max-width: 100%;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.c0 .layout-label {
+  position: absolute;
+  top: -20px;
+  width: 100%;
+}
+
+.c0 .layout-label::before {
+  position: absolute;
+  padding: 2px 4px;
+  font: 12px sans-serif;
+  background: white;
+  height: 20px;
+}
+
+.c14 {
+  -webkit-transition: border-color 0.1s ease-in-out;
+  transition: border-color 0.1s ease-in-out;
+  border: 2px solid #E6E6E6;
+  border-top: none;
+  padding: 16px;
+  display: none;
+}
+
+.c10 {
+  text-align: left;
+  white-space: normal;
+}
+
+.c8 {
+  width: 100%;
+  height: initial;
+  background-color: #E6E6E6;
+}
+
+.c8:hover,
+.c8.c8:focus {
+  background-color: #B4B4B4;
+}
+
+.c8:hover + .c13,
+.c8.c8:focus + .c13 {
+  border-color: #B4B4B4;
+}
+
+.c8 .c11 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-left: auto;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  -webkit-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.c17 {
+  margin-bottom: 8px;
+}
+
+.c16 {
+  border-right: 2px solid black;
+  padding-bottom: 16px;
+  margin-bottom: 28px;
+}
+
+.c16 a {
+  color: #000000;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c16 a h2 {
+  margin-bottom: 20px;
+}
+
+.c16 a img {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.c16 a div {
+  margin-bottom: 12px;
+}
+
+.c16 a span {
+  margin-right: 12px;
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+}
+
+.c5 {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.c4 {
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.c15 {
+  margin-bottom: 12px;
+}
+
+.c9 {
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width:1024px) {
+  .c2 {
+    font-size: 30px;
+    line-height: 38px;
+  }
+}
+
+@media screen and (min-width:540px) {
+  .c6 {
+    margin-bottom: 24px;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c6 {
+    font-size: 18px;
+    line-height: 25px;
+  }
+}
+
+@media (min-width:1200px) {
+  .c1 {
+    max-width: calc((((100% - 264px) / 12) * 6) + 120px + 0px);
+  }
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+  .c1 {
+    max-width: calc((((100% - 264px) / 12) * 6) + 120px + 0px);
+  }
+}
+
+@media (min-width:768px) and (max-width:1023px) {
+  .c1 {
+    max-width: 100%;
+  }
+}
+
+@media (min-width:414px) and (max-width:767px) {
+  .c1 {
+    max-width: 100%;
+  }
+}
+
+@media (max-width:413px) {
+  .c1 {
+    max-width: 100%;
+  }
+}
+
+@media (min-width:1200px) {
+  .c0 {
+    padding-left: 44px;
+    padding-right: 44px;
+  }
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+  .c0 {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media (min-width:768px) and (max-width:1023px) {
+  .c0 {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width:414px) and (max-width:767px) {
+  .c0 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width:413px) {
+  .c0 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+<div>
+    <div
+      class="c0"
+    >
+      <div
+        class="c1"
+      >
+        <div>
+          <h1
+            class="c2 c3 c4"
+          >
+            Probeer IRMA uit
+          </h1>
+          <img
+            class="c5"
+            src="/assets/home.png"
+          />
+          <p
+            class="c6"
+          >
+            IRMA is een app waarmee je overal kunt aantonen wie u bent. IRMA biedt een nieuwe manier van inloggen anders dan u kent van misschien DigiD.
+          </p>
+          <p
+            class="c6"
+          >
+            Binnenkort kunt u IRMA gebruiken in Amsterdam. Waarom IRMA?
+          </p>
+          <p
+            class="c6"
+          >
+            Ervaar nu vast wat u met IRMA kunt via verschillende demo's.
+          </p>
+          <button
+            aria-controls="nodig"
+            aria-expanded="false"
+            class="c7 c8 c9"
+            id="label-nodig"
+            title="Wat heeft u nodig?"
+            type="button"
+          >
+            <span
+              class="c10"
+            >
+              Wat heeft u nodig?
+            </span>
+            <span
+              class="c11 c12"
+              size="20"
+            >
+              <svg
+                focusable="false"
+                viewBox="0 0 32 32"
+              >
+                <path
+                  d="M16 25.757l-16-16 2.91-2.9L16 19.937l13.09-13.08 2.91 2.9z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </span>
+          </button>
+          <div
+            aria-labelledby="label-nodig"
+            class="c13 c14"
+            id="nodig"
+          >
+            U kunt de demo's met IRMA doen als u de IRMA-app op uw telefoon heeft geïnstalleerd en als u de IRMA de volgende gegevens heeft toegevoegd:
+            <ul>
+              <li>
+                Uw persoonsgegevens
+              </li>
+              <li>
+                Uw adres
+              </li>
+              <li>
+                Uw e-mailadres
+              </li>
+              <li>
+                Uw telefoonnummer
+              </li>
+            </ul>
+          </div>
+          <h1
+            class="c2 c3 c15"
+          >
+            Aan de slag met IRMA
+          </h1>
+          <section
+            class="c16"
+          >
+            <a
+              href="/test1"
+            >
+              <img
+                alt=""
+                src="/assets/demo_1.png"
+              />
+              <h2
+                class="c17"
+              >
+                Demo 1: Leeftijd aantonen
+              </h2>
+              <div>
+                Bewijs dat u ouder bent dan 18 jaar zonder uw geboortedatum prijs te geven.
+              </div>
+              <span
+                class="c11 c18"
+              >
+                <svg
+                  focusable="false"
+                  viewBox="0 0 32 32"
+                >
+                  <path
+                    d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </span>
+            </a>
+          </section>
+          <section
+            class="c16"
+          >
+            <a
+              href="/test2"
+            >
+              <img
+                alt=""
+                src="/assets/demo_2.png"
+              />
+              <h2
+                class="c17"
+              >
+                Demo 2: Ideeën voor uw buurt
+              </h2>
+              <div>
+                Bewijs dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.
+              </div>
+              <span
+                class="c11 c18"
+              >
+                <svg
+                  focusable="false"
+                  viewBox="0 0 32 32"
+                >
+                  <path
+                    d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </span>
+            </a>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
 </DocumentFragment>
 `;

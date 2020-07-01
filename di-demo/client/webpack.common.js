@@ -2,6 +2,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 
 module.exports = {
     entry: [path.resolve(__dirname, 'src/index.tsx')],
@@ -12,7 +13,7 @@ module.exports = {
                 test: /\.(j|t)sx?$/,
                 include: path.resolve(__dirname, 'src'),
                 use: {
-                    loader: 'babel-loader'
+                    loader: 'awesome-typescript-loader'
                 }
             },
             {
@@ -47,9 +48,6 @@ module.exports = {
     ],
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
-        alias: {
-            '@config': path.resolve(__dirname, 'src/config'),
-            '@app': path.resolve(__dirname, 'src/app')
-        }
+        plugins: [new TsConfigPathsPlugin()]
     }
 };
