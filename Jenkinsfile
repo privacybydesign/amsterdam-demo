@@ -23,7 +23,7 @@ node {
 
     stage("Build image") {
         tryStep "build", {
-            def dockerfile = 'Dockerfile.prod'
+            def dockerfile = './di-demo/Dockerfile.prod'
             def image = docker.build("build.app.amsterdam.nl:5000/ois/irma_frontend:${env.BUILD_NUMBER}", "-f ${dockerfile} ./di-demo")
             image.push()
         }
