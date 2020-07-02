@@ -32,7 +32,7 @@ const TestIrmaServer: React.FC<Props> = () => {
 
                         <StyledH1>{isOver18 === true ? 'JA' : 'nee'}</StyledH1>
 
-                        <div id="irma-qr"></div>
+                        <canvas id="irma-qr" />
                     </div>
                 </Column>
             </Row>

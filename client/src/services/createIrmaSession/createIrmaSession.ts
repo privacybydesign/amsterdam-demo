@@ -35,8 +35,8 @@ const createIrmaSession = async (dataType: string, holderElementId: string): Pro
 
     const irmaResponse = await instance.get(`/getsession/${dataType}`);
     const session = await irmaResponse.data;
-    const { sessionPtr, token } = session;
 
+    const { sessionPtr, token } = session;
     const sessionOptions = {
         method: 'canvas',
         element: holderElementId,
@@ -47,14 +47,14 @@ const createIrmaSession = async (dataType: string, holderElementId: string): Pro
         disableMobile: true
     };
 
-    if (isMobile()) {
-        sessionOptions.method = 'mobile';
-        sessionOptions.disableMobile = false;
-    }
+    // TODO: Fix mobile session options
+    // if (isMobile()) {
+    //     sessionOptions.method = 'mobile';
+    //     sessionOptions.disableMobile = false;
+    // }
 
     const result = await irma.handleSession(sessionPtr, sessionOptions);
     const data = result.disclosed[0].reduce((acc, { id, rawvalue }) => ({ ...acc, [id]: rawvalue }), {});
-    // console.log('data', data);
     return data;
 };
 

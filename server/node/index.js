@@ -41,7 +41,6 @@ const createIrmaRequest = (content) => {
 };
 
 const init = async () => {
-
   if (!process.env.PRIVATE_KEY) {
     throw new Error("PRIVATE_KEY is not set");
   }
@@ -86,7 +85,7 @@ const init = async () => {
     app.listen(config.port, () =>
       console.log(
         `Di-demo backend running in ${
-        process.env.NODE_ENV || "development"
+          process.env.NODE_ENV || "development"
         } mode.`
       )
     );
@@ -97,7 +96,6 @@ const init = async () => {
 
 const irmaDiscloseRequest = async (req, res, requestType, id) => {
   const authmethod = "publickey";
-  console.log(req);
   const request = createIrmaRequest(requestType, req.query.clientReturnUrl);
 
   console.log("irma.irmaDiscloseRequest called: ", {
@@ -107,7 +105,6 @@ const irmaDiscloseRequest = async (req, res, requestType, id) => {
   });
 
   try {
-    console.log(irma);
     const session = await irma.startSession(
       config.irma,
       request,
