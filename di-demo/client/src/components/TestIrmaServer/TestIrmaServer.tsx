@@ -12,13 +12,12 @@ const StyledH1 = styled(Heading)`
 `;
 
 const TestIrmaServer: React.FC<Props> = () => {
-    const [isOver18, setOver18] = useState('');
+    const [isOver18, setIsOver18] = useState<boolean>(false);
 
     useEffect(() => {
         (async () => {
             const response = await createIrmaSession('age', 'irma-qr');
-            console.log('response', response);
-            setOver18(response['pbdf.gemeente.personalData.over18']);
+            setIsOver18(response['pbdf.gemeente.personalData.over18'] === 'Yes');
         })();
     }, []);
 
@@ -31,7 +30,7 @@ const TestIrmaServer: React.FC<Props> = () => {
 
                         <Paragraph>Bent u ouder an 18?</Paragraph>
 
-                        <StyledH1>{isOver18}</StyledH1>
+                        <StyledH1>{isOver18 === true ? 'JA' : 'nee'}</StyledH1>
 
                         <div id="irma-qr"></div>
                     </div>
