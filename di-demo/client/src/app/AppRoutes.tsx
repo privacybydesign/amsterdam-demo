@@ -8,7 +8,7 @@ const Test: React.FC<unknown> = () => <>TEST STEP</>;
 const AppRoutes: unknown = {
     HOMEPAGE: { path: '/', component: Homepage, exact: true },
     TEST_1: { path: '/test1', component: TestIrmaServer, exact: false },
-    TEST_2: { path: '/test2', component: Test, exact: false }
+    TEST_2: { path: '/test2', component: TestIrmaServer, exact: false }
 };
 
 export default AppRoutes;
