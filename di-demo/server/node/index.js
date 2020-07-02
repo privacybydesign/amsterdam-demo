@@ -41,7 +41,6 @@ const createIrmaRequest = (content) => {
 };
 
 const init = async () => {
-  console.log('------------------------------- SERVER');
 
   if (!process.env.PRIVATE_KEY) {
     throw new Error("PRIVATE_KEY is not set");
