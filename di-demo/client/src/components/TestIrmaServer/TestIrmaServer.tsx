@@ -4,12 +4,14 @@ import createIrmaSession from '@services/createIrmaSession/createIrmaSession';
 
 import { Heading, Row, Column, themeSpacing, Paragraph } from '@datapunt/asc-ui';
 
+export interface Props {}
+
 const StyledH1 = styled(Heading)`
     margin-top: ${themeSpacing(4)};
     margin-bottom: ${themeSpacing(6)};
 `;
 
-const TestIrmaServer: React.FC<unknown> = () => {
+const TestIrmaServer: React.FC<Props> = () => {
     const [isOver18, setOver18] = useState('');
 
     useEffect(() => {
