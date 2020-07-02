@@ -20,7 +20,8 @@
         "paths": {
             "@config/*": ["config/*"],
             "@app/*": ["app/*"],
-            "@components/*": ["components/*"]
+            "@components/*": ["components/*"],
+            "@services/*": ["services/*"]
         }
     },
     "awesomeTypescriptLoaderOptions": {

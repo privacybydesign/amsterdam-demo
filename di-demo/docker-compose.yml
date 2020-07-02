@@ -22,8 +22,6 @@ services:
       - NODE_ENV=development
       - CONFIG=config.json
       - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
-    links:
-      - fe:app
       # - irma-server
   # irma-server:
   #   container_name: irma-server
