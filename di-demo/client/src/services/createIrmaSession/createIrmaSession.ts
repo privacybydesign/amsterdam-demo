@@ -24,7 +24,6 @@ const createIrmaSession = async (dataType: string, holderElementId: string) => {
     }
 
     const irmaResponse = await instance.get(`/getsession/${dataType}`);
-
     const session = await irmaResponse.data;
     const { sessionPtr, token } = session;
 
@@ -38,14 +37,14 @@ const createIrmaSession = async (dataType: string, holderElementId: string) => {
         disableMobile: true
     };
 
-    // if (isMobile()) {
-    // sessionOptions.method = 'mobile';
-    // sessionOptions.disableMobile = false;
-    // }
+    if (isMobile()) {
+        sessionOptions.method = 'mobile';
+        sessionOptions.disableMobile = false;
+    }
 
     const result = await irma.handleSession(sessionPtr, sessionOptions);
     const data = result.disclosed[0].reduce((acc, { id, rawvalue }) => ({ ...acc, [id]: rawvalue }), {});
-    console.log('result', data);
+    console.log('data', data);
     return data;
 };
 
