@@ -5,7 +5,6 @@ const port = 8000;
 
 const instance = axios.create({
     baseURL: `${window.location.protocol}//${window.location.hostname}:${port}`
-    // headers: { 'Content-Type': 'application/json' }
 });
 
 let config: any;
@@ -20,7 +19,6 @@ export const isMobile = () => {
 };
 
 const createIrmaSession = async (dataType: string, holderElementId: string) => {
-    // ensure config
     if (!config) {
         config = await getConfig();
     }
