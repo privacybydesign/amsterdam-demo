@@ -41,6 +41,8 @@ const createIrmaRequest = (content) => {
 };
 
 const init = async () => {
+  console.log('------------------------------- SERVER');
+
   if (!process.env.PRIVATE_KEY) {
     throw new Error("PRIVATE_KEY is not set");
   }
@@ -76,7 +78,7 @@ const init = async () => {
       app.use(
         "/",
         proxy({
-          target: "http://app:3000",
+          target: "http://fe:9000",
           changeOrigin: true,
         })
       );
@@ -85,7 +87,7 @@ const init = async () => {
     app.listen(config.port, () =>
       console.log(
         `Di-demo backend running in ${
-          process.env.NODE_ENV || "development"
+        process.env.NODE_ENV || "development"
         } mode.`
       )
     );
