@@ -27,7 +27,9 @@ const TestIrmaServer: React.FC<unknown> = () => {
                     <div>
                         <StyledH1>Test Irma Server</StyledH1>
 
-                        <Paragraph>Bent u ouder an 18? {isOver18 ? 'Ja' : 'Nee'}</Paragraph>
+                        <Paragraph>Bent u ouder an 18?</Paragraph>
+
+                        <StyledH1>{isOver18}</StyledH1>
 
                         <div id="irma-qr"></div>
                     </div>
