@@ -48,10 +48,7 @@ const init = async () => {
   try {
     // read the config file only once each session
     if (config === undefined) {
-      const json = await util.promisify(fs.readFile)(
-        process.env.CONFIG,
-        "utf-8"
-      );
+      const json = await util.promisify(fs.readFile)("config.json", "utf-8");
       console.log("Using config", json);
       config = JSON.parse(json);
     }
@@ -90,6 +87,7 @@ const init = async () => {
       )
     );
   } catch (e) {
+    console.log(e);
     error(e);
   }
 };
