@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { GlobalStyle, ThemeProvider } from '@datapunt/asc-ui';
-
 import AppRoutes from './AppRoutes';
 
 const App: React.FC<unknown> = () => (

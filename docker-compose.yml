@@ -7,8 +7,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./client:/usr/src/app
-    ports:
-      - "9000:9000"
   be:
     container_name: be
     build:
@@ -22,6 +20,8 @@ services:
       - NODE_ENV=development
       - CONFIG=config.json
       - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
+    links:
+      - fe:fe
       # - irma-server
   # irma-server:
   #   container_name: irma-server

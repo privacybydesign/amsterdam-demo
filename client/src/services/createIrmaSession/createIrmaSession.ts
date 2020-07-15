@@ -11,11 +11,7 @@ interface IIrmaServerConfig {
     port: number;
 }
 
-const port = 8000;
-
-const instance = axios.create({
-    baseURL: `${window.location.protocol}//${window.location.hostname}:${port}`
-});
+const instance = axios.create({});
 
 let config: IIrmaServerConfig;
 
@@ -47,7 +43,7 @@ const createIrmaSession = async (dataType: string, holderElementId: string): Pro
         disableMobile: true
     };
 
-    // TODO: Fix mobile session options
+    // TODO: Fix mobile session
     // if (isMobile()) {
     //     sessionOptions.method = 'mobile';
     //     sessionOptions.disableMobile = false;

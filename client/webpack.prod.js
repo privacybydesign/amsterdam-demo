@@ -4,7 +4,6 @@ const common = require('./webpack.common.js');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
-const nodeExternals = require('webpack-node-externals');
 
 module.exports = () =>
     merge.smartStrategy({
@@ -17,7 +16,6 @@ module.exports = () =>
             chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js'
         },
         plugins: [new CleanWebpackPlugin()],
-        externals: [nodeExternals()],
         optimization: {
             minimizer: [
                 new TerserPlugin({
