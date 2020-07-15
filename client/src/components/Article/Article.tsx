@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Heading, Icon } from '@datapunt/asc-ui';
 import { ChevronRight } from '@datapunt/asc-assets';
 
-export interface Props {
+export interface IProps {
     imageSrc: string;
     title: string;
     text: string;
@@ -16,7 +16,7 @@ const StyledH2 = styled(Heading)`
     margin-bottom: 8px;
 `;
 
-const Article: React.FC<Props> = ({ imageSrc, title, children, href, className }) => {
+const Article: React.FC<IProps> = ({ imageSrc, title, children, href, className }) => {
     return (
         <section className={className}>
             <Link to={href}>
