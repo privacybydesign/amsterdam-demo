@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Icon, themeColor, themeSpacing } from '@datapunt/asc-ui';
+import { Icon, themeColor, themeSpacing, breakpoint } from '@datapunt/asc-ui';
 import { ChevronRight } from '@datapunt/asc-assets';
 import { BreadCrumbItem, IBreadCrumbItemProps } from './BreadCrumbItem';
 
@@ -32,7 +32,11 @@ const BreadCrumbs: React.FC<IBreadCrumbsProps> & IBreadCrumbsComposition = ({ ch
 const Container = styled.div`
     display: flex;
     align-items: center;
-    margin: ${themeSpacing(4)} 0;
+    margin-top: ${themeSpacing(4)};
+
+    @media ${breakpoint('min-width', 'laptopM')} {
+        margin-top: ${themeSpacing(5)};
+    }
 `;
 
 const StyledIcon = styled(Icon)`
