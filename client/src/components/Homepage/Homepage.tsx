@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import { Accordion, Heading, Row, Column, Paragraph, themeSpacing } from '@datapunt/asc-ui';
-import Article from '@components/Article';
+import { BreadCrumbs, Item } from '@components/BreadCrumbs/BreadCrumbs';
+import { Accordion, Heading, Paragraph, themeSpacing } from '@datapunt/asc-ui';
+import PageTemplate from '@components/PageTemplate/PageTemplate';
+import Article from '@components/Article/Article';
 
 const StyledImage = styled.img`
     width: 100%;
@@ -22,48 +23,48 @@ const StyledAccorion = styled(Accordion)`
     margin-bottom: ${themeSpacing(5)};
 `;
 
-const Homepage: React.FC<unknown> = () => (
-    <>
-        <Row hasMaxWidth={false}>
-            <Column span={{ small: 12, medium: 6, big: 6, large: 6, xLarge: 6 }}>
-                <div>
-                    <StyledH1>Probeer IRMA uit</StyledH1>
+interface IProps {}
 
-                    <StyledImage src="/assets/home.png"></StyledImage>
+const Homepage: React.FC<IProps> = () => (
+    <PageTemplate>
+        <BreadCrumbs>
+            <Item href="/">Home1</Item>
+            <Item href="/">Home2</Item>
+        </BreadCrumbs>
+        <StyledH1>Probeer IRMA uit</StyledH1>
 
-                    <Paragraph strong>
-                        IRMA is een app waarmee je overal kunt aantonen wie u bent. IRMA biedt een nieuwe manier van
-                        inloggen anders dan u kent van misschien DigiD.
-                    </Paragraph>
+        <StyledImage src="/assets/home.png"></StyledImage>
 
-                    <Paragraph strong>Binnenkort kunt u IRMA gebruiken in Amsterdam. Waarom IRMA?</Paragraph>
+        <Paragraph strong>
+            IRMA is een app waarmee je overal kunt aantonen wie u bent. IRMA biedt een nieuwe manier van inloggen anders
+            dan u kent van misschien DigiD.
+        </Paragraph>
 
-                    <Paragraph strong>Ervaar nu vast wat u met IRMA kunt via verschillende demo&apos;s.</Paragraph>
+        <Paragraph strong>Binnenkort kunt u IRMA gebruiken in Amsterdam. Waarom IRMA?</Paragraph>
 
-                    <StyledAccorion title="Wat heeft u nodig?" id="nodig">
-                        U kunt de demo&apos;s met IRMA doen als u de IRMA-app op uw telefoon heeft geïnstalleerd en als
-                        u de IRMA de volgende gegevens heeft toegevoegd:
-                        <ul>
-                            <li>Uw persoonsgegevens</li>
-                            <li>Uw adres</li>
-                            <li>Uw e-mailadres</li>
-                            <li>Uw telefoonnummer</li>
-                        </ul>
-                    </StyledAccorion>
+        <Paragraph strong>Ervaar nu vast wat u met IRMA kunt via verschillende demo&apos;s.</Paragraph>
 
-                    <StyledH2>Aan de slag met IRMA</StyledH2>
+        <StyledAccorion title="Wat heeft u nodig?" id="nodig">
+            U kunt de demo&apos;s met IRMA doen als u de IRMA-app op uw telefoon heeft geïnstalleerd en als u de IRMA de
+            volgende gegevens heeft toegevoegd:
+            <ul>
+                <li>Uw persoonsgegevens</li>
+                <li>Uw adres</li>
+                <li>Uw e-mailadres</li>
+                <li>Uw telefoonnummer</li>
+            </ul>
+        </StyledAccorion>
 
-                    <Article imageSrc="/assets/demo_1.png" title="Demo 1: Leeftijd aantonen" href="test1">
-                        Bewijs dat u ouder bent dan 18 jaar zonder uw geboortedatum prijs te geven.
-                    </Article>
+        <StyledH2>Aan de slag met IRMA</StyledH2>
 
-                    <Article imageSrc="/assets/demo_2.png" title="Demo 2: Ideeën voor uw buurt" href="test2">
-                        Bewijs dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.
-                    </Article>
-                </div>
-            </Column>
-        </Row>
-    </>
+        <Article imageSrc="/assets/demo_1.png" title="Demo 1: Leeftijd aantonen" href="test1">
+            Bewijs dat u ouder bent dan 18 jaar zonder uw geboortedatum prijs te geven.
+        </Article>
+
+        <Article imageSrc="/assets/demo_2.png" title="Demo 2: Ideeën voor uw buurt" href="test2">
+            Bewijs dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.
+        </Article>
+    </PageTemplate>
 );
 
 export default Homepage;
