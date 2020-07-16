@@ -1,35 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { BreadCrumbs, Item } from '@components/BreadCrumbs/BreadCrumbs';
+import BreadCrumbs from '@components/BreadCrumbs';
 import { Accordion, Heading, Paragraph, themeSpacing } from '@datapunt/asc-ui';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import Article from '@components/Article/Article';
-
-const StyledImage = styled.img`
-    width: 100%;
-    margin-bottom: ${themeSpacing(3)};
-`;
-
-const StyledH1 = styled(Heading)`
-    margin-top: ${themeSpacing(4)};
-    margin-bottom: ${themeSpacing(6)};
-`;
-
-const StyledH2 = styled(Heading)`
-    margin-bottom: ${themeSpacing(3)};
-`;
-
-const StyledAccorion = styled(Accordion)`
-    margin-bottom: ${themeSpacing(5)};
-`;
 
 interface IProps {}
 
 const Homepage: React.FC<IProps> = () => (
     <PageTemplate>
         <BreadCrumbs>
-            <Item href="/">Home1</Item>
-            <Item href="/">Home2</Item>
+            <BreadCrumbs.Item href="/">Home</BreadCrumbs.Item>
         </BreadCrumbs>
         <StyledH1>Probeer IRMA uit</StyledH1>
 
@@ -66,5 +47,23 @@ const Homepage: React.FC<IProps> = () => (
         </Article>
     </PageTemplate>
 );
+
+const StyledImage = styled.img`
+    width: 100%;
+    margin-bottom: ${themeSpacing(3)};
+`;
+
+const StyledH1 = styled(Heading)`
+    margin-top: ${themeSpacing(4)};
+    margin-bottom: ${themeSpacing(6)};
+`;
+
+const StyledH2 = styled(Heading)`
+    margin-bottom: ${themeSpacing(3)};
+`;
+
+const StyledAccorion = styled(Accordion)`
+    margin-bottom: ${themeSpacing(5)};
+`;
 
 export default Homepage;

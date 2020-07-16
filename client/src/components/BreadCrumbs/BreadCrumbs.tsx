@@ -1,36 +1,44 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { Icon, themeColor, themeSpacing } from '@datapunt/asc-ui';
 import { ChevronRight } from '@datapunt/asc-assets';
+import { BreadCrumbItem, IBreadCrumbItemProps } from './BreadCrumbItem';
 
 interface IBreadCrumbsProps {
     className?: string;
 }
 
-export const BreadCrumbs: React.FC<IBreadCrumbsProps> = ({ children, className }) => {
-    const c = children instanceof Array ? children : [children];
+interface IBreadCrumbsComposition {
+    Item: React.FC<IBreadCrumbItemProps>;
+}
+
+const BreadCrumbs: React.FC<IBreadCrumbsProps> & IBreadCrumbsComposition = ({ children, className }) => {
     return (
-        <div className={className}>
-            {c.map(child => (
-                <>
+        <Container className={className}>
+            {React.Children.map(children, (child, index) => (
+                <React.Fragment key={String(index)}>
                     {child}
-                    <ChevronRight />
-                </>
+                    {children instanceof Array && index < children.length - 1 && (
+                        <StyledIcon size={14} color={themeColor('tint', 'level5')}>
+                            <ChevronRight />
+                        </StyledIcon>
+                    )}
+                </React.Fragment>
             ))}
-        </div>
+        </Container>
     );
 };
 
-interface IItemProps {
-    className?: string;
-    href?: string;
-}
+const Container = styled.div`
+    display: flex;
+    align-items: center;
+    margin: ${themeSpacing(4)} 0;
+`;
 
-export const Item: React.FC<IItemProps> = ({ className, href, children }) => {
-    const component: JSX.Element = <span className={className}>{children}</span>;
+const StyledIcon = styled(Icon)`
+    margin: 0 ${themeSpacing(1)};
+`;
 
-    if (href) {
-        return <Link to={href}>{component}</Link>;
-    }
+BreadCrumbs.Item = BreadCrumbItem;
 
-    return component;
-};
+export default BreadCrumbs;
