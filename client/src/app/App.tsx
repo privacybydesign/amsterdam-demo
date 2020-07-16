@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { GlobalStyle, ThemeProvider, Header } from '@datapunt/asc-ui';
+import Footer from '@components/Footer/Footer';
 import AppRoutes from './AppRoutes';
 
 const App: React.FC<unknown> = () => (
@@ -13,6 +14,7 @@ const App: React.FC<unknown> = () => (
                 return <Route key={key} path={path} component={component} exact={exact} />;
             })}
         </Router>
+        <Footer />
     </ThemeProvider>
 );
 

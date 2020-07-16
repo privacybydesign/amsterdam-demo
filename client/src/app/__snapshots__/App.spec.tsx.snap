@@ -1713,6 +1713,11 @@ exports[`App component should match snapshot 1`] = `
             class=""
             title="Some share links"
           >
+            <h3
+              class="c4 c5 c6 c7"
+            >
+              Volg de Gemeente
+            </h3>
             <ul
               class="c9"
             >
@@ -1866,127 +1871,16 @@ exports[`App component should match snapshot 1`] = `
             class=""
             title="Questions?"
           >
+            <h3
+              class="c4 c5 c6 c7"
+            >
+              Uit in Amsterdam
+            </h3>
             <p
               class="c16"
             >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremque ea eos facere hic ipsum nobis provident quidem voluptates.
             </p>
-            <ul
-              class="c9"
-            >
-              <li
-                class="c10"
-              >
-                <a
-                  class="c11 c12"
-                  href="/"
-                >
-                  <span
-                    class="c13 c14"
-                    size="12"
-                  >
-                    <svg
-                      focusable="false"
-                      viewBox="0 0 32 32"
-                    >
-                      <path
-                        d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                        fill-rule="evenodd"
-                      />
-                    </svg>
-                  </span>
-                  <span
-                    class="c15"
-                  >
-                    Lorem ipsum dolor.
-                  </span>
-                </a>
-              </li>
-              <li
-                class="c10"
-              >
-                <a
-                  class="c11 c12"
-                  href="/"
-                >
-                  <span
-                    class="c13 c14"
-                    size="12"
-                  >
-                    <svg
-                      focusable="false"
-                      viewBox="0 0 32 32"
-                    >
-                      <path
-                        d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                        fill-rule="evenodd"
-                      />
-                    </svg>
-                  </span>
-                  <span
-                    class="c15"
-                  >
-                    Lorem ipsum dolor sit.
-                  </span>
-                </a>
-              </li>
-              <li
-                class="c10"
-              >
-                <a
-                  class="c11 c12"
-                  href="/"
-                >
-                  <span
-                    class="c13 c14"
-                    size="12"
-                  >
-                    <svg
-                      focusable="false"
-                      viewBox="0 0 32 32"
-                    >
-                      <path
-                        d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                        fill-rule="evenodd"
-                      />
-                    </svg>
-                  </span>
-                  <span
-                    class="c15"
-                  >
-                    Lorem.
-                  </span>
-                </a>
-              </li>
-              <li
-                class="c10"
-              >
-                <a
-                  class="c11 c12"
-                  href="/"
-                >
-                  <span
-                    class="c13 c14"
-                    size="12"
-                  >
-                    <svg
-                      focusable="false"
-                      viewBox="0 0 32 32"
-                    >
-                      <path
-                        d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                        fill-rule="evenodd"
-                      />
-                    </svg>
-                  </span>
-                  <span
-                    class="c15"
-                  >
-                    Lorem ipsum.
-                  </span>
-                </a>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
