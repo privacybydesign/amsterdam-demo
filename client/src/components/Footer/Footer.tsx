@@ -10,7 +10,8 @@ import {
     List,
     ListItem,
     Paragraph,
-    Row
+    Row,
+    themeColor
 } from '@datapunt/asc-ui';
 
 interface IFooterProps {}
@@ -47,16 +48,6 @@ const Footer: React.FC<IFooterProps> = () => (
                                     Lorem ipsum.
                                 </Link>
                             </ListItem>
-                            <ListItem>
-                                <Link darkBackground href="/" variant="with-chevron">
-                                    Lorem ipsum.
-                                </Link>
-                            </ListItem>
-                            <ListItem>
-                                <Link darkBackground href="/" variant="with-chevron">
-                                    Lorem ipsum dolor sit amet.
-                                </Link>
-                            </ListItem>
                         </List>
                     </FooterSection>
                 </Column>
@@ -82,6 +73,10 @@ const Footer: React.FC<IFooterProps> = () => (
     </ASCFooter>
 );
 
-const FooterSection = styled.div``;
+const FooterSection = styled.div`
+    p {
+        color: ${themeColor('tint', 'level1')};
+    }
+`;
 
 export default Footer;
