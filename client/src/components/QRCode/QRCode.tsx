@@ -38,8 +38,11 @@ const QRCode: React.FC<IProps> = ({ getSession }) => {
           <StyledOverlay>
             <Heading as="h3">Maak uzelf bekend</Heading>
 
+            Doorloop de volgende stappen:
+
             <ol>
               <li>Scan de QR-code hieronder met uw IRMA-app.</li>
+              <li>Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.</li>
             </ol>
 
             <canvas id="irma-qr" />
