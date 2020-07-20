@@ -29,7 +29,7 @@ const QRCode: React.FC<IProps> = ({ getSession }) => {
 
   return (
     <div>
-      <Button onClick={getQRSession} variant="secondary" iconSize={14} iconLeft={<ChevronDown />}>
+      <Button onClick={getQRSession} variant="secondary">
         Inloggen met IRMA
       </Button>
 
