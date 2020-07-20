@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import createIrmaSession from '@services/createIrmaSession/createIrmaSession';
 
 
-import { Heading, Button, themeSpacing, Paragraph, Accordion } from '@datapunt/asc-ui';
+import { Heading, Button, themeSpacing, Paragraph, Accordion, Link, Icon } from '@datapunt/asc-ui';
+import { ExternalLink } from '@datapunt/asc-assets';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
@@ -49,13 +50,17 @@ const Demo1: React.FC<IProps> = () => {
 
           <Accordion title="Waarom worden deze gegevens gevraagd?">
             <div >Uw volledige naam</div>
-            <div>De gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.</div>
+            <Paragraph>De gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.</Paragraph>
             <div>Uw burgerservicenummer (BSN)</div>
-            <div>De gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.</div>
+            <Paragraph>De gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.</Paragraph>
           </Accordion>
 
-          <div>Heeft u nog geen IRMA?</div>
-          <div>Download IRMA</div>
+          <Paragraph>
+            <div>Heeft u nog geen IRMA?</div>
+            <Link href="/" variant="inline" icon={<Icon size={16}> <ExternalLink /> </Icon>}>
+              Download IRMA
+          </Link>
+          </Paragraph>
 
           <QRCode getSession={getSession} />
         </div>
