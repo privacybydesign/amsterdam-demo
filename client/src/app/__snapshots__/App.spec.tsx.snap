@@ -1179,7 +1179,7 @@ exports[`App component should match snapshot 1`] = `
       </div>
     </div>
   </div>
-  .c14 {
+  .c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1192,12 +1192,12 @@ exports[`App component should match snapshot 1`] = `
   transform: rotate(0deg);
 }
 
-.c14 > svg {
+.c15 > svg {
   width: 12px;
   height: 12px;
 }
 
-.c4 {
+.c5 {
   margin: 0;
   color: #000000;
   font-weight: 700;
@@ -1215,7 +1215,7 @@ exports[`App component should match snapshot 1`] = `
   letter-spacing: normal;
 }
 
-.c11 {
+.c12 {
   margin: 0;
   color: #000000;
   font-weight: inherit;
@@ -1233,7 +1233,7 @@ exports[`App component should match snapshot 1`] = `
   letter-spacing: normal;
 }
 
-.c6 {
+.c7 {
   margin-top: 0;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1252,11 +1252,11 @@ exports[`App component should match snapshot 1`] = `
   justify-content: space-between;
 }
 
-.c15 {
+.c16 {
   width: 100%;
 }
 
-.c12 {
+.c13 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1267,35 +1267,35 @@ exports[`App component should match snapshot 1`] = `
   color: #ffffff;
 }
 
-.c12:focus {
+.c13:focus {
   background-color: #FEC813;
 }
 
-.c12 .c13 {
+.c13 .c14 {
   margin: 4px 4px 0 0;
 }
 
-.c12 .c13 svg circle,
-.c12 .c13 svg rect,
-.c12 .c13 svg polygon,
-.c12 .c13 svg path {
+.c13 .c14 svg circle,
+.c13 .c14 svg rect,
+.c13 .c14 svg polygon,
+.c13 .c14 svg path {
   fill: #ffffff;
 }
 
-.c12:hover {
+.c13:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   color: #ffffff;
 }
 
-.c12:hover svg circle,
-.c12:hover svg rect,
-.c12:hover svg polygon,
-.c12:hover svg path {
+.c13:hover svg circle,
+.c13:hover svg rect,
+.c13:hover svg polygon,
+.c13:hover svg path {
   fill: #ffffff;
 }
 
-.c18 {
+.c19 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1306,35 +1306,35 @@ exports[`App component should match snapshot 1`] = `
   color: #000000;
 }
 
-.c18:focus {
+.c19:focus {
   background-color: #FEC813;
 }
 
-.c18 .c13 {
+.c19 .c14 {
   margin: 4px 4px 0 0;
 }
 
-.c18 .c13 svg circle,
-.c18 .c13 svg rect,
-.c18 .c13 svg polygon,
-.c18 .c13 svg path {
+.c19 .c14 svg circle,
+.c19 .c14 svg rect,
+.c19 .c14 svg polygon,
+.c19 .c14 svg path {
   fill: #000000;
 }
 
-.c18:hover {
+.c19:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   color: #ec0000;
 }
 
-.c18:hover svg circle,
-.c18:hover svg rect,
-.c18:hover svg polygon,
-.c18:hover svg path {
+.c19:hover svg circle,
+.c19:hover svg rect,
+.c19:hover svg polygon,
+.c19:hover svg path {
   fill: #ec0000;
 }
 
-.c8 {
+.c9 {
   margin: 0;
   color: #000000;
   font-weight: 400;
@@ -1354,7 +1354,7 @@ exports[`App component should match snapshot 1`] = `
   color: inherit;
 }
 
-.c16 {
+.c17 {
   margin: 0;
   color: #000000;
   font-weight: 400;
@@ -1374,7 +1374,7 @@ exports[`App component should match snapshot 1`] = `
   color: inherit;
 }
 
-.c9 {
+.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1387,7 +1387,7 @@ exports[`App component should match snapshot 1`] = `
   padding: 0;
 }
 
-.c10 {
+.c11 {
   word-break: break-word;
   margin-bottom: 8px;
 }
@@ -1446,7 +1446,7 @@ exports[`App component should match snapshot 1`] = `
   height: 20px;
 }
 
-.c19 .c5 {
+.c20 .c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1454,11 +1454,11 @@ exports[`App component should match snapshot 1`] = `
   margin-bottom: 0;
 }
 
-.c17 {
+.c18 {
   background-color: #ffffff;
 }
 
-.c7 {
+.c8 {
   margin-top: 0;
   margin-bottom: 8px;
   color: #ffffff;
@@ -1477,7 +1477,7 @@ exports[`App component should match snapshot 1`] = `
   padding-top: 32px;
 }
 
-.c20 .c13 {
+.c21 .c14 {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
@@ -1490,6 +1490,10 @@ exports[`App component should match snapshot 1`] = `
   transition: transform 0.3s ease;
 }
 
+.c4 p {
+  color: #ffffff;
+}
+
 @media screen and (min-width:1200px) {
 
 }
@@ -1499,7 +1503,7 @@ exports[`App component should match snapshot 1`] = `
 }
 
 @media screen and (min-width:1024px) {
-  .c11 {
+  .c12 {
     font-size: 18px;
     line-height: 25px;
   }
@@ -1514,26 +1518,26 @@ exports[`App component should match snapshot 1`] = `
 }
 
 @media screen and (min-width:540px) {
-  .c8 {
+  .c9 {
     margin-bottom: 24px;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c8 {
+  .c9 {
     font-size: 18px;
     line-height: 25px;
   }
 }
 
 @media screen and (min-width:540px) {
-  .c16 {
+  .c17 {
     margin-bottom: 8px;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c16 {
+  .c17 {
     font-size: 18px;
     line-height: 25px;
     margin-bottom: 8px;
@@ -1692,15 +1696,15 @@ exports[`App component should match snapshot 1`] = `
           class="c3"
         >
           <div
-            class=""
+            class="c4"
           >
             <h3
-              class="c4 c5 c6 c7"
+              class="c5 c6 c7 c8"
             >
               Contact
             </h3>
             <p
-              class="c8"
+              class="c9"
             >
               Hebt u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.
             </p>
@@ -1710,26 +1714,26 @@ exports[`App component should match snapshot 1`] = `
           class="c3"
         >
           <div
-            class=""
+            class="c4"
             title="Some share links"
           >
             <h3
-              class="c4 c5 c6 c7"
+              class="c5 c6 c7 c8"
             >
               Volg de Gemeente
             </h3>
             <ul
-              class="c9"
+              class="c10"
             >
               <li
-                class="c10"
+                class="c11"
               >
                 <a
-                  class="c11 c12"
+                  class="c12 c13"
                   href="/"
                 >
                   <span
-                    class="c13 c14"
+                    class="c14 c15"
                     size="12"
                   >
                     <svg
@@ -1743,21 +1747,21 @@ exports[`App component should match snapshot 1`] = `
                     </svg>
                   </span>
                   <span
-                    class="c15"
+                    class="c16"
                   >
                     Lorem ipsum dolor sit.
                   </span>
                 </a>
               </li>
               <li
-                class="c10"
+                class="c11"
               >
                 <a
-                  class="c11 c12"
+                  class="c12 c13"
                   href="/"
                 >
                   <span
-                    class="c13 c14"
+                    class="c14 c15"
                     size="12"
                   >
                     <svg
@@ -1771,21 +1775,21 @@ exports[`App component should match snapshot 1`] = `
                     </svg>
                   </span>
                   <span
-                    class="c15"
+                    class="c16"
                   >
                     Lorem.
                   </span>
                 </a>
               </li>
               <li
-                class="c10"
+                class="c11"
               >
                 <a
-                  class="c11 c12"
+                  class="c12 c13"
                   href="/"
                 >
                   <span
-                    class="c13 c14"
+                    class="c14 c15"
                     size="12"
                   >
                     <svg
@@ -1799,65 +1803,9 @@ exports[`App component should match snapshot 1`] = `
                     </svg>
                   </span>
                   <span
-                    class="c15"
+                    class="c16"
                   >
                     Lorem ipsum.
-                  </span>
-                </a>
-              </li>
-              <li
-                class="c10"
-              >
-                <a
-                  class="c11 c12"
-                  href="/"
-                >
-                  <span
-                    class="c13 c14"
-                    size="12"
-                  >
-                    <svg
-                      focusable="false"
-                      viewBox="0 0 32 32"
-                    >
-                      <path
-                        d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                        fill-rule="evenodd"
-                      />
-                    </svg>
-                  </span>
-                  <span
-                    class="c15"
-                  >
-                    Lorem ipsum.
-                  </span>
-                </a>
-              </li>
-              <li
-                class="c10"
-              >
-                <a
-                  class="c11 c12"
-                  href="/"
-                >
-                  <span
-                    class="c13 c14"
-                    size="12"
-                  >
-                    <svg
-                      focusable="false"
-                      viewBox="0 0 32 32"
-                    >
-                      <path
-                        d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                        fill-rule="evenodd"
-                      />
-                    </svg>
-                  </span>
-                  <span
-                    class="c15"
-                  >
-                    Lorem ipsum dolor sit amet.
                   </span>
                 </a>
               </li>
@@ -1868,16 +1816,16 @@ exports[`App component should match snapshot 1`] = `
           class="c3"
         >
           <div
-            class=""
+            class="c4"
             title="Questions?"
           >
             <h3
-              class="c4 c5 c6 c7"
+              class="c5 c6 c7 c8"
             >
               Uit in Amsterdam
             </h3>
             <p
-              class="c16"
+              class="c17"
             >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremque ea eos facere hic ipsum nobis provident quidem voluptates.
             </p>
@@ -1886,14 +1834,14 @@ exports[`App component should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="c17"
+      class="c18"
     >
       <a
-        class="c11 c18"
+        class="c12 c19"
         href="/"
       >
         <span
-          class="c13 c14"
+          class="c14 c15"
           size="12"
         >
           <svg
@@ -1907,17 +1855,17 @@ exports[`App component should match snapshot 1`] = `
           </svg>
         </span>
         <span
-          class="c15"
+          class="c16"
         >
           Privacy and cookies
         </span>
       </a>
       <a
-        class="c11 c18"
+        class="c12 c19"
         href="/"
       >
         <span
-          class="c13 c14"
+          class="c14 c15"
           size="12"
         >
           <svg
@@ -1931,7 +1879,7 @@ exports[`App component should match snapshot 1`] = `
           </svg>
         </span>
         <span
-          class="c15"
+          class="c16"
         >
           About this site
         </span>
