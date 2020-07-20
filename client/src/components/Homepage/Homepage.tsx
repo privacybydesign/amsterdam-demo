@@ -7,7 +7,7 @@ import PageTemplate from '@components/PageTemplate/PageTemplate';
 
 import Article from '@components/Article/Article';
 
-interface IProps {}
+interface IProps { }
 
 const Homepage: React.FC<IProps> = () => (
     <PageTemplate>
@@ -40,7 +40,7 @@ const Homepage: React.FC<IProps> = () => (
 
             <StyledH2>Aan de slag met IRMA</StyledH2>
 
-            <Article imageSrc="/assets/demo_1.png" title="Demo 1: Leeftijd aantonen" href="test1">
+            <Article imageSrc="/assets/demo_1.png" title="Demo 1: Leeftijd aantonen" href="demo-1">
                 Bewijs dat u ouder bent dan 18 jaar zonder uw geboortedatum prijs te geven.
             </Article>
 
