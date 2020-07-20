@@ -22,7 +22,7 @@ const QRCode: React.FC<IProps> = ({ getSession }) => {
 
       {
         hasOverlay ?
-          <Modal open>
+          <Modal open backdropOpacity={0.5}>
             <Heading as="h3">Maak uzelf bekend</Heading>
 
             Doorloop de volgende stappen:
