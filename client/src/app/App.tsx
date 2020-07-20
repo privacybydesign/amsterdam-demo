@@ -1,19 +1,20 @@
 import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import { GlobalStyle, ThemeProvider } from '@datapunt/asc-ui';
+import { GlobalStyle, ThemeProvider, Header } from '@datapunt/asc-ui';
+import Footer from '@components/Footer/Footer';
 import AppRoutes from './AppRoutes';
 
 const App: React.FC<unknown> = () => (
     <ThemeProvider>
         <GlobalStyle />
+        <Header fullWidth={false} tall homeLink={AppRoutes.HOMEPAGE.path} />
         <Router>
-            <div>
-                {Object.keys(AppRoutes).map(key => {
-                    const { path, component, exact } = AppRoutes[key];
-                    return <Route key={key} path={path} component={component} exact={exact} />;
-                })}
-            </div>
+            {Object.keys(AppRoutes).map(key => {
+                const { path, component, exact } = AppRoutes[key];
+                return <Route key={key} path={path} component={component} exact={exact} />;
+            })}
         </Router>
+        <Footer />
     </ThemeProvider>
 );
 
