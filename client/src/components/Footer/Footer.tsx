@@ -11,8 +11,10 @@ import {
     ListItem,
     Paragraph,
     Row,
-    themeColor
+    themeColor,
+    themeSpacing
 } from '@datapunt/asc-ui';
+import content from '@services/content.json';
 
 interface IFooterProps {}
 
@@ -22,54 +24,41 @@ const Footer: React.FC<IFooterProps> = () => (
             <Row>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
                     <FooterSection>
-                        <FooterHeading>Contact</FooterHeading>
-                        <Paragraph>
-                            Hebt u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met
-                            ons op.
-                        </Paragraph>
+                        <FooterHeading>{content.footer.column1.title}</FooterHeading>
+                        <Paragraph>{content.footer.column1.body}</Paragraph>
                     </FooterSection>
                 </Column>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
                     <FooterSection title="Some share links" hideAt="tabletM">
-                        <FooterHeading>Volg de Gemeente</FooterHeading>
+                        <FooterHeading>{content.footer.column2.title}</FooterHeading>
                         <List>
-                            <ListItem>
-                                <Link darkBackground href="/" variant="with-chevron">
-                                    Lorem ipsum dolor sit.
-                                </Link>
-                            </ListItem>
-                            <ListItem>
-                                <Link darkBackground href="/" variant="with-chevron">
-                                    Lorem.
-                                </Link>
-                            </ListItem>
-                            <ListItem>
-                                <Link darkBackground href="/" variant="with-chevron">
-                                    Lorem ipsum.
-                                </Link>
-                            </ListItem>
+                            {content.footer.column2.body.map((link, index) => (
+                                <ListItem key={String(index)}>
+                                    <FooterLink darkBackground href={link.url} variant="with-chevron">
+                                        {link.label}
+                                    </FooterLink>
+                                </ListItem>
+                            ))}
                         </List>
                     </FooterSection>
                 </Column>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
                     <FooterSection title="Questions?" hideAt="tabletM">
-                        <FooterHeading>Uit in Amsterdam</FooterHeading>
-                        <Paragraph gutterBottom={8}>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremque ea eos
-                            facere hic ipsum nobis provident quidem voluptates.
-                        </Paragraph>
+                        <FooterHeading>{content.footer.column3.title}</FooterHeading>
+                        <Paragraph gutterBottom={8}>{content.footer.column3.body}</Paragraph>
                     </FooterSection>
                 </Column>
             </Row>
         </FooterTop>
-        <FooterBottom>
-            <Link href="/" linkType="with-chevron">
-                Privacy and cookies
-            </Link>
-            <Link href="/" linkType="with-chevron">
-                About this site
-            </Link>
-        </FooterBottom>
+        <StyledFooterBottom>
+            <Row halign="flex-start">
+                {content.footer.bottom.map((link, index) => (
+                    <FooterLink key={String(index)} href={link.url} linkType="with-chevron">
+                        {link.label}
+                    </FooterLink>
+                ))}
+            </Row>
+        </StyledFooterBottom>
     </ASCFooter>
 );
 
@@ -77,6 +66,14 @@ const FooterSection = styled.div`
     p {
         color: ${themeColor('tint', 'level1')};
     }
+`;
+
+const StyledFooterBottom = styled(FooterBottom)`
+    margin: ${themeSpacing(3)} 0;
+`;
+
+const FooterLink = styled(Link)`
+    margin-right: ${themeSpacing(5)};
 `;
 
 export default Footer;
