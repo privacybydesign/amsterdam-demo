@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import createIrmaSession from '@services/createIrmaSession/createIrmaSession';
 
 
-import { Heading, Button, themeSpacing, Paragraph, Accordion, Link, Icon, Alert, themeColor } from '@datapunt/asc-ui';
+import { Heading, Paragraph, Accordion, Link, Icon, Alert, themeColor, themeSpacing } from '@datapunt/asc-ui';
 import { ExternalLink } from '@datapunt/asc-assets';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';

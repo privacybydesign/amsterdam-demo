@@ -1,23 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 
-import { ChevronDown, ChevronUp } from '@datapunt/asc-assets';
-import { Button, Heading, themeColor } from '@datapunt/asc-ui';
-import PageTemplate from '@components/PageTemplate/PageTemplate';
+import { Button, Heading, Modal } from '@datapunt/asc-ui';
 
 export interface IProps {
   getSession: Function
 }
-
-const StyledOverlay = styled.section`
-  background-color: ${themeColor('tint', 'level1')};
-  position: absolute;
-  top: 10%;
-  width: 500px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 0px;
-`;
 
 const QRCode: React.FC<IProps> = ({ getSession }) => {
   const [hasOverlay, setHasOverlay] = useState(false)
@@ -35,7 +22,7 @@ const QRCode: React.FC<IProps> = ({ getSession }) => {
 
       {
         hasOverlay ?
-          <StyledOverlay>
+          <Modal open>
             <Heading as="h3">Maak uzelf bekend</Heading>
 
             Doorloop de volgende stappen:
@@ -46,7 +33,7 @@ const QRCode: React.FC<IProps> = ({ getSession }) => {
             </ol>
 
             <canvas id="irma-qr" />
-          </StyledOverlay>
+          </Modal>
           : null
       }
     </div >
