@@ -14,7 +14,8 @@ import {
     themeColor,
     themeSpacing
 } from '@datapunt/asc-ui';
-import content from '@services/content.json';
+import ReactMarkDown from 'react-markdown';
+import content from '@services/content';
 
 interface IFooterProps {}
 
@@ -24,42 +25,37 @@ const Footer: React.FC<IFooterProps> = () => (
             <Row>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
                     <FooterSection>
-                        <FooterHeading>{content.footer.column1.title}</FooterHeading>
-                        <Paragraph>{content.footer.column1.body}</Paragraph>
+                        <ReactMarkDown source={content.footer.column1} renderers={FooterMarkDownRenderers} />
                     </FooterSection>
                 </Column>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
-                    <FooterSection title="Some share links" hideAt="tabletM">
-                        <FooterHeading>{content.footer.column2.title}</FooterHeading>
-                        <List>
-                            {content.footer.column2.body.map((link, index) => (
-                                <ListItem key={String(index)}>
-                                    <FooterLink darkBackground href={link.url} variant="with-chevron">
-                                        {link.label}
-                                    </FooterLink>
-                                </ListItem>
-                            ))}
-                        </List>
+                    <FooterSection hideAt="tabletM">
+                        <ReactMarkDown source={content.footer.column2} renderers={FooterMarkDownRenderers} />
                     </FooterSection>
                 </Column>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
-                    <FooterSection title="Questions?" hideAt="tabletM">
-                        <FooterHeading>{content.footer.column3.title}</FooterHeading>
-                        <Paragraph gutterBottom={8}>{content.footer.column3.body}</Paragraph>
+                    <FooterSection hideAt="tabletM">
+                        <ReactMarkDown source={content.footer.column3} renderers={FooterMarkDownRenderers} />
                     </FooterSection>
                 </Column>
             </Row>
         </FooterTop>
         <StyledFooterBottom>
             <Row halign="flex-start">
-                {content.footer.bottom.map((link, index) => (
-                    <FooterLink key={String(index)} href={link.url} linkType="with-chevron">
-                        {link.label}
-                    </FooterLink>
-                ))}
+                <ReactMarkDown source={content.footer.bottom} renderers={{ link: StyledLink }} />
             </Row>
         </StyledFooterBottom>
     </ASCFooter>
+);
+
+interface IFooterLinkProps {
+    href: string;
+}
+
+const FooterLink: React.FC<IFooterLinkProps> = ({ href, children }) => (
+    <StyledLink darkBackground href={href}>
+        {children}
+    </StyledLink>
 );
 
 const FooterSection = styled.div`
@@ -68,12 +64,23 @@ const FooterSection = styled.div`
     }
 `;
 
+const FooterMarkDownRenderers = {
+    heading: FooterHeading,
+    list: List,
+    listItem: ListItem,
+    link: FooterLink,
+    paragraph: Paragraph
+};
+
 const StyledFooterBottom = styled(FooterBottom)`
     margin: ${themeSpacing(3)} 0;
 `;
 
-const FooterLink = styled(Link)`
+const StyledLink = styled(Link).attrs({ variant: 'with-chevron' })`
     margin-right: ${themeSpacing(5)};
+    a {
+        color: ${themeColor('tint', 'level1')};
+    }
 `;
 
 export default Footer;
