@@ -12,14 +12,14 @@ import QRCode from '@components/QRCode/QRCode';
 export interface IProps { }
 
 const StyledH1 = styled(Heading)`
-    margin-top: ${themeSpacing(4)};
-    margin-bottom: ${themeSpacing(6)};
+  margin-top: ${themeSpacing(4)};
+  margin-bottom: ${themeSpacing(6)};
 `;
 
 const StyledAlert = styled(Alert)`
   background-color: ${themeColor('support', 'valid')};
   * {
-    color: white;
+    color: ${themeColor('tint', 'level1')};;
   }
 `;
 
