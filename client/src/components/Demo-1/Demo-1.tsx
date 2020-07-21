@@ -43,10 +43,10 @@ const Demo1: React.FC<IProps> = () => {
       </BreadCrumbs>
 
 
-      {!hasResult ?
-        <Alert level="attention" heading="Dit is een demosite" content="U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard." />
-        :
+      {isOver18 ?
         <StyledAlert heading="Uw leeftijd" content="U heeft bewezen dat u ouder bent dan 18 jaar." />
+        :
+        <Alert level="attention" heading="Dit is een demosite" content="U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard." />
       }
 
       <StyledH1>Demo 1: {hasResult ? 'Uw leeftijd' : 'Leeftijd aantonen'}</StyledH1>
