@@ -8,6 +8,7 @@ import { ExternalLink } from '@datapunt/asc-assets';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
+import Result from '@components/Demo-1/Result';
 
 export interface IProps { }
 
@@ -83,30 +84,7 @@ const Demo1: React.FC<IProps> = () => {
         </>
 
         :
-        <>
-          <Paragraph>De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.</Paragraph>
-
-          <Heading as="h2">Wat heeft u zojuist gedaan?</Heading>
-
-          <ul>
-            <li>U heeft IRMA gebruikt om door te geven dat u ouder bent dan 18 jaar.</li>
-            <li>U heeft uw geboortedatum (en andere gegevens) niet doorgegeven.</li>
-          </ul>
-
-          <Heading as="h2">Wat is er anders met IRMA?</Heading>
-
-          Als u via IRMA uw leeftijd doorgeeft, is bij de website bekend of u aan de leeftijdsgrens voldoet. U blijft anoniem.
-
-          <Paragraph>Dit kan worden gebruikt voor:</Paragraph>
-
-          <ul>
-            <li>Alcohol kopen.</li>
-            <li>Stemmen voor lokale initiatieven.</li>
-            <li>Toegang en korting op basis van uw leeftijd.</li>
-          </ul>
-
-          <Link href="" variant="inline">Probeer de andere demo’s</Link>
-        </>
+        <Result />
       }
 
     </PageTemplate>
