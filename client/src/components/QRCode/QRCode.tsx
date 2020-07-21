@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import { Button, Heading, Modal } from '@datapunt/asc-ui';
+import { Linkedin } from '@datapunt/asc-assets';
+// @todo fix irma logo
 
 export interface IProps {
   getSession: Function
@@ -16,7 +18,7 @@ const QRCode: React.FC<IProps> = ({ getSession }) => {
 
   return (
     <div>
-      <Button onClick={getQRSession} variant="secondary">
+      <Button onClick={getQRSession} variant="secondary" iconLeft={<Linkedin />}>
         Inloggen met IRMA
       </Button>
 

@@ -77,7 +77,7 @@ const Demo1: React.FC<IProps> = () => {
             <div>Heeft u nog geen IRMA?</div>
             <Link href="/" variant="inline" icon={<Icon size={16}> <ExternalLink /> </Icon>}>
               Download IRMA
-          </Link>
+            </Link>
           </Paragraph>
 
           <QRCode getSession={getSession} />
@@ -94,7 +94,7 @@ const Demo1: React.FC<IProps> = () => {
             <li>U heeft uw geboortedatum (en andere gegevens) niet doorgegeven.</li>
           </ul>
 
-          <Heading as="h2">t is er anders met IRMA?</Heading>
+          <Heading as="h2">Wat is er anders met IRMA?</Heading>
 
           Als u via IRMA uw leeftijd doorgeeft, is bij de website bekend of u aan de leeftijdsgrens voldoet. U blijft anoniem.
 
