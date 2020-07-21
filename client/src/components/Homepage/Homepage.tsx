@@ -2,54 +2,41 @@ import React from 'react';
 import styled from 'styled-components';
 import BreadCrumbs from '@components/BreadCrumbs';
 import { Accordion, Heading, Paragraph, themeSpacing, breakpoint } from '@datapunt/asc-ui';
+import ReactMarkDown from 'react-markdown';
+import content from '@services/content';
 import VerticalColumn from '@components/VerticalColumn/VerticalColumn';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
-
 import Article from '@components/Article/Article';
 
 interface IProps {}
 
 const Homepage: React.FC<IProps> = () => (
     <PageTemplate>
-        <BreadCrumbs>
-            <BreadCrumbs.Item href="/">Home</BreadCrumbs.Item>
-        </BreadCrumbs>
-        <StyledH1>Probeer IRMA uit</StyledH1>
+        <ReactMarkDown
+            source={content.home.breadcrumbs}
+            renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
+        />
+        <ReactMarkDown source={content.home.title} renderers={{ heading: StyledH1 }} />
         <StyledImage src="/assets/home.png"></StyledImage>
         <VerticalColumn span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
-            <Paragraph strong>
-                IRMA is een app waarmee je overal kunt aantonen wie u bent.
-                <br />
-                IRMA biedt een nieuwe manier van inloggen anders dan u kent van misschien DigiD.
-            </Paragraph>
-
-            <Paragraph strong>Binnenkort kunt u IRMA gebruiken in Amsterdam. Waarom IRMA?</Paragraph>
-
-            <Paragraph strong>Ervaar nu vast wat u met IRMA kunt via verschillende demo&apos;s.</Paragraph>
-
-            <StyledAccorion title="Wat heeft u nodig?" id="nodig">
-                U kunt de demo&apos;s met IRMA doen als u de IRMA-app op uw telefoon heeft geïnstalleerd en als u de
-                IRMA de volgende gegevens heeft toegevoegd:
-                <ul>
-                    <li>Uw persoonsgegevens</li>
-                    <li>Uw adres</li>
-                    <li>Uw e-mailadres</li>
-                    <li>Uw telefoonnummer</li>
-                </ul>
-            </StyledAccorion>
-
-            <StyledH2>Aan de slag met IRMA</StyledH2>
-
-            <Article imageSrc="/assets/demo_1.png" title="Demo 1: Leeftijd aantonen" href="test1">
-                Bewijs dat u ouder bent dan 18 jaar zonder uw geboortedatum prijs te geven.
+            <ReactMarkDown source={content.home.intro} renderers={{ paragraph: StrongParagraph }} />
+            <AccordionContainer>
+                <Accordion title={content.home.requirements.title} id="nodig">
+                    <ReactMarkDown source={content.home.requirements.body} />
+                </Accordion>
+            </AccordionContainer>
+            <ReactMarkDown source={content.home.subtitle} renderers={{ heading: StyledH2 }} />
+            <Article imageSrc="/assets/demo_1.png" title={content.home.demo1.title} href="test1">
+                <ReactMarkDown source={content.home.demo1.body} />
             </Article>
-
-            <Article imageSrc="/assets/demo_2.png" title="Demo 2: Ideeën voor uw buurt" href="test2">
-                Bewijs dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.
+            <Article imageSrc="/assets/demo_2.png" title={content.home.demo2.title} href="test2">
+                <ReactMarkDown source={content.home.demo1.body} />
             </Article>
         </VerticalColumn>
     </PageTemplate>
 );
+
+const StrongParagraph: React.FC<IProps> = ({ children }) => <Paragraph strong>{children}</Paragraph>;
 
 const StyledImage = styled.img`
     width: 100%;
@@ -68,7 +55,7 @@ const StyledH2 = styled(Heading)`
     margin-bottom: ${themeSpacing(3)};
 `;
 
-const StyledAccorion = styled(Accordion)`
+const AccordionContainer = styled.div`
     margin-bottom: ${themeSpacing(5)};
 `;
 
