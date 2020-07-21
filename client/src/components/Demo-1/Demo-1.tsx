@@ -53,8 +53,7 @@ const Demo1: React.FC<IProps> = () => {
       <img src="/assets/demo_1.png" ></img>
 
       {!hasResult ?
-        <div>
-
+        <>
           <Paragraph>Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.</Paragraph>
 
           <Heading as="h2">Probeer het uit</Heading>
@@ -81,10 +80,10 @@ const Demo1: React.FC<IProps> = () => {
           </Paragraph>
 
           <QRCode getSession={getSession} />
-        </div>
+        </>
 
         :
-        <div>
+        <>
           <Paragraph>De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.</Paragraph>
 
           <Heading as="h2">Wat heeft u zojuist gedaan?</Heading>
@@ -98,7 +97,6 @@ const Demo1: React.FC<IProps> = () => {
 
           Als u via IRMA uw leeftijd doorgeeft, is bij de website bekend of u aan de leeftijdsgrens voldoet. U blijft anoniem.
 
-
           <Paragraph>Dit kan worden gebruikt voor:</Paragraph>
 
           <ul>
@@ -108,7 +106,7 @@ const Demo1: React.FC<IProps> = () => {
           </ul>
 
           <Link href="" variant="inline">Probeer de andere demo’s</Link>
-        </div>
+        </>
       }
 
     </PageTemplate>
