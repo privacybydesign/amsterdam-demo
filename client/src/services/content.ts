@@ -41,5 +41,36 @@ Hebt u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan co
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremque ea eos facere hic ipsum nobis provident quidem voluptates.`,
         bottom: `[Privacy and cookies.](/)
 [Privacy and cookies.](/)`
+    },
+    demo1: {
+        title: {
+            noResult: 'Demo 1: Leeftijd aantonen',
+            hasResult: 'Demo 1: Uw leeftijd'
+        },
+        isOver18: {
+            heading: 'Uw leeftijd',
+            content: 'U heeft bewezen dat u ouder bent dan 18 jaar.'
+        },
+        demo: {
+            heading: 'Dit is een demosite',
+            content: 'U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.'
+        },
+        intro1: 'Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.',
+        tryIt: 'Probeer het uit',
+        intro2: `Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgende gegevens:
+- Uw volledige naam
+- Uw burgerservicenummer(BSN)`,
+        waarom: {
+            title: 'Waarom worden deze gegevens gevraagd?',
+            naam: 'Uw volledige naam',
+            naamExplanation: 'De gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.',
+            bsn: 'Uw burgerservicenummer (BSN)',
+            bsnExplanation: 'De gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.'
+        },
+        irma: {
+            question: 'Heeft u nog geen IRMA?',
+            label: 'Download IRMA',
+            href: '/'
+        }
     }
 };

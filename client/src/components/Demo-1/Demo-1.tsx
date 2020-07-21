@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import createIrmaSession from '@services/createIrmaSession';
+import content from '@services/content';
+import ReactMarkDown from 'react-markdown';
 
 
 import { Heading, Paragraph, Accordion, Link, Icon, Alert, themeColor, themeSpacing } from '@datapunt/asc-ui';
@@ -44,39 +46,34 @@ const Demo1: React.FC<IProps> = () => {
 
 
       {isOver18 ?
-        <StyledAlert heading="Uw leeftijd" content="U heeft bewezen dat u ouder bent dan 18 jaar." />
+        <StyledAlert heading={content.demo1.isOver18.heading} content={content.demo1.isOver18.content} />
         :
-        <Alert level="attention" heading="Dit is een demosite" content="U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard." />
+        <Alert level="attention" heading={content.demo1.demo.heading} content={content.demo1.demo.content} />
       }
 
-      <StyledH1>Demo 1: {hasResult ? 'Uw leeftijd' : 'Leeftijd aantonen'}</StyledH1>
+      <StyledH1><ReactMarkDown source={content.demo1.title[hasResult ? 'hasResult' : 'noResult']} /></StyledH1>
 
       <img src="/assets/demo_1.png" ></img>
 
       {!hasResult ?
         <>
-          <Paragraph>Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.</Paragraph>
+          <ReactMarkDown source={content.demo1.intro1} />
 
-          <Heading as="h2">Probeer het uit</Heading>
+          <Heading as="h2"><ReactMarkDown source={content.demo1.tryIt} /></Heading>
 
-          <Paragraph>Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgende gegevens:</Paragraph>
+          <ReactMarkDown source={content.demo1.intro2} />
 
-          <ul>
-            <li>Uw volledige naam</li>
-            <li>Uw burgerservicenummer (BSN)</li>
-          </ul>
-
-          <Accordion title="Waarom worden deze gegevens gevraagd?">
-            <div>Uw volledige naam</div>
-            <Paragraph>De gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.</Paragraph>
-            <div>Uw burgerservicenummer (BSN)</div>
-            <Paragraph>De gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.</Paragraph>
+          <Accordion title={content.demo1.waarom.title}>
+            <div><ReactMarkDown source={content.demo1.waarom.naam} /></div>
+            <Paragraph><ReactMarkDown source={content.demo1.waarom.naamExplanation} /></Paragraph>
+            <div><ReactMarkDown source={content.demo1.waarom.bsn} /></div>
+            <Paragraph><ReactMarkDown source={content.demo1.waarom.bsnExplanation} /></Paragraph>
           </Accordion>
 
           <Paragraph>
-            <div>Heeft u nog geen IRMA?</div>
-            <Link href="/" variant="inline" icon={<Icon size={16}> <ExternalLink /> </Icon>}>
-              Download IRMA
+            <div><ReactMarkDown source={content.demo1.irma.question} /></div>
+            <Link href={content.demo1.irma.href} variant="inline" icon={<Icon size={16}> <ExternalLink /> </Icon>}>
+              <ReactMarkDown source={content.demo1.irma.label} />
             </Link>
           </Paragraph>
 
@@ -87,7 +84,7 @@ const Demo1: React.FC<IProps> = () => {
         <Result />
       }
 
-    </PageTemplate>
+    </PageTemplate >
   );
 };
 
