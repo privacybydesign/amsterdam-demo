@@ -14,7 +14,7 @@ interface IAppRoutes {
 
 const AppRoutes: IAppRoutes = {
     HOMEPAGE: { path: '/', component: Homepage, exact: true },
-    TEST_1: { path: '/demo-1', component: Demo1, exact: false },
+    DEMO1: { path: '/demo-1', component: Demo1, exact: false },
     TEST_2: { path: '/test2', component: TestIrmaServer, exact: false }
 };
 

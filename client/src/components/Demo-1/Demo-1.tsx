@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import createIrmaSession from '@services/createIrmaSession/createIrmaSession';
+import createIrmaSession from '@services/createIrmaSession';
 
 
 import { Heading, Paragraph, Accordion, Link, Icon, Alert, themeColor, themeSpacing } from '@datapunt/asc-ui';

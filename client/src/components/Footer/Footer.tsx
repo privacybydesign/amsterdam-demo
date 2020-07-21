@@ -10,8 +10,12 @@ import {
     List,
     ListItem,
     Paragraph,
-    Row
+    Row,
+    themeColor,
+    themeSpacing
 } from '@datapunt/asc-ui';
+import ReactMarkDown from 'react-markdown';
+import content from '@services/content';
 
 interface IFooterProps {}
 
@@ -21,67 +25,62 @@ const Footer: React.FC<IFooterProps> = () => (
             <Row>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
                     <FooterSection>
-                        <FooterHeading>Contact</FooterHeading>
-                        <Paragraph>
-                            Hebt u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met
-                            ons op.
-                        </Paragraph>
+                        <ReactMarkDown source={content.footer.column1} renderers={FooterMarkDownRenderers} />
                     </FooterSection>
                 </Column>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
-                    <FooterSection title="Some share links" hideAt="tabletM">
-                        <FooterHeading>Volg de Gemeente</FooterHeading>
-                        <List>
-                            <ListItem>
-                                <Link darkBackground href="/" variant="with-chevron">
-                                    Lorem ipsum dolor sit.
-                                </Link>
-                            </ListItem>
-                            <ListItem>
-                                <Link darkBackground href="/" variant="with-chevron">
-                                    Lorem.
-                                </Link>
-                            </ListItem>
-                            <ListItem>
-                                <Link darkBackground href="/" variant="with-chevron">
-                                    Lorem ipsum.
-                                </Link>
-                            </ListItem>
-                            <ListItem>
-                                <Link darkBackground href="/" variant="with-chevron">
-                                    Lorem ipsum.
-                                </Link>
-                            </ListItem>
-                            <ListItem>
-                                <Link darkBackground href="/" variant="with-chevron">
-                                    Lorem ipsum dolor sit amet.
-                                </Link>
-                            </ListItem>
-                        </List>
+                    <FooterSection hideAt="tabletM">
+                        <ReactMarkDown source={content.footer.column2} renderers={FooterMarkDownRenderers} />
                     </FooterSection>
                 </Column>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
-                    <FooterSection title="Questions?" hideAt="tabletM">
-                        <FooterHeading>Uit in Amsterdam</FooterHeading>
-                        <Paragraph gutterBottom={8}>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremque ea eos
-                            facere hic ipsum nobis provident quidem voluptates.
-                        </Paragraph>
+                    <FooterSection hideAt="tabletM">
+                        <ReactMarkDown source={content.footer.column3} renderers={FooterMarkDownRenderers} />
                     </FooterSection>
                 </Column>
             </Row>
         </FooterTop>
-        <FooterBottom>
-            <Link href="/" linkType="with-chevron">
-                Privacy and cookies
-            </Link>
-            <Link href="/" linkType="with-chevron">
-                About this site
-            </Link>
-        </FooterBottom>
+        <StyledFooterBottom>
+            <Row halign="flex-start">
+                <ReactMarkDown source={content.footer.bottom} renderers={{ link: StyledLink }} />
+            </Row>
+        </StyledFooterBottom>
     </ASCFooter>
 );
 
-const FooterSection = styled.div``;
+interface IFooterLinkProps {
+    href: string;
+}
+
+const FooterLink: React.FC<IFooterLinkProps> = ({ href, children }) => (
+    <StyledLink darkBackground href={href}>
+        {children}
+    </StyledLink>
+);
+
+const FooterSection = styled.div`
+    p {
+        color: ${themeColor('tint', 'level1')};
+    }
+`;
+
+const FooterMarkDownRenderers = {
+    heading: FooterHeading,
+    list: List,
+    listItem: ListItem,
+    link: FooterLink,
+    paragraph: Paragraph
+};
+
+const StyledFooterBottom = styled(FooterBottom)`
+    margin: ${themeSpacing(3)} 0;
+`;
+
+const StyledLink = styled(Link).attrs({ variant: 'with-chevron' })`
+    margin-right: ${themeSpacing(5)};
+    a {
+        color: ${themeColor('tint', 'level1')};
+    }
+`;
 
 export default Footer;
