@@ -1,4 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import ReactMarkDown from 'react-markdown';
+
+import content from '@services/content';
 
 import { Button, Heading, Modal } from '@datapunt/asc-ui';
 import { Linkedin } from '@datapunt/asc-assets';
@@ -7,6 +11,8 @@ import { Linkedin } from '@datapunt/asc-assets';
 export interface IProps {
   getSession: Function
 }
+
+const StyledH3 = styled.h3``;
 
 const QRCode: React.FC<IProps> = ({ getSession }) => {
   const [hasOverlay, setHasOverlay] = useState(false)
@@ -25,14 +31,9 @@ const QRCode: React.FC<IProps> = ({ getSession }) => {
       {
         hasOverlay ?
           <Modal open backdropOpacity={0.5}>
-            <Heading as="h3">Maak uzelf bekend</Heading>
+            <ReactMarkDown source={content.qrcode.title} renderers={{ heading: StyledH3 }} />
 
-            Doorloop de volgende stappen:
-
-            <ol>
-              <li>Scan de QR-code hieronder met uw IRMA-app.</li>
-              <li>Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.</li>
-            </ol>
+            <ReactMarkDown source={content.qrcode.stappen} />
 
             <canvas id="irma-qr" />
           </Modal>

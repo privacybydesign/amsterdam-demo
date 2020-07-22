@@ -42,6 +42,12 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremq
         bottom: `[Privacy and cookies.](/)
 [Privacy and cookies.](/)`
     },
+    qrcode: {
+        title: '### Maak uzelf bekend',
+        stappen: `Doorloop de volgende stappen  \n
+1. Scan de QR-code hieronder met uw IRMA-app.
+2. Kies in uw IRMA- app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.< /li>`
+    },
     demo1: {
         title: {
             noResult: '# Demo 1: Leeftijd aantonen',
@@ -60,7 +66,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremq
             content: 'U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.'
         },
         intro1: 'Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.',
-        tryIt: 'Probeer het uit',
+        tryIt: '## Probeer het uit',
         intro2: `Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgende gegevens:
 - Uw volledige naam
 - Uw burgerservicenummer(BSN)`,
@@ -75,13 +81,13 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremq
         },
         result: {
             intro1: 'De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.',
-            wat: 'Wat heeft u zojuist gedaan?',
+            wat: '## Wat heeft u zojuist gedaan?',
             list: `- U heeft IRMA gebruikt om door te geven dat u ouder bent dan 18 jaar.
 - U heeft uw geboortedatum (en andere gegevens) niet doorgegeven.`,
-            anders: 'Wat is er anders met IRMA?',
+            anders: '## Wat is er anders met IRMA?',
             intro2: 'Als u via IRMA uw leeftijd doorgeeft, is bij de website bekend of u aan de leeftijdsgrens voldoet. U blijft anoniem.',
-            gebruiktVoor: 'Dit kan worden gebruikt voor:',
-            list2: `- Alcohol kopen.
+            list2: `Dit kan worden gebruikt voor:  \n
+- Alcohol kopen.
 - Stemmen voor lokale initiatieven.
 - Toegang en korting op basis van uw leeftijd.`,
             link: {

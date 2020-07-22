@@ -18,7 +18,10 @@ const StyledH1 = styled(Heading)`
   margin-bottom: ${themeSpacing(6)};
 `;
 
-const StyledH2 = styled(Heading).attrs({ as: 'h2' });
+const StyledH2 = styled.h2`
+  margin-top: ${themeSpacing(4)};
+  margin-bottom: ${themeSpacing(6)};
+`;
 
 const StyledAlert = styled(Alert)`
   background-color: ${themeColor('support', 'valid')};
@@ -29,7 +32,7 @@ const StyledAlert = styled(Alert)`
 
 const Demo1: React.FC<IProps> = () => {
   const [isOver18, setIsOver18] = useState<boolean>(false);
-  const [hasResult, setHasResult] = useState<boolean>(false);
+  const [hasResult, setHasResult] = useState<boolean>(true);
 
   const getSession = async () => {
     const response = await createIrmaSession('age', 'irma-qr');
@@ -56,20 +59,21 @@ const Demo1: React.FC<IProps> = () => {
 
       {!hasResult ?
         <>
-          <ReactMarkDown source={content.demo1.intro1} />
+          <ReactMarkDown source={content.demo1.intro1} renderers={{ paragraph: Paragraph }} />
 
           <ReactMarkDown source={content.demo1.tryIt} renderers={{ heading: StyledH2 }} />
 
-          <ReactMarkDown source={content.demo1.intro2} />
+          <ReactMarkDown source={content.demo1.intro2} renderers={{ paragraph: Paragraph }} />
 
           <Accordion title={content.demo1.waarom.title}>
-            <ReactMarkDown source={content.demo1.waarom.body} />
+            <ReactMarkDown source={content.demo1.waarom.body} renderers={{ paragraph: Paragraph }} />
           </Accordion>
 
-          <div><ReactMarkDown source={content.demo1.irma.question} /></div>
-          <Link href={content.demo1.irma.href} variant="inline" icon={<Icon size={16}> <ExternalLink /> </Icon>}>
-            <ReactMarkDown source={content.demo1.irma.label} />
-          </Link>
+          <div><ReactMarkDown source={content.demo1.irma.question} renderers={{ paragraph: Paragraph }} />
+            <Link href={content.demo1.irma.href} variant="inline" icon={<Icon size={16}> <ExternalLink /> </Icon>}>
+              <ReactMarkDown source={content.demo1.irma.label} />
+            </Link>
+          </div>
 
           <QRCode getSession={getSession} />
         </>
