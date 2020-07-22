@@ -42,11 +42,10 @@ const Demo1: React.FC<IProps> = () => {
 
   return (
     <PageTemplate>
-      <BreadCrumbs>
-        <BreadCrumbs.Item href="/">Home</BreadCrumbs.Item>
-        <BreadCrumbs.Item href="/">Innovatie</BreadCrumbs.Item>
-        <BreadCrumbs.Item href="/">Probeer IRMA uit</BreadCrumbs.Item>
-      </BreadCrumbs>
+      <ReactMarkDown
+        source={content.demo1.breadcrumbs}
+        renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
+      />
 
       {!hasResult && <Alert level="attention" heading={content.demo1.demo.heading} content={content.demo1.demo.content} />}
 

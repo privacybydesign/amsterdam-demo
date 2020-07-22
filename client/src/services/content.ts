@@ -49,6 +49,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremq
 2. Kies in uw IRMA- app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.< /li>`
     },
     demo1: {
+        breadcrumbs: `- [Home](/)
+- [Innovatie](/)
+- [Probeer IRMA uit](/)`,
         title: {
             noResult: '# Demo 1: Leeftijd aantonen',
             hasResult: '# Demo 1: Uw leeftijd'
