@@ -20,19 +20,19 @@ const StyledButton = styled(Button)`
 const StyledH3 = styled.h3``;
 
 const ModalWrapper = styled.div`
-  padding: 0 20px 20px 20px;
+  padding: ${themeSpacing(0 5 5 5)};
 `;
 
 const StyledHeader = styled.div`
   border-bottom: 1px solid ${themeColor('tint', 'level5')};
   display: flex;
-  padding-left: 20px;
+  padding-left: ${themeSpacing(5)};
   justify-content: space-between;
   align-items: center;
 `;
 
 const CloseButton = styled(Button)`
-  margin-right: 8px;
+  margin-right: ${themeSpacing(3)};
 ` ;
 
 const QRCode: React.FC<IProps> = ({ getSession }) => {
