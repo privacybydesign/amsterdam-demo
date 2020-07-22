@@ -428,7 +428,7 @@ exports[`App component should match snapshot 1`] = `
       />
     </header>
   </div>
-  .c23 {
+  .c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -441,7 +441,7 @@ exports[`App component should match snapshot 1`] = `
   transform: rotate(0deg);
 }
 
-.c23 > svg {
+.c24 > svg {
   width: 20px;
   height: 20px;
 }
@@ -483,29 +483,29 @@ exports[`App component should match snapshot 1`] = `
   justify-content: space-between;
 }
 
-.c25 .c16 {
+.c26 .c17 {
   margin: 4px 4px 0 0;
 }
 
-.c25 .c16 svg circle,
-.c25 .c16 svg rect,
-.c25 .c16 svg polygon,
-.c25 .c16 svg path {
+.c26 .c17 svg circle,
+.c26 .c17 svg rect,
+.c26 .c17 svg polygon,
+.c26 .c17 svg path {
   fill: #ffffff;
 }
 
-.c26 .c16 {
+.c27 .c17 {
   margin: 4px 4px 0 0;
 }
 
-.c26 .c16 svg circle,
-.c26 .c16 svg rect,
-.c26 .c16 svg polygon,
-.c26 .c16 svg path {
+.c27 .c17 svg circle,
+.c27 .c17 svg rect,
+.c27 .c17 svg polygon,
+.c27 .c17 svg path {
   fill: #000000;
 }
 
-.c11 {
+.c12 {
   margin: 0;
   color: #000000;
   font-weight: 400;
@@ -527,7 +527,7 @@ exports[`App component should match snapshot 1`] = `
   color: inherit;
 }
 
-.c17 {
+.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -541,12 +541,12 @@ exports[`App component should match snapshot 1`] = `
   margin-left: 10px;
 }
 
-.c17 > svg {
+.c18 > svg {
   width: 20px;
   height: 20px;
 }
 
-.c13 {
+.c14 {
   height: 44px;
   white-space: nowrap;
   display: -webkit-inline-box;
@@ -570,32 +570,32 @@ exports[`App component should match snapshot 1`] = `
   background-color: #B4B4B4;
 }
 
-.c13.c13:focus {
+.c14.c14:focus {
   outline-color: #FEC813;
   outline-style: solid;
   outline-offset: 0px;
   outline-width: 3px;
 }
 
-.c13 svg circle,
-.c13 svg rect,
-.c13 svg polygon,
-.c13 svg path {
+.c14 svg circle,
+.c14 svg rect,
+.c14 svg polygon,
+.c14 svg path {
   fill: #000000;
 }
 
-.c13:hover {
+.c14:hover {
   background-color: #9b9b9b;
 }
 
-.c13::after {
+.c14::after {
   content: '';
   display: block;
   min-height: inherit;
   font-size: 0;
 }
 
-.c13:disabled {
+.c14:disabled {
   cursor: default;
   outline: none;
   border: none;
@@ -605,10 +605,10 @@ exports[`App component should match snapshot 1`] = `
   text-decoration: none;
 }
 
-.c13:disabled svg circle,
-.c13:disabled svg rect,
-.c13:disabled svg polygon,
-.c13:disabled svg path {
+.c14:disabled svg circle,
+.c14:disabled svg rect,
+.c14:disabled svg polygon,
+.c14:disabled svg path {
   fill: #B4B4B4;
 }
 
@@ -679,7 +679,7 @@ exports[`App component should match snapshot 1`] = `
   height: 20px;
 }
 
-.c24 .c6 {
+.c25 .c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -687,7 +687,7 @@ exports[`App component should match snapshot 1`] = `
   margin-bottom: 0;
 }
 
-.c19 {
+.c20 {
   -webkit-transition: border-color 0.1s ease-in-out;
   transition: border-color 0.1s ease-in-out;
   border: 2px solid #E6E6E6;
@@ -696,28 +696,28 @@ exports[`App component should match snapshot 1`] = `
   display: none;
 }
 
-.c15 {
+.c16 {
   text-align: left;
   white-space: normal;
 }
 
-.c14 {
+.c15 {
   width: 100%;
   height: initial;
   background-color: #E6E6E6;
 }
 
-.c14:hover,
-.c14.c14:focus {
+.c15:hover,
+.c15.c15:focus {
   background-color: #B4B4B4;
 }
 
-.c14:hover + .c18,
-.c14.c14:focus + .c18 {
+.c15:hover + .c19,
+.c15.c15:focus + .c19 {
   border-color: #B4B4B4;
 }
 
-.c14 .c16 {
+.c15 .c17 {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
@@ -730,8 +730,10 @@ exports[`App component should match snapshot 1`] = `
   transition: transform 0.3s ease;
 }
 
-.c4 {
+.c4 a {
   color: #767676;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-text-decoration-color: #767676;
   text-decoration-color: #767676;
 }
@@ -753,19 +755,26 @@ exports[`App component should match snapshot 1`] = `
   margin-top: 16px;
 }
 
-.c2 {
+.c11 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
 }
 
-.c21 {
+.c2 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.c22 {
   border-right: 2px solid black;
   padding-bottom: 16px;
   margin-bottom: 28px;
 }
 
-.c21 a {
+.c22 a {
   color: #000000;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -778,27 +787,27 @@ exports[`App component should match snapshot 1`] = `
   flex-direction: column;
 }
 
-.c21 a h2 {
+.c22 a h2 {
   margin-bottom: 20px;
 }
 
-.c21 a img {
+.c22 a img {
   width: 100%;
   margin-bottom: 16px;
 }
 
-.c21 a div {
+.c22 a div {
   margin-bottom: 12px;
 }
 
-.c21 a span {
+.c22 a span {
   margin-right: 12px;
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
 }
 
-.c22 {
+.c23 {
   margin-bottom: 8px;
 }
 
@@ -811,11 +820,11 @@ exports[`App component should match snapshot 1`] = `
   margin: 20px 0;
 }
 
-.c20 {
+.c21 {
   margin-bottom: 12px;
 }
 
-.c12 {
+.c13 {
   margin-bottom: 20px;
 }
 
@@ -835,13 +844,13 @@ exports[`App component should match snapshot 1`] = `
 }
 
 @media screen and (min-width:540px) {
-  .c11 {
+  .c12 {
     margin-bottom: 24px;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c11 {
+  .c12 {
     font-size: 18px;
     line-height: 25px;
   }
@@ -1055,43 +1064,43 @@ exports[`App component should match snapshot 1`] = `
         src="/assets/home.png"
       />
       <div
-        class="c10 c2"
+        class="c10 c11"
       >
         <p
-          class="c11"
+          class="c12"
         >
           IRMA is een app waarmee je overal kunt aantonen wie u bent.
         IRMA biedt een nieuwe manier van inloggen anders dan u kent van misschien DigiD.
         </p>
         <p
-          class="c11"
+          class="c12"
         >
           Binnenkort kunt u IRMA gebruiken in Amsterdam. Waarom IRMA?
         </p>
         <p
-          class="c11"
+          class="c12"
         >
           Ervaar nu vast wat u met IRMA kunt via verschillende demo's.
         
         </p>
         <div
-          class="c12"
+          class="c13"
         >
           <button
             aria-controls="nodig"
             aria-expanded="false"
-            class="c13 c14"
+            class="c14 c15"
             id="label-nodig"
             title="Wat heeft u nodig?"
             type="button"
           >
             <span
-              class="c15"
+              class="c16"
             >
               Wat heeft u nodig?
             </span>
             <span
-              class="c16 c17"
+              class="c17 c18"
               size="20"
             >
               <svg
@@ -1107,7 +1116,7 @@ exports[`App component should match snapshot 1`] = `
           </button>
           <div
             aria-labelledby="label-nodig"
-            class="c18 c19"
+            class="c19 c20"
             id="nodig"
           >
             <p>
@@ -1130,12 +1139,12 @@ exports[`App component should match snapshot 1`] = `
           </div>
         </div>
         <h1
-          class="c5 c6 c7 c20"
+          class="c5 c6 c7 c21"
         >
           Aan de slag met IRMA
         </h1>
         <section
-          class="c21"
+          class="c22"
         >
           <a
             href="/leeftijd-aantonen"
@@ -1145,7 +1154,7 @@ exports[`App component should match snapshot 1`] = `
               src="/assets/demo_1.png"
             />
             <h2
-              class="c22"
+              class="c23"
             >
               Demo 1: Leeftijd aantonen
             </h2>
@@ -1155,7 +1164,7 @@ exports[`App component should match snapshot 1`] = `
               </p>
             </div>
             <span
-              class="c16 c23"
+              class="c17 c24"
             >
               <svg
                 focusable="false"
@@ -1170,17 +1179,17 @@ exports[`App component should match snapshot 1`] = `
           </a>
         </section>
         <section
-          class="c21"
+          class="c22"
         >
           <a
-            href="/test2"
+            href="/demo-2"
           >
             <img
               alt=""
               src="/assets/demo_2.png"
             />
             <h2
-              class="c22"
+              class="c23"
             >
               Demo 2: Ideeën voor uw buurt
             </h2>
@@ -1190,7 +1199,7 @@ exports[`App component should match snapshot 1`] = `
               </p>
             </div>
             <span
-              class="c16 c23"
+              class="c17 c24"
             >
               <svg
                 focusable="false"

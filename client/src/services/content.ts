@@ -21,13 +21,48 @@ Ervaar nu vast wat u met IRMA kunt via verschillende demo's.
 - Uw telefoonnummer`
         },
         subtitle: `## Aan de slag met IRMA`,
-        demo1: {
+        demo1Card: {
             title: `Demo 1: Leeftijd aantonen`,
             body: `Bewijs dat u ouder bent dan 18 jaar zonder uw geboortedatum prijs te geven.`
         },
-        demo2: {
+        demo2Card: {
             title: `Demo 2: Ideeën voor uw buurt`,
             body: `Bewijs dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.`
+        }
+    },
+    downloadIrma: `Heeft u nog geen IRMA?<br>
+[Download IRMA](/)`,
+    demo2: {
+        breadcrumbs: `- [Home](/)
+- [Demo 2: Ideeën voor uw buurt](/)`,
+        intro: `Met IRMA kunt u bewijzen in welke wijk u woont en zo meebeslissen over ideeën voor uw buurt zonder uw woonadres en geboortedatum prijs te geven. U blijft dus anoniem.
+# Probeer het uit
+Bewijs in welke wijk u woont en dat u ouder bent dan 18 jaar door uzelf bekend te maken met de volgende gegevens:
+- Postcode
+- Ouder dan 18 jaar`,
+        unproven: {
+            title: `# Demo 2: Ideeën voor uw buurt`,
+            alert: {
+                title: `Dit is een demosite`,
+                body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
+            }
+        },
+        proven: {
+            title: `# Demo 2: Uw postcode en leeftijd`,
+            alert: {
+                title: `Uw postcode en leeftijd`,
+                bodyPositive: `U heeft bewezen dat u in de wijk [] woont en dat u ouder dan 18 jaar oud bent. U mag meebeslissen over ideeën voor uw buurt.`,
+                bodyAgeNegative: `U heeft bewezen dat u in de wijk [] woont en dat u nog geen 18 jaar oud bent. U mag nog niet meebeslissen over ideeën voor uw buurt.`,
+                bodyPostcodeNegative: `U heeft bewezen dat u niet in Amsterdam woont en dat u ouder bent dan 18 jaar. U mag nog niet meebeslissen over ideeën voor uw buurt.`,
+                bodyAgeAndPostcodeNegative: `U heeft bewezen dat u niet in Amsterdam woont en dat u jonger bent dan 18 jaar. U mag nog niet meebeslissen over ideeën voor uw buurt.`
+            }
+        },
+        why: {
+            title: `Waarom worden deze gegevens gevraagd?`,
+            body: `# Uw postcode
+De gemeente weet dan in welke wijk u woont.
+# Ouder dan 18 jaar
+De gemeente weet dan of u mag stemmen.`
         }
     },
     footer: {

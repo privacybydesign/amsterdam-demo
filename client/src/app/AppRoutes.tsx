@@ -1,7 +1,7 @@
 import React from 'react';
 import Homepage from '@components/Homepage/Homepage';
-import TestIrmaServer from '@components/TestIrmaServer/TestIrmaServer';
 import Demo1 from '@components/Demo1/Demo1';
+import Demo2 from '@components/Demo2/Demo2';
 
 interface IRoute {
     path: string;
@@ -15,7 +15,7 @@ interface IAppRoutes {
 const AppRoutes: IAppRoutes = {
     HOMEPAGE: { path: '/', component: Homepage, exact: true },
     DEMO1: { path: '/leeftijd-aantonen', component: Demo1, exact: false },
-    TEST_2: { path: '/test2', component: TestIrmaServer, exact: false }
+    TEST_2: { path: '/demo-2', component: Demo2, exact: false }
 };
 
 export default AppRoutes;
