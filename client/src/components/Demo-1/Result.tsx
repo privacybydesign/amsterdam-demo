@@ -1,34 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
+import ReactMarkDown from 'react-markdown';
+import styled from 'styled-components';
+import content from '@services/content';
 
-import { Heading, Paragraph, Accordion, Link, Icon, Alert, themeColor, themeSpacing } from '@datapunt/asc-ui';
+import { Heading, Paragraph, Link } from '@datapunt/asc-ui';
 
 export interface IProps { }
+
+const StyledH2 = styled(Heading).attrs({ as: 'h2' });
 
 const Result: React.FC<IProps> = () => {
   return (
     <>
-      <Paragraph>De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.</Paragraph>
+      <Paragraph><ReactMarkDown source={content.demo1.result.intro1} /></Paragraph>
 
-      <Heading as="h2">Wat heeft u zojuist gedaan?</Heading>
+      <ReactMarkDown source={content.demo1.result.wat} renderers={{ heading: StyledH2 }} />
 
-      <ul>
-        <li>U heeft IRMA gebruikt om door te geven dat u ouder bent dan 18 jaar.</li>
-        <li>U heeft uw geboortedatum (en andere gegevens) niet doorgegeven.</li>
-      </ul>
+      <ReactMarkDown source={content.demo1.result.list} />
 
-      <Heading as="h2">Wat is er anders met IRMA?</Heading>
+      <ReactMarkDown source={content.demo1.result.anders} renderers={{ heading: StyledH2 }} />
 
-          Als u via IRMA uw leeftijd doorgeeft, is bij de website bekend of u aan de leeftijdsgrens voldoet. U blijft anoniem.
+      <Paragraph><ReactMarkDown source={content.demo1.result.intro2} /></Paragraph>
 
-      <Paragraph>Dit kan worden gebruikt voor:</Paragraph>
+      <Paragraph><ReactMarkDown source={content.demo1.result.gebruiktVoor} /></Paragraph>
 
-      <ul>
-        <li>Alcohol kopen.</li>
-        <li>Stemmen voor lokale initiatieven.</li>
-        <li>Toegang en korting op basis van uw leeftijd.</li>
-      </ul>
+      <ReactMarkDown source={content.demo1.result.list2} />
 
-      <Link href="" variant="inline">Probeer de andere demo’s</Link>
+      <Link href={content.demo1.result.link.href} variant="inline">
+        <ReactMarkDown source={content.demo1.result.link.label} />
+      </Link>
     </>
   );
 };

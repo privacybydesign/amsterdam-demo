@@ -4,7 +4,6 @@ import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 
-
 import { Heading, Paragraph, Accordion, Link, Icon, Alert, themeColor, themeSpacing } from '@datapunt/asc-ui';
 import { ExternalLink } from '@datapunt/asc-assets';
 import PageTemplate from '@components/PageTemplate/PageTemplate';

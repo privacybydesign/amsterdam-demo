@@ -71,6 +71,22 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremq
             question: 'Heeft u nog geen IRMA?',
             label: 'Download IRMA',
             href: '/'
+        },
+        result: {
+            intro1: 'De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.',
+            wat: 'Wat heeft u zojuist gedaan?',
+            list: `- U heeft IRMA gebruikt om door te geven dat u ouder bent dan 18 jaar.
+- U heeft uw geboortedatum (en andere gegevens) niet doorgegeven.`,
+            anders: 'Wat is er anders met IRMA?',
+            intro2: 'Als u via IRMA uw leeftijd doorgeeft, is bij de website bekend of u aan de leeftijdsgrens voldoet. U blijft anoniem.',
+            gebruiktVoor: 'Dit kan worden gebruikt voor:',
+            list2: `- Alcohol kopen.
+- Stemmen voor lokale initiatieven.
+- Toegang en korting op basis van uw leeftijd.`,
+            link: {
+                label: 'Probeer de andere demo’s',
+                href: '/'
+            }
         }
     }
 };
