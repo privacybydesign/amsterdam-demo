@@ -13,9 +13,9 @@ import Result from './Result';
 export interface IProps {}
 
 const Demo2: React.FC<IProps> = () => {
-    const [isOver18, setIsOver18] = useState<boolean>(true);
-    const [isPostcodeInArea, setIsPostcodeInArea] = useState<boolean>(true);
-    const [hasResult, setHasResult] = useState<boolean>(true);
+    const [isOver18, setIsOver18] = useState<boolean>(false);
+    const [isPostcodeInArea, setIsPostcodeInArea] = useState<boolean>(false);
+    const [hasResult, setHasResult] = useState<boolean>(false);
 
     const getSession = async () => {
         // TODO: Make combined over18 + postcode request and update state accordingly
