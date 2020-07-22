@@ -16,23 +16,23 @@ def tryStep(String message, Closure block, Closure tearDown = null) {
     }
 }
 
-node {
-    stage("Checkout") {
-        checkout scm
-    }
-
-    stage("Build image") {
-        tryStep "build", {
-            def dockerfile = './Dockerfile.prod'
-            def image = docker.build("build.app.amsterdam.nl:5000/ois/irma_frontend:${env.BUILD_NUMBER}", "-f ${dockerfile} ./")
-            image.push()
-        }
-    }
-}
-
 String BRANCH = "${env.BRANCH_NAME}"
 
 if (BRANCH == "master" || BRANCH == "develop") {
+
+    node {
+        stage("Checkout") {
+          checkout scm
+        }
+
+        stage("Build acceptance image") {
+          tryStep "build", {
+              def dockerfile = './Dockerfile.prod'
+              def image = docker.build("build.app.amsterdam.nl:5000/ois/irma_frontend:${env.BUILD_NUMBER}", "-f ${dockerfile} --build-arg environment=acceptance ./")
+              image.push()
+          }
+        }
+    }
 
     node {
         stage('Push acceptance image') {
@@ -60,6 +60,20 @@ if (BRANCH == "master") {
     stage('Waiting for approval') {
         slackSend channel: '#ci-channel', color: 'warning', message: 'irma_frontend is waiting for Production Release - please confirm'
         input "Deploy to Production?"
+    }
+
+    node {
+        stage("Checkout") {
+          checkout scm
+        }
+
+        stage("Build production image") {
+          tryStep "build", {
+              def dockerfile = './Dockerfile.prod'
+              def image = docker.build("build.app.amsterdam.nl:5000/ois/irma_frontend:${env.BUILD_NUMBER}", "-f ${dockerfile} --build-arg environment=production ./")
+              image.push()
+          }
+        }
     }
 
     node {

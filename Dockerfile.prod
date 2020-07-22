@@ -2,7 +2,9 @@
 FROM node:14.4-alpine3.12 AS builder
 LABEL maintainer="datapunt@amsterdam.nl"
 
-ENV NODE_ENV=${ENVIRONMENT}
+ARG environment=production
+
+ENV NODE_ENV=$environment
 ENV PATH /app/node_modules/.bin:$PATH
 
 WORKDIR /app

@@ -60,9 +60,12 @@ const init = async () => {
     app.get("/getsession/age", cors(), irmaDiscloseAge);
     app.get("/getsession/email", cors(), irmaDiscloseEmail);
     app.get("/config", cors(), getConfig);
-    console.log("use express");
+    console.log(`use express on ${process.env.NODE_ENV} environment`);
 
-    if (process.env.NODE_ENV === "production") {
+    if (
+      process.env.NODE_ENV === "acceptance" ||
+      process.env.NODE_ENV === "production"
+    ) {
       app.use(express.static(config.docroot));
       app.get("*", function (req, res) {
         res.sendFile(path.join(__dirname, config.docroot, "index.html"));
