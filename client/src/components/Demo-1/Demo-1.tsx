@@ -23,7 +23,13 @@ const StyledH2 = styled.h2`
   margin-bottom: ${themeSpacing(3)};
 `;
 
+
 const StyledAlert = styled(Alert)`
+  margin-top: ${themeSpacing(4)};
+`;
+
+const GreenAlert = styled(Alert)`
+  margin-top: ${themeSpacing(4)};
   background-color: ${themeColor('support', 'valid')};
   * {
     color: ${themeColor('tint', 'level1')};;
@@ -57,10 +63,10 @@ const Demo1: React.FC<IProps> = () => {
         renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
       />
 
-      {!hasResult && <Alert level="attention" heading={content.demo1.demo.heading} content={content.demo1.demo.content} />}
+      {!hasResult && <StyledAlert level="attention" heading={content.demo1.demo.heading} content={content.demo1.demo.content} />}
 
-      {hasResult && isOver18 && <StyledAlert heading={content.demo1.isOver18.heading} content={content.demo1.isOver18.content} />}
-      {hasResult && !isOver18 && <Alert level="error" heading={content.demo1.isNotOver18.heading} content={content.demo1.isNotOver18.content} />}
+      {hasResult && isOver18 && <GreenAlert heading={content.demo1.isOver18.heading} content={content.demo1.isOver18.content} />}
+      {hasResult && !isOver18 && <StyledAlert level="error" heading={content.demo1.isNotOver18.heading} content={content.demo1.isNotOver18.content} />}
 
       <ReactMarkDown source={content.demo1.title[hasResult ? 'hasResult' : 'noResult']} renderers={{ heading: StyledH1 }} />
 
