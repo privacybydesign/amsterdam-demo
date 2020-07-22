@@ -4,7 +4,7 @@ import ReactMarkDown from 'react-markdown';
 
 import content from '@services/content';
 
-import { Button, Heading, Modal } from '@datapunt/asc-ui';
+import { Button, Modal, themeSpacing } from '@datapunt/asc-ui';
 import { Linkedin } from '@datapunt/asc-assets';
 // @todo fix irma logo
 
@@ -22,11 +22,15 @@ const QRCode: React.FC<IProps> = ({ getSession }) => {
     typeof getSession === 'function' && getSession();
   }
 
+  const StyledButton = styled(Button)`
+    margin-bottom: ${themeSpacing(7)};
+  `;
+
   return (
     <div>
-      <Button onClick={getQRSession} variant="secondary" iconLeft={<Linkedin />}>
+      <StyledButton onClick={getQRSession} variant="secondary" iconLeft={<Linkedin />}>
         <ReactMarkDown source={content.qrcode.knop} />
-      </Button>
+      </StyledButton>
 
       {
         hasOverlay ?
@@ -39,7 +43,7 @@ const QRCode: React.FC<IProps> = ({ getSession }) => {
           </Modal>
           : null
       }
-    </div >
+    </div>
   );
 };
 

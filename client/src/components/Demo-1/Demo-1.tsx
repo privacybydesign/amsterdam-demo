@@ -35,6 +35,11 @@ const StyledParagraph = styled(Paragraph)`
   margin-bottom: ${themeSpacing(2)};
 `;
 
+const StyledImage = styled.img`
+    width: 100%;
+    margin-bottom: ${themeSpacing(3)};
+`;
+
 const Demo1: React.FC<IProps> = () => {
   const [isOver18, setIsOver18] = useState<boolean>(false);
   const [hasResult, setHasResult] = useState<boolean>(false);
@@ -59,7 +64,7 @@ const Demo1: React.FC<IProps> = () => {
 
       <ReactMarkDown source={content.demo1.title[hasResult ? 'hasResult' : 'noResult']} renderers={{ heading: StyledH1 }} />
 
-      <img src="/assets/demo_1.png" alt="foto van mensen in een café"></img>
+      <StyledImage src="/assets/demo_1.png" alt="foto van mensen in een café"></StyledImage>
 
       {!hasResult ?
         <>
