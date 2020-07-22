@@ -21,6 +21,9 @@ const StyledH3 = styled.h3``;
 
 const ModalWrapper = styled.div`
   padding: ${themeSpacing(0 5 5 5)};
+  ul, ol {
+    margin-top: 0;
+  }
 `;
 
 const StyledHeader = styled.div`

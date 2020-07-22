@@ -41,6 +41,12 @@ const StyledParagraph = styled(Paragraph)`
   margin-bottom: ${themeSpacing(2)};
 `;
 
+const StyledPageTemplate = styled(PageTemplate)`
+  ul, ol {
+    margin-top: 0;
+  }
+`;
+
 const StyledImage = styled.img`
     width: 100%;
     margin-bottom: ${themeSpacing(3)};
@@ -57,7 +63,7 @@ const Demo1: React.FC<IProps> = () => {
   }
 
   return (
-    <PageTemplate>
+    <StyledPageTemplate>
       <ReactMarkDown
         source={content.demo1.breadcrumbs}
         renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
@@ -96,7 +102,7 @@ const Demo1: React.FC<IProps> = () => {
         <Result />
       }
 
-    </PageTemplate >
+    </StyledPageTemplate>
   );
 };
 
