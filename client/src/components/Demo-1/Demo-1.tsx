@@ -84,15 +84,14 @@ const Demo1: React.FC<IProps> = () => {
             <ReactMarkDown source={content.demo1.waarom.body} renderers={{ paragraph: StyledParagraph }} />
           </Accordion>
 
-          <div><ReactMarkDown source={content.demo1.irma.question} renderers={{ paragraph: StyledParagraph }} />
+          <QRCode getSession={getSession} />
+
+          <div>{content.demo1.irma.question}&nbsp;
             <Link href={content.demo1.irma.href} variant="inline" icon={<Icon size={16}> <ExternalLink /> </Icon>}>
               <ReactMarkDown source={content.demo1.irma.label} />
             </Link>
           </div>
-
-          <QRCode getSession={getSession} />
         </>
-
         :
         <Result />
       }

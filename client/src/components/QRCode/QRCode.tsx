@@ -12,6 +12,11 @@ export interface IProps {
   getSession: Function
 }
 
+const StyledButton = styled(Button)`
+  margin-top: ${themeSpacing(6)};
+  margin-bottom: ${themeSpacing(6)};
+`;
+
 const StyledH3 = styled.h3``;
 
 const QRCode: React.FC<IProps> = ({ getSession }) => {
@@ -21,10 +26,6 @@ const QRCode: React.FC<IProps> = ({ getSession }) => {
     setHasOverlay(true);
     typeof getSession === 'function' && getSession();
   }
-
-  const StyledButton = styled(Button)`
-    margin-bottom: ${themeSpacing(7)};
-  `;
 
   return (
     <div>
