@@ -44,12 +44,16 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremq
     },
     demo1: {
         title: {
-            noResult: 'Demo 1: Leeftijd aantonen',
-            hasResult: 'Demo 1: Uw leeftijd'
+            noResult: '# Demo 1: Leeftijd aantonen',
+            hasResult: '# Demo 1: Uw leeftijd'
         },
         isOver18: {
             heading: 'Uw leeftijd',
             content: 'U heeft bewezen dat u ouder bent dan 18 jaar.'
+        },
+        isNotOver18: {
+            heading: 'Uw leeftijd',
+            content: 'U heeft niet bewezen dat u ouder bent dan 18 jaar.'
         },
         demo: {
             heading: 'Dit is een demosite',
@@ -62,10 +66,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremq
 - Uw burgerservicenummer(BSN)`,
         waarom: {
             title: 'Waarom worden deze gegevens gevraagd?',
-            naam: 'Uw volledige naam',
-            naamExplanation: 'De gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.',
-            bsn: 'Uw burgerservicenummer (BSN)',
-            bsnExplanation: 'De gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.'
+            body: '** Uw volledige naam **  \nDe gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.  \n  \n** Uw burgerservicenummer (BSN) **  \nDe gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.',
         },
         irma: {
             question: 'Heeft u nog geen IRMA?',

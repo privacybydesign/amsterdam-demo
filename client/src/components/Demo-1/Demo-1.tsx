@@ -18,6 +18,8 @@ const StyledH1 = styled(Heading)`
   margin-bottom: ${themeSpacing(6)};
 `;
 
+const StyledH2 = styled(Heading).attrs({ as: 'h2' });
+
 const StyledAlert = styled(Alert)`
   background-color: ${themeColor('support', 'valid')};
   * {
@@ -43,14 +45,12 @@ const Demo1: React.FC<IProps> = () => {
         <BreadCrumbs.Item href="/">Probeer IRMA uit</BreadCrumbs.Item>
       </BreadCrumbs>
 
+      {!hasResult && <Alert level="attention" heading={content.demo1.demo.heading} content={content.demo1.demo.content} />}
 
-      {isOver18 ?
-        <StyledAlert heading={content.demo1.isOver18.heading} content={content.demo1.isOver18.content} />
-        :
-        <Alert level="attention" heading={content.demo1.demo.heading} content={content.demo1.demo.content} />
-      }
+      {hasResult && isOver18 && <StyledAlert heading={content.demo1.isOver18.heading} content={content.demo1.isOver18.content} />}
+      {hasResult && !isOver18 && <Alert level="error" heading={content.demo1.isNotOver18.heading} content={content.demo1.isNotOver18.content} />}
 
-      <StyledH1><ReactMarkDown source={content.demo1.title[hasResult ? 'hasResult' : 'noResult']} /></StyledH1>
+      <ReactMarkDown source={content.demo1.title[hasResult ? 'hasResult' : 'noResult']} renderers={{ heading: StyledH1 }} />
 
       <img src="/assets/demo_1.png" ></img>
 
@@ -58,23 +58,18 @@ const Demo1: React.FC<IProps> = () => {
         <>
           <ReactMarkDown source={content.demo1.intro1} />
 
-          <Heading as="h2"><ReactMarkDown source={content.demo1.tryIt} /></Heading>
+          <ReactMarkDown source={content.demo1.tryIt} renderers={{ heading: StyledH2 }} />
 
           <ReactMarkDown source={content.demo1.intro2} />
 
           <Accordion title={content.demo1.waarom.title}>
-            <div><ReactMarkDown source={content.demo1.waarom.naam} /></div>
-            <Paragraph><ReactMarkDown source={content.demo1.waarom.naamExplanation} /></Paragraph>
-            <div><ReactMarkDown source={content.demo1.waarom.bsn} /></div>
-            <Paragraph><ReactMarkDown source={content.demo1.waarom.bsnExplanation} /></Paragraph>
+            <ReactMarkDown source={content.demo1.waarom.body} />
           </Accordion>
 
-          <Paragraph>
-            <div><ReactMarkDown source={content.demo1.irma.question} /></div>
-            <Link href={content.demo1.irma.href} variant="inline" icon={<Icon size={16}> <ExternalLink /> </Icon>}>
-              <ReactMarkDown source={content.demo1.irma.label} />
-            </Link>
-          </Paragraph>
+          <div><ReactMarkDown source={content.demo1.irma.question} /></div>
+          <Link href={content.demo1.irma.href} variant="inline" icon={<Icon size={16}> <ExternalLink /> </Icon>}>
+            <ReactMarkDown source={content.demo1.irma.label} />
+          </Link>
 
           <QRCode getSession={getSession} />
         </>

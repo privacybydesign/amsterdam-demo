@@ -12,7 +12,7 @@ const StyledH2 = styled(Heading).attrs({ as: 'h2' });
 const Result: React.FC<IProps> = () => {
   return (
     <>
-      <Paragraph><ReactMarkDown source={content.demo1.result.intro1} /></Paragraph>
+      <ReactMarkDown source={content.demo1.result.intro1} />
 
       <ReactMarkDown source={content.demo1.result.wat} renderers={{ heading: StyledH2 }} />
 
@@ -20,9 +20,9 @@ const Result: React.FC<IProps> = () => {
 
       <ReactMarkDown source={content.demo1.result.anders} renderers={{ heading: StyledH2 }} />
 
-      <Paragraph><ReactMarkDown source={content.demo1.result.intro2} /></Paragraph>
+      <ReactMarkDown source={content.demo1.result.intro2} />
 
-      <Paragraph><ReactMarkDown source={content.demo1.result.gebruiktVoor} /></Paragraph>
+      <ReactMarkDown source={content.demo1.result.gebruiktVoor} />
 
       <ReactMarkDown source={content.demo1.result.list2} />
 
