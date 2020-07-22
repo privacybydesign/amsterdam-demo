@@ -54,7 +54,7 @@ const Demo1: React.FC<IProps> = () => {
 
       <ReactMarkDown source={content.demo1.title[hasResult ? 'hasResult' : 'noResult']} renderers={{ heading: StyledH1 }} />
 
-      <img src="/assets/demo_1.png" ></img>
+      <img src="/assets/demo_1.png" alt="foto van mensen in een café"></img>
 
       {!hasResult ?
         <>
