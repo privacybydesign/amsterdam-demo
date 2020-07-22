@@ -46,7 +46,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremq
         title: '### Maak uzelf bekend',
         stappen: `Doorloop de volgende stappen  \n
 1. Scan de QR-code hieronder met uw IRMA-app.
-2. Kies in uw IRMA- app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.< /li>`
+2. Kies in uw IRMA- app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.< /li>`,
+        knop: 'Inloggen met IRMA'
     },
     demo1: {
         breadcrumbs: `- [Home](/)

@@ -3,16 +3,24 @@ import ReactMarkDown from 'react-markdown';
 import styled from 'styled-components';
 import content from '@services/content';
 
-import { Paragraph, Link } from '@datapunt/asc-ui';
+import { Paragraph, Link, themeSpacing } from '@datapunt/asc-ui';
 
 export interface IProps { }
 
-const StyledH2 = styled.h2``;
+const StyledH2 = styled.h2`
+  margin-top: ${themeSpacing(2)};
+  margin-bottom: ${themeSpacing(3)};
+`;
+
+const StyledParagraph = styled(Paragraph)`
+  margin-top: ${themeSpacing(2)};
+  margin-bottom: ${themeSpacing(2)};
+`;
 
 const Result: React.FC<IProps> = () => {
   return (
     <>
-      <ReactMarkDown source={content.demo1.result.intro1} renderers={{ paragraph: Paragraph }} />
+      <ReactMarkDown source={content.demo1.result.intro1} renderers={{ paragraph: StyledParagraph }} />
 
       <ReactMarkDown source={content.demo1.result.wat} renderers={{ heading: StyledH2 }} />
 
@@ -20,7 +28,7 @@ const Result: React.FC<IProps> = () => {
 
       <ReactMarkDown source={content.demo1.result.anders} renderers={{ heading: StyledH2 }} />
 
-      <ReactMarkDown source={content.demo1.result.intro2} renderers={{ paragraph: Paragraph }} />
+      <ReactMarkDown source={content.demo1.result.intro2} renderers={{ paragraph: StyledParagraph }} />
 
       <ReactMarkDown source={content.demo1.result.list2} />
 

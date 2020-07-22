@@ -19,8 +19,8 @@ const StyledH1 = styled(Heading)`
 `;
 
 const StyledH2 = styled.h2`
-  margin-top: ${themeSpacing(4)};
-  margin-bottom: ${themeSpacing(6)};
+  margin-top: ${themeSpacing(2)};
+  margin-bottom: ${themeSpacing(3)};
 `;
 
 const StyledAlert = styled(Alert)`
@@ -28,6 +28,11 @@ const StyledAlert = styled(Alert)`
   * {
     color: ${themeColor('tint', 'level1')};;
   }
+`;
+
+const StyledParagraph = styled(Paragraph)`
+  margin-top: ${themeSpacing(2)};
+  margin-bottom: ${themeSpacing(2)};
 `;
 
 const Demo1: React.FC<IProps> = () => {
@@ -58,17 +63,17 @@ const Demo1: React.FC<IProps> = () => {
 
       {!hasResult ?
         <>
-          <ReactMarkDown source={content.demo1.intro1} renderers={{ paragraph: Paragraph }} />
+          <ReactMarkDown source={content.demo1.intro1} renderers={{ paragraph: StyledParagraph }} />
 
           <ReactMarkDown source={content.demo1.tryIt} renderers={{ heading: StyledH2 }} />
 
-          <ReactMarkDown source={content.demo1.intro2} renderers={{ paragraph: Paragraph }} />
+          <ReactMarkDown source={content.demo1.intro2} renderers={{ paragraph: StyledParagraph }} />
 
           <Accordion title={content.demo1.waarom.title}>
-            <ReactMarkDown source={content.demo1.waarom.body} renderers={{ paragraph: Paragraph }} />
+            <ReactMarkDown source={content.demo1.waarom.body} renderers={{ paragraph: StyledParagraph }} />
           </Accordion>
 
-          <div><ReactMarkDown source={content.demo1.irma.question} renderers={{ paragraph: Paragraph }} />
+          <div><ReactMarkDown source={content.demo1.irma.question} renderers={{ paragraph: StyledParagraph }} />
             <Link href={content.demo1.irma.href} variant="inline" icon={<Icon size={16}> <ExternalLink /> </Icon>}>
               <ReactMarkDown source={content.demo1.irma.label} />
             </Link>
