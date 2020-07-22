@@ -4,8 +4,8 @@ import ReactMarkDown from 'react-markdown';
 
 import content from '@services/content';
 
-import { Button, Modal, themeSpacing } from '@datapunt/asc-ui';
-import { Linkedin } from '@datapunt/asc-assets';
+import { Button, Modal, themeSpacing, themeColor } from '@datapunt/asc-ui';
+import { Linkedin, Close } from '@datapunt/asc-assets';
 // @todo fix irma logo
 
 export interface IProps {
@@ -19,6 +19,22 @@ const StyledButton = styled(Button)`
 
 const StyledH3 = styled.h3``;
 
+const ModalWrapper = styled.div`
+  padding: 0 20px 20px 20px;
+`;
+
+const StyledHeader = styled.div`
+  border-bottom: 1px solid ${themeColor('tint', 'level5')};
+  display: flex;
+  padding-left: 20px;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const CloseButton = styled(Button)`
+  margin-right: 8px;
+` ;
+
 const QRCode: React.FC<IProps> = ({ getSession }) => {
   const [hasOverlay, setHasOverlay] = useState(false)
 
@@ -27,23 +43,31 @@ const QRCode: React.FC<IProps> = ({ getSession }) => {
     typeof getSession === 'function' && getSession();
   }
 
+  const closeModal = () => {
+    setHasOverlay(false);
+  }
+
   return (
     <div>
       <StyledButton onClick={getQRSession} variant="secondary" iconLeft={<Linkedin />}>
         <ReactMarkDown source={content.qrcode.knop} />
       </StyledButton>
 
-      {
-        hasOverlay ?
-          <Modal open backdropOpacity={0.5}>
+      <Modal backdropOpacity={0.5} open={hasOverlay} onClose={closeModal}>
+        <>
+          <StyledHeader>
             <ReactMarkDown source={content.qrcode.title} renderers={{ heading: StyledH3 }} />
-
+            <CloseButton size={30} variant="blank" icon={<Close />} onClick={closeModal} />
+          </StyledHeader>
+          <ModalWrapper>
             <ReactMarkDown source={content.qrcode.stappen} />
 
             <canvas id="irma-qr" />
-          </Modal>
-          : null
-      }
+
+          </ModalWrapper>
+        </>
+      </Modal>
+
     </div>
   );
 };
