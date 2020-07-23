@@ -11,18 +11,64 @@ var proxy = require("http-proxy-middleware");
 // global configuration variable.
 let config;
 
-const REQUESTS = {
-  USER_NAME: [["pbdf.sidn-pbdf.irma.pseudonym"]],
-
-  POSTCODE: [["pbdf.gemeente.address.zipcode"]],
-
-  AGE: [["pbdf.gemeente.personalData.over18"]],
-
-  EMAIL: [["pbdf.pbdf.email.email"], ["pbdf.pbdf.mobilenumber.mobilenumber"]],
-
-  BSN: [
-    ["pbdf.gemeente.personalData.fullname", "pbdf.gemeente.personalData.bsn"],
-  ],
+const CREDENTIALS_TO_REQUEST = {
+  DEMO: {
+    DEMO1: [
+      [
+        "irma-demo.gemeente.personalData.over18",
+        "irma-demo.gemeente.personalData.over65",
+      ],
+    ],
+    DEMO2: [
+      [
+        "irma-demo.gemeente.address.zipcode",
+        "irma-demo.gemeente.personalData.over18",
+      ],
+    ],
+    DEMO3: [
+      ["irma-demo.gemeente.personalData.fullname"],
+      ["irma-demo.gemeente.personalData.bsn"],
+    ],
+    DEMO4: [
+      [
+        "irma-demo.gemeente.personalData.fullname",
+        "irma-demo.gemeente.address.street",
+        "irma-demo.gemeente.address.houseNumber",
+        "irma-demo.gemeente.address.zipcode",
+        "irma-demo.gemeente.address.city",
+        "irma-demo.pbdf.mobilenumber.mobilenumber",
+        "irma-demo.sidn-pbdf.email.email",
+      ],
+    ],
+    DEMO5: [["irma-demo.sidn-pbdf.email.domain"]],
+  },
+  PRODUCTION: {
+    DEMO1: [
+      [
+        "pbdf.gemeente.personalData.over18",
+        "pbdf.gemeente.personalData.over65",
+      ],
+    ],
+    DEMO2: [
+      ["pbdf.gemeente.address.zipcode", "pbdf.gemeente.personalData.over18"],
+    ],
+    DEMO3: [
+      ["pbdf.gemeente.personalData.fullname"],
+      ["pbdf.gemeente.personalData.bsn"],
+    ],
+    DEMO4: [
+      [
+        "pbdf.gemeente.personalData.fullname",
+        "pbdf.gemeente.address.street",
+        "pbdf.gemeente.address.houseNumber",
+        "pbdf.gemeente.address.zipcode",
+        "pbdf.gemeente.address.city",
+        "pbdf.pbdf.mobilenumber.mobilenumber",
+        "pbdf.pbdf.email.email",
+      ],
+    ],
+    DEMO5: [["pbdf.pbdf.email.domain"]],
+  },
 };
 
 /**
@@ -55,10 +101,12 @@ const init = async () => {
 
     app.use(express.json());
 
-    app.get("/getsession/postcode", cors(), irmaDisclosePostcode);
-    app.get("/getsession/bsn", cors(), irmaDiscloseBsn);
-    app.get("/getsession/age", cors(), irmaDiscloseAge);
-    app.get("/getsession/email", cors(), irmaDiscloseEmail);
+    // Note: To use the demo credentials on non-production environments add ?demo=true to the URL
+    app.get("/getsession/demo1", cors(), irmaDiscloseDemo1);
+    app.get("/getsession/demo2", cors(), irmaDiscloseDemo2);
+    app.get("/getsession/demo3", cors(), irmaDiscloseDemo3);
+    app.get("/getsession/demo4", cors(), irmaDiscloseDemo4);
+    app.get("/getsession/demo5", cors(), irmaDiscloseDemo5);
     app.get("/config", cors(), getConfig);
 
     if (
@@ -121,20 +169,51 @@ const irmaDiscloseRequest = async (req, res, requestType, id) => {
   }
 };
 
-async function irmaDiscloseEmail(req, res) {
-  return irmaDiscloseRequest(req, res, REQUESTS.EMAIL);
+const getCredentialSourceFromRequest = (req) => {
+  console.log(req.query.demo);
+  return req &&
+    req.query.demo === "true" &&
+    process.env.NODE_ENV !== "production"
+    ? CREDENTIALS_TO_REQUEST.DEMO
+    : CREDENTIALS_TO_REQUEST.PRODUCTION;
+};
+
+async function irmaDiscloseDemo1(req, res) {
+  return irmaDiscloseRequest(
+    req,
+    res,
+    getCredentialSourceFromRequest(req).DEMO1
+  );
 }
 
-async function irmaDisclosePostcode(req, res) {
-  return irmaDiscloseRequest(req, res, REQUESTS.POSTCODE);
+async function irmaDiscloseDemo2(req, res) {
+  return irmaDiscloseRequest(
+    req,
+    res,
+    getCredentialSourceFromRequest(req).DEMO2
+  );
+}
+async function irmaDiscloseDemo3(req, res) {
+  return irmaDiscloseRequest(
+    req,
+    res,
+    getCredentialSourceFromRequest(req).DEMO3
+  );
+}
+async function irmaDiscloseDemo4(req, res) {
+  return irmaDiscloseRequest(
+    req,
+    res,
+    getCredentialSourceFromRequest(req).DEMO4
+  );
 }
 
-async function irmaDiscloseBsn(req, res) {
-  return irmaDiscloseRequest(req, res, REQUESTS.BSN);
-}
-
-async function irmaDiscloseAge(req, res) {
-  return irmaDiscloseRequest(req, res, REQUESTS.AGE);
+async function irmaDiscloseDemo5(req, res) {
+  return irmaDiscloseRequest(
+    req,
+    res,
+    getCredentialSourceFromRequest(req).DEMO5
+  );
 }
 
 const getConfig = async (req, res) => {
