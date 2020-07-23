@@ -2,13 +2,14 @@ import axios from 'axios';
 import * as irma from '@privacybydesign/irmajs';
 
 // Types
-interface IIrmaServerConfig {
+export interface IIrmaServerConfig {
     requestorname: string;
     uuid: string;
     irma: string;
     nodeUrl: string;
     docroot: string;
     port: number;
+    environment: string;
 }
 
 const instance = axios.create({});
@@ -16,8 +17,12 @@ const instance = axios.create({});
 let config: IIrmaServerConfig;
 
 export const getConfig = async (): Promise<IIrmaServerConfig> => {
-    const response = await instance.get('/config');
-    return response.data;
+    if (!config) {
+        const response = await instance.get('/config');
+        config = response.data;
+    }
+
+    return config;
 };
 
 export const isMobile = (): boolean => {
@@ -25,10 +30,7 @@ export const isMobile = (): boolean => {
 };
 
 const createIrmaSession = async (dataType: string, holderElementId: string): Promise<unknown> => {
-    if (!config) {
-        config = await getConfig();
-    }
-
+    const config = await getConfig();
     const irmaResponse = await instance.get(`/getsession/${dataType}`);
     const session = await irmaResponse.data;
 
