@@ -138,6 +138,7 @@ async function irmaDiscloseAge(req, res) {
 }
 
 const getConfig = async (req, res) => {
+  config.environment = process.env.NODE_ENV;
   console.log("get config", JSON.stringify(config));
   res.json(config);
 };
