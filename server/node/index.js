@@ -60,7 +60,6 @@ const init = async () => {
     app.get("/getsession/age", cors(), irmaDiscloseAge);
     app.get("/getsession/email", cors(), irmaDiscloseEmail);
     app.get("/config", cors(), getConfig);
-    console.log(`use express on ${process.env.NODE_ENV} environment`);
 
     if (
       process.env.NODE_ENV === "acceptance" ||
