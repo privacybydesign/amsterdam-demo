@@ -17,20 +17,25 @@ const StyledParagraph = styled(Paragraph)`
   margin-bottom: ${themeSpacing(2)};
 `;
 
+const StyledUL = styled.ul`
+  margin-top: 0;
+`;
+
+
 const Result: React.FC<IProps> = () => {
   return (
     <>
-      <ReactMarkDown source={content.demo1.result.intro1} renderers={{ paragraph: StyledParagraph }} />
+      <ReactMarkDown source={content.demo1.result.intro1} renderers={{ paragraph: StyledParagraph, list: StyledUL }} />
 
       <ReactMarkDown source={content.demo1.result.wat} renderers={{ heading: StyledH2 }} />
 
-      <ReactMarkDown source={content.demo1.result.list} />
+      <ReactMarkDown source={content.demo1.result.list} renderers={{ list: StyledUL }} />
 
       <ReactMarkDown source={content.demo1.result.anders} renderers={{ heading: StyledH2 }} />
 
-      <ReactMarkDown source={content.demo1.result.intro2} renderers={{ paragraph: StyledParagraph }} />
+      <ReactMarkDown source={content.demo1.result.intro2} renderers={{ paragraph: StyledParagraph, list: StyledUL }} />
 
-      <ReactMarkDown source={content.demo1.result.list2} />
+      <ReactMarkDown source={content.demo1.result.list2} renderers={{ list: StyledUL }} />
 
       <Link href={content.demo1.result.link.href} variant="inline">
         <ReactMarkDown source={content.demo1.result.link.label} />

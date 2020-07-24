@@ -44,6 +44,11 @@ const CanvasWrapper = styled.div`
   padding: ${themeSpacing(3 0 5)};
 ` ;
 
+const StyledOL = styled.ol`
+  margin-top: 0;
+`;
+
+
 const QRCode: React.FC<IProps> = ({ getSession }) => {
   const [hasOverlay, setHasOverlay] = useState(false)
 
@@ -69,7 +74,7 @@ const QRCode: React.FC<IProps> = ({ getSession }) => {
             <CloseButton size={30} variant="blank" icon={<Close />} onClick={closeModal} />
           </StyledHeader>
           <ModalWrapper>
-            <ReactMarkDown source={content.qrcode.stappen} />
+            <ReactMarkDown source={content.qrcode.stappen} renderers={{ list: StyledOL }} />
 
             <CanvasWrapper>
               <canvas id="irma-qr" />

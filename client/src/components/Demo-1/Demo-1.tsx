@@ -41,10 +41,8 @@ const StyledParagraph = styled(Paragraph)`
   margin-bottom: ${themeSpacing(2)};
 `;
 
-const StyledPageTemplate = styled(PageTemplate)`
-  ul, ol {
-    margin-top: 0;
-  }
+const StyledUL = styled.ul`
+  margin-top: 0;
 `;
 
 const StyledImage = styled.img`
@@ -63,7 +61,7 @@ const Demo1: React.FC<IProps> = () => {
   }
 
   return (
-    <StyledPageTemplate>
+    <PageTemplate>
       <ReactMarkDown
         source={content.demo1.breadcrumbs}
         renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
@@ -80,14 +78,14 @@ const Demo1: React.FC<IProps> = () => {
 
       {!hasResult ?
         <>
-          <ReactMarkDown source={content.demo1.intro1} renderers={{ paragraph: StyledParagraph }} />
+          <ReactMarkDown source={content.demo1.intro1} renderers={{ paragraph: StyledParagraph, list: StyledUL }} />
 
           <ReactMarkDown source={content.demo1.tryIt} renderers={{ heading: StyledH2 }} />
 
-          <ReactMarkDown source={content.demo1.intro2} renderers={{ paragraph: StyledParagraph }} />
+          <ReactMarkDown source={content.demo1.intro2} renderers={{ paragraph: StyledParagraph, list: StyledUL }} />
 
           <Accordion title={content.demo1.waarom.title}>
-            <ReactMarkDown source={content.demo1.waarom.body} renderers={{ paragraph: StyledParagraph }} />
+            <ReactMarkDown source={content.demo1.waarom.body} renderers={{ paragraph: StyledParagraph, list: StyledUL }} />
           </Accordion>
 
           <QRCode getSession={getSession} />
@@ -102,7 +100,7 @@ const Demo1: React.FC<IProps> = () => {
         <Result />
       }
 
-    </StyledPageTemplate>
+    </PageTemplate>
   );
 };
 
