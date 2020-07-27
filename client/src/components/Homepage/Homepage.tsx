@@ -27,11 +27,11 @@ const Homepage: React.FC<IProps> = () => (
                 </Accordion>
             </AccordionContainer>
             <ReactMarkDown source={content.home.subtitle} renderers={{ heading: StyledH2 }} />
-            <Article imageSrc="/assets/demo_1.png" title={content.home.demo1.title} href={AppRoutes.DEMO1.path}>
-                <ReactMarkDown source={content.home.demo1.body} />
+            <Article imageSrc="/assets/demo_1.png" title={content.home.demo1Card.title} href={AppRoutes.DEMO1.path}>
+                <ReactMarkDown source={content.home.demo1Card.body} />
             </Article>
-            <Article imageSrc="/assets/demo_2.png" title={content.home.demo2.title} href="test2">
-                <ReactMarkDown source={content.home.demo1.body} />
+            <Article imageSrc="/assets/demo_2.png" title={content.home.demo2Card.title} href={AppRoutes.DEMO2.path}>
+                <ReactMarkDown source={content.home.demo2Card.body} />
             </Article>
         </VerticalColumn>
     </PageTemplate>

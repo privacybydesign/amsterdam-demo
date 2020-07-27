@@ -12,20 +12,18 @@ export const BreadCrumbItem: React.FC<IBreadCrumbItemProps> = ({ className, href
     const component: JSX.Element = <Item className={className}>{children}</Item>;
 
     if (href) {
-        return <StyledLink to={href}>{component}</StyledLink>;
+        return <Link to={href}>{component}</Link>;
     }
 
     return component;
 };
 
-const StyledLink = styled(Link)`
-    text-decoration: none;
-`;
-
 const Item = styled.span`
-    color: ${themeColor('tint', 'level5')};
-
-    text-decoration-color: ${themeColor('tint', 'level5')};
+    a {
+        color: ${themeColor('tint', 'level5')};
+        text-decoration: none;
+        text-decoration-color: ${themeColor('tint', 'level5')};
+    }
 
     &:hover {
         text-decoration: underline;
