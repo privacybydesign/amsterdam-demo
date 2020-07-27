@@ -9,7 +9,7 @@ import VerticalColumn from '@components/VerticalColumn/VerticalColumn';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import Article from '@components/Article/Article';
 
-interface IProps { }
+interface IProps {}
 
 const Homepage: React.FC<IProps> = () => (
     <PageTemplate>

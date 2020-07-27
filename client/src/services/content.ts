@@ -51,8 +51,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremq
     },
     demo1: {
         breadcrumbs: `- [Home](/)
-- [Innovatie](/)
-- [Probeer IRMA uit](/)`,
+- [Demo 1: Leeftijd aantonen](/leeftijd-aantonen)`,
         title: {
             noResult: '# Demo 1: Leeftijd aantonen',
             hasResult: '# Demo 1: Uw leeftijd'
