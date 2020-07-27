@@ -43,9 +43,8 @@ const CredentialSelector: React.FC<IProps> = ({
                 </Select>
             </Container>
         );
-    } else {
-        return null;
     }
+    return null;
 };
 
 const Container = styled.div`
