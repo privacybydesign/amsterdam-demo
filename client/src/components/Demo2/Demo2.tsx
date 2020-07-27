@@ -18,7 +18,7 @@ const Demo2: React.FC<IProps> = () => {
 
     const getSession = async () => {
         // TODO: Make combined over18 + postcode request and update state accordingly
-        const response = await createIrmaSession('age', 'irma-qr');
+        const response = await createIrmaSession('demo2', 'irma-qr');
         setIsOver18(response['pbdf.gemeente.personalData.over18'] === 'Yes');
         setIsPostcodeInArea(response['pbdf.gemeente.personalData.over18'] === 'Yes');
         setHasResult(true);
