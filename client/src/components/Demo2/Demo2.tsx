@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
-import { Heading, Paragraph, Accordion, Link, Icon, Alert, themeColor, themeSpacing } from '@datapunt/asc-ui';
-import { ExternalLink as ExternalLinkIcon } from '@datapunt/asc-assets';
+import { Heading, Paragraph, Accordion, Alert, themeColor, themeSpacing } from '@datapunt/asc-ui';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
+import ExternalLink from '@components/ExternalLink/ExternalLink';
 import Result from './Result';
 
 export interface IProps {}
@@ -109,28 +109,6 @@ const StyledH2 = styled(Heading).attrs({ as: 'h2' })``;
 const AccordionHeading = styled(Heading).attrs({ as: 'h4' })`
     margin: 0;
 `;
-
-interface IExternalLinkProps {
-    href: string;
-}
-
-const ExternalLink: React.FC<IExternalLinkProps> = props => {
-    const { href, children } = props;
-
-    return (
-        <Link
-            href={href}
-            variant="inline"
-            icon={
-                <Icon size={16}>
-                    <ExternalLinkIcon />
-                </Icon>
-            }
-        >
-            {children}
-        </Link>
-    );
-};
 
 const StyledAlert = styled(Alert)`
     background-color: ${themeColor('support', 'valid')};
