@@ -9,7 +9,8 @@ import { Linkedin, Close } from '@datapunt/asc-assets';
 // @todo fix irma logo
 
 export interface IProps {
-  getSession: Function
+  getSession: Function,
+  className?: string,
 }
 
 const StyledButton = styled(Button)`
@@ -49,7 +50,7 @@ const StyledOL = styled.ol`
 `;
 
 
-const QRCode: React.FC<IProps> = ({ getSession }) => {
+const QRCode: React.FC<IProps> = ({ getSession, className }) => {
   const [hasOverlay, setHasOverlay] = useState(false)
 
   const getQRSession = () => {
@@ -62,7 +63,7 @@ const QRCode: React.FC<IProps> = ({ getSession }) => {
   }
 
   return (
-    <div>
+    <div className={className}>
       <StyledButton onClick={getQRSession} variant="secondary" iconLeft={<Linkedin />}>
         <ReactMarkDown source={content.qrcode.knop} />
       </StyledButton>
