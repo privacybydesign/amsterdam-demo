@@ -9,7 +9,7 @@ import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 
-export interface IProps {}
+export interface IProps { }
 
 const Demo2: React.FC<IProps> = () => {
     const [isOver18, setIsOver18] = useState<boolean>(false);
@@ -92,11 +92,11 @@ const Demo2: React.FC<IProps> = () => {
                     />
                 </>
             ) : (
-                <ReactMarkDown
-                    source={content.demo2.result}
-                    renderers={{ heading: StyledH2, paragraph: Paragraph, link: Link }}
-                />
-            )}
+                    <ReactMarkDown
+                        source={content.demo2.result}
+                        renderers={{ heading: StyledH2, paragraph: Paragraph, link: Link }}
+                    />
+                )}
         </PageTemplate>
     );
 };
