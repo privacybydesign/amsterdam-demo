@@ -15,7 +15,7 @@ interface IAppRoutes {
 const AppRoutes: IAppRoutes = {
     HOMEPAGE: { path: '/', component: Homepage, exact: true },
     DEMO1: { path: '/leeftijd-aantonen', component: Demo1, exact: false },
-    TEST_2: { path: '/demo-2', component: Demo2, exact: false }
+    DEMO2: { path: '/demo-2', component: Demo2, exact: false }
 };
 
 export default AppRoutes;
