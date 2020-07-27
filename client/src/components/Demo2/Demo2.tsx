@@ -4,6 +4,7 @@ import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import { Heading, Paragraph, Link, Accordion, Alert, themeColor, themeSpacing } from '@datapunt/asc-ui';
+import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
@@ -12,13 +13,13 @@ import ExternalLink from '@components/ExternalLink/ExternalLink';
 export interface IProps {}
 
 const Demo2: React.FC<IProps> = () => {
+    const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [isOver18, setIsOver18] = useState<boolean>(false);
     const [isPostcodeInArea, setIsPostcodeInArea] = useState<boolean>(false);
     const [hasResult, setHasResult] = useState<boolean>(false);
 
     const getSession = async () => {
-        // TODO: Make combined over18 + postcode request and update state accordingly
-        const response = await createIrmaSession('demo2', 'irma-qr');
+        const response = await createIrmaSession('demo2', 'irma-qr', credentialSource === CredentialSource.DEMO);
         setIsOver18(response['pbdf.gemeente.personalData.over18'] === 'Yes');
         setIsPostcodeInArea(response['pbdf.gemeente.personalData.over18'] === 'Yes');
         setHasResult(true);
@@ -62,6 +63,7 @@ const Demo2: React.FC<IProps> = () => {
 
     return (
         <PageTemplate>
+            <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
             {alertBox}
             <ReactMarkDown
                 source={content.demo2.breadcrumbs}

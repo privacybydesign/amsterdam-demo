@@ -29,9 +29,14 @@ export const isMobile = (): boolean => {
     return /Android/i.test(window.navigator.userAgent) || /iPhone/.test(window.navigator.userAgent);
 };
 
-const createIrmaSession = async (dataType: string, holderElementId: string): Promise<unknown> => {
+// Note: To use the demo credentials on non-production environments add ?demo=true to the URL
+const createIrmaSession = async (
+    dataType: string,
+    holderElementId: string,
+    credentialSourceFromDemo = false
+): Promise<unknown> => {
     const config = await getConfig();
-    const irmaResponse = await instance.get(`/getsession/${dataType}`);
+    const irmaResponse = await instance.get(`/getsession/${dataType}${credentialSourceFromDemo ? 'demo=true' : ''}`);
     const session = await irmaResponse.data;
 
     const { sessionPtr, token } = session;

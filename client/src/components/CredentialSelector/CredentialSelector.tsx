@@ -13,7 +13,10 @@ export enum CredentialSource {
     PRODUCTION = 'productie'
 }
 
-const CredentialSelector: React.FC<IProps> = ({ credentialSource, setCredentialSource }) => {
+const CredentialSelector: React.FC<IProps> = ({
+    credentialSource = CredentialSource.PRODUCTION,
+    setCredentialSource
+}) => {
     const [config, setConfig] = useState<IIrmaServerConfig | null>(null);
 
     useEffect(() => {
