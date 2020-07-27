@@ -7,21 +7,6 @@ import { Paragraph, Link, themeSpacing } from '@datapunt/asc-ui';
 
 export interface IProps { }
 
-const StyledH2 = styled.h2`
-  margin-top: ${themeSpacing(2)};
-  margin-bottom: ${themeSpacing(3)};
-`;
-
-const StyledParagraph = styled(Paragraph)`
-  margin-top: ${themeSpacing(2)};
-  margin-bottom: ${themeSpacing(2)};
-`;
-
-const StyledUL = styled.ul`
-  margin-top: 0;
-`;
-
-
 const Result: React.FC<IProps> = () => {
   return (
     <>
@@ -43,5 +28,19 @@ const Result: React.FC<IProps> = () => {
     </>
   );
 };
+
+const StyledH2 = styled.h2`
+  margin-top: ${themeSpacing(2)};
+  margin-bottom: ${themeSpacing(3)};
+`;
+
+const StyledParagraph = styled(Paragraph)`
+  margin-top: ${themeSpacing(2)};
+  margin-bottom: ${themeSpacing(2)};
+`;
+
+const StyledUL = styled.ul`
+  margin-top: 0;
+`;
 
 export default Result;

@@ -13,43 +13,6 @@ import Result from '@components/Demo-1/Result';
 
 export interface IProps { };
 
-const StyledH1 = styled(Heading)`
-  margin-top: ${themeSpacing(4)};
-  margin-bottom: ${themeSpacing(6)};
-`;
-
-const StyledH2 = styled.h2`
-  margin-top: ${themeSpacing(2)};
-  margin-bottom: ${themeSpacing(3)};
-`;
-
-
-const StyledAlert = styled(Alert)`
-  margin-top: ${themeSpacing(4)};
-`;
-
-const GreenAlert = styled(Alert)`
-  margin-top: ${themeSpacing(4)};
-  background-color: ${themeColor('support', 'valid')};
-  * {
-    color: ${themeColor('tint', 'level1')};;
-  }
-`;
-
-const StyledParagraph = styled(Paragraph)`
-  margin-top: ${themeSpacing(2)};
-  margin-bottom: ${themeSpacing(2)};
-`;
-
-const StyledUL = styled.ul`
-  margin-top: 0;
-`;
-
-const StyledImage = styled.img`
-    width: 100%;
-    margin-bottom: ${themeSpacing(3)};
-`;
-
 const Demo1: React.FC<IProps> = () => {
   const [isOver18, setIsOver18] = useState<boolean>(false);
   const [hasResult, setHasResult] = useState<boolean>(false);
@@ -103,5 +66,42 @@ const Demo1: React.FC<IProps> = () => {
     </PageTemplate>
   );
 };
+
+const StyledH1 = styled(Heading)`
+  margin-top: ${themeSpacing(4)};
+  margin-bottom: ${themeSpacing(6)};
+`;
+
+const StyledH2 = styled.h2`
+  margin-top: ${themeSpacing(2)};
+  margin-bottom: ${themeSpacing(3)};
+`;
+
+
+const StyledAlert = styled(Alert)`
+  margin-top: ${themeSpacing(4)};
+`;
+
+const GreenAlert = styled(Alert)`
+  margin-top: ${themeSpacing(4)};
+  background-color: ${themeColor('support', 'valid')};
+  * {
+    color: ${themeColor('tint', 'level1')};;
+  }
+`;
+
+const StyledParagraph = styled(Paragraph)`
+  margin-top: ${themeSpacing(2)};
+  margin-bottom: ${themeSpacing(2)};
+`;
+
+const StyledUL = styled.ul`
+  margin-top: 0;
+`;
+
+const StyledImage = styled.img`
+    width: 100%;
+    margin-bottom: ${themeSpacing(3)};
+`;
 
 export default Demo1;

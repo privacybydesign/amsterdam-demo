@@ -13,43 +13,6 @@ export interface IProps {
   className?: string,
 }
 
-const StyledButton = styled(Button)`
-  margin-top: ${themeSpacing(6)};
-  margin-bottom: ${themeSpacing(6)};
-`;
-
-const StyledH3 = styled.h3``;
-
-const ModalWrapper = styled.div`
-  padding: ${themeSpacing(0, 5, 5, 5)};
-  ul, ol {
-    margin-top: 0;
-  }
-`;
-
-const StyledHeader = styled.div`
-  border-bottom: 1px solid ${themeColor('tint', 'level5')};
-  display: flex;
-  padding-left: ${themeSpacing(5)};
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const CloseButton = styled(Button)`
-  margin-right: ${themeSpacing(3)};
-` ;
-
-const CanvasWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: ${themeSpacing(3, 0, 5)};
-` ;
-
-const StyledOL = styled.ol`
-  margin-top: 0;
-`;
-
-
 const QRCode: React.FC<IProps> = ({ getSession, className }) => {
   const [hasOverlay, setHasOverlay] = useState(false)
 
@@ -87,5 +50,43 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
     </div>
   );
 };
+
+const StyledButton = styled(Button)`
+  margin-top: ${themeSpacing(6)};
+  margin-bottom: ${themeSpacing(6)};
+`;
+
+const StyledH3 = styled.h3``;
+
+const ModalWrapper = styled.div`
+  padding: ${themeSpacing(0, 5, 5, 5)};
+  ul, ol {
+    margin-top: 0;
+  }
+`;
+
+const StyledHeader = styled.div`
+  border-bottom: 1px solid ${themeColor('tint', 'level5')};
+  display: flex;
+  padding-left: ${themeSpacing(5)};
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const CloseButton = styled(Button)`
+  margin-right: ${themeSpacing(3)};
+` ;
+
+const CanvasWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: ${themeSpacing(3, 0, 5)};
+` ;
+
+const StyledOL = styled.ol`
+  margin-top: 0;
+`;
+
+
 
 export default QRCode;
