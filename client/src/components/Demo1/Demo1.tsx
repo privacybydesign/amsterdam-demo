@@ -9,7 +9,6 @@ import { ExternalLink } from '@datapunt/asc-assets';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
-import Result from '@components/Demo-1/Result';
 
 export interface IProps { };
 
@@ -58,7 +57,7 @@ const Demo1: React.FC<IProps> = () => {
           </div>
         </>
         :
-        <Result />
+        <ReactMarkDown source={content.demo1.result} />
       }
 
     </PageTemplate>
@@ -76,6 +75,7 @@ const StyledH2 = styled.h2`
 `;
 
 
+// TODO: Refactor alert variations
 const StyledAlert = styled(Alert)`
   margin-top: ${themeSpacing(4)};
 `;
@@ -84,7 +84,7 @@ const GreenAlert = styled(Alert)`
   margin-top: ${themeSpacing(4)};
   background-color: ${themeColor('support', 'valid')};
   * {
-    color: ${themeColor('tint', 'level1')};;
+    color: ${themeColor('tint', 'level1')};
   }
 `;
 

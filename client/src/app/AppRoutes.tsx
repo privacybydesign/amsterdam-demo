@@ -1,7 +1,7 @@
 import React from 'react';
 import Homepage from '@components/Homepage/Homepage';
 import TestIrmaServer from '@components/TestIrmaServer/TestIrmaServer';
-import Demo1 from '@components/Demo-1/Demo-1';
+import Demo1 from '@components/Demo1/Demo1';
 
 interface IRoute {
     path: string;

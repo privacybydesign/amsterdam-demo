@@ -4,6 +4,7 @@ import BreadCrumbs from '@components/BreadCrumbs';
 import { Accordion, Heading, Paragraph, themeSpacing, breakpoint } from '@datapunt/asc-ui';
 import ReactMarkDown from 'react-markdown';
 import content from '@services/content';
+import AppRoutes from '@app/AppRoutes';
 import VerticalColumn from '@components/VerticalColumn/VerticalColumn';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import Article from '@components/Article/Article';
@@ -26,7 +27,7 @@ const Homepage: React.FC<IProps> = () => (
                 </Accordion>
             </AccordionContainer>
             <ReactMarkDown source={content.home.subtitle} renderers={{ heading: StyledH2 }} />
-            <Article imageSrc="/assets/demo_1.png" title={content.home.demo1.title} href={content.home.demo1.href}>
+            <Article imageSrc="/assets/demo_1.png" title={content.home.demo1.title} href={AppRoutes.DEMO1.path}>
                 <ReactMarkDown source={content.home.demo1.body} />
             </Article>
             <Article imageSrc="/assets/demo_2.png" title={content.home.demo2.title} href="test2">

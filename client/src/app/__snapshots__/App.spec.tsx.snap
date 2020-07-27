@@ -1138,7 +1138,7 @@ exports[`App component should match snapshot 1`] = `
           class="c21"
         >
           <a
-            href="/test1"
+            href="/leeftijd-aantonen"
           >
             <img
               alt=""

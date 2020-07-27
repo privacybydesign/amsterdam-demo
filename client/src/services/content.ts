@@ -23,7 +23,6 @@ Ervaar nu vast wat u met IRMA kunt via verschillende demo's.
         subtitle: `## Aan de slag met IRMA`,
         demo1: {
             title: `Demo 1: Leeftijd aantonen`,
-            href: 'leeftijd-aantonen',
             body: `Bewijs dat u ouder bent dan 18 jaar zonder uw geboortedatum prijs te geven.`
         },
         demo2: {
@@ -84,8 +83,7 @@ Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgen
             label: 'Download IRMA',
             href: '/'
         },
-        result: {
-            intro: `De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.
+        result: `De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.
 ## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om door te geven dat u ouder bent dan 18 jaar.
 - U heeft uw geboortedatum (en andere gegevens) niet doorgegeven.
@@ -94,11 +92,8 @@ Als u via IRMA uw leeftijd doorgeeft, is bij de website bekend of u aan de leeft
 Dit kan worden gebruikt voor: \n
 - Alcohol kopen.
 - Stemmen voor lokale initiatieven.
-- Toegang en korting op basis van uw leeftijd.`,
-            link: {
-                label: 'Probeer de andere demo’s',
-                href: '/'
-            }
-        }
+- Toegang en korting op basis van uw leeftijd.
+[Probeer de andere demo’s](/)
+`
     }
 };
