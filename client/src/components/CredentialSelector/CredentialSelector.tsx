@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { IIrmaServerConfig, getConfig } from '@services/createIrmaSession';
-import { Select } from '@datapunt/asc-ui';
+import { Select, themeSpacing } from '@datapunt/asc-ui';
 
 interface IProps {
     credentialSource: string;
@@ -50,6 +50,7 @@ const CredentialSelector: React.FC<IProps> = ({
 
 const Container = styled.div`
     max-width: 300px;
+    margin-bottom: ${themeSpacing(4)};
 `;
 
 export default CredentialSelector;
