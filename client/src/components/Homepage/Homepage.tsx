@@ -26,7 +26,7 @@ const Homepage: React.FC<IProps> = () => (
                 </Accordion>
             </AccordionContainer>
             <ReactMarkDown source={content.home.subtitle} renderers={{ heading: StyledH2 }} />
-            <Article imageSrc="/assets/demo_1.png" title={content.home.demo1.title} href="demo-1">
+            <Article imageSrc="/assets/demo_1.png" title={content.home.demo1.title} href={content.home.demo1.href}>
                 <ReactMarkDown source={content.home.demo1.body} />
             </Article>
             <Article imageSrc="/assets/demo_2.png" title={content.home.demo2.title} href="test2">

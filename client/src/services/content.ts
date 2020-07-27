@@ -23,6 +23,7 @@ Ervaar nu vast wat u met IRMA kunt via verschillende demo's.
         subtitle: `## Aan de slag met IRMA`,
         demo1: {
             title: `Demo 1: Leeftijd aantonen`,
+            href: 'leeftijd-aantonen',
             body: `Bewijs dat u ouder bent dan 18 jaar zonder uw geboortedatum prijs te geven.`
         },
         demo2: {
