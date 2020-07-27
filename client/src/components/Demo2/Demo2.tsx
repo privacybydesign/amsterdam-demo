@@ -39,25 +39,25 @@ const Demo2: React.FC<IProps> = () => {
         );
     } else if (isOver18 && isPostcodeInArea) {
         alertBox = (
-            <StyledAlert heading={content.demo2.proven.alert.title} content={content.demo2.proven.alert.bodyPositive} />
+            <GreenAlert heading={content.demo2.proven.alert.title} content={content.demo2.proven.alert.bodyPositive} />
         );
     } else if (!isOver18 && isPostcodeInArea) {
         alertBox = (
-            <StyledAlert
+            <YellowAlert
                 heading={content.demo2.proven.alert.title}
                 content={content.demo2.proven.alert.bodyAgeNegative}
             />
         );
     } else if (isOver18 && !isPostcodeInArea) {
         alertBox = (
-            <StyledAlert
+            <YellowAlert
                 heading={content.demo2.proven.alert.title}
                 content={content.demo2.proven.alert.bodyPostcodeNegative}
             />
         );
     } else if (!isOver18 && !isPostcodeInArea) {
         alertBox = (
-            <StyledAlert
+            <YellowAlert
                 heading={content.demo2.proven.alert.title}
                 content={content.demo2.proven.alert.bodyAgeAndPostcodeNegative}
             />
@@ -117,12 +117,17 @@ const AccordionHeading = styled(Heading).attrs({ as: 'h4' })`
     margin: 0;
 `;
 
-const StyledAlert = styled(Alert)`
+const GreenAlert = styled(Alert)`
     background-color: ${themeColor('support', 'valid')};
 
     * {
         color: ${themeColor('tint', 'level1')};
     }
+`;
+
+const YellowAlert = styled(Alert)`
+    margin-top: ${themeSpacing(4)};
+    background-color: ${themeColor('support', 'focus')};
 `;
 
 const AccordionContainer = styled.div`
