@@ -36,7 +36,7 @@ const createIrmaSession = async (
     credentialSourceFromDemo = false
 ): Promise<unknown> => {
     const config = await getConfig();
-    const irmaResponse = await instance.get(`/getsession/${dataType}${credentialSourceFromDemo ? 'demo=true' : ''}`);
+    const irmaResponse = await instance.get(`/getsession/${dataType}${credentialSourceFromDemo ? '?demo=true' : ''}`);
     const session = await irmaResponse.data;
 
     const { sessionPtr, token } = session;
