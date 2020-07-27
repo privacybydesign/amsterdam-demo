@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import BreadCrumbs from '@components/BreadCrumbs';
 import { Accordion, Heading, Paragraph, themeSpacing, breakpoint } from '@datapunt/asc-ui';
+import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import ReactMarkDown from 'react-markdown';
 import content from '@services/content';
 import AppRoutes from '@app/AppRoutes';
@@ -9,7 +10,7 @@ import VerticalColumn from '@components/VerticalColumn/VerticalColumn';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import Article from '@components/Article/Article';
 
-interface IProps {}
+interface IProps { }
 
 const Homepage: React.FC<IProps> = () => (
     <PageTemplate>
@@ -17,16 +18,16 @@ const Homepage: React.FC<IProps> = () => (
             source={content.home.breadcrumbs}
             renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
         />
-        <ReactMarkDown source={content.home.title} renderers={{ heading: StyledH1 }} />
-        <StyledImage src="/assets/home.png"></StyledImage>
+        <ReactMarkDown source={content.home.title} renderers={{ heading: AscLocal.H1 }} />
+        <AscLocal.Image src="/assets/home.png"></AscLocal.Image>
         <VerticalColumn span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
-            <ReactMarkDown source={content.home.intro} renderers={{ paragraph: StrongParagraph }} />
-            <AccordionContainer>
+            <ReactMarkDown source={content.home.intro} renderers={{ paragraph: AscLocal.StrongParagraph }} />
+            <AscLocal.AccordionContainer>
                 <Accordion title={content.home.requirements.title} id="nodig">
                     <ReactMarkDown source={content.home.requirements.body} />
                 </Accordion>
-            </AccordionContainer>
-            <ReactMarkDown source={content.home.subtitle} renderers={{ heading: StyledH2 }} />
+            </AscLocal.AccordionContainer>
+            <ReactMarkDown source={content.home.subtitle} renderers={{ heading: AscLocal.H2 }} />
             <Article imageSrc="/assets/demo_1.png" title={content.home.demo1Card.title} href={AppRoutes.DEMO1.path}>
                 <ReactMarkDown source={content.home.demo1Card.body} />
             </Article>
@@ -36,28 +37,5 @@ const Homepage: React.FC<IProps> = () => (
         </VerticalColumn>
     </PageTemplate>
 );
-
-const StrongParagraph: React.FC<IProps> = ({ children }) => <Paragraph strong>{children}</Paragraph>;
-
-const StyledImage = styled.img`
-    width: 100%;
-    margin-bottom: ${themeSpacing(3)};
-`;
-
-const StyledH1 = styled(Heading)`
-    margin: ${themeSpacing(5)} 0;
-
-    @media ${breakpoint('min-width', 'laptopM')} {
-        margin: ${themeSpacing(8)} 0;
-    }
-`;
-
-const StyledH2 = styled(Heading)`
-    margin-bottom: ${themeSpacing(3)};
-`;
-
-const AccordionContainer = styled.div`
-    margin-bottom: ${themeSpacing(5)};
-`;
 
 export default Homepage;
