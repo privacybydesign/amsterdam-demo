@@ -11,7 +11,7 @@ import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
 import Result from '@components/Demo-1/Result';
 
-export interface IProps { }
+export interface IProps { };
 
 const StyledH1 = styled(Heading)`
   margin-top: ${themeSpacing(4)};

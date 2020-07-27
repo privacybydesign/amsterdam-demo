@@ -9,7 +9,7 @@ import { Linkedin, Close } from '@datapunt/asc-assets';
 // @todo fix irma logo
 
 export interface IProps {
-  getSession: Function,
+  getSession: function,
   className?: string,
 }
 
@@ -21,7 +21,7 @@ const StyledButton = styled(Button)`
 const StyledH3 = styled.h3``;
 
 const ModalWrapper = styled.div`
-  padding: ${themeSpacing(0 5 5 5)};
+  padding: ${themeSpacing(0, 5, 5, 5)};
   ul, ol {
     margin-top: 0;
   }
@@ -42,7 +42,7 @@ const CloseButton = styled(Button)`
 const CanvasWrapper = styled.div`
   display: flex;
   justify-content: center;
-  padding: ${themeSpacing(3 0 5)};
+  padding: ${themeSpacing(3, 0, 5)};
 ` ;
 
 const StyledOL = styled.ol`
