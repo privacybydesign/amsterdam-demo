@@ -21,7 +21,7 @@ const Demo1: React.FC<IProps> = () => {
 
     const getSession = async () => {
         const response = await createIrmaSession('demo1', 'irma-qr', credentialSource === CredentialSource.DEMO);
-        setIsOver18(response['pbdf.gemeente.personalData.over18'] === 'Yes');
+        setIsOver18(response['over18'] === 'Yes');
         setHasResult(true);
     };
 

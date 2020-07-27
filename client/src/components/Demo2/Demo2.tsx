@@ -20,12 +20,15 @@ const Demo2: React.FC<IProps> = () => {
 
     const getSession = async () => {
         const response = await createIrmaSession('demo2', 'irma-qr', credentialSource === CredentialSource.DEMO);
-        setIsOver18(response['pbdf.gemeente.personalData.over18'] === 'Yes');
-        setIsPostcodeInArea(response['pbdf.gemeente.personalData.over18'] === 'Yes');
+        setIsOver18(response['over18'] === 'Yes');
+
+        const postcode = parseInt(response['zipcode'].substr(0, 4));
+        setIsPostcodeInArea(postcode >= 1000 && postcode <= 1099);
+
         setHasResult(true);
     };
 
-    let alertBox;
+    let alertBox: JSX.Element;
     if (!hasResult) {
         alertBox = (
             <Alert

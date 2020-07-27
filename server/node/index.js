@@ -170,7 +170,6 @@ const irmaDiscloseRequest = async (req, res, requestType, id) => {
 };
 
 const getCredentialSourceFromRequest = (req) => {
-  console.log(req.query.demo);
   return req &&
     req.query.demo === "true" &&
     process.env.NODE_ENV !== "production"
