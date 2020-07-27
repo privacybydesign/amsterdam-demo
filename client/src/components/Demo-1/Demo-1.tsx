@@ -13,6 +13,8 @@ import Result from '@components/Demo-1/Result';
 
 export interface IProps { };
 
+// @todo add error flow with incorrect data
+
 const Demo1: React.FC<IProps> = () => {
   const [isOver18, setIsOver18] = useState<boolean>(false);
   const [hasResult, setHasResult] = useState<boolean>(false);
@@ -41,11 +43,7 @@ const Demo1: React.FC<IProps> = () => {
 
       {!hasResult ?
         <>
-          <ReactMarkDown source={content.demo1.intro1} renderers={{ paragraph: StyledParagraph, list: StyledUL }} />
-
-          <ReactMarkDown source={content.demo1.tryIt} renderers={{ heading: StyledH2 }} />
-
-          <ReactMarkDown source={content.demo1.intro2} renderers={{ paragraph: StyledParagraph, list: StyledUL }} />
+          <ReactMarkDown source={content.demo1.intro} renderers={{ heading: StyledH2, paragraph: StyledParagraph, list: StyledUL }} />
 
           <Accordion title={content.demo1.waarom.title}>
             <ReactMarkDown source={content.demo1.waarom.body} renderers={{ paragraph: StyledParagraph, list: StyledUL }} />
