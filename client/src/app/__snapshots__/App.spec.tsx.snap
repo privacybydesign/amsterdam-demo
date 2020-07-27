@@ -1196,7 +1196,7 @@ exports[`App component should match snapshot 1`] = `
             </h2>
             <div>
               <p>
-                Bewijs dat u ouder bent dan 18 jaar zonder uw geboortedatum prijs te geven.
+                Bewijs dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.
               </p>
             </div>
             <span
