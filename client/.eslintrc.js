@@ -3,8 +3,7 @@ module.exports = {
     plugins: ['babel', '@typescript-eslint', 'jest', 'prettier', 'jsx-a11y', 'import', 'react-hooks'],
     extends: [
         'eslint:recommended',
-        // 'plugin:prettier/recommended',
-        // @todo fix all prettier errors later
+        'plugin:prettier/recommended',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:react/recommended',

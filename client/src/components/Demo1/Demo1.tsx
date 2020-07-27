@@ -10,91 +10,122 @@ import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
 
-export interface IProps { };
+export interface IProps {}
 
 // @todo add error flow with incorrect data
 
 const Demo1: React.FC<IProps> = () => {
-  const [isOver18, setIsOver18] = useState<boolean>(false);
-  const [hasResult, setHasResult] = useState<boolean>(false);
+    const [isOver18, setIsOver18] = useState<boolean>(false);
+    const [hasResult, setHasResult] = useState<boolean>(false);
 
-  const getSession = async () => {
-    const response = await createIrmaSession('age', 'irma-qr');
-    setIsOver18(response['pbdf.gemeente.personalData.over18'] === 'Yes');
-    setHasResult(true);
-  }
+    const getSession = async () => {
+        const response = await createIrmaSession('age', 'irma-qr');
+        setIsOver18(response['pbdf.gemeente.personalData.over18'] === 'Yes');
+        setHasResult(true);
+    };
 
-  return (
-    <PageTemplate>
-      <ReactMarkDown
-        source={content.demo1.breadcrumbs}
-        renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
-      />
+    return (
+        <PageTemplate>
+            <ReactMarkDown
+                source={content.demo1.breadcrumbs}
+                renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
+            />
 
-      {!hasResult && <StyledAlert level="attention" heading={content.demo1.demo.heading} content={content.demo1.demo.content} />}
+            {!hasResult && (
+                <StyledAlert
+                    level="attention"
+                    heading={content.demo1.demo.heading}
+                    content={content.demo1.demo.content}
+                />
+            )}
 
-      {hasResult && isOver18 && <GreenAlert heading={content.demo1.isOver18.heading} content={content.demo1.isOver18.content} />}
-      {hasResult && !isOver18 && <StyledAlert level="error" heading={content.demo1.isNotOver18.heading} content={content.demo1.isNotOver18.content} />}
+            {hasResult && isOver18 && (
+                <GreenAlert heading={content.demo1.isOver18.heading} content={content.demo1.isOver18.content} />
+            )}
+            {hasResult && !isOver18 && (
+                <StyledAlert
+                    level="error"
+                    heading={content.demo1.isNotOver18.heading}
+                    content={content.demo1.isNotOver18.content}
+                />
+            )}
 
-      <ReactMarkDown source={content.demo1.title[hasResult ? 'hasResult' : 'noResult']} renderers={{ heading: StyledH1 }} />
+            <ReactMarkDown
+                source={content.demo1.title[hasResult ? 'hasResult' : 'noResult']}
+                renderers={{ heading: StyledH1 }}
+            />
 
-      <StyledImage src="/assets/demo_1.png" alt="foto van mensen in een café"></StyledImage>
+            <StyledImage src="/assets/demo_1.png" alt="foto van mensen in een café"></StyledImage>
 
-      {!hasResult ?
-        <>
-          <ReactMarkDown source={content.demo1.intro} renderers={{ heading: StyledH2, paragraph: StyledParagraph, list: StyledUL }} />
+            {!hasResult ? (
+                <>
+                    <ReactMarkDown
+                        source={content.demo1.intro}
+                        renderers={{ heading: StyledH2, paragraph: StyledParagraph, list: StyledUL }}
+                    />
 
-          <Accordion title={content.demo1.waarom.title}>
-            <ReactMarkDown source={content.demo1.waarom.body} renderers={{ paragraph: StyledParagraph, list: StyledUL }} />
-          </Accordion>
+                    <Accordion title={content.demo1.waarom.title}>
+                        <ReactMarkDown
+                            source={content.demo1.waarom.body}
+                            renderers={{ paragraph: StyledParagraph, list: StyledUL }}
+                        />
+                    </Accordion>
 
-          <QRCode getSession={getSession} />
+                    <QRCode getSession={getSession} />
 
-          <div>{content.demo1.irma.question}&nbsp;
-            <Link href={content.demo1.irma.href} variant="inline" icon={<Icon size={16}> <ExternalLink /> </Icon>}>
-              <ReactMarkDown source={content.demo1.irma.label} />
-            </Link>
-          </div>
-        </>
-        :
-        <ReactMarkDown source={content.demo1.result} />
-      }
-
-    </PageTemplate>
-  );
+                    <div>
+                        {content.demo1.irma.question}&nbsp;
+                        <Link
+                            href={content.demo1.irma.href}
+                            variant="inline"
+                            icon={
+                                <Icon size={16}>
+                                    {' '}
+                                    <ExternalLink />{' '}
+                                </Icon>
+                            }
+                        >
+                            <ReactMarkDown source={content.demo1.irma.label} />
+                        </Link>
+                    </div>
+                </>
+            ) : (
+                <ReactMarkDown source={content.demo1.result} />
+            )}
+        </PageTemplate>
+    );
 };
 
 const StyledH1 = styled(Heading)`
-  margin-top: ${themeSpacing(4)};
-  margin-bottom: ${themeSpacing(6)};
+    margin-top: ${themeSpacing(4)};
+    margin-bottom: ${themeSpacing(6)};
 `;
 
 const StyledH2 = styled.h2`
-  margin-top: ${themeSpacing(2)};
-  margin-bottom: ${themeSpacing(3)};
+    margin-top: ${themeSpacing(2)};
+    margin-bottom: ${themeSpacing(3)};
 `;
-
 
 // TODO: Refactor alert variations
 const StyledAlert = styled(Alert)`
-  margin-top: ${themeSpacing(4)};
+    margin-top: ${themeSpacing(4)};
 `;
 
 const GreenAlert = styled(Alert)`
-  margin-top: ${themeSpacing(4)};
-  background-color: ${themeColor('support', 'valid')};
-  * {
-    color: ${themeColor('tint', 'level1')};
-  }
+    margin-top: ${themeSpacing(4)};
+    background-color: ${themeColor('support', 'valid')};
+    * {
+        color: ${themeColor('tint', 'level1')};
+    }
 `;
 
 const StyledParagraph = styled(Paragraph)`
-  margin-top: ${themeSpacing(2)};
-  margin-bottom: ${themeSpacing(2)};
+    margin-top: ${themeSpacing(2)};
+    margin-bottom: ${themeSpacing(2)};
 `;
 
 const StyledUL = styled.ul`
-  margin-top: 0;
+    margin-top: 0;
 `;
 
 const StyledImage = styled.img`

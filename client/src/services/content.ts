@@ -75,7 +75,8 @@ Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgen
 - Uw burgerservicenummer(BSN)`,
         waarom: {
             title: 'Waarom worden deze gegevens gevraagd?',
-            body: '** Uw volledige naam **  \nDe gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.  \n  \n** Uw burgerservicenummer (BSN) **  \nDe gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.',
+            body:
+                '** Uw volledige naam **  \nDe gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.  \n  \n** Uw burgerservicenummer (BSN) **  \nDe gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.'
         },
         irma: {
             question: 'Heeft u nog geen IRMA?',

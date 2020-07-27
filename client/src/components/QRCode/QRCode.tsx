@@ -9,84 +9,82 @@ import { Linkedin, Close } from '@datapunt/asc-assets';
 // @todo fix irma logo
 
 export interface IProps {
-  getSession: Function,
-  className?: string,
+    getSession(): Promise<void>;
+    className?: string;
 }
 
 const QRCode: React.FC<IProps> = ({ getSession, className }) => {
-  const [hasOverlay, setHasOverlay] = useState(false)
+    const [hasOverlay, setHasOverlay] = useState(false);
 
-  const getQRSession = () => {
-    setHasOverlay(true);
-    typeof getSession === 'function' && getSession();
-  }
+    const getQRSession = () => {
+        setHasOverlay(true);
+        typeof getSession === 'function' && getSession();
+    };
 
-  const closeModal = () => {
-    setHasOverlay(false);
-  }
+    const closeModal = () => {
+        setHasOverlay(false);
+    };
 
-  return (
-    <div className={className}>
-      <StyledButton onClick={getQRSession} variant="secondary" iconLeft={<Linkedin />}>
-        <ReactMarkDown source={content.qrcode.knop} />
-      </StyledButton>
+    return (
+        <div className={className}>
+            <StyledButton onClick={getQRSession} variant="secondary" iconLeft={<Linkedin />}>
+                <ReactMarkDown source={content.qrcode.knop} />
+            </StyledButton>
 
-      <Modal backdropOpacity={0.5} open={hasOverlay} onClose={closeModal}>
-        <>
-          <StyledHeader>
-            <ReactMarkDown source={content.qrcode.title} renderers={{ heading: StyledH3 }} />
-            <CloseButton size={30} variant="blank" icon={<Close />} onClick={closeModal} />
-          </StyledHeader>
-          <ModalWrapper>
-            <ReactMarkDown source={content.qrcode.stappen} renderers={{ list: StyledOL }} />
+            <Modal backdropOpacity={0.5} open={hasOverlay} onClose={closeModal}>
+                <>
+                    <StyledHeader>
+                        <ReactMarkDown source={content.qrcode.title} renderers={{ heading: StyledH3 }} />
+                        <CloseButton size={30} variant="blank" icon={<Close />} onClick={closeModal} />
+                    </StyledHeader>
+                    <ModalWrapper>
+                        <ReactMarkDown source={content.qrcode.stappen} renderers={{ list: StyledOL }} />
 
-            <CanvasWrapper>
-              <canvas id="irma-qr" />
-            </CanvasWrapper>
-          </ModalWrapper>
-        </>
-      </Modal>
-
-    </div>
-  );
+                        <CanvasWrapper>
+                            <canvas id="irma-qr" />
+                        </CanvasWrapper>
+                    </ModalWrapper>
+                </>
+            </Modal>
+        </div>
+    );
 };
 
 const StyledButton = styled(Button)`
-  margin-top: ${themeSpacing(6)};
-  margin-bottom: ${themeSpacing(6)};
+    margin-top: ${themeSpacing(6)};
+    margin-bottom: ${themeSpacing(6)};
 `;
 
 const StyledH3 = styled.h3``;
 
 const ModalWrapper = styled.div`
-  padding: ${themeSpacing(0, 5, 5, 5)};
-  ul, ol {
-    margin-top: 0;
-  }
+    padding: ${themeSpacing(0, 5, 5, 5)};
+    ul,
+    ol {
+        margin-top: 0;
+    }
 `;
 
 const StyledHeader = styled.div`
-  border-bottom: 1px solid ${themeColor('tint', 'level5')};
-  display: flex;
-  padding-left: ${themeSpacing(5)};
-  justify-content: space-between;
-  align-items: center;
+    border-bottom: 1px solid ${themeColor('tint', 'level5')};
+    display: flex;
+    padding-left: ${themeSpacing(5)};
+    justify-content: space-between;
+    align-items: center;
 `;
 
 const CloseButton = styled(Button)`
-  margin-right: ${themeSpacing(3)};
-` ;
-
-const CanvasWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: ${themeSpacing(3, 0, 5)};
-` ;
-
-const StyledOL = styled.ol`
-  margin-top: 0;
+    margin-right: ${themeSpacing(3)};
 `;
 
+const CanvasWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    padding: ${themeSpacing(3, 0, 5)};
+`;
 
+const StyledOL = styled.ol`
+    margin-top: 0;
+`;
 
 export default QRCode;
