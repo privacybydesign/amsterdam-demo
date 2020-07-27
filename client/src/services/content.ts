@@ -63,7 +63,24 @@ Bewijs in welke wijk u woont en dat u ouder bent dan 18 jaar door uzelf bekend t
 De gemeente weet dan in welke wijk u woont.
 # Ouder dan 18 jaar
 De gemeente weet dan of u mag stemmen.`
-        }
+        },
+        result: `
+De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.
+
+# Wat heeft u zojuist gedaan?
+- U heeft IRMA gebruikt om door te geven dat u ouder bent dan 18 jaar.
+- U heeft uw geboortedatum(en andere gegevens) niet doorgegeven.
+
+# Wat is er anders met IRMA?
+Als u via IRMA uw leeftijd doorgeeft, is bij de website bekend of u aan de leeftijdsgrens voldoet.
+U blijft anoniem.
+
+Dit kan worden gebruikt voor:
+- Alcohol kopen.
+- Stemmen voor lokale initiatieven.
+- Toegang en korting op basis van uw leeftijd.
+
+[Probeer de andere demo's](/)`
     },
     footer: {
         column1: `# Contact

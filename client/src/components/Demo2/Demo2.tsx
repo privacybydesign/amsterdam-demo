@@ -3,12 +3,11 @@ import styled from 'styled-components';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
-import { Heading, Paragraph, Accordion, Alert, themeColor, themeSpacing } from '@datapunt/asc-ui';
+import { Heading, Paragraph, Link, Accordion, Alert, themeColor, themeSpacing } from '@datapunt/asc-ui';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
-import Result from './Result';
 
 export interface IProps {}
 
@@ -93,7 +92,10 @@ const Demo2: React.FC<IProps> = () => {
                     />
                 </>
             ) : (
-                <Result />
+                <ReactMarkDown
+                    source={content.demo2.result}
+                    renderers={{ heading: StyledH2, paragraph: Paragraph, link: Link }}
+                />
             )}
         </PageTemplate>
     );
