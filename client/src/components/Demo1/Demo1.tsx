@@ -4,8 +4,8 @@ import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 
-import { Heading, Paragraph, Accordion, Link, Icon, Alert, themeColor, themeSpacing } from '@datapunt/asc-ui';
-import { ExternalLink } from '@datapunt/asc-assets';
+import { Heading, Paragraph, Accordion, Alert, themeColor, themeSpacing } from '@datapunt/asc-ui';
+import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
@@ -19,7 +19,7 @@ const Demo1: React.FC<IProps> = () => {
     const [hasResult, setHasResult] = useState<boolean>(false);
 
     const getSession = async () => {
-        const response = await createIrmaSession('age', 'irma-qr');
+        const response = await createIrmaSession('demo1', 'irma-qr');
         setIsOver18(response['pbdf.gemeente.personalData.over18'] === 'Yes');
         setHasResult(true);
     };
@@ -73,21 +73,11 @@ const Demo1: React.FC<IProps> = () => {
 
                     <QRCode getSession={getSession} />
 
-                    <div>
-                        {content.demo1.irma.question}&nbsp;
-                        <Link
-                            href={content.demo1.irma.href}
-                            variant="inline"
-                            icon={
-                                <Icon size={16}>
-                                    {' '}
-                                    <ExternalLink />{' '}
-                                </Icon>
-                            }
-                        >
-                            <ReactMarkDown source={content.demo1.irma.label} />
-                        </Link>
-                    </div>
+                    <ReactMarkDown
+                        source={content.downloadIrma}
+                        escapeHtml={false}
+                        renderers={{ paragraph: Paragraph, link: ExternalLink }}
+                    />
                 </>
             ) : (
                 <ReactMarkDown source={content.demo1.result} />
