@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
+import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Heading, Paragraph, Link, Accordion, Alert, themeColor, themeSpacing } from '@datapunt/asc-ui';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
@@ -69,48 +70,48 @@ const Demo2: React.FC<IProps> = () => {
             />
             <ReactMarkDown
                 source={content.demo2[hasResult ? 'proven' : 'unproven'].title}
-                renderers={{ heading: StyledH1 }}
+                renderers={{ heading: AscLocal.H1 }}
             />
             {/* // TODO: Add local image */}
             <img src="/assets/demo_1.png" alt="Woonwijk" />
             {!hasResult ? (
                 <>
-                    <ReactMarkDown source={content.demo2.intro} renderers={{ heading: StyledH2 }} />
-                    <AccordionContainer>
+                    <ReactMarkDown source={content.demo2.intro} renderers={{ heading: AscLocal.H2, list: AscLocal.UL }} />
+                    <AscLocal.AccordionContainer>
                         <Accordion title={content.demo2.why.title}>
                             <ReactMarkDown
                                 source={content.demo2.why.body}
-                                renderers={{ paragraph: Paragraph, heading: AccordionHeading }}
+                                renderers={{ paragraph: AscLocal.Paragraph, heading: AscLocal.AccordionHeading }}
                             />
                         </Accordion>
-                    </AccordionContainer>
+                    </AscLocal.AccordionContainer>
                     <QRCode getSession={getSession} />
                     <ReactMarkDown
                         source={content.downloadIrma}
                         escapeHtml={false}
-                        renderers={{ paragraph: Paragraph, link: ExternalLink }}
+                        renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
                     />
                 </>
             ) : (
                     <ReactMarkDown
                         source={content.demo2.result}
-                        renderers={{ heading: StyledH2, paragraph: Paragraph, link: Link }}
+                        renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
                     />
                 )}
         </PageTemplate>
     );
 };
 
-const StyledH1 = styled(Heading)`
-    margin-top: ${themeSpacing(4)};
-    margin-bottom: ${themeSpacing(6)};
-`;
+// const StyledH1 = styled(Heading)`
+//     margin-top: ${themeSpacing(4)};
+//     margin-bottom: ${themeSpacing(6)};
+// `;
 
-const StyledH2 = styled(Heading).attrs({ as: 'h2' })``;
+// const StyledH2 = styled(Heading).attrs({ as: 'h2' })``;
 
-const AccordionHeading = styled(Heading).attrs({ as: 'h4' })`
-    margin: 0;
-`;
+// const AccordionHeading = styled(Heading).attrs({ as: 'h4' })`
+//     margin: 0;
+// `;
 
 const StyledAlert = styled(Alert)`
     background-color: ${themeColor('support', 'valid')};
@@ -120,8 +121,8 @@ const StyledAlert = styled(Alert)`
     }
 `;
 
-const AccordionContainer = styled.div`
-    margin-bottom: ${themeSpacing(4)};
-`;
+// const AccordionContainer = styled.div`
+// margin-bottom: ${themeSpacing(4)};
+// `;
 
 export default Demo2;

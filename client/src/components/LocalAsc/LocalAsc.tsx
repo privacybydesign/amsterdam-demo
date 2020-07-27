@@ -35,5 +35,9 @@ export const AccordionContainer = styled.div`
   margin-bottom: ${themeSpacing(5)};
 `;
 
+export const AccordionHeading = styled(Heading).attrs({ as: 'h4' })`
+    margin: 0;
+`;
+
 
 export const StrongParagraph: React.FC<IProps> = ({ children }) => <Paragraph strong>{children}</Paragraph>;

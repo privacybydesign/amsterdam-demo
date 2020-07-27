@@ -24,7 +24,7 @@ const Homepage: React.FC<IProps> = () => (
             <ReactMarkDown source={content.home.intro} renderers={{ paragraph: AscLocal.StrongParagraph }} />
             <AscLocal.AccordionContainer>
                 <Accordion title={content.home.requirements.title} id="nodig">
-                    <ReactMarkDown source={content.home.requirements.body} />
+                    <ReactMarkDown source={content.home.requirements.body} renderers={{ list: AscLocal.UL }} />
                 </Accordion>
             </AscLocal.AccordionContainer>
             <ReactMarkDown source={content.home.subtitle} renderers={{ heading: AscLocal.H2 }} />
