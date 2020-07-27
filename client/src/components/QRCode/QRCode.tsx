@@ -5,6 +5,7 @@ import ReactMarkDown from 'react-markdown';
 import content from '@services/content';
 
 import { Button, Modal, themeSpacing, themeColor } from '@datapunt/asc-ui';
+import { OL } from '@components/LocalAsc/LocalAsc';
 import { Linkedin, Close } from '@datapunt/asc-assets';
 // @todo fix irma logo
 
@@ -38,7 +39,7 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
                         <CloseButton size={30} variant="blank" icon={<Close />} onClick={closeModal} />
                     </StyledHeader>
                     <ModalWrapper>
-                        <ReactMarkDown source={content.qrcode.stappen} renderers={{ list: StyledOL }} />
+                        <ReactMarkDown source={content.qrcode.stappen} renderers={{ list: OL }} />
 
                         <CanvasWrapper>
                             <canvas id="irma-qr" />
@@ -81,10 +82,6 @@ const CanvasWrapper = styled.div`
     display: flex;
     justify-content: center;
     padding: ${themeSpacing(3, 0, 5)};
-`;
-
-const StyledOL = styled.ol`
-    margin-top: 0;
 `;
 
 export default QRCode;
