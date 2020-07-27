@@ -9,7 +9,7 @@ import { Linkedin, Close } from '@datapunt/asc-assets';
 // @todo fix irma logo
 
 export interface IProps {
-  getSession: function,
+  getSession: Function,
   className?: string,
 }
 
