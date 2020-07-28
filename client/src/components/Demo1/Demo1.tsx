@@ -16,7 +16,7 @@ export interface IProps { }
 
 const Demo1: React.FC<IProps> = () => {
     const [isOver18, setIsOver18] = useState<boolean>(false);
-    const [hasResult, setHasResult] = useState<boolean>(true);
+    const [hasResult, setHasResult] = useState<boolean>(false);
 
     const getSession = async () => {
         const response = await createIrmaSession('age', 'irma-qr');

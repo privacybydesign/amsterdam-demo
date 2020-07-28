@@ -100,8 +100,4 @@ const Demo2: React.FC<IProps> = () => {
     );
 };
 
-// const AccordionContainer = styled.div`
-// margin-bottom: ${themeSpacing(4)};
-// `;
-
 export default Demo2;
