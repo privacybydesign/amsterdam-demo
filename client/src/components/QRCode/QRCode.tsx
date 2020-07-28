@@ -5,6 +5,7 @@ import ReactMarkDown from 'react-markdown';
 import content from '@services/content';
 
 import { Button, Modal, themeSpacing, themeColor } from '@datapunt/asc-ui';
+import { OL } from '@components/LocalAsc/LocalAsc';
 import { Close } from '@datapunt/asc-assets';
 
 export interface IProps {
@@ -38,7 +39,7 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
                         <CloseButton size={30} variant="blank" icon={<Close />} onClick={closeModal} />
                     </StyledHeader>
                     <ModalWrapper>
-                        <ReactMarkDown source={content.qrcode.stappen} renderers={{ list: StyledOL }} />
+                        <ReactMarkDown source={content.qrcode.stappen} renderers={{ list: OL }} />
 
                         <CanvasWrapper>
                             <IrmaLogo />
@@ -101,10 +102,6 @@ const Canvas = styled.canvas`
     border: 5px solid ${themeColor('primary', 'main')};
     padding: ${themeSpacing(8)};
     margin: ${themeSpacing(8)};;
-`;
-
-const StyledOL = styled.ol`
-    margin-top: 0;
 `;
 
 export default QRCode;
