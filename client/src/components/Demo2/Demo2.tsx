@@ -10,7 +10,7 @@ import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 
-export interface IProps { }
+export interface IProps {}
 
 const Demo2: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
@@ -38,11 +38,10 @@ const Demo2: React.FC<IProps> = () => {
         );
     } else if (isOver18 && isPostcodeInArea) {
         alertBox = (
-            <AscLocal.GreenAlert heading={content.demo2.proven.alert.title} content={content.demo2.proven.alert.bodyPositive} />
-        );
-    } else if (!isOver18 && isPostcodeInArea) {
-        alertBox = (
-            <AscLocal.RedAlert
+            <AscLocal.GreenAlert
+                heading={content.demo2.proven.alert.title}
+                content={content.demo2.proven.alert.bodyPositive}
+            />
         );
     } else if (!isOver18 && isPostcodeInArea) {
         alertBox = (
@@ -83,7 +82,10 @@ const Demo2: React.FC<IProps> = () => {
             <img src="/assets/demo_1.png" alt="Woonwijk" />
             {!hasResult ? (
                 <>
-                    <ReactMarkDown source={content.demo2.intro} renderers={{ heading: AscLocal.H2, list: AscLocal.UL }} />
+                    <ReactMarkDown
+                        source={content.demo2.intro}
+                        renderers={{ heading: AscLocal.H2, list: AscLocal.UL }}
+                    />
                     <AscLocal.AccordionContainer>
                         <Accordion title={content.demo2.why.title}>
                             <ReactMarkDown
@@ -100,11 +102,11 @@ const Demo2: React.FC<IProps> = () => {
                     />
                 </>
             ) : (
-                    <ReactMarkDown
-                        source={content.demo2.result}
-                        renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
-                    />
-                )}
+                <ReactMarkDown
+                    source={content.demo2.result}
+                    renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
+                />
+            )}
         </PageTemplate>
     );
 };
