@@ -5,13 +5,13 @@ import ReactMarkDown from 'react-markdown';
 import content from '@services/content';
 
 import { Button, Modal, themeSpacing, themeColor } from '@datapunt/asc-ui';
-import { Linkedin, Close } from '@datapunt/asc-assets';
-// @todo fix irma logo
+import { Close } from '@datapunt/asc-assets';
 
 export interface IProps {
     getSession(): Promise<void>;
     className?: string;
 }
+
 
 const QRCode: React.FC<IProps> = ({ getSession, className }) => {
     const [hasOverlay, setHasOverlay] = useState(false);
@@ -27,9 +27,9 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
 
     return (
         <div className={className}>
-            <StyledButton onClick={getQRSession} variant="secondary" iconLeft={<Linkedin />}>
+            <StyledButton onClick={getQRSession} variant="secondary" iconSize={24} iconLeft={<IrmaLogo />} >
                 <ReactMarkDown source={content.qrcode.knop} />
-            </StyledButton>
+            </StyledButton >
 
             <Modal backdropOpacity={0.5} open={hasOverlay} onClose={closeModal}>
                 <>
@@ -46,9 +46,14 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
                     </ModalWrapper>
                 </>
             </Modal>
-        </div>
+        </div >
     );
 };
+
+
+const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
+    width: 24px;
+`;
 
 const StyledButton = styled(Button)`
     margin-top: ${themeSpacing(6)};
