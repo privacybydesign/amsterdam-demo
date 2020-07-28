@@ -92,9 +92,9 @@ const CanvasWrapper = styled.div`
 
 const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
     position: absolute;
-    margin-top: 100px;
-    width: 190px;
-    height: 190px;
+    margin-top: 117px;
+    width: 150px;
+    height: 150px;
 `;
 
 const Canvas = styled.canvas`
