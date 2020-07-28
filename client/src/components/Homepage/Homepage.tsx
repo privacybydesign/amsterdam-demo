@@ -1,7 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import BreadCrumbs from '@components/BreadCrumbs';
-import { Accordion, Heading, Paragraph, themeSpacing, breakpoint } from '@datapunt/asc-ui';
+import { Accordion } from '@datapunt/asc-ui';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import ReactMarkDown from 'react-markdown';
 import content from '@services/content';
@@ -10,7 +9,7 @@ import VerticalColumn from '@components/VerticalColumn/VerticalColumn';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import Article from '@components/Article/Article';
 
-interface IProps { }
+interface IProps {}
 
 const Homepage: React.FC<IProps> = () => (
     <PageTemplate>

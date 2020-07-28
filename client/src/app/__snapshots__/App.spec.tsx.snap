@@ -376,10 +376,6 @@ exports[`App component should match snapshot 1`] = `
 
 }
 
-@media (min-width:1200px) {
-
-}
-
 <div
     class="c0"
     id="header"
@@ -429,7 +425,7 @@ exports[`App component should match snapshot 1`] = `
       />
     </header>
   </div>
-  .c24 {
+  .c26 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -442,7 +438,7 @@ exports[`App component should match snapshot 1`] = `
   transform: rotate(0deg);
 }
 
-.c24 > svg {
+.c26 > svg {
   width: 20px;
   height: 20px;
 }
@@ -484,25 +480,25 @@ exports[`App component should match snapshot 1`] = `
   justify-content: space-between;
 }
 
-.c26 .c17 {
+.c28 .c18 {
   margin: 4px 4px 0 0;
 }
 
-.c26 .c17 svg circle,
-.c26 .c17 svg rect,
-.c26 .c17 svg polygon,
-.c26 .c17 svg path {
+.c28 .c18 svg circle,
+.c28 .c18 svg rect,
+.c28 .c18 svg polygon,
+.c28 .c18 svg path {
   fill: #ffffff;
 }
 
-.c27 .c17 {
+.c29 .c18 {
   margin: 4px 4px 0 0;
 }
 
-.c27 .c17 svg circle,
-.c27 .c17 svg rect,
-.c27 .c17 svg polygon,
-.c27 .c17 svg path {
+.c29 .c18 svg circle,
+.c29 .c18 svg rect,
+.c29 .c18 svg polygon,
+.c29 .c18 svg path {
   fill: #000000;
 }
 
@@ -528,7 +524,7 @@ exports[`App component should match snapshot 1`] = `
   color: inherit;
 }
 
-.c18 {
+.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -542,12 +538,12 @@ exports[`App component should match snapshot 1`] = `
   margin-left: 10px;
 }
 
-.c18 > svg {
+.c19 > svg {
   width: 20px;
   height: 20px;
 }
 
-.c14 {
+.c15 {
   height: 44px;
   white-space: nowrap;
   display: -webkit-inline-box;
@@ -571,32 +567,32 @@ exports[`App component should match snapshot 1`] = `
   background-color: #B4B4B4;
 }
 
-.c14.c14:focus {
+.c15.c15:focus {
   outline-color: #FEC813;
   outline-style: solid;
   outline-offset: 0px;
   outline-width: 3px;
 }
 
-.c14 svg circle,
-.c14 svg rect,
-.c14 svg polygon,
-.c14 svg path {
+.c15 svg circle,
+.c15 svg rect,
+.c15 svg polygon,
+.c15 svg path {
   fill: #000000;
 }
 
-.c14:hover {
+.c15:hover {
   background-color: #9b9b9b;
 }
 
-.c14::after {
+.c15::after {
   content: '';
   display: block;
   min-height: inherit;
   font-size: 0;
 }
 
-.c14:disabled {
+.c15:disabled {
   cursor: default;
   outline: none;
   border: none;
@@ -606,10 +602,10 @@ exports[`App component should match snapshot 1`] = `
   text-decoration: none;
 }
 
-.c14:disabled svg circle,
-.c14:disabled svg rect,
-.c14:disabled svg polygon,
-.c14:disabled svg path {
+.c15:disabled svg circle,
+.c15:disabled svg rect,
+.c15:disabled svg polygon,
+.c15:disabled svg path {
   fill: #B4B4B4;
 }
 
@@ -680,7 +676,7 @@ exports[`App component should match snapshot 1`] = `
   height: 20px;
 }
 
-.c25 .c6 {
+.c27 .c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -688,7 +684,7 @@ exports[`App component should match snapshot 1`] = `
   margin-bottom: 0;
 }
 
-.c20 {
+.c21 {
   -webkit-transition: border-color 0.1s ease-in-out;
   transition: border-color 0.1s ease-in-out;
   border: 2px solid #E6E6E6;
@@ -697,28 +693,28 @@ exports[`App component should match snapshot 1`] = `
   display: none;
 }
 
-.c16 {
+.c17 {
   text-align: left;
   white-space: normal;
 }
 
-.c15 {
+.c16 {
   width: 100%;
   height: initial;
   background-color: #E6E6E6;
 }
 
-.c15:hover,
-.c15.c15:focus {
+.c16:hover,
+.c16.c16:focus {
   background-color: #B4B4B4;
 }
 
-.c15:hover + .c19,
-.c15.c15:focus + .c19 {
+.c16:hover + .c20,
+.c16.c16:focus + .c20 {
   border-color: #B4B4B4;
 }
 
-.c15 .c17 {
+.c16 .c18 {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
@@ -756,6 +752,32 @@ exports[`App component should match snapshot 1`] = `
   margin-top: 16px;
 }
 
+.c8 {
+  margin: 16px 0 24px 0;
+}
+
+.c23 {
+  margin: 12px 0;
+}
+
+.c13 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.c22 {
+  margin-top: 0;
+}
+
+.c9 {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.c14 {
+  margin-bottom: 20px;
+}
+
 .c11 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -769,13 +791,13 @@ exports[`App component should match snapshot 1`] = `
   margin: 20px 0;
 }
 
-.c22 {
+.c24 {
   border-right: 2px solid black;
   padding-bottom: 16px;
   margin-bottom: 28px;
 }
 
-.c22 a {
+.c24 a {
   color: #000000;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -788,45 +810,28 @@ exports[`App component should match snapshot 1`] = `
   flex-direction: column;
 }
 
-.c22 a h2 {
+.c24 a h2 {
   margin-bottom: 20px;
 }
 
-.c22 a img {
+.c24 a img {
   width: 100%;
   margin-bottom: 16px;
 }
 
-.c22 a div {
+.c24 a div {
   margin-bottom: 12px;
 }
 
-.c22 a span {
+.c24 a span {
   margin-right: 12px;
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
 }
 
-.c23 {
+.c25 {
   margin-bottom: 8px;
-}
-
-.c9 {
-  width: 100%;
-  margin-bottom: 12px;
-}
-
-.c8 {
-  margin: 20px 0;
-}
-
-.c21 {
-  margin-bottom: 12px;
-}
-
-.c13 {
-  margin-bottom: 20px;
 }
 
 @media screen and (min-width:1200px) {
@@ -1030,12 +1035,6 @@ exports[`App component should match snapshot 1`] = `
   }
 }
 
-@media (min-width:1200px) {
-  .c8 {
-    margin: 32px 0;
-  }
-}
-
 <div
     class="c0"
   >
@@ -1068,40 +1067,40 @@ exports[`App component should match snapshot 1`] = `
         class="c10 c11"
       >
         <p
-          class="c12"
+          class="c12 c13"
         >
           IRMA is een app waarmee je overal kunt aantonen wie u bent.
         IRMA biedt een nieuwe manier van inloggen anders dan u kent van misschien DigiD.
         </p>
         <p
-          class="c12"
+          class="c12 c13"
         >
           Binnenkort kunt u IRMA gebruiken in Amsterdam. Waarom IRMA?
         </p>
         <p
-          class="c12"
+          class="c12 c13"
         >
           Ervaar nu vast wat u met IRMA kunt via verschillende demo's.
         
         </p>
         <div
-          class="c13"
+          class="c14"
         >
           <button
             aria-controls="nodig"
             aria-expanded="false"
-            class="c14 c15"
+            class="c15 c16"
             id="label-nodig"
             title="Wat heeft u nodig?"
             type="button"
           >
             <span
-              class="c16"
+              class="c17"
             >
               Wat heeft u nodig?
             </span>
             <span
-              class="c17 c18"
+              class="c18 c19"
               size="20"
             >
               <svg
@@ -1117,13 +1116,15 @@ exports[`App component should match snapshot 1`] = `
           </button>
           <div
             aria-labelledby="label-nodig"
-            class="c19 c20"
+            class="c20 c21"
             id="nodig"
           >
             <p>
               U kunt de demo's met IRMA doen als u de IRMA-app op uw telefoon heeft geïnstalleerd en als u de IRMA de volgende gegevens heeft toegevoegd:
             </p>
-            <ul>
+            <ul
+              class="c22"
+            >
               <li>
                 Uw persoonsgegevens
               </li>
@@ -1139,13 +1140,13 @@ exports[`App component should match snapshot 1`] = `
             </ul>
           </div>
         </div>
-        <h1
-          class="c5 c6 c7 c21"
+        <h2
+          class="c23"
         >
           Aan de slag met IRMA
-        </h1>
+        </h2>
         <section
-          class="c22"
+          class="c24"
         >
           <a
             href="/leeftijd-aantonen"
@@ -1155,7 +1156,7 @@ exports[`App component should match snapshot 1`] = `
               src="/assets/demo_1.png"
             />
             <h2
-              class="c23"
+              class="c25"
             >
               Demo 1: Leeftijd aantonen
             </h2>
@@ -1165,7 +1166,7 @@ exports[`App component should match snapshot 1`] = `
               </p>
             </div>
             <span
-              class="c17 c24"
+              class="c18 c26"
             >
               <svg
                 focusable="false"
@@ -1180,7 +1181,7 @@ exports[`App component should match snapshot 1`] = `
           </a>
         </section>
         <section
-          class="c22"
+          class="c24"
         >
           <a
             href="/ideeen-voor-uw-buurt"
@@ -1190,7 +1191,7 @@ exports[`App component should match snapshot 1`] = `
               src="/assets/demo_2.png"
             />
             <h2
-              class="c23"
+              class="c25"
             >
               Demo 2: Ideeën voor uw buurt
             </h2>
@@ -1200,7 +1201,7 @@ exports[`App component should match snapshot 1`] = `
               </p>
             </div>
             <span
-              class="c17 c24"
+              class="c18 c26"
             >
               <svg
                 focusable="false"
@@ -1759,10 +1760,6 @@ exports[`App component should match snapshot 1`] = `
   .c1 {
     padding-bottom: 24px;
   }
-}
-
-@media (min-width:1200px) {
-
 }
 
 @media (min-width:1200px) {

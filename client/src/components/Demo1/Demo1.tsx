@@ -4,14 +4,14 @@ import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { Accordion, Link, Icon } from '@datapunt/asc-ui';
+import { Accordion } from '@datapunt/asc-ui';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
 
-export interface IProps { }
+export interface IProps {}
 
 // @todo add error flow with incorrect data
 
@@ -35,14 +35,14 @@ const Demo1: React.FC<IProps> = () => {
             />
 
             {!hasResult && (
-                <AscLocal.BlueAlert
-                    heading={content.demo1.demo.heading}
-                    content={content.demo1.demo.content}
-                />
+                <AscLocal.BlueAlert heading={content.demo1.demo.heading} content={content.demo1.demo.content} />
             )}
 
             {hasResult && isOver18 && (
-                <AscLocal.GreenAlert heading={content.demo1.isOver18.heading} content={content.demo1.isOver18.content} />
+                <AscLocal.GreenAlert
+                    heading={content.demo1.isOver18.heading}
+                    content={content.demo1.isOver18.content}
+                />
             )}
             {hasResult && !isOver18 && (
                 <AscLocal.RedAlert
@@ -81,8 +81,8 @@ const Demo1: React.FC<IProps> = () => {
                     />
                 </>
             ) : (
-                    <ReactMarkDown source={content.demo1.result} />
-                )}
+                <ReactMarkDown source={content.demo1.result} />
+            )}
         </PageTemplate>
     );
 };

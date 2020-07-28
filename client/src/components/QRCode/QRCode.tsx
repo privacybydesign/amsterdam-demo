@@ -13,7 +13,6 @@ export interface IProps {
     className?: string;
 }
 
-
 const QRCode: React.FC<IProps> = ({ getSession, className }) => {
     const [hasOverlay, setHasOverlay] = useState(false);
 
@@ -28,9 +27,9 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
 
     return (
         <div className={className}>
-            <StyledButton onClick={getQRSession} variant="secondary" iconSize={24} iconLeft={<IrmaLogo24 />} >
+            <StyledButton onClick={getQRSession} variant="secondary" iconSize={24} iconLeft={<IrmaLogo24 />}>
                 <ReactMarkDown source={content.qrcode.knop} />
-            </StyledButton >
+            </StyledButton>
 
             <Modal backdropOpacity={0.5} open={hasOverlay} onClose={closeModal}>
                 <>
@@ -48,10 +47,9 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
                     </ModalWrapper>
                 </>
             </Modal>
-        </div >
+        </div>
     );
 };
-
 
 const IrmaLogo24 = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
     width: 24px;
@@ -101,7 +99,7 @@ const Canvas = styled.canvas`
     height: 365px !important;
     border: 5px solid ${themeColor('primary', 'main')};
     padding: ${themeSpacing(8)};
-    margin: ${themeSpacing(8)};;
+    margin: ${themeSpacing(8)};
 `;
 
 export default QRCode;
