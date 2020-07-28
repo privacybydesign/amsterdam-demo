@@ -40,7 +40,6 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
                     <ModalWrapper>
                         <ReactMarkDown source={content.qrcode.stappen} renderers={{ list: StyledOL }} />
 
-
                         <CanvasWrapper>
                             <IrmaLogo />
                             <Canvas id="irma-qr" />
@@ -87,7 +86,7 @@ const CloseButton = styled(Button)`
 const CanvasWrapper = styled.div`
     display: flex;
     justify-content: center;
-    padding: 30px 0 50px 0;
+    padding: ${themeSpacing(10, 0, 13, 0)};
 `;
 
 const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
