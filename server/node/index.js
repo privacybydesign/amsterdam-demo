@@ -13,12 +13,8 @@ let config;
 
 const CREDENTIALS_TO_REQUEST = {
   DEMO: {
-    DEMO1: [
-      [
-        "irma-demo.gemeente.personalData.over18",
-        "irma-demo.gemeente.personalData.over65",
-      ],
-    ],
+    DEMO1_18: [["irma-demo.gemeente.personalData.over18"]],
+    DEMO1_65: [["irma-demo.gemeente.personalData.over65"]],
     DEMO2: [
       [
         "irma-demo.gemeente.address.zipcode",
@@ -43,12 +39,8 @@ const CREDENTIALS_TO_REQUEST = {
     DEMO5: [["irma-demo.sidn-pbdf.email.domain"]],
   },
   PRODUCTION: {
-    DEMO1: [
-      [
-        "pbdf.gemeente.personalData.over18",
-        "pbdf.gemeente.personalData.over65",
-      ],
-    ],
+    DEMO1_18: [["pbdf.gemeente.personalData.over18"]],
+    DEMO1_65: [["pbdf.gemeente.personalData.over65"]],
     DEMO2: [
       ["pbdf.gemeente.address.zipcode", "pbdf.gemeente.personalData.over18"],
     ],
@@ -102,7 +94,8 @@ const init = async () => {
     app.use(express.json());
 
     // Note: To use the demo credentials on non-production environments add ?demo=true to the URL
-    app.get("/getsession/demo1", cors(), irmaDiscloseDemo1);
+    app.get("/getsession/demo1/18", cors(), irmaDiscloseDemo1_18);
+    app.get("/getsession/demo1/65", cors(), irmaDiscloseDemo1_65);
     app.get("/getsession/demo2", cors(), irmaDiscloseDemo2);
     app.get("/getsession/demo3", cors(), irmaDiscloseDemo3);
     app.get("/getsession/demo4", cors(), irmaDiscloseDemo4);
@@ -177,11 +170,19 @@ const getCredentialSourceFromRequest = (req) => {
     : CREDENTIALS_TO_REQUEST.PRODUCTION;
 };
 
-async function irmaDiscloseDemo1(req, res) {
+async function irmaDiscloseDemo1_18(req, res) {
   return irmaDiscloseRequest(
     req,
     res,
-    getCredentialSourceFromRequest(req).DEMO1
+    getCredentialSourceFromRequest(req).DEMO1_18
+  );
+}
+
+async function irmaDiscloseDemo1_65(req, res) {
+  return irmaDiscloseRequest(
+    req,
+    res,
+    getCredentialSourceFromRequest(req).DEMO1_65
   );
 }
 
