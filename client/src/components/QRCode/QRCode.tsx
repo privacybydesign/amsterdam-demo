@@ -27,7 +27,7 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
 
     return (
         <div className={className}>
-            <StyledButton onClick={getQRSession} variant="secondary" iconSize={24} iconLeft={<IrmaLogo />} >
+            <StyledButton onClick={getQRSession} variant="secondary" iconSize={24} iconLeft={<IrmaLogo24 />} >
                 <ReactMarkDown source={content.qrcode.knop} />
             </StyledButton >
 
@@ -40,8 +40,10 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
                     <ModalWrapper>
                         <ReactMarkDown source={content.qrcode.stappen} renderers={{ list: StyledOL }} />
 
+
                         <CanvasWrapper>
-                            <canvas id="irma-qr" />
+                            <IrmaLogo />
+                            <Canvas id="irma-qr" />
                         </CanvasWrapper>
                     </ModalWrapper>
                 </>
@@ -51,7 +53,7 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
 };
 
 
-const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
+const IrmaLogo24 = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
     width: 24px;
 `;
 
@@ -85,7 +87,20 @@ const CloseButton = styled(Button)`
 const CanvasWrapper = styled.div`
     display: flex;
     justify-content: center;
-    padding: ${themeSpacing(3, 0, 5)};
+    padding: 30px 0 50px 0;
+`;
+
+const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
+    position: absolute;
+    margin-top: 100px;
+    width: 190px;
+    height: 190px;
+`;
+
+const Canvas = styled.canvas`
+    width: 365px !important;
+    height: 365px !important;
+    margin: 0 0 0 0;
 `;
 
 const StyledOL = styled.ol`
