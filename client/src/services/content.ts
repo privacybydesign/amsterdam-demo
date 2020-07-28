@@ -130,11 +130,6 @@ Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgen
             body:
                 '** Uw volledige naam **  \nDe gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.  \n  \n** Uw burgerservicenummer (BSN) **  \nDe gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.'
         },
-        irma: {
-            question: 'Heeft u nog geen IRMA?',
-            label: 'Download IRMA',
-            href: '/'
-        },
         result: `De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.
 ## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om door te geven dat u ouder bent dan 18 jaar.

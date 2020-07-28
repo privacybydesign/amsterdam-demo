@@ -2,13 +2,14 @@ import axios from 'axios';
 import * as irma from '@privacybydesign/irmajs';
 
 // Types
-interface IIrmaServerConfig {
+export interface IIrmaServerConfig {
     requestorname: string;
     uuid: string;
     irma: string;
     nodeUrl: string;
     docroot: string;
     port: number;
+    environment: string;
 }
 
 const instance = axios.create({});
@@ -16,20 +17,26 @@ const instance = axios.create({});
 let config: IIrmaServerConfig;
 
 export const getConfig = async (): Promise<IIrmaServerConfig> => {
-    const response = await instance.get('/config');
-    return response.data;
+    if (!config) {
+        const response = await instance.get('/config');
+        config = response.data;
+    }
+
+    return config;
 };
 
 export const isMobile = (): boolean => {
     return /Android/i.test(window.navigator.userAgent) || /iPhone/.test(window.navigator.userAgent);
 };
 
-const createIrmaSession = async (dataType: string, holderElementId: string): Promise<unknown> => {
-    if (!config) {
-        config = await getConfig();
-    }
-
-    const irmaResponse = await instance.get(`/getsession/${dataType}`);
+// Note: To use the demo credentials on non-production environments add ?demo=true to the URL
+const createIrmaSession = async (
+    dataType: string,
+    holderElementId: string,
+    credentialSourceFromDemo = false
+): Promise<unknown> => {
+    const config = await getConfig();
+    const irmaResponse = await instance.get(`/getsession/${dataType}${credentialSourceFromDemo ? '?demo=true' : ''}`);
     const session = await irmaResponse.data;
 
     const { sessionPtr, token } = session;
@@ -50,7 +57,10 @@ const createIrmaSession = async (dataType: string, holderElementId: string): Pro
     // }
 
     const result = await irma.handleSession(sessionPtr, sessionOptions);
-    const data = result.disclosed[0].reduce((acc, { id, rawvalue }) => ({ ...acc, [id]: rawvalue }), {});
+    const data = result.disclosed[0].reduce(
+        (acc, { id, rawvalue }) => ({ ...acc, [id.match(/[^.]*$/g)[0]]: rawvalue }),
+        {}
+    );
     return data;
 };
 

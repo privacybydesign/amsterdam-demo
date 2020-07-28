@@ -4,6 +4,7 @@ import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Link, Accordion } from '@datapunt/asc-ui';
+import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
@@ -12,19 +13,22 @@ import ExternalLink from '@components/ExternalLink/ExternalLink';
 export interface IProps { }
 
 const Demo2: React.FC<IProps> = () => {
+    const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [isOver18, setIsOver18] = useState<boolean>(false);
     const [isPostcodeInArea, setIsPostcodeInArea] = useState<boolean>(false);
     const [hasResult, setHasResult] = useState<boolean>(false);
 
     const getSession = async () => {
-        // TODO: Make combined over18 + postcode request and update state accordingly
-        const response = await createIrmaSession('age', 'irma-qr');
-        setIsOver18(response['pbdf.gemeente.personalData.over18'] === 'Yes');
-        setIsPostcodeInArea(response['pbdf.gemeente.personalData.over18'] === 'Yes');
+        const response = await createIrmaSession('demo2', 'irma-qr', credentialSource === CredentialSource.DEMO);
+        setIsOver18(response['over18'] === 'Yes');
+
+        const postcode = parseInt(response['zipcode'].substr(0, 4));
+        setIsPostcodeInArea(postcode >= 1000 && postcode <= 1099);
+
         setHasResult(true);
     };
 
-    let alertBox;
+    let alertBox: JSX.Element;
     if (!hasResult) {
         alertBox = (
             <AscLocal.BlueAlert
@@ -35,6 +39,10 @@ const Demo2: React.FC<IProps> = () => {
     } else if (isOver18 && isPostcodeInArea) {
         alertBox = (
             <AscLocal.GreenAlert heading={content.demo2.proven.alert.title} content={content.demo2.proven.alert.bodyPositive} />
+        );
+    } else if (!isOver18 && isPostcodeInArea) {
+        alertBox = (
+            <AscLocal.RedAlert
         );
     } else if (!isOver18 && isPostcodeInArea) {
         alertBox = (
@@ -61,6 +69,7 @@ const Demo2: React.FC<IProps> = () => {
 
     return (
         <PageTemplate>
+            <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
             {alertBox}
             <ReactMarkDown
                 source={content.demo2.breadcrumbs}
