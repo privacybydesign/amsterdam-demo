@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Heading, Paragraph as AscParagraph, themeSpacing } from '@datapunt/asc-ui';
+import { Heading, Paragraph as AscParagraph, themeSpacing, Alert, themeColor } from '@datapunt/asc-ui';
 
 interface IProps { }
 
@@ -39,5 +39,20 @@ export const AccordionHeading = styled(Heading).attrs({ as: 'h4' })`
     margin: 0;
 `;
 
+export const BlueAlert = styled(Alert).attrs({ level: 'attention' })`
+  margin-top: ${themeSpacing(4)};
+`;
+
+export const RedAlert = styled(Alert).attrs({ level: 'error' })`
+  margin-top: ${themeSpacing(4)};
+`;
+
+export const GreenAlert = styled(Alert)`
+  margin-top: ${ themeSpacing(4)};
+  background-color: ${ themeColor('support', 'valid')};
+  * {
+  color: ${ themeColor('tint', 'level1')};
+  }
+`;
 
 export const StrongParagraph: React.FC<IProps> = ({ children }) => <Paragraph strong>{children}</Paragraph>;

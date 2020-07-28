@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { Heading, Paragraph, Link, Accordion, Alert, themeColor, themeSpacing } from '@datapunt/asc-ui';
+import { Link, Accordion } from '@datapunt/asc-ui';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
@@ -28,33 +27,32 @@ const Demo2: React.FC<IProps> = () => {
     let alertBox;
     if (!hasResult) {
         alertBox = (
-            <Alert
-                level="attention"
+            <AscLocal.BlueAlert
                 heading={content.demo2.unproven.alert.title}
                 content={content.demo2.unproven.alert.body}
             />
         );
     } else if (isOver18 && isPostcodeInArea) {
         alertBox = (
-            <StyledAlert heading={content.demo2.proven.alert.title} content={content.demo2.proven.alert.bodyPositive} />
+            <AscLocal.GreenAlert heading={content.demo2.proven.alert.title} content={content.demo2.proven.alert.bodyPositive} />
         );
     } else if (!isOver18 && isPostcodeInArea) {
         alertBox = (
-            <StyledAlert
+            <AscLocal.RedAlert
                 heading={content.demo2.proven.alert.title}
                 content={content.demo2.proven.alert.bodyAgeNegative}
             />
         );
     } else if (isOver18 && !isPostcodeInArea) {
         alertBox = (
-            <StyledAlert
+            <AscLocal.RedAlert
                 heading={content.demo2.proven.alert.title}
                 content={content.demo2.proven.alert.bodyPostcodeNegative}
             />
         );
     } else if (!isOver18 && !isPostcodeInArea) {
         alertBox = (
-            <StyledAlert
+            <AscLocal.RedAlert
                 heading={content.demo2.proven.alert.title}
                 content={content.demo2.proven.alert.bodyAgeAndPostcodeNegative}
             />
@@ -101,25 +99,6 @@ const Demo2: React.FC<IProps> = () => {
         </PageTemplate>
     );
 };
-
-// const StyledH1 = styled(Heading)`
-//     margin-top: ${themeSpacing(4)};
-//     margin-bottom: ${themeSpacing(6)};
-// `;
-
-// const StyledH2 = styled(Heading).attrs({ as: 'h2' })``;
-
-// const AccordionHeading = styled(Heading).attrs({ as: 'h4' })`
-//     margin: 0;
-// `;
-
-const StyledAlert = styled(Alert)`
-    background-color: ${themeColor('support', 'valid')};
-
-    * {
-        color: ${themeColor('tint', 'level1')};
-    }
-`;
 
 // const AccordionContainer = styled.div`
 // margin-bottom: ${themeSpacing(4)};

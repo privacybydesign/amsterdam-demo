@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { Heading, Paragraph, Accordion, Link, Icon, Alert, themeColor, themeSpacing } from '@datapunt/asc-ui';
+import { Accordion, Link, Icon } from '@datapunt/asc-ui';
 import { ExternalLink } from '@datapunt/asc-assets';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
@@ -17,7 +16,7 @@ export interface IProps { }
 
 const Demo1: React.FC<IProps> = () => {
     const [isOver18, setIsOver18] = useState<boolean>(false);
-    const [hasResult, setHasResult] = useState<boolean>(false);
+    const [hasResult, setHasResult] = useState<boolean>(true);
 
     const getSession = async () => {
         const response = await createIrmaSession('age', 'irma-qr');
@@ -33,19 +32,17 @@ const Demo1: React.FC<IProps> = () => {
             />
 
             {!hasResult && (
-                <StyledAlert
-                    level="attention"
+                <AscLocal.BlueAlert
                     heading={content.demo1.demo.heading}
                     content={content.demo1.demo.content}
                 />
             )}
 
             {hasResult && isOver18 && (
-                <GreenAlert heading={content.demo1.isOver18.heading} content={content.demo1.isOver18.content} />
+                <AscLocal.GreenAlert heading={content.demo1.isOver18.heading} content={content.demo1.isOver18.content} />
             )}
             {hasResult && !isOver18 && (
-                <StyledAlert
-                    level="error"
+                <AscLocal.RedAlert
                     heading={content.demo1.isNotOver18.heading}
                     content={content.demo1.isNotOver18.content}
                 />
@@ -96,18 +93,5 @@ const Demo1: React.FC<IProps> = () => {
         </PageTemplate>
     );
 };
-
-// TODO: Refactor alert variations
-const StyledAlert = styled(Alert)`
-    margin-top: ${themeSpacing(4)};
-`;
-
-const GreenAlert = styled(Alert)`
-    margin-top: ${themeSpacing(4)};
-    background-color: ${themeColor('support', 'valid')};
-    * {
-        color: ${themeColor('tint', 'level1')};
-    }
-`;
 
 export default Demo1;
