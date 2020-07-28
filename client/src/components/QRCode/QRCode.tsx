@@ -86,7 +86,6 @@ const CloseButton = styled(Button)`
 const CanvasWrapper = styled.div`
     display: flex;
     justify-content: center;
-    padding: ${themeSpacing(10, 0, 13, 0)};
 `;
 
 const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
@@ -99,7 +98,9 @@ const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
 const Canvas = styled.canvas`
     width: 365px !important;
     height: 365px !important;
-    margin: 0 0 0 0;
+    border: 5px solid ${themeColor('primary', 'main')};
+    padding: ${themeSpacing(8)};
+    margin: ${themeSpacing(8)};;
 `;
 
 const StyledOL = styled.ol`
