@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
+import styled from 'styled-components';
 import ReactMarkDown from 'react-markdown';
 
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { Accordion } from '@datapunt/asc-ui';
+import { Accordion, styles } from '@datapunt/asc-ui';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
@@ -96,9 +97,11 @@ const Demo1: React.FC<IProps> = () => {
                         </Accordion>
                     </AscLocal.AccordionContainer>
 
-                    <QRCode getSession={getSessionOver18} label="18+ bewijzen met IRMA" />
+                    <div>
+                        <QRCode getSession={getSessionOver18} label="18+ bewijzen met IRMA" />
 
-                    <QRCode getSession={getSessionOver65} label="65+ bewijzen met IRMA" />
+                        <QRCode getSession={getSessionOver65} label="65+ bewijzen met IRMA" />
+                    </div>
 
                     <ReactMarkDown
                         source={content.downloadIrma}
@@ -107,8 +110,8 @@ const Demo1: React.FC<IProps> = () => {
                     />
                 </>
             ) : (
-                <ReactMarkDown source={content.demo1.result} />
-            )}
+                    <ReactMarkDown source={content.demo1.result} />
+                )}
         </PageTemplate>
     );
 };

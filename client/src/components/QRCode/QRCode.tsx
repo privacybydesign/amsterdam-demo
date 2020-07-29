@@ -57,7 +57,7 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
 };
 
 const StyledButton = styled(Button)`
-    margin-bottom: ${themeSpacing(6)};
+    margin: ${themeSpacing(0, 6, 6, 0)};
 `;
 
 const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
