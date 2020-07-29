@@ -19,7 +19,7 @@ const Demo2: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [isOver18, setIsOver18] = useState<boolean>(false);
     const [isPostcodeInArea, setIsPostcodeInArea] = useState<boolean>(false);
-    const [hasResult, setHasResult] = useState<boolean>(true);
+    const [hasResult, setHasResult] = useState<boolean>(false);
 
     const getSession = async () => {
         const response = await createIrmaSession('demo2', 'irma-qr', credentialSource === CredentialSource.DEMO);
