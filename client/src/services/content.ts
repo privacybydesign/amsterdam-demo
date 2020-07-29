@@ -122,7 +122,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremq
         },
         isNotOver65: {
             heading: 'Uw leeftijd',
-            content: 'U heeft niet bewezen dat u ouder bent dan 65 jaar.'
+            content: 'U bent jonger dan 65 jaar.'
         },
         demo: {
             heading: 'Dit is een demosite',
