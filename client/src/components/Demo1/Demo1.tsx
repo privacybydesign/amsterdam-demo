@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
-
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion } from '@datapunt/asc-ui';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
@@ -10,6 +9,7 @@ import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
+import HeaderImage from '@components/HeaderImage/HeaderImage';
 import QRCode from '@components/QRCode/QRCode';
 
 export interface IProps {}
@@ -109,12 +109,7 @@ const Demo1: React.FC<IProps> = () => {
                 renderers={{ heading: AscLocal.H1 }}
             />
 
-            {/* // TODO: Refactor this responsive image */}
-            <AscLocal.Image
-                src={`/assets/${headerImg.filename}-940.jpg`}
-                srcSet={`/assets/${headerImg.filename}-290.jpg 580w, /assets/${headerImg.filename}-940.jpg 1880w`}
-                alt={headerImg.alt}
-            />
+            <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
 
             {!hasResult18 && !hasResult65 ? (
                 <>
