@@ -51,7 +51,7 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
                     </ModalWrapper>
                 </>
             </Modal>
-        </div >
+        </div>
     );
 };
 
