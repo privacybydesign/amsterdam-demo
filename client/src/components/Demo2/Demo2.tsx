@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
@@ -10,6 +10,7 @@ import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
+import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
 
 export interface IProps {}
 
@@ -23,44 +24,62 @@ const Demo2: React.FC<IProps> = () => {
         const response = await createIrmaSession('demo2', 'irma-qr', credentialSource === CredentialSource.DEMO);
         setIsOver18(response['over18'] === 'Yes');
 
+        // TODO: Substitute this logic for postal code > area mapping
         const postcode = parseInt(response['zipcode'].substr(0, 4));
         setIsPostcodeInArea(postcode >= 1000 && postcode <= 1099);
 
         setHasResult(true);
     };
 
-    let alertBox: JSX.Element;
-    if (!hasResult) {
-        alertBox = <DemoNotification />;
-    } else if (isOver18 && isPostcodeInArea) {
-        alertBox = (
-            <AscLocal.GreenAlert
-                heading={content.demo2.proven.alert.title}
-                content={content.demo2.proven.alert.bodyAgeAndPostcodePositive}
-            />
-        );
-    } else if (!isOver18 && isPostcodeInArea) {
-        alertBox = (
-            <AscLocal.RedAlert
-                heading={content.demo2.proven.alert.title}
-                content={content.demo2.proven.alert.bodyAgeNegative}
-            />
-        );
-    } else if (isOver18 && !isPostcodeInArea) {
-        alertBox = (
-            <AscLocal.RedAlert
-                heading={content.demo2.proven.alert.title}
-                content={content.demo2.proven.alert.bodyPostcodeNegative}
-            />
-        );
-    } else if (!isOver18 && !isPostcodeInArea) {
-        alertBox = (
-            <AscLocal.RedAlert
-                heading={content.demo2.proven.alert.title}
-                content={content.demo2.proven.alert.bodyAgeAndPostcodeNegative}
-            />
-        );
-    }
+    // Define dynamic header image
+    // TODO: Implement correct images
+    const headerImg = useMemo((): IHeaderImageProps => {
+        if (!hasResult) {
+            return { filename: 'ideeen-voor-buurt', alt: 'Stadsbeeld van een terras' };
+        } else if (isOver18 && isPostcodeInArea) {
+            return { filename: 'ideeen-voor-buurt', alt: 'Stadsbeeld van een terras' };
+        } else if (!isOver18 && isPostcodeInArea) {
+            return { filename: 'ideeen-voor-buurt', alt: 'Stadsbeeld van een terras' };
+        } else if (isOver18 && !isPostcodeInArea) {
+            return { filename: 'ideeen-voor-buurt', alt: 'Stadsbeeld van een terras' };
+        } else if (!isOver18 && !isPostcodeInArea) {
+            return { filename: 'ideeen-voor-buurt', alt: 'Stadsbeeld van een terras' };
+        }
+    }, [hasResult, isOver18, isPostcodeInArea]);
+
+    const alertBox: JSX.Element = useMemo(() => {
+        if (!hasResult) {
+            return <DemoNotification />;
+        } else if (isOver18 && isPostcodeInArea) {
+            return (
+                <AscLocal.GreenAlert
+                    heading={content.demo2.proven.alert.title}
+                    content={content.demo2.proven.alert.bodyAgeAndPostcodePositive}
+                />
+            );
+        } else if (!isOver18 && isPostcodeInArea) {
+            return (
+                <AscLocal.RedAlert
+                    heading={content.demo2.proven.alert.title}
+                    content={content.demo2.proven.alert.bodyAgeNegative}
+                />
+            );
+        } else if (isOver18 && !isPostcodeInArea) {
+            return (
+                <AscLocal.RedAlert
+                    heading={content.demo2.proven.alert.title}
+                    content={content.demo2.proven.alert.bodyPostcodeNegative}
+                />
+            );
+        } else if (!isOver18 && !isPostcodeInArea) {
+            return (
+                <AscLocal.RedAlert
+                    heading={content.demo2.proven.alert.title}
+                    content={content.demo2.proven.alert.bodyAgeAndPostcodeNegative}
+                />
+            );
+        }
+    }, [hasResult, isOver18, isPostcodeInArea]);
 
     return (
         <PageTemplate>
@@ -74,11 +93,9 @@ const Demo2: React.FC<IProps> = () => {
                 source={content.demo2[hasResult ? 'proven' : 'unproven'].title}
                 renderers={{ heading: AscLocal.H1 }}
             />
-            <img
-                src="/assets/ideeen-voor-buurt-940.jpg"
-                srcSet="/assets/ideeen-voor-buurt-290.jpg 580w, /assets/ideeen-voor-buurt-940.jpg 1880w"
-                alt="Foto van mensen in een café"
-            />
+
+            <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
+
             {!hasResult ? (
                 <>
                     <ReactMarkDown
