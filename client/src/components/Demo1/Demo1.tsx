@@ -9,15 +9,10 @@ import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
-import HeaderImage from '@components/HeaderImage/HeaderImage';
+import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
 import QRCode from '@components/QRCode/QRCode';
 
 export interface IProps {}
-
-interface IHeaderImage {
-    filename: string;
-    alt: string;
-}
 // @todo add error flow with incorrect data
 
 const Demo1: React.FC<IProps> = () => {
@@ -40,7 +35,7 @@ const Demo1: React.FC<IProps> = () => {
     };
 
     // Define dynamic header image
-    const [headerImg, setHeaderImg] = useState<IHeaderImage>({
+    const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
         filename: 'leeftijd',
         alt: 'Stadsbeeld van een terras'
     });
