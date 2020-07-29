@@ -8,6 +8,7 @@ import CredentialSelector, { CredentialSource } from '@components/CredentialSele
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
+import DemoNotification from '@components/DemoNotification/DemoNotification';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 
 export interface IProps {}
@@ -30,17 +31,12 @@ const Demo2: React.FC<IProps> = () => {
 
     let alertBox: JSX.Element;
     if (!hasResult) {
-        alertBox = (
-            <AscLocal.BlueAlert
-                heading={content.demo2.unproven.alert.title}
-                content={content.demo2.unproven.alert.body}
-            />
-        );
+        alertBox = <DemoNotification />;
     } else if (isOver18 && isPostcodeInArea) {
         alertBox = (
             <AscLocal.GreenAlert
                 heading={content.demo2.proven.alert.title}
-                content={content.demo2.proven.alert.bodyPositive}
+                content={content.demo2.proven.alert.bodyAgeAndPostcodePositive}
             />
         );
     } else if (!isOver18 && isPostcodeInArea) {
@@ -94,18 +90,24 @@ const Demo2: React.FC<IProps> = () => {
                             />
                         </Accordion>
                     </AscLocal.AccordionContainer>
-                    <QRCode getSession={getSession} />
+                    <QRCode getSession={getSession} label={content.demo2.button} />
                     <ReactMarkDown
                         source={content.downloadIrma}
-                        escapeHtml={false}
                         renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
                     />
                 </>
             ) : (
-                <ReactMarkDown
-                    source={content.demo2.result}
-                    renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
-                />
+                <>
+                    <ReactMarkDown
+                        source={content.noSavePromise}
+                        renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
+                    />
+                    <ReactMarkDown
+                        source={content.demo2.result}
+                        renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
+                    />
+                    <ReactMarkDown source={content.callToAction} />
+                </>
             )}
         </PageTemplate>
     );
