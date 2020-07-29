@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
@@ -14,6 +14,10 @@ import QRCode from '@components/QRCode/QRCode';
 
 export interface IProps {}
 
+interface IHeaderImage {
+    filename: string;
+    alt: string;
+}
 // @todo add error flow with incorrect data
 
 const Demo1: React.FC<IProps> = () => {
@@ -34,6 +38,21 @@ const Demo1: React.FC<IProps> = () => {
         setIsOver65(response['over65'] === 'Yes');
         setHasResult65(true);
     };
+
+    // Define dynamic header image
+    const [headerImg, setHeaderImg] = useState<IHeaderImage>({
+        filename: 'leeftijd',
+        alt: 'Stadsbeeld van een terras'
+    });
+
+    useEffect(() => {
+        // Update header image
+        if (hasResult) {
+            if (isOver18) {
+                setHeaderImg({ filename: 'ouder-dan-18', alt: 'Foto van mensen in een café' });
+            }
+        }
+    }, [hasResult, isOver18]);
 
     return (
         <PageTemplate>
@@ -77,7 +96,12 @@ const Demo1: React.FC<IProps> = () => {
                 renderers={{ heading: AscLocal.H1 }}
             />
 
-            <AscLocal.Image src="/assets/demo_1.png" alt="foto van mensen in een café"></AscLocal.Image>
+            {/* // TODO: Refactor this responsive image */}
+            <AscLocal.Image
+                src={`/assets/${headerImg.filename}-940.jpg`}
+                srcSet={`/assets/${headerImg.filename}-290.jpg 580w, /assets/${headerImg.filename}-940.jpg 1880w`}
+                alt={headerImg.alt}
+            />
 
             {!hasResult18 && !hasResult65 ? (
                 <>
