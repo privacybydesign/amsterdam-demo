@@ -29,7 +29,7 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
     return (
         <span className={className}>
             <StyledButton onClick={getQRSession} variant="secondary" iconSize={24} iconLeft={<IrmaLogo24 />}>
-                {label ? label : content.qrcode.knop}
+                {label || content.qrcode.knop}
             </StyledButton>
 
             <Modal backdropOpacity={0.5} open={hasOverlay} onClose={closeModal}>
