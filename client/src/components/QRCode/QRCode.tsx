@@ -98,8 +98,8 @@ const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
     position: absolute;
     width: 120px;
     height: 120px;
-    top: 120px;
-    left: 120px;
+    top: 90px;
+    left: 90px;
 `;
 
 const QRCodeTopLeft = styled.img.attrs({ src: '/assets/qr-top-left.svg' })`
