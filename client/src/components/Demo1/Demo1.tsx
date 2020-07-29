@@ -11,6 +11,7 @@ import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
 import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
 import QRCode from '@components/QRCode/QRCode';
+import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 
 export interface IProps {}
 // @todo add error flow with incorrect data
@@ -143,33 +144,35 @@ const Demo1: React.FC<IProps> = () => {
             ) : (
                 <>
                     <ReactMarkDown source={content.noSavePromise} />
-                    <ReactMarkDown source={content.demo1.result.title} />
-                    {/* // TODO: Refactor renderers */}
-                    {hasResult18 && isOver18 && (
-                        <ReactMarkDown
-                            source={content.demo1.result.isOver18}
-                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                        />
-                    )}
-                    {hasResult18 && !isOver18 && (
-                        <ReactMarkDown
-                            source={content.demo1.result.isNotOver18}
-                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                        />
-                    )}
-                    {hasResult65 && isOver65 && (
-                        <ReactMarkDown
-                            source={content.demo1.result.isOver65}
-                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                        />
-                    )}
-                    {hasResult65 && !isOver65 && (
-                        <ReactMarkDown
-                            source={content.demo1.result.isNotOver65}
-                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                        />
-                    )}
-                    <ReactMarkDown source={content.demo1.result.whatsDifferentWithIrma} />
+                    <EmphasisBlock>
+                        <ReactMarkDown source={content.demo1.result.title} />
+                        {/* // TODO: Refactor renderers */}
+                        {hasResult18 && isOver18 && (
+                            <ReactMarkDown
+                                source={content.demo1.result.isOver18}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            />
+                        )}
+                        {hasResult18 && !isOver18 && (
+                            <ReactMarkDown
+                                source={content.demo1.result.isNotOver18}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            />
+                        )}
+                        {hasResult65 && isOver65 && (
+                            <ReactMarkDown
+                                source={content.demo1.result.isOver65}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            />
+                        )}
+                        {hasResult65 && !isOver65 && (
+                            <ReactMarkDown
+                                source={content.demo1.result.isNotOver65}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            />
+                        )}
+                        <ReactMarkDown source={content.demo1.result.whatsDifferentWithIrma} />
+                    </EmphasisBlock>
                     <ReactMarkDown source={content.callToAction} />
                 </>
             )}

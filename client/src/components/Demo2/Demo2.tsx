@@ -11,6 +11,7 @@ import QRCode from '@components/QRCode/QRCode';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
+import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 
 export interface IProps {}
 
@@ -18,7 +19,7 @@ const Demo2: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [isOver18, setIsOver18] = useState<boolean>(false);
     const [isPostcodeInArea, setIsPostcodeInArea] = useState<boolean>(false);
-    const [hasResult, setHasResult] = useState<boolean>(false);
+    const [hasResult, setHasResult] = useState<boolean>(true);
 
     const getSession = async () => {
         const response = await createIrmaSession('demo2', 'irma-qr', credentialSource === CredentialSource.DEMO);
@@ -130,10 +131,12 @@ const Demo2: React.FC<IProps> = () => {
                         source={content.noSavePromise}
                         renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
                     />
-                    <ReactMarkDown
-                        source={content.demo2.result}
-                        renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
-                    />
+                    <EmphasisBlock>
+                        <ReactMarkDown
+                            source={content.demo2.result}
+                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
+                        />
+                    </EmphasisBlock>
                     <ReactMarkDown source={content.callToAction} />
                 </>
             )}
