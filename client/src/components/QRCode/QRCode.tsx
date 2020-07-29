@@ -9,11 +9,12 @@ import { OL } from '@components/LocalAsc/LocalAsc';
 import { Close } from '@datapunt/asc-assets';
 
 export interface IProps {
+    label?: string;
     getSession(): Promise<void>;
     className?: string;
 }
 
-const QRCode: React.FC<IProps> = ({ getSession, className }) => {
+const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
     const [hasOverlay, setHasOverlay] = useState(false);
 
     const getQRSession = () => {
@@ -28,7 +29,7 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
     return (
         <div className={className}>
             <StyledButton onClick={getQRSession} variant="secondary" iconSize={24} iconLeft={<IrmaLogo24 />}>
-                <ReactMarkDown source={content.qrcode.knop} />
+                {label ? label : content.qrcode.knop}
             </StyledButton>
 
             <Modal backdropOpacity={0.5} open={hasOverlay} onClose={closeModal}>

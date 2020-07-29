@@ -116,6 +116,14 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremq
             heading: 'Uw leeftijd',
             content: 'U bent jonger dan 18 jaar.'
         },
+        isOver65: {
+            heading: 'Uw leeftijd',
+            content: 'U heeft bewezen dat u ouder bent dan 65 jaar.'
+        },
+        isNotOver65: {
+            heading: 'Uw leeftijd',
+            content: 'U heeft niet bewezen dat u ouder bent dan 65 jaar.'
+        },
         demo: {
             heading: 'Dit is een demosite',
             content: 'U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.'
