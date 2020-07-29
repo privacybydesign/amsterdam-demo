@@ -32,6 +32,56 @@ Ervaar nu vast wat u met IRMA kunt via verschillende demo’s.
     },
     downloadIrma: `Heeft u nog geen IRMA?<br>
 [Download IRMA](/)`,
+    demo1: {
+        breadcrumbs: `- [Home](/)
+- [Demo 1: Leeftijd aantonen](/leeftijd-aantonen)`,
+        title: {
+            noResult: '# Demo 1: Leeftijd aantonen',
+            hasResult: '# Demo 1: Uw leeftijd'
+        },
+        isOver18: {
+            heading: 'Uw leeftijd',
+            content: 'U heeft bewezen dat u ouder bent dan 18 jaar.'
+        },
+        isNotOver18: {
+            heading: 'Uw leeftijd',
+            content: 'U bent jonger dan 18 jaar.'
+        },
+        isOver65: {
+            heading: 'Uw leeftijd',
+            content: 'U heeft bewezen dat u ouder bent dan 65 jaar.'
+        },
+        isNotOver65: {
+            heading: 'Uw leeftijd',
+            content: 'U bent jonger dan 65 jaar.'
+        },
+        demo: {
+            heading: 'Dit is een demosite',
+            content: 'U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.'
+        },
+        intro: `Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.
+## Probeer het uit
+Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgende gegevens:
+- Uw volledige naam
+- Uw burgerservicenummer(BSN)`,
+        waarom: {
+            title: 'Waarom worden deze gegevens gevraagd?',
+            body:
+                '** Uw volledige naam **  \nDe gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.  \n  \n** Uw burgerservicenummer (BSN) **  \nDe gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.'
+        },
+        result: `De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.
+## Wat heeft u zojuist gedaan?
+- U heeft IRMA gebruikt om door te geven dat u ouder bent dan 18 jaar.
+- U heeft uw geboortedatum (en andere gegevens) niet doorgegeven.
+## Wat is er anders met IRMA?
+Als u via IRMA uw leeftijd doorgeeft, is bij de website bekend of u aan de leeftijdsgrens voldoet.U blijft anoniem.
+Dit kan worden gebruikt voor: \n
+- Alcohol kopen.
+- Stemmen voor lokale initiatieven.
+- Toegang en korting op basis van uw leeftijd.
+[Probeer de andere demo’s](/)
+`
+    },
     demo2: {
         breadcrumbs: `- [Home](/)
 - [Demo 2: Ideeën voor uw buurt](/)`,
@@ -100,55 +150,5 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremq
 1. Scan de QR-code hieronder met uw IRMA-app.
 2. Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.`,
         knop: 'Inloggen met IRMA'
-    },
-    demo1: {
-        breadcrumbs: `- [Home](/)
-- [Demo 1: Leeftijd aantonen](/leeftijd-aantonen)`,
-        title: {
-            noResult: '# Demo 1: Leeftijd aantonen',
-            hasResult: '# Demo 1: Uw leeftijd'
-        },
-        isOver18: {
-            heading: 'Uw leeftijd',
-            content: 'U heeft bewezen dat u ouder bent dan 18 jaar.'
-        },
-        isNotOver18: {
-            heading: 'Uw leeftijd',
-            content: 'U bent jonger dan 18 jaar.'
-        },
-        isOver65: {
-            heading: 'Uw leeftijd',
-            content: 'U heeft bewezen dat u ouder bent dan 65 jaar.'
-        },
-        isNotOver65: {
-            heading: 'Uw leeftijd',
-            content: 'U bent jonger dan 65 jaar.'
-        },
-        demo: {
-            heading: 'Dit is een demosite',
-            content: 'U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.'
-        },
-        intro: `Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.
-## Probeer het uit
-Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgende gegevens:
-- Uw volledige naam
-- Uw burgerservicenummer(BSN)`,
-        waarom: {
-            title: 'Waarom worden deze gegevens gevraagd?',
-            body:
-                '** Uw volledige naam **  \nDe gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.  \n  \n** Uw burgerservicenummer (BSN) **  \nDe gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.'
-        },
-        result: `De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.
-## Wat heeft u zojuist gedaan?
-- U heeft IRMA gebruikt om door te geven dat u ouder bent dan 18 jaar.
-- U heeft uw geboortedatum (en andere gegevens) niet doorgegeven.
-## Wat is er anders met IRMA?
-Als u via IRMA uw leeftijd doorgeeft, is bij de website bekend of u aan de leeftijdsgrens voldoet.U blijft anoniem.
-Dit kan worden gebruikt voor: \n
-- Alcohol kopen.
-- Stemmen voor lokale initiatieven.
-- Toegang en korting op basis van uw leeftijd.
-[Probeer de andere demo’s](/)
-`
     }
 };
