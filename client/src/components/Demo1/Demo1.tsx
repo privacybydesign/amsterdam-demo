@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
-
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion } from '@datapunt/asc-ui';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
@@ -10,10 +9,15 @@ import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
+import HeaderImage from '@components/HeaderImage/HeaderImage';
 import QRCode from '@components/QRCode/QRCode';
 
 export interface IProps {}
 
+interface IHeaderImage {
+    filename: string;
+    alt: string;
+}
 // @todo add error flow with incorrect data
 
 const Demo1: React.FC<IProps> = () => {
@@ -34,6 +38,34 @@ const Demo1: React.FC<IProps> = () => {
         setIsOver65(response['over65'] === 'Yes');
         setHasResult65(true);
     };
+
+    // Define dynamic header image
+    const [headerImg, setHeaderImg] = useState<IHeaderImage>({
+        filename: 'leeftijd',
+        alt: 'Stadsbeeld van een terras'
+    });
+
+    // Update header image for 18+
+    useEffect(() => {
+        if (hasResult18) {
+            if (isOver18) {
+                setHeaderImg({ filename: 'ouder-dan-18', alt: 'Foto van mensen in een café' });
+            } else {
+                setHeaderImg({ filename: 'jonger-dan-18', alt: 'Foto van een plein met kinderen' });
+            }
+        }
+    }, [hasResult18, isOver18]);
+
+    // Update header image for 65+
+    useEffect(() => {
+        if (hasResult65) {
+            if (isOver65) {
+                setHeaderImg({ filename: 'ouder-dan-65', alt: 'Foto van dansende ouderen' });
+            } else {
+                setHeaderImg({ filename: 'jonger-dan-65', alt: 'Straatbeeld van volwassenen op fiets' });
+            }
+        }
+    }, [hasResult65, isOver65]);
 
     return (
         <PageTemplate>
@@ -77,7 +109,7 @@ const Demo1: React.FC<IProps> = () => {
                 renderers={{ heading: AscLocal.H1 }}
             />
 
-            <AscLocal.Image src="/assets/demo_1.png" alt="foto van mensen in een café"></AscLocal.Image>
+            <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
 
             {!hasResult18 && !hasResult65 ? (
                 <>

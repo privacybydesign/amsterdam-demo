@@ -28,7 +28,7 @@ Ervaar nu vast wat u met IRMA kunt via verschillende demo’s.
         },
         demo2Card: {
             title: `Demo 2: Ideeën voor uw buurt`,
-            body: `Bewijs met uw postcode dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.`
+            body: `Bewijs met uw postcode dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.`
         }
     },
     demoNotification: {
