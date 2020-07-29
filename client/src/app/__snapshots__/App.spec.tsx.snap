@@ -1152,8 +1152,10 @@ exports[`App component should match snapshot 1`] = `
             href="/leeftijd-aantonen"
           >
             <img
-              alt=""
-              src="/assets/demo_1.png"
+              alt="Stadsbeeld van een terras"
+              class="c9"
+              src="/assets/leeftijd-940.jpg"
+              srcset="/assets/leeftijd-290.jpg 580w, /assets/leeftijd-940.jpg 1880w"
             />
             <h2
               class="c25"
@@ -1187,8 +1189,10 @@ exports[`App component should match snapshot 1`] = `
             href="/ideeen-voor-uw-buurt"
           >
             <img
-              alt=""
-              src="/assets/demo_2.png"
+              alt="Straat met zingende meisjes"
+              class="c9"
+              src="/assets/ideeen-voor-buurt-940.jpg"
+              srcset="/assets/ideeen-voor-buurt-290.jpg 580w, /assets/ideeen-voor-buurt-940.jpg 1880w"
             />
             <h2
               class="c25"
