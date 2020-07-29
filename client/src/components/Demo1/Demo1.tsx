@@ -45,14 +45,27 @@ const Demo1: React.FC<IProps> = () => {
         alt: 'Stadsbeeld van een terras'
     });
 
+    // Update header image for 18+
     useEffect(() => {
-        // Update header image
-        if (hasResult) {
+        if (hasResult18) {
             if (isOver18) {
                 setHeaderImg({ filename: 'ouder-dan-18', alt: 'Foto van mensen in een café' });
+            } else {
+                setHeaderImg({ filename: 'jonger-dan-18', alt: 'Foto van een plein met kinderen' });
             }
         }
-    }, [hasResult, isOver18]);
+    }, [hasResult18, isOver18]);
+
+    // Update header image for 65+
+    useEffect(() => {
+        if (hasResult65) {
+            if (isOver65) {
+                setHeaderImg({ filename: 'ouder-dan-65', alt: 'Foto van dansende ouderen' });
+            } else {
+                setHeaderImg({ filename: 'jonger-dan-65', alt: 'Straatbeeld van volwassenen op fiets' });
+            }
+        }
+    }, [hasResult65, isOver65]);
 
     return (
         <PageTemplate>
