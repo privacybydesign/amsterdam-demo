@@ -87,12 +87,14 @@ const Demo1: React.FC<IProps> = () => {
                         renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                     />
 
-                    <Accordion title={content.demo1.waarom.title}>
-                        <ReactMarkDown
-                            source={content.demo1.waarom.body}
-                            renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                        />
-                    </Accordion>
+                    <AscLocal.AccordionContainer>
+                        <Accordion title={content.demo1.waarom.title}>
+                            <ReactMarkDown
+                                source={content.demo1.waarom.body}
+                                renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            />
+                        </Accordion>
+                    </AscLocal.AccordionContainer>
 
                     <QRCode getSession={getSessionOver18} label="18+ bewijzen met IRMA" />
 

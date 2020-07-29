@@ -27,7 +27,7 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
     };
 
     return (
-        <div className={className}>
+        <span className={className}>
             <StyledButton onClick={getQRSession} variant="secondary" iconSize={24} iconLeft={<IrmaLogo24 />}>
                 {label ? label : content.qrcode.knop}
             </StyledButton>
@@ -52,7 +52,7 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
                     </ModalWrapper>
                 </>
             </Modal>
-        </div>
+        </span>
     );
 };
 
@@ -61,7 +61,6 @@ const IrmaLogo24 = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
 `;
 
 const StyledButton = styled(Button)`
-    margin-top: ${themeSpacing(6)};
     margin-bottom: ${themeSpacing(6)};
 `;
 
