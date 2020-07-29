@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 // This file contains all textual content in Markdown markup
 // Content values can be changed freely, but don't change the data structure of this file.
 
