@@ -26,12 +26,14 @@ const Demo1: React.FC<IProps> = () => {
         const response = await createIrmaSession('demo1/18', 'irma-qr', credentialSource === CredentialSource.DEMO);
         setIsOver18(response['over18'] === 'Yes');
         setHasResult18(true);
+        window.scrollTo(0, 0);
     };
 
     const getSessionOver65 = async () => {
         const response = await createIrmaSession('demo1/65', 'irma-qr', credentialSource === CredentialSource.DEMO);
         setIsOver65(response['over65'] === 'Yes');
         setHasResult65(true);
+        window.scrollTo(0, 0);
     };
 
     // Define dynamic header image
