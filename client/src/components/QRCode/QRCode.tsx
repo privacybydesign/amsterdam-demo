@@ -9,11 +9,12 @@ import { OL } from '@components/LocalAsc/LocalAsc';
 import { Close } from '@datapunt/asc-assets';
 
 export interface IProps {
+    label?: string;
     getSession(): Promise<void>;
     className?: string;
 }
 
-const QRCode: React.FC<IProps> = ({ getSession, className }) => {
+const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
     const [hasOverlay, setHasOverlay] = useState(false);
 
     const getQRSession = () => {
@@ -26,9 +27,9 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
     };
 
     return (
-        <div className={className}>
-            <StyledButton onClick={getQRSession} variant="secondary" iconSize={24} iconLeft={<IrmaLogo24 />}>
-                <ReactMarkDown source={content.qrcode.knop} />
+        <span className={className}>
+            <StyledButton onClick={getQRSession} variant="secondary" iconSize={24} iconLeft={<IrmaLogoIcon />}>
+                {label || content.qrcode.knop}
             </StyledButton>
 
             <Modal backdropOpacity={0.5} open={hasOverlay} onClose={closeModal}>
@@ -51,17 +52,16 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
                     </ModalWrapper>
                 </>
             </Modal>
-        </div>
+        </span>
     );
 };
 
-const IrmaLogo24 = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
-    width: 24px;
+const StyledButton = styled(Button)`
+    margin: ${themeSpacing(0, 6, 6, 0)};
 `;
 
-const StyledButton = styled(Button)`
-    margin-top: ${themeSpacing(6)};
-    margin-bottom: ${themeSpacing(6)};
+const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
+    width: 24px;
 `;
 
 const StyledH3 = styled.h3``;
