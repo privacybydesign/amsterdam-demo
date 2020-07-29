@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import ReactMarkDown from 'react-markdown';
-
-import content from '@services/content';
-
 import { Button, Modal, themeSpacing, themeColor } from '@datapunt/asc-ui';
-import { OL } from '@components/LocalAsc/LocalAsc';
 import { Close } from '@datapunt/asc-assets';
+import { isMobile } from '@services/createIrmaSession';
+import content from '@services/content';
+import { OL } from '@components/LocalAsc/LocalAsc';
 
 export interface IProps {
     label?: string;
@@ -18,8 +17,10 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
     const [hasOverlay, setHasOverlay] = useState(false);
 
     const getQRSession = () => {
-        setHasOverlay(true);
         typeof getSession === 'function' && getSession();
+        if (!isMobile) {
+            setHasOverlay(true);
+        }
     };
 
     const closeModal = () => {

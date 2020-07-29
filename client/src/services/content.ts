@@ -130,6 +130,22 @@ Dit kan worden gebruikt voor:
 - Toegang en korting op basis van uw leeftijd in uw buurt.
 - Voorzieningen speciaal voor Amsterdammers.`
     },
+    images: {
+        demo1: {
+            header: { src: 'leeftijd', alt: 'Stadsbeeld van een terras' },
+            isOver18: { src: 'ouder-dan-18', alt: 'Foto van mensen in een café' },
+            isNotOver18: { src: 'jonger-dan-18', alt: 'Foto van een plein met kinderen' },
+            isOver65: { src: 'ouder-dan-65', alt: 'Foto van dansende ouderen' },
+            isNotOver65: { src: 'jonger-dan-65', alt: 'Straatbeeld van volwassenen op fiets' }
+        },
+        demo2: {
+            header: { src: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' },
+            ageAndPostcodePositive: { src: 'ideeen-voor-buurt', alt: '' },
+            ageNegative: { src: 'ideeen-voor-buurt', alt: '' },
+            postcodeNegative: { src: 'ideeen-voor-buurt', alt: '' },
+            ageAndPostcodeNegative: { src: 'ideeen-voor-buurt', alt: '' }
+        }
+    },
     footer: {
         column1: `# Contact
 Hebt u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.`,

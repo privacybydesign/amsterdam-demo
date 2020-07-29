@@ -9,15 +9,11 @@ import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
-import HeaderImage from '@components/HeaderImage/HeaderImage';
+import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
 import QRCode from '@components/QRCode/QRCode';
+import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 
 export interface IProps {}
-
-interface IHeaderImage {
-    filename: string;
-    alt: string;
-}
 // @todo add error flow with incorrect data
 
 const Demo1: React.FC<IProps> = () => {
@@ -31,27 +27,32 @@ const Demo1: React.FC<IProps> = () => {
         const response = await createIrmaSession('demo1/18', 'irma-qr', credentialSource === CredentialSource.DEMO);
         setIsOver18(response['over18'] === 'Yes');
         setHasResult18(true);
+        window.scrollTo(0, 0);
     };
 
     const getSessionOver65 = async () => {
         const response = await createIrmaSession('demo1/65', 'irma-qr', credentialSource === CredentialSource.DEMO);
         setIsOver65(response['over65'] === 'Yes');
         setHasResult65(true);
+        window.scrollTo(0, 0);
     };
 
     // Define dynamic header image
-    const [headerImg, setHeaderImg] = useState<IHeaderImage>({
-        filename: 'leeftijd',
-        alt: 'Stadsbeeld van een terras'
+    const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
+        filename: content.images.demo1.header.src,
+        alt: content.images.demo1.header.alt
     });
 
     // Update header image for 18+
     useEffect(() => {
         if (hasResult18) {
             if (isOver18) {
-                setHeaderImg({ filename: 'ouder-dan-18', alt: 'Foto van mensen in een café' });
+                setHeaderImg({ filename: content.images.demo1.isOver18.src, alt: content.images.demo1.isOver18.alt });
             } else {
-                setHeaderImg({ filename: 'jonger-dan-18', alt: 'Foto van een plein met kinderen' });
+                setHeaderImg({
+                    filename: content.images.demo1.isNotOver18.src,
+                    alt: content.images.demo1.isNotOver18.alt
+                });
             }
         }
     }, [hasResult18, isOver18]);
@@ -60,9 +61,12 @@ const Demo1: React.FC<IProps> = () => {
     useEffect(() => {
         if (hasResult65) {
             if (isOver65) {
-                setHeaderImg({ filename: 'ouder-dan-65', alt: 'Foto van dansende ouderen' });
+                setHeaderImg({ filename: content.images.demo1.isOver65.src, alt: content.images.demo1.isOver65.alt });
             } else {
-                setHeaderImg({ filename: 'jonger-dan-65', alt: 'Straatbeeld van volwassenen op fiets' });
+                setHeaderImg({
+                    filename: content.images.demo1.isNotOver65.src,
+                    alt: content.images.demo1.isNotOver65.alt
+                });
             }
         }
     }, [hasResult65, isOver65]);
@@ -140,33 +144,35 @@ const Demo1: React.FC<IProps> = () => {
             ) : (
                 <>
                     <ReactMarkDown source={content.noSavePromise} />
-                    <ReactMarkDown source={content.demo1.result.title} />
-                    {/* // TODO: Refactor renderers */}
-                    {hasResult18 && isOver18 && (
-                        <ReactMarkDown
-                            source={content.demo1.result.isOver18}
-                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                        />
-                    )}
-                    {hasResult18 && !isOver18 && (
-                        <ReactMarkDown
-                            source={content.demo1.result.isNotOver18}
-                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                        />
-                    )}
-                    {hasResult65 && isOver65 && (
-                        <ReactMarkDown
-                            source={content.demo1.result.isOver65}
-                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                        />
-                    )}
-                    {hasResult65 && !isOver65 && (
-                        <ReactMarkDown
-                            source={content.demo1.result.isNotOver65}
-                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                        />
-                    )}
-                    <ReactMarkDown source={content.demo1.result.whatsDifferentWithIrma} />
+                    <EmphasisBlock>
+                        <ReactMarkDown source={content.demo1.result.title} />
+                        {/* // TODO: Refactor renderers */}
+                        {hasResult18 && isOver18 && (
+                            <ReactMarkDown
+                                source={content.demo1.result.isOver18}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            />
+                        )}
+                        {hasResult18 && !isOver18 && (
+                            <ReactMarkDown
+                                source={content.demo1.result.isNotOver18}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            />
+                        )}
+                        {hasResult65 && isOver65 && (
+                            <ReactMarkDown
+                                source={content.demo1.result.isOver65}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            />
+                        )}
+                        {hasResult65 && !isOver65 && (
+                            <ReactMarkDown
+                                source={content.demo1.result.isNotOver65}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            />
+                        )}
+                        <ReactMarkDown source={content.demo1.result.whatsDifferentWithIrma} />
+                    </EmphasisBlock>
                     <ReactMarkDown source={content.callToAction} />
                 </>
             )}
