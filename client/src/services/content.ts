@@ -5,16 +5,16 @@ export default {
     home: {
         breadcrumbs: `- [Home](/)`,
         title: `# Probeer IRMA uit`,
-        intro: `IRMA is een app waarmee je overal kunt aantonen wie u bent.
-        IRMA biedt een nieuwe manier van inloggen anders dan u kent van misschien DigiD.
+        intro: `IRMA is een app waarmee u online kunt aantonen wie u bent.
+        IRMA biedt een nieuwe manier van inloggen, anders dan u kent van bijvoorbeeld DigiD.
 
-Binnenkort kunt u IRMA gebruiken in Amsterdam. Waarom IRMA?
+Binnenkort kunt u IRMA gebruiken in Amsterdam.
 
-Ervaar nu vast wat u met IRMA kunt via verschillende demo's.
+Ervaar nu vast wat u met IRMA kunt via verschillende demo’s.
         `,
         requirements: {
             title: `Wat heeft u nodig?`,
-            body: `U kunt de demo&apos;s met IRMA doen als u de IRMA-app op uw telefoon heeft geïnstalleerd en als u de IRMA de volgende gegevens heeft toegevoegd:
+            body: `U kunt de demo&apos;s met IRMA doen als u de IRMA-app op uw telefoon heeft geïnstalleerd en als u in IRMA de volgende gegevens heeft toegevoegd:
 - Uw persoonsgegevens
 - Uw adres
 - Uw e-mailadres
@@ -23,11 +23,11 @@ Ervaar nu vast wat u met IRMA kunt via verschillende demo's.
         subtitle: `## Aan de slag met IRMA`,
         demo1Card: {
             title: `Demo 1: Leeftijd aantonen`,
-            body: `Bewijs dat u ouder bent dan 18 jaar zonder uw geboortedatum prijs te geven.`
+            body: `Bewijs dat u ouder dan 18 of 65 bent zonder uw geboortedatum prijs te geven.`
         },
         demo2Card: {
             title: `Demo 2: Ideeën voor uw buurt`,
-            body: `Bewijs dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.`
+            body: `Bewijs met uw postcode dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.`
         }
     },
     downloadIrma: `Heeft u nog geen IRMA?<br>
