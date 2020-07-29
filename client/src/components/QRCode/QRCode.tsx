@@ -42,12 +42,16 @@ const QRCode: React.FC<IProps> = ({ getSession, className }) => {
 
                         <CanvasWrapper>
                             <IrmaLogo />
+                            <QRCodeTopLeft />
+                            <QRCodeTopRight />
+                            <QRCodeBottomRight />
+                            <QRCodeBottomLeft />
                             <Canvas id="irma-qr" />
                         </CanvasWrapper>
                     </ModalWrapper>
                 </>
             </Modal>
-        </div>
+        </div >
     );
 };
 
@@ -64,10 +68,6 @@ const StyledH3 = styled.h3``;
 
 const ModalWrapper = styled.div`
     padding: ${themeSpacing(0, 5, 5, 5)};
-    ul,
-    ol {
-        margin-top: 0;
-    }
 `;
 
 const StyledHeader = styled.div`
@@ -83,23 +83,55 @@ const CloseButton = styled(Button)`
 `;
 
 const CanvasWrapper = styled.div`
-    display: flex;
-    justify-content: center;
+    position: relative;
+    width: 300px !important;
+    height: 300px !important;
+    margin: 50px auto;
+`;
+
+const Canvas = styled.canvas`
+    width: 300px !important;
+    height: 300px !important;
 `;
 
 const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
     position: absolute;
-    margin-top: 155px;
     width: 120px;
     height: 120px;
+    top: 120px;
+    left: 120px;
 `;
 
-const Canvas = styled.canvas`
-    width: 365px !important;
-    height: 365px !important;
-    border: 5px solid ${themeColor('primary', 'main')};
-    padding: ${themeSpacing(8)};
-    margin: ${themeSpacing(8)};
+const QRCodeTopLeft = styled.img.attrs({ src: '/assets/qr-top-left.svg' })`
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+`;
+
+const QRCodeTopRight = styled.img.attrs({ src: '/assets/qr-top-right.svg' })`
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+`;
+
+const QRCodeBottomRight = styled.img.attrs({ src: '/assets/qr-bottom-right.svg' })`
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+`;
+
+const QRCodeBottomLeft = styled.img.attrs({ src: '/assets/qr-bottom-left.svg' })`
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
 `;
 
 export default QRCode;
