@@ -56,6 +56,7 @@ const createIrmaSession = async (
     }
 
     const result = await irma.handleSession(sessionPtr, sessionOptions);
+    // Only get the last part of each result
     const data = result.disclosed[0].reduce(
         (acc, { id, rawvalue }) => ({ ...acc, [id.match(/[^.]*$/g)[0]]: rawvalue }),
         {}
