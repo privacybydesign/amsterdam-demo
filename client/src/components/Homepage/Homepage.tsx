@@ -8,7 +8,6 @@ import AppRoutes from '@app/AppRoutes';
 import VerticalColumn from '@components/VerticalColumn/VerticalColumn';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import Article from '@components/Article/Article';
-import HeaderImage from '@components/HeaderImage/HeaderImage';
 
 interface IProps {}
 
@@ -19,7 +18,8 @@ const Homepage: React.FC<IProps> = () => (
             renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
         />
         <ReactMarkDown source={content.home.title} renderers={{ heading: AscLocal.H1 }} />
-        <HeaderImage src="/assets/home.png" />
+        {/* // TODO: Make this a responsive image */}
+        <AscLocal.Image src="/assets/home.png"></AscLocal.Image>
         <VerticalColumn span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
             <ReactMarkDown source={content.home.intro} renderers={{ paragraph: AscLocal.StrongParagraph }} />
             <AscLocal.AccordionContainer>
