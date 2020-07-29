@@ -74,8 +74,11 @@ const Demo2: React.FC<IProps> = () => {
                 source={content.demo2[hasResult ? 'proven' : 'unproven'].title}
                 renderers={{ heading: AscLocal.H1 }}
             />
-            {/* // TODO: Add local image */}
-            <img src="/assets/demo_1.png" alt="Woonwijk" />
+            <img
+                src="/assets/ideeen-voor-buurt-940.jpg"
+                srcSet="/assets/ideeen-voor-buurt-290.jpg 580w, /assets/ideeen-voor-buurt-940.jpg 1880w"
+                alt="Foto van mensen in een café"
+            />
             {!hasResult ? (
                 <>
                     <ReactMarkDown
