@@ -34,15 +34,15 @@ const Demo2: React.FC<IProps> = () => {
     // TODO: Implement correct images
     const headerImg = useMemo((): IHeaderImageProps => {
         if (!hasResult) {
-            return { filename: 'ideeen-voor-buurt', alt: 'Stadsbeeld van een terras' };
+            return { filename: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' };
         } else if (isOver18 && isPostcodeInArea) {
-            return { filename: 'ideeen-voor-buurt', alt: 'Stadsbeeld van een terras' };
+            return { filename: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' };
         } else if (!isOver18 && isPostcodeInArea) {
-            return { filename: 'ideeen-voor-buurt', alt: 'Stadsbeeld van een terras' };
+            return { filename: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' };
         } else if (isOver18 && !isPostcodeInArea) {
-            return { filename: 'ideeen-voor-buurt', alt: 'Stadsbeeld van een terras' };
+            return { filename: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' };
         } else if (!isOver18 && !isPostcodeInArea) {
-            return { filename: 'ideeen-voor-buurt', alt: 'Stadsbeeld van een terras' };
+            return { filename: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' };
         }
     }, [hasResult, isOver18, isPostcodeInArea]);
 

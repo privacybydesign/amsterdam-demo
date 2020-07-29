@@ -27,10 +27,20 @@ const Homepage: React.FC<IProps> = () => (
                 </Accordion>
             </AscLocal.AccordionContainer>
             <ReactMarkDown source={content.home.subtitle} renderers={{ heading: AscLocal.H2 }} />
-            <Article imageSrc="/assets/demo_1.png" title={content.home.demo1Card.title} href={AppRoutes.DEMO1.path}>
+            <Article
+                imageSrc="leeftijd"
+                imageAlt="Stadsbeeld van een terras"
+                title={content.home.demo1Card.title}
+                href={AppRoutes.DEMO1.path}
+            >
                 <ReactMarkDown source={content.home.demo1Card.body} />
             </Article>
-            <Article imageSrc="/assets/demo_2.png" title={content.home.demo2Card.title} href={AppRoutes.DEMO2.path}>
+            <Article
+                imageSrc="ideeen-voor-buurt"
+                imageAlt="Straat met zingende meisjes"
+                title={content.home.demo2Card.title}
+                href={AppRoutes.DEMO2.path}
+            >
                 <ReactMarkDown source={content.home.demo2Card.body} />
             </Article>
         </VerticalColumn>
