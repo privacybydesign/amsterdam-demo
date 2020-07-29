@@ -34,15 +34,24 @@ const Demo2: React.FC<IProps> = () => {
     // TODO: Implement correct images
     const headerImg = useMemo((): IHeaderImageProps => {
         if (!hasResult) {
-            return { filename: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' };
+            return { filename: content.images.demo2.header.src, alt: content.images.demo2.header.alt };
         } else if (isOver18 && isPostcodeInArea) {
-            return { filename: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' };
+            return {
+                filename: content.images.demo2.ageAndPostcodePositive.src,
+                alt: content.images.demo2.ageAndPostcodePositive.alt
+            };
         } else if (!isOver18 && isPostcodeInArea) {
-            return { filename: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' };
+            return { filename: content.images.demo2.ageNegative.src, alt: content.images.demo2.ageNegative.alt };
         } else if (isOver18 && !isPostcodeInArea) {
-            return { filename: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' };
+            return {
+                filename: content.images.demo2.postcodeNegative.src,
+                alt: content.images.demo2.postcodeNegative.alt
+            };
         } else if (!isOver18 && !isPostcodeInArea) {
-            return { filename: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' };
+            return {
+                filename: content.images.demo2.ageAndPostcodeNegative.src,
+                alt: content.images.demo2.ageAndPostcodeNegative.alt
+            };
         }
     }, [hasResult, isOver18, isPostcodeInArea]);
 

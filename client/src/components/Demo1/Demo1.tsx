@@ -38,17 +38,20 @@ const Demo1: React.FC<IProps> = () => {
 
     // Define dynamic header image
     const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
-        filename: 'leeftijd',
-        alt: 'Stadsbeeld van een terras'
+        filename: content.images.demo1.header.src,
+        alt: content.images.demo1.header.alt
     });
 
     // Update header image for 18+
     useEffect(() => {
         if (hasResult18) {
             if (isOver18) {
-                setHeaderImg({ filename: 'ouder-dan-18', alt: 'Foto van mensen in een café' });
+                setHeaderImg({ filename: content.images.demo1.isOver18.src, alt: content.images.demo1.isOver18.alt });
             } else {
-                setHeaderImg({ filename: 'jonger-dan-18', alt: 'Foto van een plein met kinderen' });
+                setHeaderImg({
+                    filename: content.images.demo1.isNotOver18.src,
+                    alt: content.images.demo1.isNotOver18.alt
+                });
             }
         }
     }, [hasResult18, isOver18]);
@@ -57,9 +60,12 @@ const Demo1: React.FC<IProps> = () => {
     useEffect(() => {
         if (hasResult65) {
             if (isOver65) {
-                setHeaderImg({ filename: 'ouder-dan-65', alt: 'Foto van dansende ouderen' });
+                setHeaderImg({ filename: content.images.demo1.isOver65.src, alt: content.images.demo1.isOver65.alt });
             } else {
-                setHeaderImg({ filename: 'jonger-dan-65', alt: 'Straatbeeld van volwassenen op fiets' });
+                setHeaderImg({
+                    filename: content.images.demo1.isNotOver65.src,
+                    alt: content.images.demo1.isNotOver65.alt
+                });
             }
         }
     }, [hasResult65, isOver65]);
