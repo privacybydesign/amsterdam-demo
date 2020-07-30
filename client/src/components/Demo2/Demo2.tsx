@@ -32,6 +32,7 @@ const Demo2: React.FC<IProps> = () => {
 
         const wijk = await getBuurtcombinatie(postcode);
         if (wijk) {
+            // bv "IJburg West"
             console.log('RESULT WIJK', wijk);
         } else {
             // error flow
