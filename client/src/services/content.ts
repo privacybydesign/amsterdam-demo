@@ -159,8 +159,7 @@ Dit kan worden gebruikt voor:
         column1: `# Contact
 Hebt u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.
 - [Contactformulier](https://formulieren.amsterdam.nl/tripleforms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx)
-- **Bel het telefoonnummer [14 020](tel:14020)**
-maandag tot en met vrijdag van 08.00 tot 18.00 uur
+- **[Bel het telefoonnummer 14 020](tel:14020)**\n  maandag tot en met vrijdag van 08.00 tot 18.00 uur
 - [Contactgegevens en openingstijden](/)`,
         column2: `# Volg de Gemeente
 - [Nieuwsbrief amsterdam.nl](/)
