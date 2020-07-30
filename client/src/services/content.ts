@@ -157,15 +157,22 @@ Dit kan worden gebruikt voor:
     },
     footer: {
         column1: `# Contact
-Hebt u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.`,
+Hebt u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.
+- [Contactformulier](/)
+- **Bel het telefoonnummer [14 020](/)**
+maandag tot en met vrijdag van 08.00 tot 18.00 uur
+- [Contactgegevens en openingstijden](/)`,
         column2: `# Volg de Gemeente
-- [Lorem ipsum dolor sit.](/)
-- [Lorem.](/)
-- [Lorem ipsum .](/)`,
-        column3: `# Uit in Amsterdam
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor doloremque ea eos facere hic ipsum nobis provident quidem voluptates.`,
-        bottom: `[Privacy and cookies.](/)
-[Privacy and cookies.](/)`
+- [Nieuwsbrief amsterdam.nl](/)
+- [Twitter](/)
+- [Facebook](/)
+- [Instagram](/)
+- [LinkedIn](/)
+- [Werkenbij](/)`,
+        column3: `# Wat is er te doen in Amsterdam?
+Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [Iamsterdam.com](/)`,
+        bottom: `[Over deze site](/)
+[Privacy](/)[Cookies op deze site](/)`
     },
     qrcode: {
         title: '### Maak uzelf bekend',
