@@ -425,7 +425,7 @@ exports[`App component should match snapshot 1`] = `
       />
     </header>
   </div>
-  .c26 {
+  .c27 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -438,7 +438,7 @@ exports[`App component should match snapshot 1`] = `
   transform: rotate(0deg);
 }
 
-.c26 > svg {
+.c27 > svg {
   width: 20px;
   height: 20px;
 }
@@ -480,17 +480,6 @@ exports[`App component should match snapshot 1`] = `
   justify-content: space-between;
 }
 
-.c28 .c18 {
-  margin: 4px 4px 0 0;
-}
-
-.c28 .c18 svg circle,
-.c28 .c18 svg rect,
-.c28 .c18 svg polygon,
-.c28 .c18 svg path {
-  fill: #ffffff;
-}
-
 .c29 .c18 {
   margin: 4px 4px 0 0;
 }
@@ -499,6 +488,17 @@ exports[`App component should match snapshot 1`] = `
 .c29 .c18 svg rect,
 .c29 .c18 svg polygon,
 .c29 .c18 svg path {
+  fill: #ffffff;
+}
+
+.c30 .c18 {
+  margin: 4px 4px 0 0;
+}
+
+.c30 .c18 svg circle,
+.c30 .c18 svg rect,
+.c30 .c18 svg polygon,
+.c30 .c18 svg path {
   fill: #000000;
 }
 
@@ -676,7 +676,7 @@ exports[`App component should match snapshot 1`] = `
   height: 20px;
 }
 
-.c27 .c6 {
+.c28 .c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -774,6 +774,12 @@ exports[`App component should match snapshot 1`] = `
   margin-bottom: 12px;
 }
 
+.c24 {
+  width: 120px;
+  height: 40px;
+  margin-right: 12px;
+}
+
 .c14 {
   margin-bottom: 20px;
 }
@@ -791,13 +797,13 @@ exports[`App component should match snapshot 1`] = `
   margin: 20px 0;
 }
 
-.c24 {
+.c25 {
   border-right: 2px solid black;
   padding-bottom: 16px;
   margin-bottom: 28px;
 }
 
-.c24 a {
+.c25 a {
   color: #000000;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -810,27 +816,27 @@ exports[`App component should match snapshot 1`] = `
   flex-direction: column;
 }
 
-.c24 a h2 {
+.c25 a h2 {
   margin-bottom: 20px;
 }
 
-.c24 a img {
+.c25 a img {
   width: 100%;
   margin-bottom: 16px;
 }
 
-.c24 a div {
+.c25 a div {
   margin-bottom: 12px;
 }
 
-.c24 a span {
+.c25 a span {
   margin-right: 12px;
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
 }
 
-.c25 {
+.c26 {
   margin-bottom: 8px;
 }
 
@@ -1138,6 +1144,49 @@ exports[`App component should match snapshot 1`] = `
                 Uw telefoonnummer
               </li>
             </ul>
+            <h2
+              class="c23"
+            >
+              IRMA downloaden
+            </h2>
+            <p>
+              Download de IRMA-app voor iOS of Android:  
+            </p>
+            <p>
+              <a
+                href="https://apps.apple.com/nl/app/irma-authenticatie/id1294092994"
+              >
+                <img
+                  alt="App Store"
+                  class="c24"
+                  src="/assets/download-app-store.svg"
+                  title="Download IRMA in de App Store"
+                />
+              </a>
+              
+
+              <a
+                href="https://play.google.com/store/apps/details?id=org.irmacard.cardemu"
+              >
+                <img
+                  alt="Play Store"
+                  class="c24"
+                  src="/assets/download-play-store.png"
+                  title="Download IRMA in de Play Store"
+                />
+              </a>
+            </p>
+            <p>
+              Wilt u meer weten over IRMA?  
+            </p>
+            <p>
+              Ga naar de 
+              <a
+                href="https://privacybydesign.foundation/irma"
+              >
+                website van IRMA
+              </a>
+            </p>
           </div>
         </div>
         <h2
@@ -1146,7 +1195,7 @@ exports[`App component should match snapshot 1`] = `
           Aan de slag met IRMA
         </h2>
         <section
-          class="c24"
+          class="c25"
         >
           <a
             href="/leeftijd-aantonen"
@@ -1158,7 +1207,7 @@ exports[`App component should match snapshot 1`] = `
               srcset="/assets/leeftijd-290.jpg 580w, /assets/leeftijd-940.jpg 1880w"
             />
             <h2
-              class="c25"
+              class="c26"
             >
               Demo 1: Leeftijd aantonen
             </h2>
@@ -1168,7 +1217,7 @@ exports[`App component should match snapshot 1`] = `
               </p>
             </div>
             <span
-              class="c18 c26"
+              class="c18 c27"
             >
               <svg
                 focusable="false"
@@ -1183,7 +1232,7 @@ exports[`App component should match snapshot 1`] = `
           </a>
         </section>
         <section
-          class="c24"
+          class="c25"
         >
           <a
             href="/ideeen-voor-uw-buurt"
@@ -1195,7 +1244,7 @@ exports[`App component should match snapshot 1`] = `
               srcset="/assets/ideeen-voor-buurt-290.jpg 580w, /assets/ideeen-voor-buurt-940.jpg 1880w"
             />
             <h2
-              class="c25"
+              class="c26"
             >
               Demo 2: Ideeën voor uw buurt
             </h2>
@@ -1205,7 +1254,7 @@ exports[`App component should match snapshot 1`] = `
               </p>
             </div>
             <span
-              class="c18 c26"
+              class="c18 c27"
             >
               <svg
                 focusable="false"
