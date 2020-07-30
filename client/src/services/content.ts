@@ -158,8 +158,8 @@ Dit kan worden gebruikt voor:
     footer: {
         column1: `# Contact
 Hebt u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.
-- [Contactformulier](/)
-- **Bel het telefoonnummer [14 020](/)**
+- [Contactformulier](https://formulieren.amsterdam.nl/tripleforms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx)
+- **Bel het telefoonnummer [14 020](tel:14020)**
 maandag tot en met vrijdag van 08.00 tot 18.00 uur
 - [Contactgegevens en openingstijden](/)`,
         column2: `# Volg de Gemeente
@@ -170,9 +170,10 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
 - [LinkedIn](/)
 - [Werkenbij](/)`,
         column3: `# Wat is er te doen in Amsterdam?
-Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [Iamsterdam.com](/)`,
-        bottom: `[Over deze site](/)
-[Privacy](/)[Cookies op deze site](/)`
+Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [Iamsterdam.com](https://www.iamsterdam.com/)`,
+        bottom: `[Over deze site](https://www.amsterdam.nl/overdezesite/)
+[Privacy](https://www.amsterdam.nl/privacy/)
+[Cookies op deze site](https://www.amsterdam.nl/privacy/cookies-site/)`
     },
     qrcode: {
         title: '### Maak uzelf bekend',
