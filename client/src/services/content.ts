@@ -27,7 +27,7 @@ Download de IRMA-app voor iOS of Android:  \n
 [![App Store](/assets/download-app-store.svg "Download IRMA in de App Store")](https://apps.apple.com/nl/app/irma-authenticatie/id1294092994)
 [![Play Store](/assets/download-play-store.png "Download IRMA in de Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
 
-Wilt u meer weten over IRMA?  \n
+Wilt u meer weten over IRMA?
 Ga naar de [website van IRMA](https://irma.app/)`
         },
         subtitle: `## Aan de slag met IRMA`,
@@ -44,7 +44,7 @@ Ga naar de [website van IRMA](https://irma.app/)`
         heading: `Dit is een demosite`,
         content: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
     },
-    downloadIrma: `Heeft u nog geen IRMA?  \n[Download IRMA](/)`,
+    downloadIrma: `Heeft u nog geen IRMA?  \n[Download IRMA](https://irma.app/)`,
     noSavePromise: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard.`,
     callToAction: `[Probeer de andere demo’s](/)`,
     demo1: {
