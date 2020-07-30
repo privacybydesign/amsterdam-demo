@@ -28,7 +28,7 @@ Download de IRMA-app voor iOS of Android:  \n
 [![Play Store](/assets/download-play-store.png "Download IRMA in de Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
 
 Wilt u meer weten over IRMA?  \n
-Ga naar de [website van IRMA](https://privacybydesign.foundation/irma)`
+Ga naar de [website van IRMA](https://irma.app/)`
         },
         subtitle: `## Aan de slag met IRMA`,
         demo1Card: {
