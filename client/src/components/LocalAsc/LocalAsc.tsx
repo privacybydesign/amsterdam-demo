@@ -31,6 +31,12 @@ export const Image = styled.img`
     margin-bottom: ${themeSpacing(3)};
 `;
 
+export const DownloadImage = styled.img`
+    width: 120px;
+    height: 40px;
+    margin-right: ${themeSpacing(3)};
+`;
+
 export const AccordionContainer = styled.div`
     margin-bottom: ${themeSpacing(5)};
 `;

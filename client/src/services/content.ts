@@ -26,7 +26,8 @@ Ervaar nu vast wat u met IRMA kunt via verschillende demo’s.
 [![App Store](/assets/download-app-store.svg "Download IRMA in de App Store")](https://apps.apple.com/nl/app/irma-authenticatie/id1294092994)
 [![Play Store](/assets/download-play-store.png "Download IRMA in de Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
 
-`
+Wilt u meer weten over IRMA?  \n
+Ga naar de [website van IRMA](https://privacybydesign.foundation/irma)`
         },
         subtitle: `## Aan de slag met IRMA`,
         demo1Card: {
