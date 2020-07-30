@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
+import getBuurtcombinatie from '@services/getBuurtcombinatie';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
@@ -24,11 +25,17 @@ const Demo2: React.FC<IProps> = () => {
     const getSession = async () => {
         const response = await createIrmaSession('demo2', 'irma-qr', credentialSource === CredentialSource.DEMO);
         setIsOver18(response['over18'] === 'Yes');
-        // TODO: Substitute this logic for postal code > area mapping
-        const postcode = parseInt(response['zipcode'].substr(0, 4));
+        const postcode = response['zipcode'].replace(/ /, '');
         setIsPostcodeInArea(postcode >= 1000 && postcode <= 1099);
         setHasResult(true);
         window.scrollTo(0, 0);
+
+        const wijk = await getBuurtcombinatie(postcode);
+        if (wijk) {
+            console.log('RESULT WIJK', wijk);
+        } else {
+            // error flow
+        }
     };
 
     // Define dynamic header image
