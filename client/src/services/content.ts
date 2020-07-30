@@ -18,7 +18,14 @@ Ervaar nu vast wat u met IRMA kunt via verschillende demo’s.
 - Uw persoonsgegevens
 - Uw adres
 - Uw e-mailadres
-- Uw telefoonnummer`
+- Uw telefoonnummer
+
+## IRMA downloaden
+
+[![App Store](/assets/download-app-store.svg "Download IRMA in de App Store")](https://apps.apple.com/nl/app/irma-authenticatie/id1294092994)
+[![Play Store](/assets/download-play-store.png "Download IRMA in de Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
+
+`
         },
         subtitle: `## Aan de slag met IRMA`,
         demo1Card: {
