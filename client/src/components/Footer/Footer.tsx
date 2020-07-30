@@ -60,7 +60,8 @@ const FooterLink: React.FC<IFooterLinkProps> = ({ href, children }) => (
 );
 
 const FooterSection = styled.div`
-    p {
+    p,
+    li {
         color: ${themeColor('tint', 'level1')};
     }
 `;
