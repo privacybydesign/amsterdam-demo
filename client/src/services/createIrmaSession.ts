@@ -26,7 +26,7 @@ export const getConfig = async (): Promise<IIrmaServerConfig> => {
 };
 
 export const isMobile = (): boolean => {
-    return /Android/i.test(window.navigator.userAgent) || /iPhone/.test(window.navigator.userAgent);
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 };
 
 // Note: To use the demo credentials on non-production environments add ?demo=true to the URL
@@ -50,13 +50,13 @@ const createIrmaSession = async (
         disableMobile: true
     };
 
-    // TODO: Fix mobile session
-    // if (isMobile()) {
-    //     sessionOptions.method = 'mobile';
-    //     sessionOptions.disableMobile = false;
-    // }
+    if (isMobile()) {
+        sessionOptions.method = 'mobile';
+        sessionOptions.disableMobile = false;
+    }
 
     const result = await irma.handleSession(sessionPtr, sessionOptions);
+    // Only get the last part of each result
     const data = result.disclosed[0].reduce(
         (acc, { id, rawvalue }) => ({ ...acc, [id.match(/[^.]*$/g)[0]]: rawvalue }),
         {}

@@ -1069,18 +1069,18 @@ exports[`App component should match snapshot 1`] = `
         <p
           class="c12 c13"
         >
-          IRMA is een app waarmee je overal kunt aantonen wie u bent.
-        IRMA biedt een nieuwe manier van inloggen anders dan u kent van misschien DigiD.
+          IRMA is een app waarmee u online kunt aantonen wie u bent.
+        IRMA biedt een nieuwe manier van inloggen, anders dan u kent van bijvoorbeeld DigiD.
         </p>
         <p
           class="c12 c13"
         >
-          Binnenkort kunt u IRMA gebruiken in Amsterdam. Waarom IRMA?
+          Binnenkort kunt u IRMA gebruiken in Amsterdam.
         </p>
         <p
           class="c12 c13"
         >
-          Ervaar nu vast wat u met IRMA kunt via verschillende demo's.
+          Ervaar nu vast wat u met IRMA kunt via verschillende demo’s.
         
         </p>
         <div
@@ -1120,7 +1120,7 @@ exports[`App component should match snapshot 1`] = `
             id="nodig"
           >
             <p>
-              U kunt de demo's met IRMA doen als u de IRMA-app op uw telefoon heeft geïnstalleerd en als u de IRMA de volgende gegevens heeft toegevoegd:
+              U kunt de demo's met IRMA doen als u de IRMA-app op uw telefoon heeft geïnstalleerd en als u in IRMA de volgende gegevens heeft toegevoegd:
             </p>
             <ul
               class="c22"
@@ -1152,8 +1152,10 @@ exports[`App component should match snapshot 1`] = `
             href="/leeftijd-aantonen"
           >
             <img
-              alt=""
-              src="/assets/demo_1.png"
+              alt="Stadsbeeld van een terras"
+              class="c9"
+              src="/assets/leeftijd-940.jpg"
+              srcset="/assets/leeftijd-290.jpg 580w, /assets/leeftijd-940.jpg 1880w"
             />
             <h2
               class="c25"
@@ -1162,7 +1164,7 @@ exports[`App component should match snapshot 1`] = `
             </h2>
             <div>
               <p>
-                Bewijs dat u ouder bent dan 18 jaar zonder uw geboortedatum prijs te geven.
+                Bewijs dat u ouder dan 18 of 65 bent zonder uw geboortedatum prijs te geven.
               </p>
             </div>
             <span
@@ -1187,8 +1189,10 @@ exports[`App component should match snapshot 1`] = `
             href="/ideeen-voor-uw-buurt"
           >
             <img
-              alt=""
-              src="/assets/demo_2.png"
+              alt="Straat met zingende meisjes"
+              class="c9"
+              src="/assets/ideeen-voor-buurt-940.jpg"
+              srcset="/assets/ideeen-voor-buurt-290.jpg 580w, /assets/ideeen-voor-buurt-940.jpg 1880w"
             />
             <h2
               class="c25"
@@ -1197,7 +1201,7 @@ exports[`App component should match snapshot 1`] = `
             </h2>
             <div>
               <p>
-                Bewijs dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.
+                Bewijs met uw postcode dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.
               </p>
             </div>
             <span

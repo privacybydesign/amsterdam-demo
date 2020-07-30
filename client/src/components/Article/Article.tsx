@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Heading, Icon, themeColor, themeSpacing } from '@datapunt/asc-ui';
 import { ChevronRight } from '@datapunt/asc-assets';
+import HeaderImage from '@components/HeaderImage/HeaderImage';
 
 export interface IProps {
     imageSrc: string;
+    imageAlt: string;
     title: string;
     text?: string;
     href: string;
@@ -47,11 +49,11 @@ const StyledH2 = styled(Heading)`
     margin-bottom: 8px;
 `;
 
-const Article: React.FC<IProps> = ({ imageSrc, title, children, href, className }) => {
+const Article: React.FC<IProps> = ({ imageSrc, imageAlt, title, children, href, className }) => {
     return (
         <Container className={className}>
             <Link to={href}>
-                <img src={imageSrc} alt=""></img>
+                <HeaderImage filename={imageSrc} alt={imageAlt} />
                 <StyledH2 $as="h2">{title}</StyledH2>
                 <div>{children}</div>
                 <Icon>
