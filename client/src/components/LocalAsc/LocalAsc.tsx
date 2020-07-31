@@ -57,13 +57,14 @@ export const BlueAlert = styled(Alert).attrs({ level: 'attention' })`
     margin-top: ${themeSpacing(4)};
 `;
 
-export const RedAlert = styled(Alert).attrs({ level: 'error' })`
+export const RedAlert = styled(Alert)`
+    background-color: #fec813;
     margin-top: ${themeSpacing(4)};
 `;
 
 export const GreenAlert = styled(Alert)`
     margin-top: ${themeSpacing(4)};
-    background-color: ${themeColor('support', 'valid')};
+    background-color: #0c8836;
     * {
         color: ${themeColor('tint', 'level1')};
     }
