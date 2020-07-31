@@ -8,14 +8,14 @@ export interface IProps {
 const instance = axios.create({});
 
 const getBuurtcombinatie = async (postcode: string): Promise<IProps> => {
-  const response = await instance.get(`https://api.data.amsterdam.nl/bag/v1.1/nummeraanduiding/?postcode=${postcode}`);
+  const response = await instance.get(`https://api.data.amsterdam.nl/dataselectie/bag/?postcode=${postcode}`);
+  if (response.data.aggs_list.buurtcombinatie_naam) {
+    const buurtcombinatieResponse = response.data.aggs_list.buurtcombinatie_naam;
+    console.log('BUURTCOMBINATIE rsponse', buurtcombinatieResponse);
+    console.log('aantal buurten in postcode', buurtcombinatieResponse.doc_count);
+    console.log('array met alle buurten in de postcode', buurtcombinatieResponse.buckets);
 
-  if (response.data.results[0]._links.self.href) {
-    const buurtcombinatieResponse = await instance.get(response.data.results[0]._links.self.href);
-    console.log('----', buurtcombinatieResponse.data.buurtcombinatie.naam);
-    if (buurtcombinatieResponse.data.buurtcombinatie.naam) {
-      return buurtcombinatieResponse.data.buurtcombinatie.naam;
-    }
+    return buurtcombinatieResponse;
   }
 
   return null;

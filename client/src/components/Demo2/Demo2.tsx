@@ -14,7 +14,7 @@ import ExternalLink from '@components/ExternalLink/ExternalLink';
 import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 
-export interface IProps {}
+export interface IProps { }
 
 const Demo2: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
@@ -30,10 +30,10 @@ const Demo2: React.FC<IProps> = () => {
         setHasResult(true);
         window.scrollTo(0, 0);
 
-        const wijk = await getBuurtcombinatie(postcode);
-        if (wijk) {
+        const buurtcombinatieResponse = await getBuurtcombinatie(postcode);
+        if (buurtcombinatieResponse.buckets[0].key) {
             // bv "IJburg West"
-            console.log('RESULT WIJK', wijk);
+            console.log('EERSTE  WIJK IN DE LIJST', buurtcombinatieResponse.buckets[0].key);
         } else {
             // error flow
         }
@@ -134,20 +134,20 @@ const Demo2: React.FC<IProps> = () => {
                     />
                 </>
             ) : (
-                <>
-                    <ReactMarkDown
-                        source={content.noSavePromise}
-                        renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
-                    />
-                    <EmphasisBlock>
+                    <>
                         <ReactMarkDown
-                            source={content.demo2.result}
+                            source={content.noSavePromise}
                             renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
                         />
-                    </EmphasisBlock>
-                    <ReactMarkDown source={content.callToAction} />
-                </>
-            )}
+                        <EmphasisBlock>
+                            <ReactMarkDown
+                                source={content.demo2.result}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
+                            />
+                        </EmphasisBlock>
+                        <ReactMarkDown source={content.callToAction} />
+                    </>
+                )}
         </PageTemplate>
     );
 };
