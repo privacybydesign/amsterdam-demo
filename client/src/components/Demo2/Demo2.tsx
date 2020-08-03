@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
-import getBuurtcombinatie from '@services/getBuurtcombinatie';
+import getGGW from '@services/getGGW';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
@@ -30,10 +30,10 @@ const Demo2: React.FC<IProps> = () => {
         setHasResult(true);
         window.scrollTo(0, 0);
 
-        const buurtcombinatieResponse = await getBuurtcombinatie(postcode);
-        if (buurtcombinatieResponse.buckets[0].key) {
+        const ggwResponse = await getGGW(postcode);
+        if (ggwResponse.buckets[0].key) {
             // bv "IJburg West"
-            console.log('EERSTE  WIJK IN DE LIJST', buurtcombinatieResponse.buckets[0].key);
+            console.log('EERSTE  WIJK IN DE LIJST', ggwResponse.buckets[0].key);
         } else {
             // error flow
         }
