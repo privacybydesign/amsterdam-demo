@@ -32,7 +32,7 @@ const Demo2: React.FC<IProps> = () => {
 
         const ggwResponse = await getGGW(postcode);
         if (ggwResponse.buckets[0].key) {
-            // bv "IJburg West"
+            // bv "DX16"
             console.log('EERSTE  WIJK IN DE LIJST', ggwResponse.buckets[0].key);
         } else {
             // error flow
