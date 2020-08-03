@@ -8,7 +8,7 @@ export interface IProps {
 const instance = axios.create({});
 
 const getBuurtcombinatie = async (postcode: string): Promise<IProps> => {
-  const response = await instance.get(`https://api.data.amsterdam.nl/dataselectie/bag/?postcode=${postcode}`);
+  const response = await instance.get(`https://api.data.amsterdam.nl/dataselectie/bag/?size=1&postcode=${postcode}`);
   if (response.data.aggs_list.buurtcombinatie_naam) {
     const buurtcombinatieResponse = response.data.aggs_list.buurtcombinatie_naam;
     console.log('BUURTCOMBINATIE rsponse', buurtcombinatieResponse);
