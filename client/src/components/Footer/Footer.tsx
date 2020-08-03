@@ -15,12 +15,13 @@ import {
     themeSpacing
 } from '@datapunt/asc-ui';
 import ReactMarkDown from 'react-markdown';
+import theme from '@services/theme';
 import content from '@services/content';
 
 interface IFooterProps {}
 
 const Footer: React.FC<IFooterProps> = () => (
-    <ASCFooter>
+    <StyledASCFooter>
         <FooterTop>
             <Row>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
@@ -45,7 +46,7 @@ const Footer: React.FC<IFooterProps> = () => (
                 <ReactMarkDown source={content.footer.bottom} renderers={{ link: StyledLink }} />
             </Row>
         </StyledFooterBottom>
-    </ASCFooter>
+    </StyledASCFooter>
 );
 
 interface IFooterLinkProps {
@@ -59,7 +60,8 @@ const FooterLink: React.FC<IFooterLinkProps> = ({ href, children }) => (
 );
 
 const FooterSection = styled.div`
-    p {
+    p,
+    li {
         color: ${themeColor('tint', 'level1')};
     }
 `;
@@ -72,8 +74,13 @@ const FooterMarkDownRenderers = {
     paragraph: Paragraph
 };
 
+const StyledASCFooter = styled(ASCFooter)`
+    max-width: ${theme.maxGridWidth}px;
+    margin: 0 auto;
+`;
+
 const StyledFooterBottom = styled(FooterBottom)`
-    margin: ${themeSpacing(3)} 0;
+    margin: 0;
 `;
 
 const StyledLink = styled(Link).attrs({ variant: 'with-chevron' })`

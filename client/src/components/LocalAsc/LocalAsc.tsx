@@ -1,7 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { breakpoint } from '@datapunt/asc-ui';
 
-import { Heading, Paragraph as AscParagraph, themeSpacing, Alert, themeColor } from '@datapunt/asc-ui';
+import {
+    Heading,
+    Paragraph as AscParagraph,
+    themeSpacing,
+    Alert,
+    Header as AscHeader,
+    themeColor
+} from '@datapunt/asc-ui';
 
 interface IProps {}
 
@@ -49,15 +57,37 @@ export const BlueAlert = styled(Alert).attrs({ level: 'attention' })`
     margin-top: ${themeSpacing(4)};
 `;
 
-export const RedAlert = styled(Alert).attrs({ level: 'error' })`
+export const RedAlert = styled(Alert)`
+    background-color: #fec813;
     margin-top: ${themeSpacing(4)};
 `;
 
 export const GreenAlert = styled(Alert)`
     margin-top: ${themeSpacing(4)};
-    background-color: ${themeColor('support', 'valid')};
+    background-color: #0c8836;
     * {
         color: ${themeColor('tint', 'level1')};
+    }
+`;
+
+export const Header = styled(AscHeader).attrs({
+    css: {
+        zIndex: 10,
+        '&::after': { backgroundColor: themeColor('tint', 'level2'), marginLeft: -220, marginRight: -220 }
+    }
+})`
+    &&& {
+        padding: 0;
+
+        @media ${breakpoint('min-width', 'laptopM')} {
+            h1:first-child {
+                margin-left: -30px;
+            }
+        }
+
+        nav {
+            margin: 0;
+        }
     }
 `;
 

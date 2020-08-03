@@ -15,9 +15,19 @@ export interface IProps {
 }
 
 const Container = styled.section`
+    background-color: ${themeColor('tint', 'level2')};
     border-right: 2px solid black;
-    padding-bottom: 16px;
-    margin-bottom: 28px;
+    padding-bottom: ${themeSpacing(4)};
+    margin-bottom: ${themeSpacing(7)};;
+
+    &:hover {
+        border-color: ${themeColor('secondary', 'main')};
+
+        h2 {
+            color: ${themeColor('secondary', 'main')};
+            text-decoration: underline;
+        }
+    }
 
     a {
         color: ${themeColor('tint', 'level7')};
@@ -26,16 +36,16 @@ const Container = styled.section`
         flex-direction: column;
 
         h2 {
-            margin-bottom: ${themeSpacing(5)};
+            padding-left: ${themeSpacing(4)};
         }
 
         img {
             width: 100%;
-            margin-bottom: ${themeSpacing(4)};
+            margin-bottom: ${themeSpacing(2)};
         }
 
         div {
-            margin-bottom: ${themeSpacing(3)};
+            padding: 0 ${themeSpacing(6)} ${themeSpacing(3)} ${themeSpacing(4)};
         }
 
         span {
