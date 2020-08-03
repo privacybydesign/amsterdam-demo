@@ -27,6 +27,10 @@ const Container = styled.section`
             color: ${themeColor('secondary', 'main')};
             text-decoration: underline;
         }
+
+        svg {
+            fill: ${themeColor('secondary', 'main')};
+        }
     }
 
     a {
