@@ -1,13 +1,9 @@
 
 import axios from 'axios';
 
-export interface IProps {
-  postcode: string;
-}
-
 const instance = axios.create({});
 
-const getGGW = async (postcode: string): Promise<IProps> => {
+const getGGW = async (postcode: string): Promise<unknown> => {
   const response = await instance.get(`https://api.data.amsterdam.nl/dataselectie/bag/?size=1&postcode=${postcode}`);
   if (response.data.aggs_list.ggw_code) {
     const ggwResponse = response.data.aggs_list.ggw_code;
