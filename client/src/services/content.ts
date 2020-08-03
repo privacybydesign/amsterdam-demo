@@ -160,16 +160,16 @@ Dit kan worden gebruikt voor:
 Hebt u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.
 - [Contactformulier](https://formulieren.amsterdam.nl/tripleforms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx)
 - **[Bel het telefoonnummer 14 020](tel:14020)**\n  maandag tot en met vrijdag van 08.00 tot 18.00 uur
-- [Contactgegevens en openingstijden](/)`,
+- [Contactgegevens en openingstijden](https://www.amsterdam.nl/contact/)`,
         column2: `# Volg de Gemeente
-- [Nieuwsbrief amsterdam.nl](/)
-- [Twitter](/)
-- [Facebook](/)
-- [Instagram](/)
-- [LinkedIn](/)
-- [Werkenbij](/)`,
+- [Nieuwsbrief amsterdam.nl](https://action.spike.email/104050/Subscribe/9f53558f-601d-4db8-97d6-a78bccd6e39d?culture=nl-NL)
+- [Twitter](https://twitter.com/AmsterdamNL)
+- [Facebook](https://www.facebook.com/gemeenteamsterdam)
+- [Instagram](https://www.instagram.com/gemeenteamsterdam/)
+- [LinkedIn](https://www.linkedin.com/company/gemeente-amsterdam)
+- [Werkenbij](https://www.amsterdam.nl/bestuur-organisatie/werkenbij/)`,
         column3: `# Wat is er te doen in Amsterdam?
-Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [Iamsterdam.com](https://www.iamsterdam.com/)`,
+Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I amsterdam](https://www.iamsterdam.com/nl)`,
         bottom: `[Over deze site](https://www.amsterdam.nl/overdezesite/)
 [Privacy](https://www.amsterdam.nl/privacy/)
 [Cookies op deze site](https://www.amsterdam.nl/privacy/cookies-site/)`
