@@ -21,23 +21,28 @@ const Demo2: React.FC<IProps> = () => {
     const [isOver18, setIsOver18] = useState<boolean>(false);
     const [isPostcodeInArea, setIsPostcodeInArea] = useState<boolean>(false);
     const [hasResult, setHasResult] = useState<boolean>(false);
+    const [imagecode, setImagecode] = useState<string>('');
+    const [wijk, setWijk] = useState<string>('');
 
     const getSession = async () => {
         const response = await createIrmaSession('demo2', 'irma-qr', credentialSource === CredentialSource.DEMO);
         setIsOver18(response['over18'] === 'Yes');
         const postcode = response['zipcode'].replace(/ /, '');
         setIsPostcodeInArea(postcode >= 1000 && postcode <= 1099);
-        setHasResult(true);
-        window.scrollTo(0, 0);
 
         const ggwResponse = await getGGW(postcode);
         if (ggwResponse) {
             console.log('1ste buurtcombinatie naam', ggwResponse.buurtcombinatie);
             console.log('1ste ggw code', ggwResponse.ggw);
+            setWijk(ggwResponse.buurtcombinatie);
+            setImagecode(ggwResponse.ggw)
         } else {
             // error flow
-            console.log('ERROR NOT found ggwResponse');
+            console.log('ERROR NOT found ggwResponse: u woont niet in amsterdam afbeelding en tekst tonen');
         }
+
+        setHasResult(true);
+        window.scrollTo(0, 0);
     };
 
     // Define dynamic header image
@@ -111,6 +116,8 @@ const Demo2: React.FC<IProps> = () => {
                 source={content.demo2[hasResult ? 'proven' : 'unproven'].title}
                 renderers={{ heading: AscLocal.H1 }}
             />
+
+            {imagecode} - {wijk}
 
             <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
 
