@@ -36,6 +36,7 @@ const Demo2: React.FC<IProps> = () => {
             console.log('1ste ggw code', ggwResponse.ggw);
         } else {
             // error flow
+            console.log('ERROR NOT found ggwResponse');
         }
     };
 
