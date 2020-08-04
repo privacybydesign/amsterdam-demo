@@ -31,9 +31,9 @@ const Demo2: React.FC<IProps> = () => {
         window.scrollTo(0, 0);
 
         const ggwResponse = await getGGW(postcode);
-        if (ggwResponse.buckets[0].key) {
-            // bv "DX16"
-            console.log('EERSTE  WIJK IN DE LIJST', ggwResponse.buckets[0].key);
+        if (ggwResponse) {
+            console.log('1ste buurtcombinatie naam', ggwResponse.buurtcombinatie);
+            console.log('1ste ggw code', ggwResponse.ggw);
         } else {
             // error flow
         }
