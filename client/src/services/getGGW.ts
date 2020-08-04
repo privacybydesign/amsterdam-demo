@@ -13,7 +13,7 @@ const getGGW = async (postcode: string): Promise<Iprops> => {
   let ggw;
 
   if (response.data.aggs_list.buurtcombinatie_naam.doc_count > 0) {
-    buurtcombinatie = response.data.aggs_list.buurtcombinatie_naam.buckets[0].key;
+    buurtcombinatie = response.data.aggs_list.buurtcombinatie_naam.buckets.map(wijk => wijk.key).join(', ');
   }
 
   if (response.data.aggs_list.ggw_code.doc_count > 0) {
