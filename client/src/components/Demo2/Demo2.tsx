@@ -21,34 +21,38 @@ const Demo2: React.FC<IProps> = () => {
     const [isOver18, setIsOver18] = useState<boolean>(false);
     const [isPostcodeInArea, setIsPostcodeInArea] = useState<boolean>(false);
     const [hasResult, setHasResult] = useState<boolean>(false);
-    const [imagecode, setImagecode] = useState<string>('');
     const [wijk, setWijk] = useState<string>('');
+    const [code, setCode] = useState<string>('');
+
+    const [hasResultWijk, setHasResultWijk] = useState<boolean>(false);
 
     const getSession = async () => {
         const response = await createIrmaSession('demo2', 'irma-qr', credentialSource === CredentialSource.DEMO);
         setIsOver18(response['over18'] === 'Yes');
         const postcode = response['zipcode'].replace(/ /, '');
-        setIsPostcodeInArea(postcode >= 1000 && postcode <= 1099);
+        const postcode4digit = parseInt(postcode, 10);
+        setHasResult(true);
 
         const ggwResponse = await getGGW(postcode);
+
         if (ggwResponse) {
-            console.log('1ste buurtcombinatie naam', ggwResponse.buurtcombinatie);
-            console.log('1ste ggw code', ggwResponse.ggw);
-            setWijk(ggwResponse.buurtcombinatie);
-            setImagecode(ggwResponse.ggw)
+            setIsPostcodeInArea(postcode4digit >= 1000 && postcode4digit <= 1099);
+            setWijk(ggwResponse.buurtcombinatieNamen);
+            setCode(ggwResponse.ggwCode);
         } else {
-            // error flow
-            console.log('ERROR NOT found ggwResponse: u woont niet in amsterdam afbeelding en tekst tonen');
+            // error flow if location is not in Amsterdam
+            setIsPostcodeInArea(false);
         }
 
-        setHasResult(true);
+        setHasResultWijk(true);
         window.scrollTo(0, 0);
     };
 
     // Define dynamic header image
-    // TODO: Implement correct images
     const headerImg = useMemo((): IHeaderImageProps => {
-        if (!hasResult) {
+        if (hasResultWijk) {
+            return { filename: `wijken/${code}`, alt: `Een foto in wijk ${wijk}` };
+        } else if (!hasResult) {
             return { filename: content.images.demo2.header.src, alt: content.images.demo2.header.alt };
         } else if (isOver18 && isPostcodeInArea) {
             return {
@@ -68,7 +72,7 @@ const Demo2: React.FC<IProps> = () => {
                 alt: content.images.demo2.ageAndPostcodeNegative.alt
             };
         }
-    }, [hasResult, isOver18, isPostcodeInArea]);
+    }, [hasResult, hasResultWijk, isOver18, isPostcodeInArea]);
 
     const alertBox: JSX.Element = useMemo(() => {
         if (!hasResult) {
@@ -116,8 +120,6 @@ const Demo2: React.FC<IProps> = () => {
                 source={content.demo2[hasResult ? 'proven' : 'unproven'].title}
                 renderers={{ heading: AscLocal.H1 }}
             />
-
-            {imagecode} - {wijk}
 
             <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
 
