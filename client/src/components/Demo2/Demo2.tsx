@@ -24,8 +24,6 @@ const Demo2: React.FC<IProps> = () => {
     const [wijk, setWijk] = useState<string>('');
     const [code, setCode] = useState<string>('');
 
-    const [hasResultWijk, setHasResultWijk] = useState<boolean>(false);
-
     const getSession = async () => {
         const response = await createIrmaSession('demo2', 'irma-qr', credentialSource === CredentialSource.DEMO);
         setIsOver18(response['over18'] === 'Yes');
@@ -43,14 +41,12 @@ const Demo2: React.FC<IProps> = () => {
             // error flow if location is not in Amsterdam
             setIsPostcodeInArea(false);
         }
-
-        setHasResultWijk(true);
         window.scrollTo(0, 0);
     };
 
     // Define dynamic header image
     const headerImg = useMemo((): IHeaderImageProps => {
-        if (hasResultWijk) {
+        if (wijk) {
             return { filename: `wijken/${code}`, alt: `Een foto in wijk ${wijk}` };
         } else if (!hasResult) {
             return { filename: content.images.demo2.header.src, alt: content.images.demo2.header.alt };
@@ -72,23 +68,25 @@ const Demo2: React.FC<IProps> = () => {
                 alt: content.images.demo2.ageAndPostcodeNegative.alt
             };
         }
-    }, [hasResult, hasResultWijk, isOver18, isPostcodeInArea]);
+    }, [hasResult, wijk, isOver18, isPostcodeInArea]);
 
     const alertBox: JSX.Element = useMemo(() => {
+        const regExp = /\[\]/;
+
         if (!hasResult) {
             return <DemoNotification />;
         } else if (isOver18 && isPostcodeInArea) {
             return (
                 <AscLocal.GreenAlert
                     heading={content.demo2.proven.alert.title}
-                    content={content.demo2.proven.alert.bodyAgeAndPostcodePositive}
+                    content={content.demo2.proven.alert.bodyAgeAndPostcodePositive.replace(regExp, wijk)}
                 />
             );
         } else if (!isOver18 && isPostcodeInArea) {
             return (
                 <AscLocal.RedAlert
                     heading={content.demo2.proven.alert.title}
-                    content={content.demo2.proven.alert.bodyAgeNegative}
+                    content={content.demo2.proven.alert.bodyAgeNegative.replace(regExp, wijk)}
                 />
             );
         } else if (isOver18 && !isPostcodeInArea) {
@@ -106,7 +104,7 @@ const Demo2: React.FC<IProps> = () => {
                 />
             );
         }
-    }, [hasResult, isOver18, isPostcodeInArea]);
+    }, [hasResult, isOver18, isPostcodeInArea, wijk]);
 
     return (
         <PageTemplate>
