@@ -5,6 +5,7 @@ import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Link, Accordion } from '@datapunt/asc-ui';
+import { Alert as AlertIcon } from '@datapunt/asc-assets';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
@@ -13,6 +14,7 @@ import DemoNotification from '@components/DemoNotification/DemoNotification';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
+import { Checkmark } from '@datapunt/asc-assets';
 
 export interface IProps {}
 
@@ -80,35 +82,42 @@ const Demo2: React.FC<IProps> = () => {
         }
     }, [hasResult, wijk, code, ggw, isOver18, isPostcodeInArea]);
 
-    const alertBox: JSX.Element = useMemo(() => {
+    const resultAlert: JSX.Element = useMemo(() => {
         const regExp = /\[\]/;
-
         if (!hasResult) {
-            return <DemoNotification />;
+            return null;
         } else if (isOver18 && isPostcodeInArea) {
             return (
-                <AscLocal.GreenAlert
+                <AscLocal.Alert
+                    color={AscLocal.AlertColor.SUCCESS}
+                    icon={<Checkmark />}
                     heading={content.demo2.proven.alert.title}
                     content={content.demo2.proven.alert.bodyAgeAndPostcodePositive.replace(regExp, wijk)}
                 />
             );
         } else if (!isOver18 && isPostcodeInArea) {
             return (
-                <AscLocal.RedAlert
+                <AscLocal.Alert
+                    color={AscLocal.AlertColor.ERROR}
+                    icon={<AlertIcon />}
                     heading={content.demo2.proven.alert.title}
                     content={content.demo2.proven.alert.bodyAgeNegative.replace(regExp, wijk)}
                 />
             );
         } else if (isOver18 && !isPostcodeInArea) {
             return (
-                <AscLocal.RedAlert
+                <AscLocal.Alert
+                    color={AscLocal.AlertColor.ERROR}
+                    icon={<AlertIcon />}
                     heading={content.demo2.proven.alert.title}
                     content={content.demo2.proven.alert.bodyPostcodeNegative}
                 />
             );
         } else if (!isOver18 && !isPostcodeInArea) {
             return (
-                <AscLocal.RedAlert
+                <AscLocal.Alert
+                    color={AscLocal.AlertColor.ERROR}
+                    icon={<AlertIcon />}
                     heading={content.demo2.proven.alert.title}
                     content={content.demo2.proven.alert.bodyAgeAndPostcodeNegative}
                 />
@@ -119,7 +128,7 @@ const Demo2: React.FC<IProps> = () => {
     return (
         <PageTemplate>
             <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
-            {alertBox}
+            {!hasResult && <DemoNotification />}
             <ReactMarkDown
                 source={content.demo2.breadcrumbs}
                 renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
@@ -128,9 +137,8 @@ const Demo2: React.FC<IProps> = () => {
                 source={content.demo2[hasResult ? 'proven' : 'unproven'].title}
                 renderers={{ heading: AscLocal.H1 }}
             />
-
+            {resultAlert}
             <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
-
             {!hasResult ? (
                 <>
                     <ReactMarkDown

@@ -4,6 +4,7 @@ import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion } from '@datapunt/asc-ui';
+import { Alert as AlertIcon } from '@datapunt/asc-assets';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
@@ -12,6 +13,7 @@ import DemoNotification from '@components/DemoNotification/DemoNotification';
 import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
 import QRCode from '@components/QRCode/QRCode';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
+import { Checkmark } from '@datapunt/asc-assets';
 
 export interface IProps {}
 // @todo add error flow with incorrect data
@@ -74,47 +76,50 @@ const Demo1: React.FC<IProps> = () => {
     return (
         <PageTemplate>
             <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
-
+            {!hasResult18 && !hasResult65 && <DemoNotification />}
             <ReactMarkDown
                 source={content.demo1.breadcrumbs}
                 renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
             />
-
-            {!hasResult18 && !hasResult65 && <DemoNotification />}
+            <ReactMarkDown
+                source={content.demo1.title[hasResult18 || hasResult65 ? 'hasResult' : 'noResult']}
+                renderers={{ heading: AscLocal.H1 }}
+            />
 
             {hasResult18 && isOver18 && (
-                <AscLocal.GreenAlert
+                <AscLocal.Alert
+                    color={AscLocal.AlertColor.SUCCESS}
+                    icon={<Checkmark />}
                     heading={content.demo1.isOver18.heading}
                     content={content.demo1.isOver18.content}
                 />
             )}
             {hasResult18 && !isOver18 && (
-                <AscLocal.RedAlert
+                <AscLocal.Alert
+                    color={AscLocal.AlertColor.ERROR}
+                    icon={<AlertIcon />}
                     heading={content.demo1.isNotOver18.heading}
                     content={content.demo1.isNotOver18.content}
                 />
             )}
 
             {hasResult65 && isOver65 && (
-                <AscLocal.GreenAlert
+                <AscLocal.Alert
+                    color={AscLocal.AlertColor.SUCCESS}
+                    icon={<Checkmark />}
                     heading={content.demo1.isOver65.heading}
                     content={content.demo1.isOver65.content}
                 />
             )}
             {hasResult65 && !isOver65 && (
-                <AscLocal.RedAlert
+                <AscLocal.Alert
+                    color={AscLocal.AlertColor.ERROR}
+                    icon={<AlertIcon />}
                     heading={content.demo1.isNotOver65.heading}
                     content={content.demo1.isNotOver65.content}
                 />
             )}
-
-            <ReactMarkDown
-                source={content.demo1.title[hasResult18 || hasResult65 ? 'hasResult' : 'noResult']}
-                renderers={{ heading: AscLocal.H1 }}
-            />
-
             <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
-
             {!hasResult18 && !hasResult65 ? (
                 <>
                     <ReactMarkDown

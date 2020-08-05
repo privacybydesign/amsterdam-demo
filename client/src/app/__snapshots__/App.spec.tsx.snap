@@ -753,19 +753,23 @@ exports[`App component should match snapshot 1`] = `
 }
 
 .c24 {
-  margin: 16px 0 24px 0;
+  line-height: 1.5em;
+  margin: 16px 0 16px 0;
 }
 
 .c39 {
+  line-height: 1.5em;
   margin: 12px 0;
 }
 
 .c29 {
+  line-height: 1.5em;
   margin-top: 8px;
   margin-bottom: 8px;
 }
 
 .c38 {
+  line-height: 1.5em;
   margin-top: 0;
   line-height: 22px;
 }
