@@ -35,8 +35,10 @@ const Demo2: React.FC<IProps> = () => {
 
         if (ggwResponse) {
             setIsPostcodeInArea(postcode4digit >= 1000 && postcode4digit <= 1099);
-            setWijk(ggwResponse.buurtcombinatieNamen);
-            setCode(ggwResponse.ggwCode);
+            if (postcode4digit >= 1000 && postcode4digit <= 1099) {
+                setWijk(ggwResponse.buurtcombinatieNamen);
+                setCode(ggwResponse.ggwCode);
+            }
         } else {
             // error flow if location is not in Amsterdam
             setIsPostcodeInArea(false);
