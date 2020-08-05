@@ -70,7 +70,7 @@ const Demo2: React.FC<IProps> = () => {
                 alt: content.images.demo2.ageAndPostcodeNegative.alt
             };
         }
-    }, [hasResult, wijk, isOver18, isPostcodeInArea]);
+    }, [hasResult, wijk, code, isOver18, isPostcodeInArea]);
 
     const alertBox: JSX.Element = useMemo(() => {
         const regExp = /\[\]/;
