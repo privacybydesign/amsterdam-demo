@@ -1,12 +1,14 @@
 
 import axios from 'axios';
 
-interface Iprops {
+interface GgwResult {
+  buurtcombinatie: string;
+  ggw: string;
 }
 
 const instance = axios.create({});
 
-const getGGW = async (postcode: string): Promise<Iprops> => {
+const getGGW = async (postcode: string): Promise<GgwResult> => {
   const response = await instance.get(`https://api.data.amsterdam.nl/dataselectie/bag/?size=1&postcode=${postcode}`);
 
   let buurtcombinatie;
