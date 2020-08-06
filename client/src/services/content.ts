@@ -115,8 +115,10 @@ Bewijs in welke wijk u woont en dat u ouder bent dan 18 jaar door uzelf bekend t
             title: `# Demo 2: Uw postcode en leeftijd`,
             alert: {
                 title: `Uw postcode en leeftijd`,
+                // [] will be replaced by the wijken
                 bodyAgeNegative: `U heeft bewezen dat u in [] woont en dat u jonger bent dan 18 jaar. U mag nog niet meebeslissen over ideeën voor uw buurt.`,
                 bodyPostcodeNegative: `U heeft bewezen dat u niet in Amsterdam woont en dat u ouder bent dan 18 jaar. U mag niet meebeslissen over ideeën voor een Amsterdamse buurt.`,
+                // [] will be replaced by the wijken
                 bodyAgeAndPostcodePositive: `U heeft bewezen dat u in [] woont en dat u ouder bent dan 18 jaar. U mag meebeslissen over ideeën voor uw buurt.`,
                 bodyAgeAndPostcodeNegative: `U heeft bewezen dat u niet in Amsterdam woont en dat u jonger bent dan 18 jaar. U mag niet meebeslissen over ideeën voor een Amsterdamse buurt.`
             }
