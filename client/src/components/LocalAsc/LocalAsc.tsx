@@ -11,30 +11,33 @@ import {
     themeColor
 } from '@datapunt/asc-ui';
 
+const lineHeight = '1.8em';
+
 export const H1 = styled(Heading)`
-    line-height: 1.5em;
+    line-height: ${lineHeight};
     margin: ${themeSpacing(4, 0, 4, 0)};
 `;
 
 export const H2 = styled.h2`
-    line-height: 1.5em;
+    line-height: ${lineHeight};
     margin: ${themeSpacing(3, 0)};
 `;
 
 export const Paragraph = styled(AscParagraph)`
-    line-height: 1.5em;
+    line-height: ${lineHeight};
     margin-top: ${themeSpacing(2)};
     margin-bottom: ${themeSpacing(2)};
 `;
 
 export const UL = styled.ul`
-    line-height: 1.5em;
+    line-height: ${lineHeight};
+    list-style-type: square;
     margin-top: 0;
     line-height: 22px;
 `;
 
 export const OL = styled.ol`
-    line-height: 1.5em;
+    line-height: ${lineHeight};
     margin-top: 0;
     line-height: 22px;
 `;
@@ -55,7 +58,7 @@ export const AccordionContainer = styled.div`
 `;
 
 export const AccordionHeading = styled(Heading).attrs({ as: 'h4' })`
-    line-height: 1.5em;
+    line-height: ${lineHeight};
     margin: 0;
 `;
 
