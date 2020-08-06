@@ -176,9 +176,15 @@ const Demo1: React.FC<IProps> = () => {
                                 renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
                         )}
-                        <ReactMarkDown source={content.demo1.result.whatsDifferentWithIrma} />
+                        <ReactMarkDown
+                            source={content.demo1.result.whatsDifferentWithIrma}
+                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                        />
                     </EmphasisBlock>
-                    <ReactMarkDown source={content.callToAction} />
+                    <ReactMarkDown
+                        source={content.callToAction}
+                        renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                    />
                 </>
             )}
         </PageTemplate>

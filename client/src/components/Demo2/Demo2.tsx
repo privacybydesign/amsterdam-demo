@@ -163,12 +163,22 @@ const Demo2: React.FC<IProps> = () => {
                 <>
                     <ReactMarkDown
                         source={content.noSavePromise}
-                        renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
+                        renderers={{
+                            heading: AscLocal.H2,
+                            paragraph: AscLocal.Paragraph,
+                            list: AscLocal.UL,
+                            link: Link
+                        }}
                     />
                     <EmphasisBlock>
                         <ReactMarkDown
                             source={content.demo2.result}
-                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
+                            renderers={{
+                                heading: AscLocal.H2,
+                                paragraph: AscLocal.Paragraph,
+                                list: AscLocal.UL,
+                                link: Link
+                            }}
                         />
                     </EmphasisBlock>
                     <ReactMarkDown source={content.callToAction} />
