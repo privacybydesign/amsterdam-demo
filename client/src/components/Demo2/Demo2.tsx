@@ -47,8 +47,10 @@ const Demo2: React.FC<IProps> = () => {
     };
 
     const headerImg = useMemo((): IHeaderImageProps => {
+        const regExp = /\[\]/;
+
         if (wijk) {
-            return { filename: code ? `wijken/${code}` : 'amsterdam-algemeen', alt: code ? `Een foto in wijk ${wijk}` : 'Foto van Amsterdam' };
+            return { filename: code ? `wijken/${code}` : content.images.demo2.headerWithAmsterdam.src, alt: code ? content.images.demo2.headerWithWijk.src.replace(regExp, wijk) : content.images.demo2.headerWithAmsterdam.alt };
         } else if (!hasResult) {
             return { filename: content.images.demo2.header.src, alt: content.images.demo2.header.alt };
         } else if (isOver18 && isPostcodeInArea) {

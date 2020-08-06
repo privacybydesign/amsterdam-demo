@@ -151,10 +151,13 @@ Dit kan worden gebruikt voor:
         },
         demo2: {
             header: { src: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' },
-            ageAndPostcodePositive: { src: 'ideeen-voor-buurt', alt: '' },
-            ageNegative: { src: 'ideeen-voor-buurt', alt: '' },
-            postcodeNegative: { src: 'ideeen-voor-buurt', alt: '' },
-            ageAndPostcodeNegative: { src: 'ideeen-voor-buurt', alt: '' }
+            headerWithWijk: { src: '', alt: 'Foto uit []' },
+            headerWithAmsterdam: { src: 'amsterdam-algemeen', alt: 'Foto van het Centraal Station' },
+
+            ageAndPostcodePositive: { src: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' },
+            ageNegative: { src: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' },
+            postcodeNegative: { src: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' },
+            ageAndPostcodeNegative: { src: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' },
         }
     },
     footer: {
