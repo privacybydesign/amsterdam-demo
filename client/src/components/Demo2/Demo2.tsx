@@ -46,10 +46,9 @@ const Demo2: React.FC<IProps> = () => {
         window.scrollTo(0, 0);
     };
 
-    // Define dynamic header image
     const headerImg = useMemo((): IHeaderImageProps => {
         if (wijk) {
-            return { filename: `wijken/${code}`, alt: `Een foto in wijk ${wijk}` };
+            return { filename: code ? `wijken/${code}` : 'alternatieve-foto', alt: `Een foto in wijk ${wijk}` };
         } else if (!hasResult) {
             return { filename: content.images.demo2.header.src, alt: content.images.demo2.header.alt };
         } else if (isOver18 && isPostcodeInArea) {

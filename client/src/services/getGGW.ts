@@ -21,8 +21,7 @@ const getGGW = async (postcode: string): Promise<GgwResult> => {
   if (response.data.aggs_list.ggw_code.doc_count > 0) {
     ggwCode = response.data.aggs_list.ggw_code.buckets[0].key;
   }
-
-  if (buurtcombinatieNamen && ggwCode) {
+  if (buurtcombinatieNamen) {
     return { buurtcombinatieNamen, ggwCode };
   }
 
