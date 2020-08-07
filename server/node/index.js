@@ -26,8 +26,10 @@ const CREDENTIALS_TO_REQUEST = {
       ],
     ],
     DEMO3: [
-      ["irma-demo.gemeente.personalData.fullname"],
-      ["irma-demo.gemeente.personalData.bsn"],
+      [
+        "irma-demo.gemeente.personalData.fullname",
+        "irma-demo.gemeente.personalData.bsn"
+      ],
     ],
     DEMO4: [
       [
@@ -49,8 +51,10 @@ const CREDENTIALS_TO_REQUEST = {
       ["pbdf.gemeente.address.zipcode", "pbdf.gemeente.personalData.over18"],
     ],
     DEMO3: [
-      ["pbdf.gemeente.personalData.fullname"],
-      ["pbdf.gemeente.personalData.bsn"],
+      [
+        "pbdf.gemeente.personalData.fullname",
+        "pbdf.gemeente.personalData.bsn",
+      ]
     ],
     DEMO4: [
       [
