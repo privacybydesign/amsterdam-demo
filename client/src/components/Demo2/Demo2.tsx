@@ -22,6 +22,7 @@ const Demo2: React.FC<IProps> = () => {
     const [isPostcodeInArea, setIsPostcodeInArea] = useState<boolean>(false);
     const [hasResult, setHasResult] = useState<boolean>(false);
     const [wijk, setWijk] = useState<string>('');
+    const [ggw, setGgw] = useState<string>('');
     const [code, setCode] = useState<string>('');
 
     const getSession = async () => {
@@ -38,6 +39,7 @@ const Demo2: React.FC<IProps> = () => {
             if (postcode4digit >= 1000 && postcode4digit <= 1099) {
                 setWijk(ggwResponse.buurtcombinatieNamen);
                 setCode(ggwResponse.ggwCode);
+                setGgw(ggwResponse.ggwNaam);
             }
         } else {
             // error flow if location is not in Amsterdam
@@ -50,7 +52,10 @@ const Demo2: React.FC<IProps> = () => {
         const regExp = /\[\]/;
 
         if (wijk) {
-            return { filename: code ? `wijken/${code}` : content.images.demo2.headerWithAmsterdam.src, alt: code ? content.images.demo2.headerWithWijk.src.replace(regExp, wijk) : content.images.demo2.headerWithAmsterdam.alt };
+            return {
+                filename: code ? `wijken/${code}` : content.images.demo2.headerWithAmsterdam.src,
+                alt: code ? content.images.demo2.headerWithWijk.alt.replace(regExp, ggw) : content.images.demo2.headerWithAmsterdam.alt
+            };
         } else if (!hasResult) {
             return { filename: content.images.demo2.header.src, alt: content.images.demo2.header.alt };
         } else if (isOver18 && isPostcodeInArea) {
@@ -71,7 +76,7 @@ const Demo2: React.FC<IProps> = () => {
                 alt: content.images.demo2.ageAndPostcodeNegative.alt
             };
         }
-    }, [hasResult, wijk, code, isOver18, isPostcodeInArea]);
+    }, [hasResult, wijk, code, ggw, isOver18, isPostcodeInArea]);
 
     const alertBox: JSX.Element = useMemo(() => {
         const regExp = /\[\]/;
