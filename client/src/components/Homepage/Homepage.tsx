@@ -47,6 +47,14 @@ const Homepage: React.FC<IProps> = () => (
             >
                 <ReactMarkDown source={content.home.demo2Card.body} />
             </Article>
+            <Article
+                imageSrc={content.images.demo3.header.src}
+                imageAlt={content.images.demo3.header.alt}
+                title={content.home.demo3Card.title}
+                href={AppRoutes.DEMO3.path}
+            >
+                <ReactMarkDown source={content.home.demo2Card.body} />
+            </Article>
         </VerticalColumn>
     </PageTemplate>
 );

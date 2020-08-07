@@ -38,8 +38,13 @@ Ga naar de [website van IRMA](https://irma.app/)`
         demo2Card: {
             title: `Demo 2: Ideeën voor uw buurt`,
             body: `Bewijs met uw postcode dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.`
+        },
+        demo3Card: {
+            title: `Demo 3: Inloggen met IRMA`,
+            body: `Bekijk hoe u straks kunt inloggen met IRMA in Mijn Amsterdam.            `
         }
     },
+
     demoNotification: {
         heading: `Dit is een demosite`,
         content: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
@@ -47,6 +52,7 @@ Ga naar de [website van IRMA](https://irma.app/)`
     downloadIrma: `Heeft u nog geen IRMA?  \n[Download IRMA](https://irma.app/)`,
     noSavePromise: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard.`,
     callToAction: `[Probeer de andere demo’s](/)`,
+
     demo1: {
         breadcrumbs: `- [Home](/)
 - [Demo 1: Leeftijd aantonen](/leeftijd-aantonen)`,
@@ -100,6 +106,7 @@ Bewijs dat u ouder bent dan 18 jaar of 65 jaar door uzelf bekend te maken met de
 `
         }
     },
+
     demo2: {
         breadcrumbs: `- [Home](/)
 - [Demo 2: Ideeën voor uw buurt](/ideeen-voor-uw-buurt)`,
@@ -156,9 +163,17 @@ Dit kan worden gebruikt voor:
             ageAndPostcodePositive: { src: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' },
             ageNegative: { src: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' },
             postcodeNegative: { src: 'niet-amsterdammer-18plus', alt: 'Foto van verhuizing naar Amsterdam' },
-            ageAndPostcodeNegative: { src: 'niet-amsterdammer-18min', alt: 'Foto van kinderen die een huis in Amsterdam bekijken' },
+            ageAndPostcodeNegative: {
+                src: 'niet-amsterdammer-18min',
+                alt: 'Foto van kinderen die een huis in Amsterdam bekijken'
+            }
+        },
+        demo3: {
+            header: { src: 'probeer-irma', alt: '' },
+            headerResult: { src: 'mijn-amsterdam', alt: '' }
         }
     },
+
     footer: {
         column1: `# Contact
 Heeft u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.
@@ -184,5 +199,26 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
 1. Scan de QR-code hieronder met uw IRMA-app.
 2. Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.`,
         knop: 'Inloggen met IRMA'
+    },
+
+    demo3: {
+        breadcrumbs: `- [Home](/)`,
+        unproven: {
+            title: `# Demo 3: Inloggen met IRMA`,
+            alert: {
+                title: `Uw naam en burgerservicenummer`,
+                body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
+            },
+            intro:
+                'Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.'
+        },
+        proven: {
+            title: `# Demo 3: Uw Naam en Burgerservicenummer`,
+            alert: {
+                title: `Uw naam en burgerservicenummer`,
+                body: `U heeft bewezen dat u [name] bent en u heeft uw burgerservicenummer (BSN) gedeeld.`
+            }
+        },
+        button: 'Inloggen met IRMA'
     }
 };
