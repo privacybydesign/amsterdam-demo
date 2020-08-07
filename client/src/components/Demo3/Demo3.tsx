@@ -74,14 +74,14 @@ const Demo3: React.FC<IProps> = () => {
       {!hasResult ? (
         <>
           <ReactMarkDown
-            source={content.demo3.unproven.title}
+            source={content.demo3.unproven.intro}
             renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
           />
 
           <AscLocal.AccordionContainer>
-            <Accordion title={content.demo1.why.title}>
+            <Accordion title={content.demo3.unproven.why.title}>
               <ReactMarkDown
-                source={content.demo1.why.body}
+                source={content.demo3.unproven.why.body}
                 renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
               />
             </Accordion>
@@ -96,18 +96,8 @@ const Demo3: React.FC<IProps> = () => {
         </>
       ) : (
           <>
-            <ReactMarkDown source={content.noSavePromise} />
-            <EmphasisBlock>
-              <ReactMarkDown source={content.demo1.result.title} />
-              {/* // TODO: Refactor renderers */}
-              {hasResult && (
-                <ReactMarkDown
-                  source={content.demo1.result.isNotOver65}
-                  renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                />
-              )}
-              <ReactMarkDown source={content.demo1.result.whatsDifferentWithIrma} />
-            </EmphasisBlock>
+            <ReactMarkDown source={content.demo3.result} renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
+
             <ReactMarkDown source={content.callToAction} />
           </>
         )}

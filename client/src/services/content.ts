@@ -209,16 +209,39 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
                 title: `Uw naam en burgerservicenummer`,
                 body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
             },
-            intro:
-                'Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.'
+            intro: `Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.
+## Probeer het uit
+Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgende gegevens:
+- Uw volledige naam
+- Uw burgerservicenummer (BSN)`,
+            why: {
+                title: `Waarom worden deze gegevens gevraagd?`,
+                body: `**Uw volledige naam**  \n
+De gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.  \n
+  \n
+**Uw burgerservicenummer (BSN)**  \n
+De gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.`
+            }
         },
         proven: {
             title: `# Demo 3: Uw Naam en Burgerservicenummer`,
             alert: {
-                title: `Uw naam en burgerservicenummer`,
-                body: `U heeft bewezen dat u [name] bent en u heeft uw burgerservicenummer (BSN) gedeeld.`
+                title: `Uw naam en burgerservicenummer  `,
+                body: `U heeft bewezen dat u [] bent en u heeft uw burgerservicenummer (BSN) gedeeld.`
             }
         },
-        button: 'Inloggen met IRMA'
+        button: 'Inloggen met IRMA',
+        result: `## Wat heeft u zojuist gedaan?
+- U heeft IRMA gebruikt om door te geven in welke wijk u woont.
+- U heeft IRMA gebruikt om door te geven of u ouder bent dan 18 jaar.
+- U heeft geen persoonlijke informatie zoals uw naam, adres en geboortedatum doorgegeven.
+
+## Wat is er anders met IRMA?
+Als u via IRMA uw postcode en leeftijd doorgeeft, is bekend waar u ongeveer woont en dat u aan de leeftijdsgrens voldoet. U blijft anoniem.
+
+Dit kan worden gebruikt voor:
+- Stemmen voor lokale initiatieven.
+- Toegang en korting op basis van uw leeftijd in uw buurt.
+- Voorzieningen speciaal voor Amsterdammers.`
     }
 };
