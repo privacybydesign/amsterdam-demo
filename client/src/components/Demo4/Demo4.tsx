@@ -41,6 +41,16 @@ const Demo4: React.FC<IProps> = () => {
     alt: content.images.demo4.header.alt
   });
 
+  // Update header image for 18+
+  useEffect(() => {
+    if (hasResult) {
+      setHeaderImg({
+        filename: content.images.demo4.headerResult.src,
+        alt: content.images.demo4.headerResult.alt
+      });
+    }
+  }, [hasResult]);
+
   return (
     <PageTemplate>
       <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
@@ -64,11 +74,10 @@ const Demo4: React.FC<IProps> = () => {
         renderers={{ heading: AscLocal.H1 }}
       />}
 
+      <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
 
       {!hasResult ? (
         <>
-          <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
-
           <ReactMarkDown
             source={content.demo4.unproven.intro1}
             renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}

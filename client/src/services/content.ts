@@ -227,6 +227,7 @@ De gemeente Amsterdam biedt u straks een keuze. U kunt straks inloggen in Mijn A
         },
         demo4: {
             header: { src: 'geveltuin', alt: 'Foto van geveltuin in straat' }
+            headerResult: { src: 'geveltuin-overzicht', alt: 'Foto van geveltuin in straat' }
         }
     },
 
