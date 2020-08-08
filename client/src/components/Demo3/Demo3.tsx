@@ -40,7 +40,10 @@ const Demo3: React.FC<IProps> = () => {
   // Update header image for 18+
   useEffect(() => {
     if (hasResult) {
-      setHeaderImg({ filename: content.images.demo3.headerResult.src, alt: content.images.demo3.headerResult.alt });
+      setHeaderImg({
+        filename: content.images.demo3.headerResult.src,
+        alt: content.images.demo3.headerResult.alt
+      });
     }
   }, [hasResult]);
 

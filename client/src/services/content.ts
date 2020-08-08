@@ -231,17 +231,15 @@ De gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de
             }
         },
         button: 'Inloggen met IRMA',
-        result: `## Wat heeft u zojuist gedaan?
-- U heeft IRMA gebruikt om door te geven in welke wijk u woont.
-- U heeft IRMA gebruikt om door te geven of u ouder bent dan 18 jaar.
-- U heeft geen persoonlijke informatie zoals uw naam, adres en geboortedatum doorgegeven.
+        result: `De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.
+
+## Wat heeft u zojuist gedaan?
+- U heeft IRMA gebruikt om in te loggen.
+- U heeft uw burgerservicenummer (BSN) en uw naam aan de demosite van Mijn Amsterdam doorgegeven via IRMA.
+- Met uw burgerservicenummer (BSN) kan de gemeente uw gegevens ophalen en in ‘Mijn Amsterdam’ aan u tonen.
 
 ## Wat is er anders met IRMA?
-Als u via IRMA uw postcode en leeftijd doorgeeft, is bekend waar u ongeveer woont en dat u aan de leeftijdsgrens voldoet. U blijft anoniem.
-
-Dit kan worden gebruikt voor:
-- Stemmen voor lokale initiatieven.
-- Toegang en korting op basis van uw leeftijd in uw buurt.
-- Voorzieningen speciaal voor Amsterdammers.`
+De gemeente Amsterdam biedt u straks een keuze. U kunt straks inloggen in Mijn Amsterdam met DigiD of met IRMA.
+`
     }
 };
