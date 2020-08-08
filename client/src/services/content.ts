@@ -266,7 +266,7 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
                 title: `Uw naam en burgerservicenummer`,
                 body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`,
             },
-            intro: `Met IRMA kunt u een aanvraag doen en hierin gegevens gebruiken die in uw IRMA-app staan.
+            intro1: `Met IRMA kunt u een aanvraag doen en hierin gegevens gebruiken die in uw IRMA-app staan.
 U hoeft minder in te vullen en de gemeente weet zeker dat u de aanvraag doet en dat de gegevens juist zijn.
 
 ## Probeer het uit
@@ -277,13 +277,6 @@ Doe een demo-aanvraag door uzelf bekend te maken met de volgende gegevens:
 - Woonplaats
 - Mobiel telefoonnummer
 - E-mailadres
-
-## Demo-aanvraag Geveltuin
-Bent u eigenaar van de woning waar de geveltuin komt?\n
-FORM\n
-
-## Gegevens aanvullen met IRMA
-Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
 `,
             why: {
                 title: `Waarom worden deze gegevens gevraagd?`,
@@ -297,6 +290,14 @@ De gemeente wil u kunnen bereiken voor vragen over uw aanvraag.\n
 De gemeente wil u een e-mail sturen met de bevestiging van uw aanvraag.\n
 `
             },
+
+            intro2: `## Demo-aanvraag Geveltuin
+Bent u eigenaar van de woning waar de geveltuin komt?\n
+FORM\n
+
+## Gegevens aanvullen met IRMA
+Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
+`,
         },
         proven: {
             title: `# Demo 4: Uw persoons- en contactgegevens`,

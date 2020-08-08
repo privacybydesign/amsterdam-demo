@@ -41,8 +41,6 @@ const Demo4: React.FC<IProps> = () => {
     <PageTemplate>
       <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
 
-      {bsn} - {name}
-
       <ReactMarkDown
         source={content.demo4.breadcrumbs}
         renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
@@ -67,7 +65,7 @@ const Demo4: React.FC<IProps> = () => {
       {!hasResult ? (
         <>
           <ReactMarkDown
-            source={content.demo4.unproven.intro}
+            source={content.demo4.unproven.intro1}
             renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
           />
 
@@ -79,6 +77,11 @@ const Demo4: React.FC<IProps> = () => {
               />
             </Accordion>
           </AscLocal.AccordionContainer>
+
+          <ReactMarkDown
+            source={content.demo4.unproven.intro2}
+            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+          />
 
           <QRCode getSession={getSession} label={content.demo4.button} />
 
