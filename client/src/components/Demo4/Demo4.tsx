@@ -18,7 +18,7 @@ export interface IProps { }
 
 const Demo4: React.FC<IProps> = () => {
   const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
-  const [hasResult, setHasResult] = useState<boolean>(2);
+  const [hasResult, setHasResult] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
   const [street, setStreet] = useState<string>('');
   const [city, setCity] = useState<string>('');
