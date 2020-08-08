@@ -51,8 +51,6 @@ const Demo3: React.FC<IProps> = () => {
     <PageTemplate>
       <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
 
-      {bsn} - {name}
-
       <ReactMarkDown
         source={content.demo3.breadcrumbs}
         renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
