@@ -18,7 +18,7 @@ export interface IProps { }
 
 const Demo4: React.FC<IProps> = () => {
   const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
-  const [hasResult, setHasResult] = useState<boolean>(false);
+  const [hasResult, setHasResult] = useState<boolean>(2);
   const [name, setName] = useState<string>('');
   const [street, setStreet] = useState<string>('');
   const [city, setCity] = useState<string>('');
@@ -35,13 +35,12 @@ const Demo4: React.FC<IProps> = () => {
     window.scrollTo(0, 0);
   };
 
-  // Define dynamic header image
   const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
     filename: content.images.demo4.header.src,
     alt: content.images.demo4.header.alt
   });
 
-  // Update header image for 18+
+  // Update header image
   useEffect(() => {
     if (hasResult) {
       setHeaderImg({
@@ -65,14 +64,14 @@ const Demo4: React.FC<IProps> = () => {
       {hasResult && (
         <AscLocal.GreenAlert
           heading={content.demo4.proven.alert.title}
-          content={content.demo4.proven.alert.body.replace(/\[\]/, name)}
+          content={content.demo4.proven.alert.body}
         />
       )}
 
-      {!hasResult && <ReactMarkDown
+      <ReactMarkDown
         source={content.demo4[hasResult ? 'proven' : 'unproven'].title}
         renderers={{ heading: AscLocal.H1 }}
-      />}
+      />
 
       <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
 
