@@ -19,14 +19,18 @@ export interface IProps { }
 const Demo4: React.FC<IProps> = () => {
   const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
   const [hasResult, setHasResult] = useState<boolean>(false);
-  const [bsn, setBsn] = useState<string>('');
   const [name, setName] = useState<string>('');
+  const [street, setStreet] = useState<string>('');
+  const [city, setCity] = useState<string>('');
+  const [telephone, setTelephone] = useState<string>('');
 
   const getSession = async () => {
     const response = await createIrmaSession('demo4', 'irma-qr', credentialSource === CredentialSource.DEMO);
     setHasResult(true);
-    setBsn(response['bsn']);
     setName(response['fullname']);
+    setStreet(`${response['street']} ${response['houseNumber']}`);
+    setCity(`${response['zipcode']} ${response['city']}`);
+    setTelephone(response['mobilenumber']);
 
     window.scrollTo(0, 0);
   };
@@ -60,10 +64,11 @@ const Demo4: React.FC<IProps> = () => {
         renderers={{ heading: AscLocal.H1 }}
       />}
 
-      <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
 
       {!hasResult ? (
         <>
+          <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
+
           <ReactMarkDown
             source={content.demo4.unproven.intro1}
             renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
@@ -77,6 +82,12 @@ const Demo4: React.FC<IProps> = () => {
               />
             </Accordion>
           </AscLocal.AccordionContainer>
+
+
+          <AscLocal.H2>Demo-aanvraag Geveltuin</AscLocal.H2>
+          <form>
+            Bent u eigenaar van de woning waar de geveltuin komt?
+          </form>
 
           <ReactMarkDown
             source={content.demo4.unproven.intro2}
@@ -92,6 +103,8 @@ const Demo4: React.FC<IProps> = () => {
         </>
       ) : (
           <>
+            {name}, {street}, {city}, {telephone}
+
             <ReactMarkDown source={content.demo4.result} renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
 
             <ReactMarkDown source={content.callToAction} />

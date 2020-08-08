@@ -290,11 +290,7 @@ De gemeente wil u kunnen bereiken voor vragen over uw aanvraag.\n
 De gemeente wil u een e-mail sturen met de bevestiging van uw aanvraag.\n
 `
             },
-
-            intro2: `## Demo-aanvraag Geveltuin
-Bent u eigenaar van de woning waar de geveltuin komt?\n
-FORM\n
-
+            intro2: `
 ## Gegevens aanvullen met IRMA
 Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
 `,
@@ -302,8 +298,8 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
         proven: {
             title: `# Demo 4: Uw persoons- en contactgegevens`,
             alert: {
-                title: `Uw naam en burgerservicenummer  `,
-                body: `U heeft bewezen dat u [] bent en u heeft uw burgerservicenummer (BSN) gedeeld.`,
+                title: `Uw persoons- en contactgegevens`,
+                body: `U heeft een formulier ingevuld met uw naam, adres en contactgegevens.`,
             }
         },
         button: 'Aanvullen met IRMA',
