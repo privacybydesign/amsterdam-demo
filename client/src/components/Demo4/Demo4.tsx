@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
@@ -10,6 +10,7 @@ import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
 import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
+import { RadioGroup, Label, Radio } from '@datapunt/asc-ui';
 import QRCode from '@components/QRCode/QRCode';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 
@@ -17,6 +18,8 @@ export interface IProps { }
 // @todo add error flow with incorrect data
 
 const Demo4: React.FC<IProps> = () => {
+  const formEl = useRef(null);
+
   const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
   const [hasResult, setHasResult] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
@@ -24,8 +27,22 @@ const Demo4: React.FC<IProps> = () => {
   const [city, setCity] = useState<string>('');
   const [telephone, setTelephone] = useState<string>('');
 
+  const onClick = async () => {
+    console.log('ONCLICK', formEl.current.querySelector('input[name=geveltuin]:checked'));
+    const el = formEl.current.querySelector('input[name=geveltuin]:checked');
+    if (el) {
+      // form was filled in
+      const value = el.getAttribute('value');
+
+      console.log('el', value);
+      await getSession();
+    }
+  };
+
   const getSession = async () => {
+    console.log('GETSESSUION',);
     const response = await createIrmaSession('demo4', 'irma-qr', credentialSource === CredentialSource.DEMO);
+
     setHasResult(true);
     setName(response['fullname']);
     setStreet(`${response['street']} ${response['houseNumber']}`);
@@ -93,8 +110,16 @@ const Demo4: React.FC<IProps> = () => {
 
 
           <AscLocal.H2>Demo-aanvraag Geveltuin</AscLocal.H2>
-          <form>
+          <form ref={formEl} >
             Bent u eigenaar van de woning waar de geveltuin komt?
+            <RadioGroup name="geveltuin">
+              <Label htmlFor="yes" label="Ja">
+                <Radio id="yes" variant="primary" value="yes" />
+              </Label>
+              <Label htmlFor="no" label="Nee">
+                <Radio id="no" variant="primary" value="no" />
+              </Label>
+            </RadioGroup>
           </form>
 
           <ReactMarkDown
@@ -102,7 +127,7 @@ const Demo4: React.FC<IProps> = () => {
             renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
           />
 
-          <QRCode getSession={getSession} label={content.demo4.button} />
+          <QRCode getSession={onClick} label={content.demo4.button} />
 
           <ReactMarkDown
             source={content.downloadIrma}
@@ -117,8 +142,9 @@ const Demo4: React.FC<IProps> = () => {
 
             <ReactMarkDown source={content.callToAction} />
           </>
-        )}
-    </PageTemplate>
+        )
+      }
+    </PageTemplate >
   );
 };
 
