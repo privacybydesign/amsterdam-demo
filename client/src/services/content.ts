@@ -148,6 +148,49 @@ Dit kan worden gebruikt voor:
 - Toegang en korting op basis van uw leeftijd in uw buurt.
 - Voorzieningen speciaal voor Amsterdammers.`
     },
+
+    demo3: {
+        breadcrumbs: `- [Home](/)`,
+        unproven: {
+            title: `# Demo 3: Inloggen met IRMA`,
+            alert: {
+                title: `Uw naam en burgerservicenummer`,
+                body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
+            },
+            intro: `Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.
+## Probeer het uit
+Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgende gegevens:
+- Uw volledige naam
+- Uw burgerservicenummer (BSN)`,
+            why: {
+                title: `Waarom worden deze gegevens gevraagd?`,
+                body: `**Uw volledige naam**  \n
+De gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.  \n
+  \n
+**Uw burgerservicenummer (BSN)**  \n
+De gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.`
+            }
+        },
+        proven: {
+            title: `# Demo 3: Uw Naam en Burgerservicenummer`,
+            alert: {
+                title: `Uw naam en burgerservicenummer  `,
+                body: `U heeft bewezen dat u [] bent en u heeft uw burgerservicenummer (BSN) gedeeld.`
+            }
+        },
+        button: 'Inloggen met IRMA',
+        result: `De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.
+
+## Wat heeft u zojuist gedaan?
+- U heeft IRMA gebruikt om in te loggen.
+- U heeft uw burgerservicenummer (BSN) en uw naam aan de demosite van Mijn Amsterdam doorgegeven via IRMA.
+- Met uw burgerservicenummer (BSN) kan de gemeente uw gegevens ophalen en in ‘Mijn Amsterdam’ aan u tonen.
+
+## Wat is er anders met IRMA?
+De gemeente Amsterdam biedt u straks een keuze. U kunt straks inloggen in Mijn Amsterdam met DigiD of met IRMA.
+`
+    },
+
     images: {
         demo1: {
             header: { src: 'leeftijd', alt: 'Stadsbeeld van een terras' },
@@ -193,53 +236,12 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
 [Privacy](https://www.amsterdam.nl/privacy/)
 [Cookies op deze site](https://www.amsterdam.nl/privacy/cookies-site/)`
     },
+
     qrcode: {
         title: '### Maak uzelf bekend',
         stappen: `Doorloop de volgende stappen  \n
 1. Scan de QR-code hieronder met uw IRMA-app.
 2. Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.`,
         knop: 'Inloggen met IRMA'
-    },
-
-    demo3: {
-        breadcrumbs: `- [Home](/)`,
-        unproven: {
-            title: `# Demo 3: Inloggen met IRMA`,
-            alert: {
-                title: `Uw naam en burgerservicenummer`,
-                body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
-            },
-            intro: `Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.
-## Probeer het uit
-Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgende gegevens:
-- Uw volledige naam
-- Uw burgerservicenummer (BSN)`,
-            why: {
-                title: `Waarom worden deze gegevens gevraagd?`,
-                body: `**Uw volledige naam**  \n
-De gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.  \n
-  \n
-**Uw burgerservicenummer (BSN)**  \n
-De gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.`
-            }
-        },
-        proven: {
-            title: `# Demo 3: Uw Naam en Burgerservicenummer`,
-            alert: {
-                title: `Uw naam en burgerservicenummer  `,
-                body: `U heeft bewezen dat u [] bent en u heeft uw burgerservicenummer (BSN) gedeeld.`
-            }
-        },
-        button: 'Inloggen met IRMA',
-        result: `De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.
-
-## Wat heeft u zojuist gedaan?
-- U heeft IRMA gebruikt om in te loggen.
-- U heeft uw burgerservicenummer (BSN) en uw naam aan de demosite van Mijn Amsterdam doorgegeven via IRMA.
-- Met uw burgerservicenummer (BSN) kan de gemeente uw gegevens ophalen en in ‘Mijn Amsterdam’ aan u tonen.
-
-## Wat is er anders met IRMA?
-De gemeente Amsterdam biedt u straks een keuze. U kunt straks inloggen in Mijn Amsterdam met DigiD of met IRMA.
-`
     }
 };
