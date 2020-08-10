@@ -18,7 +18,7 @@ const Container = styled.section`
     background-color: ${themeColor('tint', 'level2')};
     border-right: 2px solid black;
     padding-bottom: ${themeSpacing(4)};
-    margin-bottom: ${themeSpacing(7)};;
+    margin-bottom: ${themeSpacing(7)};
 
     &:hover {
         border-color: ${themeColor('secondary', 'main')};
