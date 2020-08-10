@@ -5,6 +5,7 @@ import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion } from '@datapunt/asc-ui';
 import { Alert as AlertIcon } from '@datapunt/asc-assets';
+import { Checkmark } from '@datapunt/asc-assets';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
@@ -13,7 +14,7 @@ import DemoNotification from '@components/DemoNotification/DemoNotification';
 import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
 import QRCode from '@components/QRCode/QRCode';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
-import { Checkmark } from '@datapunt/asc-assets';
+import ContentBlock from '@components/ContentBlock/ContentBlock';
 
 export interface IProps {}
 // @todo add error flow with incorrect data
@@ -75,53 +76,57 @@ const Demo1: React.FC<IProps> = () => {
 
     return (
         <PageTemplate>
-            <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
-            {!hasResult18 && !hasResult65 && <DemoNotification />}
-            <ReactMarkDown
-                source={content.demo1.breadcrumbs}
-                renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
-            />
-            <ReactMarkDown
-                source={content.demo1.title[hasResult18 || hasResult65 ? 'hasResult' : 'noResult']}
-                renderers={{ heading: AscLocal.H1 }}
-            />
+            <ContentBlock>
+                <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
+                {!hasResult18 && !hasResult65 && <DemoNotification />}
+                <ReactMarkDown
+                    source={content.demo1.breadcrumbs}
+                    renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
+                />
+                <ReactMarkDown
+                    source={content.demo1.title[hasResult18 || hasResult65 ? 'hasResult' : 'noResult']}
+                    renderers={{ heading: AscLocal.H1 }}
+                />
 
-            {hasResult18 && isOver18 && (
-                <AscLocal.Alert
-                    color={AscLocal.AlertColor.SUCCESS}
-                    icon={<Checkmark />}
-                    heading={content.demo1.isOver18.heading}
-                    content={content.demo1.isOver18.content}
-                />
-            )}
-            {hasResult18 && !isOver18 && (
-                <AscLocal.Alert
-                    color={AscLocal.AlertColor.ERROR}
-                    icon={<AlertIcon />}
-                    heading={content.demo1.isNotOver18.heading}
-                    content={content.demo1.isNotOver18.content}
-                />
-            )}
+                {hasResult18 && isOver18 && (
+                    <AscLocal.Alert
+                        color={AscLocal.AlertColor.SUCCESS}
+                        icon={<Checkmark />}
+                        heading={content.demo1.isOver18.heading}
+                        content={content.demo1.isOver18.content}
+                    />
+                )}
+                {hasResult18 && !isOver18 && (
+                    <AscLocal.Alert
+                        color={AscLocal.AlertColor.ERROR}
+                        icon={<AlertIcon />}
+                        heading={content.demo1.isNotOver18.heading}
+                        content={content.demo1.isNotOver18.content}
+                    />
+                )}
 
-            {hasResult65 && isOver65 && (
-                <AscLocal.Alert
-                    color={AscLocal.AlertColor.SUCCESS}
-                    icon={<Checkmark />}
-                    heading={content.demo1.isOver65.heading}
-                    content={content.demo1.isOver65.content}
-                />
-            )}
-            {hasResult65 && !isOver65 && (
-                <AscLocal.Alert
-                    color={AscLocal.AlertColor.ERROR}
-                    icon={<AlertIcon />}
-                    heading={content.demo1.isNotOver65.heading}
-                    content={content.demo1.isNotOver65.content}
-                />
-            )}
+                {hasResult65 && isOver65 && (
+                    <AscLocal.Alert
+                        color={AscLocal.AlertColor.SUCCESS}
+                        icon={<Checkmark />}
+                        heading={content.demo1.isOver65.heading}
+                        content={content.demo1.isOver65.content}
+                    />
+                )}
+                {hasResult65 && !isOver65 && (
+                    <AscLocal.Alert
+                        color={AscLocal.AlertColor.ERROR}
+                        icon={<AlertIcon />}
+                        heading={content.demo1.isNotOver65.heading}
+                        content={content.demo1.isNotOver65.content}
+                    />
+                )}
+            </ContentBlock>
+
             <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
+
             {!hasResult18 && !hasResult65 ? (
-                <>
+                <ContentBlock>
                     <ReactMarkDown
                         source={content.demo1.intro}
                         renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
@@ -145,9 +150,9 @@ const Demo1: React.FC<IProps> = () => {
                         source={content.downloadIrma}
                         renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
                     />
-                </>
+                </ContentBlock>
             ) : (
-                <>
+                <ContentBlock>
                     <ReactMarkDown source={content.noSavePromise} />
                     <EmphasisBlock>
                         <ReactMarkDown source={content.demo1.result.title} />
@@ -185,7 +190,7 @@ const Demo1: React.FC<IProps> = () => {
                         source={content.callToAction}
                         renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                     />
-                </>
+                </ContentBlock>
             )}
         </PageTemplate>
     );

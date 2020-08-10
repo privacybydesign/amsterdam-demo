@@ -15,6 +15,7 @@ import ExternalLink from '@components/ExternalLink/ExternalLink';
 import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { Checkmark } from '@datapunt/asc-assets';
+import ContentBlock from '@components/ContentBlock/ContentBlock';
 
 export interface IProps {}
 
@@ -127,20 +128,22 @@ const Demo2: React.FC<IProps> = () => {
 
     return (
         <PageTemplate>
-            <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
-            {!hasResult && <DemoNotification />}
-            <ReactMarkDown
-                source={content.demo2.breadcrumbs}
-                renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
-            />
-            <ReactMarkDown
-                source={content.demo2[hasResult ? 'proven' : 'unproven'].title}
-                renderers={{ heading: AscLocal.H1 }}
-            />
-            {resultAlert}
+            <ContentBlock>
+                <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
+                {!hasResult && <DemoNotification />}
+                <ReactMarkDown
+                    source={content.demo2.breadcrumbs}
+                    renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
+                />
+                <ReactMarkDown
+                    source={content.demo2[hasResult ? 'proven' : 'unproven'].title}
+                    renderers={{ heading: AscLocal.H1 }}
+                />
+                {resultAlert}
+            </ContentBlock>
             <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
             {!hasResult ? (
-                <>
+                <ContentBlock>
                     <ReactMarkDown
                         source={content.demo2.intro}
                         renderers={{ heading: AscLocal.H2, list: AscLocal.UL }}
@@ -158,9 +161,9 @@ const Demo2: React.FC<IProps> = () => {
                         source={content.downloadIrma}
                         renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
                     />
-                </>
+                </ContentBlock>
             ) : (
-                <>
+                <ContentBlock>
                     <ReactMarkDown
                         source={content.noSavePromise}
                         renderers={{
@@ -182,7 +185,7 @@ const Demo2: React.FC<IProps> = () => {
                         />
                     </EmphasisBlock>
                     <ReactMarkDown source={content.callToAction} />
-                </>
+                </ContentBlock>
             )}
         </PageTemplate>
     );

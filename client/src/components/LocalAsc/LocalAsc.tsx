@@ -55,7 +55,6 @@ export const DownloadImage = styled.img`
 
 export const AccordionContainer = styled.div`
     margin-bottom: ${themeSpacing(5)};
-    max-width: 700px;
 `;
 
 export const AccordionHeading = styled(Heading).attrs({ as: 'h4' })`
@@ -103,7 +102,6 @@ export const Alert = styled(({ children, icon, iconUrl, className, heading, cont
         </AscAlert>
     );
 })`
-    max-width: 700px;
     margin-bottom: ${themeSpacing(4)};
 
     background-color: ${({ color }) => {
