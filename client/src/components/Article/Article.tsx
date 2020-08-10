@@ -40,7 +40,7 @@ const Container = styled.section`
         flex-direction: column;
 
         h2 {
-            padding-left: ${themeSpacing(4)};
+            padding: 0 ${themeSpacing(4)};
         }
 
         img {
