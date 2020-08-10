@@ -12,6 +12,7 @@ import DemoNotification from '@components/DemoNotification/DemoNotification';
 import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
 import QRCode from '@components/QRCode/QRCode';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
+import { Checkmark } from '@datapunt/asc-assets';
 
 export interface IProps {}
 // @todo add error flow with incorrect data
@@ -59,7 +60,9 @@ const Demo3: React.FC<IProps> = () => {
             {!hasResult && <DemoNotification />}
 
             {hasResult && (
-                <AscLocal.GreenAlert
+                <AscLocal.Alert
+                    color={AscLocal.AlertColor.SUCCESS}
+                    icon={<Checkmark />}
                     heading={content.demo3.proven.alert.title}
                     content={content.demo3.proven.alert.body.replace(/\[\]/, name)}
                 />

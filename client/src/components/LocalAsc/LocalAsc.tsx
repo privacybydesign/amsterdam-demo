@@ -33,13 +33,11 @@ export const UL = styled.ul`
     line-height: ${lineHeight};
     list-style-type: square;
     margin-top: 0;
-    line-height: 22px;
 `;
 
 export const OL = styled.ol`
     line-height: ${lineHeight};
     margin-top: 0;
-    line-height: 22px;
 `;
 
 export const Image = styled.img`
