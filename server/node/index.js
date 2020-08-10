@@ -20,6 +20,10 @@ const CREDENTIALS_TO_REQUEST = {
         "irma-demo.gemeente.address.zipcode",
         "irma-demo.gemeente.personalData.over18",
       ],
+      [
+        "irma-demo.RU.idinData.zipcode",
+        "irma-demo.gemeente.personalData.over18",
+      ],
     ],
     DEMO3: [
       ["irma-demo.gemeente.personalData.fullname"],

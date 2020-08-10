@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
+import getGGW from '@services/getGGW';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
@@ -13,28 +14,49 @@ import ExternalLink from '@components/ExternalLink/ExternalLink';
 import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 
-export interface IProps {}
+export interface IProps { }
 
 const Demo2: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [isOver18, setIsOver18] = useState<boolean>(false);
     const [isPostcodeInArea, setIsPostcodeInArea] = useState<boolean>(false);
     const [hasResult, setHasResult] = useState<boolean>(false);
+    const [wijk, setWijk] = useState<string>('');
+    const [ggw, setGgw] = useState<string>('');
+    const [code, setCode] = useState<string>('');
 
     const getSession = async () => {
         const response = await createIrmaSession('demo2', 'irma-qr', credentialSource === CredentialSource.DEMO);
         setIsOver18(response['over18'] === 'Yes');
-        // TODO: Substitute this logic for postal code > area mapping
-        const postcode = parseInt(response['zipcode'].substr(0, 4));
-        setIsPostcodeInArea(postcode >= 1000 && postcode <= 1099);
+        const postcode = response['zipcode'].replace(/ /, '');
+        const postcode4digit = parseInt(postcode, 10);
         setHasResult(true);
+
+        const ggwResponse = await getGGW(postcode);
+
+        if (ggwResponse) {
+            setIsPostcodeInArea(postcode4digit >= 1000 && postcode4digit <= 1099);
+            if (postcode4digit >= 1000 && postcode4digit <= 1099) {
+                setWijk(ggwResponse.buurtcombinatieNamen);
+                setCode(ggwResponse.ggwCode);
+                setGgw(ggwResponse.ggwNaam);
+            }
+        } else {
+            // error flow if location is not in Amsterdam
+            setIsPostcodeInArea(false);
+        }
         window.scrollTo(0, 0);
     };
 
-    // Define dynamic header image
-    // TODO: Implement correct images
     const headerImg = useMemo((): IHeaderImageProps => {
-        if (!hasResult) {
+        const regExp = /\[\]/;
+
+        if (wijk) {
+            return {
+                filename: code ? `wijken/${code}` : content.images.demo2.headerWithAmsterdam.src,
+                alt: code ? content.images.demo2.headerWithWijk.alt.replace(regExp, ggw) : content.images.demo2.headerWithAmsterdam.alt
+            };
+        } else if (!hasResult) {
             return { filename: content.images.demo2.header.src, alt: content.images.demo2.header.alt };
         } else if (isOver18 && isPostcodeInArea) {
             return {
@@ -54,23 +76,25 @@ const Demo2: React.FC<IProps> = () => {
                 alt: content.images.demo2.ageAndPostcodeNegative.alt
             };
         }
-    }, [hasResult, isOver18, isPostcodeInArea]);
+    }, [hasResult, wijk, code, ggw, isOver18, isPostcodeInArea]);
 
     const alertBox: JSX.Element = useMemo(() => {
+        const regExp = /\[\]/;
+
         if (!hasResult) {
             return <DemoNotification />;
         } else if (isOver18 && isPostcodeInArea) {
             return (
                 <AscLocal.GreenAlert
                     heading={content.demo2.proven.alert.title}
-                    content={content.demo2.proven.alert.bodyAgeAndPostcodePositive}
+                    content={content.demo2.proven.alert.bodyAgeAndPostcodePositive.replace(regExp, wijk)}
                 />
             );
         } else if (!isOver18 && isPostcodeInArea) {
             return (
                 <AscLocal.RedAlert
                     heading={content.demo2.proven.alert.title}
-                    content={content.demo2.proven.alert.bodyAgeNegative}
+                    content={content.demo2.proven.alert.bodyAgeNegative.replace(regExp, wijk)}
                 />
             );
         } else if (isOver18 && !isPostcodeInArea) {
@@ -88,7 +112,7 @@ const Demo2: React.FC<IProps> = () => {
                 />
             );
         }
-    }, [hasResult, isOver18, isPostcodeInArea]);
+    }, [hasResult, isOver18, isPostcodeInArea, wijk]);
 
     return (
         <PageTemplate>
@@ -126,20 +150,20 @@ const Demo2: React.FC<IProps> = () => {
                     />
                 </>
             ) : (
-                <>
-                    <ReactMarkDown
-                        source={content.noSavePromise}
-                        renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
-                    />
-                    <EmphasisBlock>
+                    <>
                         <ReactMarkDown
-                            source={content.demo2.result}
+                            source={content.noSavePromise}
                             renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
                         />
-                    </EmphasisBlock>
-                    <ReactMarkDown source={content.callToAction} />
-                </>
-            )}
+                        <EmphasisBlock>
+                            <ReactMarkDown
+                                source={content.demo2.result}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, link: Link }}
+                            />
+                        </EmphasisBlock>
+                        <ReactMarkDown source={content.callToAction} />
+                    </>
+                )}
         </PageTemplate>
     );
 };

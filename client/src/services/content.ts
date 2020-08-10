@@ -115,8 +115,10 @@ Bewijs in welke wijk u woont en dat u ouder bent dan 18 jaar door uzelf bekend t
             title: `# Demo 2: Uw postcode en leeftijd`,
             alert: {
                 title: `Uw postcode en leeftijd`,
+                // [] will be replaced by the wijken
                 bodyAgeNegative: `U heeft bewezen dat u in [] woont en dat u jonger bent dan 18 jaar. U mag nog niet meebeslissen over ideeën voor uw buurt.`,
                 bodyPostcodeNegative: `U heeft bewezen dat u niet in Amsterdam woont en dat u ouder bent dan 18 jaar. U mag niet meebeslissen over ideeën voor een Amsterdamse buurt.`,
+                // [] will be replaced by the wijken
                 bodyAgeAndPostcodePositive: `U heeft bewezen dat u in [] woont en dat u ouder bent dan 18 jaar. U mag meebeslissen over ideeën voor uw buurt.`,
                 bodyAgeAndPostcodeNegative: `U heeft bewezen dat u niet in Amsterdam woont en dat u jonger bent dan 18 jaar. U mag niet meebeslissen over ideeën voor een Amsterdamse buurt.`
             }
@@ -149,10 +151,12 @@ Dit kan worden gebruikt voor:
         },
         demo2: {
             header: { src: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' },
-            ageAndPostcodePositive: { src: 'ideeen-voor-buurt', alt: '' },
-            ageNegative: { src: 'ideeen-voor-buurt', alt: '' },
-            postcodeNegative: { src: 'ideeen-voor-buurt', alt: '' },
-            ageAndPostcodeNegative: { src: 'ideeen-voor-buurt', alt: '' }
+            headerWithWijk: { src: '', alt: 'Foto uit []' },
+            headerWithAmsterdam: { src: 'amsterdam-algemeen', alt: 'Foto van het Centraal Station' },
+            ageAndPostcodePositive: { src: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' },
+            ageNegative: { src: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' },
+            postcodeNegative: { src: 'niet-amsterdammer-18plus', alt: 'Foto van verhuizing naar Amsterdam' },
+            ageAndPostcodeNegative: { src: 'niet-amsterdammer-18min', alt: 'Foto van kinderen die een huis in Amsterdam bekijken' },
         }
     },
     footer: {
