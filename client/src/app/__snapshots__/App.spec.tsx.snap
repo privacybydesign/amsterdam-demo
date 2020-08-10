@@ -701,6 +701,7 @@ exports[`App component should match snapshot 1`] = `
 
 .c38 {
   margin-top: 0;
+  line-height: 22px;
 }
 
 .c25 {
@@ -791,9 +792,24 @@ exports[`App component should match snapshot 1`] = `
 }
 
 .c41 {
+  background-color: #F5F5F5;
   border-right: 2px solid black;
   padding-bottom: 16px;
   margin-bottom: 28px;
+}
+
+.c41:hover {
+  border-color: #ec0000;
+}
+
+.c41:hover h2 {
+  color: #ec0000;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c41:hover svg {
+  fill: #ec0000;
 }
 
 .c41 a {
@@ -810,16 +826,16 @@ exports[`App component should match snapshot 1`] = `
 }
 
 .c41 a h2 {
-  margin-bottom: 20px;
+  padding-left: 16px;
 }
 
 .c41 a img {
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .c41 a div {
-  margin-bottom: 12px;
+  padding: 0 24px 12px 16px;
 }
 
 .c41 a span {
@@ -1427,6 +1443,43 @@ Ga naar de
               </span>
             </a>
           </section>
+          <section
+            class="c41"
+          >
+            <a
+              href="/inloggen-met-irma"
+            >
+              <img
+                alt=""
+                class="c25"
+                src="/assets/probeer-irma-940.jpg"
+                srcset="/assets/probeer-irma-290.jpg 580w, /assets/probeer-irma-940.jpg 1880w"
+              />
+              <h2
+                class="c42"
+              >
+                Demo 3: Inloggen met IRMA
+              </h2>
+              <div>
+                <p>
+                  Bewijs met uw postcode dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.
+                </p>
+              </div>
+              <span
+                class="c34 c43"
+              >
+                <svg
+                  focusable="false"
+                  viewBox="0 0 32 32"
+                >
+                  <path
+                    d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </span>
+            </a>
+          </section>
         </div>
       </div>
     </div>
@@ -1453,7 +1506,7 @@ Ga naar de
               <p
                 class="c51"
               >
-                Hebt u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.
+                Heeft u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.
               </p>
               <ul
                 class="c52"
@@ -1523,7 +1576,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                 >
                   <a
                     class="c54 c55 c56"
-                    href="/"
+                    href="https://www.amsterdam.nl/contact/"
                   >
                     <span
                       class="c34 c57"
@@ -1568,7 +1621,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                 >
                   <a
                     class="c54 c55 c56"
-                    href="/"
+                    href="https://action.spike.email/104050/Subscribe/9f53558f-601d-4db8-97d6-a78bccd6e39d?culture=nl-NL"
                   >
                     <span
                       class="c34 c57"
@@ -1596,7 +1649,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                 >
                   <a
                     class="c54 c55 c56"
-                    href="/"
+                    href="https://twitter.com/AmsterdamNL"
                   >
                     <span
                       class="c34 c57"
@@ -1624,7 +1677,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                 >
                   <a
                     class="c54 c55 c56"
-                    href="/"
+                    href="https://www.facebook.com/gemeenteamsterdam"
                   >
                     <span
                       class="c34 c57"
@@ -1652,7 +1705,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                 >
                   <a
                     class="c54 c55 c56"
-                    href="/"
+                    href="https://www.instagram.com/gemeenteamsterdam/"
                   >
                     <span
                       class="c34 c57"
@@ -1680,7 +1733,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                 >
                   <a
                     class="c54 c55 c56"
-                    href="/"
+                    href="https://www.linkedin.com/company/gemeente-amsterdam"
                   >
                     <span
                       class="c34 c57"
@@ -1708,7 +1761,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                 >
                   <a
                     class="c54 c55 c56"
-                    href="/"
+                    href="https://www.amsterdam.nl/bestuur-organisatie/werkenbij/"
                   >
                     <span
                       class="c34 c57"
@@ -1751,7 +1804,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                 Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op 
                 <a
                   class="c54 c55 c56"
-                  href="https://www.iamsterdam.com/"
+                  href="https://www.iamsterdam.com/nl"
                 >
                   <span
                     class="c34 c57"
@@ -1770,7 +1823,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                   <span
                     class="c58"
                   >
-                    Iamsterdam.com
+                    I amsterdam
                   </span>
                 </a>
               </p>

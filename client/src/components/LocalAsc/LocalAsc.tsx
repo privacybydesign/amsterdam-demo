@@ -28,10 +28,12 @@ export const Paragraph = styled(AscParagraph)`
 
 export const UL = styled.ul`
     margin-top: 0;
+    line-height: 22px;
 `;
 
 export const OL = styled.ol`
     margin-top: 0;
+    line-height: 22px;
 `;
 
 export const Image = styled.img`
