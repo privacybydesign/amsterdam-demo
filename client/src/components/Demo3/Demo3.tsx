@@ -4,6 +4,7 @@ import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion } from '@datapunt/asc-ui';
+import { Alert as AlertIcon } from '@datapunt/asc-assets';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
@@ -20,16 +21,22 @@ export interface IProps {}
 const Demo3: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [hasResult, setHasResult] = useState<boolean>(false);
+    const [hasError, setHasError] = useState<boolean>(false);
     // const [bsn, setBsn] = useState<string>('');
     const [name, setName] = useState<string>('');
 
     const getSession = async () => {
         const response = await createIrmaSession('demo3', 'irma-qr', credentialSource === CredentialSource.DEMO);
-        setHasResult(true);
-        // setBsn(response['bsn']);
-        setName(response['fullname']);
-
+        if (response) {
+            setHasResult(true);
+            setHasError(false);
+            // setBsn(response['bsn']);
+            setName(response['fullname']);
+        } else {
+            setHasError(true);
+        }
         window.scrollTo(0, 0);
+        return response;
     };
 
     // Define dynamic header image
@@ -57,14 +64,23 @@ const Demo3: React.FC<IProps> = () => {
                 renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
             />
 
-            {!hasResult && <DemoNotification />}
+            {!hasResult && !hasError && <DemoNotification />}
 
-            {hasResult && (
+            {hasResult && !hasError && (
                 <AscLocal.Alert
                     color={AscLocal.AlertColor.SUCCESS}
                     icon={<Checkmark />}
                     heading={content.demo3.proven.alert.title}
                     content={content.demo3.proven.alert.body.replace(/\[\]/, name)}
+                />
+            )}
+
+            {hasError && (
+                <AscLocal.Alert
+                    color={AscLocal.AlertColor.ERROR}
+                    icon={<AlertIcon />}
+                    heading={content.demoErrorAlert.heading}
+                    content={content.demoErrorAlert.content}
                 />
             )}
 

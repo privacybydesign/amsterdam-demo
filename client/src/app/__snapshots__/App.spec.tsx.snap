@@ -811,7 +811,6 @@ exports[`App component should match snapshot 1`] = `
   line-height: 1.8em;
   list-style-type: square;
   margin-top: 0;
-  line-height: 22px;
 }
 
 .c24 {
