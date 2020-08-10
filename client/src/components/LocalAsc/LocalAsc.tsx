@@ -141,18 +141,37 @@ export const Alert = styled(({ children, icon, iconUrl, className, heading, cont
     }
 `;
 
-export const Header = styled(AscHeader).attrs({
+export const Header = styled(AscHeader).attrs(({ theme }) => ({
     css: {
         zIndex: 10,
-        '&::after': { backgroundColor: themeColor('tint', 'level2'), marginLeft: -220, marginRight: -220 }
+        width: 'auto',
+        flex: 1,
+        '&::after': { backgroundColor: themeColor('tint', 'level2'), marginLeft: -188, marginRight: -188 },
+        margin: `0 -${theme.spacing * 5}px`,
+        paddingLeft: 32,
+        [`@media ${theme.breakpoints.tabletM('min-width')}`]: {
+            margin: `0 -${theme.spacing * 6}px`,
+            paddingLeft: 38
+        },
+        [`@media ${theme.breakpoints.laptop('min-width')}`]: {
+            margin: `0 -${theme.spacing * 8}px`,
+            paddingLeft: 46
+        },
+        [`@media ${theme.breakpoints.laptopM('min-width')}`]: {
+            paddingLeft: 0
+        }
     }
-})`
+}))`
+    padding: 0;
+
     &&& {
-        padding: 0;
+        h1:first-child {
+            margin-left: -28px;
+        }
 
         @media ${breakpoint('min-width', 'laptopM')} {
             h1:first-child {
-                margin-left: -30px;
+                margin-left: 0;
             }
         }
 
