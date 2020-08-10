@@ -17,7 +17,6 @@ import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 
 export interface IProps {}
-// @todo add error flow with incorrect data
 
 const Demo1: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
@@ -25,19 +24,34 @@ const Demo1: React.FC<IProps> = () => {
     const [hasResult18, setHasResult18] = useState<boolean>(false);
     const [isOver65, setIsOver65] = useState<boolean>(false);
     const [hasResult65, setHasResult65] = useState<boolean>(false);
+    const [hasError, setHasError] = useState<boolean>(false);
 
-    const getSessionOver18 = async () => {
+    const getSessionOver18 = async (): Promise<null | unknown> => {
         const response = await createIrmaSession('demo1/18', 'irma-qr', credentialSource === CredentialSource.DEMO);
-        setIsOver18(response['over18'] === 'Yes');
-        setHasResult18(true);
+        if (response) {
+            setIsOver18(response['over18'] === 'Yes');
+            setHasResult18(true);
+            setHasError(false);
+        } else {
+            setHasError(true);
+        }
+
         window.scrollTo(0, 0);
+        return response;
     };
 
-    const getSessionOver65 = async () => {
+    const getSessionOver65 = async (): Promise<null | unknown> => {
         const response = await createIrmaSession('demo1/65', 'irma-qr', credentialSource === CredentialSource.DEMO);
-        setIsOver65(response['over65'] === 'Yes');
-        setHasResult65(true);
+        if (response) {
+            setIsOver65(response['over65'] === 'Yes');
+            setHasResult65(true);
+            setHasError(false);
+        } else {
+            setHasError(true);
+        }
+
         window.scrollTo(0, 0);
+        return response;
     };
 
     // Define dynamic header image
@@ -119,6 +133,14 @@ const Demo1: React.FC<IProps> = () => {
                         icon={<AlertIcon />}
                         heading={content.demo1.isNotOver65.heading}
                         content={content.demo1.isNotOver65.content}
+                    />
+                )}
+                {hasError && (
+                    <AscLocal.Alert
+                        color={AscLocal.AlertColor.ERROR}
+                        icon={<AlertIcon />}
+                        heading={content.demoErrorAlert.heading}
+                        content={content.demoErrorAlert.content}
                     />
                 )}
             </ContentBlock>

@@ -52,7 +52,10 @@ Ga naar de [website van IRMA](https://irma.app/)`
     downloadIrma: `Heeft u nog geen IRMA?  \n[Download IRMA](https://irma.app/)`,
     noSavePromise: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard.`,
     callToAction: `[Probeer de andere demo’s](/)`,
-
+    demoErrorAlert: {
+        heading: `Niets doorgegeven`,
+        content: `U heeft uw gegevens niet doorgegeven aan de gemeente Amsterdam.`
+    },
     demo1: {
         breadcrumbs: `- [Home](/)
 - [Demo 1: Leeftijd aantonen](/leeftijd-aantonen)`,

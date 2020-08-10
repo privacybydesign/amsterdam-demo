@@ -27,28 +27,36 @@ const Demo2: React.FC<IProps> = () => {
     const [wijk, setWijk] = useState<string>('');
     const [ggw, setGgw] = useState<string>('');
     const [code, setCode] = useState<string>('');
+    const [hasError, setHasError] = useState<boolean>(false);
 
     const getSession = async () => {
         const response = await createIrmaSession('demo2', 'irma-qr', credentialSource === CredentialSource.DEMO);
-        setIsOver18(response['over18'] === 'Yes');
-        const postcode = response['zipcode'].replace(/ /, '');
-        const postcode4digit = parseInt(postcode, 10);
-        setHasResult(true);
+        if (response) {
+            setIsOver18(response['over18'] === 'Yes');
+            const postcode = response['zipcode'].replace(/ /, '');
+            const postcode4digit = parseInt(postcode, 10);
+            setHasResult(true);
+            setHasError(false);
 
-        const ggwResponse = await getGGW(postcode);
+            const ggwResponse = await getGGW(postcode);
 
-        if (ggwResponse) {
-            setIsPostcodeInArea(postcode4digit >= 1000 && postcode4digit <= 1099);
-            if (postcode4digit >= 1000 && postcode4digit <= 1099) {
-                setWijk(ggwResponse.buurtcombinatieNamen);
-                setCode(ggwResponse.ggwCode);
-                setGgw(ggwResponse.ggwNaam);
+            if (ggwResponse) {
+                setIsPostcodeInArea(postcode4digit >= 1000 && postcode4digit <= 1099);
+                if (postcode4digit >= 1000 && postcode4digit <= 1099) {
+                    setWijk(ggwResponse.buurtcombinatieNamen);
+                    setCode(ggwResponse.ggwCode);
+                    setGgw(ggwResponse.ggwNaam);
+                }
+            } else {
+                // error flow if location is not in Amsterdam
+                setIsPostcodeInArea(false);
             }
         } else {
-            // error flow if location is not in Amsterdam
-            setIsPostcodeInArea(false);
+            setHasError(true);
         }
+
         window.scrollTo(0, 0);
+        return response;
     };
 
     const headerImg = useMemo((): IHeaderImageProps => {
@@ -85,8 +93,17 @@ const Demo2: React.FC<IProps> = () => {
 
     const resultAlert: JSX.Element = useMemo(() => {
         const regExp = /\[\]/;
-        if (!hasResult) {
+        if (!hasResult && !hasError) {
             return null;
+        } else if (hasError) {
+            return (
+                <AscLocal.Alert
+                    color={AscLocal.AlertColor.ERROR}
+                    icon={<AlertIcon />}
+                    heading={content.demoErrorAlert.heading}
+                    content={content.demoErrorAlert.content}
+                />
+            );
         } else if (isOver18 && isPostcodeInArea) {
             return (
                 <AscLocal.Alert
@@ -124,7 +141,7 @@ const Demo2: React.FC<IProps> = () => {
                 />
             );
         }
-    }, [hasResult, isOver18, isPostcodeInArea, wijk]);
+    }, [hasResult, hasError, isOver18, isPostcodeInArea, wijk]);
 
     return (
         <PageTemplate>

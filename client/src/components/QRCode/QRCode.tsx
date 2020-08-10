@@ -9,18 +9,22 @@ import { OL } from '@components/LocalAsc/LocalAsc';
 
 export interface IProps {
     label?: string;
-    getSession(): Promise<void>;
+    getSession(): Promise<null | unknown>;
     className?: string;
 }
 
 const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
     const [hasOverlay, setHasOverlay] = useState(false);
 
-    const getQRSession = () => {
+    const getQRSession = async () => {
         if (!isMobile()) {
             setHasOverlay(true);
         }
-        typeof getSession === 'function' && getSession();
+
+        if (typeof getSession === 'function') {
+            await getSession();
+            closeModal();
+        }
     };
 
     const closeModal = () => {

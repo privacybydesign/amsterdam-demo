@@ -43,7 +43,7 @@ exports[`App component should match snapshot 1`] = `
   outline-width: 3px;
 }
 
-.c42 {
+.c41 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -56,7 +56,7 @@ exports[`App component should match snapshot 1`] = `
   transform: rotate(0deg);
 }
 
-.c42 > svg {
+.c41 > svg {
   width: 20px;
   height: 20px;
 }
@@ -79,7 +79,7 @@ exports[`App component should match snapshot 1`] = `
   height: 12px;
 }
 
-.c21 {
+.c20 {
   margin: 0;
   color: #000000;
   font-weight: 700;
@@ -133,7 +133,7 @@ exports[`App component should match snapshot 1`] = `
   letter-spacing: normal;
 }
 
-.c23 {
+.c22 {
   margin-top: 0;
   display: -webkit-box;
   display: -webkit-flex;
@@ -171,14 +171,14 @@ exports[`App component should match snapshot 1`] = `
   background-color: #FEC813;
 }
 
-.c56 .c34 {
+.c56 .c33 {
   margin: 4px 4px 0 0;
 }
 
-.c56 .c34 svg circle,
-.c56 .c34 svg rect,
-.c56 .c34 svg polygon,
-.c56 .c34 svg path {
+.c56 .c33 svg circle,
+.c56 .c33 svg rect,
+.c56 .c33 svg polygon,
+.c56 .c33 svg path {
   fill: #ffffff;
 }
 
@@ -210,14 +210,14 @@ exports[`App component should match snapshot 1`] = `
   background-color: #FEC813;
 }
 
-.c63 .c34 {
+.c63 .c33 {
   margin: 4px 4px 0 0;
 }
 
-.c63 .c34 svg circle,
-.c63 .c34 svg rect,
-.c63 .c34 svg polygon,
-.c63 .c34 svg path {
+.c63 .c33 svg circle,
+.c63 .c33 svg rect,
+.c63 .c33 svg polygon,
+.c63 .c33 svg path {
   fill: #000000;
 }
 
@@ -234,7 +234,7 @@ exports[`App component should match snapshot 1`] = `
   fill: #ec0000;
 }
 
-.c28 {
+.c27 {
   margin: 0;
   color: #000000;
   font-weight: 400;
@@ -276,7 +276,7 @@ exports[`App component should match snapshot 1`] = `
   color: inherit;
 }
 
-.c35 {
+.c34 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -290,12 +290,12 @@ exports[`App component should match snapshot 1`] = `
   margin-left: 10px;
 }
 
-.c35 > svg {
+.c34 > svg {
   width: 20px;
   height: 20px;
 }
 
-.c31 {
+.c30 {
   height: 44px;
   white-space: nowrap;
   display: -webkit-inline-box;
@@ -319,32 +319,32 @@ exports[`App component should match snapshot 1`] = `
   background-color: #B4B4B4;
 }
 
-.c31.c31:focus {
+.c30.c30:focus {
   outline-color: #FEC813;
   outline-style: solid;
   outline-offset: 0px;
   outline-width: 3px;
 }
 
-.c31 svg circle,
-.c31 svg rect,
-.c31 svg polygon,
-.c31 svg path {
+.c30 svg circle,
+.c30 svg rect,
+.c30 svg polygon,
+.c30 svg path {
   fill: #000000;
 }
 
-.c31:hover {
+.c30:hover {
   background-color: #9b9b9b;
 }
 
-.c31::after {
+.c30::after {
   content: '';
   display: block;
   min-height: inherit;
   font-size: 0;
 }
 
-.c31:disabled {
+.c30:disabled {
   cursor: default;
   outline: none;
   border: none;
@@ -354,14 +354,14 @@ exports[`App component should match snapshot 1`] = `
   text-decoration: none;
 }
 
-.c31:disabled svg circle,
-.c31:disabled svg rect,
-.c31:disabled svg polygon,
-.c31:disabled svg path {
+.c30:disabled svg circle,
+.c30:disabled svg rect,
+.c30:disabled svg polygon,
+.c30:disabled svg path {
   fill: #B4B4B4;
 }
 
-.c40 {
+.c39 {
   height: 44px;
   white-space: nowrap;
   display: -webkit-inline-box;
@@ -385,32 +385,32 @@ exports[`App component should match snapshot 1`] = `
   background-color: #ffffff;
 }
 
-.c40.c40:focus {
+.c39.c39:focus {
   outline-color: #FEC813;
   outline-style: solid;
   outline-offset: 0px;
   outline-width: 3px;
 }
 
-.c40 svg circle,
-.c40 svg rect,
-.c40 svg polygon,
-.c40 svg path {
+.c39 svg circle,
+.c39 svg rect,
+.c39 svg polygon,
+.c39 svg path {
   fill: #000000;
 }
 
-.c40:hover {
+.c39:hover {
   background-color: #E6E6E6;
 }
 
-.c40::after {
+.c39::after {
   content: '';
   display: block;
   min-height: inherit;
   font-size: 0;
 }
 
-.c40:disabled {
+.c39:disabled {
   cursor: default;
   outline: none;
   border: none;
@@ -420,10 +420,10 @@ exports[`App component should match snapshot 1`] = `
   text-decoration: none;
 }
 
-.c40:disabled svg circle,
-.c40:disabled svg rect,
-.c40:disabled svg polygon,
-.c40:disabled svg path {
+.c39:disabled svg circle,
+.c39:disabled svg rect,
+.c39:disabled svg polygon,
+.c39:disabled svg path {
   fill: #B4B4B4;
 }
 
@@ -445,7 +445,7 @@ exports[`App component should match snapshot 1`] = `
   margin-bottom: 8px;
 }
 
-.c17 {
+.c16 {
   box-sizing: border-box;
   width: 100%;
   display: -webkit-box;
@@ -461,7 +461,7 @@ exports[`App component should match snapshot 1`] = `
   order: 0;
 }
 
-.c26 {
+.c25 {
   box-sizing: border-box;
   width: 100%;
   display: -webkit-box;
@@ -598,7 +598,7 @@ exports[`App component should match snapshot 1`] = `
   font-size: 0;
 }
 
-.c5 .c22 {
+.c5 .c21 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -671,6 +671,12 @@ exports[`App component should match snapshot 1`] = `
   position: sticky;
   top: 0;
   z-index: 10;
+  width: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin: 0 -20px;
+  padding-left: 32px;
 }
 
 .c3 .c13 {
@@ -682,8 +688,8 @@ exports[`App component should match snapshot 1`] = `
 
 .c3::after {
   background-color: #F5F5F5;
-  margin-left: -220px;
-  margin-right: -220px;
+  margin-left: -188px;
+  margin-right: -188px;
 }
 
 .c60 {
@@ -700,16 +706,16 @@ exports[`App component should match snapshot 1`] = `
   display: flex;
 }
 
-.c45 {
+.c44 {
   width: 100%;
 }
 
-.c47 {
+.c46 {
   background-color: #767676;
   padding-top: 32px;
 }
 
-.c37 {
+.c36 {
   -webkit-transition: border-color 0.1s ease-in-out;
   transition: border-color 0.1s ease-in-out;
   border: 2px solid #E6E6E6;
@@ -718,28 +724,28 @@ exports[`App component should match snapshot 1`] = `
   display: none;
 }
 
-.c33 {
+.c32 {
   text-align: left;
   white-space: normal;
 }
 
-.c32 {
+.c31 {
   width: 100%;
   height: initial;
   background-color: #E6E6E6;
 }
 
-.c32:hover,
-.c32.c32:focus {
+.c31:hover,
+.c31.c31:focus {
   background-color: #B4B4B4;
 }
 
-.c32:hover + .c36,
-.c32.c32:focus + .c36 {
+.c31:hover + .c35,
+.c31.c31:focus + .c35 {
   border-color: #B4B4B4;
 }
 
-.c32 .c34 {
+.c31 .c33 {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
@@ -752,45 +758,87 @@ exports[`App component should match snapshot 1`] = `
   transition: transform 0.3s ease;
 }
 
-.c24 {
+.c19 a {
+  color: #767676;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-text-decoration-color: #767676;
+  text-decoration-color: #767676;
+}
+
+.c19:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c19 *:focus {
+  outline: auto;
+  outline-color: #FEC813;
+  outline-style: solid;
+  outline-width: 2px;
+  outline-offset: 4px;
+}
+
+.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.c23 {
   line-height: 1.8em;
   margin: 16px 0 16px 0;
 }
 
-.c39 {
+.c38 {
   line-height: 1.8em;
   margin: 12px 0;
 }
 
-.c29 {
+.c28 {
   line-height: 1.8em;
   margin-top: 8px;
   margin-bottom: 8px;
 }
 
-.c38 {
+.c37 {
   line-height: 1.8em;
   list-style-type: square;
   margin-top: 0;
   line-height: 22px;
 }
 
-.c25 {
+.c24 {
   width: 100%;
   margin-bottom: 12px;
 }
 
-.c30 {
+.c29 {
   margin-bottom: 20px;
-  max-width: 700px;
 }
 
-.c6.c6.c6 {
+.c6 {
   padding: 0;
+}
+
+.c6.c6.c6 h1:first-child {
+  margin-left: -28px;
 }
 
 .c6.c6.c6 nav {
   margin: 0;
+}
+
+.c26 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c49 p,
@@ -798,9 +846,10 @@ exports[`App component should match snapshot 1`] = `
   color: #ffffff;
 }
 
-.c46 {
-  max-width: 1400px;
-  margin: 0 auto;
+.c45 {
+  background-color: #767676;
+  width: auto;
+  margin: 0 -24px;
 }
 
 .c61 {
@@ -815,70 +864,43 @@ exports[`App component should match snapshot 1`] = `
   color: #ffffff;
 }
 
-.c20 a {
-  color: #767676;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  -webkit-text-decoration-color: #767676;
-  text-decoration-color: #767676;
-}
-
-.c20:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
-
-.c19 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-top: 16px;
-}
-
-.c27 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c18 {
+.c17 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
   margin: 20px 0;
 }
 
-.c16 {
+.c2 {
   background-color: #ffffff;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  overflow-x: hidden;
 }
 
-.c43 {
+.c42 {
   background-color: #F5F5F5;
   border-right: 2px solid black;
   padding-bottom: 16px;
   margin-bottom: 28px;
 }
 
-.c43:hover {
+.c42:hover {
   border-color: #ec0000;
 }
 
-.c43:hover h2 {
+.c42:hover h2 {
   color: #ec0000;
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 
-.c43:hover svg {
+.c42:hover svg {
   fill: #ec0000;
 }
 
-.c43 a {
+.c42 a {
   color: #000000;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -891,31 +913,31 @@ exports[`App component should match snapshot 1`] = `
   flex-direction: column;
 }
 
-.c43 a h2 {
+.c42 a h2 {
   padding-left: 16px;
 }
 
-.c43 a img {
+.c42 a img {
   width: 100%;
   margin-bottom: 8px;
 }
 
-.c43 a div {
+.c42 a div {
   padding: 0 24px 12px 16px;
 }
 
-.c43 a span {
+.c42 a span {
   margin-right: 12px;
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
 }
 
-.c44 {
+.c43 {
   margin-bottom: 8px;
 }
 
-.c41 {
+.c40 {
   display: inline-block;
   width: auto;
   height: 40px;
@@ -923,19 +945,15 @@ exports[`App component should match snapshot 1`] = `
   margin-right: 12px;
 }
 
-.c41 span {
+.c40 span {
   width: 100%;
   height: 100%;
 }
 
-.c41 img {
+.c40 img {
   width: auto;
   height: 100%;
   margin: 0;
-}
-
-.c2 {
-  background-color: #ffffff;
 }
 
 .c0 {
@@ -951,7 +969,7 @@ exports[`App component should match snapshot 1`] = `
 }
 
 @media screen and (min-width:1024px) {
-  .c21 {
+  .c20 {
     font-size: 30px;
     line-height: 38px;
   }
@@ -965,13 +983,13 @@ exports[`App component should match snapshot 1`] = `
 }
 
 @media screen and (min-width:540px) {
-  .c28 {
+  .c27 {
     margin-bottom: 24px;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c28 {
+  .c27 {
     font-size: 18px;
     line-height: 25px;
   }
@@ -991,61 +1009,61 @@ exports[`App component should match snapshot 1`] = `
 }
 
 @media (min-width:1200px) {
-  .c17 {
+  .c16 {
     max-width: 100%;
   }
 }
 
 @media (min-width:1024px) and (max-width:1199px) {
-  .c17 {
+  .c16 {
     max-width: 100%;
   }
 }
 
 @media (min-width:768px) and (max-width:1023px) {
-  .c17 {
+  .c16 {
     max-width: 100%;
   }
 }
 
 @media (min-width:414px) and (max-width:767px) {
-  .c17 {
+  .c16 {
     max-width: 100%;
   }
 }
 
 @media (max-width:413px) {
-  .c17 {
+  .c16 {
     max-width: 100%;
   }
 }
 
 @media (min-width:1200px) {
-  .c26 {
+  .c25 {
     max-width: calc((((100% - 220px) / 12) * 9) + 160px + 0px);
   }
 }
 
 @media (min-width:1024px) and (max-width:1199px) {
-  .c26 {
+  .c25 {
     max-width: calc((((100% - 220px) / 12) * 9) + 160px + 0px);
   }
 }
 
 @media (min-width:768px) and (max-width:1023px) {
-  .c26 {
+  .c25 {
     max-width: 100%;
   }
 }
 
 @media (min-width:414px) and (max-width:767px) {
-  .c26 {
+  .c25 {
     max-width: 100%;
   }
 }
 
 @media (max-width:413px) {
-  .c26 {
+  .c25 {
     max-width: 100%;
   }
 }
@@ -1229,21 +1247,61 @@ exports[`App component should match snapshot 1`] = `
   }
 }
 
+@media (min-width:768px) {
+  .c3 {
+    margin: 0 -24px;
+    padding-left: 38px;
+  }
+}
+
+@media (min-width:1024px) {
+  .c3 {
+    margin: 0 -32px;
+    padding-left: 46px;
+  }
+}
+
+@media (min-width:1200px) {
+  .c3 {
+    padding-left: 0;
+  }
+}
+
 @media screen and (min-width:768px) {
-  .c47 {
+  .c46 {
     padding-bottom: 24px;
   }
 }
 
 @media (min-width:1200px) {
-  .c6.c6.c6 h1:first-child {
-    margin-left: -30px;
+  .c18 {
+    margin-top: 20px;
   }
 }
 
 @media (min-width:1200px) {
-  .c19 {
-    margin-top: 20px;
+  .c6.c6.c6 h1:first-child {
+    margin-left: 0;
+  }
+}
+
+@media (min-width:1024px) {
+  .c45 {
+    margin: 0 -220px;
+    padding: 0 220px;
+  }
+}
+
+@media (min-width:1024px) {
+  .c47 {
+    padding: 0;
+  }
+}
+
+@media (min-width:1024px) {
+  .c61 {
+    margin: 0 -230px;
+    padding: 0 230px;
   }
 }
 
@@ -1302,18 +1360,14 @@ exports[`App component should match snapshot 1`] = `
           />
         </header>
       </div>
-    </div>
-    <div
-      class="c1 c16"
-    >
       <div
-        class="c17 c18"
+        class="c16 c17"
       >
         <div
-          class="c19"
+          class="c18"
         >
           <span
-            class="c20"
+            class="c19"
           >
             <a
               href="/"
@@ -1323,52 +1377,52 @@ exports[`App component should match snapshot 1`] = `
           </span>
         </div>
         <h1
-          class="c21 c22 c23 c24"
+          class="c20 c21 c22 c23"
         >
           Probeer IRMA uit
         </h1>
         <img
-          class="c25"
+          class="c24"
           src="/assets/home.png"
         />
         <div
-          class="c26 c27"
+          class="c25 c26"
         >
           <p
-            class="c28 c29"
+            class="c27 c28"
           >
             IRMA is een app waarmee u online kunt aantonen wie u bent.
         IRMA biedt een nieuwe manier van inloggen, anders dan u kent van bijvoorbeeld DigiD.
           </p>
           <p
-            class="c28 c29"
+            class="c27 c28"
           >
             Binnenkort kunt u IRMA gebruiken in Amsterdam.
           </p>
           <p
-            class="c28 c29"
+            class="c27 c28"
           >
             Ervaar nu vast wat u met IRMA kunt via verschillende demo’s.
-
+        
           </p>
           <div
-            class="c30"
+            class="c29"
           >
             <button
               aria-controls="nodig"
               aria-expanded="false"
-              class="c31 c32"
+              class="c30 c31"
               id="label-nodig"
               title="Wat heeft u nodig?"
               type="button"
             >
               <span
-                class="c33"
+                class="c32"
               >
                 Wat heeft u nodig?
               </span>
               <span
-                class="c34 c35"
+                class="c33 c34"
                 size="20"
               >
                 <svg
@@ -1384,14 +1438,14 @@ exports[`App component should match snapshot 1`] = `
             </button>
             <div
               aria-labelledby="label-nodig"
-              class="c36 c37"
+              class="c35 c36"
               id="nodig"
             >
               <p>
                 U kunt de demo's met IRMA doen als u de IRMA-app op uw telefoon heeft geïnstalleerd en als u in IRMA de volgende gegevens heeft toegevoegd:
               </p>
               <ul
-                class="c38"
+                class="c37"
               >
                 <li>
                   Uw persoonsgegevens
@@ -1407,48 +1461,48 @@ exports[`App component should match snapshot 1`] = `
                 </li>
               </ul>
               <h2
-                class="c39"
+                class="c38"
               >
                 IRMA downloaden
               </h2>
               <p>
-                Download de IRMA-app voor iOS of Android:
+                Download de IRMA-app voor iOS of Android:  
               </p>
               <p>
                 <a
                   href="https://apps.apple.com/nl/app/irma-authenticatie/id1294092994"
                 >
                   <button
-                    class="c40 c41"
+                    class="c39 c40"
                   >
                     <span
-                      class="c34 c42"
+                      class="c33 c41"
                       size="20"
                     >
                       <img
                         alt="App Store"
-                        class="c25"
+                        class="c24"
                         src="/assets/download-app-store.svg"
                         title="Download IRMA in de App Store"
                       />
                     </span>
                   </button>
                 </a>
-
+                
 
                 <a
                   href="https://play.google.com/store/apps/details?id=org.irmacard.cardemu"
                 >
                   <button
-                    class="c40 c41"
+                    class="c39 c40"
                   >
                     <span
-                      class="c34 c42"
+                      class="c33 c41"
                       size="20"
                     >
                       <img
                         alt="Play Store"
-                        class="c25"
+                        class="c24"
                         src="/assets/download-play-store.svg"
                         title="Download IRMA in de Play Store"
                       />
@@ -1458,7 +1512,7 @@ exports[`App component should match snapshot 1`] = `
               </p>
               <p>
                 Wilt u meer weten over IRMA?
-Ga naar de
+Ga naar de 
                 <a
                   href="https://irma.app/"
                 >
@@ -1468,24 +1522,24 @@ Ga naar de
             </div>
           </div>
           <h2
-            class="c39"
+            class="c38"
           >
             Aan de slag met IRMA
           </h2>
           <section
-            class="c43"
+            class="c42"
           >
             <a
               href="/leeftijd-aantonen"
             >
               <img
                 alt="Stadsbeeld van een terras"
-                class="c25"
+                class="c24"
                 src="/assets/leeftijd-940.jpg"
                 srcset="/assets/leeftijd-290.jpg 580w, /assets/leeftijd-940.jpg 1880w"
               />
               <h2
-                class="c44"
+                class="c43"
               >
                 Demo 1: Leeftijd aantonen
               </h2>
@@ -1495,7 +1549,7 @@ Ga naar de
                 </p>
               </div>
               <span
-                class="c34 c42"
+                class="c33 c41"
               >
                 <svg
                   focusable="false"
@@ -1510,19 +1564,19 @@ Ga naar de
             </a>
           </section>
           <section
-            class="c43"
+            class="c42"
           >
             <a
               href="/ideeen-voor-uw-buurt"
             >
               <img
                 alt="Straat met zingende meisjes"
-                class="c25"
+                class="c24"
                 src="/assets/ideeen-voor-buurt-940.jpg"
                 srcset="/assets/ideeen-voor-buurt-290.jpg 580w, /assets/ideeen-voor-buurt-940.jpg 1880w"
               />
               <h2
-                class="c44"
+                class="c43"
               >
                 Demo 2: Ideeën voor uw buurt
               </h2>
@@ -1532,7 +1586,7 @@ Ga naar de
                 </p>
               </div>
               <span
-                class="c34 c42"
+                class="c33 c41"
               >
                 <svg
                   focusable="false"
@@ -1547,19 +1601,19 @@ Ga naar de
             </a>
           </section>
           <section
-            class="c41"
+            class="c42"
           >
             <a
               href="/inloggen-met-irma"
             >
               <img
                 alt=""
-                class="c25"
+                class="c24"
                 src="/assets/probeer-irma-940.jpg"
                 srcset="/assets/probeer-irma-290.jpg 580w, /assets/probeer-irma-940.jpg 1880w"
               />
               <h2
-                class="c42"
+                class="c43"
               >
                 Demo 3: Inloggen met IRMA
               </h2>
@@ -1569,7 +1623,7 @@ Ga naar de
                 </p>
               </div>
               <span
-                class="c34 c43"
+                class="c33 c41"
               >
                 <svg
                   focusable="false"
@@ -1585,73 +1639,43 @@ Ga naar de
           </section>
         </div>
       </div>
-    </div>
-    <footer
-      class="c45 c46"
-    >
-      <div
-        class="c47"
+      <footer
+        class="c44 c45"
       >
         <div
-          class="c1"
+          class="c46"
         >
           <div
-            class="c48"
+            class="c1 c47"
           >
             <div
-              class="c49"
+              class="c48"
             >
-              <h3
-                class="c50 c22 c23 c51"
+              <div
+                class="c49"
               >
-                Contact
-              </h3>
-              <p
-                class="c52"
-              >
-                Heeft u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.
-              </p>
-              <ul
-                class="c53"
-              >
-                <li
-                  class="c54"
+                <h3
+                  class="c50 c21 c22 c51"
                 >
-                  <a
-                    class="c55 c56 c57"
-                    href="https://formulieren.amsterdam.nl/tripleforms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx"
+                  Contact
+                </h3>
+                <p
+                  class="c52"
+                >
+                  Heeft u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.
+                </p>
+                <ul
+                  class="c53"
+                >
+                  <li
+                    class="c54"
                   >
-                    <span
-                      class="c34 c58"
-                      size="12"
-                    >
-                      <svg
-                        focusable="false"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                    </span>
-                    <span
-                      class="c59"
-                    >
-                      Contactformulier
-                    </span>
-                  </a>
-                </li>
-                <li
-                  class="c54"
-                >
-                  <strong>
                     <a
                       class="c55 c56 c57"
-                      href="tel:14020"
+                      href="https://formulieren.amsterdam.nl/tripleforms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx"
                     >
                       <span
-                        class="c34 c58"
+                        class="c33 c58"
                         size="12"
                       >
                         <svg
@@ -1667,360 +1691,390 @@ Ga naar de
                       <span
                         class="c59"
                       >
-                        Bel het telefoonnummer 14 020
+                        Contactformulier
                       </span>
                     </a>
-                  </strong>
-
+                  </li>
+                  <li
+                    class="c54"
+                  >
+                    <strong>
+                      <a
+                        class="c55 c56 c57"
+                        href="tel:14020"
+                      >
+                        <span
+                          class="c33 c58"
+                          size="12"
+                        >
+                          <svg
+                            focusable="false"
+                            viewBox="0 0 32 32"
+                          >
+                            <path
+                              d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                              fill-rule="evenodd"
+                            />
+                          </svg>
+                        </span>
+                        <span
+                          class="c59"
+                        >
+                          Bel het telefoonnummer 14 020
+                        </span>
+                      </a>
+                    </strong>
+                    
 maandag tot en met vrijdag van 08.00 tot 18.00 uur
-                </li>
-                <li
-                  class="c54"
-                >
-                  <a
-                    class="c55 c56 c57"
-                    href="https://www.amsterdam.nl/contact/"
+                  </li>
+                  <li
+                    class="c54"
                   >
-                    <span
-                      class="c34 c58"
-                      size="12"
+                    <a
+                      class="c55 c56 c57"
+                      href="https://www.amsterdam.nl/contact/"
                     >
-                      <svg
-                        focusable="false"
-                        viewBox="0 0 32 32"
+                      <span
+                        class="c33 c58"
+                        size="12"
                       >
-                        <path
-                          d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                    </span>
-                    <span
-                      class="c59"
-                    >
-                      Contactgegevens en openingstijden
-                    </span>
-                  </a>
-                </li>
-              </ul>
+                        <svg
+                          focusable="false"
+                          viewBox="0 0 32 32"
+                        >
+                          <path
+                            d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="c59"
+                      >
+                        Contactgegevens en openingstijden
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-          <div
-            class="c48"
-          >
             <div
-              class="c49"
+              class="c48"
             >
-              <h3
-                class="c50 c22 c23 c51"
+              <div
+                class="c49"
               >
-                Volg de Gemeente
-              </h3>
-              <ul
-                class="c53"
-              >
-                <li
-                  class="c54"
+                <h3
+                  class="c50 c21 c22 c51"
                 >
-                  <a
-                    class="c55 c56 c57"
-                    href="https://action.spike.email/104050/Subscribe/9f53558f-601d-4db8-97d6-a78bccd6e39d?culture=nl-NL"
-                  >
-                    <span
-                      class="c34 c58"
-                      size="12"
-                    >
-                      <svg
-                        focusable="false"
-                        viewBox="0 0 32 32"
-                      >
-                        <path
-                          d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                    </span>
-                    <span
-                      class="c59"
-                    >
-                      Nieuwsbrief amsterdam.nl
-                    </span>
-                  </a>
-                </li>
-                <li
-                  class="c54"
+                  Volg de Gemeente
+                </h3>
+                <ul
+                  class="c53"
                 >
-                  <a
-                    class="c55 c56 c57"
-                    href="https://twitter.com/AmsterdamNL"
+                  <li
+                    class="c54"
                   >
-                    <span
-                      class="c34 c58"
-                      size="12"
+                    <a
+                      class="c55 c56 c57"
+                      href="https://action.spike.email/104050/Subscribe/9f53558f-601d-4db8-97d6-a78bccd6e39d?culture=nl-NL"
                     >
-                      <svg
-                        focusable="false"
-                        viewBox="0 0 32 32"
+                      <span
+                        class="c33 c58"
+                        size="12"
                       >
-                        <path
-                          d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                    </span>
-                    <span
-                      class="c59"
-                    >
-                      Twitter
-                    </span>
-                  </a>
-                </li>
-                <li
-                  class="c54"
-                >
-                  <a
-                    class="c55 c56 c57"
-                    href="https://www.facebook.com/gemeenteamsterdam"
+                        <svg
+                          focusable="false"
+                          viewBox="0 0 32 32"
+                        >
+                          <path
+                            d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="c59"
+                      >
+                        Nieuwsbrief amsterdam.nl
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    class="c54"
                   >
-                    <span
-                      class="c34 c58"
-                      size="12"
+                    <a
+                      class="c55 c56 c57"
+                      href="https://twitter.com/AmsterdamNL"
                     >
-                      <svg
-                        focusable="false"
-                        viewBox="0 0 32 32"
+                      <span
+                        class="c33 c58"
+                        size="12"
                       >
-                        <path
-                          d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                    </span>
-                    <span
-                      class="c59"
-                    >
-                      Facebook
-                    </span>
-                  </a>
-                </li>
-                <li
-                  class="c54"
-                >
-                  <a
-                    class="c55 c56 c57"
-                    href="https://www.instagram.com/gemeenteamsterdam/"
+                        <svg
+                          focusable="false"
+                          viewBox="0 0 32 32"
+                        >
+                          <path
+                            d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="c59"
+                      >
+                        Twitter
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    class="c54"
                   >
-                    <span
-                      class="c34 c58"
-                      size="12"
+                    <a
+                      class="c55 c56 c57"
+                      href="https://www.facebook.com/gemeenteamsterdam"
                     >
-                      <svg
-                        focusable="false"
-                        viewBox="0 0 32 32"
+                      <span
+                        class="c33 c58"
+                        size="12"
                       >
-                        <path
-                          d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                    </span>
-                    <span
-                      class="c59"
-                    >
-                      Instagram
-                    </span>
-                  </a>
-                </li>
-                <li
-                  class="c54"
-                >
-                  <a
-                    class="c55 c56 c57"
-                    href="https://www.linkedin.com/company/gemeente-amsterdam"
+                        <svg
+                          focusable="false"
+                          viewBox="0 0 32 32"
+                        >
+                          <path
+                            d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="c59"
+                      >
+                        Facebook
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    class="c54"
                   >
-                    <span
-                      class="c34 c58"
-                      size="12"
+                    <a
+                      class="c55 c56 c57"
+                      href="https://www.instagram.com/gemeenteamsterdam/"
                     >
-                      <svg
-                        focusable="false"
-                        viewBox="0 0 32 32"
+                      <span
+                        class="c33 c58"
+                        size="12"
                       >
-                        <path
-                          d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                    </span>
-                    <span
-                      class="c59"
-                    >
-                      LinkedIn
-                    </span>
-                  </a>
-                </li>
-                <li
-                  class="c54"
-                >
-                  <a
-                    class="c55 c56 c57"
-                    href="https://www.amsterdam.nl/bestuur-organisatie/werkenbij/"
+                        <svg
+                          focusable="false"
+                          viewBox="0 0 32 32"
+                        >
+                          <path
+                            d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="c59"
+                      >
+                        Instagram
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    class="c54"
                   >
-                    <span
-                      class="c34 c58"
-                      size="12"
+                    <a
+                      class="c55 c56 c57"
+                      href="https://www.linkedin.com/company/gemeente-amsterdam"
                     >
-                      <svg
-                        focusable="false"
-                        viewBox="0 0 32 32"
+                      <span
+                        class="c33 c58"
+                        size="12"
                       >
-                        <path
-                          d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                          fill-rule="evenodd"
-                        />
-                      </svg>
-                    </span>
-                    <span
-                      class="c59"
+                        <svg
+                          focusable="false"
+                          viewBox="0 0 32 32"
+                        >
+                          <path
+                            d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="c59"
+                      >
+                        LinkedIn
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    class="c54"
+                  >
+                    <a
+                      class="c55 c56 c57"
+                      href="https://www.amsterdam.nl/bestuur-organisatie/werkenbij/"
                     >
-                      Werkenbij
-                    </span>
-                  </a>
-                </li>
-              </ul>
+                      <span
+                        class="c33 c58"
+                        size="12"
+                      >
+                        <svg
+                          focusable="false"
+                          viewBox="0 0 32 32"
+                        >
+                          <path
+                            d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                            fill-rule="evenodd"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="c59"
+                      >
+                        Werkenbij
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-          <div
-            class="c48"
-          >
             <div
-              class="c49"
+              class="c48"
             >
-              <h3
-                class="c50 c22 c23 c51"
+              <div
+                class="c49"
               >
-                Wat is er te doen in Amsterdam?
-              </h3>
-              <p
-                class="c52"
-              >
-                Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op
-                <a
-                  class="c55 c56 c57"
-                  href="https://www.iamsterdam.com/nl"
+                <h3
+                  class="c50 c21 c22 c51"
                 >
-                  <span
-                    class="c34 c58"
-                    size="12"
+                  Wat is er te doen in Amsterdam?
+                </h3>
+                <p
+                  class="c52"
+                >
+                  Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op 
+                  <a
+                    class="c55 c56 c57"
+                    href="https://www.iamsterdam.com/nl"
                   >
-                    <svg
-                      focusable="false"
-                      viewBox="0 0 32 32"
+                    <span
+                      class="c33 c58"
+                      size="12"
                     >
-                      <path
-                        d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                        fill-rule="evenodd"
-                      />
-                    </svg>
-                  </span>
-                  <span
-                    class="c59"
-                  >
-                    I amsterdam
-                  </span>
-                </a>
-              </p>
+                      <svg
+                        focusable="false"
+                        viewBox="0 0 32 32"
+                      >
+                        <path
+                          d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                          fill-rule="evenodd"
+                        />
+                      </svg>
+                    </span>
+                    <span
+                      class="c59"
+                    >
+                      I amsterdam
+                    </span>
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        class="c60 c61"
-      >
         <div
-          class="c62"
+          class="c60 c61"
         >
-          <p>
-            <a
-              class="c55 c63 c57"
-              href="https://www.amsterdam.nl/overdezesite/"
-            >
-              <span
-                class="c34 c58"
-                size="12"
+          <div
+            class="c62 c47"
+          >
+            <p>
+              <a
+                class="c55 c63 c57"
+                href="https://www.amsterdam.nl/overdezesite/"
               >
-                <svg
-                  focusable="false"
-                  viewBox="0 0 32 32"
+                <span
+                  class="c33 c58"
+                  size="12"
                 >
-                  <path
-                    d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </span>
-              <span
-                class="c59"
-              >
-                Over deze site
-              </span>
-            </a>
-
-
-            <a
-              class="c55 c63 c57"
-              href="https://www.amsterdam.nl/privacy/"
-            >
-              <span
-                class="c34 c58"
-                size="12"
-              >
-                <svg
-                  focusable="false"
-                  viewBox="0 0 32 32"
+                  <svg
+                    focusable="false"
+                    viewBox="0 0 32 32"
+                  >
+                    <path
+                      d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="c59"
                 >
-                  <path
-                    d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </span>
-              <span
-                class="c59"
-              >
-                Privacy
-              </span>
-            </a>
+                  Over deze site
+                </span>
+              </a>
+              
 
-
-            <a
-              class="c55 c63 c57"
-              href="https://www.amsterdam.nl/privacy/cookies-site/"
-            >
-              <span
-                class="c34 c58"
-                size="12"
+              <a
+                class="c55 c63 c57"
+                href="https://www.amsterdam.nl/privacy/"
               >
-                <svg
-                  focusable="false"
-                  viewBox="0 0 32 32"
+                <span
+                  class="c33 c58"
+                  size="12"
                 >
-                  <path
-                    d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-              </span>
-              <span
-                class="c59"
+                  <svg
+                    focusable="false"
+                    viewBox="0 0 32 32"
+                  >
+                    <path
+                      d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="c59"
+                >
+                  Privacy
+                </span>
+              </a>
+              
+
+              <a
+                class="c55 c63 c57"
+                href="https://www.amsterdam.nl/privacy/cookies-site/"
               >
-                Cookies op deze site
-              </span>
-            </a>
-          </p>
+                <span
+                  class="c33 c58"
+                  size="12"
+                >
+                  <svg
+                    focusable="false"
+                    viewBox="0 0 32 32"
+                  >
+                    <path
+                      d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="c59"
+                >
+                  Cookies op deze site
+                </span>
+              </a>
+            </p>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </div>
 </DocumentFragment>
 `;
