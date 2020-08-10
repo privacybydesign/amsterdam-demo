@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, Icon } from '@datapunt/asc-ui';
+import styled from 'styled-components';
+import { Link, Icon, themeSpacing } from '@datapunt/asc-ui';
 import { ExternalLink as ExternalLinkIcon } from '@datapunt/asc-assets';
 
 interface IExternalLinkProps {
@@ -8,20 +9,22 @@ interface IExternalLinkProps {
 
 const ExternalLink: React.FC<IExternalLinkProps> = props => {
     const { href, children } = props;
-
     return (
-        <Link
-            href={href}
-            variant="inline"
-            icon={
-                <Icon size={16}>
-                    <ExternalLinkIcon />
-                </Icon>
-            }
-        >
+        <Link href={href}>
             {children}
+            <StyledIcon size={16}>
+                <ExternalLinkIcon />
+            </StyledIcon>
         </Link>
     );
 };
+
+const StyledIcon = styled(Icon)`
+    && {
+        width: 32px;
+        margin-top: 2px;
+        margin-left: ${themeSpacing(1)};
+    }
+`;
 
 export default ExternalLink;
