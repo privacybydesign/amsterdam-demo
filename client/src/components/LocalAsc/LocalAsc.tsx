@@ -1,39 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
-import { breakpoint } from '@datapunt/asc-ui';
+import { breakpoint, Icon } from '@datapunt/asc-ui';
 
 import {
     Heading,
     Paragraph as AscParagraph,
     themeSpacing,
-    Alert,
+    Alert as AscAlert,
     Header as AscHeader,
     themeColor
 } from '@datapunt/asc-ui';
 
-interface IProps {}
+const lineHeight = '1.8em';
 
 export const H1 = styled(Heading)`
-    margin: ${themeSpacing(4, 0, 6, 0)};
+    line-height: ${lineHeight};
+    margin: ${themeSpacing(4, 0, 4, 0)};
 `;
 
 export const H2 = styled.h2`
+    line-height: ${lineHeight};
     margin: ${themeSpacing(3, 0)};
 `;
 
 export const Paragraph = styled(AscParagraph)`
+    line-height: ${lineHeight};
     margin-top: ${themeSpacing(2)};
     margin-bottom: ${themeSpacing(2)};
 `;
 
 export const UL = styled.ul`
+    line-height: ${lineHeight};
+    list-style-type: square;
     margin-top: 0;
-    line-height: 22px;
 `;
 
 export const OL = styled.ol`
+    line-height: ${lineHeight};
     margin-top: 0;
-    line-height: 22px;
 `;
 
 export const Image = styled.img`
@@ -52,38 +56,118 @@ export const AccordionContainer = styled.div`
 `;
 
 export const AccordionHeading = styled(Heading).attrs({ as: 'h4' })`
+    line-height: ${lineHeight};
     margin: 0;
 `;
 
-export const BlueAlert = styled(Alert).attrs({ level: 'attention' })`
-    margin-top: ${themeSpacing(4)};
-`;
+interface IAlertProps {
+    className: string;
+    children: React.ReactNode;
+    color?: AlertColor;
+    icon?: React.ReactNode;
+    iconUrl?: string;
+    heading?: string;
+    content?: string;
+}
 
-export const RedAlert = styled(Alert)`
-    background-color: #fec813;
-    margin-top: ${themeSpacing(4)};
-`;
+export enum AlertColor {
+    PRIMARY = 'primary',
+    ERROR = 'error',
+    SUCCESS = 'success'
+}
 
-export const GreenAlert = styled(Alert)`
-    margin-top: ${themeSpacing(4)};
-    background-color: #0c8836;
-    * {
-        color: ${themeColor('tint', 'level1')};
+export const Alert = styled(({ children, icon, iconUrl, className, heading, content, color }: IAlertProps) => {
+    const iconColor = (color === AlertColor.PRIMARY || color === AlertColor.SUCCESS) && themeColor('tint', 'level1');
+    return (
+        <AscAlert className={className}>
+            <div className="alert-content">
+                {(icon || iconUrl) && (
+                    <Icon className="icon" size={14} iconUrl={iconUrl} color={iconColor}>
+                        {icon}
+                    </Icon>
+                )}
+                <div>
+                    {heading || content ? (
+                        <>
+                            {heading && <Heading forwardedAs="h3">{heading}</Heading>}
+                            <Paragraph>{content}</Paragraph>
+                        </>
+                    ) : (
+                        children
+                    )}
+                </div>
+            </div>
+        </AscAlert>
+    );
+})`
+    margin-bottom: ${themeSpacing(4)};
+
+    background-color: ${({ color }) => {
+        switch (color) {
+            default:
+            case AlertColor.PRIMARY:
+                return themeColor('primary', 'main');
+            case AlertColor.ERROR:
+                return themeColor('support', 'focus');
+            case AlertColor.SUCCESS:
+                return '#0c8836';
+        }
+    }};
+
+    .alert-content {
+        display: flex;
+        align-items: baseline;
+
+        .icon {
+            margin-right: ${themeSpacing(4)};
+        }
+
+        * {
+            color: ${({ color }) => {
+                switch (color) {
+                    default:
+                    case AlertColor.PRIMARY:
+                    case AlertColor.SUCCESS:
+                        return themeColor('tint', 'level1');
+                    case AlertColor.ERROR:
+                        return themeColor('tint', 'level7');
+                }
+            }};
+        }
     }
 `;
 
-export const Header = styled(AscHeader).attrs({
+export const Header = styled(AscHeader).attrs(({ theme }) => ({
     css: {
         zIndex: 10,
-        '&::after': { backgroundColor: themeColor('tint', 'level2'), marginLeft: -220, marginRight: -220 }
+        width: 'auto',
+        flex: 1,
+        '&::after': { backgroundColor: themeColor('tint', 'level2'), marginLeft: -188, marginRight: -188 },
+        margin: `0 -${theme.spacing * 5}px`,
+        paddingLeft: 32,
+        [`@media ${theme.breakpoints.tabletM('min-width')}`]: {
+            margin: `0 -${theme.spacing * 6}px`,
+            paddingLeft: 38
+        },
+        [`@media ${theme.breakpoints.laptop('min-width')}`]: {
+            margin: `0 -${theme.spacing * 8}px`,
+            paddingLeft: 46
+        },
+        [`@media ${theme.breakpoints.laptopM('min-width')}`]: {
+            paddingLeft: 0
+        }
     }
-})`
+}))`
+    padding: 0;
+
     &&& {
-        padding: 0;
+        h1:first-child {
+            margin-left: -28px;
+        }
 
         @media ${breakpoint('min-width', 'laptopM')} {
             h1:first-child {
-                margin-left: -30px;
+                margin-left: 0;
             }
         }
 
@@ -93,4 +177,8 @@ export const Header = styled(AscHeader).attrs({
     }
 `;
 
-export const StrongParagraph: React.FC<IProps> = ({ children }) => <Paragraph strong>{children}</Paragraph>;
+interface IStrongParagraphProps {}
+
+export const StrongParagraph: React.FC<IStrongParagraphProps> = ({ children }) => (
+    <Paragraph strong>{children}</Paragraph>
+);

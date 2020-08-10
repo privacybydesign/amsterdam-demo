@@ -28,4 +28,12 @@ const Item = styled.span`
     &:hover {
         text-decoration: underline;
     }
+
+    *:focus {
+        outline: auto;
+        outline-color: ${themeColor('support', 'focus')};
+        outline-style: solid;
+        outline-width: 2px;
+        outline-offset: 4px;
+    }
 `;

@@ -25,7 +25,7 @@ Ervaar nu vast wat u met IRMA kunt via verschillende demo’s.
 
 Download de IRMA-app voor iOS of Android:  \n
 [![App Store](/assets/download-app-store.svg "Download IRMA in de App Store")](https://apps.apple.com/nl/app/irma-authenticatie/id1294092994)
-[![Play Store](/assets/download-play-store.png "Download IRMA in de Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
+[![Play Store](/assets/download-play-store.svg "Download IRMA in de Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
 
 Wilt u meer weten over IRMA?
 Ga naar de [website van IRMA](https://irma.app/)`
@@ -52,7 +52,10 @@ Ga naar de [website van IRMA](https://irma.app/)`
     downloadIrma: `Heeft u nog geen IRMA?  \n[Download IRMA](https://irma.app/)`,
     noSavePromise: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard.`,
     callToAction: `[Probeer de andere demo’s](/)`,
-
+    demoErrorAlert: {
+        heading: `Niets doorgegeven`,
+        content: `U heeft uw gegevens niet doorgegeven aan de gemeente Amsterdam.`
+    },
     demo1: {
         breadcrumbs: `- [Home](/)
 - [Demo 1: Leeftijd aantonen](/leeftijd-aantonen)`,
@@ -240,7 +243,7 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
     qrcode: {
         title: '### Maak uzelf bekend',
         stappen: `Doorloop de volgende stappen  \n
-1. Scan de QR-code hieronder met uw IRMA-app.
+1. Scan de QR-code hieronder met uw IRMA-app.  \n
 2. Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.`,
         knop: 'Inloggen met IRMA'
     }

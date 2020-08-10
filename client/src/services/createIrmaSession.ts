@@ -55,13 +55,17 @@ const createIrmaSession = async (
         sessionOptions.disableMobile = false;
     }
 
-    const result = await irma.handleSession(sessionPtr, sessionOptions);
-    // Only get the last part of each result
-    const data = result.disclosed[0].reduce(
-        (acc, { id, rawvalue }) => ({ ...acc, [id.match(/[^.]*$/g)[0]]: rawvalue }),
-        {}
-    );
-    return data;
+    try {
+        const result = await irma.handleSession(sessionPtr, sessionOptions);
+        // Only get the last part of each result
+        const data = result.disclosed[0].reduce(
+            (acc, { id, rawvalue }) => ({ ...acc, [id.match(/[^.]*$/g)[0]]: rawvalue }),
+            {}
+        );
+        return data;
+    } catch (e) {
+        return null;
+    }
 };
 
 export default createIrmaSession;

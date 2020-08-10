@@ -1,6 +1,7 @@
 import React from 'react';
+import styled from 'styled-components';
 import BreadCrumbs from '@components/BreadCrumbs';
-import { Accordion } from '@datapunt/asc-ui';
+import { Accordion, themeSpacing, Button } from '@datapunt/asc-ui';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import ReactMarkDown from 'react-markdown';
 import content from '@services/content';
@@ -26,7 +27,7 @@ const Homepage: React.FC<IProps> = () => (
                 <Accordion title={content.home.requirements.title} id="nodig">
                     <ReactMarkDown
                         source={content.home.requirements.body}
-                        renderers={{ heading: AscLocal.H2, list: AscLocal.UL, image: AscLocal.DownloadImage }}
+                        renderers={{ heading: AscLocal.H2, list: AscLocal.UL, image: DownloadButton }}
                     />
                 </Accordion>
             </AscLocal.AccordionContainer>
@@ -58,5 +59,33 @@ const Homepage: React.FC<IProps> = () => (
         </VerticalColumn>
     </PageTemplate>
 );
+
+interface IDownloadButtonProps {
+    alt: string;
+    title: string;
+    src: string;
+    className: string;
+}
+
+const DownloadButton = styled(({ alt, title, src, className }: IDownloadButtonProps) => {
+    return <Button variant="blank" icon={<AscLocal.Image src={src} alt={alt} title={title} />} className={className} />;
+})`
+    display: inline-block;
+    width: auto;
+    height: 40px;
+    padding: 0;
+    margin-right: ${themeSpacing(3)};
+
+    span {
+        width: 100%;
+        height: 100%;
+    }
+
+    img {
+        width: auto;
+        height: 100%;
+        margin: 0;
+    }
+`;
 
 export default Homepage;

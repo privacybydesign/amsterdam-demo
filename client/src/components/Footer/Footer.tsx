@@ -12,10 +12,10 @@ import {
     Paragraph,
     Row,
     themeColor,
-    themeSpacing
+    themeSpacing,
+    breakpoint
 } from '@datapunt/asc-ui';
 import ReactMarkDown from 'react-markdown';
-import theme from '@services/theme';
 import content from '@services/content';
 
 interface IFooterProps {}
@@ -23,7 +23,7 @@ interface IFooterProps {}
 const Footer: React.FC<IFooterProps> = () => (
     <StyledASCFooter>
         <FooterTop>
-            <Row>
+            <StyledRow>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
                     <FooterSection>
                         <ReactMarkDown source={content.footer.column1} renderers={FooterMarkDownRenderers} />
@@ -39,12 +39,12 @@ const Footer: React.FC<IFooterProps> = () => (
                         <ReactMarkDown source={content.footer.column3} renderers={FooterMarkDownRenderers} />
                     </FooterSection>
                 </Column>
-            </Row>
+            </StyledRow>
         </FooterTop>
         <StyledFooterBottom>
-            <Row halign="flex-start">
+            <StyledRow halign="flex-start">
                 <ReactMarkDown source={content.footer.bottom} renderers={{ link: StyledLink }} />
-            </Row>
+            </StyledRow>
         </StyledFooterBottom>
     </StyledASCFooter>
 );
@@ -75,12 +75,29 @@ const FooterMarkDownRenderers = {
 };
 
 const StyledASCFooter = styled(ASCFooter)`
-    max-width: ${theme.maxGridWidth}px;
-    margin: 0 auto;
+    background-color: ${themeColor('tint', 'level5')};
+    width: auto;
+    margin: 0 -${themeSpacing(6)};
+
+    @media ${breakpoint('min-width', 'laptop')} {
+        margin: 0 -220px;
+        padding: 0 220px;
+    }
+`;
+
+const StyledRow = styled(Row)`
+    @media ${breakpoint('min-width', 'laptop')} {
+        padding: 0;
+    }
 `;
 
 const StyledFooterBottom = styled(FooterBottom)`
     margin: 0;
+
+    @media ${breakpoint('min-width', 'laptop')} {
+        margin: 0 -230px;
+        padding: 0 230px;
+    }
 `;
 
 const StyledLink = styled(Link).attrs({ variant: 'with-chevron' })`
