@@ -16,6 +16,7 @@ import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderIm
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { Checkmark } from '@datapunt/asc-assets';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
+import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 
 export interface IProps {}
 
@@ -180,29 +181,36 @@ const Demo2: React.FC<IProps> = () => {
                     />
                 </ContentBlock>
             ) : (
-                <ContentBlock>
-                    <ReactMarkDown
-                        source={content.noSavePromise}
-                        renderers={{
-                            heading: AscLocal.H2,
-                            paragraph: AscLocal.Paragraph,
-                            list: AscLocal.UL,
-                            link: Link
-                        }}
-                    />
-                    <EmphasisBlock>
-                        <ReactMarkDown
-                            source={content.demo2.result}
-                            renderers={{
-                                heading: AscLocal.H2,
-                                paragraph: AscLocal.Paragraph,
-                                list: AscLocal.UL,
-                                link: Link
-                            }}
-                        />
-                    </EmphasisBlock>
-                    <ReactMarkDown source={content.callToAction} />
-                </ContentBlock>
+                <AscLocal.Row>
+                    <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
+                        <ContentBlock>
+                            <ReactMarkDown
+                                source={content.noSavePromise}
+                                renderers={{
+                                    heading: AscLocal.H2,
+                                    paragraph: AscLocal.Paragraph,
+                                    list: AscLocal.UL,
+                                    link: Link
+                                }}
+                            />
+                            <EmphasisBlock>
+                                <ReactMarkDown
+                                    source={content.demo2.result}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL,
+                                        link: Link
+                                    }}
+                                />
+                            </EmphasisBlock>
+                            <ReactMarkDown source={content.callToAction} />
+                        </ContentBlock>
+                    </AscLocal.Column>
+                    <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
+                        <WhyIRMA />
+                    </AscLocal.Column>
+                </AscLocal.Row>
             )}
         </PageTemplate>
     );

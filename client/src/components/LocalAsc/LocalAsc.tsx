@@ -8,6 +8,8 @@ import {
     themeSpacing,
     Alert as AscAlert,
     Header as AscHeader,
+    Row as AscRow,
+    Column as AscColumn,
     themeColor
 } from '@datapunt/asc-ui';
 
@@ -182,6 +184,15 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
             margin: 0;
         }
     }
+`;
+
+export const Row = styled(AscRow)`
+    padding: 0;
+`;
+
+export const Column = styled(AscColumn)`
+    flex-direction: column;
+    justify-content: flex-start;
 `;
 
 interface IStrongParagraphProps {}

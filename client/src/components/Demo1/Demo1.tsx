@@ -15,6 +15,7 @@ import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderIm
 import QRCode from '@components/QRCode/QRCode';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
+import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 
 export interface IProps {}
 
@@ -174,45 +175,72 @@ const Demo1: React.FC<IProps> = () => {
                     />
                 </ContentBlock>
             ) : (
-                <ContentBlock>
-                    <ReactMarkDown source={content.noSavePromise} />
-                    <EmphasisBlock>
-                        <ReactMarkDown source={content.demo1.result.title} />
-                        {/* // TODO: Refactor renderers */}
-                        {hasResult18 && isOver18 && (
+                <AscLocal.Row>
+                    <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
+                        <ContentBlock>
+                            <ReactMarkDown source={content.noSavePromise} />
+                            <EmphasisBlock>
+                                <ReactMarkDown source={content.demo1.result.title} />
+                                {/* // TODO: Refactor renderers */}
+                                {hasResult18 && isOver18 && (
+                                    <ReactMarkDown
+                                        source={content.demo1.result.isOver18}
+                                        renderers={{
+                                            heading: AscLocal.H2,
+                                            paragraph: AscLocal.Paragraph,
+                                            list: AscLocal.UL
+                                        }}
+                                    />
+                                )}
+                                {hasResult18 && !isOver18 && (
+                                    <ReactMarkDown
+                                        source={content.demo1.result.isNotOver18}
+                                        renderers={{
+                                            heading: AscLocal.H2,
+                                            paragraph: AscLocal.Paragraph,
+                                            list: AscLocal.UL
+                                        }}
+                                    />
+                                )}
+                                {hasResult65 && isOver65 && (
+                                    <ReactMarkDown
+                                        source={content.demo1.result.isOver65}
+                                        renderers={{
+                                            heading: AscLocal.H2,
+                                            paragraph: AscLocal.Paragraph,
+                                            list: AscLocal.UL
+                                        }}
+                                    />
+                                )}
+                                {hasResult65 && !isOver65 && (
+                                    <ReactMarkDown
+                                        source={content.demo1.result.isNotOver65}
+                                        renderers={{
+                                            heading: AscLocal.H2,
+                                            paragraph: AscLocal.Paragraph,
+                                            list: AscLocal.UL
+                                        }}
+                                    />
+                                )}
+                                <ReactMarkDown
+                                    source={content.demo1.result.whatsDifferentWithIrma}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL
+                                    }}
+                                />
+                            </EmphasisBlock>
                             <ReactMarkDown
-                                source={content.demo1.result.isOver18}
+                                source={content.callToAction}
                                 renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
-                        )}
-                        {hasResult18 && !isOver18 && (
-                            <ReactMarkDown
-                                source={content.demo1.result.isNotOver18}
-                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                            />
-                        )}
-                        {hasResult65 && isOver65 && (
-                            <ReactMarkDown
-                                source={content.demo1.result.isOver65}
-                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                            />
-                        )}
-                        {hasResult65 && !isOver65 && (
-                            <ReactMarkDown
-                                source={content.demo1.result.isNotOver65}
-                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                            />
-                        )}
-                        <ReactMarkDown
-                            source={content.demo1.result.whatsDifferentWithIrma}
-                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                        />
-                    </EmphasisBlock>
-                    <ReactMarkDown
-                        source={content.callToAction}
-                        renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                    />
-                </ContentBlock>
+                        </ContentBlock>
+                    </AscLocal.Column>
+                    <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
+                        <WhyIRMA />
+                    </AscLocal.Column>
+                </AscLocal.Row>
             )}
         </PageTemplate>
     );

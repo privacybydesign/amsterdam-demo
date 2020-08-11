@@ -14,6 +14,8 @@ import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderIm
 import QRCode from '@components/QRCode/QRCode';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { Checkmark } from '@datapunt/asc-assets';
+import ContentBlock from '@components/ContentBlock/ContentBlock';
+import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 
 export interface IProps {}
 // @todo add error flow with incorrect data
@@ -115,15 +117,26 @@ const Demo3: React.FC<IProps> = () => {
                     />
                 </>
             ) : (
-                <>
-                    <EmphasisBlock>
-                        <ReactMarkDown
-                            source={content.demo3.result}
-                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                        />
-                    </EmphasisBlock>
-                    <ReactMarkDown source={content.callToAction} />
-                </>
+                <AscLocal.Row>
+                    <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
+                        <ContentBlock>
+                            <EmphasisBlock>
+                                <ReactMarkDown
+                                    source={content.demo3.result}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL
+                                    }}
+                                />
+                            </EmphasisBlock>
+                            <ReactMarkDown source={content.callToAction} />
+                        </ContentBlock>
+                    </AscLocal.Column>
+                    <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
+                        <WhyIRMA />
+                    </AscLocal.Column>
+                </AscLocal.Row>
             )}
         </PageTemplate>
     );

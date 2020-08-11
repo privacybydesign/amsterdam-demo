@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import BreadCrumbs from '@components/BreadCrumbs';
-import { Accordion, themeSpacing, Button, breakpoint, Row, themeColor } from '@datapunt/asc-ui';
+import { Accordion, themeSpacing, Button, breakpoint } from '@datapunt/asc-ui';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import ReactMarkDown from 'react-markdown';
 import content from '@services/content';
 import AppRoutes from '@app/AppRoutes';
-import VerticalColumn from '@components/VerticalColumn/VerticalColumn';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import Article from '@components/Article/Article';
+import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 
 interface IProps {}
 
@@ -21,8 +21,8 @@ const Homepage: React.FC<IProps> = () => (
         <ReactMarkDown source={content.home.title} renderers={{ heading: AscLocal.H1 }} />
         {/* // TODO: Make this a responsive image */}
         <AscLocal.Image src="/assets/home.png" />
-        <StyledRow>
-            <VerticalColumn span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
+        <AscLocal.Row>
+            <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
                 <ReactMarkDown source={content.home.intro} renderers={{ paragraph: AscLocal.StrongParagraph }} />
                 <AscLocal.AccordionContainer>
                     <Accordion title={content.home.requirements.title} id="nodig">
@@ -59,19 +59,9 @@ const Homepage: React.FC<IProps> = () => (
                         <ReactMarkDown source={content.home.demo2Card.body} />
                     </Article>
                 </ArticleContainer>
-            </VerticalColumn>
-            <VerticalColumn span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
-                <WhyIRMABox>
-                    <ReactMarkDown
-                        source={content.home.sidebar.box}
-                        renderers={{
-                            heading: AscLocal.H2,
-                            paragraph: AscLocal.StrongParagraph,
-                            link: AscLocal.LinkWithChevron,
-                            image: IRMALogo
-                        }}
-                    />
-                </WhyIRMABox>
+            </AscLocal.Column>
+            <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
+                <WhyIRMA />
                 <ReactMarkDown
                     source={content.home.sidebar.bottom}
                     renderers={{
@@ -80,8 +70,8 @@ const Homepage: React.FC<IProps> = () => (
                         link: AscLocal.LinkWithChevron
                     }}
                 />
-            </VerticalColumn>
-        </StyledRow>
+            </AscLocal.Column>
+        </AscLocal.Row>
     </PageTemplate>
 );
 
@@ -133,20 +123,6 @@ const ArticleContainer = styled.div`
             }
         }
     }
-`;
-
-const StyledRow = styled(Row)`
-    padding: 0;
-`;
-
-const WhyIRMABox = styled.div`
-    background-color: ${themeColor('tint', 'level2')};
-    padding: ${themeSpacing(4)};
-`;
-
-const IRMALogo = styled.img`
-    width: 82px;
-    margin: ${themeSpacing(1)} 0 ${themeSpacing(4)} ${themeSpacing(6)};
 `;
 
 export default Homepage;

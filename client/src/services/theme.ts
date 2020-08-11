@@ -24,13 +24,13 @@ const theme: Partial<Theme.ThemeInterface> = {
             margin: 24,
             gutter: 20,
             max: sizes.laptop,
-            min: sizes.tabletM
+            min: 700
         },
         medium: {
             columns: 2,
             margin: 20,
             gutter: 20,
-            max: sizes.tabletM,
+            max: 700,
             min: sizes.mobileL
         },
         small: {
