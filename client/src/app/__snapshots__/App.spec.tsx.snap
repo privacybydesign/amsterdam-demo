@@ -831,7 +831,7 @@ exports[`App component should match snapshot 1`] = `
 
 .c24 {
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 32px;
 }
 
 .c54 {
@@ -843,7 +843,7 @@ exports[`App component should match snapshot 1`] = `
 }
 
 .c30 {
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .c6 {

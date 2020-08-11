@@ -44,7 +44,7 @@ export const OL = styled.ol`
 
 export const Image = styled.img`
     width: 100%;
-    margin-bottom: ${themeSpacing(3)};
+    margin-bottom: ${themeSpacing(8)};
 `;
 
 export const DownloadImage = styled.img`
@@ -61,7 +61,7 @@ export const LinkWithChevron = styled(Link).attrs({ variant: 'with-chevron' })`
 `;
 
 export const AccordionContainer = styled.div`
-    margin-bottom: ${themeSpacing(5)};
+    margin: ${themeSpacing(5)} 0;
 `;
 
 export const AccordionHeading = styled(Heading).attrs({ as: 'h4' })`
