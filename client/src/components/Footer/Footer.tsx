@@ -6,7 +6,6 @@ import {
     FooterBottom,
     FooterTop,
     FooterHeading,
-    Link,
     List,
     ListItem,
     Paragraph,
@@ -17,6 +16,7 @@ import {
 } from '@datapunt/asc-ui';
 import ReactMarkDown from 'react-markdown';
 import content from '@services/content';
+import { LinkWithChevron } from '@components/LocalAsc/LocalAsc';
 
 interface IFooterProps {}
 
@@ -43,7 +43,7 @@ const Footer: React.FC<IFooterProps> = () => (
         </FooterTop>
         <StyledFooterBottom>
             <StyledRow halign="flex-start">
-                <ReactMarkDown source={content.footer.bottom} renderers={{ link: StyledLink }} />
+                <ReactMarkDown source={content.footer.bottom} renderers={{ link: LinkWithChevron }} />
             </StyledRow>
         </StyledFooterBottom>
     </StyledASCFooter>
@@ -54,9 +54,9 @@ interface IFooterLinkProps {
 }
 
 const FooterLink: React.FC<IFooterLinkProps> = ({ href, children }) => (
-    <StyledLink darkBackground href={href}>
+    <LinkWithChevron darkBackground href={href}>
         {children}
-    </StyledLink>
+    </LinkWithChevron>
 );
 
 const FooterSection = styled.div`
@@ -97,13 +97,6 @@ const StyledFooterBottom = styled(FooterBottom)`
     @media ${breakpoint('min-width', 'laptop')} {
         margin: 0 -230px;
         padding: 0 230px;
-    }
-`;
-
-const StyledLink = styled(Link).attrs({ variant: 'with-chevron' })`
-    margin-right: ${themeSpacing(5)};
-    a {
-        color: ${themeColor('tint', 'level1')};
     }
 `;
 

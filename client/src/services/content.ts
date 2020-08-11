@@ -42,6 +42,14 @@ Ga naar de [website van IRMA](https://irma.app/)`
         demo3Card: {
             title: `Demo 3: Inloggen met IRMA`,
             body: `Bekijk hoe u straks kunt inloggen met IRMA in Mijn Amsterdam.            `
+        },
+        sidebar: {
+            box: `Eenvoudig en veilig in Amsterdam met IRMA
+![](/assets/irma_logo.svg "Lees meer over IRMA")
+[Waarom IRMA?](https://irma.app/)
+          `,
+            bottom: `# IRMA voor Amsterdammers
+[Hoe is IRMA getest met Amsterdammers?](https://irma.app/)`
         }
     },
 

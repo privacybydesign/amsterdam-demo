@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import BreadCrumbs from '@components/BreadCrumbs';
-import { Accordion, themeSpacing, Button, breakpoint, Row } from '@datapunt/asc-ui';
+import { Accordion, themeSpacing, Button, breakpoint, Row, themeColor } from '@datapunt/asc-ui';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import ReactMarkDown from 'react-markdown';
 import content from '@services/content';
@@ -60,7 +60,27 @@ const Homepage: React.FC<IProps> = () => (
                     </Article>
                 </ArticleContainer>
             </VerticalColumn>
-            <VerticalColumn span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}></VerticalColumn>
+            <VerticalColumn span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
+                <WhyIRMABox>
+                    <ReactMarkDown
+                        source={content.home.sidebar.box}
+                        renderers={{
+                            heading: AscLocal.H2,
+                            paragraph: AscLocal.StrongParagraph,
+                            link: AscLocal.LinkWithChevron,
+                            image: IRMALogo
+                        }}
+                    />
+                </WhyIRMABox>
+                <ReactMarkDown
+                    source={content.home.sidebar.bottom}
+                    renderers={{
+                        heading: AscLocal.H2,
+                        paragraph: AscLocal.StrongParagraph,
+                        link: AscLocal.LinkWithChevron
+                    }}
+                />
+            </VerticalColumn>
         </StyledRow>
     </PageTemplate>
 );
@@ -119,6 +139,14 @@ const StyledRow = styled(Row)`
     padding: 0;
 `;
 
-// const WhyIRMABox = styled.div``;
+const WhyIRMABox = styled.div`
+    background-color: ${themeColor('tint', 'level2')};
+    padding: ${themeSpacing(4)};
+`;
+
+const IRMALogo = styled.img`
+    width: 82px;
+    margin: ${themeSpacing(1)} 0 ${themeSpacing(4)} ${themeSpacing(6)};
+`;
 
 export default Homepage;

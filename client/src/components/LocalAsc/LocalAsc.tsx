@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { breakpoint, Icon } from '@datapunt/asc-ui';
+import { breakpoint, Icon, Link } from '@datapunt/asc-ui';
 
 import {
     Heading,
@@ -11,7 +11,7 @@ import {
     themeColor
 } from '@datapunt/asc-ui';
 
-const lineHeight = '1.8em';
+const lineHeight = '1.3em';
 
 export const H1 = styled(Heading)`
     line-height: ${lineHeight};
@@ -30,13 +30,13 @@ export const Paragraph = styled(AscParagraph)`
 `;
 
 export const UL = styled.ul`
-    line-height: ${lineHeight};
+    line-height: 2.2em;
     list-style-type: square;
     margin-top: 0;
 `;
 
 export const OL = styled.ol`
-    line-height: ${lineHeight};
+    line-height: 2.2em;
     margin-top: 0;
 `;
 
@@ -49,6 +49,13 @@ export const DownloadImage = styled.img`
     width: 120px;
     height: 40px;
     margin-right: ${themeSpacing(3)};
+`;
+
+export const LinkWithChevron = styled(Link).attrs({ variant: 'with-chevron' })`
+    margin-right: ${themeSpacing(5)};
+    a {
+        color: ${themeColor('tint', 'level1')};
+    }
 `;
 
 export const AccordionContainer = styled.div`

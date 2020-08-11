@@ -61,7 +61,7 @@ exports[`App component should match snapshot 1`] = `
   height: 20px;
 }
 
-.c61 {
+.c52 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -74,7 +74,7 @@ exports[`App component should match snapshot 1`] = `
   transform: rotate(0deg);
 }
 
-.c61 > svg {
+.c52 > svg {
   width: 12px;
   height: 12px;
 }
@@ -97,25 +97,7 @@ exports[`App component should match snapshot 1`] = `
   letter-spacing: normal;
 }
 
-.c53 {
-  margin: 0;
-  color: #000000;
-  font-weight: 700;
-  font-size: 20px;
-  -webkit-letter-spacing: inherit;
-  -moz-letter-spacing: inherit;
-  -ms-letter-spacing: inherit;
-  letter-spacing: inherit;
-  line-height: 28px;
-  margin-bottom: 8px;
-  font-stretch: normal;
-  -webkit-letter-spacing: normal;
-  -moz-letter-spacing: normal;
-  -ms-letter-spacing: normal;
-  letter-spacing: normal;
-}
-
-.c58 {
+.c49 {
   margin: 0;
   color: #000000;
   font-weight: inherit;
@@ -126,6 +108,24 @@ exports[`App component should match snapshot 1`] = `
   letter-spacing: inherit;
   line-height: 22px;
   margin-bottom: 0;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+}
+
+.c60 {
+  margin: 0;
+  color: #000000;
+  font-weight: 700;
+  font-size: 20px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 28px;
+  margin-bottom: 8px;
   font-stretch: normal;
   -webkit-letter-spacing: normal;
   -moz-letter-spacing: normal;
@@ -152,50 +152,11 @@ exports[`App component should match snapshot 1`] = `
   justify-content: space-between;
 }
 
-.c62 {
+.c53 {
   width: 100%;
 }
 
-.c59 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.c59:focus {
-  background-color: #FEC813;
-}
-
-.c59 .c34 {
-  margin: 4px 4px 0 0;
-}
-
-.c59 .c34 svg circle,
-.c59 .c34 svg rect,
-.c59 .c34 svg polygon,
-.c59 .c34 svg path {
-  fill: #ffffff;
-}
-
-.c59:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  color: #ffffff;
-}
-
-.c59:hover svg circle,
-.c59:hover svg rect,
-.c59:hover svg polygon,
-.c59:hover svg path {
-  fill: #ffffff;
-}
-
-.c66 {
+.c50 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -206,32 +167,71 @@ exports[`App component should match snapshot 1`] = `
   color: #000000;
 }
 
-.c66:focus {
+.c50:focus {
   background-color: #FEC813;
 }
 
-.c66 .c34 {
+.c50 .c34 {
   margin: 4px 4px 0 0;
 }
 
-.c66 .c34 svg circle,
-.c66 .c34 svg rect,
-.c66 .c34 svg polygon,
-.c66 .c34 svg path {
+.c50 .c34 svg circle,
+.c50 .c34 svg rect,
+.c50 .c34 svg polygon,
+.c50 .c34 svg path {
   fill: #000000;
 }
 
-.c66:hover {
+.c50:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   color: #ec0000;
 }
 
-.c66:hover svg circle,
-.c66:hover svg rect,
-.c66:hover svg polygon,
-.c66:hover svg path {
+.c50:hover svg circle,
+.c50:hover svg rect,
+.c50:hover svg polygon,
+.c50:hover svg path {
   fill: #ec0000;
+}
+
+.c65 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.c65:focus {
+  background-color: #FEC813;
+}
+
+.c65 .c34 {
+  margin: 4px 4px 0 0;
+}
+
+.c65 .c34 svg circle,
+.c65 .c34 svg rect,
+.c65 .c34 svg polygon,
+.c65 .c34 svg path {
+  fill: #ffffff;
+}
+
+.c65:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+.c65:hover svg circle,
+.c65:hover svg rect,
+.c65:hover svg polygon,
+.c65:hover svg path {
+  fill: #ffffff;
 }
 
 .c28 {
@@ -256,7 +256,7 @@ exports[`App component should match snapshot 1`] = `
   color: inherit;
 }
 
-.c55 {
+.c62 {
   margin: 0;
   color: #000000;
   font-weight: 400;
@@ -427,7 +427,7 @@ exports[`App component should match snapshot 1`] = `
   fill: #B4B4B4;
 }
 
-.c56 {
+.c63 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -440,7 +440,7 @@ exports[`App component should match snapshot 1`] = `
   padding: 0;
 }
 
-.c57 {
+.c64 {
   word-break: break-word;
   margin-bottom: 8px;
 }
@@ -493,7 +493,7 @@ exports[`App component should match snapshot 1`] = `
   order: 0;
 }
 
-.c51 {
+.c58 {
   box-sizing: border-box;
   width: 100%;
   display: -webkit-box;
@@ -547,7 +547,7 @@ exports[`App component should match snapshot 1`] = `
   height: 20px;
 }
 
-.c65 {
+.c68 {
   box-sizing: border-box;
   margin: 0 auto;
   display: -webkit-box;
@@ -568,13 +568,13 @@ exports[`App component should match snapshot 1`] = `
   flex-wrap: wrap;
 }
 
-.c65 .layout-label {
+.c68 .layout-label {
   position: absolute;
   top: -20px;
   width: 100%;
 }
 
-.c65 .layout-label::before {
+.c68 .layout-label::before {
   position: absolute;
   padding: 2px 4px;
   font: 12px sans-serif;
@@ -708,11 +708,11 @@ exports[`App component should match snapshot 1`] = `
   margin-right: -188px;
 }
 
-.c63 {
+.c66 {
   background-color: #ffffff;
 }
 
-.c54 {
+.c61 {
   margin-top: 0;
   margin-bottom: 8px;
   color: #ffffff;
@@ -722,11 +722,11 @@ exports[`App component should match snapshot 1`] = `
   display: flex;
 }
 
-.c47 {
+.c54 {
   width: 100%;
 }
 
-.c49 {
+.c56 {
   background-color: #767676;
   padding-top: 32px;
 }
@@ -808,23 +808,23 @@ exports[`App component should match snapshot 1`] = `
 }
 
 .c23 {
-  line-height: 1.8em;
+  line-height: 1.3em;
   margin: 16px 0 16px 0;
 }
 
 .c39 {
-  line-height: 1.8em;
+  line-height: 1.3em;
   margin: 12px 0;
 }
 
 .c29 {
-  line-height: 1.8em;
+  line-height: 1.3em;
   margin-top: 8px;
   margin-bottom: 8px;
 }
 
 .c38 {
-  line-height: 1.8em;
+  line-height: 2.2em;
   list-style-type: square;
   margin-top: 0;
 }
@@ -832,6 +832,14 @@ exports[`App component should match snapshot 1`] = `
 .c24 {
   width: 100%;
   margin-bottom: 12px;
+}
+
+.c51 {
+  margin-right: 20px;
+}
+
+.c51 a {
+  color: #ffffff;
 }
 
 .c30 {
@@ -854,35 +862,35 @@ exports[`App component should match snapshot 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 
-.c52 p,
-.c52 li {
+.c59 p,
+.c59 li {
   color: #ffffff;
 }
 
-.c48 {
+.c55 {
   background-color: #767676;
   width: auto;
   margin: 0 -24px;
 }
 
-.c64 {
+.c67 {
   margin: 0;
-}
-
-.c60 {
-  margin-right: 20px;
-}
-
-.c60 a {
-  color: #ffffff;
 }
 
 .c17 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
   margin: 20px 0;
 }
 
@@ -985,6 +993,16 @@ exports[`App component should match snapshot 1`] = `
   padding: 0;
 }
 
+.c47 {
+  background-color: #F5F5F5;
+  padding: 16px;
+}
+
+.c48 {
+  width: 82px;
+  margin: 4px 0 16px 24px;
+}
+
 .c0 {
   background-color: #E6E6E6;
 }
@@ -1005,154 +1023,154 @@ exports[`App component should match snapshot 1`] = `
 }
 
 @media screen and (min-width:1024px) {
+  .c49 {
+    font-size: 18px;
+    line-height: 25px;
+  }
+}
+
+@media screen and (min-width:540px) {
+  .c28 {
+    margin-bottom: 24px;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c28 {
+    font-size: 18px;
+    line-height: 25px;
+  }
+}
+
+@media screen and (min-width:540px) {
+  .c62 {
+    margin-bottom: 24px;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c62 {
+    font-size: 18px;
+    line-height: 25px;
+  }
+}
+
+@media (min-width:1200px) {
+  .c16 {
+    max-width: 100%;
+  }
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+  .c16 {
+    max-width: 100%;
+  }
+}
+
+@media (min-width:768px) and (max-width:1023px) {
+  .c16 {
+    max-width: 100%;
+  }
+}
+
+@media (min-width:414px) and (max-width:767px) {
+  .c16 {
+    max-width: 100%;
+  }
+}
+
+@media (max-width:413px) {
+  .c16 {
+    max-width: 100%;
+  }
+}
+
+@media (min-width:1200px) {
+  .c26 {
+    max-width: calc((((100% - 220px) / 12) * 9) + 160px + 0px);
+  }
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+  .c26 {
+    max-width: calc((((100% - 220px) / 12) * 9) + 160px + 0px);
+  }
+}
+
+@media (min-width:768px) and (max-width:1023px) {
+  .c26 {
+    max-width: 100%;
+  }
+}
+
+@media (min-width:414px) and (max-width:767px) {
+  .c26 {
+    max-width: 100%;
+  }
+}
+
+@media (max-width:413px) {
+  .c26 {
+    max-width: 100%;
+  }
+}
+
+@media (min-width:1200px) {
+  .c46 {
+    max-width: calc((((100% - 220px) / 12) * 3) + 40px + 0px);
+  }
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+  .c46 {
+    max-width: calc((((100% - 220px) / 12) * 3) + 40px + 0px);
+  }
+}
+
+@media (min-width:768px) and (max-width:1023px) {
+  .c46 {
+    max-width: 100%;
+  }
+}
+
+@media (min-width:414px) and (max-width:767px) {
+  .c46 {
+    max-width: 100%;
+  }
+}
+
+@media (max-width:413px) {
+  .c46 {
+    max-width: 100%;
+  }
+}
+
+@media (min-width:1200px) {
   .c58 {
-    font-size: 18px;
-    line-height: 25px;
-  }
-}
-
-@media screen and (min-width:540px) {
-  .c28 {
-    margin-bottom: 24px;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c28 {
-    font-size: 18px;
-    line-height: 25px;
-  }
-}
-
-@media screen and (min-width:540px) {
-  .c55 {
-    margin-bottom: 24px;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c55 {
-    font-size: 18px;
-    line-height: 25px;
-  }
-}
-
-@media (min-width:1200px) {
-  .c16 {
-    max-width: 100%;
-  }
-}
-
-@media (min-width:1024px) and (max-width:1199px) {
-  .c16 {
-    max-width: 100%;
-  }
-}
-
-@media (min-width:768px) and (max-width:1023px) {
-  .c16 {
-    max-width: 100%;
-  }
-}
-
-@media (min-width:414px) and (max-width:767px) {
-  .c16 {
-    max-width: 100%;
-  }
-}
-
-@media (max-width:413px) {
-  .c16 {
-    max-width: 100%;
-  }
-}
-
-@media (min-width:1200px) {
-  .c26 {
-    max-width: calc((((100% - 220px) / 12) * 9) + 160px + 0px);
-  }
-}
-
-@media (min-width:1024px) and (max-width:1199px) {
-  .c26 {
-    max-width: calc((((100% - 220px) / 12) * 9) + 160px + 0px);
-  }
-}
-
-@media (min-width:768px) and (max-width:1023px) {
-  .c26 {
-    max-width: 100%;
-  }
-}
-
-@media (min-width:414px) and (max-width:767px) {
-  .c26 {
-    max-width: 100%;
-  }
-}
-
-@media (max-width:413px) {
-  .c26 {
-    max-width: 100%;
-  }
-}
-
-@media (min-width:1200px) {
-  .c46 {
-    max-width: calc((((100% - 220px) / 12) * 3) + 40px + 0px);
-  }
-}
-
-@media (min-width:1024px) and (max-width:1199px) {
-  .c46 {
-    max-width: calc((((100% - 220px) / 12) * 3) + 40px + 0px);
-  }
-}
-
-@media (min-width:768px) and (max-width:1023px) {
-  .c46 {
-    max-width: 100%;
-  }
-}
-
-@media (min-width:414px) and (max-width:767px) {
-  .c46 {
-    max-width: 100%;
-  }
-}
-
-@media (max-width:413px) {
-  .c46 {
-    max-width: 100%;
-  }
-}
-
-@media (min-width:1200px) {
-  .c51 {
     max-width: calc((((100% - 220px) / 12) * 4) + 60px + 0px);
   }
 }
 
 @media (min-width:1024px) and (max-width:1199px) {
-  .c51 {
+  .c58 {
     max-width: calc((((100% - 220px) / 12) * 4) + 60px + 0px);
   }
 }
 
 @media (min-width:768px) and (max-width:1023px) {
-  .c51 {
+  .c58 {
     max-width: calc((((100% - 100px) / 6) * 2) + 20px + 0px);
   }
 }
 
 @media (min-width:414px) and (max-width:767px) {
-  .c51 {
+  .c58 {
     max-width: 100%;
   }
 }
 
 @media (max-width:413px) {
-  .c51 {
+  .c58 {
     max-width: 100%;
   }
 }
@@ -1193,35 +1211,35 @@ exports[`App component should match snapshot 1`] = `
 }
 
 @media (min-width:1200px) {
-  .c65 {
+  .c68 {
     padding-left: 220px;
     padding-right: 220px;
   }
 }
 
 @media (min-width:1024px) and (max-width:1199px) {
-  .c65 {
+  .c68 {
     padding-left: 32px;
     padding-right: 32px;
   }
 }
 
 @media (min-width:768px) and (max-width:1023px) {
-  .c65 {
+  .c68 {
     padding-left: 24px;
     padding-right: 24px;
   }
 }
 
 @media (min-width:414px) and (max-width:767px) {
-  .c65 {
+  .c68 {
     padding-left: 20px;
     padding-right: 20px;
   }
 }
 
 @media (max-width:413px) {
-  .c65 {
+  .c68 {
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -1327,7 +1345,7 @@ exports[`App component should match snapshot 1`] = `
 }
 
 @media screen and (min-width:768px) {
-  .c49 {
+  .c56 {
     padding-bottom: 24px;
   }
 }
@@ -1345,20 +1363,20 @@ exports[`App component should match snapshot 1`] = `
 }
 
 @media (min-width:1024px) {
-  .c48 {
+  .c55 {
     margin: 0 -220px;
     padding: 0 220px;
   }
 }
 
 @media (min-width:1024px) {
-  .c50 {
+  .c57 {
     padding: 0;
   }
 }
 
 @media (min-width:1024px) {
-  .c64 {
+  .c67 {
     margin: 0 -230px;
     padding: 0 230px;
   }
@@ -1731,46 +1749,123 @@ Ga naar de
           </div>
           <div
             class="c46 c27"
-          />
+          >
+            <div
+              class="c47"
+            >
+              <p
+                class="c28 c29"
+              >
+                Eenvoudig en veilig in Amsterdam met IRMA
+
+                <img
+                  class="c48"
+                  src="/assets/irma_logo.svg"
+                  title="Lees meer over IRMA"
+                />
+                
+
+                <a
+                  class="c49 c50 c51"
+                  href="https://irma.app/"
+                >
+                  <span
+                    class="c34 c52"
+                    size="12"
+                  >
+                    <svg
+                      focusable="false"
+                      viewBox="0 0 32 32"
+                    >
+                      <path
+                        d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="c53"
+                  >
+                    Waarom IRMA?
+                  </span>
+                </a>
+                
+          
+              </p>
+            </div>
+            <h2
+              class="c39"
+            >
+              IRMA voor Amsterdammers
+            </h2>
+            <p
+              class="c28 c29"
+            >
+              <a
+                class="c49 c50 c51"
+                href="https://irma.app/"
+              >
+                <span
+                  class="c34 c52"
+                  size="12"
+                >
+                  <svg
+                    focusable="false"
+                    viewBox="0 0 32 32"
+                  >
+                    <path
+                      d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="c53"
+                >
+                  Hoe is IRMA getest met Amsterdammers?
+                </span>
+              </a>
+            </p>
+          </div>
         </div>
       </div>
       <footer
-        class="c47 c48"
+        class="c54 c55"
       >
         <div
-          class="c49"
+          class="c56"
         >
           <div
-            class="c1 c50"
+            class="c1 c57"
           >
             <div
-              class="c51"
+              class="c58"
             >
               <div
-                class="c52"
+                class="c59"
               >
                 <h3
-                  class="c53 c21 c22 c54"
+                  class="c60 c21 c22 c61"
                 >
                   Contact
                 </h3>
                 <p
-                  class="c55"
+                  class="c62"
                 >
                   Heeft u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.
                 </p>
                 <ul
-                  class="c56"
+                  class="c63"
                 >
                   <li
-                    class="c57"
+                    class="c64"
                   >
                     <a
-                      class="c58 c59 c60"
+                      class="c49 c65 c51"
                       href="https://formulieren.amsterdam.nl/tripleforms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx"
                     >
                       <span
-                        class="c34 c61"
+                        class="c34 c52"
                         size="12"
                       >
                         <svg
@@ -1784,22 +1879,22 @@ Ga naar de
                         </svg>
                       </span>
                       <span
-                        class="c62"
+                        class="c53"
                       >
                         Contactformulier
                       </span>
                     </a>
                   </li>
                   <li
-                    class="c57"
+                    class="c64"
                   >
                     <strong>
                       <a
-                        class="c58 c59 c60"
+                        class="c49 c65 c51"
                         href="tel:14020"
                       >
                         <span
-                          class="c34 c61"
+                          class="c34 c52"
                           size="12"
                         >
                           <svg
@@ -1813,7 +1908,7 @@ Ga naar de
                           </svg>
                         </span>
                         <span
-                          class="c62"
+                          class="c53"
                         >
                           Bel het telefoonnummer 14 020
                         </span>
@@ -1823,14 +1918,14 @@ Ga naar de
 maandag tot en met vrijdag van 08.00 tot 18.00 uur
                   </li>
                   <li
-                    class="c57"
+                    class="c64"
                   >
                     <a
-                      class="c58 c59 c60"
+                      class="c49 c65 c51"
                       href="https://www.amsterdam.nl/contact/"
                     >
                       <span
-                        class="c34 c61"
+                        class="c34 c52"
                         size="12"
                       >
                         <svg
@@ -1844,7 +1939,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                         </svg>
                       </span>
                       <span
-                        class="c62"
+                        class="c53"
                       >
                         Contactgegevens en openingstijden
                       </span>
@@ -1854,28 +1949,28 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
               </div>
             </div>
             <div
-              class="c51"
+              class="c58"
             >
               <div
-                class="c52"
+                class="c59"
               >
                 <h3
-                  class="c53 c21 c22 c54"
+                  class="c60 c21 c22 c61"
                 >
                   Volg de Gemeente
                 </h3>
                 <ul
-                  class="c56"
+                  class="c63"
                 >
                   <li
-                    class="c57"
+                    class="c64"
                   >
                     <a
-                      class="c58 c59 c60"
+                      class="c49 c65 c51"
                       href="https://action.spike.email/104050/Subscribe/9f53558f-601d-4db8-97d6-a78bccd6e39d?culture=nl-NL"
                     >
                       <span
-                        class="c34 c61"
+                        class="c34 c52"
                         size="12"
                       >
                         <svg
@@ -1889,21 +1984,21 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                         </svg>
                       </span>
                       <span
-                        class="c62"
+                        class="c53"
                       >
                         Nieuwsbrief amsterdam.nl
                       </span>
                     </a>
                   </li>
                   <li
-                    class="c57"
+                    class="c64"
                   >
                     <a
-                      class="c58 c59 c60"
+                      class="c49 c65 c51"
                       href="https://twitter.com/AmsterdamNL"
                     >
                       <span
-                        class="c34 c61"
+                        class="c34 c52"
                         size="12"
                       >
                         <svg
@@ -1917,21 +2012,21 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                         </svg>
                       </span>
                       <span
-                        class="c62"
+                        class="c53"
                       >
                         Twitter
                       </span>
                     </a>
                   </li>
                   <li
-                    class="c57"
+                    class="c64"
                   >
                     <a
-                      class="c58 c59 c60"
+                      class="c49 c65 c51"
                       href="https://www.facebook.com/gemeenteamsterdam"
                     >
                       <span
-                        class="c34 c61"
+                        class="c34 c52"
                         size="12"
                       >
                         <svg
@@ -1945,21 +2040,21 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                         </svg>
                       </span>
                       <span
-                        class="c62"
+                        class="c53"
                       >
                         Facebook
                       </span>
                     </a>
                   </li>
                   <li
-                    class="c57"
+                    class="c64"
                   >
                     <a
-                      class="c58 c59 c60"
+                      class="c49 c65 c51"
                       href="https://www.instagram.com/gemeenteamsterdam/"
                     >
                       <span
-                        class="c34 c61"
+                        class="c34 c52"
                         size="12"
                       >
                         <svg
@@ -1973,21 +2068,21 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                         </svg>
                       </span>
                       <span
-                        class="c62"
+                        class="c53"
                       >
                         Instagram
                       </span>
                     </a>
                   </li>
                   <li
-                    class="c57"
+                    class="c64"
                   >
                     <a
-                      class="c58 c59 c60"
+                      class="c49 c65 c51"
                       href="https://www.linkedin.com/company/gemeente-amsterdam"
                     >
                       <span
-                        class="c34 c61"
+                        class="c34 c52"
                         size="12"
                       >
                         <svg
@@ -2001,21 +2096,21 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                         </svg>
                       </span>
                       <span
-                        class="c62"
+                        class="c53"
                       >
                         LinkedIn
                       </span>
                     </a>
                   </li>
                   <li
-                    class="c57"
+                    class="c64"
                   >
                     <a
-                      class="c58 c59 c60"
+                      class="c49 c65 c51"
                       href="https://www.amsterdam.nl/bestuur-organisatie/werkenbij/"
                     >
                       <span
-                        class="c34 c61"
+                        class="c34 c52"
                         size="12"
                       >
                         <svg
@@ -2029,7 +2124,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                         </svg>
                       </span>
                       <span
-                        class="c62"
+                        class="c53"
                       >
                         Werkenbij
                       </span>
@@ -2039,26 +2134,26 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
               </div>
             </div>
             <div
-              class="c51"
+              class="c58"
             >
               <div
-                class="c52"
+                class="c59"
               >
                 <h3
-                  class="c53 c21 c22 c54"
+                  class="c60 c21 c22 c61"
                 >
                   Wat is er te doen in Amsterdam?
                 </h3>
                 <p
-                  class="c55"
+                  class="c62"
                 >
                   Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op 
                   <a
-                    class="c58 c59 c60"
+                    class="c49 c65 c51"
                     href="https://www.iamsterdam.com/nl"
                   >
                     <span
-                      class="c34 c61"
+                      class="c34 c52"
                       size="12"
                     >
                       <svg
@@ -2072,7 +2167,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                       </svg>
                     </span>
                     <span
-                      class="c62"
+                      class="c53"
                     >
                       I amsterdam
                     </span>
@@ -2083,18 +2178,18 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
           </div>
         </div>
         <div
-          class="c63 c64"
+          class="c66 c67"
         >
           <div
-            class="c65 c50"
+            class="c68 c57"
           >
             <p>
               <a
-                class="c58 c66 c60"
+                class="c49 c50 c51"
                 href="https://www.amsterdam.nl/overdezesite/"
               >
                 <span
-                  class="c34 c61"
+                  class="c34 c52"
                   size="12"
                 >
                   <svg
@@ -2108,7 +2203,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                   </svg>
                 </span>
                 <span
-                  class="c62"
+                  class="c53"
                 >
                   Over deze site
                 </span>
@@ -2116,11 +2211,11 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
               
 
               <a
-                class="c58 c66 c60"
+                class="c49 c50 c51"
                 href="https://www.amsterdam.nl/privacy/"
               >
                 <span
-                  class="c34 c61"
+                  class="c34 c52"
                   size="12"
                 >
                   <svg
@@ -2134,7 +2229,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                   </svg>
                 </span>
                 <span
-                  class="c62"
+                  class="c53"
                 >
                   Privacy
                 </span>
@@ -2142,11 +2237,11 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
               
 
               <a
-                class="c58 c66 c60"
+                class="c49 c50 c51"
                 href="https://www.amsterdam.nl/privacy/cookies-site/"
               >
                 <span
-                  class="c34 c61"
+                  class="c34 c52"
                   size="12"
                 >
                   <svg
@@ -2160,7 +2255,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                   </svg>
                 </span>
                 <span
-                  class="c62"
+                  class="c53"
                 >
                   Cookies op deze site
                 </span>
