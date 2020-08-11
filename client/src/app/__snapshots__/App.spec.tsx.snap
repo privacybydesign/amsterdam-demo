@@ -115,7 +115,7 @@ exports[`App component should match snapshot 1`] = `
   letter-spacing: normal;
 }
 
-.c60 {
+.c61 {
   margin: 0;
   color: #000000;
   font-weight: 700;
@@ -195,7 +195,7 @@ exports[`App component should match snapshot 1`] = `
   fill: #ec0000;
 }
 
-.c65 {
+.c66 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -206,31 +206,31 @@ exports[`App component should match snapshot 1`] = `
   color: #ffffff;
 }
 
-.c65:focus {
+.c66:focus {
   background-color: #FEC813;
 }
 
-.c65 .c34 {
+.c66 .c34 {
   margin: 4px 4px 0 0;
 }
 
-.c65 .c34 svg circle,
-.c65 .c34 svg rect,
-.c65 .c34 svg polygon,
-.c65 .c34 svg path {
+.c66 .c34 svg circle,
+.c66 .c34 svg rect,
+.c66 .c34 svg polygon,
+.c66 .c34 svg path {
   fill: #ffffff;
 }
 
-.c65:hover {
+.c66:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
   color: #ffffff;
 }
 
-.c65:hover svg circle,
-.c65:hover svg rect,
-.c65:hover svg polygon,
-.c65:hover svg path {
+.c66:hover svg circle,
+.c66:hover svg rect,
+.c66:hover svg polygon,
+.c66:hover svg path {
   fill: #ffffff;
 }
 
@@ -256,7 +256,7 @@ exports[`App component should match snapshot 1`] = `
   color: inherit;
 }
 
-.c62 {
+.c63 {
   margin: 0;
   color: #000000;
   font-weight: 400;
@@ -427,7 +427,7 @@ exports[`App component should match snapshot 1`] = `
   fill: #B4B4B4;
 }
 
-.c63 {
+.c64 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -440,7 +440,7 @@ exports[`App component should match snapshot 1`] = `
   padding: 0;
 }
 
-.c64 {
+.c65 {
   word-break: break-word;
   margin-bottom: 8px;
 }
@@ -493,7 +493,7 @@ exports[`App component should match snapshot 1`] = `
   order: 0;
 }
 
-.c58 {
+.c59 {
   box-sizing: border-box;
   width: 100%;
   display: -webkit-box;
@@ -547,7 +547,7 @@ exports[`App component should match snapshot 1`] = `
   height: 20px;
 }
 
-.c68 {
+.c69 {
   box-sizing: border-box;
   margin: 0 auto;
   display: -webkit-box;
@@ -568,13 +568,13 @@ exports[`App component should match snapshot 1`] = `
   flex-wrap: wrap;
 }
 
-.c68 .layout-label {
+.c69 .layout-label {
   position: absolute;
   top: -20px;
   width: 100%;
 }
 
-.c68 .layout-label::before {
+.c69 .layout-label::before {
   position: absolute;
   padding: 2px 4px;
   font: 12px sans-serif;
@@ -708,11 +708,11 @@ exports[`App component should match snapshot 1`] = `
   margin-right: -188px;
 }
 
-.c66 {
+.c67 {
   background-color: #ffffff;
 }
 
-.c61 {
+.c62 {
   margin-top: 0;
   margin-bottom: 8px;
   color: #ffffff;
@@ -722,11 +722,11 @@ exports[`App component should match snapshot 1`] = `
   display: flex;
 }
 
-.c54 {
+.c55 {
   width: 100%;
 }
 
-.c56 {
+.c57 {
   background-color: #767676;
   padding-top: 32px;
 }
@@ -804,7 +804,7 @@ exports[`App component should match snapshot 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-top: 16px;
+  margin: 16px 0;
 }
 
 .c23 {
@@ -834,11 +834,11 @@ exports[`App component should match snapshot 1`] = `
   margin-bottom: 12px;
 }
 
-.c51 {
+.c54 {
   margin-right: 20px;
 }
 
-.c51 a {
+.c54 a {
   color: #ffffff;
 }
 
@@ -858,6 +858,10 @@ exports[`App component should match snapshot 1`] = `
   margin: 0;
 }
 
+.c25 {
+  padding: 0;
+}
+
 .c27 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -868,18 +872,18 @@ exports[`App component should match snapshot 1`] = `
   justify-content: flex-start;
 }
 
-.c59 p,
-.c59 li {
+.c60 p,
+.c60 li {
   color: #ffffff;
 }
 
-.c55 {
+.c56 {
   background-color: #767676;
   width: auto;
   margin: 0 -24px;
 }
 
-.c67 {
+.c68 {
   margin: 0;
 }
 
@@ -960,6 +964,56 @@ exports[`App component should match snapshot 1`] = `
   margin-bottom: 8px;
 }
 
+.c47 {
+  background-color: #F5F5F5;
+  padding: 16px;
+  max-width: 200px;
+}
+
+.c47 p {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c48 {
+  width: 82px;
+  margin: 4px 0 16px 24px;
+}
+
+.c51 {
+  margin-right: 20px;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  font-size: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c51 a {
+  color: #ffffff;
+}
+
+.c51.c51.c51 span:first-child {
+  width: 20px;
+  height: 20px;
+}
+
+.c51.c51.c51 svg {
+  width: 20px;
+  height: 20px;
+}
+
+.c51.c51.c51 svg path {
+  fill: #ec0000;
+}
+
 .c41 {
   display: inline-block;
   width: auto;
@@ -987,20 +1041,6 @@ exports[`App component should match snapshot 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-.c25 {
-  padding: 0;
-}
-
-.c47 {
-  background-color: #F5F5F5;
-  padding: 16px;
-}
-
-.c48 {
-  width: 82px;
-  margin: 4px 0 16px 24px;
 }
 
 .c0 {
@@ -1043,13 +1083,13 @@ exports[`App component should match snapshot 1`] = `
 }
 
 @media screen and (min-width:540px) {
-  .c62 {
+  .c63 {
     margin-bottom: 24px;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c62 {
+  .c63 {
     font-size: 18px;
     line-height: 25px;
   }
@@ -1067,13 +1107,13 @@ exports[`App component should match snapshot 1`] = `
   }
 }
 
-@media (min-width:768px) and (max-width:1023px) {
+@media (min-width:700px) and (max-width:1023px) {
   .c16 {
     max-width: 100%;
   }
 }
 
-@media (min-width:414px) and (max-width:767px) {
+@media (min-width:414px) and (max-width:699px) {
   .c16 {
     max-width: 100%;
   }
@@ -1097,13 +1137,13 @@ exports[`App component should match snapshot 1`] = `
   }
 }
 
-@media (min-width:768px) and (max-width:1023px) {
+@media (min-width:700px) and (max-width:1023px) {
   .c26 {
     max-width: 100%;
   }
 }
 
-@media (min-width:414px) and (max-width:767px) {
+@media (min-width:414px) and (max-width:699px) {
   .c26 {
     max-width: 100%;
   }
@@ -1127,13 +1167,13 @@ exports[`App component should match snapshot 1`] = `
   }
 }
 
-@media (min-width:768px) and (max-width:1023px) {
+@media (min-width:700px) and (max-width:1023px) {
   .c46 {
     max-width: 100%;
   }
 }
 
-@media (min-width:414px) and (max-width:767px) {
+@media (min-width:414px) and (max-width:699px) {
   .c46 {
     max-width: 100%;
   }
@@ -1146,31 +1186,31 @@ exports[`App component should match snapshot 1`] = `
 }
 
 @media (min-width:1200px) {
-  .c58 {
+  .c59 {
     max-width: calc((((100% - 220px) / 12) * 4) + 60px + 0px);
   }
 }
 
 @media (min-width:1024px) and (max-width:1199px) {
-  .c58 {
+  .c59 {
     max-width: calc((((100% - 220px) / 12) * 4) + 60px + 0px);
   }
 }
 
-@media (min-width:768px) and (max-width:1023px) {
-  .c58 {
+@media (min-width:700px) and (max-width:1023px) {
+  .c59 {
     max-width: calc((((100% - 100px) / 6) * 2) + 20px + 0px);
   }
 }
 
-@media (min-width:414px) and (max-width:767px) {
-  .c58 {
+@media (min-width:414px) and (max-width:699px) {
+  .c59 {
     max-width: 100%;
   }
 }
 
 @media (max-width:413px) {
-  .c58 {
+  .c59 {
     max-width: 100%;
   }
 }
@@ -1189,14 +1229,14 @@ exports[`App component should match snapshot 1`] = `
   }
 }
 
-@media (min-width:768px) and (max-width:1023px) {
+@media (min-width:700px) and (max-width:1023px) {
   .c1 {
     padding-left: 24px;
     padding-right: 24px;
   }
 }
 
-@media (min-width:414px) and (max-width:767px) {
+@media (min-width:414px) and (max-width:699px) {
   .c1 {
     padding-left: 20px;
     padding-right: 20px;
@@ -1211,35 +1251,35 @@ exports[`App component should match snapshot 1`] = `
 }
 
 @media (min-width:1200px) {
-  .c68 {
+  .c69 {
     padding-left: 220px;
     padding-right: 220px;
   }
 }
 
 @media (min-width:1024px) and (max-width:1199px) {
-  .c68 {
+  .c69 {
     padding-left: 32px;
     padding-right: 32px;
   }
 }
 
-@media (min-width:768px) and (max-width:1023px) {
-  .c68 {
+@media (min-width:700px) and (max-width:1023px) {
+  .c69 {
     padding-left: 24px;
     padding-right: 24px;
   }
 }
 
-@media (min-width:414px) and (max-width:767px) {
-  .c68 {
+@media (min-width:414px) and (max-width:699px) {
+  .c69 {
     padding-left: 20px;
     padding-right: 20px;
   }
 }
 
 @media (max-width:413px) {
-  .c68 {
+  .c69 {
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -1345,14 +1385,14 @@ exports[`App component should match snapshot 1`] = `
 }
 
 @media screen and (min-width:768px) {
-  .c56 {
+  .c57 {
     padding-bottom: 24px;
   }
 }
 
 @media (min-width:1200px) {
   .c18 {
-    margin-top: 20px;
+    margin: 20px 0;
   }
 }
 
@@ -1363,20 +1403,20 @@ exports[`App component should match snapshot 1`] = `
 }
 
 @media (min-width:1024px) {
-  .c55 {
+  .c56 {
     margin: 0 -220px;
     padding: 0 220px;
   }
 }
 
 @media (min-width:1024px) {
-  .c57 {
+  .c58 {
     padding: 0;
   }
 }
 
 @media (min-width:1024px) {
-  .c67 {
+  .c68 {
     margin: 0 -230px;
     padding: 0 230px;
   }
@@ -1802,7 +1842,7 @@ Ga naar de
               class="c28 c29"
             >
               <a
-                class="c49 c50 c51"
+                class="c49 c50 c54"
                 href="https://irma.app/"
               >
                 <span
@@ -1830,38 +1870,38 @@ Ga naar de
         </div>
       </div>
       <footer
-        class="c54 c55"
+        class="c55 c56"
       >
         <div
-          class="c56"
+          class="c57"
         >
           <div
-            class="c1 c57"
+            class="c1 c58"
           >
             <div
-              class="c58"
+              class="c59"
             >
               <div
-                class="c59"
+                class="c60"
               >
                 <h3
-                  class="c60 c21 c22 c61"
+                  class="c61 c21 c22 c62"
                 >
                   Contact
                 </h3>
                 <p
-                  class="c62"
+                  class="c63"
                 >
                   Heeft u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.
                 </p>
                 <ul
-                  class="c63"
+                  class="c64"
                 >
                   <li
-                    class="c64"
+                    class="c65"
                   >
                     <a
-                      class="c49 c65 c51"
+                      class="c49 c66 c54"
                       href="https://formulieren.amsterdam.nl/tripleforms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx"
                     >
                       <span
@@ -1886,11 +1926,11 @@ Ga naar de
                     </a>
                   </li>
                   <li
-                    class="c64"
+                    class="c65"
                   >
                     <strong>
                       <a
-                        class="c49 c65 c51"
+                        class="c49 c66 c54"
                         href="tel:14020"
                       >
                         <span
@@ -1918,10 +1958,10 @@ Ga naar de
 maandag tot en met vrijdag van 08.00 tot 18.00 uur
                   </li>
                   <li
-                    class="c64"
+                    class="c65"
                   >
                     <a
-                      class="c49 c65 c51"
+                      class="c49 c66 c54"
                       href="https://www.amsterdam.nl/contact/"
                     >
                       <span
@@ -1949,24 +1989,24 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
               </div>
             </div>
             <div
-              class="c58"
+              class="c59"
             >
               <div
-                class="c59"
+                class="c60"
               >
                 <h3
-                  class="c60 c21 c22 c61"
+                  class="c61 c21 c22 c62"
                 >
                   Volg de Gemeente
                 </h3>
                 <ul
-                  class="c63"
+                  class="c64"
                 >
                   <li
-                    class="c64"
+                    class="c65"
                   >
                     <a
-                      class="c49 c65 c51"
+                      class="c49 c66 c54"
                       href="https://action.spike.email/104050/Subscribe/9f53558f-601d-4db8-97d6-a78bccd6e39d?culture=nl-NL"
                     >
                       <span
@@ -1991,10 +2031,10 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                     </a>
                   </li>
                   <li
-                    class="c64"
+                    class="c65"
                   >
                     <a
-                      class="c49 c65 c51"
+                      class="c49 c66 c54"
                       href="https://twitter.com/AmsterdamNL"
                     >
                       <span
@@ -2019,10 +2059,10 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                     </a>
                   </li>
                   <li
-                    class="c64"
+                    class="c65"
                   >
                     <a
-                      class="c49 c65 c51"
+                      class="c49 c66 c54"
                       href="https://www.facebook.com/gemeenteamsterdam"
                     >
                       <span
@@ -2047,10 +2087,10 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                     </a>
                   </li>
                   <li
-                    class="c64"
+                    class="c65"
                   >
                     <a
-                      class="c49 c65 c51"
+                      class="c49 c66 c54"
                       href="https://www.instagram.com/gemeenteamsterdam/"
                     >
                       <span
@@ -2075,10 +2115,10 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                     </a>
                   </li>
                   <li
-                    class="c64"
+                    class="c65"
                   >
                     <a
-                      class="c49 c65 c51"
+                      class="c49 c66 c54"
                       href="https://www.linkedin.com/company/gemeente-amsterdam"
                     >
                       <span
@@ -2103,10 +2143,10 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
                     </a>
                   </li>
                   <li
-                    class="c64"
+                    class="c65"
                   >
                     <a
-                      class="c49 c65 c51"
+                      class="c49 c66 c54"
                       href="https://www.amsterdam.nl/bestuur-organisatie/werkenbij/"
                     >
                       <span
@@ -2134,22 +2174,22 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
               </div>
             </div>
             <div
-              class="c58"
+              class="c59"
             >
               <div
-                class="c59"
+                class="c60"
               >
                 <h3
-                  class="c60 c21 c22 c61"
+                  class="c61 c21 c22 c62"
                 >
                   Wat is er te doen in Amsterdam?
                 </h3>
                 <p
-                  class="c62"
+                  class="c63"
                 >
                   Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op 
                   <a
-                    class="c49 c65 c51"
+                    class="c49 c66 c54"
                     href="https://www.iamsterdam.com/nl"
                   >
                     <span
@@ -2178,14 +2218,14 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
           </div>
         </div>
         <div
-          class="c66 c67"
+          class="c67 c68"
         >
           <div
-            class="c68 c57"
+            class="c69 c58"
           >
             <p>
               <a
-                class="c49 c50 c51"
+                class="c49 c50 c54"
                 href="https://www.amsterdam.nl/overdezesite/"
               >
                 <span
@@ -2211,7 +2251,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
               
 
               <a
-                class="c49 c50 c51"
+                class="c49 c50 c54"
                 href="https://www.amsterdam.nl/privacy/"
               >
                 <span
@@ -2237,7 +2277,7 @@ maandag tot en met vrijdag van 08.00 tot 18.00 uur
               
 
               <a
-                class="c49 c50 c51"
+                class="c49 c50 c54"
                 href="https://www.amsterdam.nl/privacy/cookies-site/"
               >
                 <span

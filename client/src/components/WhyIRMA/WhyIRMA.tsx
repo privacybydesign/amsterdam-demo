@@ -15,7 +15,7 @@ const WhyIRMA: React.FC<IProps> = () => {
                 renderers={{
                     heading: AscLocal.H2,
                     paragraph: AscLocal.StrongParagraph,
-                    link: AscLocal.LinkWithChevron,
+                    link: StyledLinkWithChevron,
                     image: IRMALogo
                 }}
             />
@@ -26,11 +26,37 @@ const WhyIRMA: React.FC<IProps> = () => {
 const Container = styled.div`
     background-color: ${themeColor('tint', 'level2')};
     padding: ${themeSpacing(4)};
+    max-width: 200px;
+
+    p {
+        display: flex;
+        flex-direction: column;
+    }
 `;
 
 const IRMALogo = styled.img`
     width: 82px;
     margin: ${themeSpacing(1)} 0 ${themeSpacing(4)} ${themeSpacing(6)};
+`;
+
+const StyledLinkWithChevron = styled(AscLocal.LinkWithChevron)`
+    text-decoration: underline;
+    font-size: 16px;
+    align-items: center;
+
+    &&& {
+        span:first-child {
+            width: 20px;
+            height: 20px;
+        }
+        svg {
+            width: 20px;
+            height: 20px;
+            path {
+                fill: ${themeColor('secondary', 'main')};
+            }
+        }
+    }
 `;
 
 export default WhyIRMA;
