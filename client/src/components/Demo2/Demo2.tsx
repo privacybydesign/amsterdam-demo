@@ -20,7 +20,7 @@ import ContentBlock from '@components/ContentBlock/ContentBlock';
 export interface IProps {}
 
 const Demo2: React.FC<IProps> = () => {
-    const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
+    const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
     const [isOver18, setIsOver18] = useState<boolean>(false);
     const [isPostcodeInArea, setIsPostcodeInArea] = useState<boolean>(false);
     const [hasResult, setHasResult] = useState<boolean>(false);

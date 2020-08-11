@@ -19,7 +19,7 @@ import ContentBlock from '@components/ContentBlock/ContentBlock';
 export interface IProps {}
 
 const Demo1: React.FC<IProps> = () => {
-    const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
+    const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
     const [isOver18, setIsOver18] = useState<boolean>(false);
     const [hasResult18, setHasResult18] = useState<boolean>(false);
     const [isOver65, setIsOver65] = useState<boolean>(false);
