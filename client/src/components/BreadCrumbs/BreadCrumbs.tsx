@@ -32,10 +32,10 @@ const BreadCrumbs: React.FC<IBreadCrumbsProps> & IBreadCrumbsComposition = ({ ch
 const Container = styled.div`
     display: flex;
     align-items: center;
-    margin-top: ${themeSpacing(4)};
+    margin: ${themeSpacing(4)} 0;
 
     @media ${breakpoint('min-width', 'laptopM')} {
-        margin-top: ${themeSpacing(5)};
+        margin: ${themeSpacing(5)} 0;
     }
 `;
 
