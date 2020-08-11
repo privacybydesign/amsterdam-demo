@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import BreadCrumbs from '@components/BreadCrumbs';
-import { Accordion, themeSpacing, Button, breakpoint } from '@datapunt/asc-ui';
+import { Accordion, themeSpacing, Button, breakpoint, Row } from '@datapunt/asc-ui';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import ReactMarkDown from 'react-markdown';
 import content from '@services/content';
@@ -20,45 +20,48 @@ const Homepage: React.FC<IProps> = () => (
         />
         <ReactMarkDown source={content.home.title} renderers={{ heading: AscLocal.H1 }} />
         {/* // TODO: Make this a responsive image */}
-        <AscLocal.Image src="/assets/home.png"></AscLocal.Image>
-        <VerticalColumn span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
-            <ReactMarkDown source={content.home.intro} renderers={{ paragraph: AscLocal.StrongParagraph }} />
-            <AscLocal.AccordionContainer>
-                <Accordion title={content.home.requirements.title} id="nodig">
-                    <ReactMarkDown
-                        source={content.home.requirements.body}
-                        renderers={{ heading: AscLocal.H2, list: AscLocal.UL, image: DownloadButton }}
-                    />
-                </Accordion>
-            </AscLocal.AccordionContainer>
-            <ReactMarkDown source={content.home.subtitle} renderers={{ heading: AscLocal.H2 }} />
-            <ArticleContainer>
-                <Article
-                    imageSrc={content.images.demo1.header.src}
-                    imageAlt={content.images.demo1.header.alt}
-                    title={content.home.demo1Card.title}
-                    href={AppRoutes.DEMO1.path}
-                >
-                    <ReactMarkDown source={content.home.demo1Card.body} />
-                </Article>
-                <Article
-                    imageSrc={content.images.demo2.header.src}
-                    imageAlt={content.images.demo2.header.alt}
-                    title={content.home.demo2Card.title}
-                    href={AppRoutes.DEMO2.path}
-                >
-                    <ReactMarkDown source={content.home.demo2Card.body} />
-                </Article>
-                <Article
-                    imageSrc={content.images.demo3.header.src}
-                    imageAlt={content.images.demo3.header.alt}
-                    title={content.home.demo3Card.title}
-                    href={AppRoutes.DEMO3.path}
-                >
-                    <ReactMarkDown source={content.home.demo2Card.body} />
-                </Article>
-            </ArticleContainer>
-        </VerticalColumn>
+        <AscLocal.Image src="/assets/home.png" />
+        <StyledRow>
+            <VerticalColumn span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
+                <ReactMarkDown source={content.home.intro} renderers={{ paragraph: AscLocal.StrongParagraph }} />
+                <AscLocal.AccordionContainer>
+                    <Accordion title={content.home.requirements.title} id="nodig">
+                        <ReactMarkDown
+                            source={content.home.requirements.body}
+                            renderers={{ heading: AscLocal.H2, list: AscLocal.UL, image: DownloadButton }}
+                        />
+                    </Accordion>
+                </AscLocal.AccordionContainer>
+                <ReactMarkDown source={content.home.subtitle} renderers={{ heading: AscLocal.H2 }} />
+                <ArticleContainer>
+                    <Article
+                        imageSrc={content.images.demo1.header.src}
+                        imageAlt={content.images.demo1.header.alt}
+                        title={content.home.demo1Card.title}
+                        href={AppRoutes.DEMO1.path}
+                    >
+                        <ReactMarkDown source={content.home.demo1Card.body} />
+                    </Article>
+                    <Article
+                        imageSrc={content.images.demo2.header.src}
+                        imageAlt={content.images.demo2.header.alt}
+                        title={content.home.demo2Card.title}
+                        href={AppRoutes.DEMO2.path}
+                    >
+                        <ReactMarkDown source={content.home.demo2Card.body} />
+                    </Article>
+                    <Article
+                        imageSrc={content.images.demo3.header.src}
+                        imageAlt={content.images.demo3.header.alt}
+                        title={content.home.demo3Card.title}
+                        href={AppRoutes.DEMO3.path}
+                    >
+                        <ReactMarkDown source={content.home.demo2Card.body} />
+                    </Article>
+                </ArticleContainer>
+            </VerticalColumn>
+            <VerticalColumn span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}></VerticalColumn>
+        </StyledRow>
     </PageTemplate>
 );
 
@@ -111,5 +114,11 @@ const ArticleContainer = styled.div`
         }
     }
 `;
+
+const StyledRow = styled(Row)`
+    padding: 0;
+`;
+
+// const WhyIRMABox = styled.div``;
 
 export default Homepage;
