@@ -62,7 +62,7 @@ Ga naar de [website van IRMA](https://irma.app/)`
     callToAction: `[Probeer de andere demo’s](/)`,
     demoErrorAlert: {
         heading: `Niets doorgegeven`,
-        content: `U heeft uw gegevens niet doorgegeven aan de gemeente Amsterdam.`
+        content: `U heeft uw gegevens niet doorgegeven aan de demosite van de gemeente Amsterdam.`
     },
     demo1: {
         breadcrumbs: `- [Home](/)
