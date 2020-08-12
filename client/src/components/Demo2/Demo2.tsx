@@ -42,8 +42,8 @@ const Demo2: React.FC<IProps> = () => {
             const ggwResponse = await getGGW(postcode);
 
             if (ggwResponse) {
-                setIsPostcodeInArea(postcode4digit >= 1000 && postcode4digit <= 1099);
-                if (postcode4digit >= 1000 && postcode4digit <= 1099) {
+                setIsPostcodeInArea(postcode4digit >= 1000 && postcode4digit <= 1109);
+                if (postcode4digit >= 1000 && postcode4digit <= 1109) {
                     setWijk(ggwResponse.buurtcombinatieNamen);
                     setCode(ggwResponse.ggwCode);
                     setGgw(ggwResponse.ggwNaam);
