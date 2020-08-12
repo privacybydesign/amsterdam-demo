@@ -35,19 +35,16 @@ const Demo2: React.FC<IProps> = () => {
         if (response) {
             setIsOver18(response['over18'] === 'Yes');
             const postcode = response['zipcode'].replace(/ /, '');
-            const postcode4digit = parseInt(postcode, 10);
             setHasResult(true);
             setHasError(false);
 
             const ggwResponse = await getGGW(postcode);
 
             if (ggwResponse) {
-                setIsPostcodeInArea(postcode4digit >= 1000 && postcode4digit <= 1109);
-                if (postcode4digit >= 1000 && postcode4digit <= 1109) {
-                    setWijk(ggwResponse.buurtcombinatieNamen);
-                    setCode(ggwResponse.ggwCode);
-                    setGgw(ggwResponse.ggwNaam);
-                }
+                setIsPostcodeInArea(true);
+                setWijk(ggwResponse.buurtcombinatieNamen);
+                setCode(ggwResponse.ggwCode);
+                setGgw(ggwResponse.ggwNaam);
             } else {
                 // error flow if location is not in Amsterdam
                 setIsPostcodeInArea(false);
