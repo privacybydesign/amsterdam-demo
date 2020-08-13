@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
+import styled from 'styled-components';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { Accordion } from '@datapunt/asc-ui';
+import { Accordion, Paragraph, themeColor, themeSpacing } from '@datapunt/asc-ui';
+import { Checkmark } from '@datapunt/asc-assets';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
@@ -21,12 +23,12 @@ const Demo4: React.FC<IProps> = () => {
   const formEl = useRef(null);
 
   const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
-  const [hasResult, setHasResult] = useState<boolean>(false);
-  const [name, setName] = useState<string>('');
-  const [street, setStreet] = useState<string>('');
-  const [city, setCity] = useState<string>('');
-  const [telephone, setTelephone] = useState<string>('');
-  const [isOwner, setIsOwner] = useState<string>('');
+  const [hasResult, setHasResult] = useState<boolean>(0);
+  const [name, setName] = useState<string>('jgs');
+  const [street, setStreet] = useState<string>('ma 650');
+  const [city, setCity] = useState<string>('asd');
+  const [telephone, setTelephone] = useState<string>('06');
+  const [isOwner, setIsOwner] = useState<string>('Ja');
   const [formValid, setFormValid] = useState<boolean>(true);
 
   const validateForm = () => {
@@ -45,6 +47,7 @@ const Demo4: React.FC<IProps> = () => {
   const getSession = async () => {
     if (validateForm()) {
       const response = await createIrmaSession('demo4', 'irma-qr', credentialSource === CredentialSource.DEMO);
+      console.log('----------------------'), response;
 
       setHasResult(true);
       setName(response['fullname']);
@@ -75,7 +78,7 @@ const Demo4: React.FC<IProps> = () => {
     <PageTemplate>
       <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
 
-      {hasResult} {name} {street} {city} {telephone} {isOwner}
+      {hasResult ? 'yes' : 'no'} {name} {street} {city} {telephone} {isOwner}
 
       <ReactMarkDown
         source={content.demo4.breadcrumbs}
@@ -86,6 +89,8 @@ const Demo4: React.FC<IProps> = () => {
 
       {hasResult && (
         <AscLocal.Alert
+          color={AscLocal.AlertColor.SUCCESS}
+          icon={<Checkmark />}
           heading={content.demo4.proven.alert.title}
           content={content.demo4.proven.alert.body}
         />
@@ -141,7 +146,15 @@ const Demo4: React.FC<IProps> = () => {
         </>
       ) : (
           <>
-            <ReactMarkDown source={content.demo4.result} renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
+            <AscLocal.GreyContainer>
+              <ReactMarkDown source={content.demo4.result.uwDemoAanvraag} renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
+            </AscLocal.GreyContainer>
+
+            <AscLocal.GreyContainer>
+              <ReactMarkDown source={content.demo4.result.uwGegevens} renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
+            </AscLocal.GreyContainer>
+
+            <ReactMarkDown source={content.demo4.result.rest} renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
 
             <ReactMarkDown source={content.callToAction} />
           </>
@@ -150,5 +163,6 @@ const Demo4: React.FC<IProps> = () => {
     </PageTemplate >
   );
 };
+
 
 export default Demo4;

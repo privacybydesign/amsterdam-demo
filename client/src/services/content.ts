@@ -305,14 +305,32 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
         },
         button: 'Aanvullen met IRMA',
 
-        result: `De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.
+        result: {
+            uwDemoAanvraag: `### Uw demo-aanvraag
+** Uw keuze **\n
+geveltuin\n
+** Bent u de eigenaar van de woning waar de geveltuin komt? **\n
+{isOwner}
+`,
+            uwGegevens: `### Uw gegevens\n
+** Naam **\n
+{name}\n
+** Straat en huisnummer **\n
+{name}\n
+** Straat en huisnummer **\n
+{street}\n
+** Postcode en plaats **\n
+{city}\n
+** Telefoonnummer **\n
+{telephone}\n
+** E-mail **\n
+`,
+            rest: `De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.
 
 ## Wat heeft u zojuist gedaan?
 
 ## Wat is er anders met IRMA?
-`
-    },
+            `
+        }
+    }
 
-
-
-};
