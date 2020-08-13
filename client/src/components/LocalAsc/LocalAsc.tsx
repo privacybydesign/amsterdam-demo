@@ -27,6 +27,16 @@ export const H2 = styled.h2`
     margin: ${themeSpacing(3, 0)};
 `;
 
+export const H3 = styled.h3`
+    line-height: ${lineHeight};
+    margin: ${themeSpacing(2, 0)};
+`;
+
+export const H4 = styled.h4`
+    line-height: ${lineHeight};
+    margin: ${themeSpacing(2, 0)};
+`;
+
 export const Paragraph = styled(AscParagraph)`
     line-height: ${lineHeight};
     margin-top: ${themeSpacing(2)};
