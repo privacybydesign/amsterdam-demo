@@ -27,6 +27,7 @@ const Demo4: React.FC<IProps> = () => {
   const [city, setCity] = useState<string>('');
   const [telephone, setTelephone] = useState<string>('');
   const [isOwner, setIsOwner] = useState<string>('');
+  const [formValid, setFormValid] = useState<boolean>(true);
 
   const validateForm = () => {
     const el = formEl.current.querySelector('input[name=geveltuin]:checked');
@@ -34,8 +35,10 @@ const Demo4: React.FC<IProps> = () => {
       // form was filled in
       const value = el.getAttribute('value');
       setIsOwner(el.getAttribute('value'));
+      setFormValid(true);
       return true;
     }
+    setFormValid(false);
     return false;
   };
 
@@ -50,7 +53,6 @@ const Demo4: React.FC<IProps> = () => {
       setTelephone(response['mobilenumber']);
 
       window.scrollTo(0, 0);
-
     }
   };
 
@@ -115,7 +117,7 @@ const Demo4: React.FC<IProps> = () => {
           <AscLocal.H2>Demo-aanvraag Geveltuin</AscLocal.H2>
           <form ref={formEl} >
             Bent u eigenaar van de woning waar de geveltuin komt?
-            <RadioGroup name="geveltuin" error={!isOwner}>
+            <RadioGroup name="geveltuin" error={!formValid}>
               <Label htmlFor="yes" label="Ja" >
                 <Radio id="yes" variant="primary" value="Ja" />
               </Label>
