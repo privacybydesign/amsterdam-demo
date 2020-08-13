@@ -75,6 +75,7 @@ interface IAlertProps {
     color?: AlertColor;
     icon?: React.ReactNode;
     iconUrl?: string;
+    iconSize?: number;
     heading?: string;
     content?: string;
 }
@@ -85,30 +86,33 @@ export enum AlertColor {
     SUCCESS = 'success'
 }
 
-export const Alert = styled(({ children, icon, iconUrl, className, heading, content, color }: IAlertProps) => {
-    const iconColor = (color === AlertColor.PRIMARY || color === AlertColor.SUCCESS) && themeColor('tint', 'level1');
-    return (
-        <AscAlert className={className}>
-            <div className="alert-content">
-                {(icon || iconUrl) && (
-                    <Icon className="icon" size={14} iconUrl={iconUrl} color={iconColor}>
-                        {icon}
-                    </Icon>
-                )}
-                <div>
-                    {heading || content ? (
-                        <>
-                            {heading && <Heading forwardedAs="h3">{heading}</Heading>}
-                            <Paragraph>{content}</Paragraph>
-                        </>
-                    ) : (
-                        children
+export const Alert = styled(
+    ({ children, icon, iconUrl, iconSize = 14, className, heading, content, color }: IAlertProps) => {
+        const iconColor =
+            (color === AlertColor.PRIMARY || color === AlertColor.SUCCESS) && themeColor('tint', 'level1');
+        return (
+            <AscAlert className={className}>
+                <div className="alert-content">
+                    {(icon || iconUrl) && (
+                        <Icon className="icon" size={iconSize} iconUrl={iconUrl} color={iconColor}>
+                            {icon}
+                        </Icon>
                     )}
+                    <div>
+                        {heading || content ? (
+                            <>
+                                {heading && <Heading forwardedAs="h3">{heading}</Heading>}
+                                <Paragraph>{content}</Paragraph>
+                            </>
+                        ) : (
+                            children
+                        )}
+                    </div>
                 </div>
-            </div>
-        </AscAlert>
-    );
-})`
+            </AscAlert>
+        );
+    }
+)`
     margin-bottom: ${themeSpacing(4)};
 
     background-color: ${({ color }) => {
@@ -125,11 +129,11 @@ export const Alert = styled(({ children, icon, iconUrl, className, heading, cont
 
     .alert-content {
         display: flex;
-        align-items: baseline;
+        align-items: ${({ iconSize }) => (iconSize > 18 ? 'flex-start' : 'baseline')};
 
         .icon {
             margin-right: ${themeSpacing(4)};
-            min-width: 14px;
+            min-width: ${({ iconSize }) => iconSize}px;
             background-repeat: no-repeat;
         }
 

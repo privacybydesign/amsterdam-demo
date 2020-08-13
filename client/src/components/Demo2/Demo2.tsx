@@ -107,6 +107,7 @@ const Demo2: React.FC<IProps> = () => {
                 <AscLocal.Alert
                     color={AscLocal.AlertColor.ERROR}
                     icon={<AlertIcon />}
+                    iconSize={22}
                     heading={content.demoErrorAlert.heading}
                     content={content.demoErrorAlert.content}
                 />
@@ -125,6 +126,7 @@ const Demo2: React.FC<IProps> = () => {
                 <AscLocal.Alert
                     color={AscLocal.AlertColor.ERROR}
                     icon={<AlertIcon />}
+                    iconSize={22}
                     heading={content.demo2.proven.alert.title}
                     content={content.demo2.proven.alert.bodyAgeNegative.replace(regExp, wijk)}
                 />
@@ -134,6 +136,7 @@ const Demo2: React.FC<IProps> = () => {
                 <AscLocal.Alert
                     color={AscLocal.AlertColor.ERROR}
                     icon={<AlertIcon />}
+                    iconSize={22}
                     heading={content.demo2.proven.alert.title}
                     content={content.demo2.proven.alert.bodyPostcodeNegative}
                 />
@@ -143,6 +146,7 @@ const Demo2: React.FC<IProps> = () => {
                 <AscLocal.Alert
                     color={AscLocal.AlertColor.ERROR}
                     icon={<AlertIcon />}
+                    iconSize={22}
                     heading={content.demo2.proven.alert.title}
                     content={content.demo2.proven.alert.bodyAgeAndPostcodeNegative}
                 />

@@ -115,6 +115,7 @@ const Demo1: React.FC<IProps> = () => {
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.ERROR}
                         icon={<AlertIcon />}
+                        iconSize={22}
                         heading={content.demo1.isNotOver18.heading}
                         content={content.demo1.isNotOver18.content}
                     />
@@ -132,6 +133,7 @@ const Demo1: React.FC<IProps> = () => {
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.ERROR}
                         icon={<AlertIcon />}
+                        iconSize={22}
                         heading={content.demo1.isNotOver65.heading}
                         content={content.demo1.isNotOver65.content}
                     />
@@ -140,6 +142,7 @@ const Demo1: React.FC<IProps> = () => {
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.ERROR}
                         icon={<AlertIcon />}
+                        iconSize={22}
                         heading={content.demoErrorAlert.heading}
                         content={content.demoErrorAlert.content}
                     />

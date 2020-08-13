@@ -82,6 +82,7 @@ const Demo3: React.FC<IProps> = () => {
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.ERROR}
                         icon={<AlertIcon />}
+                        iconSize={22}
                         heading={content.demoErrorAlert.heading}
                         content={content.demoErrorAlert.content}
                     />
