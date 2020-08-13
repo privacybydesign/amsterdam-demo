@@ -129,6 +129,8 @@ export const Alert = styled(({ children, icon, iconUrl, className, heading, cont
 
         .icon {
             margin-right: ${themeSpacing(4)};
+            min-width: 14px;
+            background-repeat: no-repeat;
         }
 
         * {
