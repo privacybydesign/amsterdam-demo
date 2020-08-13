@@ -26,30 +26,32 @@ const Demo4: React.FC<IProps> = () => {
   const [street, setStreet] = useState<string>('');
   const [city, setCity] = useState<string>('');
   const [telephone, setTelephone] = useState<string>('');
+  const [isOwner, setIsOwner] = useState<string>('');
 
-  const onClick = async () => {
-    console.log('ONCLICK', formEl.current.querySelector('input[name=geveltuin]:checked'));
+  const validateForm = () => {
     const el = formEl.current.querySelector('input[name=geveltuin]:checked');
     if (el) {
       // form was filled in
       const value = el.getAttribute('value');
-
-      console.log('el', value);
-      await getSession();
+      setIsOwner(el.getAttribute('value'));
+      return true;
     }
+    return false;
   };
 
   const getSession = async () => {
-    console.log('GETSESSUION',);
-    const response = await createIrmaSession('demo4', 'irma-qr', credentialSource === CredentialSource.DEMO);
+    if (validateForm()) {
+      const response = await createIrmaSession('demo4', 'irma-qr', credentialSource === CredentialSource.DEMO);
 
-    setHasResult(true);
-    setName(response['fullname']);
-    setStreet(`${response['street']} ${response['houseNumber']}`);
-    setCity(`${response['zipcode']} ${response['city']}`);
-    setTelephone(response['mobilenumber']);
+      setHasResult(true);
+      setName(response['fullname']);
+      setStreet(`${response['street']} ${response['houseNumber']}`);
+      setCity(`${response['zipcode']} ${response['city']}`);
+      setTelephone(response['mobilenumber']);
 
-    window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
+
+    }
   };
 
   const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
@@ -71,6 +73,8 @@ const Demo4: React.FC<IProps> = () => {
     <PageTemplate>
       <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
 
+      {hasResult} {name} {street} {city} {telephone} {isOwner}
+
       <ReactMarkDown
         source={content.demo4.breadcrumbs}
         renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
@@ -79,7 +83,7 @@ const Demo4: React.FC<IProps> = () => {
       {!hasResult && <DemoNotification />}
 
       {hasResult && (
-        <AscLocal.GreenAlert
+        <AscLocal.Alert
           heading={content.demo4.proven.alert.title}
           content={content.demo4.proven.alert.body}
         />
@@ -114,10 +118,10 @@ const Demo4: React.FC<IProps> = () => {
             Bent u eigenaar van de woning waar de geveltuin komt?
             <RadioGroup name="geveltuin">
               <Label htmlFor="yes" label="Ja">
-                <Radio id="yes" variant="primary" value="yes" />
+                <Radio id="yes" variant="primary" value="Ja" />
               </Label>
               <Label htmlFor="no" label="Nee">
-                <Radio id="no" variant="primary" value="no" />
+                <Radio id="no" variant="primary" value="Nee" />
               </Label>
             </RadioGroup>
           </form>
@@ -127,7 +131,7 @@ const Demo4: React.FC<IProps> = () => {
             renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
           />
 
-          <QRCode getSession={onClick} label={content.demo4.button} />
+          <QRCode getSession={getSession} label={content.demo4.button} />
 
           <ReactMarkDown
             source={content.downloadIrma}
@@ -136,8 +140,6 @@ const Demo4: React.FC<IProps> = () => {
         </>
       ) : (
           <>
-            {name}, {street}, {city}, {telephone}
-
             <ReactMarkDown source={content.demo4.result} renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
 
             <ReactMarkDown source={content.callToAction} />
