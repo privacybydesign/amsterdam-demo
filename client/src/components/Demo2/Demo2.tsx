@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useReducer } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
 import getGGW from '@services/getGGW';
 import content from '@services/content';
@@ -20,74 +20,83 @@ import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 
 export interface IProps {}
 
+interface IState {
+    hasResult?: boolean;
+    hasError?: boolean;
+    isOver18?: null | boolean;
+    wijk?: string;
+    ggw?: string;
+    code?: string;
+}
+
+const initialState: IState = {
+    hasResult: false,
+    hasError: false,
+    isOver18: null,
+    wijk: '',
+    ggw: '',
+    code: ''
+};
+
+function reducer(state, newState) {
+    return { ...state, ...newState };
+}
+
 const Demo2: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
-    const [isOver18, setIsOver18] = useState<boolean>(false);
-    const [isPostcodeInArea, setIsPostcodeInArea] = useState<boolean>(false);
-    const [hasResult, setHasResult] = useState<boolean>(false);
-    const [wijk, setWijk] = useState<string>('');
-    const [ggw, setGgw] = useState<string>('');
-    const [code, setCode] = useState<string>('');
-    const [hasError, setHasError] = useState<boolean>(false);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     const getSession = async () => {
         const response = await createIrmaSession('demo2', 'irma-qr', credentialSource === CredentialSource.DEMO);
+        const newState: IState = { ...initialState };
         if (response) {
-            setIsOver18(response['over18'] === 'Yes');
             const postcode = response['zipcode'].replace(/ /, '');
-            setHasResult(true);
-            setHasError(false);
+            newState.hasResult = true;
+            newState.hasError = false;
 
             const ggwResponse = await getGGW(postcode);
+            newState.isOver18 = response['over18'] === 'Yes';
 
             if (ggwResponse) {
-                setIsPostcodeInArea(true);
-                setWijk(ggwResponse.buurtcombinatieNamen);
-                setCode(ggwResponse.ggwCode);
-                setGgw(ggwResponse.ggwNaam);
-            } else {
-                // error flow if location is not in Amsterdam
-                setIsPostcodeInArea(false);
+                newState.wijk = ggwResponse.buurtcombinatieNamen;
+                newState.code = ggwResponse.ggwCode;
+                newState.ggw = ggwResponse.ggwNaam;
             }
         } else {
-            setHasError(true);
+            newState.hasError = true;
         }
 
+        dispatch(newState);
         window.scrollTo(0, 0);
         return response;
     };
 
+    const { hasResult, hasError, isOver18, wijk, ggw, code } = state;
+
     const headerImg = useMemo((): IHeaderImageProps => {
         const regExp = /\[\]/;
 
-        if (wijk) {
+        if (!hasResult) {
+            return { filename: content.images.demo2.header.src, alt: content.images.demo2.header.alt };
+        } else if (wijk.length) {
             return {
                 filename: code ? `wijken/${code}` : content.images.demo2.headerWithAmsterdam.src,
                 alt: code
                     ? content.images.demo2.headerWithWijk.alt.replace(regExp, ggw)
                     : content.images.demo2.headerWithAmsterdam.alt
             };
-        } else if (!hasResult) {
-            return { filename: content.images.demo2.header.src, alt: content.images.demo2.header.alt };
-        } else if (isOver18 && isPostcodeInArea) {
-            return {
-                filename: content.images.demo2.ageAndPostcodePositive.src,
-                alt: content.images.demo2.ageAndPostcodePositive.alt
-            };
-        } else if (!isOver18 && isPostcodeInArea) {
-            return { filename: content.images.demo2.ageNegative.src, alt: content.images.demo2.ageNegative.alt };
-        } else if (isOver18 && !isPostcodeInArea) {
+        } else if (isOver18) {
             return {
                 filename: content.images.demo2.postcodeNegative.src,
                 alt: content.images.demo2.postcodeNegative.alt
             };
-        } else if (!isOver18 && !isPostcodeInArea) {
+        } else if (!isOver18) {
             return {
                 filename: content.images.demo2.ageAndPostcodeNegative.src,
                 alt: content.images.demo2.ageAndPostcodeNegative.alt
             };
         }
-    }, [hasResult, wijk, code, ggw, isOver18, isPostcodeInArea]);
+    }, [hasResult, wijk, code, ggw, isOver18]);
 
     const resultAlert: JSX.Element = useMemo(() => {
         const regExp = /\[\]/;
@@ -102,7 +111,7 @@ const Demo2: React.FC<IProps> = () => {
                     content={content.demoErrorAlert.content}
                 />
             );
-        } else if (isOver18 && isPostcodeInArea) {
+        } else if (isOver18 && wijk.length) {
             return (
                 <AscLocal.Alert
                     color={AscLocal.AlertColor.SUCCESS}
@@ -111,7 +120,7 @@ const Demo2: React.FC<IProps> = () => {
                     content={content.demo2.proven.alert.bodyAgeAndPostcodePositive.replace(regExp, wijk)}
                 />
             );
-        } else if (!isOver18 && isPostcodeInArea) {
+        } else if (!isOver18 && wijk.length) {
             return (
                 <AscLocal.Alert
                     color={AscLocal.AlertColor.ERROR}
@@ -120,7 +129,7 @@ const Demo2: React.FC<IProps> = () => {
                     content={content.demo2.proven.alert.bodyAgeNegative.replace(regExp, wijk)}
                 />
             );
-        } else if (isOver18 && !isPostcodeInArea) {
+        } else if (isOver18 && !wijk.length) {
             return (
                 <AscLocal.Alert
                     color={AscLocal.AlertColor.ERROR}
@@ -129,7 +138,7 @@ const Demo2: React.FC<IProps> = () => {
                     content={content.demo2.proven.alert.bodyPostcodeNegative}
                 />
             );
-        } else if (!isOver18 && !isPostcodeInArea) {
+        } else if (!isOver18 && !wijk.length) {
             return (
                 <AscLocal.Alert
                     color={AscLocal.AlertColor.ERROR}
@@ -139,7 +148,7 @@ const Demo2: React.FC<IProps> = () => {
                 />
             );
         }
-    }, [hasResult, hasError, isOver18, isPostcodeInArea, wijk]);
+    }, [hasResult, hasError, isOver18, wijk]);
 
     return (
         <PageTemplate>

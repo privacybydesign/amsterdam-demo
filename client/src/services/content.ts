@@ -215,8 +215,6 @@ De gemeente Amsterdam biedt u straks een keuze. U kunt straks inloggen in Mijn A
             header: { src: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' },
             headerWithWijk: { src: '', alt: 'Foto uit []' },
             headerWithAmsterdam: { src: 'amsterdam-algemeen', alt: 'Foto van het Centraal Station' },
-            ageAndPostcodePositive: { src: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' },
-            ageNegative: { src: 'ideeen-voor-buurt', alt: 'Straat met zingende meisjes' },
             postcodeNegative: { src: 'niet-amsterdammer-18plus', alt: 'Foto van verhuizing naar Amsterdam' },
             ageAndPostcodeNegative: {
                 src: 'niet-amsterdammer-18min',
