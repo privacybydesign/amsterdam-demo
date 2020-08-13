@@ -112,15 +112,14 @@ const Demo4: React.FC<IProps> = () => {
             </Accordion>
           </AscLocal.AccordionContainer>
 
-
           <AscLocal.H2>Demo-aanvraag Geveltuin</AscLocal.H2>
           <form ref={formEl} >
             Bent u eigenaar van de woning waar de geveltuin komt?
-            <RadioGroup name="geveltuin">
-              <Label htmlFor="yes" label="Ja">
+            <RadioGroup name="geveltuin" error={!isOwner}>
+              <Label htmlFor="yes" label="Ja" >
                 <Radio id="yes" variant="primary" value="Ja" />
               </Label>
-              <Label htmlFor="no" label="Nee">
+              <Label htmlFor="no" label="Nee" >
                 <Radio id="no" variant="primary" value="Nee" />
               </Label>
             </RadioGroup>
