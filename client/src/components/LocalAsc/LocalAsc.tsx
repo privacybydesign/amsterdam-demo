@@ -44,7 +44,7 @@ export const OL = styled.ol`
 
 export const Image = styled.img`
     width: 100%;
-    margin-bottom: ${themeSpacing(8)};
+    margin-bottom: ${themeSpacing(2)};
 `;
 
 export const DownloadImage = styled.img`
