@@ -161,7 +161,8 @@ Dit kan worden gebruikt voor:
     },
 
     demo3: {
-        breadcrumbs: `- [Home](/)`,
+        breadcrumbs: `- [Home](/)
+- [Demo 3: Inloggen met IRMA](/inloggen-met-irma)`,
         unproven: {
             title: `# Demo 3: Inloggen met IRMA`,
             alert: {
