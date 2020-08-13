@@ -61,40 +61,42 @@ const Demo3: React.FC<IProps> = () => {
         <PageTemplate>
             <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
 
-            <ReactMarkDown
-                source={content.demo3.breadcrumbs}
-                renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
-            />
-
-            {!hasResult && !hasError && <DemoNotification />}
-
-            {hasResult && !hasError && (
-                <AscLocal.Alert
-                    color={AscLocal.AlertColor.SUCCESS}
-                    icon={<Checkmark />}
-                    heading={content.demo3.proven.alert.title}
-                    content={content.demo3.proven.alert.body.replace(/\[\]/, name)}
+            <ContentBlock>
+                <ReactMarkDown
+                    source={content.demo3.breadcrumbs}
+                    renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
                 />
-            )}
 
-            {hasError && (
-                <AscLocal.Alert
-                    color={AscLocal.AlertColor.ERROR}
-                    icon={<AlertIcon />}
-                    heading={content.demoErrorAlert.heading}
-                    content={content.demoErrorAlert.content}
+                {!hasResult && !hasError && <DemoNotification />}
+
+                {hasResult && !hasError && (
+                    <AscLocal.Alert
+                        color={AscLocal.AlertColor.SUCCESS}
+                        icon={<Checkmark />}
+                        heading={content.demo3.proven.alert.title}
+                        content={content.demo3.proven.alert.body.replace(/\[\]/, name)}
+                    />
+                )}
+
+                {hasError && (
+                    <AscLocal.Alert
+                        color={AscLocal.AlertColor.ERROR}
+                        icon={<AlertIcon />}
+                        heading={content.demoErrorAlert.heading}
+                        content={content.demoErrorAlert.content}
+                    />
+                )}
+
+                <ReactMarkDown
+                    source={content.demo3[hasResult ? 'proven' : 'unproven'].title}
+                    renderers={{ heading: AscLocal.H1 }}
                 />
-            )}
-
-            <ReactMarkDown
-                source={content.demo3[hasResult ? 'proven' : 'unproven'].title}
-                renderers={{ heading: AscLocal.H1 }}
-            />
+            </ContentBlock>
 
             <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
 
             {!hasResult ? (
-                <>
+                <ContentBlock>
                     <ReactMarkDown
                         source={content.demo3.unproven.intro}
                         renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
@@ -115,7 +117,7 @@ const Demo3: React.FC<IProps> = () => {
                         source={content.downloadIrma}
                         renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
                     />
-                </>
+                </ContentBlock>
             ) : (
                 <AscLocal.Row>
                     <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
