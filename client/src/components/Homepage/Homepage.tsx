@@ -112,7 +112,7 @@ const ArticleContainer = styled.div`
         flex-direction: row;
         flex-wrap: wrap;
 
-        section {
+        a {
             flex-basis: calc(50% - 10px);
 
             &:nth-child(odd) {
