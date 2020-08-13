@@ -32,13 +32,13 @@ export const Paragraph = styled(AscParagraph)`
 `;
 
 export const UL = styled.ul`
-    line-height: 2.2em;
+    line-height: 2.1em;
     list-style-type: square;
     margin-top: 0;
 `;
 
 export const OL = styled.ol`
-    line-height: 2.2em;
+    line-height: 1.3em;
     margin-top: 0;
 `;
 
@@ -194,6 +194,7 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
 
 export const Row = styled(AscRow)`
     padding: 0;
+    margin: ${({ noMargin }) => (noMargin ? '0' : '0 auto')};
 `;
 
 export const Column = styled(AscColumn)`
