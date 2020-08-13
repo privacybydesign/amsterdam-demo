@@ -8,6 +8,8 @@ import content from '@services/content';
 interface IProps {}
 
 const WhyIRMA: React.FC<IProps> = () => {
+    // TODO: Remove this null return when the page actually exists
+    return null;
     return (
         <Container>
             <ReactMarkdown

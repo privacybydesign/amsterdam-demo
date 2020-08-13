@@ -62,14 +62,15 @@ const Homepage: React.FC<IProps> = () => (
             </AscLocal.Column>
             <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
                 <WhyIRMA />
-                <ReactMarkDown
+                {/* // TODO: Add this component again when the linked page actually exists */}
+                {/* <ReactMarkDown
                     source={content.home.sidebar.bottom}
                     renderers={{
                         heading: AscLocal.H2,
                         paragraph: AscLocal.StrongParagraph,
                         link: AscLocal.LinkWithChevron
                     }}
-                />
+                /> */}
             </AscLocal.Column>
         </AscLocal.Row>
     </PageTemplate>
