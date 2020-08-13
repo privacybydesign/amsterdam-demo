@@ -21,8 +21,8 @@ export interface IProps {}
 
 const Demo1: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
-    const [isOver18, setIsOver18] = useState<boolean>(false);
-    const [hasResult18, setHasResult18] = useState<boolean>(false);
+    const [isOver18, setIsOver18] = useState<boolean>(true);
+    const [hasResult18, setHasResult18] = useState<boolean>(true);
     const [isOver65, setIsOver65] = useState<boolean>(false);
     const [hasResult65, setHasResult65] = useState<boolean>(false);
     const [hasError, setHasError] = useState<boolean>(false);
@@ -152,91 +152,31 @@ const Demo1: React.FC<IProps> = () => {
             <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
 
             {!hasResult18 && !hasResult65 ? (
-                <ContentBlock>
-                    <ReactMarkDown
-                        source={content.demo1.intro}
-                        renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                    />
-
-                    <AscLocal.AccordionContainer>
-                        <Accordion title={content.demo1.why.title}>
-                            <ReactMarkDown
-                                source={content.demo1.why.body}
-                                renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                            />
-                        </Accordion>
-                    </AscLocal.AccordionContainer>
-
-                    <div>
-                        <QRCode getSession={getSessionOver18} label={content.demo1.button18} />
-                        <QRCode getSession={getSessionOver65} label={content.demo1.button65} />
-                    </div>
-
-                    <ReactMarkDown
-                        source={content.downloadIrma}
-                        renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
-                    />
-                </ContentBlock>
-            ) : (
-                <AscLocal.Row>
+                <AscLocal.Row noMargin>
                     <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
                         <ContentBlock>
-                            <ReactMarkDown source={content.noSavePromise} />
-                            <EmphasisBlock>
-                                <ReactMarkDown source={content.demo1.result.title} />
-                                {/* // TODO: Refactor renderers */}
-                                {hasResult18 && isOver18 && (
-                                    <ReactMarkDown
-                                        source={content.demo1.result.isOver18}
-                                        renderers={{
-                                            heading: AscLocal.H2,
-                                            paragraph: AscLocal.Paragraph,
-                                            list: AscLocal.UL
-                                        }}
-                                    />
-                                )}
-                                {hasResult18 && !isOver18 && (
-                                    <ReactMarkDown
-                                        source={content.demo1.result.isNotOver18}
-                                        renderers={{
-                                            heading: AscLocal.H2,
-                                            paragraph: AscLocal.Paragraph,
-                                            list: AscLocal.UL
-                                        }}
-                                    />
-                                )}
-                                {hasResult65 && isOver65 && (
-                                    <ReactMarkDown
-                                        source={content.demo1.result.isOver65}
-                                        renderers={{
-                                            heading: AscLocal.H2,
-                                            paragraph: AscLocal.Paragraph,
-                                            list: AscLocal.UL
-                                        }}
-                                    />
-                                )}
-                                {hasResult65 && !isOver65 && (
-                                    <ReactMarkDown
-                                        source={content.demo1.result.isNotOver65}
-                                        renderers={{
-                                            heading: AscLocal.H2,
-                                            paragraph: AscLocal.Paragraph,
-                                            list: AscLocal.UL
-                                        }}
-                                    />
-                                )}
-                                <ReactMarkDown
-                                    source={content.demo1.result.whatsDifferentWithIrma}
-                                    renderers={{
-                                        heading: AscLocal.H2,
-                                        paragraph: AscLocal.Paragraph,
-                                        list: AscLocal.UL
-                                    }}
-                                />
-                            </EmphasisBlock>
                             <ReactMarkDown
-                                source={content.callToAction}
+                                source={content.demo1.intro}
                                 renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            />
+
+                            <AscLocal.AccordionContainer>
+                                <Accordion title={content.demo1.why.title}>
+                                    <ReactMarkDown
+                                        source={content.demo1.why.body}
+                                        renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                    />
+                                </Accordion>
+                            </AscLocal.AccordionContainer>
+
+                            <div>
+                                <QRCode getSession={getSessionOver18} label={content.demo1.button18} />
+                                <QRCode getSession={getSessionOver65} label={content.demo1.button65} />
+                            </div>
+
+                            <ReactMarkDown
+                                source={content.downloadIrma}
+                                renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
                             />
                         </ContentBlock>
                     </AscLocal.Column>
@@ -244,6 +184,72 @@ const Demo1: React.FC<IProps> = () => {
                         <WhyIRMA />
                     </AscLocal.Column>
                 </AscLocal.Row>
+            ) : (
+                <>
+                    <ContentBlock>
+                        <ReactMarkDown source={content.noSavePromise} />
+                    </ContentBlock>
+                    <EmphasisBlock>
+                        <ContentBlock>
+                            <ReactMarkDown source={content.demo1.result.title} />
+                            {/* // TODO: Refactor renderers */}
+                            {hasResult18 && isOver18 && (
+                                <ReactMarkDown
+                                    source={content.demo1.result.isOver18}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL
+                                    }}
+                                />
+                            )}
+                            {hasResult18 && !isOver18 && (
+                                <ReactMarkDown
+                                    source={content.demo1.result.isNotOver18}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL
+                                    }}
+                                />
+                            )}
+                            {hasResult65 && isOver65 && (
+                                <ReactMarkDown
+                                    source={content.demo1.result.isOver65}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL
+                                    }}
+                                />
+                            )}
+                            {hasResult65 && !isOver65 && (
+                                <ReactMarkDown
+                                    source={content.demo1.result.isNotOver65}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL
+                                    }}
+                                />
+                            )}
+                            <ReactMarkDown
+                                source={content.demo1.result.whatsDifferentWithIrma}
+                                renderers={{
+                                    heading: AscLocal.H2,
+                                    paragraph: AscLocal.Paragraph,
+                                    list: AscLocal.UL
+                                }}
+                            />
+                        </ContentBlock>
+                    </EmphasisBlock>
+                    <ContentBlock>
+                        <ReactMarkDown
+                            source={content.callToAction}
+                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                        />
+                    </ContentBlock>
+                </>
             )}
         </PageTemplate>
     );

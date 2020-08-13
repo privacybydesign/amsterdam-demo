@@ -97,49 +97,51 @@ const Demo3: React.FC<IProps> = () => {
             <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
 
             {!hasResult ? (
-                <ContentBlock>
-                    <ReactMarkDown
-                        source={content.demo3.unproven.intro}
-                        renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                    />
-
-                    <AscLocal.AccordionContainer>
-                        <Accordion title={content.demo3.unproven.why.title}>
-                            <ReactMarkDown
-                                source={content.demo3.unproven.why.body}
-                                renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                            />
-                        </Accordion>
-                    </AscLocal.AccordionContainer>
-
-                    <QRCode getSession={getSession} label={content.demo3.button} />
-
-                    <ReactMarkDown
-                        source={content.downloadIrma}
-                        renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
-                    />
-                </ContentBlock>
-            ) : (
-                <AscLocal.Row>
+                <AscLocal.Row noMargin>
                     <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
                         <ContentBlock>
-                            <EmphasisBlock>
-                                <ReactMarkDown
-                                    source={content.demo3.result}
-                                    renderers={{
-                                        heading: AscLocal.H2,
-                                        paragraph: AscLocal.Paragraph,
-                                        list: AscLocal.UL
-                                    }}
-                                />
-                            </EmphasisBlock>
-                            <ReactMarkDown source={content.callToAction} />
+                            <ReactMarkDown
+                                source={content.demo3.unproven.intro}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            />
+
+                            <AscLocal.AccordionContainer>
+                                <Accordion title={content.demo3.unproven.why.title}>
+                                    <ReactMarkDown
+                                        source={content.demo3.unproven.why.body}
+                                        renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                    />
+                                </Accordion>
+                            </AscLocal.AccordionContainer>
+
+                            <QRCode getSession={getSession} label={content.demo3.button} />
+
+                            <ReactMarkDown
+                                source={content.downloadIrma}
+                                renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
+                            />
                         </ContentBlock>
                     </AscLocal.Column>
                     <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
                         <WhyIRMA />
                     </AscLocal.Column>
                 </AscLocal.Row>
+            ) : (
+                <>
+                    <ContentBlock>
+                        <EmphasisBlock>
+                            <ReactMarkDown
+                                source={content.demo3.result}
+                                renderers={{
+                                    heading: AscLocal.H2,
+                                    paragraph: AscLocal.Paragraph,
+                                    list: AscLocal.UL
+                                }}
+                            />
+                        </EmphasisBlock>
+                        <ReactMarkDown source={content.callToAction} />
+                    </ContentBlock>
+                </>
             )}
         </PageTemplate>
     );
