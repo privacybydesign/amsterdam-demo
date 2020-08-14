@@ -310,7 +310,7 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
 ** Uw keuze **\n
 geveltuin\n
 ** Bent u de eigenaar van de woning waar de geveltuin komt? **\n
-{isOwner}
+{owner}
 `,
             uwGegevens: `### Uw gegevens\n
 ** Naam **\n
