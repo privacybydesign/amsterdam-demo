@@ -324,6 +324,7 @@ geveltuin\n
 ** Telefoonnummer **\n
 {telephone}\n
 ** E-mail **\n
+{email}\n
 `,
             rest: `De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.
 
