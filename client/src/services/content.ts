@@ -316,8 +316,6 @@ geveltuin\n
 ** Naam **\n
 {name}\n
 ** Straat en huisnummer **\n
-{name}\n
-** Straat en huisnummer **\n
 {street}\n
 ** Postcode en plaats **\n
 {city}\n

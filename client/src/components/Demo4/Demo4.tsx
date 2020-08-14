@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useReducer } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
 import styled from 'styled-components';
 import content from '@services/content';
@@ -16,18 +16,40 @@ import { RadioGroup, Label, Radio } from '@datapunt/asc-ui';
 import QRCode from '@components/QRCode/QRCode';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 
+
 export interface IProps { }
 // @todo add error flow with incorrect data
+
+interface IState {
+  hasResult?: boolean;
+  hasError?: boolean;
+  name?: string;
+  street?: string;
+  city?: string;
+  telephone?: string;
+  email?: string;
+}
+
+const initialState: IState = {
+  hasResult: false,
+  hasError: false,
+  name: 'jgs',
+  street: 'ma 650',
+  city: 'asd',
+  telephone: '065',
+  email: ''
+};
+
+function reducer(state, newState) {
+  return { ...state, ...newState };
+}
 
 const Demo4: React.FC<IProps> = () => {
   const formEl = useRef(null);
 
   const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
-  const [hasResult, setHasResult] = useState<boolean>(0);
-  const [name, setName] = useState<string>('jgs');
-  const [street, setStreet] = useState<string>('ma 650');
-  const [city, setCity] = useState<string>('asd');
-  const [telephone, setTelephone] = useState<string>('06');
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   const [owner, setOwner] = useState<string>('Ja');
   const [formValid, setFormValid] = useState<boolean>(true);
 
@@ -47,13 +69,16 @@ const Demo4: React.FC<IProps> = () => {
   const getSession = async () => {
     if (validateForm()) {
       const response = await createIrmaSession('demo4', 'irma-qr', credentialSource === CredentialSource.DEMO);
-      console.log('----------------------'), response;
+      const newState: IState = { ...initialState };
 
-      setHasResult(true);
-      setName(response['fullname']);
-      setStreet(`${response['street']} ${response['houseNumber']}`);
-      setCity(`${response['zipcode']} ${response['city']}`);
-      setTelephone(response['mobilenumber']);
+      console.log('---------------------- 2', newState);
+
+      newState.hasResult = true;
+      newState.name = response['fullname'];
+      newState.street = `${response['street']} ${response['houseNumber']}`;
+      newState.city = `${response['zipcode']} ${response['city']}`;
+      newState.telephone = response['mobilenumber'];
+      dispatch(newState);
 
       window.scrollTo(0, 0);
     }
@@ -63,6 +88,12 @@ const Demo4: React.FC<IProps> = () => {
     filename: content.images.demo4.header.src,
     alt: content.images.demo4.header.alt
   });
+
+  const { hasResult, hasError, name, street, city, telephone } = state;
+
+  function replaceVars(str, p1, offset, s) {
+    return state[p1];
+  }
 
   // Update header image
   useEffect(() => {
@@ -151,7 +182,7 @@ const Demo4: React.FC<IProps> = () => {
             </AscLocal.GreyContainer>
 
             <AscLocal.GreyContainer>
-              <ReactMarkDown source={content.demo4.result.uwGegevens} renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
+              <ReactMarkDown source={content.demo4.result.uwGegevens.replace(/\{(.*?)\}/gm, replaceVars)} renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
             </AscLocal.GreyContainer>
 
             <ReactMarkDown source={content.demo4.result.rest} renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
