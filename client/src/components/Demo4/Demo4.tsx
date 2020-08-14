@@ -28,7 +28,7 @@ const Demo4: React.FC<IProps> = () => {
   const [street, setStreet] = useState<string>('ma 650');
   const [city, setCity] = useState<string>('asd');
   const [telephone, setTelephone] = useState<string>('06');
-  const [isOwner, setIsOwner] = useState<string>('Ja');
+  const [owner, setOwner] = useState<string>('Ja');
   const [formValid, setFormValid] = useState<boolean>(true);
 
   const validateForm = () => {
@@ -36,7 +36,7 @@ const Demo4: React.FC<IProps> = () => {
     if (el) {
       // form was filled in
       const value = el.getAttribute('value');
-      setIsOwner(el.getAttribute('value'));
+      setOwner(el.getAttribute('value'));
       setFormValid(true);
       return true;
     }
@@ -78,7 +78,7 @@ const Demo4: React.FC<IProps> = () => {
     <PageTemplate>
       <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
 
-      {hasResult ? 'yes' : 'no'} {name} {street} {city} {telephone} {isOwner}
+      {hasResult ? 'yes' : 'no'} {name} {street} {city} {telephone} {owner}
 
       <ReactMarkDown
         source={content.demo4.breadcrumbs}
