@@ -195,11 +195,10 @@ De gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de
 ## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om in te loggen.
 - U heeft uw burgerservicenummer (BSN) en uw naam aan de demosite van Mijn Amsterdam doorgegeven via IRMA.
-- Met uw burgerservicenummer (BSN) kan de gemeente uw gegevens ophalen en in ‘Mijn Amsterdam’ aan u tonen.
 
 ## Wat is er anders met IRMA?
 De gemeente Amsterdam biedt u straks een keuze. U kunt straks inloggen in Mijn Amsterdam met DigiD of met IRMA.
-`
+- Met uw burgerservicenummer (BSN) kan de gemeente uw gegevens ophalen en in ‘Mijn Amsterdam’ aan u tonen.`
     },
 
     images: {
