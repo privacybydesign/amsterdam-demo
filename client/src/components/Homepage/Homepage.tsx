@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import BreadCrumbs from '@components/BreadCrumbs';
-import { Accordion, themeSpacing, Button, breakpoint } from '@datapunt/asc-ui';
+import { Accordion, breakpoint, Link } from '@datapunt/asc-ui';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import ReactMarkDown from 'react-markdown';
 import content from '@services/content';
@@ -28,7 +28,7 @@ const Homepage: React.FC<IProps> = () => (
                     <Accordion title={content.home.requirements.title} id="nodig">
                         <ReactMarkDown
                             source={content.home.requirements.body}
-                            renderers={{ heading: AscLocal.H2, list: AscLocal.UL, image: DownloadButton }}
+                            renderers={{ heading: AscLocal.H2, list: AscLocal.UL, image: DownloadButton, link: Link }}
                         />
                     </Accordion>
                 </AscLocal.AccordionContainer>
@@ -62,14 +62,15 @@ const Homepage: React.FC<IProps> = () => (
             </AscLocal.Column>
             <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
                 <WhyIRMA />
-                <ReactMarkDown
+                {/* // TODO: Add this component again when the linked page actually exists */}
+                {/* <ReactMarkDown
                     source={content.home.sidebar.bottom}
                     renderers={{
                         heading: AscLocal.H2,
                         paragraph: AscLocal.StrongParagraph,
                         link: AscLocal.LinkWithChevron
                     }}
-                />
+                /> */}
             </AscLocal.Column>
         </AscLocal.Row>
     </PageTemplate>
@@ -83,13 +84,13 @@ interface IDownloadButtonProps {
 }
 
 const DownloadButton = styled(({ alt, title, src, className }: IDownloadButtonProps) => {
-    return <Button variant="blank" icon={<AscLocal.Image src={src} alt={alt} title={title} />} className={className} />;
+    return <AscLocal.Image src={src} alt={alt} title={title} className={className} />;
 })`
     display: inline-block;
     width: auto;
     height: 40px;
     padding: 0;
-    margin-right: ${themeSpacing(3)};
+    margin: 2px;
 
     span {
         width: 100%;
@@ -111,7 +112,7 @@ const ArticleContainer = styled.div`
         flex-direction: row;
         flex-wrap: wrap;
 
-        section {
+        a {
             flex-basis: calc(50% - 10px);
 
             &:nth-child(odd) {
