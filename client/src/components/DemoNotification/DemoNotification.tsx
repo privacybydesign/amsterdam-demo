@@ -1,13 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import content from '@services/content';
-import { breakpoint, themeSpacing } from '@datapunt/asc-ui';
+import FullWidthContainer from '@components/FullWidthContainer/FullWidthContainer'
 
-interface IProps {}
+interface IProps { }
 
 const DemoNotification: React.FC<IProps> = () => (
-    <FullWidthAlert
+    <FullWidthContainer
         color={AscLocal.AlertColor.PRIMARY}
         iconUrl="assets/icon-info.svg"
         iconSize={14}
@@ -15,14 +14,5 @@ const DemoNotification: React.FC<IProps> = () => (
         content={content.demoNotification.content}
     />
 );
-
-const FullWidthAlert = styled(AscLocal.Alert)`
-    @media ${breakpoint('max-width', 'tabletM')} {
-        display: block;
-        margin-left: -${themeSpacing(5)};
-        margin-right: -${themeSpacing(5)};
-        width: auto;
-    }
-`;
 
 export default DemoNotification;
