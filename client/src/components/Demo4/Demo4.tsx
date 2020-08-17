@@ -17,8 +17,7 @@ import QRCode from '@components/QRCode/QRCode';
 import reducer from './reducer';
 
 
-export interface IProps { }
-// @todo add error flow with incorrect data
+export interface IProps { };
 
 interface IState {
   hasResult?: boolean;
@@ -39,8 +38,6 @@ const initialState: IState = {
   telephone: '065',
   email: ''
 };
-
-
 
 const Demo4: React.FC<IProps> = () => {
   const formEl = useRef(null);
