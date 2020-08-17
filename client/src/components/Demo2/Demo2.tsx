@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useReducer } from 'react';
+import React, { useState, useMemo, useEffect, useReducer } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
 import getGGW from '@services/getGGW';
 import content from '@services/content';
@@ -17,6 +17,7 @@ import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { Checkmark } from '@datapunt/asc-assets';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
+import preloadDemoImages from '@services/preloadImages';
 
 export interface IProps {}
 
@@ -73,27 +74,39 @@ const Demo2: React.FC<IProps> = () => {
 
     const { hasResult, hasError, isOver18, wijk, ggw, code } = state;
 
+    // Preload demo images
+    useEffect(() => {
+        // Note that we're not preloading all the 'wijk'-photos
+        preloadDemoImages(
+            Object.keys(content.responsiveImages.demo2).map(key => content.responsiveImages.demo2[key].src)
+        );
+    }, []);
+
+    // Define dynamic header image
     const headerImg = useMemo((): IHeaderImageProps => {
         const regExp = /\[\]/;
 
         if (!hasResult) {
-            return { filename: content.images.demo2.header.src, alt: content.images.demo2.header.alt };
+            return {
+                filename: content.responsiveImages.demo2.header.src,
+                alt: content.responsiveImages.demo2.header.alt
+            };
         } else if (wijk.length) {
             return {
-                filename: code ? `wijken/${code}` : content.images.demo2.headerWithAmsterdam.src,
+                filename: code ? `wijken/${code}` : content.responsiveImages.demo2.headerWithAmsterdam.src,
                 alt: code
-                    ? content.images.demo2.headerWithWijk.alt.replace(regExp, ggw)
-                    : content.images.demo2.headerWithAmsterdam.alt
+                    ? content.responsiveImages.demo2.headerWithWijk.alt.replace(regExp, ggw)
+                    : content.responsiveImages.demo2.headerWithAmsterdam.alt
             };
         } else if (isOver18) {
             return {
-                filename: content.images.demo2.postcodeNegative.src,
-                alt: content.images.demo2.postcodeNegative.alt
+                filename: content.responsiveImages.demo2.postcodeNegative.src,
+                alt: content.responsiveImages.demo2.postcodeNegative.alt
             };
         } else if (!isOver18) {
             return {
-                filename: content.images.demo2.ageAndPostcodeNegative.src,
-                alt: content.images.demo2.ageAndPostcodeNegative.alt
+                filename: content.responsiveImages.demo2.ageAndPostcodeNegative.src,
+                alt: content.responsiveImages.demo2.ageAndPostcodeNegative.alt
             };
         }
     }, [hasResult, wijk, code, ggw, isOver18]);
@@ -173,11 +186,22 @@ const Demo2: React.FC<IProps> = () => {
             <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
             {!hasResult ? (
                 <AscLocal.Row noMargin>
-                    <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
+                    <AscLocal.Column
+                        span={{
+                            small: 1,
+                            medium: 2,
+                            big: 6,
+                            large: 9,
+                            xLarge: 9
+                        }}
+                    >
                         <ContentBlock>
                             <ReactMarkDown
                                 source={content.demo2.intro}
-                                renderers={{ heading: AscLocal.H2, list: AscLocal.UL }}
+                                renderers={{
+                                    heading: AscLocal.H2,
+                                    list: AscLocal.UL
+                                }}
                             />
                             <AscLocal.AccordionContainer>
                                 <Accordion title={content.demo2.why.title}>
@@ -193,11 +217,22 @@ const Demo2: React.FC<IProps> = () => {
                             <QRCode getSession={getSession} label={content.demo2.button} />
                             <ReactMarkDown
                                 source={content.downloadIrma}
-                                renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
+                                renderers={{
+                                    paragraph: AscLocal.Paragraph,
+                                    link: ExternalLink
+                                }}
                             />
                         </ContentBlock>
                     </AscLocal.Column>
-                    <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
+                    <AscLocal.Column
+                        span={{
+                            small: 1,
+                            medium: 2,
+                            big: 6,
+                            large: 3,
+                            xLarge: 3
+                        }}
+                    >
                         <WhyIRMA />
                     </AscLocal.Column>
                 </AscLocal.Row>

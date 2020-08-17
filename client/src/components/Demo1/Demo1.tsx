@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import createIrmaSession from '@services/createIrmaSession';
-import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
-import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion } from '@datapunt/asc-ui';
 import { Alert as AlertIcon } from '@datapunt/asc-assets';
 import { Checkmark } from '@datapunt/asc-assets';
+import createIrmaSession from '@services/createIrmaSession';
+import content from '@services/content';
+import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
@@ -16,6 +16,7 @@ import QRCode from '@components/QRCode/QRCode';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
+import preloadDemoImages from '@services/preloadImages';
 
 export interface IProps {}
 
@@ -55,21 +56,31 @@ const Demo1: React.FC<IProps> = () => {
         return response;
     };
 
+    // Preload demo images
+    useEffect(() => {
+        preloadDemoImages(
+            Object.keys(content.responsiveImages.demo1).map(key => content.responsiveImages.demo1[key].src)
+        );
+    }, []);
+
     // Define dynamic header image
     const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
-        filename: content.images.demo1.header.src,
-        alt: content.images.demo1.header.alt
+        filename: content.responsiveImages.demo1.header.src,
+        alt: content.responsiveImages.demo1.header.alt
     });
 
     // Update header image for 18+
     useEffect(() => {
         if (hasResult18) {
             if (isOver18) {
-                setHeaderImg({ filename: content.images.demo1.isOver18.src, alt: content.images.demo1.isOver18.alt });
+                setHeaderImg({
+                    filename: content.responsiveImages.demo1.isOver18.src,
+                    alt: content.responsiveImages.demo1.isOver18.alt
+                });
             } else {
                 setHeaderImg({
-                    filename: content.images.demo1.isNotOver18.src,
-                    alt: content.images.demo1.isNotOver18.alt
+                    filename: content.responsiveImages.demo1.isNotOver18.src,
+                    alt: content.responsiveImages.demo1.isNotOver18.alt
                 });
             }
         }
@@ -79,11 +90,14 @@ const Demo1: React.FC<IProps> = () => {
     useEffect(() => {
         if (hasResult65) {
             if (isOver65) {
-                setHeaderImg({ filename: content.images.demo1.isOver65.src, alt: content.images.demo1.isOver65.alt });
+                setHeaderImg({
+                    filename: content.responsiveImages.demo1.isOver65.src,
+                    alt: content.responsiveImages.demo1.isOver65.alt
+                });
             } else {
                 setHeaderImg({
-                    filename: content.images.demo1.isNotOver65.src,
-                    alt: content.images.demo1.isNotOver65.alt
+                    filename: content.responsiveImages.demo1.isNotOver65.src,
+                    alt: content.responsiveImages.demo1.isNotOver65.alt
                 });
             }
         }

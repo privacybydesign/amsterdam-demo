@@ -16,6 +16,7 @@ import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { Checkmark } from '@datapunt/asc-assets';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
+import preloadDemoImages from '@services/preloadImages';
 
 export interface IProps {}
 // @todo add error flow with incorrect data
@@ -43,16 +44,23 @@ const Demo3: React.FC<IProps> = () => {
 
     // Define dynamic header image
     const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
-        filename: content.images.demo3.header.src,
-        alt: content.images.demo3.header.alt
+        filename: content.responsiveImages.demo3.header.src,
+        alt: content.responsiveImages.demo3.header.alt
     });
+
+    // Preload demo images
+    useEffect(() => {
+        preloadDemoImages(
+            Object.keys(content.responsiveImages.demo3).map(key => content.responsiveImages.demo3[key].src)
+        );
+    }, []);
 
     // Update header image for 18+
     useEffect(() => {
         if (hasResult) {
             setHeaderImg({
-                filename: content.images.demo3.headerResult.src,
-                alt: content.images.demo3.headerResult.alt
+                filename: content.responsiveImages.demo3.headerResult.src,
+                alt: content.responsiveImages.demo3.headerResult.alt
             });
         }
     }, [hasResult]);
@@ -99,18 +107,33 @@ const Demo3: React.FC<IProps> = () => {
 
             {!hasResult ? (
                 <AscLocal.Row noMargin>
-                    <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
+                    <AscLocal.Column
+                        span={{
+                            small: 1,
+                            medium: 2,
+                            big: 6,
+                            large: 9,
+                            xLarge: 9
+                        }}
+                    >
                         <ContentBlock>
                             <ReactMarkDown
                                 source={content.demo3.unproven.intro}
-                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                renderers={{
+                                    heading: AscLocal.H2,
+                                    paragraph: AscLocal.Paragraph,
+                                    list: AscLocal.UL
+                                }}
                             />
 
                             <AscLocal.AccordionContainer>
                                 <Accordion title={content.demo3.unproven.why.title}>
                                     <ReactMarkDown
                                         source={content.demo3.unproven.why.body}
-                                        renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                        renderers={{
+                                            paragraph: AscLocal.Paragraph,
+                                            list: AscLocal.UL
+                                        }}
                                     />
                                 </Accordion>
                             </AscLocal.AccordionContainer>
@@ -119,11 +142,22 @@ const Demo3: React.FC<IProps> = () => {
 
                             <ReactMarkDown
                                 source={content.downloadIrma}
-                                renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
+                                renderers={{
+                                    paragraph: AscLocal.Paragraph,
+                                    link: ExternalLink
+                                }}
                             />
                         </ContentBlock>
                     </AscLocal.Column>
-                    <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
+                    <AscLocal.Column
+                        span={{
+                            small: 1,
+                            medium: 2,
+                            big: 6,
+                            large: 3,
+                            xLarge: 3
+                        }}
+                    >
                         <WhyIRMA />
                     </AscLocal.Column>
                 </AscLocal.Row>

@@ -202,7 +202,7 @@ De gemeente Amsterdam biedt u straks een keuze. U kunt straks inloggen in Mijn A
 - Met uw burgerservicenummer (BSN) kan de gemeente uw gegevens ophalen en in ‘Mijn Amsterdam’ aan u tonen.`
     },
 
-    images: {
+    responsiveImages: {
         demo1: {
             header: { src: 'leeftijd', alt: 'Stadsbeeld van een terras' },
             isOver18: { src: 'ouder-dan-18', alt: 'Foto van mensen in een café' },
