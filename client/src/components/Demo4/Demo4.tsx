@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { Accordion, Paragraph, themeColor, themeSpacing } from '@datapunt/asc-ui';
+import { Accordion, Paragraph, themeColor, themeSpacing, ErrorMessage } from '@datapunt/asc-ui';
 import { Checkmark } from '@datapunt/asc-assets';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
@@ -22,6 +22,7 @@ export interface IProps { };
 interface IState {
   hasResult?: boolean;
   hasError?: boolean;
+  formValid?: boolean;
   name?: string;
   street?: string;
   city?: string;
@@ -32,6 +33,7 @@ interface IState {
 const initialState: IState = {
   hasResult: false,
   hasError: false,
+  formValid: true,
   name: 'jgs',
   street: 'ma 650',
   city: 'asd',
@@ -44,9 +46,6 @@ const Demo4: React.FC<IProps> = () => {
 
   const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  const [owner, setOwner] = useState<string>('Ja');
-  const [formValid, setFormValid] = useState<boolean>(true);
 
   const validateForm = () => {
     const el = formEl.current.querySelector('input[name=geveltuin]:checked');
@@ -92,7 +91,7 @@ const Demo4: React.FC<IProps> = () => {
     alt: content.images.demo4.header.alt
   });
 
-  const { hasResult, hasError, name, street, city, telephone } = state;
+  const { hasResult, hasError, name, street, city, telephone, formValid, owner } = state;
 
   function replaceVars(str, p1, offset, s) {
     return state[p1];
@@ -155,7 +154,8 @@ const Demo4: React.FC<IProps> = () => {
 
           <AscLocal.H2>Demo-aanvraag Geveltuin</AscLocal.H2>
           <form ref={formEl} >
-            Bent u eigenaar van de woning waar de geveltuin komt?
+            <ReactMarkDown source={content.demo4.form.onwer} renderers={{ paragraph: AscLocal.Paragraph }} />
+
             <RadioGroup name="geveltuin" error={!formValid}>
               <Label htmlFor="yes" label="Ja" >
                 <Radio id="yes" variant="primary" value="Ja" />
@@ -164,6 +164,7 @@ const Demo4: React.FC<IProps> = () => {
                 <Radio id="no" variant="primary" value="Nee" />
               </Label>
             </RadioGroup>
+            {!formValid && <ErrorMessage message="This a required field" />}
           </form>
 
           <ReactMarkDown

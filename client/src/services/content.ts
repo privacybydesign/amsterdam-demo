@@ -303,6 +303,9 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
                 body: `U heeft een formulier ingevuld met uw naam, adres en contactgegevens.`,
             }
         },
+        form: {
+            onwer: 'Bent u eigenaar van de woning waar de geveltuin komt?'
+        },
         button: 'Aanvullen met IRMA',
 
         result: {
