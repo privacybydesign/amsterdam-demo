@@ -154,7 +154,7 @@ const Demo4: React.FC<IProps> = () => {
 
           <AscLocal.H2>Demo-aanvraag Geveltuin</AscLocal.H2>
           <form ref={formEl} >
-            <ReactMarkDown source={content.demo4.form.onwer} renderers={{ paragraph: AscLocal.Paragraph }} />
+            <ReactMarkDown source={content.demo4.form.owner} renderers={{ paragraph: AscLocal.Paragraph }} />
 
             <RadioGroup name="geveltuin" error={!formValid}>
               <Label htmlFor="yes" label="Ja" >
@@ -164,7 +164,7 @@ const Demo4: React.FC<IProps> = () => {
                 <Radio id="no" variant="primary" value="Nee" />
               </Label>
             </RadioGroup>
-            {!formValid && <ErrorMessage message="This a required field" />}
+            {!formValid && <ErrorMessage message={content.demo4.form.required} />}
           </form>
 
           <ReactMarkDown
