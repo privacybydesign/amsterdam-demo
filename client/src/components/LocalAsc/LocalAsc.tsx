@@ -1,16 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
-import { breakpoint, Icon, Link } from '@datapunt/asc-ui';
-
+import React, { useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 import {
     Heading,
+    breakpoint,
+    Icon,
+    Link,
     Paragraph as AscParagraph,
     themeSpacing,
     Alert as AscAlert,
     Header as AscHeader,
     Row as AscRow,
     Column as AscColumn,
-    themeColor
+    themeColor,
+    Theme
 } from '@datapunt/asc-ui';
 
 const lineHeight = '1.3em';
@@ -88,8 +90,10 @@ export enum AlertColor {
 
 export const Alert = styled(
     ({ children, icon, iconUrl, iconSize, className, heading, content, color }: IAlertProps) => {
+        const themeContext = { theme: useContext(ThemeContext) as Theme.ThemeInterface };
         const iconColor =
-            (color === AlertColor.PRIMARY || color === AlertColor.SUCCESS) && themeColor('tint', 'level1');
+            (color === AlertColor.PRIMARY || color === AlertColor.SUCCESS) &&
+            themeColor('tint', 'level1')(themeContext);
         return (
             <AscAlert className={className}>
                 <div className="alert-content">
