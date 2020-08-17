@@ -15,7 +15,7 @@ import {
     Theme
 } from '@datapunt/asc-ui';
 
-const lineHeight = '1.3em';
+const lineHeight = '24px';
 
 export const H1 = styled(Heading)`
     line-height: ${lineHeight};
@@ -34,14 +34,33 @@ export const Paragraph = styled(AscParagraph)`
 `;
 
 export const UL = styled.ul`
-    line-height: 2.1em;
-    list-style-type: square;
+    line-height: ${lineHeight};
+    list-style: none;
     margin-top: 0;
+    padding: 0;
+
+    li {
+        margin-bottom: ${themeSpacing(4)};
+        margin-left: ${themeSpacing(4)};
+        display: flex;
+
+        &:before {
+            content: '■';
+            font-size: 16px;
+            position: relative;
+            top: -1px;
+            padding-right: ${themeSpacing(4)};
+        }
+    }
 `;
 
 export const OL = styled.ol`
-    line-height: 1.3em;
+    line-height: ${lineHeight};
     margin-top: 0;
+
+    li p {
+        margin-left: ${themeSpacing(4)};
+    }
 `;
 
 export const Image = styled.img`
