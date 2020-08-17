@@ -107,6 +107,7 @@ const Demo1: React.FC<IProps> = () => {
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.SUCCESS}
                         icon={<Checkmark />}
+                        iconSize={14}
                         heading={content.demo1.isOver18.heading}
                         content={content.demo1.isOver18.content}
                     />
@@ -125,6 +126,7 @@ const Demo1: React.FC<IProps> = () => {
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.SUCCESS}
                         icon={<Checkmark />}
+                        iconSize={14}
                         heading={content.demo1.isOver65.heading}
                         content={content.demo1.isOver65.content}
                     />

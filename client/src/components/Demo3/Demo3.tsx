@@ -73,6 +73,7 @@ const Demo3: React.FC<IProps> = () => {
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.SUCCESS}
                         icon={<Checkmark />}
+                        iconSize={14}
                         heading={content.demo3.proven.alert.title}
                         content={content.demo3.proven.alert.body.replace(/\[\]/, name)}
                     />

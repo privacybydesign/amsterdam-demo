@@ -117,6 +117,7 @@ const Demo2: React.FC<IProps> = () => {
                 <AscLocal.Alert
                     color={AscLocal.AlertColor.SUCCESS}
                     icon={<Checkmark />}
+                    iconSize={14}
                     heading={content.demo2.proven.alert.title}
                     content={content.demo2.proven.alert.bodyAgeAndPostcodePositive.replace(regExp, wijk)}
                 />

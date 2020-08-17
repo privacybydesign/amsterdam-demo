@@ -87,7 +87,7 @@ export enum AlertColor {
 }
 
 export const Alert = styled(
-    ({ children, icon, iconUrl, iconSize = 14, className, heading, content, color }: IAlertProps) => {
+    ({ children, icon, iconUrl, iconSize, className, heading, content, color }: IAlertProps) => {
         const iconColor =
             (color === AlertColor.PRIMARY || color === AlertColor.SUCCESS) && themeColor('tint', 'level1');
         return (
