@@ -268,7 +268,7 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
                 title: `Uw naam en burgerservicenummer`,
                 body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`,
             },
-            intro1: `Met IRMA kunt u een aanvraag doen en hierin gegevens gebruiken die in uw IRMA-app staan.
+            intro1: `Met IRMA kunt u een aanvraag doen en hierin gegevens gebruiken die in uw IRMA-app staan.\n
 U hoeft minder in te vullen en de gemeente weet zeker dat u de aanvraag doet en dat de gegevens juist zijn.
 
 ## Probeer het uit
