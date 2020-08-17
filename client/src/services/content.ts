@@ -191,9 +191,7 @@ De gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de
             }
         },
         button: 'Inloggen met IRMA',
-        result: `De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.
-
-## Wat heeft u zojuist gedaan?
+        result: `## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om in te loggen.
 - U heeft uw burgerservicenummer (BSN) en uw naam aan de demosite van Mijn Amsterdam doorgegeven via IRMA.
 
@@ -202,7 +200,7 @@ De gemeente Amsterdam biedt u straks een keuze. U kunt straks inloggen in Mijn A
 - Met uw burgerservicenummer (BSN) kan de gemeente uw gegevens ophalen en in ‘Mijn Amsterdam’ aan u tonen.`
     },
 
-    images: {
+    responsiveImages: {
         demo1: {
             header: { src: 'leeftijd', alt: 'Stadsbeeld van een terras' },
             isOver18: { src: 'ouder-dan-18', alt: 'Foto van mensen in een café' },

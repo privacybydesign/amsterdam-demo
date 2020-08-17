@@ -35,24 +35,24 @@ const Homepage: React.FC<IProps> = () => (
                 <ReactMarkDown source={content.home.subtitle} renderers={{ heading: AscLocal.H2 }} />
                 <ArticleContainer>
                     <Article
-                        imageSrc={content.images.demo1.header.src}
-                        imageAlt={content.images.demo1.header.alt}
+                        imageSrc={content.responsiveImages.demo1.header.src}
+                        imageAlt={content.responsiveImages.demo1.header.alt}
                         title={content.home.demo1Card.title}
                         href={AppRoutes.DEMO1.path}
                     >
                         <ReactMarkDown source={content.home.demo1Card.body} />
                     </Article>
                     <Article
-                        imageSrc={content.images.demo2.header.src}
-                        imageAlt={content.images.demo2.header.alt}
+                        imageSrc={content.responsiveImages.demo2.header.src}
+                        imageAlt={content.responsiveImages.demo2.header.alt}
                         title={content.home.demo2Card.title}
                         href={AppRoutes.DEMO2.path}
                     >
                         <ReactMarkDown source={content.home.demo2Card.body} />
                     </Article>
                     <Article
-                        imageSrc={content.images.demo3.header.src}
-                        imageAlt={content.images.demo3.header.alt}
+                        imageSrc={content.responsiveImages.demo3.header.src}
+                        imageAlt={content.responsiveImages.demo3.header.alt}
                         title={content.home.demo3Card.title}
                         href={AppRoutes.DEMO3.path}
                     >

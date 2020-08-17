@@ -1,19 +1,21 @@
-import React from 'react';
-import styled from 'styled-components';
-import { breakpoint, Icon, Link } from '@datapunt/asc-ui';
-
+import React, { useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 import {
     Heading,
+    breakpoint,
+    Icon,
+    Link,
     Paragraph as AscParagraph,
     themeSpacing,
     Alert as AscAlert,
     Header as AscHeader,
     Row as AscRow,
     Column as AscColumn,
-    themeColor
+    themeColor,
+    Theme
 } from '@datapunt/asc-ui';
 
-const lineHeight = '1.3em';
+const lineHeight = '24px';
 
 export const H1 = styled(Heading)`
     line-height: ${lineHeight};
@@ -32,14 +34,33 @@ export const Paragraph = styled(AscParagraph)`
 `;
 
 export const UL = styled.ul`
-    line-height: 2.1em;
-    list-style-type: square;
+    line-height: ${lineHeight};
+    list-style: none;
     margin-top: 0;
+    padding: 0;
+
+    li {
+        margin-bottom: ${themeSpacing(4)};
+        margin-left: ${themeSpacing(4)};
+        display: flex;
+
+        &:before {
+            content: '■';
+            font-size: 16px;
+            position: relative;
+            top: -1px;
+            padding-right: ${themeSpacing(4)};
+        }
+    }
 `;
 
 export const OL = styled.ol`
-    line-height: 1.3em;
+    line-height: ${lineHeight};
     margin-top: 0;
+
+    li p {
+        margin-left: ${themeSpacing(4)};
+    }
 `;
 
 export const Image = styled.img`
@@ -87,9 +108,11 @@ export enum AlertColor {
 }
 
 export const Alert = styled(
-    ({ children, icon, iconUrl, iconSize = 14, className, heading, content, color }: IAlertProps) => {
+    ({ children, icon, iconUrl, iconSize, className, heading, content, color }: IAlertProps) => {
+        const themeContext = { theme: useContext(ThemeContext) as Theme.ThemeInterface };
         const iconColor =
-            (color === AlertColor.PRIMARY || color === AlertColor.SUCCESS) && themeColor('tint', 'level1');
+            (color === AlertColor.PRIMARY || color === AlertColor.SUCCESS) &&
+            themeColor('tint', 'level1')(themeContext);
         return (
             <AscAlert className={className}>
                 <div className="alert-content">
@@ -158,14 +181,20 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
         width: 'auto',
         flex: 1,
         '&::after': { backgroundColor: themeColor('tint', 'level2'), marginLeft: -188, marginRight: -188 },
-        margin: `0 -${theme.spacing * 5}px`,
         paddingLeft: 32,
+        [`@media ${theme.breakpoints.laptopM('max-width')}`]: {
+            marginLeft: '-32px',
+            marginRight: '-32px',
+            minHeight: 68
+        },
         [`@media ${theme.breakpoints.tabletM('min-width')}`]: {
-            margin: `0 -${theme.spacing * 6}px`,
+            marginLeft: '-38px',
+            marginRight: '-38px',
             paddingLeft: 38
         },
         [`@media ${theme.breakpoints.laptop('min-width')}`]: {
-            margin: `0 -${theme.spacing * 8}px`,
+            marginLeft: '-46px',
+            marginRight: '-46px',
             paddingLeft: 46
         },
         [`@media ${theme.breakpoints.laptopM('min-width')}`]: {
@@ -176,13 +205,19 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
     padding: 0;
 
     &&& {
-        h1:first-child {
-            margin-left: -28px;
+        @media ${breakpoint('max-width', 'laptopM')} {
+            height: 68px;
+            h1:first-child a {
+                width: 110px;
+                height: auto;
+                margin-top: ${themeSpacing(2)};
+            }
         }
 
         @media ${breakpoint('min-width', 'laptopM')} {
             h1:first-child {
-                margin-left: 0;
+                margin-left: 16px;
+                margin-top: 0;
             }
         }
 
@@ -191,6 +226,8 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
         }
     }
 `;
+
+export const InlineLink = styled(Link).attrs({ variant: 'inline' })``;
 
 export const Row = styled(AscRow)`
     padding: 0;
