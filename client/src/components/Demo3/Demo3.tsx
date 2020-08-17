@@ -77,6 +77,11 @@ const Demo3: React.FC<IProps> = () => {
 
                 {!hasResult && !hasError && <DemoNotification />}
 
+                <ReactMarkDown
+                    source={content.demo3[hasResult ? 'proven' : 'unproven'].title}
+                    renderers={{ heading: AscLocal.H1 }}
+                />
+
                 {hasResult && !hasError && (
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.SUCCESS}
@@ -96,11 +101,6 @@ const Demo3: React.FC<IProps> = () => {
                         content={content.demoErrorAlert.content}
                     />
                 )}
-
-                <ReactMarkDown
-                    source={content.demo3[hasResult ? 'proven' : 'unproven'].title}
-                    renderers={{ heading: AscLocal.H1 }}
-                />
             </ContentBlock>
 
             <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
