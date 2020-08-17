@@ -115,8 +115,6 @@ const Demo4: React.FC<IProps> = () => {
       <ContentBlock>
         <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
 
-        {hasResult ? 'yes' : 'no'} {name} {street} {city} {telephone} {owner}
-
         <ReactMarkDown
           source={content.demo4.breadcrumbs}
           renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}

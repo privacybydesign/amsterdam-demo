@@ -260,7 +260,8 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
     },
 
     demo4: {
-        breadcrumbs: `- [Home](/)`,
+        breadcrumbs: `- [Home](/)
+- [Demo 4: Geveltuin aanvragen](/geveltuin-aanvragen)`,
         unproven: {
             title: `# Demo 4: Geveltuin aanvragen`,
             alert: {
