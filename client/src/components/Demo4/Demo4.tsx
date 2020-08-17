@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef, useReducer } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
-import styled from 'styled-components';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { Accordion, Paragraph, themeColor, themeSpacing, ErrorMessage } from '@datapunt/asc-ui';
+import { Accordion, ErrorMessage } from '@datapunt/asc-ui';
 import { Checkmark, Alert } from '@datapunt/asc-assets';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
