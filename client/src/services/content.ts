@@ -191,9 +191,7 @@ De gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de
             }
         },
         button: 'Inloggen met IRMA',
-        result: `De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.
-
-## Wat heeft u zojuist gedaan?
+        result: `## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om in te loggen.
 - U heeft uw burgerservicenummer (BSN) en uw naam aan de demosite van Mijn Amsterdam doorgegeven via IRMA.
 

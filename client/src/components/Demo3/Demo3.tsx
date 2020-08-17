@@ -162,19 +162,24 @@ const Demo3: React.FC<IProps> = () => {
                     </AscLocal.Column>
                 </AscLocal.Row>
             ) : (
-                <EmphasisBlock>
+                <>
                     <ContentBlock>
-                        <ReactMarkDown
-                            source={content.demo3.result}
-                            renderers={{
-                                heading: AscLocal.H2,
-                                paragraph: AscLocal.Paragraph,
-                                list: AscLocal.UL
-                            }}
-                        />
-                        <ReactMarkDown source={content.callToAction} />
+                        <ReactMarkDown source={content.noSavePromise} />
                     </ContentBlock>
-                </EmphasisBlock>
+                    <EmphasisBlock>
+                        <ContentBlock>
+                            <ReactMarkDown
+                                source={content.demo3.result}
+                                renderers={{
+                                    heading: AscLocal.H2,
+                                    paragraph: AscLocal.Paragraph,
+                                    list: AscLocal.UL
+                                }}
+                            />
+                            <ReactMarkDown source={content.callToAction} />
+                        </ContentBlock>
+                    </EmphasisBlock>
+                </>
             )}
         </PageTemplate>
     );

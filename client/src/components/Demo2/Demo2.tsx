@@ -239,15 +239,7 @@ const Demo2: React.FC<IProps> = () => {
             ) : (
                 <>
                     <ContentBlock>
-                        <ReactMarkDown
-                            source={content.noSavePromise}
-                            renderers={{
-                                heading: AscLocal.H2,
-                                paragraph: AscLocal.Paragraph,
-                                list: AscLocal.UL,
-                                link: Link
-                            }}
-                        />
+                        <ReactMarkDown source={content.noSavePromise} />
                     </ContentBlock>
                     <EmphasisBlock>
                         <ContentBlock>
