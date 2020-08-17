@@ -196,6 +196,8 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
     }
 `;
 
+export const InlineLink = styled(Link).attrs({ variant: 'inline' })``;
+
 export const Row = styled(AscRow)`
     padding: 0;
     margin: ${({ noMargin }) => (noMargin ? '0' : '0 auto')};

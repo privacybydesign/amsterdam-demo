@@ -262,7 +262,12 @@ const Demo1: React.FC<IProps> = () => {
                     <ContentBlock>
                         <ReactMarkDown
                             source={content.callToAction}
-                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            renderers={{
+                                heading: AscLocal.H2,
+                                paragraph: AscLocal.Paragraph,
+                                list: AscLocal.UL,
+                                link: AscLocal.InlineLink
+                            }}
                         />
                     </ContentBlock>
                 </>

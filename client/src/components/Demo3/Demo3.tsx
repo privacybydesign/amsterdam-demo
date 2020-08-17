@@ -176,7 +176,15 @@ const Demo3: React.FC<IProps> = () => {
                                     list: AscLocal.UL
                                 }}
                             />
-                            <ReactMarkDown source={content.callToAction} />
+                            <ReactMarkDown
+                                source={content.callToAction}
+                                renderers={{
+                                    heading: AscLocal.H2,
+                                    paragraph: AscLocal.Paragraph,
+                                    list: AscLocal.UL,
+                                    link: AscLocal.InlineLink
+                                }}
+                            />
                         </ContentBlock>
                     </EmphasisBlock>
                 </>
