@@ -15,6 +15,7 @@ import { RadioGroup, Label, Radio } from '@datapunt/asc-ui';
 import QRCode from '@components/QRCode/QRCode';
 import reducer from './reducer';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
+import preloadDemoImages from '@services/preloadImages';
 
 export interface IProps { };
 
@@ -93,11 +94,11 @@ const Demo4: React.FC<IProps> = () => {
   };
 
   const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
-    filename: content.images.demo4.header.src,
-    alt: content.images.demo4.header.alt
+    filename: content.responsiveImages.demo4.header.src,
+    alt: content.responsiveImages.demo4.header.alt
   });
 
-  const { hasResult, hasError, name, street, city, telephone, formValid, owner } = state;
+  const { hasResult, hasError, formValid } = state;
 
   function replaceVars(str, p1) {
     return state[p1];
@@ -107,11 +108,18 @@ const Demo4: React.FC<IProps> = () => {
   useEffect(() => {
     if (hasResult) {
       setHeaderImg({
-        filename: content.images.demo4.headerResult.src,
-        alt: content.images.demo4.headerResult.alt
+        filename: content.responsiveImages.demo4.headerResult.src,
+        alt: content.responsiveImages.demo4.headerResult.alt
       });
     }
   }, [hasResult]);
+
+  // Preload demo images
+  useEffect(() => {
+    preloadDemoImages(
+      Object.keys(content.responsiveImages.demo4).map(key => content.responsiveImages.demo4[key].src)
+    );
+  }, []);
 
   return (
     <PageTemplate>
