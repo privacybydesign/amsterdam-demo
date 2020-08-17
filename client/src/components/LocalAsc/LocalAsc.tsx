@@ -181,14 +181,20 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
         width: 'auto',
         flex: 1,
         '&::after': { backgroundColor: themeColor('tint', 'level2'), marginLeft: -188, marginRight: -188 },
-        margin: `0 -${theme.spacing * 5}px`,
         paddingLeft: 32,
+        [`@media ${theme.breakpoints.laptopM('max-width')}`]: {
+            marginLeft: '-32px',
+            marginRight: '-32px',
+            minHeight: 68
+        },
         [`@media ${theme.breakpoints.tabletM('min-width')}`]: {
-            margin: `0 -${theme.spacing * 6}px`,
+            marginLeft: '-38px',
+            marginRight: '-38px',
             paddingLeft: 38
         },
         [`@media ${theme.breakpoints.laptop('min-width')}`]: {
-            margin: `0 -${theme.spacing * 8}px`,
+            marginLeft: '-46px',
+            marginRight: '-46px',
             paddingLeft: 46
         },
         [`@media ${theme.breakpoints.laptopM('min-width')}`]: {
@@ -199,13 +205,19 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
     padding: 0;
 
     &&& {
-        h1:first-child {
-            margin-left: -28px;
+        @media ${breakpoint('max-width', 'laptopM')} {
+            height: 68px;
+            h1:first-child a {
+                width: 110px;
+                height: auto;
+                margin-top: ${themeSpacing(2)};
+            }
         }
 
         @media ${breakpoint('min-width', 'laptopM')} {
             h1:first-child {
-                margin-left: 0;
+                margin-left: 16px;
+                margin-top: 0;
             }
         }
 
