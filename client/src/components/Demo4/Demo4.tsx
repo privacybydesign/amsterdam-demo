@@ -80,8 +80,7 @@ const Demo4: React.FC<IProps> = () => {
             name: response['fullname'],
             street: `${response['street']} ${response['houseNumber']}`,
             city: `${response['zipcode']} ${response['city']}`,
-            telephone: response['mobilenumber'],
-            hasError: false
+            telephone: response['mobilenumber']
           }
         });
       } else {

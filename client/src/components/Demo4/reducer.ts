@@ -17,11 +17,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         hasResult: true,
+        hasError: false,
         name: action.payload.name,
         street: action.payload.street,
         city: action.payload.city,
-        telephone: action.payload.telephone,
-        hasError: action.payload.hasError
+        telephone: action.payload.telephone
       };
 
     case 'setError':
