@@ -14,7 +14,7 @@ import DemoNotification from '@components/DemoNotification/DemoNotification';
 import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
 import { RadioGroup, Label, Radio } from '@datapunt/asc-ui';
 import QRCode from '@components/QRCode/QRCode';
-import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
+import reducer from './reducer';
 
 
 export interface IProps { }
@@ -40,9 +40,7 @@ const initialState: IState = {
   email: ''
 };
 
-function reducer(state, newState) {
-  return { ...state, ...newState };
-}
+
 
 const Demo4: React.FC<IProps> = () => {
   const formEl = useRef(null);
@@ -58,11 +56,18 @@ const Demo4: React.FC<IProps> = () => {
     if (el) {
       // form was filled in
       const value = el.getAttribute('value');
-      setOwner(el.getAttribute('value'));
-      setFormValid(true);
+      dispatch({
+        type: 'validateForm',
+        payload: {
+          owner: el.getAttribute('value')
+        }
+      });
       return true;
     }
-    setFormValid(false);
+
+    dispatch({
+      type: 'invalidateForm'
+    });
     return false;
   };
 
@@ -71,14 +76,15 @@ const Demo4: React.FC<IProps> = () => {
       const response = await createIrmaSession('demo4', 'irma-qr', credentialSource === CredentialSource.DEMO);
       const newState: IState = { ...initialState };
 
-      console.log('---------------------- 2', newState);
-
-      newState.hasResult = true;
-      newState.name = response['fullname'];
-      newState.street = `${response['street']} ${response['houseNumber']}`;
-      newState.city = `${response['zipcode']} ${response['city']}`;
-      newState.telephone = response['mobilenumber'];
-      dispatch(newState);
+      dispatch({
+        type: 'setProperties',
+        payload: {
+          name: response['fullname'],
+          street: `${response['street']} ${response['houseNumber']}`,
+          city: `${response['zipcode']} ${response['city']}`,
+          telephone: response['mobilenumber']
+        }
+      });
 
       window.scrollTo(0, 0);
     }
