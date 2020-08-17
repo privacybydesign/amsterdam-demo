@@ -212,7 +212,11 @@ const Demo4: React.FC<IProps> = () => {
                 <ReactMarkDown source={content.demo4.result.uwGegevens.replace(/\{(.*?)\}/gm, replaceVars)} renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
               </AscLocal.GreyContainer>
 
-              <ReactMarkDown source={content.demo4.result.rest} renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
+              <ReactMarkDown source={content.demo4.result.disclaimer} renderers={{ paragraph: AscLocal.Paragraph }} />
+
+              <AscLocal.GreyContainer>
+                <ReactMarkDown source={content.demo4.result.rest} renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
+              </AscLocal.GreyContainer>
 
               <ReactMarkDown source={content.callToAction} />
             </ContentBlock>

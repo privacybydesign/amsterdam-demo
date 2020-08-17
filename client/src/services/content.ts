@@ -301,7 +301,7 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
             title: `# Demo 4: Uw persoons- en contactgegevens`,
             alert: {
                 title: `Uw persoons- en contactgegevens`,
-                body: `U heeft een formulier ingevuld met uw naam, adres en contactgegevens.`,
+                body: `U heeft een formulier ingevul     met uw naam, adres en contactgegevens.`,
             }
         },
         form: {
@@ -329,12 +329,18 @@ geveltuin\n
 ** E-mail **\n
 {email}\n
 `,
-            rest: `De gegevens die u zojuist via IRMA heeft doorgegegeven, worden niet bewaard.
-
-## Wat heeft u zojuist gedaan?
+            disclaimer: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\n
+Dit is een demo; u bent geen aanvraag voor een geveltuin gestart.`,
+            rest: `## Wat heeft u zojuist gedaan?
+- U heeft IRMA gebruikt om een formulier in te vullen met uw gegevens.
+- U heeft een formulier ingevuld met gegevens uit officiële bronnen. De gemeente weet dat deze gegevens kloppen en kan zo’n aanvraag sneller behandelen.
 
 ## Wat is er anders met IRMA?
-            `
+Als u via IRMA een formulier invult, kunt u geen fouten maken bij invullen en is het zeker dat de gegevens kloppen.
+Dit kan worden gebruikt voor:
+- Aanvragen die u op de website van de gemeente Amsterdam doet.
+- Formulieren op andere websites.
+`
         }
     }
 
