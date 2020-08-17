@@ -17,7 +17,6 @@ import QRCode from '@components/QRCode/QRCode';
 import reducer from './reducer';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 
-
 export interface IProps { };
 
 interface IState {
@@ -101,7 +100,7 @@ const Demo4: React.FC<IProps> = () => {
 
   const { hasResult, hasError, name, street, city, telephone, formValid, owner } = state;
 
-  function replaceVars(str, p1, offset, s) {
+  function replaceVars(str, p1) {
     return state[p1];
   }
 
@@ -120,15 +119,17 @@ const Demo4: React.FC<IProps> = () => {
       <ContentBlock>
         <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
 
-        {hasResult ? 'hasResult' : 'no result'}<br />
-        {hasError ? 'hasError' : 'no error'}
+        {!hasResult && !hasError && <DemoNotification />}
 
         <ReactMarkDown
           source={content.demo4.breadcrumbs}
           renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
         />
 
-        {!hasResult && !hasError && <DemoNotification />}
+        <ReactMarkDown
+          source={content.demo4[hasResult ? 'proven' : 'unproven'].title}
+          renderers={{ heading: AscLocal.H1 }}
+        />
 
         {hasError &&
           <AscLocal.Alert
@@ -148,11 +149,6 @@ const Demo4: React.FC<IProps> = () => {
             content={content.demo4.proven.alert.body}
           />
         )}
-
-        <ReactMarkDown
-          source={content.demo4[hasResult ? 'proven' : 'unproven'].title}
-          renderers={{ heading: AscLocal.H1 }}
-        />
       </ContentBlock>
 
       <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
