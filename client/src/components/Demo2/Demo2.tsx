@@ -248,7 +248,9 @@ const Demo2: React.FC<IProps> = () => {
                                 link: Link
                             }}
                         />
-                        <EmphasisBlock>
+                    </ContentBlock>
+                    <EmphasisBlock>
+                        <ContentBlock>
                             <ReactMarkDown
                                 source={content.demo2.result}
                                 renderers={{
@@ -258,7 +260,9 @@ const Demo2: React.FC<IProps> = () => {
                                     link: Link
                                 }}
                             />
-                        </EmphasisBlock>
+                        </ContentBlock>
+                    </EmphasisBlock>
+                    <ContentBlock>
                         <ReactMarkDown source={content.callToAction} />
                     </ContentBlock>
                 </>
