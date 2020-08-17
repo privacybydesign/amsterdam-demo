@@ -15,6 +15,7 @@ import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderIm
 import { RadioGroup, Label, Radio } from '@datapunt/asc-ui';
 import QRCode from '@components/QRCode/QRCode';
 import reducer from './reducer';
+import ContentBlock from '@components/ContentBlock/ContentBlock';
 
 
 export interface IProps { };
@@ -111,89 +112,98 @@ const Demo4: React.FC<IProps> = () => {
 
   return (
     <PageTemplate>
-      <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
+      <ContentBlock>
+        <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
 
-      {hasResult ? 'yes' : 'no'} {name} {street} {city} {telephone} {owner}
+        {hasResult ? 'yes' : 'no'} {name} {street} {city} {telephone} {owner}
 
-      <ReactMarkDown
-        source={content.demo4.breadcrumbs}
-        renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
-      />
-
-      {!hasResult && <DemoNotification />}
-
-      {hasResult && (
-        <AscLocal.Alert
-          color={AscLocal.AlertColor.SUCCESS}
-          icon={<Checkmark />}
-          heading={content.demo4.proven.alert.title}
-          content={content.demo4.proven.alert.body}
+        <ReactMarkDown
+          source={content.demo4.breadcrumbs}
+          renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
         />
-      )}
 
-      <ReactMarkDown
-        source={content.demo4[hasResult ? 'proven' : 'unproven'].title}
-        renderers={{ heading: AscLocal.H1 }}
-      />
+        {!hasResult && <DemoNotification />}
+
+        {hasResult && (
+          <AscLocal.Alert
+            color={AscLocal.AlertColor.SUCCESS}
+            icon={<Checkmark />}
+            heading={content.demo4.proven.alert.title}
+            content={content.demo4.proven.alert.body}
+          />
+        )}
+
+        <ReactMarkDown
+          source={content.demo4[hasResult ? 'proven' : 'unproven'].title}
+          renderers={{ heading: AscLocal.H1 }}
+        />
+      </ContentBlock>
 
       <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
 
       {!hasResult ? (
-        <>
-          <ReactMarkDown
-            source={content.demo4.unproven.intro1}
-            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-          />
+        <AscLocal.Row noMargin>
+          <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
+            <ContentBlock>
 
-          <AscLocal.AccordionContainer>
-            <Accordion title={content.demo4.unproven.why.title}>
               <ReactMarkDown
-                source={content.demo4.unproven.why.body}
-                renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                source={content.demo4.unproven.intro1}
+                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
               />
-            </Accordion>
-          </AscLocal.AccordionContainer>
 
-          <AscLocal.H2>Demo-aanvraag Geveltuin</AscLocal.H2>
-          <form ref={formEl} >
-            <ReactMarkDown source={content.demo4.form.owner} renderers={{ paragraph: AscLocal.Paragraph }} />
+              <AscLocal.AccordionContainer>
+                <Accordion title={content.demo4.unproven.why.title}>
+                  <ReactMarkDown
+                    source={content.demo4.unproven.why.body}
+                    renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                  />
+                </Accordion>
+              </AscLocal.AccordionContainer>
 
-            <RadioGroup name="geveltuin" error={!formValid}>
-              <Label htmlFor="yes" label="Ja" >
-                <Radio id="yes" variant="primary" value="Ja" />
-              </Label>
-              <Label htmlFor="no" label="Nee" >
-                <Radio id="no" variant="primary" value="Nee" />
-              </Label>
-            </RadioGroup>
-            {!formValid && <ErrorMessage message={content.demo4.form.required} />}
-          </form>
+              <AscLocal.H2>Demo-aanvraag Geveltuin</AscLocal.H2>
+              <form ref={formEl} >
+                <ReactMarkDown source={content.demo4.form.owner} renderers={{ paragraph: AscLocal.Paragraph }} />
 
-          <ReactMarkDown
-            source={content.demo4.unproven.intro2}
-            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-          />
+                <RadioGroup name="geveltuin" error={!formValid}>
+                  <Label htmlFor="yes" label="Ja" >
+                    <Radio id="yes" variant="primary" value="Ja" />
+                  </Label>
+                  <Label htmlFor="no" label="Nee" >
+                    <Radio id="no" variant="primary" value="Nee" />
+                  </Label>
+                </RadioGroup>
+                {!formValid && <ErrorMessage message={content.demo4.form.required} />}
+              </form>
 
-          <QRCode getSession={getSession} label={content.demo4.button} />
+              <ReactMarkDown
+                source={content.demo4.unproven.intro2}
+                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+              />
 
-          <ReactMarkDown
-            source={content.downloadIrma}
-            renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
-          />
-        </>
+              <QRCode getSession={getSession} label={content.demo4.button} />
+
+              <ReactMarkDown
+                source={content.downloadIrma}
+                renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
+              />
+            </ContentBlock>
+          </AscLocal.Column>
+        </AscLocal.Row>
       ) : (
           <>
-            <AscLocal.GreyContainer>
-              <ReactMarkDown source={content.demo4.result.uwDemoAanvraag.replace(/\{(.*?)\}/gm, replaceVars)} renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
-            </AscLocal.GreyContainer>
+            <ContentBlock>
+              <AscLocal.GreyContainer>
+                <ReactMarkDown source={content.demo4.result.uwDemoAanvraag.replace(/\{(.*?)\}/gm, replaceVars)} renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
+              </AscLocal.GreyContainer>
 
-            <AscLocal.GreyContainer>
-              <ReactMarkDown source={content.demo4.result.uwGegevens.replace(/\{(.*?)\}/gm, replaceVars)} renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
-            </AscLocal.GreyContainer>
+              <AscLocal.GreyContainer>
+                <ReactMarkDown source={content.demo4.result.uwGegevens.replace(/\{(.*?)\}/gm, replaceVars)} renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
+              </AscLocal.GreyContainer>
 
-            <ReactMarkDown source={content.demo4.result.rest} renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
+              <ReactMarkDown source={content.demo4.result.rest} renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
 
-            <ReactMarkDown source={content.callToAction} />
+              <ReactMarkDown source={content.callToAction} />
+            </ContentBlock>
           </>
         )
       }
