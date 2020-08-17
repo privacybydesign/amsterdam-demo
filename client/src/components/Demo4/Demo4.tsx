@@ -23,6 +23,7 @@ interface IState {
   hasResult?: boolean;
   hasError?: boolean;
   formValid?: boolean;
+  owner?: string;
   name?: string;
   street?: string;
   city?: string;
@@ -34,10 +35,11 @@ const initialState: IState = {
   hasResult: false,
   hasError: false,
   formValid: true,
-  name: 'jgs',
-  street: 'ma 650',
-  city: 'asd',
-  telephone: '065',
+  owner: '',
+  name: '',
+  street: '',
+  city: '',
+  telephone: '',
   email: ''
 };
 
@@ -182,7 +184,7 @@ const Demo4: React.FC<IProps> = () => {
       ) : (
           <>
             <AscLocal.GreyContainer>
-              <ReactMarkDown source={content.demo4.result.uwDemoAanvraag} renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
+              <ReactMarkDown source={content.demo4.result.uwDemoAanvraag.replace(/\{(.*?)\}/gm, replaceVars)} renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }} />
             </AscLocal.GreyContainer>
 
             <AscLocal.GreyContainer>
