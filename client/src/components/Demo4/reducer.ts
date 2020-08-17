@@ -1,6 +1,4 @@
 const reducer = (state, action) => {
-  console.log('reducer', state, action);
-
   switch (action.type) {
     case 'validateForm':
       return {
@@ -23,6 +21,13 @@ const reducer = (state, action) => {
         street: action.payload.street,
         city: action.payload.city,
         telephone: action.payload.telephone,
+        hasError: action.payload.hasError
+      };
+
+    case 'setError':
+      return {
+        ...state,
+        hasError: true
       };
 
     default:

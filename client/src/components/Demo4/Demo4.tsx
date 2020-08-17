@@ -5,7 +5,7 @@ import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion, Paragraph, themeColor, themeSpacing, ErrorMessage } from '@datapunt/asc-ui';
-import { Checkmark } from '@datapunt/asc-assets';
+import { Checkmark, Alert } from '@datapunt/asc-assets';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
@@ -73,17 +73,23 @@ const Demo4: React.FC<IProps> = () => {
   const getSession = async () => {
     if (validateForm()) {
       const response = await createIrmaSession('demo4', 'irma-qr', credentialSource === CredentialSource.DEMO);
-      const newState: IState = { ...initialState };
+      if (response) {
+        dispatch({
+          type: 'setProperties',
+          payload: {
+            name: response['fullname'],
+            street: `${response['street']} ${response['houseNumber']}`,
+            city: `${response['zipcode']} ${response['city']}`,
+            telephone: response['mobilenumber'],
+            hasError: false
+          }
+        });
+      } else {
+        dispatch({
+          type: 'setError',
+        });
+      }
 
-      dispatch({
-        type: 'setProperties',
-        payload: {
-          name: response['fullname'],
-          street: `${response['street']} ${response['houseNumber']}`,
-          city: `${response['zipcode']} ${response['city']}`,
-          telephone: response['mobilenumber']
-        }
-      });
 
       window.scrollTo(0, 0);
     }
@@ -115,14 +121,27 @@ const Demo4: React.FC<IProps> = () => {
       <ContentBlock>
         <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
 
+        {hasResult ? 'hasResult' : 'no result'}<br />
+        {hasError ? 'hasError' : 'no error'}
+
         <ReactMarkDown
           source={content.demo4.breadcrumbs}
           renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
         />
 
-        {!hasResult && <DemoNotification />}
+        {!hasResult && !hasError && <DemoNotification />}
 
-        {hasResult && (
+        {hasError &&
+          <AscLocal.Alert
+            color={AscLocal.AlertColor.ERROR}
+            icon={<Alert />}
+            iconSize={22}
+            heading={content.demoErrorAlert.heading}
+            content={content.demoErrorAlert.content}
+          />
+        }
+
+        {hasResult && !hasError && (
           <AscLocal.Alert
             color={AscLocal.AlertColor.SUCCESS}
             icon={<Checkmark />}
