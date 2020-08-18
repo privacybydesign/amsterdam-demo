@@ -46,17 +46,16 @@ Ga naar de [website van IRMA](https://irma.app/)`
         demo4Card: {
             title: `Demo 4: Geveltuin aanvragen`,
             body: `Vul een formulier snel in met uw gegevens.`
-        }
-    },
-    sidebar: {
-        box: `Eenvoudig en veilig in Amsterdam met IRMA
+        },
+        sidebar: {
+            box: `Eenvoudig en veilig in Amsterdam met IRMA
 ![](/assets/irma_logo.svg "Lees meer over IRMA")
 [Waarom IRMA?](https://irma.app/)
           `,
-        bottom: `# IRMA voor Amsterdammers
+            bottom: `# IRMA voor Amsterdammers
 [Hoe is IRMA getest met Amsterdammers?](https://irma.app/)`
+        }
     },
-
     demoNotification: {
         heading: `Dit is een demosite`,
         content: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
