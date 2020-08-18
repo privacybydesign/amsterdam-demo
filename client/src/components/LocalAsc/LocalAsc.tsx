@@ -44,7 +44,7 @@ export const Paragraph = styled(AscParagraph)`
 `;
 
 export const GreyContainer = styled.div`
-    background-color: ${themeColor('tint', 'level2')};
+    background-color: ${themeColor('tint', 'level3')};
     padding: ${themeSpacing(4)} ${themeSpacing(6)};
     margin-bottom: ${themeSpacing(4)};
 `;
