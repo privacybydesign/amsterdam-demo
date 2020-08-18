@@ -64,7 +64,7 @@ const Homepage: React.FC<IProps> = () => (
                         title={content.home.demo4Card.title}
                         href={AppRoutes.DEMO4.path}
                     >
-                        <ReactMarkDown source={content.home.demo2Card.body} />
+                        <ReactMarkDown source={content.home.demo4Card.body} />
                     </Article>
                 </ArticleContainer>
             </AscLocal.Column>
