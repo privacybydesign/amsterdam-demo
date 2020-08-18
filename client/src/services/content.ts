@@ -46,13 +46,14 @@ Ga naar de [website van IRMA](https://irma.app/)`
         demo4Card: {
             title: `Demo 4: Geveltuin aanvragen`,
             body: `Vul een formulier snel in met uw gegevens.`
-        },
-        sidebar: {
-            box: `Eenvoudig en veilig in Amsterdam met IRMA
+        }
+    },
+    sidebar: {
+        box: `Eenvoudig en veilig in Amsterdam met IRMA
 ![](/assets/irma_logo.svg "Lees meer over IRMA")
 [Waarom IRMA?](https://irma.app/)
           `,
-            bottom: `# IRMA voor Amsterdammers
+        bottom: `# IRMA voor Amsterdammers
 [Hoe is IRMA getest met Amsterdammers?](https://irma.app/)`
     },
 
@@ -203,6 +204,90 @@ De gemeente Amsterdam biedt u straks een keuze. U kunt straks inloggen in Mijn A
 - Met uw burgerservicenummer (BSN) kan de gemeente uw gegevens ophalen en in ‘Mijn Amsterdam’ aan u tonen.`
     },
 
+    demo4: {
+        breadcrumbs: `- [Home](/)
+- [Demo 4: Geveltuin aanvragen](/geveltuin-aanvragen)`,
+        unproven: {
+            title: `# Demo 4: Geveltuin aanvragen`,
+            alert: {
+                title: `Uw naam en burgerservicenummer`,
+                body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
+            },
+            intro1: `Met IRMA kunt u een aanvraag doen en hierin gegevens gebruiken die in uw IRMA-app staan.\n
+U hoeft minder in te vullen en de gemeente weet zeker dat u de aanvraag doet en dat de gegevens juist zijn.
+
+## Probeer het uit
+Doe een demo-aanvraag door uzelf bekend te maken met de volgende gegevens:
+- Volledige naam
+- Straat
+- Huisnummer
+- Woonplaats
+- Mobiel telefoonnummer
+- E-mailadres
+`,
+            why: {
+                title: `Waarom worden deze gegevens gevraagd?`,
+                body: `**Volledige naam**\n
+De gemeente wil u graag aanspreken met uw naam.\n
+**Woonadres**\n
+De gemeente heeft uw straat, huisnummer en woonplaats nodig om te weten voor welke locatie de aanvraag is.\n
+**Mobiel telefoonnummer**\n
+De gemeente wil u kunnen bereiken voor vragen over uw aanvraag.\n
+**E-mailadres**\n
+De gemeente wil u een e-mail sturen met de bevestiging van uw aanvraag.\n
+`
+            },
+            intro2: `
+## Gegevens aanvullen met IRMA
+Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
+`
+        },
+        proven: {
+            title: `# Demo 4: Uw persoons- en contactgegevens`,
+            alert: {
+                title: `Uw persoons- en contactgegevens`,
+                body: `U heeft een formulier ingevul     met uw naam, adres en contactgegevens.`
+            }
+        },
+        form: {
+            owner: 'Bent u eigenaar van de woning waar de geveltuin komt?',
+            required: 'Vergeet niet om hierboven wat inte vullen.'
+        },
+        button: 'Aanvullen met IRMA',
+        result: {
+            uwDemoAanvraag: `### Uw demo-aanvraag
+** Uw keuze **\n
+geveltuin\n
+** Bent u de eigenaar van de woning waar de geveltuin komt? **\n
+{owner}
+`,
+            uwGegevens: `### Uw gegevens\n
+** Naam **\n
+{name}\n
+** Straat en huisnummer **\n
+{street}\n
+** Postcode en plaats **\n
+{city}\n
+** Telefoonnummer **\n
+{telephone}\n
+** E-mail **\n
+{email}\n
+`,
+            disclaimer: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\n
+Dit is een demo; u bent geen aanvraag voor een geveltuin gestart.`,
+            rest: `## Wat heeft u zojuist gedaan?
+- U heeft IRMA gebruikt om een formulier in te vullen met uw gegevens.
+- U heeft een formulier ingevuld met gegevens uit officiële bronnen. De gemeente weet dat deze gegevens kloppen en kan zo’n aanvraag sneller behandelen.
+
+## Wat is er anders met IRMA?
+Als u via IRMA een formulier invult, kunt u geen fouten maken bij invullen en is het zeker dat de gegevens kloppen.
+Dit kan worden gebruikt voor:
+- Aanvragen die u op de website van de gemeente Amsterdam doet.
+- Formulieren op andere websites.
+`
+        }
+    },
+
     responsiveImages: {
         demo1: {
             header: { src: 'leeftijd', alt: 'Stadsbeeld van een terras' },
@@ -257,90 +342,5 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
 1. Scan de QR-code hieronder met uw IRMA-app.  \n
 2. Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.`,
         knop: 'Inloggen met IRMA'
-    },
-
-    demo4: {
-        breadcrumbs: `- [Home](/)
-- [Demo 4: Geveltuin aanvragen](/geveltuin-aanvragen)`,
-        unproven: {
-            title: `# Demo 4: Geveltuin aanvragen`,
-            alert: {
-                title: `Uw naam en burgerservicenummer`,
-                body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`,
-            },
-            intro1: `Met IRMA kunt u een aanvraag doen en hierin gegevens gebruiken die in uw IRMA-app staan.\n
-U hoeft minder in te vullen en de gemeente weet zeker dat u de aanvraag doet en dat de gegevens juist zijn.
-
-## Probeer het uit
-Doe een demo-aanvraag door uzelf bekend te maken met de volgende gegevens:
-- Volledige naam
-- Straat
-- Huisnummer
-- Woonplaats
-- Mobiel telefoonnummer
-- E-mailadres
-`,
-            why: {
-                title: `Waarom worden deze gegevens gevraagd?`,
-                body: `**Volledige naam**\n
-De gemeente wil u graag aanspreken met uw naam.\n
-**Woonadres**\n
-De gemeente heeft uw straat, huisnummer en woonplaats nodig om te weten voor welke locatie de aanvraag is.\n
-**Mobiel telefoonnummer**\n
-De gemeente wil u kunnen bereiken voor vragen over uw aanvraag.\n
-**E-mailadres**\n
-De gemeente wil u een e-mail sturen met de bevestiging van uw aanvraag.\n
-`
-            },
-            intro2: `
-## Gegevens aanvullen met IRMA
-Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
-`,
-        },
-        proven: {
-            title: `# Demo 4: Uw persoons- en contactgegevens`,
-            alert: {
-                title: `Uw persoons- en contactgegevens`,
-                body: `U heeft een formulier ingevul     met uw naam, adres en contactgegevens.`,
-            }
-        },
-        form: {
-            owner: 'Bent u eigenaar van de woning waar de geveltuin komt?',
-            required: 'Dit is een verplicht veld'
-        },
-        button: 'Aanvullen met IRMA',
-
-        result: {
-            uwDemoAanvraag: `### Uw demo-aanvraag
-** Uw keuze **\n
-geveltuin\n
-** Bent u de eigenaar van de woning waar de geveltuin komt? **\n
-{owner}
-`,
-            uwGegevens: `### Uw gegevens\n
-** Naam **\n
-{name}\n
-** Straat en huisnummer **\n
-{street}\n
-** Postcode en plaats **\n
-{city}\n
-** Telefoonnummer **\n
-{telephone}\n
-** E-mail **\n
-{email}\n
-`,
-            disclaimer: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\n
-Dit is een demo; u bent geen aanvraag voor een geveltuin gestart.`,
-            rest: `## Wat heeft u zojuist gedaan?
-- U heeft IRMA gebruikt om een formulier in te vullen met uw gegevens.
-- U heeft een formulier ingevuld met gegevens uit officiële bronnen. De gemeente weet dat deze gegevens kloppen en kan zo’n aanvraag sneller behandelen.
-
-## Wat is er anders met IRMA?
-Als u via IRMA een formulier invult, kunt u geen fouten maken bij invullen en is het zeker dat de gegevens kloppen.
-Dit kan worden gebruikt voor:
-- Aanvragen die u op de website van de gemeente Amsterdam doet.
-- Formulieren op andere websites.
-`
-        }
     }
-
+};
