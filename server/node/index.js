@@ -28,7 +28,7 @@ const CREDENTIALS_TO_REQUEST = {
     DEMO3: [
       [
         "irma-demo.gemeente.personalData.fullname",
-        "irma-demo.gemeente.personalData.bsn"
+        "irma-demo.gemeente.personalData.bsn",
       ],
     ],
     DEMO4: [
@@ -36,8 +36,8 @@ const CREDENTIALS_TO_REQUEST = {
         "irma-demo.gemeente.personalData.fullname",
         "irma-demo.gemeente.address.street",
         "irma-demo.gemeente.address.houseNumber",
-        "irma-demo.gemeente.address.zipcode",
-        "irma-demo.gemeente.address.city",
+        "irma-demo.RU.idinData.zipcode",
+        "irma-demo.RU.idinData.city",
         "irma-demo.pbdf.mobilenumber.mobilenumber",
         // TODO fix irma-demo.sidn-pbdf.email.email
         // "irma-demo.sidn-pbdf.email.email",
@@ -52,10 +52,7 @@ const CREDENTIALS_TO_REQUEST = {
       ["pbdf.gemeente.address.zipcode", "pbdf.gemeente.personalData.over18"],
     ],
     DEMO3: [
-      [
-        "pbdf.gemeente.personalData.fullname",
-        "pbdf.gemeente.personalData.bsn",
-      ]
+      ["pbdf.gemeente.personalData.fullname", "pbdf.gemeente.personalData.bsn"],
     ],
     DEMO4: [
       [
