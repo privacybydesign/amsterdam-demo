@@ -58,6 +58,14 @@ const Homepage: React.FC<IProps> = () => (
                     >
                         <ReactMarkDown source={content.home.demo2Card.body} />
                     </Article>
+                    <Article
+                        imageSrc={content.responsiveImages.demo4.header.src}
+                        imageAlt={content.responsiveImages.demo4.header.alt}
+                        title={content.home.demo4Card.title}
+                        href={AppRoutes.DEMO4.path}
+                    >
+                        <ReactMarkDown source={content.home.demo4Card.body} />
+                    </Article>
                 </ArticleContainer>
             </AscLocal.Column>
             <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>

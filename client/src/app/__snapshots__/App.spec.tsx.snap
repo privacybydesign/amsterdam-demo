@@ -1712,6 +1712,44 @@ Ga naar de
                   </span>
                 </section>
               </a>
+              <a
+                class="c44"
+                href="/geveltuin-aanvragen"
+              >
+                <section
+                  class="c45"
+                >
+                  <img
+                    alt="Foto van geveltuin in straat"
+                    class="c24"
+                    src="/assets/geveltuin-940.jpg"
+                    srcset="/assets/geveltuin-290.jpg 580w, /assets/geveltuin-940.jpg 1880w"
+                  />
+                  <h2
+                    class="c46"
+                  >
+                    Demo 4: Geveltuin aanvragen
+                  </h2>
+                  <div>
+                    <p>
+                      Vul een formulier snel in met uw gegevens.
+                    </p>
+                  </div>
+                  <span
+                    class="c34 c47"
+                  >
+                    <svg
+                      focusable="false"
+                      viewBox="0 0 32 32"
+                    >
+                      <path
+                        d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </section>
+              </a>
             </div>
           </div>
           <div
