@@ -1,4 +1,40 @@
-const reducer = (state, action) => {
+interface IState {
+    hasResult?: boolean;
+    hasError?: boolean;
+    formValid?: boolean;
+    owner?: string;
+    name?: string;
+    street?: string;
+    city?: string;
+    telephone?: string;
+    email?: string;
+}
+
+interface IAction {
+    type: string;
+    payload?: {
+        owner?: string;
+        name?: string;
+        street?: string;
+        city?: string;
+        telephone?: string;
+        email?: string;
+    };
+}
+
+export const initialState: IState = {
+    hasResult: false,
+    hasError: false,
+    formValid: true,
+    owner: '',
+    name: '',
+    street: '',
+    city: '',
+    telephone: '',
+    email: ''
+};
+
+export const reducer = (state: IState, action: IAction): IState => {
     switch (action.type) {
         case 'validateForm':
             return {
@@ -34,5 +70,3 @@ const reducer = (state, action) => {
             return state;
     }
 };
-
-export default reducer;

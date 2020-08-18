@@ -13,36 +13,12 @@ import DemoNotification from '@components/DemoNotification/DemoNotification';
 import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
 import { RadioGroup, Label, Radio } from '@datapunt/asc-ui';
 import QRCode from '@components/QRCode/QRCode';
-import reducer from './reducer';
+import { initialState, reducer } from './reducer';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import preloadDemoImages from '@services/preloadImages';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 
 export interface IProps {}
-
-interface IState {
-    hasResult?: boolean;
-    hasError?: boolean;
-    formValid?: boolean;
-    owner?: string;
-    name?: string;
-    street?: string;
-    city?: string;
-    telephone?: string;
-    email?: string;
-}
-
-const initialState: IState = {
-    hasResult: false,
-    hasError: false,
-    formValid: true,
-    owner: '',
-    name: '',
-    street: '',
-    city: '',
-    telephone: '',
-    email: ''
-};
 
 const Demo4: React.FC<IProps> = () => {
     const formEl = useRef(null);
