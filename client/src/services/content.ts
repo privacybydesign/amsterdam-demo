@@ -62,7 +62,7 @@ Ga naar de [website van IRMA](https://irma.app/)`
         content: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
     },
     downloadIrma: `Heeft u nog geen IRMA?  \n[Download IRMA](https://irma.app/)`,
-    noSavePromise: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard.`,
+    noSavePromise: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.`,
     callToAction: `[Probeer de andere demo’s](/)`,
     demoErrorAlert: {
         heading: `Niets doorgegeven`,
@@ -273,8 +273,7 @@ geveltuin\n
 ** E-mail **\n
 {email}\n
 `,
-            disclaimer: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\n
-Dit is een demo; u bent geen aanvraag voor een geveltuin gestart.`,
+            disclaimer: `Dit is een demo; u bent geen aanvraag voor een geveltuin gestart.`,
             rest: `## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om een formulier in te vullen met uw gegevens.
 - U heeft een formulier ingevuld met gegevens uit officiële bronnen. De gemeente weet dat deze gegevens kloppen en kan zo’n aanvraag sneller behandelen.

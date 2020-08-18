@@ -16,6 +16,7 @@ import QRCode from '@components/QRCode/QRCode';
 import reducer from './reducer';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import preloadDemoImages from '@services/preloadImages';
+import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 
 export interface IProps {}
 
@@ -224,18 +225,18 @@ const Demo4: React.FC<IProps> = () => {
                             />
                         </AscLocal.GreyContainer>
 
-                        <ReactMarkDown
-                            source={content.demo4.result.disclaimer}
-                            renderers={{ paragraph: AscLocal.Paragraph }}
-                        />
-
-                        <AscLocal.GreyContainer>
+                        <ReactMarkDown source={content.noSavePromise} />
+                        <ReactMarkDown source={content.demo4.result.disclaimer} />
+                    </ContentBlock>
+                    <EmphasisBlock>
+                        <ContentBlock>
                             <ReactMarkDown
                                 source={content.demo4.result.rest}
                                 renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
-                        </AscLocal.GreyContainer>
-
+                        </ContentBlock>
+                    </EmphasisBlock>
+                    <ContentBlock>
                         <ReactMarkDown source={content.callToAction} />
                     </ContentBlock>
                 </>
