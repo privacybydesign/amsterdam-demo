@@ -2,6 +2,9 @@ import 'jest-styled-components';
 
 // Mock window.scrollTo (fixes jsdom issue)
 // eslint-disable-next-line @typescript-eslint/no-empty-function
+
+import '@testing-library/jest-dom';
+
 const noop = () => {};
 Object.defineProperty(window, 'scrollTo', { value: noop, writable: true });
 Object.defineProperty(window, 'matchMedia', {
