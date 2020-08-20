@@ -19,7 +19,6 @@ let config: IIrmaServerConfig;
 export const getConfig = async (): Promise<IIrmaServerConfig> => {
     if (!config) {
         const response = await axios.get('/config');
-        console.log('===== response', response);
         config = response.data;
     }
 
