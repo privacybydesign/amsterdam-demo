@@ -32,7 +32,7 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
 
     return (
         <span className={className}>
-            <StyledButton onClick={getQRSession} variant="secondary" iconSize={24} iconLeft={<IrmaLogoIcon />}>
+            <StyledButton data-testid="qrCodeButton" onClick={getQRSession} variant="secondary" iconSize={24} iconLeft={<IrmaLogoIcon />}>
                 {label || content.qrcode.knop}
             </StyledButton>
 
