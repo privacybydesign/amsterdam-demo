@@ -18,7 +18,8 @@ let config: IIrmaServerConfig;
 
 export const getConfig = async (): Promise<IIrmaServerConfig> => {
     if (!config) {
-        const response = await instance.get('/config');
+        const response = await axios.get('/config');
+        console.log('===== response', response);
         config = response.data;
     }
 
@@ -38,7 +39,7 @@ const createIrmaSession = async (
     console.log('---- createIrmaSession');
     const config = await getConfig();
     console.log('---- createIrmaSession config', config);
-    const irmaResponse = await instance.get(`/getsession/${dataType}${credentialSourceFromDemo ? '?demo=true' : ''}`);
+    const irmaResponse = await axios.get(`/getsession/${dataType}${credentialSourceFromDemo ? '?demo=true' : ''}`);
     console.log('---- createIrmaSession irmaResponse', irmaResponse);
     const session = await irmaResponse.data;
     console.log('---- createIrmaSession session', session);
