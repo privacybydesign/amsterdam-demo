@@ -36,7 +36,7 @@ const createIrmaSession = async (
     holderElementId: string,
     credentialSourceFromDemo = false
 ): Promise<unknown> => {
-    console.log('---- createIrmaSession');
+    console.log('---- createIrmaSession', dataType, holderElementId, credentialSourceFromDemo);
     const config = await getConfig();
     console.log('---- createIrmaSession config', config);
     const irmaResponse = await axios.get(`/getsession/${dataType}${credentialSourceFromDemo ? '?demo=true' : ''}`);
