@@ -21,10 +21,10 @@ node {
         checkout scm
     }
 
-
     stage("Build image") {
         tryStep "build", {
-            def image = docker.build("build.app.amsterdam.nl:5000/ois/irma_frontend:${env.BUILD_NUMBER}", "./di-demo")
+            def dockerfile = './Dockerfile.prod'
+            def image = docker.build("build.app.amsterdam.nl:5000/ois/irma_frontend:${env.BUILD_NUMBER}", "-f ${dockerfile} ./")
             image.push()
         }
     }
@@ -57,10 +57,10 @@ if (BRANCH == "master" || BRANCH == "develop") {
     }
 
 if (BRANCH == "master") {
-    stage('Waiting for approval') {
-        slackSend channel: '#ci-channel', color: 'warning', message: 'irma_frontend is waiting for Production Release - please confirm'
-        input "Deploy to Production?"
-    }
+    // stage('Waiting for approval') {
+    //     slackSend channel: '#ci-channel', color: 'warning', message: 'irma_frontend is waiting for Production Release - please confirm'
+    //     input "Deploy to Production?"
+    // }
 
     node {
         stage('Push production image') {

@@ -1,0 +1,5 @@
+.vscode
+*.d.ts
+dist/
+node_modules/
+*.spec.{ts,tsx,js,jsx}
