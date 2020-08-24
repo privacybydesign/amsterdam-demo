@@ -16,7 +16,11 @@ const getGGW = async (postcode: string): Promise<GgwResult> => {
     let ggwNaam: string;
 
     if (response.data.aggs_list.buurtcombinatie_naam.doc_count > 0) {
-        buurtcombinatieNamen = response.data.aggs_list.buurtcombinatie_naam.buckets.map(wijk => wijk.key).join(' of ');
+        const namesArray = response.data.aggs_list.buurtcombinatie_naam.buckets.map(wijk => wijk.key);
+        buurtcombinatieNamen = namesArray.join(', ');
+        if (namesArray.length > 2) {
+            buurtcombinatieNamen = buurtcombinatieNamen.replace(/(, )(?!.*,)/g, ' of ');
+        }
     }
 
     if (response.data.aggs_list.ggw_code.doc_count > 0) {
