@@ -1,19 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import Demo3 from './Demo3';
+import { withAppContext } from './../../test/utils';
 import { render, fireEvent, act, queryByAltText } from '@testing-library/react';
 import MockAdapter from 'axios-mock-adapter';
-import { ThemeProvider } from '@datapunt/asc-ui';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
-
-export const history = createMemoryHistory();
-
-export const withAppContext = Component => (
-    <ThemeProvider>
-        <Router history={history}>{Component}</Router>
-    </ThemeProvider>
-);
 
 const mock = new MockAdapter(axios);
 
@@ -40,9 +30,12 @@ describe.only('Demo3 component', () => {
         // 'https://acc.attr.auth.amsterdam.nl/session/mfeXW6zqF1gdtpF1hMeX/result'
         // {"token":"mfeXW6zqF1gdtpF1hMeX","status":"DONE","type":"disclosing","proofStatus":"VALID","disclosed":[[{"rawvalue":"J.G. Swart","value":{"":"J.G. Swart","en":"J.G. Swart","nl":"J.G. Swart"},"id":"pbdf.gemeente.personalData.fullname","status":"PRESENT","issuancetime":1591228800},{"rawvalue":"191822668","value":{"":"191822668","en":"191822668","nl":"191822668"},"id":"pbdf.gemeente.personalData.bsn","status":"PRESENT","issuancetime":1591228800}]]}
 
+        // 'https://acc.attr.auth.amsterdam.nl/session/mfeXW6zqF1gdtpF1hMeX/result'
+        // {"token":"mfeXW6zqF1gdtpF1hMeX","status":"DONE","type":"disclosing","proofStatus":"VALID","disclosed":[[{"rawvalue":"J.G. Swart","value":{"":"J.G. Swart","en":"J.G. Swart","nl":"J.G. Swart"},"id":"pbdf.gemeente.personalData.fullname","status":"PRESENT","issuancetime":1591228800},{"rawvalue":"191822668","value":{"":"191822668","en":"191822668","nl":"191822668"},"id":"pbdf.gemeente.personalData.bsn","status":"PRESENT","issuancetime":1591228800}]]}
+
         const { container, asFragment, debug, queryAllByText, getByTestId } = render(withAppContext(<Demo3 />));
 
-        expect(queryAllByText('Demo 3: Inloggen met IRMA').length).toEqual(1);
+        expect(queryAllByText('Demo 3: Inloggen met IRMA').length).toEqual(2);
 
         // expect(asFragment()).toMatchSnapshot();
 
