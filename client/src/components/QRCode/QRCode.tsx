@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import ReactMarkDown from 'react-markdown';
 import { Button, Modal, themeSpacing, themeColor } from '@datapunt/asc-ui';
@@ -27,9 +27,8 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
 
         if (typeof getSession === 'function') {
             await getSession();
-            closeModal();
         }
-    }, [getSession, closeModal]);
+    }, [getSession]);
 
     return (
         <span className={className}>
