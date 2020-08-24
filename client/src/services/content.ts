@@ -245,7 +245,7 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
             title: `# Demo 4: Uw persoons- en contactgegevens`,
             alert: {
                 title: `Uw persoons- en contactgegevens`,
-                body: `U heeft een formulier ingevul     met uw naam, adres en contactgegevens.`
+                body: `U heeft een formulier ingevuld  met uw naam, adres en contactgegevens.`
             }
         },
         form: {
