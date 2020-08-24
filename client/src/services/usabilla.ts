@@ -12,9 +12,9 @@ export const updatePageView = (): void => {
     }
 };
 
-export const startSurvey = (): void => {
+export const startSurvey = (timeout = 2000): void => {
     if (usabilla_live) {
-        usabilla_live('trigger', 'survey');
+        setTimeout(() => usabilla_live('trigger', 'survey'), timeout);
     }
 };
 

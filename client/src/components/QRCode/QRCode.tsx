@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import ReactMarkDown from 'react-markdown';
 import { Button, Modal, themeSpacing, themeColor } from '@datapunt/asc-ui';
@@ -16,7 +16,11 @@ export interface IProps {
 const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
     const [hasOverlay, setHasOverlay] = useState(false);
 
-    const getQRSession = async () => {
+    const closeModal = useCallback(() => {
+        setHasOverlay(false);
+    }, []);
+
+    const getQRSession = useCallback(async () => {
         if (!isMobile()) {
             setHasOverlay(true);
         }
@@ -25,11 +29,7 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
             await getSession();
             closeModal();
         }
-    };
-
-    const closeModal = () => {
-        setHasOverlay(false);
-    };
+    }, [getSession, closeModal]);
 
     return (
         <span className={className}>

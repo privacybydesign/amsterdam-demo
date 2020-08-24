@@ -17,6 +17,7 @@ import { Checkmark } from '@datapunt/asc-assets';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
+import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 
 export interface IProps {}
 // @todo add error flow with incorrect data
@@ -35,6 +36,7 @@ const Demo3: React.FC<IProps> = () => {
             setHasError(false);
             // setBsn(response['bsn']);
             setName(response['fullname']);
+            startUsabillaSurvey();
         } else {
             setHasError(true);
         }

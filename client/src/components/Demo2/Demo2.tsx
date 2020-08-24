@@ -18,6 +18,7 @@ import { Checkmark } from '@datapunt/asc-assets';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
+import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 
 export interface IProps {}
 
@@ -63,6 +64,8 @@ const Demo2: React.FC<IProps> = () => {
                 newState.code = ggwResponse.ggwCode;
                 newState.ggw = ggwResponse.ggwNaam;
             }
+
+            startUsabillaSurvey();
         } else {
             newState.hasError = true;
         }
