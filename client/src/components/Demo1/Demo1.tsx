@@ -35,12 +35,12 @@ const Demo1: React.FC<IProps> = () => {
             setIsOver18(response['over18'] === 'Yes');
             setHasResult18(true);
             setHasError(false);
-            startUsabillaSurvey();
         } else {
             setHasError(true);
         }
 
         window.scrollTo(0, 0);
+        startUsabillaSurvey();
         return response;
     };
 
@@ -50,12 +50,12 @@ const Demo1: React.FC<IProps> = () => {
             setIsOver65(response['over65'] === 'Yes');
             setHasResult65(true);
             setHasError(false);
-            startUsabillaSurvey();
         } else {
             setHasError(true);
         }
 
         window.scrollTo(0, 0);
+        startUsabillaSurvey();
         return response;
     };
 

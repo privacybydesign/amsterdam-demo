@@ -36,11 +36,11 @@ const Demo3: React.FC<IProps> = () => {
             setHasError(false);
             // setBsn(response['bsn']);
             setName(response['fullname']);
-            startUsabillaSurvey();
         } else {
             setHasError(true);
         }
         window.scrollTo(0, 0);
+        startUsabillaSurvey();
         return response;
     };
 

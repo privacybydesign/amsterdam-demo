@@ -64,14 +64,13 @@ const Demo2: React.FC<IProps> = () => {
                 newState.code = ggwResponse.ggwCode;
                 newState.ggw = ggwResponse.ggwNaam;
             }
-
-            startUsabillaSurvey();
         } else {
             newState.hasError = true;
         }
 
         dispatch(newState);
         window.scrollTo(0, 0);
+        startUsabillaSurvey();
         return response;
     };
 

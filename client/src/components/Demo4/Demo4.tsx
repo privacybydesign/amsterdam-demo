@@ -58,7 +58,6 @@ const Demo4: React.FC<IProps> = () => {
                         telephone: response['mobilenumber']
                     }
                 });
-                startUsabillaSurvey();
             } else {
                 dispatch({
                     type: 'setError'
@@ -66,6 +65,7 @@ const Demo4: React.FC<IProps> = () => {
             }
 
             window.scrollTo(0, 0);
+            startUsabillaSurvey();
         }
     };
 
