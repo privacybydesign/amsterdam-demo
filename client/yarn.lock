@@ -6190,6 +6190,10 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+"lightningjs@https://github.com/olark/lightningjs.git":
+  version "0.0.0"
+  resolved "https://github.com/olark/lightningjs.git#b7edc73fb40abc85f6dd90aac57bc71b1ac921cc"
+
 lines-and-columns@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"

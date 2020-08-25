@@ -17,6 +17,7 @@ import { initialState, reducer } from './reducer';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import preloadDemoImages from '@services/preloadImages';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
+import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 
 export interface IProps {}
 
@@ -57,6 +58,7 @@ const Demo4: React.FC<IProps> = () => {
                         telephone: response['mobilenumber']
                     }
                 });
+                startUsabillaSurvey();
             } else {
                 dispatch({
                     type: 'setError'

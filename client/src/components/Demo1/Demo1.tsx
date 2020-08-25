@@ -17,6 +17,7 @@ import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
+import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 
 export interface IProps {}
 
@@ -34,6 +35,7 @@ const Demo1: React.FC<IProps> = () => {
             setIsOver18(response['over18'] === 'Yes');
             setHasResult18(true);
             setHasError(false);
+            startUsabillaSurvey();
         } else {
             setHasError(true);
         }

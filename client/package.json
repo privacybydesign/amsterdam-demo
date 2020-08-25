@@ -8,6 +8,7 @@
         "@datapunt/asc-ui": "^0.21.1",
         "@privacybydesign/irmajs": "^0.1.9",
         "axios": "^0.19.2",
+        "lightningjs": "git@github.com:olark/lightningjs.git",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-markdown": "^4.3.1",
