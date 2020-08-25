@@ -1,4 +1,4 @@
-import 'lightningjs/lightningjs-embed.js';
+import '@services/lightning.js';
 
 let usabilla_live;
 
