@@ -17,10 +17,6 @@ const CREDENTIALS_TO_REQUEST = {
     DEMO1_65: [["irma-demo.gemeente.personalData.over65"]],
     DEMO2: [
       [
-        "irma-demo.gemeente.address.zipcode",
-        "irma-demo.gemeente.personalData.over18",
-      ],
-      [
         "irma-demo.RU.idinData.zipcode",
         "irma-demo.gemeente.personalData.over18",
       ],
@@ -36,12 +32,10 @@ const CREDENTIALS_TO_REQUEST = {
         "irma-demo.gemeente.personalData.fullname",
         "irma-demo.gemeente.address.street",
         "irma-demo.gemeente.address.houseNumber",
-        "irma-demo.RU.idinData.zipcode",
-        "irma-demo.RU.idinData.city",
-        "irma-demo.pbdf.mobilenumber.mobilenumber",
-        // TODO fix irma-demo.sidn-pbdf.email.email
-        // "irma-demo.sidn-pbdf.email.email",
       ],
+      ["irma-demo.RU.idinData.zipcode", "irma-demo.RU.idinData.city"],
+      ["irma-demo.pbdf.mobilenumber.mobilenumber"],
+      ["irma-demo.sidn-pbdf.email.email"],
     ],
     DEMO5: [["irma-demo.sidn-pbdf.email.domain"]],
   },
@@ -61,10 +55,9 @@ const CREDENTIALS_TO_REQUEST = {
         "pbdf.gemeente.address.houseNumber",
         "pbdf.gemeente.address.zipcode",
         "pbdf.gemeente.address.city",
-        "pbdf.pbdf.mobilenumber.mobilenumber",
-        // TODO fix pbdf.pbdf.email.email
-        // "pbdf.pbdf.email.email",
       ],
+      ["pbdf.pbdf.mobilenumber.mobilenumber"],
+      ["pbdf.pbdf.email.email"],
     ],
     DEMO5: [["pbdf.pbdf.email.domain"]],
   },
