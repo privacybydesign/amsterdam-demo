@@ -57,10 +57,10 @@ if (BRANCH == "master" || BRANCH == "develop") {
     }
 
 if (BRANCH == "master") {
-    stage('Waiting for approval') {
-        slackSend channel: '#ci-channel', color: 'warning', message: 'irma_frontend is waiting for Production Release - please confirm'
-        input "Deploy to Production?"
-    }
+    // stage('Waiting for approval') {
+    //     slackSend channel: '#ci-channel', color: 'warning', message: 'irma_frontend is waiting for Production Release - please confirm'
+    //     input "Deploy to Production?"
+    // }
 
     node {
         stage('Push production image') {
