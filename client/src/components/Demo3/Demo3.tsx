@@ -31,9 +31,7 @@ const Demo3: React.FC<IProps> = () => {
 
     const getSession = async () => {
         const response = await createIrmaSession('demo3', 'irma-qr', credentialSource === CredentialSource.DEMO);
-        console.log('--------', response);
         if (response) {
-
             setHasResult(true);
             setHasError(false);
             // setBsn(response['bsn']);
