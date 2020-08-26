@@ -1,0 +1,447 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Demo3 should render the initial header image 1`] = `
+.c0 {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:375px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+<img
+  alt=""
+  class="c0"
+  data-testid="headerImage"
+  src="/assets/probeer-irma-940.jpg"
+  srcset="/assets/probeer-irma-290.jpg 580w, /assets/probeer-irma-940.jpg 1880w"
+/>
+`;
+
+exports[`Demo3 should update the page after completing the IRMA flow 1`] = `
+.c0 {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:375px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+<img
+  alt=""
+  class="c0"
+  data-testid="headerImage"
+  src="/assets/mijn-amsterdam-940.jpg"
+  srcset="/assets/mijn-amsterdam-290.jpg 580w, /assets/mijn-amsterdam-940.jpg 1880w"
+/>
+`;

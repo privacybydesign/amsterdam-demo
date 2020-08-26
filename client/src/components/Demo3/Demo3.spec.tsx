@@ -1,47 +1,69 @@
-// import React from 'react';
-// import Demo3 from './Demo3';
-// import { withAppContext } from '../../test/utils';
-// import createIrmaSession from '@services/createIrmaSession';
-// import { render, fireEvent, act } from '@testing-library/react';
+import React from 'react';
+import { screen, act, fireEvent } from '@testing-library/react';
+import { setupMocks, wrappedRender } from '@test/utils';
+import Demo3 from '@components/Demo3/Demo3';
+import createIrmaSession from '@services/createIrmaSession';
 
-// jest.mock('@services/createIrmaSession');
+// Setup all the generic mocks
+setupMocks();
 
-// interface Itest {
-// fullname?: string;
-// bsn?: string;
-// }
+// MockcreateIrmaSession
+jest.mock('@services/createIrmaSession');
 
 describe('Demo3', () => {
-    afterEach(() => {
-        jest.restoreAllMocks();
+    // Show demo introduction initially
+    it('should render the initial header image', async () => {
+        // Render demo 3
+        await act(async () => await wrappedRender(<Demo3 />));
+        const headerImage: HTMLElement = await screen.findByTestId('headerImage');
+        expect(headerImage).toMatchSnapshot();
     });
 
-    it('should render correctly in demo result page', async () => {
-        // const test = createIrmaSession as jest.Mock<unknown>;
-        // await createIrmaSession.mockImplementation(() =>
-        //     Promise.resolve({
-        //         fullname: 'yooo',
-        //         bsn: '1234567'
-        //     })
-        // );
-        // getConfig.mockImplementation(() => Promise.resolve({
-        //   foo: 42
-        // }));
-        // test.mockResolvedValue({
-        //   fullname: 'yooo',
-        //   bsn: '1234567'
-        // });
-        // (getConfig as jest.Mock<Itest>).mockImplementation(() => Promise.resolve(({
-        //   yo: 42
-        // })));
-        /*const { container, asFragment, debug, queryAllByText, getByTestId } = render(withAppContext(<Demo3 />));
-
-        act(() => {
-            fireEvent.click(getByTestId('qrCodeButton'));
+    it('should update the page after completing the IRMA flow', async () => {
+        // Adjust mocked CreateIrmaSession to return a correct credential
+        const mockedCreateIrmaSession = createIrmaSession as jest.Mock<unknown>;
+        mockedCreateIrmaSession.mockReturnValue({
+            fullname: 'Test test'
         });
 
-        act(() => {
-            expect(queryAllByText('Demo 3: Inloggen met IRMA').length).toEqual(2);
-        });*/
+        // Render demo 3
+        await act(async () => await wrappedRender(<Demo3 />));
+
+        // Trigger IRMA flow
+        const QRCodeButton = screen.getByTestId('qrCodeButton');
+        await act(async () => await fireEvent.click(QRCodeButton));
+
+        // Check if header image is updated
+        const headerImage = screen.getByTestId('headerImage');
+        expect(headerImage).toMatchSnapshot();
+
+        // Check if demo notification is not visible
+        const demoNotification = screen.queryByTestId('demoNotification');
+        expect(demoNotification).toBeNull();
+
+        // Check if correct alert is shown
+        const hasResultAlert = screen.getByTestId('hasResultAlert');
+        expect(hasResultAlert).toBeInTheDocument();
+    });
+
+    it('should update the page after failing the IRMA flow', async () => {
+        // Adjust mocked CreateIrmaSession to return a negative response
+        const mockedCreateIrmaSession = createIrmaSession as jest.Mock<unknown>;
+        mockedCreateIrmaSession.mockReturnValue(null);
+
+        // Render demo 3
+        await act(async () => await wrappedRender(<Demo3 />));
+
+        // TriggerIRMA flow
+        const QRCodeButton = screen.getByTestId('qrCodeButton');
+        await act(async () => await fireEvent.click(QRCodeButton));
+
+        // Check if demo notification is not visible
+        const demoNotification = screen.queryByTestId('demoNotification');
+        expect(demoNotification).toBeNull();
+
+        // Check if correct alert is shown
+        const hasErrorAlert = screen.getByTestId('hasErrorAlert');
+        expect(hasErrorAlert).toBeInTheDocument();
     });
 });
