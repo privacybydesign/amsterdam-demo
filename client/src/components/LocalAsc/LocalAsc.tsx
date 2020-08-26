@@ -115,6 +115,7 @@ interface IAlertProps {
     iconSize?: number;
     heading?: string;
     content?: string;
+    dataTestId?: string;
 }
 
 export enum AlertColor {
@@ -124,13 +125,13 @@ export enum AlertColor {
 }
 
 export const Alert = styled(
-    ({ children, icon, iconUrl, iconSize, className, heading, content, color }: IAlertProps) => {
+    ({ children, icon, iconUrl, iconSize, className, heading, content, color, dataTestId }: IAlertProps) => {
         const themeContext = { theme: useContext(ThemeContext) as Theme.ThemeInterface };
         const iconColor =
             (color === AlertColor.PRIMARY || color === AlertColor.SUCCESS) &&
             themeColor('tint', 'level1')(themeContext);
         return (
-            <AscAlert className={className}>
+            <AscAlert className={className} data-testid={dataTestId}>
                 <div className="alert-content">
                     {(icon || iconUrl) && (
                         <Icon className="icon" size={iconSize} iconUrl={iconUrl} color={iconColor}>
