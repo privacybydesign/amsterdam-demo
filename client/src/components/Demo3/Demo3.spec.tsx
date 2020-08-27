@@ -11,7 +11,6 @@ setupMocks();
 jest.mock('@services/createIrmaSession');
 
 describe('Demo3', () => {
-    // Show demo introduction initially
     it('should render the initial header image', async () => {
         // Render demo 3
         await act(async () => await wrappedRender(<Demo3 />));
@@ -43,7 +42,7 @@ describe('Demo3', () => {
 
         // Check if correct alert is shown
         const hasResultAlert = screen.getByTestId('hasResultAlert');
-        expect(hasResultAlert).toBeInTheDocument();
+        expect(hasResultAlert).toMatchSnapshot();
     });
 
     it('should update the page after failing the IRMA flow', async () => {
@@ -54,7 +53,7 @@ describe('Demo3', () => {
         // Render demo 3
         await act(async () => await wrappedRender(<Demo3 />));
 
-        // TriggerIRMA flow
+        // Trigger IRMA flow
         const QRCodeButton = screen.getByTestId('qrCodeButton');
         await act(async () => await fireEvent.click(QRCodeButton));
 
@@ -64,6 +63,6 @@ describe('Demo3', () => {
 
         // Check if correct alert is shown
         const hasErrorAlert = screen.getByTestId('hasErrorAlert');
-        expect(hasErrorAlert).toBeInTheDocument();
+        expect(hasErrorAlert).toMatchSnapshot();
     });
 });
