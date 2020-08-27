@@ -1,5 +1,5 @@
 import React from 'react';
-import 'leaflet/dist/leaflet.css'
+import '../../../node_modules/leaflet/dist/leaflet.css';
 import { Map, BaseLayer } from '@datapunt/arm-core'
 
 const MyComponent = () => {
@@ -7,3 +7,5 @@ const MyComponent = () => {
     <BaseLayer />
   </Map>
 }
+
+export default Map;
