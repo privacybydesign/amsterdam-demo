@@ -11,9 +11,10 @@ export interface IProps {
     label?: string;
     getSession(): Promise<null | unknown>;
     className?: string;
+    dataTestId?: string;
 }
 
-const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
+const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) => {
     const [hasOverlay, setHasOverlay] = useState(false);
 
     const closeModal = useCallback(() => {
@@ -21,19 +22,19 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
     }, []);
 
     const getQRSession = useCallback(async () => {
-        if (!isMobile()) {
-            setHasOverlay(true);
-        }
-
         if (typeof getSession === 'function') {
+            if (!isMobile()) {
+                setHasOverlay(true);
+            }
             await getSession();
+            closeModal();
         }
-    }, [getSession]);
+    }, [getSession, closeModal]);
 
     return (
         <span className={className}>
             <StyledButton
-                data-testid="qrCodeButton"
+                data-testid={dataTestId || 'qrCodeButton'}
                 onClick={getQRSession}
                 variant="secondary"
                 iconSize={24}
@@ -42,7 +43,7 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
                 {label || content.qrcode.knop}
             </StyledButton>
 
-            <Modal backdropOpacity={0.5} open={hasOverlay} onClose={closeModal}>
+            <Modal backdropOpacity={0.5} open={hasOverlay} onClose={closeModal} data-testid="qrCodeModal">
                 <>
                     <StyledHeader>
                         <ReactMarkDown source={content.qrcode.title} renderers={{ heading: StyledH3 }} />
