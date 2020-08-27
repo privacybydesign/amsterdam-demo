@@ -882,7 +882,7 @@ exports[`Demo3 should update the page after completing the IRMA flow 2`] = `
         <p
           class="c8 c9"
         >
-          U heeft bewezen dat u undefined bent en u heeft uw burgerservicenummer (BSN) gedeeld.
+          U heeft bewezen dat u Test test bent en u heeft uw burgerservicenummer (BSN) gedeeld.
         </p>
       </div>
     </div>
