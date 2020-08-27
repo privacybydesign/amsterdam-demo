@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import ReactMarkDown from 'react-markdown';
 import { Button, Modal, themeSpacing, themeColor } from '@datapunt/asc-ui';
@@ -17,6 +17,15 @@ export interface IProps {
 const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) => {
     const [hasOverlay, setHasOverlay] = useState(false);
 
+    //Set mountedRef to keep track of the mounting state
+    const mountedRef = useRef<boolean>(false);
+    useEffect(() => {
+        mountedRef.current = true;
+        return () => {
+            mountedRef.current = false;
+        };
+    }, []);
+
     const closeModal = useCallback(() => {
         setHasOverlay(false);
     }, []);
@@ -27,7 +36,9 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) 
                 setHasOverlay(true);
             }
             await getSession();
-            closeModal();
+            if (mountedRef.current) {
+                closeModal();
+            }
         }
     }, [getSession, closeModal]);
 
