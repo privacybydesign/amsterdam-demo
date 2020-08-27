@@ -2,10 +2,12 @@ import React from 'react';
 import '../../../node_modules/leaflet/dist/leaflet.css';
 import { Map, BaseLayer } from '@datapunt/arm-core'
 
-const MyComponent = () => {
+interface IProps {}
+
+const MapComponent: React.FC<IProps> = () => (
   <Map fullScreen>
     <BaseLayer />
   </Map>
-}
+);
 
-export default Map;
+export default MapComponent;
