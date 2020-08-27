@@ -1,13 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
 import '../../../node_modules/leaflet/dist/leaflet.css';
 import { Map, BaseLayer } from '@datapunt/arm-core'
 
 interface IProps {}
 
+const StyledMap = styled(Map)`
+  height: 500px;
+`
+
 const MapComponent: React.FC<IProps> = () => (
-  <Map fullScreen>
+  <StyledMap fullScreen>
     <BaseLayer />
-  </Map>
+  </StyledMap>
 );
 
 export default MapComponent;
