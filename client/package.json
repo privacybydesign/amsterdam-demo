@@ -4,10 +4,13 @@
     "main": "index.js",
     "license": "MIT",
     "dependencies": {
+        "@datapunt/arm-core": "^0.3.5",
         "@datapunt/asc-assets": "^0.21.1",
         "@datapunt/asc-ui": "^0.21.1",
+        "@datapunt/react-maps": "^0.8.3-alpha",
         "@privacybydesign/irmajs": "^0.1.9",
         "axios": "^0.19.2",
+        "leaflet": "^1.6.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-markdown": "^4.3.1",
