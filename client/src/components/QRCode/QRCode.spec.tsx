@@ -6,7 +6,7 @@ import QRCode from './QRCode';
 // Setup all the generic mocks
 setupMocks();
 
-// MockcreateIrmaSession
+// Mock createIrmaSession
 jest.mock('@services/createIrmaSession');
 
 const getSession = jest.fn(async () => {
