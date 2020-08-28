@@ -66,4 +66,21 @@ const setupMockedAPI = (mockedAxios: MockAdapter): void => {
         },
         token: 'fake-test-token'
     });
+
+    mockedAxios.onGet('https://api.data.amsterdam.nl/dataselectie/bag/?size=1&postcode=1011PT').reply(200, {
+        aggs_list: {
+            ggw_code: {
+                buckets: [{ key: 'DX02', doc_count: 22 }],
+                doc_count: 1
+            },
+            buurtcombinatie_naam: {
+                buckets: [{ key: 'Test buurt', doc_count: 22 }],
+                doc_count: 1
+            },
+            ggw_naam: {
+                buckets: [{ key: 'Test gebied', doc_count: 22 }],
+                doc_count: 1
+            }
+        }
+    });
 };
