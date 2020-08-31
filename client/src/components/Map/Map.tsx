@@ -63,36 +63,36 @@ const MapComponent: React.FC<IProps> = () => {
 
   return (
     <div style={{ position: 'relative', width: '50%', height: '500px'}}>
-    <StyledMap setInstance={(instance) => setMapInstance(instance)}
-      events={{
-        click: (e) => {
-          onMapclick(e);
-        },
-      }}
-    >
-      {latLng && <Marker latLng={latLng} />}
-      <ViewerContainer
-        bottomRight={<Zoom />}
-        topLeft={
-          <Input
-            id="address"
-            ref={addressRef}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setUrl(`${autosuggestUrl}${e.target.value}`);
-            }}
-          />
-        }
-        topRight={
-          <ul style={{ backgroundColor: 'white', listStyleType: 'none'}}>
-            {query.length &&  autosuggest  && autosuggest.length && autosuggest.map((address) =>
-              (<li key={address.id}><a href="#" onClick={(e) => onAutosuggestClick(e, address.weergavenaam)}>{address.weergavenaam}</a></li>)
-            )}
-          </ul>
-        }
-      />
-      <BaseLayer />
-    </StyledMap>
+      <StyledMap setInstance={(instance) => setMapInstance(instance)}
+        events={{
+          click: (e) => {
+            onMapclick(e);
+          },
+        }}
+      >
+        {latLng && <Marker latLng={latLng} />}
+        <ViewerContainer
+          bottomRight={<Zoom />}
+          topLeft={
+            <Input
+              id="address"
+              ref={addressRef}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setUrl(`${autosuggestUrl}${e.target.value}`);
+              }}
+            />
+          }
+          topRight={
+            <ul style={{ backgroundColor: 'white', listStyleType: 'none'}}>
+              {query.length &&  autosuggest  && autosuggest.length && autosuggest.map((address) =>
+                (<li key={address.id}><a href="#" onClick={(e) => onAutosuggestClick(e, address.weergavenaam)}>{address.weergavenaam}</a></li>)
+              )}
+            </ul>
+          }
+        />
+        <BaseLayer />
+      </StyledMap>
     </div>
   )
 };
