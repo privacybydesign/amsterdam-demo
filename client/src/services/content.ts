@@ -313,8 +313,6 @@ De gemeente kan u dan vragen stellen over uw melding.\n
 De gemeente kan u op de hoogte houden over uw melding. En u kunt met dit e-mailadres de voortgang volgen in Mijn Amsterdam.\n
 `
             },
-            intro2: `## Demo-melding van overlast
-Vul uw demo-aanvraag aan met uw gegevens uit IRMA.`,
             alert: {
                 title: `Dit is een demo`,
                 body: `Uw melding wordt niet naar de gemeente verstuurd.`
@@ -330,26 +328,27 @@ Vul uw demo-aanvraag aan met uw e-mail en/of telefoonnummer uit IRMA.`
             }
         },
         form: {
-            map: {
-                title: 'Waar is het?',
-                body: 'Typ het dichstbijzijnde adres of klik de locatie aan op de kaart.',
-                required: 'Vergeet niet om een locatie te selecteren.'
+            title: `# Demo-melding van overlast`,
+            location: {
+                label: `### Waar is het?
+Typ het dichstbijzijnde adres of klik de locatie aan op de kaart.`,
+                required: `Vergeet niet om een locatie te selecteren.`
             },
             report: {
-                title: 'Waar gaat het om?',
-                body: 'Typ geen persoonsgegevens in deze omschrijving, dit wordt apart gevraagd.',
+                label: `### Waar gaat het om?
+Typ geen persoonsgegevens in deze omschrijving, dit wordt apart gevraagd.`,
                 required: 'Vergeet niet om uw melding te omschrijven.'
             },
             phoneConsent: {
-                title: 'Mogen we u bellen voor vragen?',
-                body: 'Zo kunt u ons helpen het probleem sneller of beter op te lossen.',
+                label: `### Mogen we u bellen voor vragen?
+Zo kunt u ons helpen het probleem sneller of beter op te lossen.`,
                 optionYes: 'Ja',
                 optionNo: 'Nee',
                 required: 'Vergeet niet om aan te geven of we u mogen bellen voor vragen.'
             },
             updates: {
-                title: 'Wilt u op de hoogte blijven?',
-                body: 'We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.',
+                label: `### Wilt u op de hoogte blijven?
+We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`,
                 optionYes: 'Ja',
                 optionNo: 'Nee',
                 required: 'Vergeet niet om aan te geven of u op de hoogte gehouden wilt worden.'

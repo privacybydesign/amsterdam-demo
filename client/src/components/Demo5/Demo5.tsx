@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useReducer } from 'react';
+import styled from 'styled-components';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { Accordion } from '@datapunt/asc-ui';
+import { Accordion, themeSpacing } from '@datapunt/asc-ui';
 import { Alert as AlertIcon } from '@datapunt/asc-assets';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
@@ -18,27 +19,66 @@ import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
+import { reducer, initialState } from './reducer';
+import Demo5Form, { FormFields } from './Demo5Form';
 
 export interface IProps {}
-// @todo add error flow with incorrect data
 
 const Demo5: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
-    const [hasResult, setHasResult] = useState<boolean>(false);
-    const [hasError, setHasError] = useState<boolean>(false);
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const formRef = useRef<HTMLFormElement>(null);
 
-    const getSession = async () => {
-        const response = await createIrmaSession('demo5', 'irma-qr', credentialSource === CredentialSource.DEMO);
-        if (response) {
-            setHasResult(true);
-            setHasError(false);
-            // setBsn(response['bsn']);
-            // setName(response['fullname']);
-        } else {
-            setHasError(true);
+    // Form validator (uncontrolled)
+    const validateForm = useCallback(() => {
+        const formErrors = [];
+
+        // TODO: Include location
+        const location = '';
+
+        const report = (formRef.current.querySelector(`#${FormFields.REPORT}`) as HTMLTextAreaElement).value;
+        if (!report.length) {
+            formErrors.push(FormFields.REPORT);
         }
-        window.scrollTo(0, 0);
-        startUsabillaSurvey();
+
+        const phoneConsent = formRef.current.querySelector(`input[name=${FormFields.PHONE_CONSENT}]:checked`)
+            ? true
+            : false;
+        if (!phoneConsent) {
+            formErrors.push(FormFields.PHONE_CONSENT);
+        }
+
+        const updates = formRef.current.querySelector(`input[name=${FormFields.UPDATES}]:checked`) ? true : false;
+        if (!updates) {
+            formErrors.push(FormFields.UPDATES);
+        }
+
+        dispatch({
+            type: 'validateForm',
+            payload: { location, report, phoneConsent, updates, formErrors }
+        });
+        return !formErrors.length;
+    }, []);
+
+    // IRMA session
+    const getSession = async () => {
+        let response = null;
+        if (validateForm()) {
+            response = await createIrmaSession('demo5', 'irma-qr', credentialSource === CredentialSource.DEMO);
+            if (response) {
+                dispatch({
+                    type: 'setResult',
+                    payload: {
+                        phone: response['mobilenumber'],
+                        email: response['email']
+                    }
+                });
+            } else {
+                dispatch({ type: 'setError' });
+            }
+            window.scrollTo(0, 0);
+            startUsabillaSurvey();
+        }
         return response;
     };
 
@@ -57,31 +97,31 @@ const Demo5: React.FC<IProps> = () => {
 
     // Update header image for 18+
     useEffect(() => {
-        if (hasResult) {
+        if (state.hasResult) {
             setHeaderImg({
                 filename: content.responsiveImages.demo3.headerResult.src,
                 alt: content.responsiveImages.demo3.headerResult.alt
             });
         }
-    }, [hasResult]);
+    }, [state.hasResult]);
 
     return (
         <PageTemplate>
             <ContentBlock>
                 <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
 
-                {!hasResult && !hasError && <DemoNotification />}
+                {!state.hasResult && !state.hasError && <DemoNotification />}
                 <ReactMarkDown
                     source={content.demo5.breadcrumbs}
                     renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
                 />
 
                 <ReactMarkDown
-                    source={content.demo5[hasResult ? 'proven' : 'unproven'].title}
+                    source={content.demo5[state.hasResult ? 'proven' : 'unproven'].title}
                     renderers={{ heading: AscLocal.H1 }}
                 />
 
-                {hasResult && !hasError && (
+                {state.hasResult && !state.hasError && (
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.SUCCESS}
                         icon={<Checkmark />}
@@ -92,7 +132,7 @@ const Demo5: React.FC<IProps> = () => {
                     />
                 )}
 
-                {hasError && (
+                {state.hasError && (
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.ERROR}
                         icon={<AlertIcon />}
@@ -106,7 +146,7 @@ const Demo5: React.FC<IProps> = () => {
 
             <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
 
-            {!hasResult ? (
+            {!state.hasResult ? (
                 <AscLocal.Row noMargin>
                     <AscLocal.Column
                         span={{
@@ -121,7 +161,7 @@ const Demo5: React.FC<IProps> = () => {
                             <ReactMarkDown
                                 source={content.demo5.unproven.intro1}
                                 renderers={{
-                                    heading: AscLocal.H2,
+                                    heading: AscLocal.H3,
                                     paragraph: AscLocal.Paragraph,
                                     list: AscLocal.UL
                                 }}
@@ -137,7 +177,18 @@ const Demo5: React.FC<IProps> = () => {
                                     />
                                 </Accordion>
                             </AscLocal.AccordionContainer>
-                            {/* // TODO: Add form */}
+                            <ReactMarkDown source={content.demo5.form.title} renderers={{ heading: AscLocal.H3 }} />
+
+                            <CroppedAlert
+                                color={AscLocal.AlertColor.PRIMARY}
+                                iconUrl="assets/icon-info.svg"
+                                iconSize={14}
+                                heading={content.demo5.unproven.alert.title}
+                                content={content.demo5.unproven.alert.body}
+                            />
+
+                            <Demo5Form errors={state.formErrors} forwardRef={formRef} />
+
                             <QRCode getSession={getSession} label={content.demo5.button} />
                             <ReactMarkDown
                                 source={content.downloadIrma}
@@ -170,7 +221,7 @@ const Demo5: React.FC<IProps> = () => {
                             <ReactMarkDown
                                 source={content.demo5.result.yourReport}
                                 renderers={{
-                                    heading: AscLocal.H2,
+                                    heading: AscLocal.H3,
                                     paragraph: AscLocal.Paragraph,
                                     list: AscLocal.UL
                                 }}
@@ -181,7 +232,7 @@ const Demo5: React.FC<IProps> = () => {
                         <ReactMarkDown
                             source={content.demo5.result.rest}
                             renderers={{
-                                heading: AscLocal.H2,
+                                heading: AscLocal.H3,
                                 paragraph: AscLocal.Paragraph,
                                 list: AscLocal.UL,
                                 link: AscLocal.InlineLink
@@ -194,5 +245,18 @@ const Demo5: React.FC<IProps> = () => {
         </PageTemplate>
     );
 };
+
+const CroppedAlert = styled(AscLocal.Alert)`
+    padding: ${themeSpacing(2)};
+
+    h3,
+    p {
+        margin-bottom: 0;
+    }
+
+    p {
+        margin-top: ${themeSpacing(1)};
+    }
+`;
 
 export default Demo5;
