@@ -206,7 +206,7 @@ const Demo2: React.FC<IProps> = () => {
                             <ReactMarkDown
                                 source={content.demo2.intro}
                                 renderers={{
-                                    heading: AscLocal.H2,
+                                    heading: AscLocal.H3,
                                     list: AscLocal.UL
                                 }}
                             />
@@ -253,7 +253,7 @@ const Demo2: React.FC<IProps> = () => {
                             <ReactMarkDown
                                 source={content.demo2.result}
                                 renderers={{
-                                    heading: AscLocal.H2,
+                                    heading: AscLocal.H3,
                                     paragraph: AscLocal.Paragraph,
                                     list: AscLocal.UL,
                                     link: Link
@@ -265,7 +265,7 @@ const Demo2: React.FC<IProps> = () => {
                         <ReactMarkDown
                             source={content.callToAction}
                             renderers={{
-                                heading: AscLocal.H2,
+                                heading: AscLocal.H3,
                                 paragraph: AscLocal.Paragraph,
                                 list: AscLocal.UL,
                                 link: AscLocal.InlineLink

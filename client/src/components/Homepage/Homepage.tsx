@@ -28,11 +28,11 @@ const Homepage: React.FC<IProps> = () => (
                     <Accordion title={content.home.requirements.title} id="nodig">
                         <ReactMarkDown
                             source={content.home.requirements.body}
-                            renderers={{ heading: AscLocal.H2, list: AscLocal.UL, image: DownloadButton, link: Link }}
+                            renderers={{ heading: AscLocal.H3, list: AscLocal.UL, image: DownloadButton, link: Link }}
                         />
                     </Accordion>
                 </AscLocal.AccordionContainer>
-                <ReactMarkDown source={content.home.subtitle} renderers={{ heading: AscLocal.H2 }} />
+                <ReactMarkDown source={content.home.subtitle} renderers={{ heading: AscLocal.H3 }} />
                 <ArticleContainer>
                     <Article
                         imageSrc={content.responsiveImages.demo1.header.src}
@@ -82,7 +82,7 @@ const Homepage: React.FC<IProps> = () => (
                 {/* <ReactMarkDown
                     source={content.home.sidebar.bottom}
                     renderers={{
-                        heading: AscLocal.H2,
+                        heading: AscLocal.H3,
                         paragraph: AscLocal.StrongParagraph,
                         link: AscLocal.LinkWithChevron
                     }}

@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Heading, Icon, themeColor, themeSpacing } from '@datapunt/asc-ui';
+import { Icon, themeColor, themeSpacing } from '@datapunt/asc-ui';
 import { ChevronRight } from '@datapunt/asc-assets';
+import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import HeaderImage from '@components/HeaderImage/HeaderImage';
 
 export interface IProps {
@@ -37,10 +38,6 @@ const Container = styled.section`
     }
 `;
 
-const StyledH2 = styled(Heading)`
-    margin-bottom: 8px;
-`;
-
 const StyledLink = styled(Link)`
     color: ${themeColor('tint', 'level7')};
     text-decoration: none;
@@ -50,16 +47,12 @@ const StyledLink = styled(Link)`
         color: pink;
     }
 
-    h2 {
-        padding: 0 ${themeSpacing(4)};
-    }
-
     img {
         width: 100%;
         margin-bottom: ${themeSpacing(2)};
     }
 
-    div {
+    .text {
         padding: 0 ${themeSpacing(6)} ${themeSpacing(3)} ${themeSpacing(4)};
     }
 
@@ -81,8 +74,10 @@ const Article: React.FC<IProps> = ({ imageSrc, imageAlt, title, children, href, 
         <StyledLink to={href}>
             <Container className={className}>
                 <HeaderImage filename={imageSrc} alt={imageAlt} />
-                <StyledH2 $as="h2">{title}</StyledH2>
-                <div>{children}</div>
+                <div className="text">
+                    <AscLocal.H3>{title}</AscLocal.H3>
+                    {children}
+                </div>
                 <Icon>
                     <ChevronRight />
                 </Icon>
