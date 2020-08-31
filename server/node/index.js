@@ -29,13 +29,16 @@ const CREDENTIALS_TO_REQUEST = {
     ],
     DEMO4: [
       [
-        "irma-demo.gemeente.personalData.fullname",
-        "irma-demo.gemeente.address.street",
-        "irma-demo.gemeente.address.houseNumber",
+        [
+          "irma-demo.gemeente.personalData.fullname",
+          "irma-demo.gemeente.address.street",
+          "irma-demo.gemeente.address.houseNumber",
+          "irma-demo.RU.idinData.zipcode",
+          "irma-demo.RU.idinData.city",
+        ],
       ],
-      ["irma-demo.RU.idinData.zipcode", "irma-demo.RU.idinData.city"],
-      ["irma-demo.pbdf.mobilenumber.mobilenumber"],
-      ["irma-demo.sidn-pbdf.email.email"],
+      [["irma-demo.pbdf.mobilenumber.mobilenumber"]],
+      [["irma-demo.sidn-pbdf.email.email"]],
     ],
     DEMO5: [["irma-demo.sidn-pbdf.email.domain"]],
   },
@@ -50,14 +53,16 @@ const CREDENTIALS_TO_REQUEST = {
     ],
     DEMO4: [
       [
-        "pbdf.gemeente.personalData.fullname",
-        "pbdf.gemeente.address.street",
-        "pbdf.gemeente.address.houseNumber",
-        "pbdf.gemeente.address.zipcode",
-        "pbdf.gemeente.address.city",
+        [
+          "pbdf.gemeente.personalData.fullname",
+          "pbdf.gemeente.address.street",
+          "pbdf.gemeente.address.houseNumber",
+          "pbdf.RU.idinData.zipcode",
+          "pbdf.RU.idinData.city",
+        ],
       ],
-      ["pbdf.pbdf.mobilenumber.mobilenumber"],
-      ["pbdf.pbdf.email.email"],
+      [["pbdf.pbdf.mobilenumber.mobilenumber"]],
+      [["pbdf.pbdf.email.email"]],
     ],
     DEMO5: [["pbdf.pbdf.email.domain"]],
   },
@@ -74,7 +79,7 @@ const CREDENTIALS_TO_REQUEST = {
 const createIrmaRequest = (content) => {
   return {
     "@context": "https://irma.app/ld/request/disclosure/v2",
-    disclose: [[...content]],
+    disclose: [...content],
   };
 };
 
