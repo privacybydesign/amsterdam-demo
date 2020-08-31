@@ -13,6 +13,8 @@ interface IProps { }
 
 const StyledMap = styled(Map)`
   height: 500px;
+  width: 500px;
+
   margin-bottom: 20px;
 `;
 
@@ -45,7 +47,13 @@ const MapComponent: React.FC<IProps> = () => {
   }, [mapInstance]);
 
   return (
-    <StyledMap setInstance={(instance) => setMapInstance(instance)}>
+    <StyledMap setInstance={(instance) => setMapInstance(instance)}
+      events={{
+        click: (e) => {
+          console.log('click', e)
+        },
+      }}
+    >
       <ViewerContainer
         bottomRight={<Zoom />}
         topLeft={
@@ -61,9 +69,9 @@ const MapComponent: React.FC<IProps> = () => {
           <ul style={{ backgroundColor: 'white', listStyleType: 'none'}}>
             {query.length &&  autosuggest  && autosuggest.length && autosuggest.map((address) =>
               (<li key={address.id}>{address.weergavenaam}</li>)
-          )}
-        </ul>
-    }
+            )}
+          </ul>
+        }
       />
       <BaseLayer />
     </StyledMap>

@@ -980,10 +980,10 @@
   optionalDependencies:
     objectFitPolyfill ">=2.3.0"
 
-"@datapunt/react-maps@^0.8.3-alpha":
-  version "0.8.3-alpha"
-  resolved "https://registry.yarnpkg.com/@datapunt/react-maps/-/react-maps-0.8.3-alpha.tgz#d4fee96ddb952e5e1280e6fe25b16aed6fd5c982"
-  integrity sha512-Eb+kxTZCQLlxE3KjGGAcVgYEiKBbEAb63c/sIaQCLg8fQMqG/H7lvA8WAtr82bxdoSv7A/dccjR6SD8DnKvCWg==
+"@datapunt/react-maps@0.8.4-alpha.1":
+  version "0.8.4-alpha.1"
+  resolved "https://registry.yarnpkg.com/@datapunt/react-maps/-/react-maps-0.8.4-alpha.1.tgz#e964306435a392b441f389e89bc859ee0cee8c10"
+  integrity sha512-CfneGadPH7WLveEF9zmOMcBRZAZRWyEl2anSAm89aV6lejrDvk2olNUWZTg17UsSygJhbsF3KNw/mqsOTZNhgw==
 
 "@emotion/is-prop-valid@^0.8.8":
   version "0.8.8"

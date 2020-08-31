@@ -7,7 +7,7 @@
         "@datapunt/arm-core": "^0.3.5",
         "@datapunt/asc-assets": "^0.21.1",
         "@datapunt/asc-ui": "^0.21.1",
-        "@datapunt/react-maps": "^0.8.3-alpha",
+        "@datapunt/react-maps": "0.8.4-alpha.1",
         "@privacybydesign/irmajs": "^0.1.9",
         "axios": "^0.19.2",
         "leaflet": "^1.6.0",
