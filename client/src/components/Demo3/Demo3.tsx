@@ -69,15 +69,13 @@ const Demo3: React.FC<IProps> = () => {
 
     return (
         <PageTemplate>
-            <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
-
             <ContentBlock>
+                <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
+                {!hasResult && !hasError && <DemoNotification />}
                 <ReactMarkDown
                     source={content.demo3.breadcrumbs}
                     renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
                 />
-
-                {!hasResult && !hasError && <DemoNotification />}
 
                 <ReactMarkDown
                     source={content.demo3[hasResult ? 'proven' : 'unproven'].title}
