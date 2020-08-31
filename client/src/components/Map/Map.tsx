@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import '../../../node_modules/leaflet/dist/leaflet.css';
@@ -19,16 +19,14 @@ const StyledMap = styled(Map)`
 
 const MapComponent: React.FC<IProps> = () => {
   const { addresses, setLatLng, loading, latLng } = useGetAddressFromLatLng()
+  const addressRef = useRef(null);
   const autosuggestUrl= 'https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&q=';
   const [url, setUrl] = useState<string>('');
   const [query, setQuery] = useState<string>('');
   const [mapInstance, setMapInstance] = useState<any>({});
   const [autosuggest, setAutosuggest] = useState([]);
-  console.log('addresses', addresses);
-
-
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
+  // const [isLoading, setIsLoading] = useState<boolean>(false);
+  // const [isError, setIsError] = useState<boolean>(false);
 
   const fetchAutosuggest = async (url) => {
     const response = await axios.get(url);
@@ -37,7 +35,6 @@ const MapComponent: React.FC<IProps> = () => {
   };
 
   const clickHandler = (e: any) => {
-    console.log('clickHandler',e );
     setLatLng(e.latlng);
   }
 
@@ -46,9 +43,17 @@ const MapComponent: React.FC<IProps> = () => {
   }, [url]);
 
   useEffect(() =>  {
-    if (mapInstance) {
+    if (addresses &&  addresses.results &&  addresses.results.length) {
+      addressRef.current.value = addresses.results[0]._display;
+    } else if (addresses &&  addresses.results && addresses.results.length === 0) {
+      addressRef.current.value = 'locatie gepind';
     }
-  }, [mapInstance]);
+  }, [addresses]);
+
+  // useEffect(() =>  {
+    // if (mapInstance) {
+    // }
+  // }, [mapInstance]);
 
   return (
     <StyledMap setInstance={(instance) => setMapInstance(instance)}
@@ -63,7 +68,8 @@ const MapComponent: React.FC<IProps> = () => {
         bottomRight={<Zoom />}
         topLeft={
           <Input
-            id="some-input"
+            id="address"
+            ref={addressRef}
             onChange={(e) => {
               setQuery(e.target.value);
               setUrl(`${autosuggestUrl}${e.target.value}`);
