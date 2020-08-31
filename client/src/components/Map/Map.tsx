@@ -11,7 +11,7 @@ interface IProps { }
 
 const StyledMap = styled(Map)`
   height: 500px;
-  width: 500px;
+  width: 100%;
   cursor: pointer;
   margin-bottom: 20px;
 `;
@@ -62,6 +62,7 @@ const MapComponent: React.FC<IProps> = () => {
   // }, [mapInstance]);
 
   return (
+    <div style={{ position: 'relative', width: '50%', height: '500px'}}>
     <StyledMap setInstance={(instance) => setMapInstance(instance)}
       events={{
         click: (e) => {
@@ -92,6 +93,7 @@ const MapComponent: React.FC<IProps> = () => {
       />
       <BaseLayer />
     </StyledMap>
+    </div>
   )
 };
 
