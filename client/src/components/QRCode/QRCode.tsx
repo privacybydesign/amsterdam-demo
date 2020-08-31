@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import ReactMarkDown from 'react-markdown';
 import { Button, Modal, themeSpacing, themeColor } from '@datapunt/asc-ui';
@@ -11,32 +11,50 @@ export interface IProps {
     label?: string;
     getSession(): Promise<null | unknown>;
     className?: string;
+    dataTestId?: string;
 }
 
-const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
+const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) => {
     const [hasOverlay, setHasOverlay] = useState(false);
+
+    //Set mountedRef to keep track of the mounting state
+    const mountedRef = useRef<boolean>(false);
+    useEffect(() => {
+        mountedRef.current = true;
+        return () => {
+            mountedRef.current = false;
+        };
+    }, []);
 
     const closeModal = useCallback(() => {
         setHasOverlay(false);
     }, []);
 
     const getQRSession = useCallback(async () => {
-        if (!isMobile()) {
-            setHasOverlay(true);
-        }
-
         if (typeof getSession === 'function') {
+            if (!isMobile()) {
+                setHasOverlay(true);
+            }
             await getSession();
+            if (mountedRef.current) {
+                closeModal();
+            }
         }
-    }, [getSession]);
+    }, [getSession, closeModal]);
 
     return (
         <span className={className}>
-            <StyledButton onClick={getQRSession} variant="secondary" iconSize={24} iconLeft={<IrmaLogoIcon />}>
+            <StyledButton
+                data-testid={dataTestId || 'qrCodeButton'}
+                onClick={getQRSession}
+                variant="secondary"
+                iconSize={24}
+                iconLeft={<IrmaLogoIcon />}
+            >
                 {label || content.qrcode.knop}
             </StyledButton>
 
-            <Modal backdropOpacity={0.5} open={hasOverlay} onClose={closeModal}>
+            <Modal backdropOpacity={0.5} open={hasOverlay} onClose={closeModal} data-testid="qrCodeModal">
                 <>
                     <StyledHeader>
                         <ReactMarkDown source={content.qrcode.title} renderers={{ heading: StyledH3 }} />

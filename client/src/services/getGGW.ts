@@ -6,10 +6,8 @@ interface GgwResult {
     ggwNaam: string;
 }
 
-const instance = axios.create({});
-
 const getGGW = async (postcode: string): Promise<GgwResult> => {
-    const response = await instance.get(`https://api.data.amsterdam.nl/dataselectie/bag/?size=1&postcode=${postcode}`);
+    const response = await axios.get(`https://api.data.amsterdam.nl/dataselectie/bag/?size=1&postcode=${postcode}`);
 
     let buurtcombinatieNamen: string;
     let ggwCode: string;

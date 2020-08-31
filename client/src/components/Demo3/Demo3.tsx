@@ -91,6 +91,7 @@ const Demo3: React.FC<IProps> = () => {
                         iconSize={14}
                         heading={content.demo3.proven.alert.title}
                         content={content.demo3.proven.alert.body.replace(/\[\]/, name)}
+                        dataTestId="hasResultAlert"
                     />
                 )}
 
@@ -101,6 +102,7 @@ const Demo3: React.FC<IProps> = () => {
                         iconSize={22}
                         heading={content.demoErrorAlert.heading}
                         content={content.demoErrorAlert.content}
+                        dataTestId="hasErrorAlert"
                     />
                 )}
             </ContentBlock>

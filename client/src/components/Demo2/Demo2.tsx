@@ -125,6 +125,7 @@ const Demo2: React.FC<IProps> = () => {
                     iconSize={22}
                     heading={content.demoErrorAlert.heading}
                     content={content.demoErrorAlert.content}
+                    dataTestId="hasErrorAlert"
                 />
             );
         } else if (isOver18 && wijk.length) {
@@ -135,6 +136,7 @@ const Demo2: React.FC<IProps> = () => {
                     iconSize={14}
                     heading={content.demo2.proven.alert.title}
                     content={content.demo2.proven.alert.bodyAgeAndPostcodePositive.replace(regExp, wijk)}
+                    dataTestId="hasResultAlert"
                 />
             );
         } else if (!isOver18 && wijk.length) {
@@ -145,6 +147,7 @@ const Demo2: React.FC<IProps> = () => {
                     iconSize={22}
                     heading={content.demo2.proven.alert.title}
                     content={content.demo2.proven.alert.bodyAgeNegative.replace(regExp, wijk)}
+                    dataTestId="hasResultAlert"
                 />
             );
         } else if (isOver18 && !wijk.length) {
@@ -155,6 +158,7 @@ const Demo2: React.FC<IProps> = () => {
                     iconSize={22}
                     heading={content.demo2.proven.alert.title}
                     content={content.demo2.proven.alert.bodyPostcodeNegative}
+                    dataTestId="hasResultAlert"
                 />
             );
         } else if (!isOver18 && !wijk.length) {
@@ -165,6 +169,7 @@ const Demo2: React.FC<IProps> = () => {
                     iconSize={22}
                     heading={content.demo2.proven.alert.title}
                     content={content.demo2.proven.alert.bodyAgeAndPostcodeNegative}
+                    dataTestId="hasResultAlert"
                 />
             );
         }

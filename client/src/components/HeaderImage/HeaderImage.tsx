@@ -11,6 +11,7 @@ const HeaderImage: React.FC<IHeaderImageProps> = ({ filename, alt }) => (
         src={`/assets/${filename}-940.jpg`}
         srcSet={`/assets/${filename}-290.jpg 580w, /assets/${filename}-940.jpg 1880w`}
         alt={alt}
+        data-testid="headerImage"
     />
 );
 

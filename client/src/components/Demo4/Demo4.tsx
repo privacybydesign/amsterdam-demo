@@ -46,8 +46,9 @@ const Demo4: React.FC<IProps> = () => {
     };
 
     const getSession = async () => {
+        let response = null;
         if (validateForm()) {
-            const response = await createIrmaSession('demo4', 'irma-qr', credentialSource === CredentialSource.DEMO);
+            response = await createIrmaSession('demo4', 'irma-qr', credentialSource === CredentialSource.DEMO);
             if (response) {
                 dispatch({
                     type: 'setProperties',
@@ -67,6 +68,7 @@ const Demo4: React.FC<IProps> = () => {
             window.scrollTo(0, 0);
             startUsabillaSurvey();
         }
+        return response;
     };
 
     const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
@@ -121,6 +123,7 @@ const Demo4: React.FC<IProps> = () => {
                         iconSize={22}
                         heading={content.demoErrorAlert.heading}
                         content={content.demoErrorAlert.content}
+                        dataTestId="hasErrorAlert"
                     />
                 )}
 
@@ -130,6 +133,7 @@ const Demo4: React.FC<IProps> = () => {
                         icon={<Checkmark />}
                         heading={content.demo4.proven.alert.title}
                         content={content.demo4.proven.alert.body}
+                        dataTestId="hasResultAlert"
                     />
                 )}
             </ContentBlock>

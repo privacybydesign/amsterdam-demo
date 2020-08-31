@@ -127,6 +127,7 @@ const Demo1: React.FC<IProps> = () => {
                         iconSize={14}
                         heading={content.demo1.isOver18.heading}
                         content={content.demo1.isOver18.content}
+                        dataTestId="hasResultAlert"
                     />
                 )}
                 {hasResult18 && !isOver18 && (
@@ -136,6 +137,7 @@ const Demo1: React.FC<IProps> = () => {
                         iconSize={22}
                         heading={content.demo1.isNotOver18.heading}
                         content={content.demo1.isNotOver18.content}
+                        dataTestId="hasResultAlert"
                     />
                 )}
 
@@ -146,6 +148,7 @@ const Demo1: React.FC<IProps> = () => {
                         iconSize={14}
                         heading={content.demo1.isOver65.heading}
                         content={content.demo1.isOver65.content}
+                        dataTestId="hasResultAlert"
                     />
                 )}
                 {hasResult65 && !isOver65 && (
@@ -155,6 +158,7 @@ const Demo1: React.FC<IProps> = () => {
                         iconSize={22}
                         heading={content.demo1.isNotOver65.heading}
                         content={content.demo1.isNotOver65.content}
+                        dataTestId="hasResultAlert"
                     />
                 )}
                 {hasError && (
@@ -164,6 +168,7 @@ const Demo1: React.FC<IProps> = () => {
                         iconSize={22}
                         heading={content.demoErrorAlert.heading}
                         content={content.demoErrorAlert.content}
+                        dataTestId="hasErrorAlert"
                     />
                 )}
             </ContentBlock>
@@ -189,8 +194,16 @@ const Demo1: React.FC<IProps> = () => {
                             </AscLocal.AccordionContainer>
 
                             <div>
-                                <QRCode getSession={getSessionOver18} label={content.demo1.button18} />
-                                <QRCode getSession={getSessionOver65} label={content.demo1.button65} />
+                                <QRCode
+                                    getSession={getSessionOver18}
+                                    label={content.demo1.button18}
+                                    dataTestId="qrCodeButton18"
+                                />
+                                <QRCode
+                                    getSession={getSessionOver65}
+                                    label={content.demo1.button65}
+                                    dataTestId="qrCodeButton65"
+                                />
                             </div>
 
                             <ReactMarkDown

@@ -6,7 +6,9 @@ import theme from '@services/theme';
 import AppRoutes from './AppRoutes';
 import ScrollToTop from '@components/ScrollToTop/ScrollToTop';
 
-const App: React.FC<unknown> = () => (
+interface IProps {}
+
+const App: React.FC<IProps> = () => (
     <ThemeProvider overrides={theme}>
         <Bg>
             <GlobalStyle />
