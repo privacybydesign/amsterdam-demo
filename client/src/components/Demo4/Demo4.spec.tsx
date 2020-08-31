@@ -3,6 +3,7 @@ import { screen, act, fireEvent } from '@testing-library/react';
 import { setupMocks, wrappedRender } from '@test/utils';
 import Demo4 from '@components/Demo4/Demo4';
 import createIrmaSession from '@services/createIrmaSession';
+import content from '@services/content';
 
 // Setup all the generic mocks
 setupMocks();
@@ -47,7 +48,7 @@ describe('Demo4', () => {
         await act(async () => await wrappedRender(<Demo4 />));
 
         // Fill in form
-        const radioOption = screen.getByLabelText('Ja');
+        const radioOption = screen.getByLabelText(content.demo4.form.optionYes);
         act(() => {
             fireEvent.click(radioOption);
         });
@@ -78,7 +79,7 @@ describe('Demo4', () => {
         await act(async () => await wrappedRender(<Demo4 />));
 
         // Fill in form
-        const radioOption = screen.getByLabelText('Ja');
+        const radioOption = screen.getByLabelText(content.demo4.form.optionYes);
         act(() => {
             fireEvent.click(radioOption);
         });

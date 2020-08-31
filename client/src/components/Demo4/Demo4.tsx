@@ -166,11 +166,11 @@ const Demo4: React.FC<IProps> = () => {
                                 />
 
                                 <RadioGroup name="geveltuin" error={!formValid}>
-                                    <Label htmlFor="yes" label="Ja">
-                                        <Radio id="yes" variant="primary" value="Ja" />
+                                    <Label htmlFor="yes" label={content.demo4.form.optionYes}>
+                                        <Radio id="yes" variant="primary" value={content.demo4.form.optionYes} />
                                     </Label>
-                                    <Label htmlFor="no" label="Nee">
-                                        <Radio id="no" variant="primary" value="Nee" />
+                                    <Label htmlFor="no" label={content.demo4.form.optionNo}>
+                                        <Radio id="no" variant="primary" value={content.demo4.form.optionNo} />
                                     </Label>
                                 </RadioGroup>
                                 {!formValid && <ErrorMessage message={content.demo4.form.required} />}
@@ -195,14 +195,14 @@ const Demo4: React.FC<IProps> = () => {
                     <ContentBlock>
                         <AscLocal.GreyContainer>
                             <ReactMarkDown
-                                source={content.demo4.result.uwDemoAanvraag.replace(/\{(.*?)\}/gm, replaceVars)}
+                                source={content.demo4.result.yourDemoRequest.replace(/\{(.*?)\}/gm, replaceVars)}
                                 renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
                         </AscLocal.GreyContainer>
 
                         <AscLocal.GreyContainer>
                             <ReactMarkDown
-                                source={content.demo4.result.uwGegevens.replace(/\{(.*?)\}/gm, replaceVars)}
+                                source={content.demo4.result.yourDetails.replace(/\{(.*?)\}/gm, replaceVars)}
                                 renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
                         </AscLocal.GreyContainer>
