@@ -324,13 +324,9 @@ Vul uw demo-aanvraag aan met uw e-mail en/of telefoonnummer uit IRMA.`
         },
         proven: {
             title: `# Demo 5: Overlast melden`,
-            alertPositive: {
+            alert: {
                 title: `Uw contactgegevens`,
                 body: `U heeft een formulier ingevuld met uw e-mailadres.`
-            },
-            alertNegative: {
-                title: `Geen contactgegevens`,
-                body: `U heeft ervoor gekozen geen contactgegevens vrij te geven.`
             }
         },
         form: {
