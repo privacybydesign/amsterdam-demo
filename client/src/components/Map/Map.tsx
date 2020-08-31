@@ -7,7 +7,6 @@ import { useMapInstance,  } from '@datapunt/react-maps';
 import { Map, BaseLayer, ViewerContainer, Zoom, useGetAddressFromLatLng, Marker } from '@datapunt/arm-core'
 import { Input } from '@datapunt/asc-ui';
 
-
 interface IProps { }
 
 const StyledMap = styled(Map)`
@@ -34,8 +33,15 @@ const MapComponent: React.FC<IProps> = () => {
     return response.data;
   };
 
-  const clickHandler = (e: any) => {
+  const onMapclick = (e: any) => {
     setLatLng(e.latlng);
+  }
+
+  const onAutosuggestClick = (e: any, address: string) => {
+    e.preventDefault();
+    if (address) {
+      addressRef.current.value = address;
+    }
   }
 
   useEffect(() =>  {
@@ -59,7 +65,7 @@ const MapComponent: React.FC<IProps> = () => {
     <StyledMap setInstance={(instance) => setMapInstance(instance)}
       events={{
         click: (e) => {
-          clickHandler(e);
+          onMapclick(e);
         },
       }}
     >
@@ -79,7 +85,7 @@ const MapComponent: React.FC<IProps> = () => {
         topRight={
           <ul style={{ backgroundColor: 'white', listStyleType: 'none'}}>
             {query.length &&  autosuggest  && autosuggest.length && autosuggest.map((address) =>
-              (<li key={address.id}>{address.weergavenaam}</li>)
+              (<li key={address.id}><a href="#" onClick={(e) => onAutosuggestClick(e, address.weergavenaam)}>{address.weergavenaam}</a></li>)
             )}
           </ul>
         }
