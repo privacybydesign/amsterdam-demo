@@ -24,12 +24,13 @@ const MapComponent: React.FC<IProps> = () => {
   const [query, setQuery] = useState<string>('');
   const [mapInstance, setMapInstance] = useState<any>({});
   const [autosuggest, setAutosuggest] = useState([]);
-  // const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showAutosuggest, setShowAutosuggest] = useState<boolean>(false);
   // const [isError, setIsError] = useState<boolean>(false);
 
   const fetchAutosuggest = async (url) => {
     const response = await axios.get(url);
     setAutosuggest(response.data?.response?.docs);
+    setShowAutosuggest(true);
     return response.data;
   };
 
@@ -41,6 +42,7 @@ const MapComponent: React.FC<IProps> = () => {
     e.preventDefault();
     if (address) {
       addressRef.current.value = address;
+      setShowAutosuggest(false);
     }
   }
 
@@ -51,10 +53,11 @@ const MapComponent: React.FC<IProps> = () => {
   useEffect(() =>  {
     if (addresses &&  addresses.results &&  addresses.results.length) {
       addressRef.current.value = addresses.results[0]._display;
+
     } else if (addresses &&  addresses.results && addresses.results.length === 0) {
       addressRef.current.value = '';
     }
-  }, [addresses]);
+  }, [addresses, addressRef]);
 
   // useEffect(() =>  {
     // if (mapInstance) {
@@ -75,19 +78,22 @@ const MapComponent: React.FC<IProps> = () => {
           bottomRight={<Zoom />}
           topLeft={
             <>
-            <Input
-              id="address"
-              ref={addressRef}
-              onChange={(e) => {
-                setQuery(e.target.value);
-                setUrl(`${autosuggestUrl}${e.target.value}`);
-              }}
-            />
-            <ul style={{ backgroundColor: 'white', listStyleType: 'none'}}>
-              {query.length &&  autosuggest  && autosuggest.length ? autosuggest.map((address) =>
-                (<li key={address.id}><a href="#" onClick={(e) => onAutosuggestClick(e, address.weergavenaam)}>{address.weergavenaam}</a></li>)
-              ) : null}
-            </ul>
+              <Input
+                id="address"
+                ref={addressRef}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setUrl(`${autosuggestUrl}${e.target.value}`);
+                }}
+              />
+              {showAutosuggest &&
+                <ul style={{ backgroundColor: 'white', listStyleType: 'none', padding: '0 0 0 12px'}}>
+                  {query.length &&  autosuggest  && autosuggest.length ? autosuggest.map((address) =>
+                    (<li key={address.id}><a href="#" onClick={(e) => onAutosuggestClick(e, address.weergavenaam)}>{address.weergavenaam}</a></li>)
+                  ) : null}
+                </ul>
+              }
+
             </>
           }
         />
