@@ -18,7 +18,12 @@ const StyledMap = styled(Map)`
 const MapComponent: React.FC<IProps> = () => {
   const { addresses, setLatLng, loading, latLng } = useGetAddressFromLatLng()
   const addressRef = useRef(null);
+  const locationUrl= 'https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&q=';
   const autosuggestUrl= 'https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&q=';
+
+  // deze is goed met lat en lon
+  // https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&lat=52.3731139843199&lon=4.893215581288232&distance=50
+
   const [url, setUrl] = useState<string>('');
   const [query, setQuery] = useState<string>('');
   const [autosuggest, setAutosuggest] = useState([]);
@@ -33,6 +38,9 @@ const MapComponent: React.FC<IProps> = () => {
 
   const onMapclick = (e: any) => {
     setLatLng(e.latlng);
+    console.log('CLICK', e.latlng);
+    // dam: {lat: 52.3731139843199, lng: 4.893215581288232}
+
   }
 
   const onAutosuggestClick = (e: any, address: string) => {
