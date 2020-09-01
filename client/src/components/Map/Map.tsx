@@ -74,6 +74,7 @@ const MapComponent: React.FC<IProps> = () => {
         <ViewerContainer
           bottomRight={<Zoom />}
           topLeft={
+            <>
             <Input
               id="address"
               ref={addressRef}
@@ -82,13 +83,12 @@ const MapComponent: React.FC<IProps> = () => {
                 setUrl(`${autosuggestUrl}${e.target.value}`);
               }}
             />
-          }
-          topRight={
             <ul style={{ backgroundColor: 'white', listStyleType: 'none'}}>
-              {query.length &&  autosuggest  && autosuggest.length && autosuggest.map((address) =>
+              {query.length &&  autosuggest  && autosuggest.length ? autosuggest.map((address) =>
                 (<li key={address.id}><a href="#" onClick={(e) => onAutosuggestClick(e, address.weergavenaam)}>{address.weergavenaam}</a></li>)
-              )}
+              ) : null}
             </ul>
+            </>
           }
         />
         <BaseLayer />
