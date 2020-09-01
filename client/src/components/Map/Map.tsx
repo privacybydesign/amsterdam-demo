@@ -52,7 +52,7 @@ const MapComponent: React.FC<IProps> = () => {
     if (addresses &&  addresses.results &&  addresses.results.length) {
       addressRef.current.value = addresses.results[0]._display;
     } else if (addresses &&  addresses.results && addresses.results.length === 0) {
-      addressRef.current.value = 'locatie gepind';
+      addressRef.current.value = '';
     }
   }, [addresses]);
 
@@ -62,7 +62,7 @@ const MapComponent: React.FC<IProps> = () => {
   // }, [mapInstance]);
 
   return (
-    <div style={{ position: 'relative', width: '50%', height: '500px'}}>
+    <div style={{ position: 'relative', width: '100%', height: '500px'}}>
       <StyledMap setInstance={(instance) => setMapInstance(instance)}
         events={{
           click: (e) => {
