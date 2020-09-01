@@ -79,6 +79,7 @@ const MapComponent: React.FC<IProps> = () => {
           topLeft={
             <>
               <Input
+                style={{ width: '500px' }}
                 id="address"
                 ref={addressRef}
                 onChange={(e) => {
@@ -87,7 +88,7 @@ const MapComponent: React.FC<IProps> = () => {
                 }}
               />
               {showAutosuggest &&
-                <ul style={{ backgroundColor: 'white', listStyleType: 'none', padding: '0 0 0 12px'}}>
+                <ul style={{ width: '500px', backgroundColor: 'white', listStyleType: 'none', padding: '0 0 0 12px'}}>
                   {query.length &&  autosuggest  && autosuggest.length ? autosuggest.map((address) =>
                     (<li key={address.id}><a href="#" onClick={(e) => onAutosuggestClick(e, address.weergavenaam)}>{address.weergavenaam}</a></li>)
                   ) : null}
