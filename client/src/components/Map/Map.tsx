@@ -16,31 +16,31 @@ const StyledMap = styled(Map)`
 `;
 
 const MapComponent: React.FC<IProps> = () => {
-  const { addresses, setLatLng, loading, latLng } = useGetAddressFromLatLng()
+  // const { addresses, setLatLng, loading, latLng } = useGetAddressFromLatLng()
   const addressRef = useRef(null);
-  const locationUrl= 'https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&q=';
   const autosuggestUrl= 'https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&q=';
-
-  // deze is goed met lat en lon
-  // https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&lat=52.3731139843199&lon=4.893215581288232&distance=50
-
+  const locationUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&distance=50&';
   const [url, setUrl] = useState<string>('');
   const [query, setQuery] = useState<string>('');
   const [autosuggest, setAutosuggest] = useState([]);
+  const [latLng, setLatLng] = useState();
+  const [location, setLocation] = useState<any>({});
   const [showAutosuggest, setShowAutosuggest] = useState<boolean>(false);
 
   const fetchAutosuggest = async (url) => {
     const response = await axios.get(url);
     setAutosuggest(response.data?.response?.docs);
     setShowAutosuggest(true);
-    return response.data;
+  };
+
+  const fetchLocation = async (location: any) => {
+    const response = await axios.get(`${locationUrl}&lat=${location.lat}&lon=${location.lng}`);
+    setLocation(response.data?.response?.docs);
   };
 
   const onMapclick = (e: any) => {
     setLatLng(e.latlng);
-    console.log('CLICK', e.latlng);
-    // dam: {lat: 52.3731139843199, lng: 4.893215581288232}
-
+    fetchLocation(e.latlng);
   }
 
   const onAutosuggestClick = (e: any, address: string) => {
@@ -56,13 +56,12 @@ const MapComponent: React.FC<IProps> = () => {
   }, [url]);
 
   useEffect(() =>  {
-    if (addresses &&  addresses.results &&  addresses.results.length) {
-      addressRef.current.value = addresses.results[0]._display;
-
-    } else if (addresses &&  addresses.results && addresses.results.length === 0) {
+    if (location && location.length) {
+      addressRef.current.value = location[0].weergavenaam;
+    } else if (location && location.length === 0) {
       addressRef.current.value = '';
     }
-  }, [addresses, addressRef]);
+  }, [location, addressRef]);
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '500px'}}>
