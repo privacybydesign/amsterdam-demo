@@ -21,10 +21,8 @@ const MapComponent: React.FC<IProps> = () => {
   const autosuggestUrl= 'https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&q=';
   const [url, setUrl] = useState<string>('');
   const [query, setQuery] = useState<string>('');
-  const [mapInstance, setMapInstance] = useState<any>({});
   const [autosuggest, setAutosuggest] = useState([]);
   const [showAutosuggest, setShowAutosuggest] = useState<boolean>(false);
-  // const [isError, setIsError] = useState<boolean>(false);
 
   const fetchAutosuggest = async (url) => {
     const response = await axios.get(url);
