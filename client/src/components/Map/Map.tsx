@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 import '../../../node_modules/leaflet/dist/leaflet.css';
 
-import { useMapInstance,  } from '@datapunt/react-maps';
 import { Map, BaseLayer, ViewerContainer, Zoom, useGetAddressFromLatLng, Marker } from '@datapunt/arm-core'
 import { Input } from '@datapunt/asc-ui';
 
@@ -59,14 +58,9 @@ const MapComponent: React.FC<IProps> = () => {
     }
   }, [addresses, addressRef]);
 
-  // useEffect(() =>  {
-    // if (mapInstance) {
-    // }
-  // }, [mapInstance]);
-
   return (
     <div style={{ position: 'relative', width: '100%', height: '500px'}}>
-      <StyledMap setInstance={(instance) => setMapInstance(instance)}
+      <StyledMap
         events={{
           click: (e) => {
             onMapclick(e);
