@@ -20,6 +20,7 @@ import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import { reducer, initialState } from './reducer';
 import Demo5Form, { FormFields } from './Demo5Form';
+import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 
 export interface IProps {}
 
@@ -143,10 +144,8 @@ const Demo5: React.FC<IProps> = () => {
                     />
                 )}
             </ContentBlock>
-
             <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
-
-            {!state.hasResult ? (
+            {!state.hasResult && !state.hasError && (
                 <AscLocal.Row noMargin>
                     <AscLocal.Column
                         span={{
@@ -211,7 +210,8 @@ const Demo5: React.FC<IProps> = () => {
                         <WhyIRMA />
                     </AscLocal.Column>
                 </AscLocal.Row>
-            ) : (
+            )}{' '}
+            {(state.hasResult || state.hasError) && (
                 <>
                     <ContentBlock>
                         <ReactMarkDown source={content.demo5.result.intro} />
@@ -233,24 +233,40 @@ const Demo5: React.FC<IProps> = () => {
                                 source={insertInPlaceholders(content.demo5.result.report, state.report)}
                                 renderers={{ paragraph: AscLocal.Paragraph }}
                             />
-                            <ReactMarkDown
-                                source={insertInPlaceholders(content.demo5.result.mobilenumber, state.mobilenumber)}
-                                renderers={{ paragraph: AscLocal.Paragraph }}
-                            />
-                            <ReactMarkDown
-                                source={insertInPlaceholders(content.demo5.result.email, state.email)}
-                                renderers={{ paragraph: AscLocal.Paragraph }}
-                            />
+                            {state.mobilenumber && (
+                                <ReactMarkDown
+                                    source={insertInPlaceholders(content.demo5.result.mobilenumber, state.mobilenumber)}
+                                    renderers={{ paragraph: AscLocal.Paragraph }}
+                                />
+                            )}
+                            {state.email && (
+                                <ReactMarkDown
+                                    source={insertInPlaceholders(content.demo5.result.email, state.email)}
+                                    renderers={{ paragraph: AscLocal.Paragraph }}
+                                />
+                            )}
                         </AscLocal.TintedContainer>
                         <ReactMarkDown
-                            source={content.demo5.result.rest}
-                            renderers={{
-                                heading: AscLocal.H3,
-                                paragraph: AscLocal.Paragraph,
-                                list: AscLocal.UL,
-                                link: AscLocal.InlineLink
-                            }}
+                            source={
+                                !state.hasError ? content.demo5.result.disclaimer : content.demo5.result.disclaimerError
+                            }
+                            renderers={{ paragraph: AscLocal.Paragraph }}
                         />
+                    </ContentBlock>
+                    <EmphasisBlock>
+                        <ContentBlock>
+                            <ReactMarkDown
+                                source={!state.hasError ? content.demo5.result.rest : content.demo5.result.restError}
+                                renderers={{
+                                    heading: AscLocal.H3,
+                                    paragraph: AscLocal.Paragraph,
+                                    list: AscLocal.UL,
+                                    link: AscLocal.InlineLink
+                                }}
+                            />
+                        </ContentBlock>
+                    </EmphasisBlock>
+                    <ContentBlock>
                         <ReactMarkDown source={content.callToAction} />
                     </ContentBlock>
                 </>

@@ -372,17 +372,22 @@ We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`
             report: `** Beschrijving **  \n[]\n`,
             mobilenumber: `** Uw telefoonnummer **  \n[]\n`,
             email: `** Uw e-mailadres **  \n[]`,
-            rest: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd. \n
-Dit is een demo; u heeft geen melding overlast gedaan. \n
-## Wat heeft u zojuist gedaan?
-- U heeft IRMA gebruikt om uw telefoonnummer en/of e-mailadres door te geven.
-- U heeft een melding gedaan met uw gegevens uit officiële bronnen.\n De gemeente weet dat deze gegevens kloppen en kan zo'n formulier sneller behandelen. \n
-## Wat is er anders met IRMA?
-Als u via IRMA een melding overlast doet, kunt u geen fouten maken bij invullen en is het zeker dat de gegevens kloppen.\n
-Dit kan worden gebruikt voor:
-- Meldingen die u op de website van de gemeente Amsterdam doet.
-- U toegang te geven om de voortgang van uw melding te volgen via Mijn Amsterdam.
-`
+            rest: `## Wat heeft u zojuist gedaan?
+            - U heeft IRMA gebruikt om uw telefoonnummer en/of e-mailadres door te geven.
+            - U heeft een melding gedaan met uw gegevens uit officiële bronnen.\n De gemeente weet dat deze gegevens kloppen en kan zo'n formulier sneller behandelen. \n
+            ## Wat is er anders met IRMA?
+            Als u via IRMA een melding overlast doet, kunt u geen fouten maken bij invullen en is het zeker dat de gegevens kloppen.\n
+            Dit kan worden gebruikt voor:
+            - Meldingen die u op de website van de gemeente Amsterdam doet.
+            - U toegang te geven om de voortgang van uw melding te volgen via Mijn Amsterdam.
+            `,
+            disclaimer: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.  \nDit is een demo; u heeft geen melding overlast gedaan.`,
+            restError: `## Wat heeft u zojuist gedaan?
+- U heeft geen gegevens uit IRMA gebruikt.
+
+Probeer nu nog een [demo-melding](/overlast-melden) te doen en kies dan om wel uw telefoonnummer en/of e-mailadres door te geven.
+`,
+            disclaimerError: `Dit is een demo; u heeft geen melding overlast gedaan.`
         }
     },
 
