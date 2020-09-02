@@ -12,13 +12,11 @@ export interface IIrmaServerConfig {
     environment: string;
 }
 
-const instance = axios.create({});
-
 let config: IIrmaServerConfig;
 
 export const getConfig = async (): Promise<IIrmaServerConfig> => {
     if (!config) {
-        const response = await instance.get('/config');
+        const response = await axios.get('/config');
         config = response.data;
     }
 
@@ -36,7 +34,7 @@ const createIrmaSession = async (
     credentialSourceFromDemo = false
 ): Promise<unknown> => {
     const config = await getConfig();
-    const irmaResponse = await instance.get(`/getsession/${dataType}${credentialSourceFromDemo ? '?demo=true' : ''}`);
+    const irmaResponse = await axios.get(`/getsession/${dataType}${credentialSourceFromDemo ? '?demo=true' : ''}`);
     const session = await irmaResponse.data;
 
     const { sessionPtr, token } = session;
@@ -58,14 +56,13 @@ const createIrmaSession = async (
     try {
         const result = await irma.handleSession(sessionPtr, sessionOptions);
         // Only get the last part of each result
-        const data = result.disclosed[0].reduce(
-            (acc, { id, rawvalue }) => ({ ...acc, [id.match(/[^.]*$/g)[0]]: rawvalue }),
-            {}
-        );
-        return data;
+        return reduceIRMAResult(result.disclosed[0]);
     } catch (e) {
         return null;
     }
 };
+
+const reduceIRMAResult = result =>
+    result.reduce((acc, { id, rawvalue }) => ({ ...acc, [id.match(/[^.]*$/g)[0]]: rawvalue }), {});
 
 export default createIrmaSession;

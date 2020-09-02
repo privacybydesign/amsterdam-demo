@@ -47,6 +47,10 @@ Ga naar de [website van IRMA](https://irma.app/)`
             title: `Demo 4: Geveltuin aanvragen`,
             body: `Vul een formulier snel in met uw gegevens.`
         },
+        demo5Card: {
+            title: `Demo 5: Overlast melden`,
+            body: `Doe een melding van overlast en blijf op de hoogte door uw contactgegevens vrij te geven.`
+        },
         sidebar: {
             box: `Eenvoudig en veilig in Amsterdam met IRMA
 ![](/assets/irma_logo.svg "Lees meer over IRMA")
@@ -250,17 +254,19 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
         },
         form: {
             owner: 'Bent u eigenaar van de woning waar de geveltuin komt?',
-            required: 'Vergeet niet om hierboven wat inte vullen.'
+            required: 'Vergeet niet om hierboven wat in te vullen.',
+            optionYes: 'Ja',
+            optionNo: 'Nee'
         },
         button: 'Aanvullen met IRMA',
         result: {
-            uwDemoAanvraag: `### Uw demo-aanvraag
+            yourDemoRequest: `### Uw demo-aanvraag
 ** Uw keuze **\n
 geveltuin\n
 ** Bent u de eigenaar van de woning waar de geveltuin komt? **\n
 {owner}
 `,
-            uwGegevens: `### Uw gegevens\n
+            yourDetails: `### Uw gegevens\n
 ** Naam **\n
 {name}\n
 ** Straat en huisnummer **\n
@@ -282,6 +288,95 @@ Als u via IRMA een formulier invult, kunt u geen fouten maken bij invullen en is
 Dit kan worden gebruikt voor:
 - Aanvragen die u op de website van de gemeente Amsterdam doet.
 - Formulieren op andere websites.
+`
+        }
+    },
+
+    demo5: {
+        breadcrumbs: `- [Home](/)
+- [Demo 5: Overlast melden](/overlast-melden)`,
+        unproven: {
+            title: `# Demo 5: Overlast melden`,
+            intro1: `Met IRMA kunt u een melding van overlast aanvullen met het 06-nummer waarop u bereikbaar bent voor vragen en het e-mailadres waarop u een statusupdate wilt ontvangen.\n
+U gebruikt gegevens die in uw IRMA-app staan. De gemeente kan u dan benaderen en informeren.
+
+## Probeer het uit
+Doe een demo-melding door uzelf bekend te maken met de volgende gegevens:
+- E-mailadres
+- Mobiel telefoonnummer
+`,
+            why: {
+                title: `Waarom worden deze gegevens gevraagd?`,
+                body: `**Mobiel telefoonnummer**\n
+De gemeente kan u dan vragen stellen over uw melding.\n
+**E-mailadres**\n
+De gemeente kan u op de hoogte houden over uw melding. En u kunt met dit e-mailadres de voortgang volgen in Mijn Amsterdam.\n
+`
+            },
+            alert: {
+                title: `Dit is een demo`,
+                body: `Uw melding wordt niet naar de gemeente verstuurd.`
+            },
+            callToAction: `## Gegevens aanvullen met IRMA
+Vul uw demo-aanvraag aan met uw e-mail en/of telefoonnummer uit IRMA.`
+        },
+        proven: {
+            title: `# Demo 5: Overlast melden`,
+            alert: {
+                title: `Uw contactgegevens`,
+                body: `U heeft een formulier ingevuld met uw e-mailadres.`
+            }
+        },
+        form: {
+            title: `# Demo-melding van overlast`,
+            location: {
+                label: `### Waar is het?
+Typ het dichstbijzijnde adres of klik de locatie aan op de kaart.`,
+                required: `Vergeet niet om een locatie te selecteren.`
+            },
+            report: {
+                label: `### Waar gaat het om?
+Typ geen persoonsgegevens in deze omschrijving, dit wordt apart gevraagd.`,
+                required: 'Vergeet niet om uw melding te omschrijven.'
+            },
+            phoneConsent: {
+                label: `### Mogen we u bellen voor vragen?
+Zo kunt u ons helpen het probleem sneller of beter op te lossen.`,
+                optionYes: 'Ja',
+                optionNo: 'Nee',
+                required: 'Vergeet niet om aan te geven of we u mogen bellen voor vragen.'
+            },
+            updates: {
+                label: `### Wilt u op de hoogte blijven?
+We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`,
+                optionYes: 'Ja',
+                optionNo: 'Nee',
+                required: 'Vergeet niet om aan te geven of u op de hoogte gehouden wilt worden.'
+            }
+        },
+        button: 'Aanvullen met IRMA',
+        result: {
+            intro: `Hieronder vindt u alle gegevens van uw demo-melding`,
+            yourReport: `### Uw demo-melding overlast
+** Locatie **\n
+{location}
+** Beschrijving **\n
+{report}
+** Uw telefoonnummer **\n
+{phone}
+** Uw e-mailadres **\n
+{email}
+`,
+            rest: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd. \n
+Dit is een demo; u heeft geen melding overlast gedaan. \n
+## Wat heeft u zojuist gedaan?
+- U heeft IRMA gebruikt om uw telefoonnummer en/of e-mailadres door te geven.
+- U heeft een melding gedaan met uw gegevens uit officiële bronnen.\n De gemeente weet dat deze gegevens kloppen en kan zo'n formulier sneller behandelen. \n
+## Wat is er anders met IRMA?
+Als u via IRMA een melding overlast doet, kunt u geen fouten maken bij invullen en is het zeker dat de gegevens kloppen.\n
+Dit kan worden gebruikt voor:
+- Meldingen die u op de website van de gemeente Amsterdam doet.
+- U toegang te geven om de voortgang van uw melding te volgen via Mijn Amsterdam.
 `
         }
     },
@@ -311,6 +406,10 @@ Dit kan worden gebruikt voor:
         demo4: {
             header: { src: 'geveltuin', alt: 'Foto van geveltuin in straat' },
             headerResult: { src: 'geveltuin-overzicht', alt: 'Foto van geveltuin in straat' }
+        },
+        demo5: {
+            header: { src: 'probeer-irma', alt: 'Foto van afval' },
+            headerResult: { src: 'probeer-irma', alt: 'Foto van afvalpunt' }
         }
     },
 

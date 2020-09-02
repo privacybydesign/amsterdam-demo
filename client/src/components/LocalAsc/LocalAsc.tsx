@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import {
     Heading,
@@ -11,9 +11,12 @@ import {
     Header as AscHeader,
     Row as AscRow,
     Column as AscColumn,
+    TextArea as AscTextArea,
+    ErrorMessage as AscErrorMessage,
     themeColor,
     Theme
 } from '@datapunt/asc-ui';
+import { TextAreaProps as AscTextAreaProps } from '@datapunt/asc-ui/lib/components/TextArea';
 
 const lineHeight = '24px';
 
@@ -115,6 +118,7 @@ interface IAlertProps {
     iconSize?: number;
     heading?: string;
     content?: string;
+    dataTestId?: string;
 }
 
 export enum AlertColor {
@@ -124,13 +128,13 @@ export enum AlertColor {
 }
 
 export const Alert = styled(
-    ({ children, icon, iconUrl, iconSize, className, heading, content, color }: IAlertProps) => {
+    ({ children, icon, iconUrl, iconSize, className, heading, content, color, dataTestId }: IAlertProps) => {
         const themeContext = { theme: useContext(ThemeContext) as Theme.ThemeInterface };
         const iconColor =
             (color === AlertColor.PRIMARY || color === AlertColor.SUCCESS) &&
             themeColor('tint', 'level1')(themeContext);
         return (
-            <AscAlert className={className}>
+            <AscAlert className={className} data-testid={dataTestId}>
                 <div className="alert-content">
                     {(icon || iconUrl) && (
                         <Icon className="icon" size={iconSize} iconUrl={iconUrl} color={iconColor}>
@@ -260,3 +264,37 @@ interface IStrongParagraphProps {}
 export const StrongParagraph: React.FC<IStrongParagraphProps> = ({ children }) => (
     <Paragraph strong>{children}</Paragraph>
 );
+
+interface ITextAreaProps {
+    areaHeight: number;
+    showCounter: boolean;
+}
+
+export const TextArea = styled(({ showCounter, className, ...props }: AscTextAreaProps & ITextAreaProps) => {
+    const [counter, setCounter] = useState<number>(0);
+    const onChange = useCallback(event => {
+        setCounter(event.target.value.length);
+    }, []);
+
+    return (
+        <div className={className}>
+            <AscTextArea {...props} className="textarea" onChange={onChange} />
+            {showCounter && props.maxLength && (
+                <div className="counter">
+                    {counter}/{props.maxLength} tekens
+                </div>
+            )}
+        </div>
+    );
+})`
+    .textarea {
+        height: ${({ areaHeight }) => areaHeight || '150'}px;
+    }
+    .counter {
+        color: ${themeColor('tint', 'level5')};
+    }
+`;
+
+export const ErrorMessage = styled(AscErrorMessage)`
+    margin-top: ${themeSpacing(2)};
+`;
