@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
+import '../../../node_modules/leaflet/dist/leaflet.css';
 import styled from 'styled-components';
 import axios from 'axios';
-import '../../../node_modules/leaflet/dist/leaflet.css';
 
 import { useMapInstance, } from '@datapunt/react-maps';
 import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@datapunt/arm-core'
@@ -17,13 +17,14 @@ const StyledMap = styled(Map)`
   margin-bottom: 20px;
 `;
 
+// todo make styled comp
 // todo fix typying
 // add use useMemo
-// todo make styled comp
 // todo fix styling
 
 const MapComponent: React.FC<IProps> = () => {
   const locationRef = useRef(null);
+  const wrapperRef = useRef(null);
   const autosuggestUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&fl=id,weergavenaam,type,score,lat,lon&q=';
   const locationUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&distance=50&';
   const [mapInstance, setMapInstance] = useState<any>({});
@@ -78,6 +79,15 @@ const MapComponent: React.FC<IProps> = () => {
     }
   }, [location, locationRef]);
 
+  const handleClickOutside = event => {
+    if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+      setShowAutosuggest(false);
+      locationRef.current.value = '';
+    }
+  };
+  useEffect(() => {
+    document.body.addEventListener('click', handleClickOutside, false)
+  }, []);
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '500px' }}>
@@ -103,7 +113,7 @@ const MapComponent: React.FC<IProps> = () => {
                 }}
               />
               {showAutosuggest &&
-                <ul style={{ width: '500px', backgroundColor: 'white', listStyleType: 'none', padding: '0 0 0 12px' }}>
+                <ul ref={wrapperRef} style={{ width: '500px', backgroundColor: 'white', listStyleType: 'none', padding: '0 0 0 12px' }}>
                   {query.length && autosuggest && autosuggest.length ? autosuggest.map((location) =>
                     (<li key={location.id}><a href="#" onClick={(e) => onAutosuggestClick(e, location)}>{location.weergavenaam}</a></li>)
                   ) : null}
