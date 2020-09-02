@@ -6,7 +6,7 @@ interface IState {
     report?: string;
     phoneConsent?: boolean;
     updates?: boolean;
-    phone?: string;
+    mobilenumber?: string;
     email?: string;
 }
 
@@ -22,7 +22,9 @@ export const initialState: IState = {
     location: '',
     report: '',
     phoneConsent: null,
-    updates: null
+    updates: null,
+    mobilenumber: '',
+    email: ''
 };
 
 export const reducer = (state: IState, action: IAction): IState => {
@@ -41,7 +43,7 @@ export const reducer = (state: IState, action: IAction): IState => {
                 ...state,
                 hasResult: true,
                 hasError: false,
-                phone: action.payload.phone,
+                mobilenumber: action.payload.mobilenumber,
                 email: action.payload.email
             };
         case 'setError':

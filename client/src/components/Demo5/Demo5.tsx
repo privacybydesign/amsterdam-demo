@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback, useReducer } from 'react';
 import styled from 'styled-components';
 import createIrmaSession from '@services/createIrmaSession';
-import content from '@services/content';
+import content, { insertInPlaceholders } from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion, themeSpacing } from '@datapunt/asc-ui';
@@ -64,11 +64,12 @@ const Demo5: React.FC<IProps> = () => {
         let response = null;
         if (validateForm()) {
             response = await createIrmaSession('demo5', 'irma-qr', credentialSource === CredentialSource.DEMO);
+            console.log(response);
             if (response) {
                 dispatch({
                     type: 'setResult',
                     payload: {
-                        phone: response['mobilenumber'],
+                        mobilenumber: response['mobilenumber'],
                         email: response['email']
                     }
                 });
@@ -216,12 +217,29 @@ const Demo5: React.FC<IProps> = () => {
                         <ReactMarkDown source={content.demo5.result.intro} />
                         <AscLocal.TintedContainer level={2}>
                             <ReactMarkDown
-                                source={content.demo5.result.yourReport}
+                                source={content.demo5.result.reportTitle}
                                 renderers={{
                                     heading: AscLocal.H3,
                                     paragraph: AscLocal.Paragraph,
                                     list: AscLocal.UL
                                 }}
+                            />
+                            <ReactMarkDown
+                                source={insertInPlaceholders(content.demo5.result.location, state.location)}
+                                renderers={{ paragraph: AscLocal.Paragraph }}
+                            />
+                            {/* // TODO: Include map here */}
+                            <ReactMarkDown
+                                source={insertInPlaceholders(content.demo5.result.report, state.report)}
+                                renderers={{ paragraph: AscLocal.Paragraph }}
+                            />
+                            <ReactMarkDown
+                                source={insertInPlaceholders(content.demo5.result.mobilenumber, state.mobilenumber)}
+                                renderers={{ paragraph: AscLocal.Paragraph }}
+                            />
+                            <ReactMarkDown
+                                source={insertInPlaceholders(content.demo5.result.email, state.email)}
+                                renderers={{ paragraph: AscLocal.Paragraph }}
                             />
                         </AscLocal.TintedContainer>
                         <ReactMarkDown

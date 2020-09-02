@@ -1,6 +1,16 @@
 /* eslint-disable no-irregular-whitespace */
 // This file contains all textual content in Markdown markup
 // Content values can be changed freely, but don't change the data structure of this file.
+export const insertInPlaceholders = (sentence: string, values: string | string[]): string => {
+    if (!(values instanceof Array)) {
+        return sentence.replace('[]', values as string);
+    } else {
+        values.forEach((value: string) => {
+            sentence.replace('[]', value);
+        });
+        return sentence;
+    }
+};
 
 export default {
     home: {
@@ -357,16 +367,11 @@ We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`
         button: 'Aanvullen met IRMA',
         result: {
             intro: `Hieronder vindt u alle gegevens van uw demo-melding`,
-            yourReport: `### Uw demo-melding overlast
-** Locatie **\n
-{location}
-** Beschrijving **\n
-{report}
-** Uw telefoonnummer **\n
-{phone}
-** Uw e-mailadres **\n
-{email}
-`,
+            reportTitle: `### Uw demo-melding overlast`,
+            location: `** Locatie **  \n[]\n`,
+            report: `** Beschrijving **  \n[]\n`,
+            mobilenumber: `** Uw telefoonnummer **  \n[]\n`,
+            email: `** Uw e-mailadres **  \n[]`,
             rest: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd. \n
 Dit is een demo; u heeft geen melding overlast gedaan. \n
 ## Wat heeft u zojuist gedaan?
