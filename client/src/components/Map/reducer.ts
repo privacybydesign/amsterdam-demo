@@ -1,13 +1,15 @@
 interface IState {
-    mapInstance?: any;
+    mapInstance?: {
+        flyTo?: Function
+    };
     url?: string;
     query?: string;
     autosuggest?: any;
     latLng?: {
-        lat: number,
-        lng: number
+        lat?: number,
+        lng?: number
     } | null,
-    location?: any;
+    location?: [];
     showAutosuggest?: boolean;
 }
 
@@ -30,12 +32,11 @@ export const initialState: IState = {
     query: '',
     autosuggest: [],
     latLng: null,
-    location: {},
+    location: [],
     showAutosuggest: false,
 };
 
 export const reducer = (state: IState, action: IAction): IState => {
-    console.log('reducer', action);
     switch (action.type) {
         case 'setAutosuggest':
             return {
