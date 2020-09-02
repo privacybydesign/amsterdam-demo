@@ -181,7 +181,7 @@ const Demo1: React.FC<IProps> = () => {
                         <ContentBlock>
                             <ReactMarkDown
                                 source={content.demo1.intro}
-                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
 
                             <AscLocal.AccordionContainer>
@@ -229,7 +229,7 @@ const Demo1: React.FC<IProps> = () => {
                                 <ReactMarkDown
                                     source={content.demo1.result.isOver18}
                                     renderers={{
-                                        heading: AscLocal.H2,
+                                        heading: AscLocal.H3,
                                         paragraph: AscLocal.Paragraph,
                                         list: AscLocal.UL
                                     }}
@@ -239,7 +239,7 @@ const Demo1: React.FC<IProps> = () => {
                                 <ReactMarkDown
                                     source={content.demo1.result.isNotOver18}
                                     renderers={{
-                                        heading: AscLocal.H2,
+                                        heading: AscLocal.H3,
                                         paragraph: AscLocal.Paragraph,
                                         list: AscLocal.UL
                                     }}
@@ -249,7 +249,7 @@ const Demo1: React.FC<IProps> = () => {
                                 <ReactMarkDown
                                     source={content.demo1.result.isOver65}
                                     renderers={{
-                                        heading: AscLocal.H2,
+                                        heading: AscLocal.H3,
                                         paragraph: AscLocal.Paragraph,
                                         list: AscLocal.UL
                                     }}
@@ -259,7 +259,7 @@ const Demo1: React.FC<IProps> = () => {
                                 <ReactMarkDown
                                     source={content.demo1.result.isNotOver65}
                                     renderers={{
-                                        heading: AscLocal.H2,
+                                        heading: AscLocal.H3,
                                         paragraph: AscLocal.Paragraph,
                                         list: AscLocal.UL
                                     }}
@@ -268,7 +268,7 @@ const Demo1: React.FC<IProps> = () => {
                             <ReactMarkDown
                                 source={content.demo1.result.whatsDifferentWithIrma}
                                 renderers={{
-                                    heading: AscLocal.H2,
+                                    heading: AscLocal.H3,
                                     paragraph: AscLocal.Paragraph,
                                     list: AscLocal.UL
                                 }}
@@ -279,7 +279,7 @@ const Demo1: React.FC<IProps> = () => {
                         <ReactMarkDown
                             source={content.callToAction}
                             renderers={{
-                                heading: AscLocal.H2,
+                                heading: AscLocal.H3,
                                 paragraph: AscLocal.Paragraph,
                                 list: AscLocal.UL,
                                 link: AscLocal.InlineLink

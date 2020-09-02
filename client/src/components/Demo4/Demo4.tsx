@@ -3,7 +3,7 @@ import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { Accordion, ErrorMessage } from '@datapunt/asc-ui';
+import { Accordion } from '@datapunt/asc-ui';
 import { Checkmark, Alert } from '@datapunt/asc-assets';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
@@ -146,7 +146,7 @@ const Demo4: React.FC<IProps> = () => {
                         <ContentBlock>
                             <ReactMarkDown
                                 source={content.demo4.unproven.intro1}
-                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
 
                             <AscLocal.AccordionContainer>
@@ -158,7 +158,7 @@ const Demo4: React.FC<IProps> = () => {
                                 </Accordion>
                             </AscLocal.AccordionContainer>
 
-                            <AscLocal.H2>Demo-aanvraag Geveltuin</AscLocal.H2>
+                            <AscLocal.H3>Demo-aanvraag Geveltuin</AscLocal.H3>
                             <form ref={formEl}>
                                 <ReactMarkDown
                                     source={content.demo4.form.owner}
@@ -166,19 +166,19 @@ const Demo4: React.FC<IProps> = () => {
                                 />
 
                                 <RadioGroup name="geveltuin" error={!formValid}>
-                                    <Label htmlFor="yes" label="Ja">
-                                        <Radio id="yes" variant="primary" value="Ja" />
+                                    <Label htmlFor="yes" label={content.demo4.form.optionYes}>
+                                        <Radio id="yes" variant="primary" value={content.demo4.form.optionYes} />
                                     </Label>
-                                    <Label htmlFor="no" label="Nee">
-                                        <Radio id="no" variant="primary" value="Nee" />
+                                    <Label htmlFor="no" label={content.demo4.form.optionNo}>
+                                        <Radio id="no" variant="primary" value={content.demo4.form.optionNo} />
                                     </Label>
                                 </RadioGroup>
-                                {!formValid && <ErrorMessage message={content.demo4.form.required} />}
+                                {!formValid && <AscLocal.ErrorMessage message={content.demo4.form.required} />}
                             </form>
 
                             <ReactMarkDown
                                 source={content.demo4.unproven.intro2}
-                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
 
                             <QRCode getSession={getSession} label={content.demo4.button} />
@@ -195,15 +195,15 @@ const Demo4: React.FC<IProps> = () => {
                     <ContentBlock>
                         <AscLocal.GreyContainer>
                             <ReactMarkDown
-                                source={content.demo4.result.uwDemoAanvraag.replace(/\{(.*?)\}/gm, replaceVars)}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                source={content.demo4.result.yourDemoRequest.replace(/\{(.*?)\}/gm, replaceVars)}
+                                renderers={{ heading: AscLocal.H4, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
                         </AscLocal.GreyContainer>
 
                         <AscLocal.GreyContainer>
                             <ReactMarkDown
-                                source={content.demo4.result.uwGegevens.replace(/\{(.*?)\}/gm, replaceVars)}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                source={content.demo4.result.yourDetails.replace(/\{(.*?)\}/gm, replaceVars)}
+                                renderers={{ heading: AscLocal.H4, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
                         </AscLocal.GreyContainer>
 
@@ -214,7 +214,7 @@ const Demo4: React.FC<IProps> = () => {
                         <ContentBlock>
                             <ReactMarkDown
                                 source={content.demo4.result.rest}
-                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
                         </ContentBlock>
                     </EmphasisBlock>
