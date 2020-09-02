@@ -23,7 +23,7 @@ const StyledMap = styled(Map)`
 // todo fix styling
 
 const MapComponent: React.FC<IProps> = () => {
-  const addressRef = useRef(null);
+  const locationRef = useRef(null);
   const autosuggestUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&fl=id,weergavenaam,type,score,lat,lon&q=';
   const locationUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&distance=50&';
   const [mapInstance, setMapInstance] = useState<any>({});
@@ -50,14 +50,14 @@ const MapComponent: React.FC<IProps> = () => {
     fetchLocation(e.latlng);
   }
 
-  const onAutosuggestClick = async (e: any, address: any) => {
+  const onAutosuggestClick = async (e: any, location: any) => {
     e.preventDefault();
-    if (address.weergavenaam) {
-      addressRef.current.value = address.weergavenaam;
+    if (location.weergavenaam) {
+      locationRef.current.value = location.weergavenaam;
       setShowAutosuggest(false);
     }
 
-    const response = await axios.get(`https://geodata.nationaalgeoregister.nl/locatieserver/v3/lookup?id=${address.id}`)
+    const response = await axios.get(`https://geodata.nationaalgeoregister.nl/locatieserver/v3/lookup?id=${location.id}`)
     if (mapInstance && response.data.response.docs[0]) {
       const loc = response.data.response.docs[0].centroide_ll.replace(/POINT\(|\)/, '').split(' ');
       const flyTo = { lat: parseFloat(loc[1]), lng: parseFloat(loc[0]) };
@@ -72,11 +72,12 @@ const MapComponent: React.FC<IProps> = () => {
 
   useEffect(() => {
     if (location && location.length) {
-      addressRef.current.value = location[0].weergavenaam;
+      locationRef.current.value = location[0].weergavenaam;
     } else if (location && location.length === 0) {
-      addressRef.current.value = '';
+      locationRef.current.value = '';
     }
-  }, [location, addressRef]);
+  }, [location, locationRef]);
+
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '500px' }}>
@@ -94,8 +95,8 @@ const MapComponent: React.FC<IProps> = () => {
             <>
               <Input
                 style={{ width: '500px' }}
-                id="address"
-                ref={addressRef}
+                id="location"
+                ref={locationRef}
                 onChange={(e) => {
                   setQuery(e.target.value);
                   setUrl(`${autosuggestUrl}${e.target.value}`);
@@ -103,8 +104,8 @@ const MapComponent: React.FC<IProps> = () => {
               />
               {showAutosuggest &&
                 <ul style={{ width: '500px', backgroundColor: 'white', listStyleType: 'none', padding: '0 0 0 12px' }}>
-                  {query.length && autosuggest && autosuggest.length ? autosuggest.map((address) =>
-                    (<li key={address.id}><a href="#" onClick={(e) => onAutosuggestClick(e, address)}>{address.weergavenaam}</a></li>)
+                  {query.length && autosuggest && autosuggest.length ? autosuggest.map((location) =>
+                    (<li key={location.id}><a href="#" onClick={(e) => onAutosuggestClick(e, location)}>{location.weergavenaam}</a></li>)
                   ) : null}
                 </ul>
               }
