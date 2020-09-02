@@ -193,19 +193,19 @@ const Demo4: React.FC<IProps> = () => {
             ) : (
                 <>
                     <ContentBlock>
-                        <AscLocal.GreyContainer>
+                        <AscLocal.TintedContainer>
                             <ReactMarkDown
                                 source={content.demo4.result.yourDemoRequest.replace(/\{(.*?)\}/gm, replaceVars)}
                                 renderers={{ heading: AscLocal.H4, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
-                        </AscLocal.GreyContainer>
+                        </AscLocal.TintedContainer>
 
-                        <AscLocal.GreyContainer>
+                        <AscLocal.TintedContainer>
                             <ReactMarkDown
                                 source={content.demo4.result.yourDetails.replace(/\{(.*?)\}/gm, replaceVars)}
                                 renderers={{ heading: AscLocal.H4, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
-                        </AscLocal.GreyContainer>
+                        </AscLocal.TintedContainer>
 
                         <ReactMarkDown source={content.noSavePromise} />
                         <ReactMarkDown source={content.demo4.result.disclaimer} />

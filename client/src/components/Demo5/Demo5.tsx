@@ -13,7 +13,6 @@ import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
 import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
 import QRCode from '@components/QRCode/QRCode';
-import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { Checkmark } from '@datapunt/asc-assets';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
@@ -215,9 +214,7 @@ const Demo5: React.FC<IProps> = () => {
                 <>
                     <ContentBlock>
                         <ReactMarkDown source={content.demo5.result.intro} />
-                    </ContentBlock>
-                    <EmphasisBlock>
-                        <ContentBlock>
+                        <AscLocal.TintedContainer level={2}>
                             <ReactMarkDown
                                 source={content.demo5.result.yourReport}
                                 renderers={{
@@ -226,9 +223,7 @@ const Demo5: React.FC<IProps> = () => {
                                     list: AscLocal.UL
                                 }}
                             />
-                        </ContentBlock>
-                    </EmphasisBlock>
-                    <ContentBlock>
+                        </AscLocal.TintedContainer>
                         <ReactMarkDown
                             source={content.demo5.result.rest}
                             renderers={{
