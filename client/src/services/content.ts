@@ -409,7 +409,7 @@ Dit kan worden gebruikt voor:
         },
         demo5: {
             header: { src: 'overlast-melden-straatafval', alt: 'Foto van straatafval' },
-            headerResult: { src: 'probeer-irma', alt: 'Foto van afvalpunt' }
+            headerResult: { src: 'overlast-melden-bloembakken', alt: 'Foto van ondergrondse afvalbakken' }
         }
     },
 
