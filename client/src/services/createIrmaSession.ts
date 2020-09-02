@@ -56,13 +56,33 @@ const createIrmaSession = async (
     try {
         const result = await irma.handleSession(sessionPtr, sessionOptions);
         // Only get the last part of each result
-        return reduceIRMAResult(result.disclosed[0]);
+        return reduceIRMAResult(result.disclosed);
     } catch (e) {
         return null;
     }
 };
 
-const reduceIRMAResult = result =>
-    result.reduce((acc, { id, rawvalue }) => ({ ...acc, [id.match(/[^.]*$/g)[0]]: rawvalue }), {});
+interface IDisclosedCredentialSet {
+    [index: number]: IDisclosedCredential;
+}
+
+interface IDisclosedCredential {
+    id: string;
+    rawvalue: string;
+    value: { [key: string]: unknown };
+    status: string;
+    issuancetime: number;
+}
+
+const reduceIRMAResult = (disclosedCredentialSets: IDisclosedCredentialSet[]) => {
+    let joinedResults = {};
+    disclosedCredentialSets.forEach((conjunction: IDisclosedCredential[]) => {
+        joinedResults = {
+            ...joinedResults,
+            ...conjunction.reduce((acc, { id, rawvalue }) => ({ ...acc, [id.match(/[^.]*$/g)[0]]: rawvalue }), {})
+        };
+    });
+    return joinedResults;
+};
 
 export default createIrmaSession;
