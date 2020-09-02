@@ -408,7 +408,7 @@ Dit kan worden gebruikt voor:
             headerResult: { src: 'geveltuin-overzicht', alt: 'Foto van geveltuin in straat' }
         },
         demo5: {
-            header: { src: 'probeer-irma', alt: 'Foto van afval' },
+            header: { src: 'overlast-melden-straatafval', alt: 'Foto van straatafval' },
             headerResult: { src: 'probeer-irma', alt: 'Foto van afvalpunt' }
         }
     },
