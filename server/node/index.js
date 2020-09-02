@@ -40,7 +40,10 @@ const CREDENTIALS_TO_REQUEST = {
       [["irma-demo.pbdf.mobilenumber.mobilenumber"]],
       [["irma-demo.sidn-pbdf.email.email"]],
     ],
-    DEMO5: [["irma-demo.sidn-pbdf.email.domain"]],
+    DEMO5: [
+      [["irma-demo.pbdf.mobilenumber.mobilenumber"]],
+      [["irma-demo.sidn-pbdf.email.email"]],
+    ],
   },
   PRODUCTION: {
     DEMO1_18: [["pbdf.gemeente.personalData.over18"]],
@@ -64,7 +67,10 @@ const CREDENTIALS_TO_REQUEST = {
       [["pbdf.pbdf.mobilenumber.mobilenumber"]],
       [["pbdf.pbdf.email.email"]],
     ],
-    DEMO5: [["pbdf.pbdf.email.domain"]],
+    DEMO5: [
+      [["pbdf.pbdf.mobilenumber.mobilenumber"]],
+      [["pbdf.pbdf.email.email"]],
+    ],
   },
 };
 
