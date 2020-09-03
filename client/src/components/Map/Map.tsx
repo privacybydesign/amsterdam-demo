@@ -12,8 +12,6 @@ import { LatLng, LeafletMouseEvent } from 'leaflet';
 
 interface IProps { }
 
-// todo fix styling
-
 const MapComponent: React.FC<IProps> = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const locationRef = useRef(null);
