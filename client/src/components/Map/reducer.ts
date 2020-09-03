@@ -35,7 +35,7 @@ export const initialState: IState = {
     autosuggest: null,
     latLng: null,
     location: null,
-    showAutosuggest: false,
+    showAutosuggest: false
 };
 
 export const reducer = (state: IState, action: IAction): IState => {
@@ -77,8 +77,6 @@ export const reducer = (state: IState, action: IAction): IState => {
                 query: action.payload.query,
                 url: action.payload.url
             };
-
-
         default:
             return state;
     }
