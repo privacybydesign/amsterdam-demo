@@ -20,6 +20,7 @@ const MapComponent: React.FC<IProps> = () => {
   const wrapperRef = useRef(null);
   const autosuggestUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&fl=id,weergavenaam,type,score,lat,lon&q=';
   const locationUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&distance=50&';
+  const lookupUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/v3/lookup?id=';
 
   const { mapInstance, url, query, autosuggest, latLng, location, showAutosuggest} = state;
 
@@ -66,7 +67,7 @@ const MapComponent: React.FC<IProps> = () => {
       });
     }
 
-    const response = await axios.get(`https://geodata.nationaalgeoregister.nl/locatieserver/v3/lookup?id=${location.id}`)
+    const response = await axios.get(`${lookupUrl}${location.id}`)
     if (mapInstance && response.data.response.docs[0]) {
       const loc = response.data.response.docs[0].centroide_ll.replace(/POINT\(|\)/, '').split(' ');
       const flyTo = { lat: parseFloat(loc[1]), lng: parseFloat(loc[0]) };
