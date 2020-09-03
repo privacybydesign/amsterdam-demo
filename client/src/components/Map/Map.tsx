@@ -33,7 +33,7 @@ const MapComponent: React.FC<IProps> = () => {
           autosuggest: response.data?.response?.docs
         }
       })
-    }, [url, dispatch]);
+    }, [dispatch]);
 
   const fetchLocation = useCallback(
     async (loc: LatLng) => {
@@ -83,11 +83,11 @@ const MapComponent: React.FC<IProps> = () => {
           }
         });
       }
-    }, [location, mapInstance, lookupUrl, dispatch]);
+    }, [mapInstance, lookupUrl, dispatch]);
 
   useEffect(() => {
     fetchAutosuggest(url);
-  }, [url]);
+  }, [url, fetchAutosuggest]);
 
   useEffect(() => {
     locationRef.current.value = location && location.length ? location[0].weergavenaam : '';
