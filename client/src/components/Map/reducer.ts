@@ -5,7 +5,7 @@ interface IState {
     url?: string;
     query?: string;
     autosuggest?: [Location];
-    latLng?: LatLng | null,
+    latLng?: LatLng | null;
     location?: [Location] | null;
     showAutosuggest?: boolean;
 }
@@ -26,7 +26,7 @@ interface IAction {
 export interface Location {
     id?: string;
     weergavenaam?: string;
-};
+}
 
 export const initialState: IState = {
     mapInstance: null,
@@ -39,8 +39,6 @@ export const initialState: IState = {
 };
 
 export const reducer = (state: IState, action: IAction): IState => {
-    console.log('----', action);
-
     switch (action.type) {
         case 'setAutosuggest':
             return {
@@ -52,32 +50,32 @@ export const reducer = (state: IState, action: IAction): IState => {
         case 'setLocation':
             return {
                 ...state,
-                location: action.payload.location,
+                location: action.payload.location
             };
 
         case 'setLatLng':
             return {
                 ...state,
-                latLng: action.payload.latLng,
+                latLng: action.payload.latLng
             };
 
         case 'setShowAutosuggest':
             return {
                 ...state,
-                showAutosuggest: action.payload.showAutosuggest,
+                showAutosuggest: action.payload.showAutosuggest
             };
 
         case 'setMapInstance':
             return {
                 ...state,
-                mapInstance: action.payload.mapInstance,
+                mapInstance: action.payload.mapInstance
             };
 
         case 'onChangeLocation':
             return {
                 ...state,
                 query: action.payload.query,
-                url: action.payload.url,
+                url: action.payload.url
             };
 
 
