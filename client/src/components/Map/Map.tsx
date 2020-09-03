@@ -12,7 +12,6 @@ import { ChevronRight } from '@datapunt/asc-assets';
 
 interface IProps { }
 
-// style autosuggest
 // todo fix typying
 // add use useMemo
 // todo fix styling
@@ -89,11 +88,7 @@ const MapComponent: React.FC<IProps> = () => {
   }, [url]);
 
   useEffect(() => {
-    if (location && location.length) {
-      locationRef.current.value = location[0].weergavenaam;
-    } else if (location && location.length === 0) {
-      locationRef.current.value = '';
-    }
+    locationRef.current.value = location && location.length ? location[0].weergavenaam : '';
   }, [location, locationRef]);
 
   const handleClickOutside = event => {
