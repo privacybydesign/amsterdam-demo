@@ -148,7 +148,7 @@ const MapComponent: React.FC<IProps> = () => {
                   });
                 }}
               />
-              {showAutosuggest && query.length && autosuggest && autosuggest.length &&
+              {showAutosuggest && query.length && autosuggest && autosuggest.length ?
                 <StyledAutosuggest ref={wrapperRef}>
                   {autosuggest.map((item) =>
                     (<ListItem key={item.id}>
@@ -157,7 +157,7 @@ const MapComponent: React.FC<IProps> = () => {
                     </ListItem>)
                   )}
                 </StyledAutosuggest>
-              }
+              : null}
 
             </>
           }
