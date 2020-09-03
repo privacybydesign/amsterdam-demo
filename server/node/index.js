@@ -40,10 +40,17 @@ const CREDENTIALS_TO_REQUEST = {
       [["irma-demo.pbdf.mobilenumber.mobilenumber"]],
       [["irma-demo.sidn-pbdf.email.email"]],
     ],
-    DEMO5: [
-      [["irma-demo.pbdf.mobilenumber.mobilenumber"]],
-      [["irma-demo.sidn-pbdf.email.email"]],
-    ],
+    DEMO5: (mobileNumber = true, email = true) => {
+      const credentials = [];
+      if (mobileNumber === "true") {
+        credentials.push([["irma-demo.pbdf.mobilenumber.mobilenumber"]]);
+      }
+
+      if (email === "true") {
+        credentials.push([["irma-demo.sidn-pbdf.email.email"]]);
+      }
+      return credentials;
+    },
   },
   PRODUCTION: {
     DEMO1_18: [["pbdf.gemeente.personalData.over18"]],
@@ -67,10 +74,17 @@ const CREDENTIALS_TO_REQUEST = {
       [["pbdf.pbdf.mobilenumber.mobilenumber"]],
       [["pbdf.pbdf.email.email"]],
     ],
-    DEMO5: [
-      [["pbdf.pbdf.mobilenumber.mobilenumber"]],
-      [["pbdf.pbdf.email.email"]],
-    ],
+    DEMO5: (mobileNumber = "true", email = "true") => {
+      const credentials = [];
+      if (mobileNumber === "true") {
+        credentials.push([["pbdf.pbdf.mobilenumber.mobilenumber"]]);
+      }
+
+      if (email === "true") {
+        credentials.push([["pbdf.pbdf.email.email"]]);
+      }
+      return credentials;
+    },
   },
 };
 
@@ -223,7 +237,7 @@ async function irmaDiscloseDemo5(req, res) {
   return irmaDiscloseRequest(
     req,
     res,
-    getCredentialSourceFromRequest(req).DEMO5
+    getCredentialSourceFromRequest(req).DEMO5(req.query.phone, req.query.email)
   );
 }
 
