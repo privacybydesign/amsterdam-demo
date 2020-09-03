@@ -59,7 +59,7 @@ const MapComponent: React.FC<IProps> = () => {
     }, [fetchLocation, dispatch]);
 
   const onAutosuggestClick = useCallback(
-    async (e: LeafletMouseEvent, location: Location) => {
+    async (e: React.SyntheticEvent<LeafletMouseEvent>, location: Location) => {
       e.preventDefault();
       if (location.weergavenaam) {
         locationRef.current.value = location.weergavenaam;
