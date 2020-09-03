@@ -4,7 +4,7 @@ import createIrmaSession from '@services/createIrmaSession';
 import content, { insertInPlaceholders } from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { Accordion, themeSpacing } from '@datapunt/asc-ui';
+import { Accordion, themeSpacing, Button } from '@datapunt/asc-ui';
 import { Alert as AlertIcon } from '@datapunt/asc-assets';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
@@ -36,7 +36,7 @@ const Demo5: React.FC<IProps> = () => {
     const formRef = useRef<HTMLFormElement>(null);
 
     // Form validator (uncontrolled)
-    const validateForm = useCallback(() => {
+    const validateForm = useCallback((setErrors = true) => {
         const formErrors = [];
 
         // TODO: Include location
@@ -69,9 +69,9 @@ const Demo5: React.FC<IProps> = () => {
 
         dispatch({
             type: 'validateForm',
-            payload: { location, report, optionPhone, optionEmail, formErrors }
+            payload: { location, report, optionPhone, optionEmail, formErrors: setErrors ? formErrors : [] }
         });
-        return { errors: formErrors, values: { location, report, optionPhone, optionEmail } };
+        return { errors: setErrors ? formErrors : [], values: { location, report, optionPhone, optionEmail } };
     }, []);
 
     // IRMA session
@@ -80,14 +80,20 @@ const Demo5: React.FC<IProps> = () => {
         const validatedForm = validateForm();
 
         if (!validatedForm.errors.length) {
-            const query: IDemo5Query = {
-                phone: validatedForm.values.optionPhone,
-                email: validatedForm.values.optionEmail
-            };
-            if (credentialSource === CredentialSource.DEMO) {
-                query.demo = true;
+            // Only use IRMA flow when the user selected the Yes option phone, email or both
+            if (validatedForm.values.optionPhone === true || validatedForm.values.optionEmail === true) {
+                const query: IDemo5Query = {
+                    phone: validatedForm.values.optionPhone,
+                    email: validatedForm.values.optionEmail
+                };
+                if (credentialSource === CredentialSource.DEMO) {
+                    query.demo = true;
+                }
+                response = await createIrmaSession('demo5', 'irma-qr', query);
+            } else {
+                // No IRMA flow, as the user didn't select any Yes option.
+                response = {};
             }
-            response = await createIrmaSession('demo5', 'irma-qr', query);
             if (response) {
                 dispatch({
                     type: 'setResult',
@@ -127,6 +133,9 @@ const Demo5: React.FC<IProps> = () => {
             });
         }
     }, [state.hasResult]);
+
+    // Determine if we are using the IRMA flow (e.g. user has selected at least one of both options)
+    const noIRMAFlow = state.optionEmail === false && state.optionPhone === false;
 
     return (
         <PageTemplate>
@@ -208,9 +217,33 @@ const Demo5: React.FC<IProps> = () => {
                                 content={content.demo5.unproven.alert.body}
                             />
 
-                            <Demo5Form errors={state.formErrors} forwardRef={formRef} />
+                            <Demo5Form errors={state.formErrors} forwardRef={formRef} validateForm={validateForm} />
 
-                            <QRCode getSession={getSession} label={content.demo5.button} />
+                            <ReactMarkDown
+                                source={
+                                    noIRMAFlow
+                                        ? content.demo5.unproven.callToActionNoIRMA
+                                        : content.demo5.unproven.callToAction
+                                }
+                                renderers={{
+                                    heading: AscLocal.H3,
+                                    paragraph: AscLocal.Paragraph
+                                }}
+                            />
+                            {noIRMAFlow ? (
+                                <StyledButton
+                                    data-testid={'qrCodeButton'}
+                                    onClick={getSession}
+                                    variant="secondary"
+                                    iconSize={24}
+                                    iconLeft={<AscLocal.IrmaLogoIcon />}
+                                >
+                                    {content.demo5.buttonNoIRMA}
+                                </StyledButton>
+                            ) : (
+                                <QRCode getSession={getSession} label={content.demo5.button} />
+                            )}
+
                             <ReactMarkDown
                                 source={content.downloadIrma}
                                 renderers={{
@@ -232,7 +265,7 @@ const Demo5: React.FC<IProps> = () => {
                         <WhyIRMA />
                     </AscLocal.Column>
                 </AscLocal.Row>
-            )}{' '}
+            )}
             {(state.hasResult || state.hasError) && (
                 <>
                     <ContentBlock>
@@ -308,6 +341,10 @@ const CroppedAlert = styled(AscLocal.Alert)`
     p {
         margin-top: ${themeSpacing(1)};
     }
+`;
+
+const StyledButton = styled(Button)`
+    margin: ${themeSpacing(0, 6, 6, 0)};
 `;
 
 export default Demo5;

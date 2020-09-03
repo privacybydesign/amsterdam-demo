@@ -328,7 +328,9 @@ De gemeente kan u op de hoogte houden over uw melding. En u kunt met dit e-maila
                 body: `Uw melding wordt niet naar de gemeente verstuurd.`
             },
             callToAction: `## Gegevens aanvullen met IRMA
-Vul uw demo-aanvraag aan met uw e-mail en/of telefoonnummer uit IRMA.`
+Vul uw demo-aanvraag aan met uw e-mail en/of telefoonnummer uit IRMA.`,
+            callToActionNoIRMA: `## Anonieme melding
+Doe uw melding zonder uw e-mailadres en/of telefoonnummer vrij te geven met IRMA.`
         },
         proven: {
             title: `# Demo 5: Overlast melden`,
@@ -365,6 +367,7 @@ We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`
             }
         },
         button: 'Aanvullen met IRMA',
+        buttonNoIRMA: 'Melding doen',
         result: {
             intro: `Hieronder vindt u alle gegevens van uw demo-melding`,
             reportTitle: `### Uw demo-melding overlast`,
@@ -380,7 +383,7 @@ Als u via IRMA een melding overlast doet, kunt u geen fouten maken bij invullen 
 Dit kan worden gebruikt voor:
 - Meldingen die u op de website van de gemeente Amsterdam doet.
 - U toegang te geven om de voortgang van uw melding te volgen via Mijn Amsterdam.`,
-            disclaimer: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.  \nDit is een demo; u heeft geen melding overlast gedaan.`,
+            disclaimer: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd. Dit is een demo; u heeft geen melding overlast gedaan.`,
             restError: `## Wat heeft u zojuist gedaan?
 - U heeft geen gegevens uit IRMA gebruikt.
 

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ReactMarkDown from 'react-markdown';
 import { Button, Modal, themeSpacing, themeColor } from '@datapunt/asc-ui';
 import { Close } from '@datapunt/asc-assets';
+import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { isMobile } from '@services/createIrmaSession';
 import content from '@services/content';
 import { OL } from '@components/LocalAsc/LocalAsc';
@@ -49,7 +50,7 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) 
                 onClick={getQRSession}
                 variant="secondary"
                 iconSize={24}
-                iconLeft={<IrmaLogoIcon />}
+                iconLeft={<AscLocal.IrmaLogoIcon />}
             >
                 {label || content.qrcode.knop}
             </StyledButton>
@@ -82,8 +83,12 @@ const StyledButton = styled(Button)`
     margin: ${themeSpacing(0, 6, 6, 0)};
 `;
 
-const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
-    width: 24px;
+export const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: 90px;
+    left: 90px;
 `;
 
 const StyledH3 = styled.h3``;
@@ -114,14 +119,6 @@ const CanvasWrapper = styled.div`
 const Canvas = styled.canvas`
     width: 300px !important;
     height: 300px !important;
-`;
-
-const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    top: 90px;
-    left: 90px;
 `;
 
 const QRCodeTopLeft = styled.img.attrs({ src: '/assets/qr-top-left.svg' })`

@@ -295,6 +295,10 @@ export const TextArea = styled(({ showCounter, className, ...props }: AscTextAre
     }
 `;
 
+export const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
+    width: 24px;
+`;
+
 export const ErrorMessage = styled(AscErrorMessage)`
     margin-top: ${themeSpacing(2)};
 `;

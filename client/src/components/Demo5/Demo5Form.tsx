@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
@@ -15,9 +15,12 @@ export enum FormFields {
 export interface IProps {
     errors?: string[];
     forwardRef: React.MutableRefObject<HTMLFormElement>;
+    validateForm: (setErrors: boolean) => unknown;
 }
 
-const Demo5Form: React.FC<IProps> = ({ errors, forwardRef }) => {
+const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm }) => {
+    const validateOnChange = useCallback(() => validateForm(false), [validateForm]);
+
     return (
         <form ref={forwardRef}>
             {/* // Location */}
@@ -55,7 +58,11 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef }) => {
                     source={content.demo5.form.optionPhone.label}
                     renderers={{ heading: AscLocal.H4, paragraph: AscLocal.Paragraph }}
                 />
-                <RadioGroup name={FormFields.OPTION_PHONE} error={errors.includes(FormFields.OPTION_PHONE)}>
+                <RadioGroup
+                    name={FormFields.OPTION_PHONE}
+                    error={errors.includes(FormFields.OPTION_PHONE)}
+                    onChange={validateOnChange}
+                >
                     <Label htmlFor="phoneConsentYes" label={content.demo5.form.optionPhone.optionYes}>
                         <Radio
                             id="phoneConsentYes"
@@ -78,7 +85,11 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef }) => {
                     source={content.demo5.form.optionEmail.label}
                     renderers={{ heading: AscLocal.H4, paragraph: AscLocal.Paragraph }}
                 />
-                <RadioGroup name={FormFields.OPTION_EMAIL} error={errors.includes(FormFields.OPTION_EMAIL)}>
+                <RadioGroup
+                    name={FormFields.OPTION_EMAIL}
+                    error={errors.includes(FormFields.OPTION_EMAIL)}
+                    onChange={() => validateForm(false)}
+                >
                     <Label htmlFor="updatesYes" label={content.demo5.form.optionEmail.optionYes}>
                         <Radio id="updatesYes" variant="primary" value={content.demo5.form.optionEmail.optionYes} />
                     </Label>
