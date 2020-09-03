@@ -6,18 +6,10 @@ import axios from 'axios';
 import { initialState, reducer } from './reducer';
 import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@datapunt/arm-core'
 import { Input } from '@datapunt/asc-ui';
-import { map } from 'leaflet';
 
 interface IProps { }
 
-const StyledMap = styled(Map)`
-  height: 500px;
-  width: 100%;
-  cursor: pointer;
-  margin-bottom: 20px;
-`;
-
-// todo make styled comp
+// style autosuggest
 // todo fix typying
 // add use useMemo
 // todo fix styling
@@ -117,7 +109,7 @@ const MapComponent: React.FC<IProps> = () => {
   }, []);
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '500px' }}>
+    <MapParent>
       <StyledMap setInstance={(instance) => {
           dispatch({
             type: 'setMapInstance',
@@ -137,8 +129,7 @@ const MapComponent: React.FC<IProps> = () => {
           bottomRight={<Zoom />}
           topLeft={
             <>
-              <Input
-                style={{ width: '500px' }}
+              <StyledInput
                 id="location"
                 ref={locationRef}
                 onChange={(e) => {
@@ -149,17 +140,14 @@ const MapComponent: React.FC<IProps> = () => {
                       url: `${autosuggestUrl}${e.target.value}`
                     }
                   });
-
-                  // setQuery(e.target.value);
-                  // setUrl(`${autosuggestUrl}${e.target.value}`);
                 }}
               />
               {showAutosuggest &&
-                <ul ref={wrapperRef} style={{ width: '500px', backgroundColor: 'white', listStyleType: 'none', padding: '0 0 0 12px' }}>
+                <StyledAutosuggest ref={wrapperRef}>
                   {query.length && autosuggest && autosuggest.length ? autosuggest.map((location) =>
                     (<li key={location.id}><a href="#" onClick={(e) => onAutosuggestClick(e, location)}>{location.weergavenaam}</a></li>)
                   ) : null}
-                </ul>
+                </StyledAutosuggest>
               }
 
             </>
@@ -167,8 +155,32 @@ const MapComponent: React.FC<IProps> = () => {
         />
         <BaseLayer />
       </StyledMap>
-    </div>
+    </MapParent>
   )
 };
+
+const MapParent = styled.div`
+  position: relative;
+  height: 500px;
+  width: 100%;
+  margin-bottom: 20px;
+`;
+
+const StyledMap = styled(Map)`
+  height: 500px;
+  width: 100%;
+  cursor: pointer;
+`;
+
+const StyledInput = styled(Input)`
+  width: 500px;
+`;
+
+const StyledAutosuggest = styled.ul`
+  width: 500px;
+  background-color: white;
+  list-style-type: none,;
+  padding: 0 0 0 12px;
+}`;
 
 export default MapComponent;
