@@ -1,14 +1,11 @@
+import { LatLng, Map } from 'leaflet';
+
 interface IState {
-    mapInstance?: {
-        flyTo?: Function
-    };
+    mapInstance?: Map | null;
     url?: string;
     query?: string;
     autosuggest?: any;
-    latLng?: {
-        lat?: number,
-        lng?: number
-    } | null,
+    latLng?: LatLng | null,
     location?: [];
     showAutosuggest?: boolean;
 }
@@ -16,18 +13,23 @@ interface IState {
 interface IAction {
     type: string;
     payload?: {
-        mapInstance?: any;
+        mapInstance?: Map;
         url?: string;
         query?: string;
         autosuggest?: any;
-        latLng?: any;
-        location?: any;
+        latLng?: LatLng;
+        location?: Location;
         showAutosuggest?: boolean;
     };
 }
 
+// export interface Location {
+    // id?: string;
+    // weergavenaam?: string;
+// };
+
 export const initialState: IState = {
-    mapInstance: {},
+    mapInstance: null,
     url: '',
     query: '',
     autosuggest: [],

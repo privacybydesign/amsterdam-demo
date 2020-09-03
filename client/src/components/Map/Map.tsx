@@ -8,12 +8,13 @@ import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@datapunt/arm-cor
 import { Input } from '@datapunt/asc-ui';
 import { Link, ListItem, Icon } from '@datapunt/asc-ui';
 import { ChevronRight } from '@datapunt/asc-assets';
+import { LatLng, LeafletMouseEvent } from 'leaflet';
 
 
 interface IProps { }
 
+
 // todo fix typying
-// add use useMemo
 // todo fix styling
 
 const MapComponent: React.FC<IProps> = () => {
@@ -38,7 +39,7 @@ const MapComponent: React.FC<IProps> = () => {
   } , [url, dispatch]);
 
   const fetchLocation =  useCallback(
-    async (loc: any) => {
+    async (loc: LatLng) => {
       const response = await axios.get(`${locationUrl}&lat=${loc.lat}&lon=${loc.lng}`);
       dispatch({
         type: 'setLocation',
@@ -49,7 +50,7 @@ const MapComponent: React.FC<IProps> = () => {
     }, [locationUrl, dispatch]);
 
   const onMapclick =  useCallback(
-    (e: any) => {
+    (e: LeafletMouseEvent) => {
       dispatch({
         type: 'setLatLng',
         payload: {
@@ -61,7 +62,7 @@ const MapComponent: React.FC<IProps> = () => {
   }, [fetchLocation, dispatch]);
 
   const onAutosuggestClick =  useCallback(
-    async (e: any, location: any) => {
+    async (e: LeafletMouseEvent, location: any) => {
       e.preventDefault();
       if (location.weergavenaam) {
         locationRef.current.value = location.weergavenaam;
