@@ -4,41 +4,43 @@ interface IState {
     mapInstance?: Map | null;
     url?: string;
     query?: string;
-    autosuggest?: any;
+    autosuggest?: [Location];
     latLng?: LatLng | null,
-    location?: [];
+    location?: [Location] | null;
     showAutosuggest?: boolean;
 }
 
 interface IAction {
     type: string;
     payload?: {
-        mapInstance?: Map;
+        mapInstance?: Map | null;
         url?: string;
         query?: string;
-        autosuggest?: any;
-        latLng?: LatLng;
-        location?: Location;
+        autosuggest?: [Location] | null;
+        latLng?: LatLng | OnBeforeUnloadEventHandlerNonNull;
+        location?: [Location] | null;
         showAutosuggest?: boolean;
     };
 }
 
-// export interface Location {
-    // id?: string;
-    // weergavenaam?: string;
-// };
+export interface Location {
+    id?: string;
+    weergavenaam?: string;
+};
 
 export const initialState: IState = {
     mapInstance: null,
     url: '',
     query: '',
-    autosuggest: [],
+    autosuggest: null,
     latLng: null,
-    location: [],
+    location: null,
     showAutosuggest: false,
 };
 
 export const reducer = (state: IState, action: IAction): IState => {
+    console.log('----', action);
+
     switch (action.type) {
         case 'setAutosuggest':
             return {

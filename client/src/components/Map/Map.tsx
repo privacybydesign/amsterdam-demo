@@ -3,18 +3,15 @@ import '../../../node_modules/leaflet/dist/leaflet.css';
 import styled from 'styled-components';
 import axios from 'axios';
 
-import { initialState, reducer } from './reducer';
+import { initialState, reducer, Location } from './reducer';
 import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@datapunt/arm-core'
 import { Input } from '@datapunt/asc-ui';
 import { Link, ListItem, Icon } from '@datapunt/asc-ui';
 import { ChevronRight } from '@datapunt/asc-assets';
 import { LatLng, LeafletMouseEvent } from 'leaflet';
 
-
 interface IProps { }
 
-
-// todo fix typying
 // todo fix styling
 
 const MapComponent: React.FC<IProps> = () => {
@@ -62,7 +59,7 @@ const MapComponent: React.FC<IProps> = () => {
   }, [fetchLocation, dispatch]);
 
   const onAutosuggestClick =  useCallback(
-    async (e: LeafletMouseEvent, location: any) => {
+    async (e: LeafletMouseEvent, location: Location) => {
       e.preventDefault();
       if (location.weergavenaam) {
         locationRef.current.value = location.weergavenaam;
