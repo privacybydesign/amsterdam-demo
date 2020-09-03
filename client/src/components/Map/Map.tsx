@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useReducer } from 'react';
+import React, { useEffect, useCallback, useRef, useReducer } from 'react';
 import '../../../node_modules/leaflet/dist/leaflet.css';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -26,7 +26,8 @@ const MapComponent: React.FC<IProps> = () => {
 
   const { mapInstance, url, query, autosuggest, latLng, location, showAutosuggest} = state;
 
-  const fetchAutosuggest = async (url) => {
+  const fetchAutosuggest = useCallback(
+    async (url) => {
     const response = await axios.get(url);
     dispatch({
       type: 'setAutosuggest',
@@ -34,54 +35,57 @@ const MapComponent: React.FC<IProps> = () => {
         autosuggest: response.data?.response?.docs
       }
     })
-  };
+  } , [url, dispatch]);
 
-  const fetchLocation = async (location: any) => {
-    const response = await axios.get(`${locationUrl}&lat=${location.lat}&lon=${location.lng}`);
-    dispatch({
-      type: 'setLocation',
-      payload: {
-        location: response.data?.response?.docs
-      }
-    });
-  };
-
-  const onMapclick = (e: any) => {
-    dispatch({
-      type: 'setLatLng',
-      payload: {
-        latLng: e.latlng
-      }
-    });
-
-    fetchLocation(e.latlng);
-  }
-
-  const onAutosuggestClick = async (e: any, location: any) => {
-    e.preventDefault();
-    if (location.weergavenaam) {
-      locationRef.current.value = location.weergavenaam;
+  const fetchLocation =  useCallback(
+    async (loc: any) => {
+      const response = await axios.get(`${locationUrl}&lat=${loc.lat}&lon=${loc.lng}`);
       dispatch({
-        type: 'setShowAutosuggest',
+        type: 'setLocation',
         payload: {
-          showAutosuggest: false
+          location: response.data?.response?.docs
         }
       });
-    }
+    }, [locationUrl, dispatch]);
 
-    const response = await axios.get(`${lookupUrl}${location.id}`)
-    if (mapInstance && response.data.response.docs[0]) {
-      const loc = response.data.response.docs[0].centroide_ll.replace(/POINT\(|\)/, '').split(' ');
-      const flyTo = { lat: parseFloat(loc[1]), lng: parseFloat(loc[0]) };
-      mapInstance.flyTo(flyTo, 11);
+  const onMapclick =  useCallback(
+    (e: any) => {
       dispatch({
         type: 'setLatLng',
         payload: {
-          latLng: flyTo
+          latLng: e.latlng
         }
       });
-    }
-  }
+
+      fetchLocation(e.latlng);
+  }, [fetchLocation, dispatch]);
+
+  const onAutosuggestClick =  useCallback(
+    async (e: any, location: any) => {
+      e.preventDefault();
+      if (location.weergavenaam) {
+        locationRef.current.value = location.weergavenaam;
+        dispatch({
+          type: 'setShowAutosuggest',
+          payload: {
+            showAutosuggest: false
+          }
+        });
+      }
+
+      const response = await axios.get(`${lookupUrl}${location.id}`)
+      if (mapInstance && response.data.response.docs[0]) {
+        const loc = response.data.response.docs[0].centroide_ll.replace(/POINT\(|\)/, '').split(' ');
+        const flyTo = { lat: parseFloat(loc[1]), lng: parseFloat(loc[0]) };
+        mapInstance.flyTo(flyTo, 11);
+        dispatch({
+          type: 'setLatLng',
+          payload: {
+            latLng: flyTo
+          }
+        });
+      }
+  }, [location, mapInstance, lookupUrl, dispatch]);
 
   useEffect(() => {
     fetchAutosuggest(url);
@@ -103,6 +107,7 @@ const MapComponent: React.FC<IProps> = () => {
       locationRef.current.value = '';
     }
   };
+
   useEffect(() => {
     document.body.addEventListener('click', handleClickOutside, false)
   }, []);
