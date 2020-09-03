@@ -6,6 +6,9 @@ import axios from 'axios';
 import { initialState, reducer } from './reducer';
 import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@datapunt/arm-core'
 import { Input } from '@datapunt/asc-ui';
+import { Link, ListItem, Icon } from '@datapunt/asc-ui';
+import { ChevronRight } from '@datapunt/asc-assets';
+
 
 interface IProps { }
 
@@ -134,6 +137,8 @@ const MapComponent: React.FC<IProps> = () => {
                 id="location"
                 ref={locationRef}
                 onChange={(e) => {
+                  if (e.target.value.length < 3) return;
+
                   dispatch({
                     type: 'onChangeLocation',
                     payload: {
@@ -143,11 +148,14 @@ const MapComponent: React.FC<IProps> = () => {
                   });
                 }}
               />
-              {showAutosuggest &&
+              {showAutosuggest && query.length && autosuggest && autosuggest.length &&
                 <StyledAutosuggest ref={wrapperRef}>
-                  {query.length && autosuggest && autosuggest.length ? autosuggest.map((location) =>
-                    (<li key={location.id}><a href="#" onClick={(e) => onAutosuggestClick(e, location)}>{location.weergavenaam}</a></li>)
-                  ) : null}
+                  {autosuggest.map((item) =>
+                    (<ListItem key={item.id}>
+                      <StyledIcon size={14}><ChevronRight /></StyledIcon>
+                      <Link href="#" variant="inline" onClick={(e) => onAutosuggestClick(e, item)}>{item.weergavenaam}</Link>
+                    </ListItem>)
+                  )}
                 </StyledAutosuggest>
               }
 
@@ -175,13 +183,23 @@ const StyledMap = styled(Map)`
 
 const StyledInput = styled(Input)`
   width: 500px;
+  margin-bottom: -17px;
 `;
 
 const StyledAutosuggest = styled.ul`
   width: 500px;
   background-color: white;
-  list-style-type: none,;
-  padding: 0 0 0 12px;
-}`;
+  list-style-type: none;
+  padding: 6px 0 0 12px;
+  border: 1px solid #767676;
+  a {
+    color: black;
+  }
+`;
+
+const StyledIcon = styled(Icon)`
+  display: inline;
+  margin-right: 8px;
+`;
 
 export default MapComponent;
