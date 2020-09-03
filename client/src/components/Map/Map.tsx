@@ -22,20 +22,20 @@ const MapComponent: React.FC<IProps> = () => {
   const locationUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&distance=50&';
   const lookupUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/v3/lookup?id=';
 
-  const { mapInstance, url, query, autosuggest, latLng, location, showAutosuggest} = state;
+  const { mapInstance, url, query, autosuggest, latLng, location, showAutosuggest } = state;
 
   const fetchAutosuggest = useCallback(
     async (url) => {
-    const response = await axios.get(url);
-    dispatch({
-      type: 'setAutosuggest',
-      payload: {
-        autosuggest: response.data?.response?.docs
-      }
-    })
-  } , [url, dispatch]);
+      const response = await axios.get(url);
+      dispatch({
+        type: 'setAutosuggest',
+        payload: {
+          autosuggest: response.data?.response?.docs
+        }
+      })
+    }, [url, dispatch]);
 
-  const fetchLocation =  useCallback(
+  const fetchLocation = useCallback(
     async (loc: LatLng) => {
       const response = await axios.get(`${locationUrl}&lat=${loc.lat}&lon=${loc.lng}`);
       dispatch({
@@ -46,7 +46,7 @@ const MapComponent: React.FC<IProps> = () => {
       });
     }, [locationUrl, dispatch]);
 
-  const onMapclick =  useCallback(
+  const onMapclick = useCallback(
     (e: LeafletMouseEvent) => {
       dispatch({
         type: 'setLatLng',
@@ -56,9 +56,9 @@ const MapComponent: React.FC<IProps> = () => {
       });
 
       fetchLocation(e.latlng);
-  }, [fetchLocation, dispatch]);
+    }, [fetchLocation, dispatch]);
 
-  const onAutosuggestClick =  useCallback(
+  const onAutosuggestClick = useCallback(
     async (e: LeafletMouseEvent, location: Location) => {
       e.preventDefault();
       if (location.weergavenaam) {
@@ -83,7 +83,7 @@ const MapComponent: React.FC<IProps> = () => {
           }
         });
       }
-  }, [location, mapInstance, lookupUrl, dispatch]);
+    }, [location, mapInstance, lookupUrl, dispatch]);
 
   useEffect(() => {
     fetchAutosuggest(url);
@@ -113,12 +113,12 @@ const MapComponent: React.FC<IProps> = () => {
   return (
     <MapParent>
       <StyledMap setInstance={(instance) => {
-          dispatch({
-            type: 'setMapInstance',
-            payload: {
-              mapInstance: instance
-            }
-          });
+        dispatch({
+          type: 'setMapInstance',
+          payload: {
+            mapInstance: instance
+          }
+        });
       }}
         events={{
           click: (e) => {
@@ -155,7 +155,7 @@ const MapComponent: React.FC<IProps> = () => {
                     </ListItem>)
                   )}
                 </StyledAutosuggest>
-              : null}
+                : null}
 
             </>
           }
