@@ -24,6 +24,12 @@ import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 
 export interface IProps {}
 
+export interface IDemo5Query {
+    demo?: boolean;
+    phone: boolean;
+    email: boolean;
+}
+
 const Demo5: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -41,31 +47,47 @@ const Demo5: React.FC<IProps> = () => {
             formErrors.push(FormFields.REPORT);
         }
 
-        const phoneConsent = formRef.current.querySelector(`input[name=${FormFields.PHONE_CONSENT}]:checked`)
-            ? true
-            : false;
-        if (!phoneConsent) {
-            formErrors.push(FormFields.PHONE_CONSENT);
+        let optionPhone;
+        const optionPhoneChecked: HTMLInputElement = formRef.current.querySelector(
+            `input[name=${FormFields.OPTION_PHONE}]:checked`
+        );
+        if (!optionPhoneChecked) {
+            formErrors.push(FormFields.OPTION_PHONE);
+        } else {
+            optionPhone = optionPhoneChecked.value === content.demo5.form.optionPhone.optionYes;
         }
 
-        const updates = formRef.current.querySelector(`input[name=${FormFields.UPDATES}]:checked`) ? true : false;
-        if (!updates) {
-            formErrors.push(FormFields.UPDATES);
+        let optionEmail;
+        const optionEmailChecked: HTMLInputElement = formRef.current.querySelector(
+            `input[name=${FormFields.OPTION_EMAIL}]:checked`
+        );
+        if (!optionEmailChecked) {
+            formErrors.push(FormFields.OPTION_EMAIL);
+        } else {
+            optionEmail = optionEmailChecked.value === content.demo5.form.optionPhone.optionYes;
         }
 
         dispatch({
             type: 'validateForm',
-            payload: { location, report, phoneConsent, updates, formErrors }
+            payload: { location, report, optionPhone, optionEmail, formErrors }
         });
-        return !formErrors.length;
+        return { errors: formErrors, values: { location, report, optionPhone, optionEmail } };
     }, []);
 
     // IRMA session
     const getSession = async () => {
         let response = null;
-        if (validateForm()) {
-            response = await createIrmaSession('demo5', 'irma-qr', credentialSource === CredentialSource.DEMO);
-            console.log(response);
+        const validatedForm = validateForm();
+
+        if (!validatedForm.errors.length) {
+            const query: IDemo5Query = {
+                phone: validatedForm.values.optionPhone,
+                email: validatedForm.values.optionEmail
+            };
+            if (credentialSource === CredentialSource.DEMO) {
+                query.demo = true;
+            }
+            response = await createIrmaSession('demo5', 'irma-qr', query);
             if (response) {
                 dispatch({
                     type: 'setResult',

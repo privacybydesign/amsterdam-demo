@@ -4,8 +4,8 @@ interface IState {
     formErrors?: string[];
     location?: string;
     report?: string;
-    phoneConsent?: boolean;
-    updates?: boolean;
+    optionPhone?: boolean;
+    optionEmail?: boolean;
     mobilenumber?: string;
     email?: string;
 }
@@ -21,8 +21,8 @@ export const initialState: IState = {
     formErrors: [],
     location: '',
     report: '',
-    phoneConsent: null,
-    updates: null,
+    optionPhone: null,
+    optionEmail: null,
     mobilenumber: '',
     email: ''
 };
@@ -34,8 +34,8 @@ export const reducer = (state: IState, action: IAction): IState => {
                 ...state,
                 location: action.payload.location,
                 report: action.payload.report,
-                phoneConsent: action.payload.phoneConsent,
-                updates: action.payload.updates,
+                optionPhone: action.payload.optionPhone,
+                optionEmail: action.payload.optionEmail,
                 formErrors: action.payload.formErrors
             };
         case 'setResult':

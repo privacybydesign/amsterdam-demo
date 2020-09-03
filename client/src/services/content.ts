@@ -349,14 +349,14 @@ Typ het dichstbijzijnde adres of klik de locatie aan op de kaart.`,
 Typ geen persoonsgegevens in deze omschrijving, dit wordt apart gevraagd.`,
                 required: 'Vergeet niet om uw melding te omschrijven.'
             },
-            phoneConsent: {
+            optionPhone: {
                 label: `### Mogen we u bellen voor vragen?
 Zo kunt u ons helpen het probleem sneller of beter op te lossen.`,
                 optionYes: 'Ja',
                 optionNo: 'Nee',
                 required: 'Vergeet niet om aan te geven of we u mogen bellen voor vragen.'
             },
-            updates: {
+            optionEmail: {
                 label: `### Wilt u op de hoogte blijven?
 We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`,
                 optionYes: 'Ja',
@@ -373,14 +373,13 @@ We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`
             mobilenumber: `** Uw telefoonnummer **  \n[]\n`,
             email: `** Uw e-mailadres **  \n[]`,
             rest: `## Wat heeft u zojuist gedaan?
-            - U heeft IRMA gebruikt om uw telefoonnummer en/of e-mailadres door te geven.
-            - U heeft een melding gedaan met uw gegevens uit officiële bronnen.\n De gemeente weet dat deze gegevens kloppen en kan zo'n formulier sneller behandelen. \n
-            ## Wat is er anders met IRMA?
-            Als u via IRMA een melding overlast doet, kunt u geen fouten maken bij invullen en is het zeker dat de gegevens kloppen.\n
-            Dit kan worden gebruikt voor:
-            - Meldingen die u op de website van de gemeente Amsterdam doet.
-            - U toegang te geven om de voortgang van uw melding te volgen via Mijn Amsterdam.
-            `,
+- U heeft IRMA gebruikt om uw telefoonnummer en/of e-mailadres door te geven.
+- U heeft een melding gedaan met uw gegevens uit officiële bronnen.\n De gemeente weet dat deze gegevens kloppen en kan zo'n formulier sneller behandelen. \n
+## Wat is er anders met IRMA?
+Als u via IRMA een melding overlast doet, kunt u geen fouten maken bij invullen en is het zeker dat de gegevens kloppen.\n
+Dit kan worden gebruikt voor:
+- Meldingen die u op de website van de gemeente Amsterdam doet.
+- U toegang te geven om de voortgang van uw melding te volgen via Mijn Amsterdam.`,
             disclaimer: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.  \nDit is een demo; u heeft geen melding overlast gedaan.`,
             restError: `## Wat heeft u zojuist gedaan?
 - U heeft geen gegevens uit IRMA gebruikt.
