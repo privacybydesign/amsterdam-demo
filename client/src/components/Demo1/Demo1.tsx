@@ -30,7 +30,11 @@ const Demo1: React.FC<IProps> = () => {
     const [hasError, setHasError] = useState<boolean>(false);
 
     const getSessionOver18 = async (): Promise<null | unknown> => {
-        const response = await createIrmaSession('demo1/18', 'irma-qr', credentialSource === CredentialSource.DEMO);
+        const response = await createIrmaSession(
+            'demo1/18',
+            'irma-qr',
+            credentialSource === CredentialSource.DEMO && { demo: true }
+        );
         if (response) {
             setIsOver18(response['over18'] === 'Yes');
             setHasResult18(true);

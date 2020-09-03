@@ -28,13 +28,14 @@ export const isMobile = (): boolean => {
 };
 
 // Note: To use the demo credentials on non-production environments add ?demo=true to the URL
-const createIrmaSession = async (
-    dataType: string,
-    holderElementId: string,
-    credentialSourceFromDemo = false
-): Promise<unknown> => {
+const createIrmaSession = async (dataType: string, holderElementId: string, query = {}): Promise<unknown> => {
     const config = await getConfig();
-    const irmaResponse = await axios.get(`/getsession/${dataType}${credentialSourceFromDemo ? '?demo=true' : ''}`);
+
+    const queryString = Object.keys(query)
+        .map((key, index) => `${index === 0 ? '?' : ''}${key}=${query[key]}`)
+        .join('&');
+
+    const irmaResponse = await axios.get(`/getsession/${dataType}${queryString}`);
     const session = await irmaResponse.data;
 
     const { sessionPtr, token } = session;

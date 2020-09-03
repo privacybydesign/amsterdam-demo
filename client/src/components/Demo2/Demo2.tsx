@@ -49,7 +49,11 @@ const Demo2: React.FC<IProps> = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const getSession = async () => {
-        const response = await createIrmaSession('demo2', 'irma-qr', credentialSource === CredentialSource.DEMO);
+        const response = await createIrmaSession(
+            'demo2',
+            'irma-qr',
+            credentialSource === CredentialSource.DEMO && { demo: true }
+        );
         const newState: IState = { ...initialState };
         if (response) {
             const postcode = response['zipcode'].replace(/ /, '');

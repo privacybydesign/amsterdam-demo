@@ -48,7 +48,11 @@ const Demo4: React.FC<IProps> = () => {
     const getSession = async () => {
         let response = null;
         if (validateForm()) {
-            response = await createIrmaSession('demo4', 'irma-qr', credentialSource === CredentialSource.DEMO);
+            response = await createIrmaSession(
+                'demo4',
+                'irma-qr',
+                credentialSource === CredentialSource.DEMO && { demo: true }
+            );
             if (response) {
                 dispatch({
                     type: 'setProperties',
