@@ -50,20 +50,6 @@ const MapComponent: React.FC<IProps> = () => {
         [locationUrl, dispatch]
     );
 
-    const onMapclick = useCallback(
-        (e: LeafletMouseEvent) => {
-            dispatch({
-                type: 'setLatLng',
-                payload: {
-                    latLng: e.latlng
-                }
-            });
-
-            fetchLocation(e.latlng);
-        },
-        [fetchLocation, dispatch]
-    );
-
     const onAutosuggestClick = useCallback(
         async (e: React.SyntheticEvent<LeafletMouseEvent>, location: Location) => {
             e.preventDefault();
@@ -127,8 +113,15 @@ const MapComponent: React.FC<IProps> = () => {
                     });
                 }}
                 events={{
-                    click: e => {
-                        onMapclick(e);
+                    click: (e: LeafletMouseEvent) => {
+                        dispatch({
+                            type: 'setLatLng',
+                            payload: {
+                                latLng: e.latlng
+                            }
+                        });
+
+                        fetchLocation(e.latlng);
                     }
                 }}
             >
