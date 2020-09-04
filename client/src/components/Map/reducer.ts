@@ -17,7 +17,7 @@ interface IAction {
         url?: string;
         query?: string;
         autosuggest?: [Location] | null;
-        latLng?: LatLng | OnBeforeUnloadEventHandlerNonNull;
+        latLng?: LatLng | null;
         location?: [Location] | null;
         showAutosuggest?: boolean;
     };
