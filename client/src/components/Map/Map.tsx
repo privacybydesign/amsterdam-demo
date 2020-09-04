@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useRef, useReducer } from 'react';
-import '../../../node_modules/leaflet/dist/leaflet.css';
+import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
 import axios from 'axios';
 
