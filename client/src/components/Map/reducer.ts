@@ -4,7 +4,7 @@ interface IState {
     mapInstance?: Map | null;
     url?: string;
     query?: string;
-    autosuggest?: [Location];
+    autosuggest?: [Location] | null;
     latLng?: LatLngLiteral | null;
     location?: [Location] | null;
     showAutosuggest?: boolean;
@@ -38,7 +38,7 @@ export const initialState: IState = {
     showAutosuggest: false
 };
 
-export const reducer = (state: IState, action: IAction): IState => {
+export const reducer = (state: IState = initialState, action: IAction): IState => {
     switch (action.type) {
         case 'setAutosuggest':
             return {
