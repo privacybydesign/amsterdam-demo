@@ -4,34 +4,38 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 import { initialState, reducer, Location } from './reducer';
-import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@datapunt/arm-core'
+import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@datapunt/arm-core';
 import { Input } from '@datapunt/asc-ui';
 import { Link, ListItem, Icon, themeColor, themeSpacing } from '@datapunt/asc-ui';
 import { ChevronRight } from '@datapunt/asc-assets';
 import { LatLng, LeafletMouseEvent } from 'leaflet';
 
-interface IProps { }
+interface IProps {}
 
 const MapComponent: React.FC<IProps> = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const locationRef = useRef(null);
     const wrapperRef = useRef(null);
-    const autosuggestUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&fl=id,weergavenaam,type,score,lat,lon&q=';
-    const locationUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&distance=50&';
+    const autosuggestUrl =
+        'https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&fl=id,weergavenaam,type,score,lat,lon&q=';
+    const locationUrl =
+        'https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&distance=50&';
     const lookupUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/v3/lookup?id=';
 
     const { mapInstance, url, query, autosuggest, latLng, location, showAutosuggest } = state;
 
     const fetchAutosuggest = useCallback(
-        async (url) => {
+        async url => {
             const response = await axios.get(url);
             dispatch({
                 type: 'setAutosuggest',
                 payload: {
                     autosuggest: response.data?.response?.docs
                 }
-            })
-        }, [dispatch]);
+            });
+        },
+        [dispatch]
+    );
 
     const fetchLocation = useCallback(
         async (loc: LatLng) => {
@@ -42,7 +46,9 @@ const MapComponent: React.FC<IProps> = () => {
                     location: response.data?.response?.docs
                 }
             });
-        }, [locationUrl, dispatch]);
+        },
+        [locationUrl, dispatch]
+    );
 
     const onMapclick = useCallback(
         (e: LeafletMouseEvent) => {
@@ -54,7 +60,9 @@ const MapComponent: React.FC<IProps> = () => {
             });
 
             fetchLocation(e.latlng);
-        }, [fetchLocation, dispatch]);
+        },
+        [fetchLocation, dispatch]
+    );
 
     const onAutosuggestClick = useCallback(
         async (e: React.SyntheticEvent<LeafletMouseEvent>, location: Location) => {
@@ -69,7 +77,7 @@ const MapComponent: React.FC<IProps> = () => {
                 });
             }
 
-            const response = await axios.get(`${lookupUrl}${location.id}`)
+            const response = await axios.get(`${lookupUrl}${location.id}`);
             if (mapInstance && response.data.response.docs[0]) {
                 const loc = response.data.response.docs[0].centroide_ll.replace(/POINT\(|\)/, '').split(' ');
                 const targetLatlng = { lat: parseFloat(loc[1]), lng: parseFloat(loc[0]) };
@@ -81,7 +89,9 @@ const MapComponent: React.FC<IProps> = () => {
                     }
                 });
             }
-        }, [mapInstance, lookupUrl, dispatch]);
+        },
+        [mapInstance, lookupUrl, dispatch]
+    );
 
     useEffect(() => {
         fetchAutosuggest(url);
@@ -105,23 +115,24 @@ const MapComponent: React.FC<IProps> = () => {
     };
 
     useEffect(() => {
-        document.body.addEventListener('click', handleClickOutside, false)
+        document.body.addEventListener('click', handleClickOutside, false);
     }, []);
 
     return (
         <MapParent>
-            <StyledMap setInstance={(instance) => {
-                dispatch({
-                    type: 'setMapInstance',
-                    payload: {
-                        mapInstance: instance
-                    }
-                });
-            }}
+            <StyledMap
+                setInstance={instance => {
+                    dispatch({
+                        type: 'setMapInstance',
+                        payload: {
+                            mapInstance: instance
+                        }
+                    });
+                }}
                 events={{
-                    click: (e) => {
+                    click: e => {
                         onMapclick(e);
-                    },
+                    }
                 }}
             >
                 {latLng && <Marker latLng={latLng} />}
@@ -132,7 +143,7 @@ const MapComponent: React.FC<IProps> = () => {
                             <StyledInput
                                 id="location"
                                 ref={locationRef}
-                                onChange={(e) => {
+                                onChange={e => {
                                     if (e.target.value.length < 3) return;
 
                                     dispatch({
@@ -144,24 +155,27 @@ const MapComponent: React.FC<IProps> = () => {
                                     });
                                 }}
                             />
-                            {showAutosuggest && query.length && autosuggest && autosuggest.length ?
+                            {showAutosuggest && query.length && autosuggest && autosuggest.length ? (
                                 <StyledAutosuggest ref={wrapperRef}>
-                                    {autosuggest.map((item) =>
-                                        (<ListItem key={item.id}>
-                                            <StyledIcon size={14}><ChevronRight /></StyledIcon>
-                                            <Link href="#" variant="inline" onClick={(e) => onAutosuggestClick(e, item)}>{item.weergavenaam}</Link>
-                                        </ListItem>)
-                                    )}
+                                    {autosuggest.map(item => (
+                                        <ListItem key={item.id}>
+                                            <StyledIcon size={14}>
+                                                <ChevronRight />
+                                            </StyledIcon>
+                                            <Link href="#" variant="inline" onClick={e => onAutosuggestClick(e, item)}>
+                                                {item.weergavenaam}
+                                            </Link>
+                                        </ListItem>
+                                    ))}
                                 </StyledAutosuggest>
-                                : null}
-
+                            ) : null}
                         </>
                     }
                 />
                 <BaseLayer />
             </StyledMap>
         </MapParent>
-    )
+    );
 };
 
 const MapParent = styled.div`
@@ -194,8 +208,8 @@ const StyledAutosuggest = styled.ul`
 `;
 
 const StyledIcon = styled(Icon)`
-  display: inline;
-  margin-right: 8px;
+    display: inline;
+    margin-right: 8px;
 `;
 
 export default MapComponent;
