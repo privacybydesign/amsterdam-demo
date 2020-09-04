@@ -13,18 +13,22 @@ let config;
 
 const CREDENTIALS_TO_REQUEST = {
   DEMO: {
-    DEMO1_18: [["irma-demo.gemeente.personalData.over18"]],
-    DEMO1_65: [["irma-demo.gemeente.personalData.over65"]],
+    DEMO1_18: [[["irma-demo.gemeente.personalData.over18"]]],
+    DEMO1_65: [[["irma-demo.gemeente.personalData.over65"]]],
     DEMO2: [
       [
-        "irma-demo.RU.idinData.zipcode",
-        "irma-demo.gemeente.personalData.over18",
+        [
+          "irma-demo.RU.idinData.zipcode",
+          "irma-demo.gemeente.personalData.over18",
+        ],
       ],
     ],
     DEMO3: [
       [
-        "irma-demo.gemeente.personalData.fullname",
-        "irma-demo.gemeente.personalData.bsn",
+        [
+          "irma-demo.gemeente.personalData.fullname",
+          "irma-demo.gemeente.personalData.bsn",
+        ],
       ],
     ],
     DEMO4: [
@@ -53,13 +57,18 @@ const CREDENTIALS_TO_REQUEST = {
     },
   },
   PRODUCTION: {
-    DEMO1_18: [["pbdf.gemeente.personalData.over18"]],
-    DEMO1_65: [["pbdf.gemeente.personalData.over65"]],
+    DEMO1_18: [[["pbdf.gemeente.personalData.over18"]]],
+    DEMO1_65: [[["pbdf.gemeente.personalData.over65"]]],
     DEMO2: [
-      ["pbdf.gemeente.address.zipcode", "pbdf.gemeente.personalData.over18"],
+      [["pbdf.gemeente.address.zipcode", "pbdf.gemeente.personalData.over18"]],
     ],
     DEMO3: [
-      ["pbdf.gemeente.personalData.fullname", "pbdf.gemeente.personalData.bsn"],
+      [
+        [
+          "pbdf.gemeente.personalData.fullname",
+          "pbdf.gemeente.personalData.bsn",
+        ],
+      ],
     ],
     DEMO4: [
       [
