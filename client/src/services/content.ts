@@ -1,6 +1,16 @@
 /* eslint-disable no-irregular-whitespace */
 // This file contains all textual content in Markdown markup
 // Content values can be changed freely, but don't change the data structure of this file.
+export const insertInPlaceholders = (sentence: string, values: string | string[]): string => {
+    if (!(values instanceof Array)) {
+        return sentence.replace('[]', values as string);
+    } else {
+        values.forEach((value: string) => {
+            sentence.replace('[]', value);
+        });
+        return sentence;
+    }
+};
 
 export default {
     home: {
@@ -318,7 +328,9 @@ De gemeente kan u op de hoogte houden over uw melding. En u kunt met dit e-maila
                 body: `Uw melding wordt niet naar de gemeente verstuurd.`
             },
             callToAction: `## Gegevens aanvullen met IRMA
-Vul uw demo-aanvraag aan met uw e-mail en/of telefoonnummer uit IRMA.`
+Vul uw demo-aanvraag aan met uw e-mail en/of telefoonnummer uit IRMA.`,
+            callToActionNoIRMA: `## Anonieme melding
+Doe uw melding zonder uw e-mailadres en/of telefoonnummer vrij te geven met IRMA.`
         },
         proven: {
             title: `# Demo 5: Overlast melden`,
@@ -339,14 +351,14 @@ Typ het dichstbijzijnde adres of klik de locatie aan op de kaart.`,
 Typ geen persoonsgegevens in deze omschrijving, dit wordt apart gevraagd.`,
                 required: 'Vergeet niet om uw melding te omschrijven.'
             },
-            phoneConsent: {
+            optionPhone: {
                 label: `### Mogen we u bellen voor vragen?
 Zo kunt u ons helpen het probleem sneller of beter op te lossen.`,
                 optionYes: 'Ja',
                 optionNo: 'Nee',
                 required: 'Vergeet niet om aan te geven of we u mogen bellen voor vragen.'
             },
-            updates: {
+            optionEmail: {
                 label: `### Wilt u op de hoogte blijven?
 We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`,
                 optionYes: 'Ja',
@@ -355,29 +367,29 @@ We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`
             }
         },
         button: 'Aanvullen met IRMA',
+        buttonNoIRMA: 'Melding doen',
         result: {
             intro: `Hieronder vindt u alle gegevens van uw demo-melding`,
-            yourReport: `### Uw demo-melding overlast
-** Locatie **\n
-{location}
-** Beschrijving **\n
-{report}
-** Uw telefoonnummer **\n
-{phone}
-** Uw e-mailadres **\n
-{email}
-`,
-            rest: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd. \n
-Dit is een demo; u heeft geen melding overlast gedaan. \n
-## Wat heeft u zojuist gedaan?
+            reportTitle: `### Uw demo-melding overlast`,
+            location: `** Locatie **  \n[]\n`,
+            report: `** Beschrijving **  \n[]\n`,
+            mobilenumber: `** Uw telefoonnummer **  \n[]\n`,
+            email: `** Uw e-mailadres **  \n[]`,
+            rest: `## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om uw telefoonnummer en/of e-mailadres door te geven.
 - U heeft een melding gedaan met uw gegevens uit officiële bronnen.\n De gemeente weet dat deze gegevens kloppen en kan zo'n formulier sneller behandelen. \n
 ## Wat is er anders met IRMA?
 Als u via IRMA een melding overlast doet, kunt u geen fouten maken bij invullen en is het zeker dat de gegevens kloppen.\n
 Dit kan worden gebruikt voor:
 - Meldingen die u op de website van de gemeente Amsterdam doet.
-- U toegang te geven om de voortgang van uw melding te volgen via Mijn Amsterdam.
-`
+- U toegang te geven om de voortgang van uw melding te volgen via Mijn Amsterdam.`,
+            disclaimer: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd. Dit is een demo; u heeft geen melding overlast gedaan.`,
+            restError: `## Wat heeft u zojuist gedaan?
+- U heeft geen gegevens uit IRMA gebruikt.
+
+Probeer nu nog een [demo-melding](/overlast-melden) te doen en kies dan om wel uw telefoonnummer en/of e-mailadres door te geven.
+`,
+            disclaimerError: `Dit is een demo; u heeft geen melding overlast gedaan.`
         }
     },
 
@@ -409,7 +421,7 @@ Dit kan worden gebruikt voor:
         },
         demo5: {
             header: { src: 'overlast-melden-straatafval', alt: 'Foto van straatafval' },
-            headerResult: { src: 'probeer-irma', alt: 'Foto van afvalpunt' }
+            headerResult: { src: 'overlast-melden-bloembakken', alt: 'Foto van ondergrondse afvalbakken' }
         }
     },
 

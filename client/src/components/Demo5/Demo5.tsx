@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback, useReducer } from 'react';
 import styled from 'styled-components';
 import createIrmaSession from '@services/createIrmaSession';
-import content from '@services/content';
+import content, { insertInPlaceholders } from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { Accordion, themeSpacing } from '@datapunt/asc-ui';
+import { Accordion, themeSpacing, Button } from '@datapunt/asc-ui';
 import { Alert as AlertIcon } from '@datapunt/asc-assets';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
@@ -13,7 +13,6 @@ import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
 import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
 import QRCode from '@components/QRCode/QRCode';
-import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { Checkmark } from '@datapunt/asc-assets';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
@@ -21,8 +20,15 @@ import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import { reducer, initialState } from './reducer';
 import Demo5Form, { FormFields } from './Demo5Form';
+import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 
 export interface IProps {}
+
+export interface IDemo5Query {
+    demo?: boolean;
+    phone: boolean;
+    email: boolean;
+}
 
 const Demo5: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
@@ -30,7 +36,7 @@ const Demo5: React.FC<IProps> = () => {
     const formRef = useRef<HTMLFormElement>(null);
 
     // Form validator (uncontrolled)
-    const validateForm = useCallback(() => {
+    const validateForm = useCallback((setErrors = true) => {
         const formErrors = [];
 
         // TODO: Include location
@@ -41,35 +47,58 @@ const Demo5: React.FC<IProps> = () => {
             formErrors.push(FormFields.REPORT);
         }
 
-        const phoneConsent = formRef.current.querySelector(`input[name=${FormFields.PHONE_CONSENT}]:checked`)
-            ? true
-            : false;
-        if (!phoneConsent) {
-            formErrors.push(FormFields.PHONE_CONSENT);
+        let optionPhone;
+        const optionPhoneChecked: HTMLInputElement = formRef.current.querySelector(
+            `input[name=${FormFields.OPTION_PHONE}]:checked`
+        );
+        if (!optionPhoneChecked) {
+            formErrors.push(FormFields.OPTION_PHONE);
+        } else {
+            optionPhone = optionPhoneChecked.value === content.demo5.form.optionPhone.optionYes;
         }
 
-        const updates = formRef.current.querySelector(`input[name=${FormFields.UPDATES}]:checked`) ? true : false;
-        if (!updates) {
-            formErrors.push(FormFields.UPDATES);
+        let optionEmail;
+        const optionEmailChecked: HTMLInputElement = formRef.current.querySelector(
+            `input[name=${FormFields.OPTION_EMAIL}]:checked`
+        );
+        if (!optionEmailChecked) {
+            formErrors.push(FormFields.OPTION_EMAIL);
+        } else {
+            optionEmail = optionEmailChecked.value === content.demo5.form.optionPhone.optionYes;
         }
 
         dispatch({
             type: 'validateForm',
-            payload: { location, report, phoneConsent, updates, formErrors }
+            payload: { location, report, optionPhone, optionEmail, formErrors: setErrors ? formErrors : [] }
         });
-        return !formErrors.length;
+        return { errors: setErrors ? formErrors : [], values: { location, report, optionPhone, optionEmail } };
     }, []);
 
     // IRMA session
     const getSession = async () => {
         let response = null;
-        if (validateForm()) {
-            response = await createIrmaSession('demo5', 'irma-qr', credentialSource === CredentialSource.DEMO);
+        const validatedForm = validateForm();
+
+        if (!validatedForm.errors.length) {
+            // Only use IRMA flow when the user selected the Yes option phone, email or both
+            if (validatedForm.values.optionPhone === true || validatedForm.values.optionEmail === true) {
+                const query: IDemo5Query = {
+                    phone: validatedForm.values.optionPhone,
+                    email: validatedForm.values.optionEmail
+                };
+                if (credentialSource === CredentialSource.DEMO) {
+                    query.demo = true;
+                }
+                response = await createIrmaSession('demo5', 'irma-qr', query);
+            } else {
+                // No IRMA flow, as the user didn't select any Yes option.
+                response = {};
+            }
             if (response) {
                 dispatch({
                     type: 'setResult',
                     payload: {
-                        phone: response['mobilenumber'],
+                        mobilenumber: response['mobilenumber'],
                         email: response['email']
                     }
                 });
@@ -104,6 +133,9 @@ const Demo5: React.FC<IProps> = () => {
             });
         }
     }, [state.hasResult]);
+
+    // Determine if we are using the IRMA flow (e.g. user has selected at least one of both options)
+    const noIRMAFlow = state.optionEmail === false && state.optionPhone === false;
 
     return (
         <PageTemplate>
@@ -143,10 +175,8 @@ const Demo5: React.FC<IProps> = () => {
                     />
                 )}
             </ContentBlock>
-
             <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
-
-            {!state.hasResult ? (
+            {!state.hasResult && !state.hasError && (
                 <AscLocal.Row noMargin>
                     <AscLocal.Column
                         span={{
@@ -187,9 +217,33 @@ const Demo5: React.FC<IProps> = () => {
                                 content={content.demo5.unproven.alert.body}
                             />
 
-                            <Demo5Form errors={state.formErrors} forwardRef={formRef} />
+                            <Demo5Form errors={state.formErrors} forwardRef={formRef} validateForm={validateForm} />
 
-                            <QRCode getSession={getSession} label={content.demo5.button} />
+                            <ReactMarkDown
+                                source={
+                                    noIRMAFlow
+                                        ? content.demo5.unproven.callToActionNoIRMA
+                                        : content.demo5.unproven.callToAction
+                                }
+                                renderers={{
+                                    heading: AscLocal.H3,
+                                    paragraph: AscLocal.Paragraph
+                                }}
+                            />
+                            {noIRMAFlow ? (
+                                <StyledButton
+                                    data-testid={'qrCodeButton'}
+                                    onClick={getSession}
+                                    variant="secondary"
+                                    iconSize={24}
+                                    iconLeft={<AscLocal.IrmaLogoIcon />}
+                                >
+                                    {content.demo5.buttonNoIRMA}
+                                </StyledButton>
+                            ) : (
+                                <QRCode getSession={getSession} label={content.demo5.button} />
+                            )}
+
                             <ReactMarkDown
                                 source={content.downloadIrma}
                                 renderers={{
@@ -211,33 +265,63 @@ const Demo5: React.FC<IProps> = () => {
                         <WhyIRMA />
                     </AscLocal.Column>
                 </AscLocal.Row>
-            ) : (
+            )}
+            {(state.hasResult || state.hasError) && (
                 <>
                     <ContentBlock>
                         <ReactMarkDown source={content.demo5.result.intro} />
-                    </ContentBlock>
-                    <EmphasisBlock>
-                        <ContentBlock>
+                        <AscLocal.TintedContainer level={2}>
                             <ReactMarkDown
-                                source={content.demo5.result.yourReport}
+                                source={content.demo5.result.reportTitle}
                                 renderers={{
                                     heading: AscLocal.H3,
                                     paragraph: AscLocal.Paragraph,
                                     list: AscLocal.UL
                                 }}
                             />
+                            <ReactMarkDown
+                                source={insertInPlaceholders(content.demo5.result.location, state.location)}
+                                renderers={{ paragraph: AscLocal.Paragraph }}
+                            />
+                            {/* // TODO: Include map here */}
+                            <ReactMarkDown
+                                source={insertInPlaceholders(content.demo5.result.report, state.report)}
+                                renderers={{ paragraph: AscLocal.Paragraph }}
+                            />
+                            {state.mobilenumber && (
+                                <ReactMarkDown
+                                    source={insertInPlaceholders(content.demo5.result.mobilenumber, state.mobilenumber)}
+                                    renderers={{ paragraph: AscLocal.Paragraph }}
+                                />
+                            )}
+                            {state.email && (
+                                <ReactMarkDown
+                                    source={insertInPlaceholders(content.demo5.result.email, state.email)}
+                                    renderers={{ paragraph: AscLocal.Paragraph }}
+                                />
+                            )}
+                        </AscLocal.TintedContainer>
+                        <ReactMarkDown
+                            source={
+                                !state.hasError ? content.demo5.result.disclaimer : content.demo5.result.disclaimerError
+                            }
+                            renderers={{ paragraph: AscLocal.Paragraph }}
+                        />
+                    </ContentBlock>
+                    <EmphasisBlock>
+                        <ContentBlock>
+                            <ReactMarkDown
+                                source={!state.hasError ? content.demo5.result.rest : content.demo5.result.restError}
+                                renderers={{
+                                    heading: AscLocal.H3,
+                                    paragraph: AscLocal.Paragraph,
+                                    list: AscLocal.UL,
+                                    link: AscLocal.InlineLink
+                                }}
+                            />
                         </ContentBlock>
                     </EmphasisBlock>
                     <ContentBlock>
-                        <ReactMarkDown
-                            source={content.demo5.result.rest}
-                            renderers={{
-                                heading: AscLocal.H3,
-                                paragraph: AscLocal.Paragraph,
-                                list: AscLocal.UL,
-                                link: AscLocal.InlineLink
-                            }}
-                        />
                         <ReactMarkDown source={content.callToAction} />
                     </ContentBlock>
                 </>
@@ -257,6 +341,10 @@ const CroppedAlert = styled(AscLocal.Alert)`
     p {
         margin-top: ${themeSpacing(1)};
     }
+`;
+
+const StyledButton = styled(Button)`
+    margin: ${themeSpacing(0, 6, 6, 0)};
 `;
 
 export default Demo5;
