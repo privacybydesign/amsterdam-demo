@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect, useReducer } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
 import getGGW from '@services/getGGW';
-import content from '@services/content';
+import content, { insertInPlaceholders } from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Link, Accordion } from '@datapunt/asc-ui';
@@ -49,7 +49,11 @@ const Demo2: React.FC<IProps> = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const getSession = async () => {
-        const response = await createIrmaSession('demo2', 'irma-qr', credentialSource === CredentialSource.DEMO);
+        const response = await createIrmaSession(
+            'demo2',
+            'irma-qr',
+            credentialSource === CredentialSource.DEMO && { demo: true }
+        );
         const newState: IState = { ...initialState };
         if (response) {
             const postcode = response['zipcode'].replace(/ /, '');
@@ -86,8 +90,6 @@ const Demo2: React.FC<IProps> = () => {
 
     // Define dynamic header image
     const headerImg = useMemo((): IHeaderImageProps => {
-        const regExp = /\[\]/;
-
         if (!hasResult) {
             return {
                 filename: content.responsiveImages.demo2.header.src,
@@ -97,7 +99,7 @@ const Demo2: React.FC<IProps> = () => {
             return {
                 filename: code ? `wijken/${code}` : content.responsiveImages.demo2.headerWithAmsterdam.src,
                 alt: code
-                    ? content.responsiveImages.demo2.headerWithWijk.alt.replace(regExp, ggw)
+                    ? insertInPlaceholders(content.responsiveImages.demo2.headerWithWijk.alt, ggw)
                     : content.responsiveImages.demo2.headerWithAmsterdam.alt
             };
         } else if (isOver18) {
@@ -114,7 +116,6 @@ const Demo2: React.FC<IProps> = () => {
     }, [hasResult, wijk, code, ggw, isOver18]);
 
     const resultAlert: JSX.Element = useMemo(() => {
-        const regExp = /\[\]/;
         if (!hasResult && !hasError) {
             return null;
         } else if (hasError) {
@@ -135,7 +136,7 @@ const Demo2: React.FC<IProps> = () => {
                     icon={<Checkmark />}
                     iconSize={14}
                     heading={content.demo2.proven.alert.title}
-                    content={content.demo2.proven.alert.bodyAgeAndPostcodePositive.replace(regExp, wijk)}
+                    content={insertInPlaceholders(content.demo2.proven.alert.bodyAgeAndPostcodePositive, wijk)}
                     dataTestId="hasResultAlert"
                 />
             );
@@ -146,7 +147,7 @@ const Demo2: React.FC<IProps> = () => {
                     icon={<AlertIcon />}
                     iconSize={22}
                     heading={content.demo2.proven.alert.title}
-                    content={content.demo2.proven.alert.bodyAgeNegative.replace(regExp, wijk)}
+                    content={insertInPlaceholders(content.demo2.proven.alert.bodyAgeNegative, wijk)}
                     dataTestId="hasResultAlert"
                 />
             );

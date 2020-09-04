@@ -30,7 +30,11 @@ const Demo3: React.FC<IProps> = () => {
     const [name, setName] = useState<string>('');
 
     const getSession = async () => {
-        const response = await createIrmaSession('demo3', 'irma-qr', credentialSource === CredentialSource.DEMO);
+        const response = await createIrmaSession(
+            'demo3',
+            'irma-qr',
+            credentialSource === CredentialSource.DEMO && { demo: true }
+        );
         if (response) {
             setHasResult(true);
             setHasError(false);

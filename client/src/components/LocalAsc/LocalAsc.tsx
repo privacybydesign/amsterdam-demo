@@ -46,8 +46,8 @@ export const Paragraph = styled(AscParagraph)`
     margin-bottom: ${themeSpacing(2)};
 `;
 
-export const GreyContainer = styled.div`
-    background-color: ${themeColor('tint', 'level3')};
+export const TintedContainer = styled.div`
+    background-color: ${({ level }) => themeColor('tint', `level${level}` || 'level3')};
     padding: ${themeSpacing(4)} ${themeSpacing(6)};
     margin-bottom: ${themeSpacing(4)};
 `;
@@ -293,6 +293,10 @@ export const TextArea = styled(({ showCounter, className, ...props }: AscTextAre
     .counter {
         color: ${themeColor('tint', 'level5')};
     }
+`;
+
+export const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
+    width: 24px;
 `;
 
 export const ErrorMessage = styled(AscErrorMessage)`

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
@@ -8,16 +8,19 @@ import { themeSpacing, RadioGroup, Label, Radio } from '@datapunt/asc-ui';
 export enum FormFields {
     LOCATION = 'location',
     REPORT = 'report',
-    PHONE_CONSENT = 'phoneConsent',
-    UPDATES = 'updates'
+    OPTION_PHONE = 'optionPhone',
+    OPTION_EMAIL = 'optionEmail'
 }
 
 export interface IProps {
     errors?: string[];
     forwardRef: React.MutableRefObject<HTMLFormElement>;
+    validateForm: (setErrors: boolean) => unknown;
 }
 
-const Demo5Form: React.FC<IProps> = ({ errors, forwardRef }) => {
+const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm }) => {
+    const validateOnChange = useCallback(() => validateForm(false), [validateForm]);
+
     return (
         <form ref={forwardRef}>
             {/* // Location */}
@@ -52,42 +55,50 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef }) => {
             {/* // Phone consent */}
             <FormSection>
                 <ReactMarkDown
-                    source={content.demo5.form.phoneConsent.label}
+                    source={content.demo5.form.optionPhone.label}
                     renderers={{ heading: AscLocal.H4, paragraph: AscLocal.Paragraph }}
                 />
-                <RadioGroup name={FormFields.PHONE_CONSENT} error={errors.includes(FormFields.PHONE_CONSENT)}>
-                    <Label htmlFor="phoneConsentYes" label={content.demo5.form.phoneConsent.optionYes}>
+                <RadioGroup
+                    name={FormFields.OPTION_PHONE}
+                    error={errors.includes(FormFields.OPTION_PHONE)}
+                    onChange={validateOnChange}
+                >
+                    <Label htmlFor="phoneConsentYes" label={content.demo5.form.optionPhone.optionYes}>
                         <Radio
                             id="phoneConsentYes"
                             variant="primary"
-                            value={content.demo5.form.phoneConsent.optionYes}
+                            value={content.demo5.form.optionPhone.optionYes}
                         />
                     </Label>
-                    <Label htmlFor="phoneConsentNo" label={content.demo5.form.phoneConsent.optionNo}>
-                        <Radio id="phoneConsentNo" variant="primary" value={content.demo5.form.phoneConsent.optionNo} />
+                    <Label htmlFor="phoneConsentNo" label={content.demo5.form.optionPhone.optionNo}>
+                        <Radio id="phoneConsentNo" variant="primary" value={content.demo5.form.optionPhone.optionNo} />
                     </Label>
                 </RadioGroup>
-                {errors.includes(FormFields.PHONE_CONSENT) && (
-                    <AscLocal.ErrorMessage message={content.demo5.form.phoneConsent.required} />
+                {errors.includes(FormFields.OPTION_PHONE) && (
+                    <AscLocal.ErrorMessage message={content.demo5.form.optionPhone.required} />
                 )}
             </FormSection>
 
             {/* // Updates */}
             <FormSection>
                 <ReactMarkDown
-                    source={content.demo5.form.updates.label}
+                    source={content.demo5.form.optionEmail.label}
                     renderers={{ heading: AscLocal.H4, paragraph: AscLocal.Paragraph }}
                 />
-                <RadioGroup name={FormFields.UPDATES} error={errors.includes(FormFields.UPDATES)}>
-                    <Label htmlFor="updatesYes" label={content.demo5.form.updates.optionYes}>
-                        <Radio id="updatesYes" variant="primary" value={content.demo5.form.updates.optionYes} />
+                <RadioGroup
+                    name={FormFields.OPTION_EMAIL}
+                    error={errors.includes(FormFields.OPTION_EMAIL)}
+                    onChange={() => validateForm(false)}
+                >
+                    <Label htmlFor="updatesYes" label={content.demo5.form.optionEmail.optionYes}>
+                        <Radio id="updatesYes" variant="primary" value={content.demo5.form.optionEmail.optionYes} />
                     </Label>
-                    <Label htmlFor="updatesNo" label={content.demo5.form.updates.optionNo}>
-                        <Radio id="updatesNo" variant="primary" value={content.demo5.form.updates.optionNo} />
+                    <Label htmlFor="updatesNo" label={content.demo5.form.optionEmail.optionNo}>
+                        <Radio id="updatesNo" variant="primary" value={content.demo5.form.optionEmail.optionNo} />
                     </Label>
                 </RadioGroup>
-                {errors.includes(FormFields.UPDATES) && (
-                    <AscLocal.ErrorMessage message={content.demo5.form.updates.required} />
+                {errors.includes(FormFields.OPTION_EMAIL) && (
+                    <AscLocal.ErrorMessage message={content.demo5.form.optionEmail.required} />
                 )}
             </FormSection>
         </form>

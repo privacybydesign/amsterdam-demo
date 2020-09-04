@@ -28,13 +28,14 @@ export const isMobile = (): boolean => {
 };
 
 // Note: To use the demo credentials on non-production environments add ?demo=true to the URL
-const createIrmaSession = async (
-    dataType: string,
-    holderElementId: string,
-    credentialSourceFromDemo = false
-): Promise<unknown> => {
+const createIrmaSession = async (dataType: string, holderElementId: string, query = {}): Promise<unknown> => {
     const config = await getConfig();
-    const irmaResponse = await axios.get(`/getsession/${dataType}${credentialSourceFromDemo ? '?demo=true' : ''}`);
+
+    const queryString = Object.keys(query)
+        .map((key, index) => `${index === 0 ? '?' : ''}${key}=${query[key]}`)
+        .join('&');
+
+    const irmaResponse = await axios.get(`/getsession/${dataType}${queryString}`);
     const session = await irmaResponse.data;
 
     const { sessionPtr, token } = session;
@@ -56,13 +57,33 @@ const createIrmaSession = async (
     try {
         const result = await irma.handleSession(sessionPtr, sessionOptions);
         // Only get the last part of each result
-        return reduceIRMAResult(result.disclosed[0]);
+        return reduceIRMAResult(result.disclosed);
     } catch (e) {
         return null;
     }
 };
 
-const reduceIRMAResult = result =>
-    result.reduce((acc, { id, rawvalue }) => ({ ...acc, [id.match(/[^.]*$/g)[0]]: rawvalue }), {});
+interface IDisclosedCredentialSet {
+    [index: number]: IDisclosedCredential;
+}
+
+interface IDisclosedCredential {
+    id: string;
+    rawvalue: string;
+    value: { [key: string]: unknown };
+    status: string;
+    issuancetime: number;
+}
+
+const reduceIRMAResult = (disclosedCredentialSets: IDisclosedCredentialSet[]) => {
+    let joinedResults = {};
+    disclosedCredentialSets.forEach((conjunction: IDisclosedCredential[]) => {
+        joinedResults = {
+            ...joinedResults,
+            ...conjunction.reduce((acc, { id, rawvalue }) => ({ ...acc, [id.match(/[^.]*$/g)[0]]: rawvalue }), {})
+        };
+    });
+    return joinedResults;
+};
 
 export default createIrmaSession;
