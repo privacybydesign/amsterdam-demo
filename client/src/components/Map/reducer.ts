@@ -1,11 +1,11 @@
-import { LatLng, Map } from 'leaflet';
+import { LatLngLiteral, Map } from 'leaflet';
 
 interface IState {
     mapInstance?: Map | null;
     url?: string;
     query?: string;
     autosuggest?: [Location];
-    latLng?: LatLng | null;
+    latLng?: LatLngLiteral | null;
     location?: [Location] | null;
     showAutosuggest?: boolean;
 }
@@ -17,7 +17,7 @@ interface IAction {
         url?: string;
         query?: string;
         autosuggest?: [Location] | null;
-        latLng?: LatLng | null;
+        latLng?: LatLngLiteral | null;
         location?: [Location] | null;
         showAutosuggest?: boolean;
     };

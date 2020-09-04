@@ -6,7 +6,7 @@ import axios from 'axios';
 import { initialState, reducer, Location } from './reducer';
 import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@datapunt/arm-core'
 import { Input } from '@datapunt/asc-ui';
-import { Link, ListItem, Icon } from '@datapunt/asc-ui';
+import { Link, ListItem, Icon, themeColor, themeSpacing } from '@datapunt/asc-ui';
 import { ChevronRight } from '@datapunt/asc-assets';
 import { LatLng, LeafletMouseEvent } from 'leaflet';
 
@@ -72,12 +72,12 @@ const MapComponent: React.FC<IProps> = () => {
             const response = await axios.get(`${lookupUrl}${location.id}`)
             if (mapInstance && response.data.response.docs[0]) {
                 const loc = response.data.response.docs[0].centroide_ll.replace(/POINT\(|\)/, '').split(' ');
-                const flyTo = { lat: parseFloat(loc[1]), lng: parseFloat(loc[0]) };
-                mapInstance.flyTo(flyTo, 11);
+                const targetLatlng = { lat: parseFloat(loc[1]), lng: parseFloat(loc[0]) };
+                mapInstance.flyTo(targetLatlng, 11);
                 dispatch({
                     type: 'setLatLng',
                     payload: {
-                        latLng: flyTo
+                        latLng: targetLatlng
                     }
                 });
             }
@@ -165,32 +165,32 @@ const MapComponent: React.FC<IProps> = () => {
 };
 
 const MapParent = styled.div`
-  position: relative;
-  height: 500px;
-  width: 100%;
-  margin-bottom: 20px;
+    position: relative;
+    height: 500px;
+    width: 100%;
+    margin-bottom: ${themeSpacing(5)};
 `;
 
 const StyledMap = styled(Map)`
-  height: 500px;
-  width: 100%;
-  cursor: pointer;
+    height: 500px;
+    width: 100%;
+    cursor: pointer;
 `;
 
 const StyledInput = styled(Input)`
-  width: 500px;
-  margin-bottom: -17px;
+    width: 500px;
+    margin-bottom: -17px;
 `;
 
 const StyledAutosuggest = styled.ul`
-  width: 500px;
-  background-color: white;
-  list-style-type: none;
-  padding: 6px 0 0 12px;
-  border: 1px solid #767676;
-  a {
-    color: black;
-  }
+    width: 500px;
+    background-color: ${themeColor('tint', 'level1')};
+    list-style-type: none;
+    padding: 6px 0 0 ${themeSpacing(3)};
+    border: 1px solid ${themeColor('tint', 'level5')};
+    a {
+        color: ${themeColor('tint', 'level7')};
+    }
 `;
 
 const StyledIcon = styled(Icon)`
