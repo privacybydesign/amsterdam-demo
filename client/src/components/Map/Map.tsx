@@ -70,10 +70,7 @@ const MapComponent: React.FC<IProps> = () => {
             if (location.weergavenaam) {
                 locationRef.current.value = location.weergavenaam;
                 dispatch({
-                    type: 'setShowAutosuggest',
-                    payload: {
-                        showAutosuggest: false
-                    }
+                    type: 'hideAutosuggest'
                 });
             }
 
@@ -104,10 +101,7 @@ const MapComponent: React.FC<IProps> = () => {
     const handleClickOutside = event => {
         if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
             dispatch({
-                type: 'setShowAutosuggest',
-                payload: {
-                    showAutosuggest: false
-                }
+                type: 'hideAutosuggest'
             });
 
             locationRef.current.value = '';

@@ -59,10 +59,10 @@ export const reducer = (state: IState, action: IAction): IState => {
                 latLng: action.payload.latLng
             };
 
-        case 'setShowAutosuggest':
+        case 'hideAutosuggest':
             return {
                 ...state,
-                showAutosuggest: action.payload.showAutosuggest
+                showAutosuggest: false
             };
 
         case 'setMapInstance':
