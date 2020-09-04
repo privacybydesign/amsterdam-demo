@@ -110,6 +110,9 @@ const MapComponent: React.FC<IProps> = () => {
 
     useEffect(() => {
         document.body.addEventListener('click', handleClickOutside, false);
+        return () => {
+            document.removeEventListener('click', handleClickOutside, false);
+        };
     }, []);
 
     return (
