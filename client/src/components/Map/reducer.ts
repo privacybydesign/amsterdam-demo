@@ -4,9 +4,9 @@ interface IState {
     mapInstance?: Map | null;
     url?: string;
     query?: string;
-    autosuggest?: [Location] | null;
+    autosuggest?: Location[] | null;
     latLng?: LatLngLiteral | null;
-    location?: [Location] | null;
+    location?: Location[] | null;
     showAutosuggest?: boolean;
 }
 
@@ -16,9 +16,9 @@ interface IAction {
         mapInstance?: Map | null;
         url?: string;
         query?: string;
-        autosuggest?: [Location] | null;
+        autosuggest?: Location[] | null;
         latLng?: LatLngLiteral | null;
-        location?: [Location] | null;
+        location?: Location[] | null;
         showAutosuggest?: boolean;
     };
 }
