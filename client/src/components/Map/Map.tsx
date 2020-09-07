@@ -10,9 +10,11 @@ import { Link, ListItem, Icon, themeColor, themeSpacing } from '@datapunt/asc-ui
 import { ChevronRight } from '@datapunt/asc-assets';
 import { LatLng, LeafletMouseEvent } from 'leaflet';
 
-interface IProps {}
+interface IProps {
+    updateLocationCallback: (location: Location[]) => void;
+}
 
-const MapComponent: React.FC<IProps> = () => {
+const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const locationRef = useRef(null);
     const wrapperRef = useRef(null);
@@ -40,14 +42,18 @@ const MapComponent: React.FC<IProps> = () => {
     const fetchLocation = useCallback(
         async (loc: LatLng) => {
             const response = await axios.get(`${locationUrl}&lat=${loc.lat}&lon=${loc.lng}`);
+            const location = response.data?.response?.docs;
             dispatch({
                 type: 'setLocation',
                 payload: {
-                    location: response.data?.response?.docs
+                    location
                 }
             });
+            if (updateLocationCallback) {
+                updateLocationCallback(location);
+            }
         },
-        [locationUrl, dispatch]
+        [locationUrl, dispatch, updateLocationCallback]
     );
 
     const onAutosuggestClick = useCallback(
@@ -126,7 +132,7 @@ const MapComponent: React.FC<IProps> = () => {
                 }}
             >
                 {latLng && <Marker latLng={latLng} />}
-                <ViewerContainer
+                <StyledViewerContainer
                     bottomRight={<Zoom />}
                     topLeft={
                         <>
@@ -181,8 +187,14 @@ const StyledMap = styled(Map)`
     cursor: pointer;
 `;
 
+const StyledViewerContainer = styled(ViewerContainer)`
+    > div {
+        width: calc(100% - ${themeSpacing(8)});
+    }
+`;
+
 const StyledInput = styled(Input)`
-    width: 500px;
+    width: 100%;
     margin-bottom: -17px;
 `;
 

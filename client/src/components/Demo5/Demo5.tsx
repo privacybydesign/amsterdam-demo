@@ -19,6 +19,7 @@ import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import { reducer, initialState } from './reducer';
+import { Location } from '@components/Map/reducer';
 import Demo5Form, { FormFields } from './Demo5Form';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 
@@ -36,44 +37,59 @@ const Demo5: React.FC<IProps> = () => {
     const formRef = useRef<HTMLFormElement>(null);
 
     // Form validator (uncontrolled)
-    const validateForm = useCallback((setErrors = true) => {
-        const formErrors = [];
+    const validateForm = useCallback(
+        (setErrors = true) => {
+            const formErrors = [];
 
-        // TODO: Include location
-        const location = '';
+            // TODO: Include location
+            const location = state.location;
+            if (!location) {
+                formErrors.push(FormFields.LOCATION);
+            }
 
-        const report = (formRef.current.querySelector(`#${FormFields.REPORT}`) as HTMLTextAreaElement).value;
-        if (!report.length) {
-            formErrors.push(FormFields.REPORT);
-        }
+            const report = (formRef.current.querySelector(`#${FormFields.REPORT}`) as HTMLTextAreaElement).value;
+            if (!report.length) {
+                formErrors.push(FormFields.REPORT);
+            }
 
-        let optionPhone;
-        const optionPhoneChecked: HTMLInputElement = formRef.current.querySelector(
-            `input[name=${FormFields.OPTION_PHONE}]:checked`
-        );
-        if (!optionPhoneChecked) {
-            formErrors.push(FormFields.OPTION_PHONE);
-        } else {
-            optionPhone = optionPhoneChecked.value === content.demo5.form.optionPhone.optionYes;
-        }
+            let optionPhone;
+            const optionPhoneChecked: HTMLInputElement = formRef.current.querySelector(
+                `input[name=${FormFields.OPTION_PHONE}]:checked`
+            );
+            if (!optionPhoneChecked) {
+                formErrors.push(FormFields.OPTION_PHONE);
+            } else {
+                optionPhone = optionPhoneChecked.value === content.demo5.form.optionPhone.optionYes;
+            }
 
-        let optionEmail;
-        const optionEmailChecked: HTMLInputElement = formRef.current.querySelector(
-            `input[name=${FormFields.OPTION_EMAIL}]:checked`
-        );
-        if (!optionEmailChecked) {
-            formErrors.push(FormFields.OPTION_EMAIL);
-        } else {
-            optionEmail = optionEmailChecked.value === content.demo5.form.optionPhone.optionYes;
-        }
+            let optionEmail;
+            const optionEmailChecked: HTMLInputElement = formRef.current.querySelector(
+                `input[name=${FormFields.OPTION_EMAIL}]:checked`
+            );
+            if (!optionEmailChecked) {
+                formErrors.push(FormFields.OPTION_EMAIL);
+            } else {
+                optionEmail = optionEmailChecked.value === content.demo5.form.optionPhone.optionYes;
+            }
 
+            dispatch({
+                type: 'validateForm',
+                payload: { location, report, optionPhone, optionEmail, formErrors: setErrors ? formErrors : [] }
+            });
+            return { errors: setErrors ? formErrors : [], values: { location, report, optionPhone, optionEmail } };
+        },
+        [state.location]
+    );
+
+    const updateLocationCallback = useCallback((location: Location[]) => {
+        const parsedLocation = location.length ? { id: location[0].id, weergavenaam: location[0].weergavenaam } : null;
         dispatch({
-            type: 'validateForm',
-            payload: { location, report, optionPhone, optionEmail, formErrors: setErrors ? formErrors : [] }
+            type: 'setLocation',
+            payload: {
+                location: parsedLocation
+            }
         });
-        return { errors: setErrors ? formErrors : [], values: { location, report, optionPhone, optionEmail } };
     }, []);
-
     // IRMA session
     const getSession = async () => {
         let response = null;
@@ -217,7 +233,12 @@ const Demo5: React.FC<IProps> = () => {
                                 content={content.demo5.unproven.alert.body}
                             />
 
-                            <Demo5Form errors={state.formErrors} forwardRef={formRef} validateForm={validateForm} />
+                            <Demo5Form
+                                errors={state.formErrors}
+                                forwardRef={formRef}
+                                validateForm={validateForm}
+                                updateLocationCallback={updateLocationCallback}
+                            />
 
                             <ReactMarkDown
                                 source={
@@ -280,7 +301,10 @@ const Demo5: React.FC<IProps> = () => {
                                 }}
                             />
                             <ReactMarkDown
-                                source={insertInPlaceholders(content.demo5.result.location, state.location)}
+                                source={insertInPlaceholders(
+                                    content.demo5.result.location,
+                                    state.location.weergavenaam
+                                )}
                                 renderers={{ paragraph: AscLocal.Paragraph }}
                             />
                             {/* // TODO: Include map here */}

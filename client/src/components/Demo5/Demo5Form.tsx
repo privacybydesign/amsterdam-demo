@@ -4,6 +4,8 @@ import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { themeSpacing, RadioGroup, Label, Radio } from '@datapunt/asc-ui';
+import MapComponent from '@components/Map/Map';
+import { Location } from '@components/Map/reducer';
 
 export enum FormFields {
     LOCATION = 'location',
@@ -16,9 +18,10 @@ export interface IProps {
     errors?: string[];
     forwardRef: React.MutableRefObject<HTMLFormElement>;
     validateForm: (setErrors: boolean) => unknown;
+    updateLocationCallback: (location: Location[]) => void;
 }
 
-const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm }) => {
+const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateLocationCallback }) => {
     const validateOnChange = useCallback(() => validateForm(false), [validateForm]);
 
     return (
@@ -29,7 +32,7 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm }) => {
                     source={content.demo5.form.location.label}
                     renderers={{ heading: AscLocal.H4, paragraph: AscLocal.Paragraph }}
                 />
-                {/* // TODO: Include map here */}
+                <MapComponent updateLocationCallback={updateLocationCallback} />
                 {errors.includes(FormFields.LOCATION) && (
                     <AscLocal.ErrorMessage message={content.demo5.form.location.required} />
                 )}
