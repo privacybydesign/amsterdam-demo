@@ -1,8 +1,10 @@
+import { Location } from '@components/Map/reducer';
+
 interface IState {
     hasResult?: boolean;
     hasError?: boolean;
     formErrors?: string[];
-    location?: string;
+    location?: Location | null;
     report?: string;
     optionPhone?: boolean;
     optionEmail?: boolean;
@@ -19,7 +21,7 @@ export const initialState: IState = {
     hasResult: false,
     hasError: false,
     formErrors: [],
-    location: '',
+    location: null,
     report: '',
     optionPhone: null,
     optionEmail: null,
@@ -37,6 +39,11 @@ export const reducer = (state: IState, action: IAction): IState => {
                 optionPhone: action.payload.optionPhone,
                 optionEmail: action.payload.optionEmail,
                 formErrors: action.payload.formErrors
+            };
+        case 'setLocation':
+            return {
+                ...state,
+                location: action.payload.location
             };
         case 'setResult':
             return {
