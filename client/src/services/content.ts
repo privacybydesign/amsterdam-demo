@@ -234,6 +234,7 @@ Doe een demo-aanvraag door uzelf bekend te maken met de volgende gegevens:
 - Volledige naam
 - Straat
 - Huisnummer
+- Postcode
 - Woonplaats
 - Mobiel telefoonnummer
 - E-mailadres
