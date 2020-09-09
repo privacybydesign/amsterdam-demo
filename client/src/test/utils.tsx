@@ -113,7 +113,7 @@ const setupMockedAPI = (mockedAxios: MockAdapter): void => {
         )
         .reply(200, {
             response: {
-                numFound: 347,
+                numFound: 42,
                 start: 0,
                 maxScore: 13.922994,
                 docs: [

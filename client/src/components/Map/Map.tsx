@@ -137,7 +137,6 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                         fetchLocation(e.latlng);
                     }
                 }}
-                data-testid="map"
             >
                 {latLng && <Marker latLng={latLng} />}
                 <StyledViewerContainer
