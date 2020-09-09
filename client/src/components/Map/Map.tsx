@@ -28,7 +28,13 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
 
     const fetchAutosuggest = useCallback(
         async url => {
-            const response = await axios.get(url);
+            console.log('fetchAutosuggest ----------------------------------------', url);
+
+            const response: any = await axios.get(url);
+            console.log(
+                'fetchAutosuggest result ----------------------------------------',
+                response?.data?.response?.docs
+            );
             dispatch({
                 type: 'setAutosuggest',
                 payload: {
@@ -41,6 +47,8 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
 
     const fetchLocation = useCallback(
         async (loc: LatLng) => {
+            console.log('fetchLocation');
+
             const response = await axios.get(`${locationUrl}&lat=${loc.lat}&lon=${loc.lng}`);
             const location = response.data?.response?.docs;
             dispatch({
@@ -112,6 +120,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
             document.removeEventListener('click', handleClickOutside, false);
         };
     }, []);
+    console.log('render s', showAutosuggest, query.length, autosuggest && autosuggest.length);
 
     return (
         <MapParent>
@@ -127,6 +136,8 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                 }}
                 events={{
                     click: (e: LeafletMouseEvent) => {
+                        console.log('CLICK', e.latlng);
+
                         dispatch({
                             type: 'setLatLng',
                             payload: {
@@ -148,13 +159,18 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                                 data-testid="input"
                                 ref={locationRef}
                                 onChange={e => {
+                                    console.log('CHANGE 1 --------------------------------', e.target.value);
+
                                     if (e.target.value.length < 3) return;
+                                    const value = encodeURIComponent(e.target.value);
+
+                                    console.log('CHANGE 2 --------------------------------', value);
 
                                     dispatch({
                                         type: 'onChangeLocation',
                                         payload: {
                                             query: e.target.value,
-                                            url: `${autosuggestUrl}${e.target.value}`
+                                            url: `${autosuggestUrl}${value}`
                                         }
                                     });
                                 }}

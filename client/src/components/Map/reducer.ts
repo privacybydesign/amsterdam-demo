@@ -39,6 +39,8 @@ export const initialState: IState = {
 };
 
 export const reducer = (state: IState = initialState, action: IAction): IState => {
+    console.log('reducer', action);
+
     switch (action.type) {
         case 'setAutosuggest':
             return {

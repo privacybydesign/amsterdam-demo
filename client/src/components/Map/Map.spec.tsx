@@ -10,7 +10,7 @@ setupMocks();
 jest.mock('@services/createIrmaSession');
 
 describe('Map', () => {
-    // it.skip('should render default map with input and no autosuggest visible', async () => {
+    // it('should render default map with input and no autosuggest visible', async () => {
     //     await act(async () => await wrappedRender(<Map updateLocationCallback={jest.fn()} />));
 
     //     expect(screen.queryByTestId('map')).toBeInTheDocument();
