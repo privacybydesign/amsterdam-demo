@@ -116,6 +116,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
     return (
         <MapParent>
             <StyledMap
+                data-testid="map"
                 setInstance={instance => {
                     dispatch({
                         type: 'setMapInstance',
@@ -145,6 +146,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                         <>
                             <StyledInput
                                 id="location"
+                                data-testid="input"
                                 ref={locationRef}
                                 onChange={e => {
                                     if (e.target.value.length < 3) return;
@@ -159,7 +161,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                                 }}
                             />
                             {showAutosuggest && query.length && autosuggest && autosuggest.length ? (
-                                <StyledAutosuggest ref={wrapperRef}>
+                                <StyledAutosuggest data-testid="autosuggest" ref={wrapperRef}>
                                     {autosuggest.map(item => (
                                         <ListItem key={item.id}>
                                             <StyledIcon size={14}>
