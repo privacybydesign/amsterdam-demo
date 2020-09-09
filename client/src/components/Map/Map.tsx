@@ -47,10 +47,12 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
 
     const fetchLocation = useCallback(
         async (loc: LatLng) => {
-            console.log('fetchLocation');
+            console.log('fetchLocation 1');
 
             const response = await axios.get(`${locationUrl}&lat=${loc.lat}&lon=${loc.lng}`);
+            console.log('fetchLocation 2', response);
             const location = response.data?.response?.docs;
+            console.log('fetchLocation 2 location', location);
             dispatch({
                 type: 'setLocation',
                 payload: {
@@ -101,8 +103,10 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
     }, [url, fetchAutosuggest]);
 
     useEffect(() => {
+        console.log('useEffect location', location && location.length ? location[0].weergavenaam : '');
+
         locationRef.current.value = location && location.length ? location[0].weergavenaam : '';
-    }, [location, locationRef]);
+    }, [location]);
 
     const handleClickOutside = event => {
         if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {

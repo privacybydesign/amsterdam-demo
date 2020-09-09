@@ -18,34 +18,33 @@ describe('Map', () => {
     //     expect(screen.queryByTestId('autosuggest')).not.toBeInTheDocument();
     // });
 
-    it('should show autosuggest when input field has changed', async () => {
-        const spy = jest.fn();
-        await act(async () => await wrappedRender(<Map updateLocationCallback={jest.fn} />));
+    // it('should show autosuggest when input field has changed', async () => {
+    //     const spy = jest.fn();
+    //     await act(async () => await wrappedRender(<Map updateLocationCallback={jest.fn} />));
 
-        act(() => {
-            fireEvent.change(screen.queryByTestId('input'), { target: { value: 'Dam 1' } });
-        });
+    //     act(() => {
+    //         fireEvent.change(screen.queryByTestId('input'), { target: { value: 'Dam 1' } });
+    //     });
 
-        act(() => {
-            expect(screen.getByTestId('autosuggest')).toBeInTheDocument();
-        });
-    });
+    //     act(() => {
+    //         expect(screen.getByTestId('autosuggest')).toBeInTheDocument();
+    //     });
+    // });
 
     it('should show correct address when clicked on th map', async () => {
         const spy = jest.fn();
 
         await act(async () => await wrappedRender(<Map updateLocationCallback={jest.fn} />));
 
-        await act(
-            async () =>
-                await fireEvent.click(screen.queryByTestId('map'), {
-                    aaa: '123'
-                })
-        );
+        await act(async () => await fireEvent.click(screen.queryByTestId('map')));
 
         act(() => {
-            // expect(screen.getByTestId('map')).toMatchSnapshot();
-            expect(spy).toHaveBeenCalledTimes(1);
+            // Jonge Roelensteeg 4M, 1012PL Amsterdam
+            console.log('location found', screen.queryAllByText('Jonge Roelensteeg 4M, 1012PL Amsterdam').length);
+
+            expect(screen.queryAllByText('Jonge Roelensteeg 4M, 1012PL Amsterdam').length).toBe(1);
+
+            // expect(spy).toHaveBeenCalledTimes(1);
         });
     });
 });
