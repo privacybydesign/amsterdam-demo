@@ -45,7 +45,7 @@ Object {
 exports[`Demo4 reducer should update when action setProperties is dispatched 1`] = `
 Object {
   "city": "Amsterdam",
-  "email": "",
+  "email": undefined,
   "formValid": true,
   "hasError": false,
   "hasResult": true,
