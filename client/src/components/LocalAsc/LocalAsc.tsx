@@ -46,8 +46,17 @@ export const Paragraph = styled(AscParagraph)`
     margin-bottom: ${themeSpacing(2)};
 `;
 
-export const TintedContainer = styled.div`
-    background-color: ${({ level }) => themeColor('tint', `level${level}` || 'level3')};
+const TintedContainer = styled.div`
+    padding: ${themeSpacing(4)} ${themeSpacing(6)};
+    margin-bottom: ${themeSpacing(4)};
+`;
+
+export const TintedContainerLevel2 = styled(TintedContainer)`
+    background-color: ${themeColor('tint', `level3`)};
+`;
+
+export const TintedContainerLevel3 = styled(TintedContainer)`
+    background-color: ${themeColor('tint', `level3`)};
     padding: ${themeSpacing(4)} ${themeSpacing(6)};
     margin-bottom: ${themeSpacing(4)};
 `;
