@@ -83,7 +83,9 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
     );
 
     useEffect(() => {
-        fetchAutosuggest(url);
+        if (url.length) {
+            fetchAutosuggest(url);
+        }
     }, [url, fetchAutosuggest]);
 
     useEffect(() => {
@@ -130,6 +132,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                         fetchLocation(e.latlng);
                     }
                 }}
+                data-testid="map"
             >
                 {latLng && <Marker latLng={latLng} />}
                 <StyledViewerContainer

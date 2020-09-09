@@ -90,6 +90,7 @@ const Demo5: React.FC<IProps> = () => {
             }
         });
     }, []);
+
     // IRMA session
     const getSession = async () => {
         let response = null;
@@ -144,8 +145,8 @@ const Demo5: React.FC<IProps> = () => {
     useEffect(() => {
         if (state.hasResult) {
             setHeaderImg({
-                filename: content.responsiveImages.demo3.headerResult.src,
-                alt: content.responsiveImages.demo3.headerResult.alt
+                filename: content.responsiveImages.demo5.headerResult.src,
+                alt: content.responsiveImages.demo5.headerResult.alt
             });
         }
     }, [state.hasResult]);
@@ -253,7 +254,7 @@ const Demo5: React.FC<IProps> = () => {
                             />
                             {noIRMAFlow ? (
                                 <StyledButton
-                                    data-testid={'qrCodeButton'}
+                                    data-testid={'noIRMAbutton'}
                                     onClick={getSession}
                                     variant="secondary"
                                     iconSize={24}

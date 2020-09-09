@@ -83,4 +83,27 @@ const setupMockedAPI = (mockedAxios: MockAdapter): void => {
             }
         }
     });
+
+    mockedAxios
+        .onGet(
+            'https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&distance=50&&lat=52.37311439594963&lon=4.893314257120113'
+        )
+        .reply(200, {
+            response: {
+                numFound: 1,
+                start: 0,
+                maxScore: 15.826545,
+                docs: [
+                    {
+                        woonplaatsnaam: 'Amsterdam',
+                        huis_nlt: '4M',
+                        weergavenaam: 'Jonge Roelensteeg 4M, 1012PL Amsterdam',
+                        id: 'adr-95a6647a023cda2d8700b1211b1a063a',
+                        postcode: '1012PL',
+                        centroide_ll: 'POINT(4.89148701 52.37221689)',
+                        straatnaam: 'Jonge Roelensteeg'
+                    }
+                ]
+            }
+        });
 };

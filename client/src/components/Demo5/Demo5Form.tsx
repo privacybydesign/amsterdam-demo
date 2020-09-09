@@ -49,6 +49,7 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
                     error={errors.includes(FormFields.REPORT)}
                     maxLength={1000}
                     showCounter={true}
+                    data-testid="report"
                 />
                 {errors.includes(FormFields.REPORT) && (
                     <AscLocal.ErrorMessage message={content.demo5.form.report.required} />
@@ -66,15 +67,21 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
                     error={errors.includes(FormFields.OPTION_PHONE)}
                     onChange={validateOnChange}
                 >
-                    <Label htmlFor="phoneConsentYes" label={content.demo5.form.optionPhone.optionYes}>
+                    <Label htmlFor="optionMobileNumberYes" label={content.demo5.form.optionPhone.optionYes}>
                         <Radio
-                            id="phoneConsentYes"
+                            id="optionMobileNumberYes"
+                            data-testid="optionMobileNumberYes"
                             variant="primary"
                             value={content.demo5.form.optionPhone.optionYes}
                         />
                     </Label>
-                    <Label htmlFor="phoneConsentNo" label={content.demo5.form.optionPhone.optionNo}>
-                        <Radio id="phoneConsentNo" variant="primary" value={content.demo5.form.optionPhone.optionNo} />
+                    <Label htmlFor="optionMobileNumberNo" label={content.demo5.form.optionPhone.optionNo}>
+                        <Radio
+                            id="optionMobileNumberNo"
+                            data-testid="optionMobileNumberNo"
+                            variant="primary"
+                            value={content.demo5.form.optionPhone.optionNo}
+                        />
                     </Label>
                 </RadioGroup>
                 {errors.includes(FormFields.OPTION_PHONE) && (
@@ -93,11 +100,21 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
                     error={errors.includes(FormFields.OPTION_EMAIL)}
                     onChange={() => validateForm(false)}
                 >
-                    <Label htmlFor="updatesYes" label={content.demo5.form.optionEmail.optionYes}>
-                        <Radio id="updatesYes" variant="primary" value={content.demo5.form.optionEmail.optionYes} />
+                    <Label htmlFor="optionEmailYes" label={content.demo5.form.optionEmail.optionYes}>
+                        <Radio
+                            id="optionEmailYes"
+                            data-testid="optionEmailYes"
+                            variant="primary"
+                            value={content.demo5.form.optionEmail.optionYes}
+                        />
                     </Label>
-                    <Label htmlFor="updatesNo" label={content.demo5.form.optionEmail.optionNo}>
-                        <Radio id="updatesNo" variant="primary" value={content.demo5.form.optionEmail.optionNo} />
+                    <Label htmlFor="optionEmailNo" label={content.demo5.form.optionEmail.optionNo}>
+                        <Radio
+                            id="optionEmailNo"
+                            data-testid="optionEmailNo"
+                            variant="primary"
+                            value={content.demo5.form.optionEmail.optionNo}
+                        />
                     </Label>
                 </RadioGroup>
                 {errors.includes(FormFields.OPTION_EMAIL) && (
