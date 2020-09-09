@@ -31,21 +31,21 @@ describe('Map', () => {
         });
     });
 
-    // it.skip('should show correct address when clicked on th map', async () => {
-    //     const spy = jest.fn();
+    it('should show correct address when clicked on th map', async () => {
+        const spy = jest.fn();
 
-    //     await act(async () => await wrappedRender(<Map updateLocationCallback={jest.fn} />));
+        await act(async () => await wrappedRender(<Map updateLocationCallback={jest.fn} />));
 
-    //     await act(
-    //         async () =>
-    //             await fireEvent.click(screen.queryByTestId('map'), {
-    //                 aaa: '123'
-    //             })
-    //     );
+        await act(
+            async () =>
+                await fireEvent.click(screen.queryByTestId('map'), {
+                    aaa: '123'
+                })
+        );
 
-    //     act(() => {
-    //         // expect(screen.getByTestId('map')).toMatchSnapshot();
-    //         expect(spy).toHaveBeenCalled();
-    //     });
-    // });
+        act(() => {
+            // expect(screen.getByTestId('map')).toMatchSnapshot();
+            expect(spy).toHaveBeenCalledTimes(1);
+        });
+    });
 });
