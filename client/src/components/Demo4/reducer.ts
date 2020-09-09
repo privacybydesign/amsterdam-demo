@@ -57,7 +57,8 @@ export const reducer = (state: IState, action: IAction): IState => {
                 name: action.payload.name,
                 street: action.payload.street,
                 city: action.payload.city,
-                telephone: action.payload.telephone
+                telephone: action.payload.telephone,
+                email: action.payload.email
             };
 
         case 'setError':

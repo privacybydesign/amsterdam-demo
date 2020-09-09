@@ -234,6 +234,7 @@ Doe een demo-aanvraag door uzelf bekend te maken met de volgende gegevens:
 - Volledige naam
 - Straat
 - Huisnummer
+- Postcode
 - Woonplaats
 - Mobiel telefoonnummer
 - E-mailadres
@@ -274,19 +275,19 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
 ** Uw keuze **\n
 geveltuin\n
 ** Bent u de eigenaar van de woning waar de geveltuin komt? **\n
-{owner}
+[owner]
 `,
             yourDetails: `### Uw gegevens\n
 ** Naam **\n
-{name}\n
+[name]\n
 ** Straat en huisnummer **\n
-{street}\n
+[street]\n
 ** Postcode en plaats **\n
-{city}\n
+[city]\n
 ** Telefoonnummer **\n
-{telephone}\n
+[telephone]\n
 ** E-mail **\n
-{email}\n
+[email]\n
 `,
             disclaimer: `Dit is een demo; u bent geen aanvraag voor een geveltuin gestart.`,
             rest: `## Wat heeft u zojuist gedaan?
@@ -447,7 +448,7 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
 
     qrcode: {
         title: '### Maak uzelf bekend',
-        stappen: `Doorloop de volgende stappen  \n
+        stappen: `Doorloop de volgende stappen: \n
 1. Scan de QR-code hieronder met uw IRMA-app.  \n
 2. Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.`,
         knop: 'Inloggen met IRMA'

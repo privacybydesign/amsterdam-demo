@@ -60,7 +60,8 @@ const Demo4: React.FC<IProps> = () => {
                         name: response['fullname'],
                         street: `${response['street']} ${response['houseNumber']}`,
                         city: `${response['zipcode']} ${response['city']}`,
-                        telephone: response['mobilenumber']
+                        telephone: response['mobilenumber'],
+                        email: response['email']
                     }
                 });
             } else {
@@ -83,7 +84,7 @@ const Demo4: React.FC<IProps> = () => {
     const { hasResult, hasError, formValid } = state;
 
     function replaceVars(str, p1) {
-        return state[p1];
+        return state[p1] || '-';
     }
 
     // Update header image
@@ -197,19 +198,19 @@ const Demo4: React.FC<IProps> = () => {
             ) : (
                 <>
                     <ContentBlock>
-                        <AscLocal.TintedContainer>
+                        <AscLocal.TintedContainerLevel3>
                             <ReactMarkDown
-                                source={content.demo4.result.yourDemoRequest.replace(/\{(.*?)\}/gm, replaceVars)}
-                                renderers={{ heading: AscLocal.H4, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                source={content.demo4.result.yourDemoRequest.replace(/\[(.*?)\]/gm, replaceVars)}
+                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
-                        </AscLocal.TintedContainer>
+                        </AscLocal.TintedContainerLevel3>
 
-                        <AscLocal.TintedContainer>
+                        <AscLocal.TintedContainerLevel3>
                             <ReactMarkDown
-                                source={content.demo4.result.yourDetails.replace(/\{(.*?)\}/gm, replaceVars)}
-                                renderers={{ heading: AscLocal.H4, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                source={content.demo4.result.yourDetails.replace(/\[(.*?)\]/gm, replaceVars)}
+                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
-                        </AscLocal.TintedContainer>
+                        </AscLocal.TintedContainerLevel3>
 
                         <ReactMarkDown source={content.noSavePromise} />
                         <ReactMarkDown source={content.demo4.result.disclaimer} />

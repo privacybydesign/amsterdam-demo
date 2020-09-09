@@ -257,7 +257,7 @@ exports[`QR Code Clicking the QR Code button should show the modal and call getS
       class="c7"
     >
       <p>
-        Doorloop de volgende stappen  
+        Doorloop de volgende stappen: 
       </p>
       <ol
         class="c8"
