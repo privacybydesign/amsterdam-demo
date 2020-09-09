@@ -84,7 +84,7 @@ const Demo4: React.FC<IProps> = () => {
     const { hasResult, hasError, formValid } = state;
 
     function replaceVars(str, p1) {
-        return state[p1];
+        return state[p1] || '-';
     }
 
     // Update header image
