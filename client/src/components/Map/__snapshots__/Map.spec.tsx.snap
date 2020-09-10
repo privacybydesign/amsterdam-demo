@@ -122,7 +122,7 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
 }
 
 .c0 {
-  width: 500px;
+  width: 100%;
   background-color: #ffffff;
   list-style-type: none;
   padding: 6px 0 0 12px;
