@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback, useRef, useReducer } from 'react';
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 import { initialState, reducer, Location } from './reducer';
 import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@datapunt/arm-core';
@@ -28,7 +28,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
 
     const fetchAutosuggest = useCallback(
         async url => {
-            const response = await axios.get(url);
+            const response: AxiosResponse = await axios.get(url);
             dispatch({
                 type: 'setAutosuggest',
                 payload: {
@@ -94,7 +94,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
 
     useEffect(() => {
         locationRef.current.value = location && location.length ? location[0].weergavenaam : '';
-    }, [location, locationRef]);
+    }, [location]);
 
     const handleClickOutside = event => {
         if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
@@ -116,6 +116,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
     return (
         <MapParent>
             <StyledMap
+                data-testid="map"
                 setInstance={instance => {
                     dispatch({
                         type: 'setMapInstance',
@@ -136,7 +137,6 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                         fetchLocation(e.latlng);
                     }
                 }}
-                data-testid="map"
             >
                 {latLng && <Marker latLng={latLng} />}
                 <StyledViewerContainer
@@ -145,21 +145,22 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                         <>
                             <StyledInput
                                 id="location"
+                                data-testid="input"
                                 ref={locationRef}
                                 onChange={e => {
                                     if (e.target.value.length < 3) return;
-
+                                    const value = encodeURIComponent(e.target.value);
                                     dispatch({
                                         type: 'onChangeLocation',
                                         payload: {
                                             query: e.target.value,
-                                            url: `${autosuggestUrl}${e.target.value}`
+                                            url: `${autosuggestUrl}${value}`
                                         }
                                     });
                                 }}
                             />
                             {showAutosuggest && query.length && autosuggest && autosuggest.length ? (
-                                <StyledAutosuggest ref={wrapperRef}>
+                                <StyledAutosuggest data-testid="autosuggest" ref={wrapperRef}>
                                     {autosuggest.map(item => (
                                         <ListItem key={item.id}>
                                             <StyledIcon size={14}>
