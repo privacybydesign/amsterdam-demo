@@ -106,7 +106,7 @@ describe('Demo5', () => {
         await act(async () => await fireEvent.click(SubmitButton));
 
         // Wait for update and check if correct alert is shown
-        const hasResultAlert = screen.getByTestId('hasResultAlert');
+        const hasResultAlert = screen.getByTestId('hasNoIrmaFlowAlert');
         expect(hasResultAlert).toMatchSnapshot();
 
         // Check if header image is updated

@@ -335,9 +335,21 @@ Doe uw melding zonder uw e-mailadres en/of telefoonnummer vrij te geven met IRMA
         },
         proven: {
             title: `# Demo 5: Overlast melden`,
-            alert: {
+            alertPhoneEmail: {
                 title: `Uw contactgegevens`,
-                body: `U heeft een formulier ingevuld met uw e-mailadres.`
+                body: `U heeft een formulier aangevuld met uw telefoonnummer en uw e-mailadres.`
+            },
+            alertEmail: {
+                title: `Uw contactgegevens`,
+                body: `U heeft een formulier aangevuld met uw e-mailadres.`
+            },
+            alertPhone: {
+                title: `Uw contactgegevens`,
+                body: `U heeft een formulier aangevuld met uw telefoonnummer.`
+            },
+            alertNone: {
+                title: `Geen contactgegevens`,
+                body: `U heeft ervoor gekozen geen contactgegevens vrij te geven.`
             }
         },
         form: {
