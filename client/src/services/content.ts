@@ -86,7 +86,7 @@ Ga naar de [website van IRMA](https://irma.app/)`
 - [Demo 1: Leeftijd aantonen](/leeftijd-aantonen)`,
         title: {
             noResult: `# Demo 1: Leeftijd aantonen`,
-            hasResult: `# Demo 1: Uw leeftijd`
+            hasResult: `# Demo 1: Leeftijd aantonen`
         },
         isOver18: {
             heading: `Uw leeftijd`,
@@ -147,7 +147,7 @@ Bewijs in welke wijk u woont en dat u ouder bent dan 18 jaar door uzelf bekend t
             title: `# Demo 2: Ideeën voor uw buurt`
         },
         proven: {
-            title: `# Demo 2: Uw postcode en leeftijd`,
+            title: `# Demo 2: Ideeën voor uw buurt`,
             alert: {
                 title: `Uw postcode en leeftijd`,
                 // [] will be replaced by the wijken
@@ -201,7 +201,7 @@ De gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de
             }
         },
         proven: {
-            title: `# Demo 3: Uw Naam en Burgerservicenummer`,
+            title: `# Demo 3: Inloggen met IRMA`,
             alert: {
                 title: `Uw naam en burgerservicenummer  `,
                 body: `U heeft bewezen dat u [] bent en u heeft uw burgerservicenummer (BSN) gedeeld.`
@@ -257,7 +257,7 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
 `
         },
         proven: {
-            title: `# Demo 4: Uw persoons- en contactgegevens`,
+            title: `# Demo 4: Geveltuin aanvragen`,
             alert: {
                 title: `Uw persoons- en contactgegevens`,
                 body: `U heeft een formulier ingevuld  met uw naam, adres en contactgegevens.`
@@ -331,7 +331,7 @@ De gemeente kan u op de hoogte houden over uw melding. En u kunt met dit e-maila
             callToAction: `## Gegevens aanvullen met IRMA
 Vul uw demo-aanvraag aan met uw e-mail en/of telefoonnummer uit IRMA.`,
             callToActionNoIRMA: `## Anonieme melding
-Doe uw melding zonder uw e-mailadres en/of telefoonnummer vrij te geven met IRMA.`
+Doe uw demo-melding zonder uw e-mailadres en/of telefoonnummer vrij te geven met IRMA.`
         },
         proven: {
             title: `# Demo 5: Overlast melden`,
@@ -380,9 +380,9 @@ We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`
             }
         },
         button: 'Aanvullen met IRMA',
-        buttonNoIRMA: 'Melding doen',
+        buttonNoIRMA: 'Demo-melding doen',
         result: {
-            intro: `Hieronder vindt u alle gegevens van uw demo-melding`,
+            intro: `Hieronder vindt u alle gegevens van uw demo-melding:`,
             reportTitle: `### Uw demo-melding overlast`,
             location: `** Locatie **  \n[]\n`,
             report: `** Beschrijving **  \n[]\n`,
