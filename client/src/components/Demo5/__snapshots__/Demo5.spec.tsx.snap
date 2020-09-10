@@ -659,7 +659,7 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
         <p
           class="c8 c9"
         >
-          U heeft een formulier ingevuld met uw e-mailadres.
+          U heeft een formulier aangevuld met uw telefoonnummer en uw e-mailadres.
         </p>
       </div>
     </div>
@@ -896,8 +896,8 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 14px;
-  height: 14px;
+  width: 22px;
+  height: 22px;
   box-sizing: content-box;
   -webkit-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
@@ -905,15 +905,8 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 }
 
 .c4 > svg {
-  width: 14px;
-  height: 14px;
-}
-
-.c4 svg circle,
-.c4 svg rect,
-.c4 svg polygon,
-.c4 svg path {
-  fill: #ffffff;
+  width: 22px;
+  height: 22px;
 }
 
 .c5 {
@@ -1057,7 +1050,7 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 
 .c1 {
   margin-bottom: 16px;
-  background-color: #0c8836;
+  background-color: #FEC813;
 }
 
 .c1 .alert-content {
@@ -1065,20 +1058,20 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
 }
 
 .c1 .alert-content .icon {
   margin-right: 16px;
-  min-width: 14px;
+  min-width: 22px;
   background-repeat: no-repeat;
 }
 
 .c1 .alert-content * {
-  color: #ffffff;
+  color: #000000;
 }
 
 @media screen and (min-width:1200px) {
@@ -1292,7 +1285,7 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 <div
   aria-live="polite"
   class="c0 c1"
-  data-testid="hasResultAlert"
+  data-testid="hasNoIrmaFlowAlert"
   role="alert"
   tabindex="0"
 >
@@ -1304,16 +1297,17 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
     >
       <span
         class="c3 c4 icon"
-        color="#ffffff"
-        size="14"
+        size="22"
       >
         <svg
           focusable="false"
-          viewBox="0 0 32 32"
+          viewBox="0 0 36 36"
         >
           <path
-            d="M12.216 27.016L0 14.168l2.91-2.77 9.346 9.837L29.129 4 32 6.8z"
-            fill-rule="evenodd"
+            d="M33.63 30.9H2.37L18 3zm-24.44-4h17.62L18 11.19z"
+          />
+          <path
+            d="M17 16.99h2v4.95h-2zm0 5.95h2v1.95h-2z"
           />
         </svg>
       </span>
@@ -1321,12 +1315,12 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
         <h3
           class="c5 c6 c7"
         >
-          Uw contactgegevens
+          Geen contactgegevens
         </h3>
         <p
           class="c8 c9"
         >
-          U heeft een formulier ingevuld met uw e-mailadres.
+          U heeft ervoor gekozen geen contactgegevens vrij te geven.
         </p>
       </div>
     </div>

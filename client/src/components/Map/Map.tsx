@@ -207,7 +207,7 @@ const StyledInput = styled(Input)`
 `;
 
 const StyledAutosuggest = styled.ul`
-    width: 500px;
+    width: 100%;
     background-color: ${themeColor('tint', 'level1')};
     list-style-type: none;
     padding: 6px 0 0 ${themeSpacing(3)};
