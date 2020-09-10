@@ -49,8 +49,9 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                     location
                 }
             });
+
             if (updateLocationCallback) {
-                updateLocationCallback(location);
+                updateLocationCallback(location.length === 0 ? [{ geenAdresGevonden: true }] : location);
             }
         },
         [locationUrl, dispatch, updateLocationCallback]
@@ -77,6 +78,9 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                         latLng: targetLatlng
                     }
                 });
+                if (updateLocationCallback) {
+                    updateLocationCallback(response.data.response.docs);
+                }
             }
         },
         [mapInstance, lookupUrl, dispatch]
