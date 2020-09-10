@@ -83,7 +83,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                 }
             }
         },
-        [mapInstance, lookupUrl, dispatch]
+        [mapInstance, lookupUrl, dispatch, updateLocationCallback]
     );
 
     useEffect(() => {
