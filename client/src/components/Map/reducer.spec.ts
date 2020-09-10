@@ -2,6 +2,10 @@ import { LatLngLiteral, Map } from 'leaflet';
 
 import { initialState, reducer, Location } from './reducer';
 
+interface MockMap extends Map {
+    flyTo: jest.Mock;
+}
+
 describe('map reducer', () => {
     it('should set default state', () => {
         expect(reducer(undefined, { type: null })).toEqual(initialState);
@@ -60,7 +64,7 @@ describe('map reducer', () => {
     });
 
     it('should setMapInstance', () => {
-        const mockMapInstance: any = { flyTo: jest.fn() };
+        const mockMapInstance: MockMap = { flyTo: jest.fn() } as MockMap;
         expect(
             reducer(undefined, {
                 type: 'setMapInstance',

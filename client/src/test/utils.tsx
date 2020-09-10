@@ -128,54 +128,6 @@ const setupMockedAPI = (mockedAxios: MockAdapter): void => {
                         weergavenaam: 'Damrak 1, 1012LG Amsterdam',
                         id: 'adr-8f4d573be765b4c80dd635ba73747903',
                         score: 10.875747
-                    },
-                    {
-                        type: 'adres',
-                        weergavenaam: 'Damraksteeg 1, 1012LP Amsterdam',
-                        id: 'adr-bd7761c205487bb4a624038619e2ec8b',
-                        score: 10.875747
-                    },
-                    {
-                        type: 'adres',
-                        weergavenaam: 'Dam 10, 1012NP Amsterdam',
-                        id: 'adr-3b94f8fe4f9dc8dc3d2db695487d207c',
-                        score: 9.879723
-                    },
-                    {
-                        type: 'adres',
-                        weergavenaam: 'Dam 11, 1012JS Amsterdam',
-                        id: 'adr-41cba7eb1a70b9fd144b8a3419b86271',
-                        score: 9.879723
-                    },
-                    {
-                        type: 'adres',
-                        weergavenaam: 'Dam 12, 1012NP Amsterdam',
-                        id: 'adr-07149cd8cb4fd4c800546c4182b2769d',
-                        score: 9.879723
-                    },
-                    {
-                        type: 'adres',
-                        weergavenaam: 'Dam 13, 1012JS Amsterdam',
-                        id: 'adr-0268a052aad3b89a81b64fa084c547a0',
-                        score: 9.879723
-                    },
-                    {
-                        type: 'adres',
-                        weergavenaam: 'Dam 15, 1012JS Amsterdam',
-                        id: 'adr-83c70251c1a67123c9279c0ba3e39ded',
-                        score: 9.879723
-                    },
-                    {
-                        type: 'adres',
-                        weergavenaam: 'Dam 16, 1012NP Amsterdam',
-                        id: 'adr-82325b642ba34164aa050caa801732b2',
-                        score: 9.879723
-                    },
-                    {
-                        type: 'adres',
-                        weergavenaam: 'Dam 17, 1012JS Amsterdam',
-                        id: 'adr-5668dc45640b2dbf0c01eb0370be455a',
-                        score: 9.879723
                     }
                 ]
             },
@@ -185,35 +137,55 @@ const setupMockedAPI = (mockedAxios: MockAdapter): void => {
                 },
                 'adr-8f4d573be765b4c80dd635ba73747903': {
                     suggest: ['<b>Damrak</b> <b>1</b>, <b>1012LG</b> Amsterdam']
-                },
-                'adr-bd7761c205487bb4a624038619e2ec8b': {
-                    suggest: ['<b>Damraksteeg</b> <b>1</b>, <b>1012LP</b> Amsterdam']
-                },
-                'adr-3b94f8fe4f9dc8dc3d2db695487d207c': {
-                    suggest: ['<b>Dam</b> <b>10</b>, <b>1012NP</b> Amsterdam']
-                },
-                'adr-41cba7eb1a70b9fd144b8a3419b86271': {
-                    suggest: ['<b>Dam</b> <b>11</b>, <b>1012JS</b> Amsterdam']
-                },
-                'adr-07149cd8cb4fd4c800546c4182b2769d': {
-                    suggest: ['<b>Dam</b> <b>12</b>, <b>1012NP</b> Amsterdam']
-                },
-                'adr-0268a052aad3b89a81b64fa084c547a0': {
-                    suggest: ['<b>Dam</b> <b>13</b>, <b>1012JS</b> Amsterdam']
-                },
-                'adr-83c70251c1a67123c9279c0ba3e39ded': {
-                    suggest: ['<b>Dam</b> <b>15</b>, <b>1012JS</b> Amsterdam']
-                },
-                'adr-82325b642ba34164aa050caa801732b2': {
-                    suggest: ['<b>Dam</b> <b>16</b>, <b>1012NP</b> Amsterdam']
-                },
-                'adr-5668dc45640b2dbf0c01eb0370be455a': {
-                    suggest: ['<b>Dam</b> <b>17</b>, <b>1012JS</b> Amsterdam']
                 }
-            },
-            spellcheck: {
-                suggestions: [],
-                collations: []
+            }
+        });
+
+    mockedAxios
+        .onGet(
+            'https://geodata.nationaalgeoregister.nl/locatieserver/v3/lookup?id=adr-2a8dc1af055da20b8bcdc8e4dbda1eaa'
+        )
+        .reply(200, {
+            response: {
+                numFound: 1,
+                start: 0,
+                maxScore: 15.73788,
+                docs: [
+                    {
+                        bron: 'BAG',
+                        woonplaatscode: '3594',
+                        type: 'adres',
+                        woonplaatsnaam: 'Amsterdam',
+                        wijkcode: 'WK036300',
+                        huis_nlt: '1',
+                        openbareruimtetype: 'Weg',
+                        buurtnaam: 'Oude Kerk e.o.',
+                        gemeentecode: '0363',
+                        rdf_seealso:
+                            'http://bag.basisregistraties.overheid.nl/bag/id/nummeraanduiding/0363200003761447',
+                        weergavenaam: 'Dam 1, 1012JS Amsterdam',
+                        straatnaam_verkort: 'Dam',
+                        id: 'adr-2a8dc1af055da20b8bcdc8e4dbda1eaa',
+                        gekoppeld_perceel: ['ASD04-F-6417', 'ASD04-F-7285'],
+                        gemeentenaam: 'Amsterdam',
+                        buurtcode: 'BU03630001',
+                        wijknaam: 'Burgwallen-Oude Zijde',
+                        identificatie: '0363010003761571-0363200003761447',
+                        openbareruimte_id: '0363300000003186',
+                        waterschapsnaam: 'HH Amstel, Gooi en Vecht',
+                        provinciecode: 'PV27',
+                        postcode: '1012JS',
+                        provincienaam: 'Noord-Holland',
+                        centroide_ll: 'POINT(4.89371757 52.3732926)',
+                        nummeraanduiding_id: '0363200003761447',
+                        waterschapscode: '31',
+                        adresseerbaarobject_id: '0363010003761571',
+                        huisnummer: 1,
+                        provincieafkorting: 'NH',
+                        centroide_rd: 'POINT(121394 487383)',
+                        straatnaam: 'Dam'
+                    }
+                ]
             }
         });
 };

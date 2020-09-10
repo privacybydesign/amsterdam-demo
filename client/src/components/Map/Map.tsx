@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback, useRef, useReducer } from 'react';
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 import { initialState, reducer, Location } from './reducer';
 import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@datapunt/arm-core';
@@ -28,13 +28,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
 
     const fetchAutosuggest = useCallback(
         async url => {
-            console.log('fetchAutosuggest ----------------------------------------', url);
-
-            const response: any = await axios.get(url);
-            console.log(
-                'fetchAutosuggest result ----------------------------------------',
-                response?.data?.response?.docs
-            );
+            const response: AxiosResponse = await axios.get(url);
             dispatch({
                 type: 'setAutosuggest',
                 payload: {
@@ -47,12 +41,8 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
 
     const fetchLocation = useCallback(
         async (loc: LatLng) => {
-            console.log('fetchLocation 1');
-
             const response = await axios.get(`${locationUrl}&lat=${loc.lat}&lon=${loc.lng}`);
-            console.log('fetchLocation 2', response);
             const location = response.data?.response?.docs;
-            console.log('fetchLocation 2 location', location);
             dispatch({
                 type: 'setLocation',
                 payload: {
@@ -103,8 +93,6 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
     }, [url, fetchAutosuggest]);
 
     useEffect(() => {
-        console.log('useEffect location', location && location.length ? location[0].weergavenaam : '');
-
         locationRef.current.value = location && location.length ? location[0].weergavenaam : '';
     }, [location]);
 
@@ -124,7 +112,6 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
             document.removeEventListener('click', handleClickOutside, false);
         };
     }, []);
-    console.log('render s', showAutosuggest, query.length, autosuggest && autosuggest.length);
 
     return (
         <MapParent>
@@ -140,8 +127,6 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                 }}
                 events={{
                     click: (e: LeafletMouseEvent) => {
-                        console.log('CLICK', e.latlng);
-
                         dispatch({
                             type: 'setLatLng',
                             payload: {
@@ -163,13 +148,8 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                                 data-testid="input"
                                 ref={locationRef}
                                 onChange={e => {
-                                    console.log('CHANGE 1 --------------------------------', e.target.value);
-
                                     if (e.target.value.length < 3) return;
                                     const value = encodeURIComponent(e.target.value);
-
-                                    console.log('CHANGE 2 --------------------------------', value);
-
                                     dispatch({
                                         type: 'onChangeLocation',
                                         payload: {
