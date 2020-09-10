@@ -170,14 +170,33 @@ const Demo5: React.FC<IProps> = () => {
                     renderers={{ heading: AscLocal.H1 }}
                 />
 
-                {state.hasResult && !state.hasError && (
+                {state.hasResult && !noIRMAFlow && !state.hasError && (
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.SUCCESS}
                         icon={<Checkmark />}
                         iconSize={14}
-                        heading={content.demo5.proven.alert.title}
-                        content={content.demo5.proven.alert.body.replace(/\[\]/, name)}
+                        content={
+                            content.demo5.proven[
+                                `alert${state.mobilenumber ? 'Phone' : ''}${state.email ? 'Email' : ''}`
+                            ].body
+                        }
+                        heading={
+                            content.demo5.proven[
+                                `alert${state.mobilenumber ? 'Phone' : ''}${state.email ? 'Email' : ''}`
+                            ].title
+                        }
                         dataTestId="hasResultAlert"
+                    />
+                )}
+
+                {state.hasResult && noIRMAFlow && (
+                    <AscLocal.Alert
+                        color={AscLocal.AlertColor.ERROR}
+                        icon={<AlertIcon />}
+                        iconSize={22}
+                        heading={content.demo5.proven.alertNone.title}
+                        content={content.demo5.proven.alertNone.body}
+                        dataTestId="hasNoIrmaFlowAlert"
                     />
                 )}
 
