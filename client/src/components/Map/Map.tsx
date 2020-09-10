@@ -51,7 +51,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
             });
 
             if (updateLocationCallback) {
-                updateLocationCallback(location.length === 0 ? [{ geenAdresGevonden: true }] : location);
+                updateLocationCallback(location.length === 0 ? [{ weergavenaam: 'geenAdresGevonden' }] : location);
             }
         },
         [locationUrl, dispatch, updateLocationCallback]
