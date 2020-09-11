@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useRef, useReducer, useState } from 'react';
+import React, { useEffect, useCallback, useRef, useReducer } from 'react';
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
 import axios, { AxiosResponse } from 'axios';
@@ -8,7 +8,7 @@ import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@datapunt/arm-cor
 import { Input } from '@datapunt/asc-ui';
 import { Link, ListItem, Icon, themeColor, themeSpacing } from '@datapunt/asc-ui';
 import { ChevronRight } from '@datapunt/asc-assets';
-import { LatLng, LeafletMouseEvent, map } from 'leaflet';
+import { LatLng, LeafletMouseEvent } from 'leaflet';
 
 interface IProps {
     updateLocationCallback: (location: Location[]) => void;
@@ -127,7 +127,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                 onMapClick({ ...e, latlng });
             }
         },
-        [mapInstance, dispatch]
+        [mapInstance, dispatch, onMapClick]
     );
 
     useEffect(() => {
@@ -138,7 +138,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
         return () => {
             document.body.removeEventListener('click', handleClickOutside, false);
         };
-    }, [mapInstance]);
+    }, [mapInstance, handleClickOutside]);
 
     return (
         <MapParent ref={mapRef}>
