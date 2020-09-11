@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useRef, useReducer } from 'react';
+import React, { useEffect, useCallback, useRef, useReducer, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
 import axios, { AxiosResponse } from 'axios';
@@ -8,7 +8,7 @@ import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@datapunt/arm-cor
 import { Input } from '@datapunt/asc-ui';
 import { Link, ListItem, Icon, themeColor, themeSpacing } from '@datapunt/asc-ui';
 import { ChevronRight } from '@datapunt/asc-assets';
-import { LatLng, LeafletMouseEvent } from 'leaflet';
+import { LatLng, LeafletMouseEvent, map } from 'leaflet';
 
 interface IProps {
     updateLocationCallback: (location: Location[]) => void;
@@ -18,6 +18,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const locationRef = useRef(null);
     const wrapperRef = useRef(null);
+    const mapRef = useRef(null);
     const autosuggestUrl =
         'https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&fl=id,weergavenaam,type,score,lat,lon&q=';
     const locationUrl =
@@ -55,6 +56,20 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
             }
         },
         [locationUrl, dispatch, updateLocationCallback]
+    );
+
+    const onMapClick = useCallback(
+        async (e: LeafletMouseEvent) => {
+            dispatch({
+                type: 'setLatLng',
+                payload: {
+                    latLng: e.latlng
+                }
+            });
+
+            fetchLocation(e.latlng);
+        },
+        [dispatch, fetchLocation]
     );
 
     const onAutosuggestClick = useCallback(
@@ -96,25 +111,37 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
         locationRef.current.value = location && location.length ? location[0].weergavenaam : '';
     }, [location]);
 
-    const handleClickOutside = event => {
-        if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-            dispatch({
-                type: 'hideAutosuggest'
-            });
+    const handleClickOutside = useCallback(
+        e => {
+            event;
+            if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+                dispatch({
+                    type: 'hideAutosuggest'
+                });
 
-            locationRef.current.value = '';
-        }
-    };
+                locationRef.current.value = '';
+            } else if (locationRef.current && locationRef.current.contains(e.target)) {
+                // do nothing
+            } else if (mapRef.current && mapRef.current.contains(e.target)) {
+                const latlng = mapInstance.mouseEventToLatLng(e);
+                onMapClick({ ...e, latlng });
+            }
+        },
+        [mapInstance, dispatch]
+    );
 
     useEffect(() => {
-        document.body.addEventListener('click', handleClickOutside, false);
+        if (mapInstance) {
+            document.body.addEventListener('click', handleClickOutside, false);
+        }
+
         return () => {
-            document.removeEventListener('click', handleClickOutside, false);
+            document.body.removeEventListener('click', handleClickOutside, false);
         };
-    }, []);
+    }, [mapInstance]);
 
     return (
-        <MapParent>
+        <MapParent ref={mapRef}>
             <StyledMap
                 data-testid="map"
                 setInstance={instance => {
@@ -127,14 +154,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                 }}
                 events={{
                     click: (e: LeafletMouseEvent) => {
-                        dispatch({
-                            type: 'setLatLng',
-                            payload: {
-                                latLng: e.latlng
-                            }
-                        });
-
-                        fetchLocation(e.latlng);
+                        onMapClick(e);
                     }
                 }}
             >
