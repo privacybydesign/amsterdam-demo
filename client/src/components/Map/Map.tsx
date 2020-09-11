@@ -113,7 +113,6 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
 
     const handleClickOutside = useCallback(
         e => {
-            event;
             if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
                 dispatch({
                     type: 'hideAutosuggest'
