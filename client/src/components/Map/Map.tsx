@@ -193,12 +193,14 @@ const StyledMap = styled(Map)`
     height: 500px;
     width: 100%;
     cursor: pointer;
+    z-index: 0;
 `;
 
 const StyledViewerContainer = styled(ViewerContainer)`
     > div {
         width: calc(100% - ${themeSpacing(8)});
     }
+    z-index: 1;
 `;
 
 const StyledInput = styled(Input)`

@@ -5,6 +5,7 @@ exports[`Map should render default map with input and no autosuggest visible 1`]
   height: 500px;
   width: 100%;
   cursor: pointer;
+  z-index: 0;
 }
 
 <div
