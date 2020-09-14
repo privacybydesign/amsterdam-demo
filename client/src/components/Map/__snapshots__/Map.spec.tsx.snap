@@ -131,6 +131,7 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
 }
 
 .c0 a {
+  display: inline;
   color: #000000;
 }
 
