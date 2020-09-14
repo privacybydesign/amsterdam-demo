@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import ReactMarkDown from 'react-markdown';
 import { Button, Modal, themeSpacing, themeColor } from '@datapunt/asc-ui';
 import { Close } from '@datapunt/asc-assets';
+import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { isMobile } from '@services/createIrmaSession';
 import content from '@services/content';
 import { OL } from '@components/LocalAsc/LocalAsc';
@@ -11,33 +12,50 @@ export interface IProps {
     label?: string;
     getSession(): Promise<null | unknown>;
     className?: string;
+    dataTestId?: string;
 }
 
-const QRCode: React.FC<IProps> = ({ label, getSession, className }) => {
+const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) => {
     const [hasOverlay, setHasOverlay] = useState(false);
 
-    const getQRSession = async () => {
-        if (!isMobile()) {
-            setHasOverlay(true);
-        }
+    //Set mountedRef to keep track of the mounting state
+    const mountedRef = useRef<boolean>(false);
+    useEffect(() => {
+        mountedRef.current = true;
+        return () => {
+            mountedRef.current = false;
+        };
+    }, []);
 
-        if (typeof getSession === 'function') {
-            await getSession();
-            closeModal();
-        }
-    };
-
-    const closeModal = () => {
+    const closeModal = useCallback(() => {
         setHasOverlay(false);
-    };
+    }, []);
+
+    const getQRSession = useCallback(async () => {
+        if (typeof getSession === 'function') {
+            if (!isMobile()) {
+                setHasOverlay(true);
+            }
+            await getSession();
+            if (mountedRef.current) {
+                closeModal();
+            }
+        }
+    }, [getSession, closeModal]);
 
     return (
         <span className={className}>
-            <StyledButton onClick={getQRSession} variant="secondary" iconSize={24} iconLeft={<IrmaLogoIcon />}>
+            <StyledButton
+                data-testid={dataTestId || 'qrCodeButton'}
+                onClick={getQRSession}
+                variant="secondary"
+                iconSize={24}
+                iconLeft={<AscLocal.IrmaLogoIcon />}
+            >
                 {label || content.qrcode.knop}
             </StyledButton>
 
-            <Modal backdropOpacity={0.5} open={hasOverlay} onClose={closeModal}>
+            <Modal backdropOpacity={0.5} open={hasOverlay} onClose={closeModal} data-testid="qrCodeModal">
                 <>
                     <StyledHeader>
                         <ReactMarkDown source={content.qrcode.title} renderers={{ heading: StyledH3 }} />
@@ -65,8 +83,12 @@ const StyledButton = styled(Button)`
     margin: ${themeSpacing(0, 6, 6, 0)};
 `;
 
-const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
-    width: 24px;
+export const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: 90px;
+    left: 90px;
 `;
 
 const StyledH3 = styled.h3``;
@@ -97,14 +119,6 @@ const CanvasWrapper = styled.div`
 const Canvas = styled.canvas`
     width: 300px !important;
     height: 300px !important;
-`;
-
-const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    top: 90px;
-    left: 90px;
 `;
 
 const QRCodeTopLeft = styled.img.attrs({ src: '/assets/qr-top-left.svg' })`

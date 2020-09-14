@@ -17,6 +17,7 @@ import { Checkmark } from '@datapunt/asc-assets';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
+import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 
 export interface IProps {}
 // @todo add error flow with incorrect data
@@ -29,7 +30,11 @@ const Demo3: React.FC<IProps> = () => {
     const [name, setName] = useState<string>('');
 
     const getSession = async () => {
-        const response = await createIrmaSession('demo3', 'irma-qr', credentialSource === CredentialSource.DEMO);
+        const response = await createIrmaSession(
+            'demo3',
+            'irma-qr',
+            credentialSource === CredentialSource.DEMO && { demo: true }
+        );
         if (response) {
             setHasResult(true);
             setHasError(false);
@@ -39,6 +44,7 @@ const Demo3: React.FC<IProps> = () => {
             setHasError(true);
         }
         window.scrollTo(0, 0);
+        startUsabillaSurvey();
         return response;
     };
 
@@ -67,15 +73,13 @@ const Demo3: React.FC<IProps> = () => {
 
     return (
         <PageTemplate>
-            <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
-
             <ContentBlock>
+                <CredentialSelector credentialSource={credentialSource} setCredentialSource={setCredentialSource} />
+                {!hasResult && !hasError && <DemoNotification />}
                 <ReactMarkDown
                     source={content.demo3.breadcrumbs}
                     renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
                 />
-
-                {!hasResult && !hasError && <DemoNotification />}
 
                 <ReactMarkDown
                     source={content.demo3[hasResult ? 'proven' : 'unproven'].title}
@@ -89,6 +93,7 @@ const Demo3: React.FC<IProps> = () => {
                         iconSize={14}
                         heading={content.demo3.proven.alert.title}
                         content={content.demo3.proven.alert.body.replace(/\[\]/, name)}
+                        dataTestId="hasResultAlert"
                     />
                 )}
 
@@ -99,6 +104,7 @@ const Demo3: React.FC<IProps> = () => {
                         iconSize={22}
                         heading={content.demoErrorAlert.heading}
                         content={content.demoErrorAlert.content}
+                        dataTestId="hasErrorAlert"
                     />
                 )}
             </ContentBlock>
@@ -120,7 +126,7 @@ const Demo3: React.FC<IProps> = () => {
                             <ReactMarkDown
                                 source={content.demo3.unproven.intro}
                                 renderers={{
-                                    heading: AscLocal.H2,
+                                    heading: AscLocal.H3,
                                     paragraph: AscLocal.Paragraph,
                                     list: AscLocal.UL
                                 }}
@@ -171,7 +177,7 @@ const Demo3: React.FC<IProps> = () => {
                             <ReactMarkDown
                                 source={content.demo3.result}
                                 renderers={{
-                                    heading: AscLocal.H2,
+                                    heading: AscLocal.H3,
                                     paragraph: AscLocal.Paragraph,
                                     list: AscLocal.UL
                                 }}
@@ -179,7 +185,7 @@ const Demo3: React.FC<IProps> = () => {
                             <ReactMarkDown
                                 source={content.callToAction}
                                 renderers={{
-                                    heading: AscLocal.H2,
+                                    heading: AscLocal.H3,
                                     paragraph: AscLocal.Paragraph,
                                     list: AscLocal.UL,
                                     link: AscLocal.InlineLink

@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Demo4 reducer should not update state when an unknown action is dispatched 1`] = `
+Object {
+  "city": "",
+  "email": "",
+  "formValid": true,
+  "hasError": false,
+  "hasResult": false,
+  "name": "",
+  "owner": "",
+  "street": "",
+  "telephone": "",
+}
+`;
+
+exports[`Demo4 reducer should update when action invalidateForm is dispatched 1`] = `
+Object {
+  "city": "",
+  "email": "",
+  "formValid": false,
+  "hasError": false,
+  "hasResult": false,
+  "name": "",
+  "owner": "",
+  "street": "",
+  "telephone": "",
+}
+`;
+
+exports[`Demo4 reducer should update when action setError is dispatched 1`] = `
+Object {
+  "city": "",
+  "email": "",
+  "formValid": true,
+  "hasError": true,
+  "hasResult": false,
+  "name": "",
+  "owner": "",
+  "street": "",
+  "telephone": "",
+}
+`;
+
+exports[`Demo4 reducer should update when action setProperties is dispatched 1`] = `
+Object {
+  "city": "Amsterdam",
+  "email": undefined,
+  "formValid": true,
+  "hasError": false,
+  "hasResult": true,
+  "name": "Test test",
+  "owner": "",
+  "street": "Teststraat",
+  "telephone": "0612345678",
+}
+`;
+
+exports[`Demo4 reducer should update when action validateForm is dispatched 1`] = `
+Object {
+  "city": "",
+  "email": "",
+  "formValid": true,
+  "hasError": false,
+  "hasResult": false,
+  "name": "",
+  "owner": "test",
+  "street": "",
+  "telephone": "",
+}
+`;

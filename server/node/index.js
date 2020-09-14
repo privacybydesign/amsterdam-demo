@@ -13,60 +13,87 @@ let config;
 
 const CREDENTIALS_TO_REQUEST = {
   DEMO: {
-    DEMO1_18: [["irma-demo.gemeente.personalData.over18"]],
-    DEMO1_65: [["irma-demo.gemeente.personalData.over65"]],
+    DEMO1_18: [[["irma-demo.gemeente.personalData.over18"]]],
+    DEMO1_65: [[["irma-demo.gemeente.personalData.over65"]]],
     DEMO2: [
       [
-        "irma-demo.gemeente.address.zipcode",
-        "irma-demo.gemeente.personalData.over18",
-      ],
-      [
-        "irma-demo.RU.idinData.zipcode",
-        "irma-demo.gemeente.personalData.over18",
+        [
+          "irma-demo.RU.idinData.zipcode",
+          "irma-demo.gemeente.personalData.over18",
+        ],
       ],
     ],
     DEMO3: [
       [
-        "irma-demo.gemeente.personalData.fullname",
-        "irma-demo.gemeente.personalData.bsn",
+        [
+          "irma-demo.gemeente.personalData.fullname",
+          "irma-demo.gemeente.personalData.bsn",
+        ],
       ],
     ],
     DEMO4: [
       [
-        "irma-demo.gemeente.personalData.fullname",
-        "irma-demo.gemeente.address.street",
-        "irma-demo.gemeente.address.houseNumber",
-        "irma-demo.RU.idinData.zipcode",
-        "irma-demo.RU.idinData.city",
-        "irma-demo.pbdf.mobilenumber.mobilenumber",
-        // TODO fix irma-demo.sidn-pbdf.email.email
-        // "irma-demo.sidn-pbdf.email.email",
+        [
+          "irma-demo.gemeente.personalData.fullname",
+          "irma-demo.gemeente.address.street",
+          "irma-demo.gemeente.address.houseNumber",
+          "irma-demo.gemeente.address.zipcode",
+          "irma-demo.gemeente.address.city",
+        ],
       ],
+      [["irma-demo.pbdf.mobilenumber.mobilenumber"]],
+      [["irma-demo.sidn-pbdf.email.email"]],
     ],
-    DEMO5: [["irma-demo.sidn-pbdf.email.domain"]],
+    DEMO5: (mobileNumber = true, email = true) => {
+      const credentials = [];
+      if (mobileNumber === "true") {
+        credentials.push([["irma-demo.pbdf.mobilenumber.mobilenumber"]]);
+      }
+
+      if (email === "true") {
+        credentials.push([["irma-demo.sidn-pbdf.email.email"]]);
+      }
+      return credentials;
+    },
   },
   PRODUCTION: {
-    DEMO1_18: [["pbdf.gemeente.personalData.over18"]],
-    DEMO1_65: [["pbdf.gemeente.personalData.over65"]],
+    DEMO1_18: [[["pbdf.gemeente.personalData.over18"]]],
+    DEMO1_65: [[["pbdf.gemeente.personalData.over65"]]],
     DEMO2: [
-      ["pbdf.gemeente.address.zipcode", "pbdf.gemeente.personalData.over18"],
+      [["pbdf.gemeente.address.zipcode", "pbdf.gemeente.personalData.over18"]],
     ],
     DEMO3: [
-      ["pbdf.gemeente.personalData.fullname", "pbdf.gemeente.personalData.bsn"],
+      [
+        [
+          "pbdf.gemeente.personalData.fullname",
+          "pbdf.gemeente.personalData.bsn",
+        ],
+      ],
     ],
     DEMO4: [
       [
-        "pbdf.gemeente.personalData.fullname",
-        "pbdf.gemeente.address.street",
-        "pbdf.gemeente.address.houseNumber",
-        "pbdf.gemeente.address.zipcode",
-        "pbdf.gemeente.address.city",
-        "pbdf.pbdf.mobilenumber.mobilenumber",
-        // TODO fix pbdf.pbdf.email.email
-        // "pbdf.pbdf.email.email",
+        [
+          "pbdf.gemeente.personalData.fullname",
+          "pbdf.gemeente.address.street",
+          "pbdf.gemeente.address.houseNumber",
+          "pbdf.gemeente.address.zipcode",
+          "pbdf.gemeente.address.city",
+        ],
       ],
+      [["pbdf.pbdf.mobilenumber.mobilenumber"]],
+      [["pbdf.pbdf.email.email"]],
     ],
-    DEMO5: [["pbdf.pbdf.email.domain"]],
+    DEMO5: (mobileNumber = "true", email = "true") => {
+      const credentials = [];
+      if (mobileNumber === "true") {
+        credentials.push([["pbdf.pbdf.mobilenumber.mobilenumber"]]);
+      }
+
+      if (email === "true") {
+        credentials.push([["pbdf.pbdf.email.email"]]);
+      }
+      return credentials;
+    },
   },
 };
 
@@ -81,7 +108,7 @@ const CREDENTIALS_TO_REQUEST = {
 const createIrmaRequest = (content) => {
   return {
     "@context": "https://irma.app/ld/request/disclosure/v2",
-    disclose: [[...content]],
+    disclose: [...content],
   };
 };
 
@@ -219,7 +246,7 @@ async function irmaDiscloseDemo5(req, res) {
   return irmaDiscloseRequest(
     req,
     res,
-    getCredentialSourceFromRequest(req).DEMO5
+    getCredentialSourceFromRequest(req).DEMO5(req.query.phone, req.query.email)
   );
 }
 

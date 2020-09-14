@@ -13,6 +13,7 @@ const DemoNotification: React.FC<IProps> = () => (
         iconSize={14}
         heading={content.demoNotification.heading}
         content={content.demoNotification.content}
+        data-testid="demoNotification"
     />
 );
 

@@ -21,7 +21,8 @@
             "@config/*": ["config/*"],
             "@app/*": ["app/*"],
             "@components/*": ["components/*"],
-            "@services/*": ["services/*"]
+            "@services/*": ["services/*"],
+            "@test/*": ["test/*"]
         }
     },
     "awesomeTypescriptLoaderOptions": {

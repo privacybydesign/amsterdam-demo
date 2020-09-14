@@ -28,11 +28,11 @@ const Homepage: React.FC<IProps> = () => (
                     <Accordion title={content.home.requirements.title} id="nodig">
                         <ReactMarkDown
                             source={content.home.requirements.body}
-                            renderers={{ heading: AscLocal.H2, list: AscLocal.UL, image: DownloadButton, link: Link }}
+                            renderers={{ heading: AscLocal.H3, list: AscLocal.UL, image: DownloadButton, link: Link }}
                         />
                     </Accordion>
                 </AscLocal.AccordionContainer>
-                <ReactMarkDown source={content.home.subtitle} renderers={{ heading: AscLocal.H2 }} />
+                <ReactMarkDown source={content.home.subtitle} renderers={{ heading: AscLocal.H3 }} />
                 <ArticleContainer>
                     <Article
                         imageSrc={content.responsiveImages.demo1.header.src}
@@ -56,7 +56,7 @@ const Homepage: React.FC<IProps> = () => (
                         title={content.home.demo3Card.title}
                         href={AppRoutes.DEMO3.path}
                     >
-                        <ReactMarkDown source={content.home.demo2Card.body} />
+                        <ReactMarkDown source={content.home.demo3Card.body} />
                     </Article>
                     <Article
                         imageSrc={content.responsiveImages.demo4.header.src}
@@ -66,6 +66,14 @@ const Homepage: React.FC<IProps> = () => (
                     >
                         <ReactMarkDown source={content.home.demo4Card.body} />
                     </Article>
+                    <Article
+                        imageSrc={content.responsiveImages.demo5.header.src}
+                        imageAlt={content.responsiveImages.demo5.header.alt}
+                        title={content.home.demo5Card.title}
+                        href={AppRoutes.DEMO5.path}
+                    >
+                        <ReactMarkDown source={content.home.demo5Card.body} />
+                    </Article>
                 </ArticleContainer>
             </AscLocal.Column>
             <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
@@ -74,7 +82,7 @@ const Homepage: React.FC<IProps> = () => (
                 {/* <ReactMarkDown
                     source={content.home.sidebar.bottom}
                     renderers={{
-                        heading: AscLocal.H2,
+                        heading: AscLocal.H3,
                         paragraph: AscLocal.StrongParagraph,
                         link: AscLocal.LinkWithChevron
                     }}

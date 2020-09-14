@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Demo5 reducer should not update state when an unknown action is dispatched 1`] = `
+Object {
+  "email": "",
+  "formErrors": Array [],
+  "hasError": false,
+  "hasResult": false,
+  "location": null,
+  "mobilenumber": "",
+  "optionEmail": null,
+  "optionPhone": null,
+  "report": "",
+}
+`;
+
+exports[`Demo5 reducer should update when action setError is dispatched 1`] = `
+Object {
+  "email": "",
+  "formErrors": Array [],
+  "hasError": true,
+  "hasResult": false,
+  "location": null,
+  "mobilenumber": "",
+  "optionEmail": null,
+  "optionPhone": null,
+  "report": "",
+}
+`;
+
+exports[`Demo5 reducer should update when action setLocation is dispatched 1`] = `
+Object {
+  "email": "",
+  "formErrors": Array [],
+  "hasError": false,
+  "hasResult": false,
+  "location": Object {
+    "id": "testId",
+    "weergavenaam": "Test",
+  },
+  "mobilenumber": "",
+  "optionEmail": null,
+  "optionPhone": null,
+  "report": "",
+}
+`;
+
+exports[`Demo5 reducer should update when action setResult is dispatched 1`] = `
+Object {
+  "email": "test@amsterdam.nl",
+  "formErrors": Array [],
+  "hasError": false,
+  "hasResult": true,
+  "location": null,
+  "mobilenumber": "0612345678",
+  "optionEmail": null,
+  "optionPhone": null,
+  "report": "",
+}
+`;
+
+exports[`Demo5 reducer should update when action validateForm is dispatched 1`] = `
+Object {
+  "email": "",
+  "formErrors": Array [],
+  "hasError": false,
+  "hasResult": false,
+  "location": Object {
+    "id": "testId",
+    "weergavenaam": "Test",
+  },
+  "mobilenumber": "",
+  "optionEmail": true,
+  "optionPhone": true,
+  "report": "Test melding",
+}
+`;

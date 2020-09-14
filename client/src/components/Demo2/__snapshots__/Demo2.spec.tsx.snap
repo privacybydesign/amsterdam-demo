@@ -1,0 +1,3312 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Demo2 should render the initial header image 1`] = `
+.c0 {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:375px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+<img
+  alt="Straat met zingende meisjes"
+  class="c0"
+  data-testid="headerImage"
+  src="/assets/ideeen-voor-buurt-940.jpg"
+  srcset="/assets/ideeen-voor-buurt-290.jpg 580w, /assets/ideeen-voor-buurt-940.jpg 1880w"
+/>
+`;
+
+exports[`Demo2 should update the page after completing the IRMA flow for not proving 18+ and living in Amsterdam 1`] = `
+.c0 {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:375px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+<img
+  alt="Foto uit Centrum-Oost"
+  class="c0"
+  data-testid="headerImage"
+  src="/assets/wijken/DX02-940.jpg"
+  srcset="/assets/wijken/DX02-290.jpg 580w, /assets/wijken/DX02-940.jpg 1880w"
+/>
+`;
+
+exports[`Demo2 should update the page after completing the IRMA flow for not proving 18+ and living in Amsterdam 2`] = `
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 22px;
+  height: 22px;
+  box-sizing: content-box;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.c4 > svg {
+  width: 22px;
+  height: 22px;
+}
+
+.c5 {
+  margin: 0;
+  color: #000000;
+  font-weight: 700;
+  font-size: 18px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 23px;
+  margin-bottom: 8px;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+}
+
+.c7 {
+  margin-top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c12 .c3 {
+  margin: 4px 4px 0 0;
+}
+
+.c12 .c3 svg circle,
+.c12 .c3 svg rect,
+.c12 .c3 svg polygon,
+.c12 .c3 svg path {
+  fill: #000000;
+}
+
+.c13 .c3 {
+  margin: 4px 4px 0 0;
+}
+
+.c13 .c3 svg circle,
+.c13 .c3 svg rect,
+.c13 .c3 svg polygon,
+.c13 .c3 svg path {
+  fill: #ffffff;
+}
+
+.c8 {
+  margin: 0;
+  color: #000000;
+  font-weight: 400;
+  font-size: 16px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 20px;
+  margin-bottom: 20px;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+  margin-top: 0;
+  color: inherit;
+}
+
+.c10 .c6 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.c2 > *:last-child {
+  margin-bottom: 0;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  padding: 16px;
+  background-color: #E6E6E6;
+}
+
+.c0.c0:focus {
+  outline-color: #FEC813;
+  outline-style: solid;
+  outline-offset: 0px;
+  outline-width: 3px;
+}
+
+.c11 .c3 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-left: auto;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  -webkit-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.c9 {
+  line-height: 24px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.c1 {
+  margin-bottom: 16px;
+  background-color: #FEC813;
+}
+
+.c1 .alert-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.c1 .alert-content .icon {
+  margin-right: 16px;
+  min-width: 22px;
+  background-repeat: no-repeat;
+}
+
+.c1 .alert-content * {
+  color: #000000;
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:375px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+<div
+  aria-live="polite"
+  class="c0 c1"
+  data-testid="hasResultAlert"
+  role="alert"
+  tabindex="0"
+>
+  <div
+    class="c2"
+  >
+    <div
+      class="alert-content"
+    >
+      <span
+        class="c3 c4 icon"
+        size="22"
+      >
+        <svg
+          focusable="false"
+          viewBox="0 0 36 36"
+        >
+          <path
+            d="M33.63 30.9H2.37L18 3zm-24.44-4h17.62L18 11.19z"
+          />
+          <path
+            d="M17 16.99h2v4.95h-2zm0 5.95h2v1.95h-2z"
+          />
+        </svg>
+      </span>
+      <div>
+        <h3
+          class="c5 c6 c7"
+        >
+          Uw postcode en leeftijd
+        </h3>
+        <p
+          class="c8 c9"
+        >
+          U heeft bewezen dat u in Nieuwmarkt/Lastage woont en dat u jonger bent dan 18 jaar. U mag nog niet meebeslissen over ideeën voor uw buurt.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Demo2 should update the page after completing the IRMA flow for not proving 18+ and not living in Amsterdam 1`] = `
+.c0 {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:375px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+<img
+  alt="Foto van kinderen die een huis in Amsterdam bekijken"
+  class="c0"
+  data-testid="headerImage"
+  src="/assets/niet-amsterdammer-18min-940.jpg"
+  srcset="/assets/niet-amsterdammer-18min-290.jpg 580w, /assets/niet-amsterdammer-18min-940.jpg 1880w"
+/>
+`;
+
+exports[`Demo2 should update the page after completing the IRMA flow for not proving 18+ and not living in Amsterdam 2`] = `
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 22px;
+  height: 22px;
+  box-sizing: content-box;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.c4 > svg {
+  width: 22px;
+  height: 22px;
+}
+
+.c5 {
+  margin: 0;
+  color: #000000;
+  font-weight: 700;
+  font-size: 18px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 23px;
+  margin-bottom: 8px;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+}
+
+.c7 {
+  margin-top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c12 .c3 {
+  margin: 4px 4px 0 0;
+}
+
+.c12 .c3 svg circle,
+.c12 .c3 svg rect,
+.c12 .c3 svg polygon,
+.c12 .c3 svg path {
+  fill: #000000;
+}
+
+.c13 .c3 {
+  margin: 4px 4px 0 0;
+}
+
+.c13 .c3 svg circle,
+.c13 .c3 svg rect,
+.c13 .c3 svg polygon,
+.c13 .c3 svg path {
+  fill: #ffffff;
+}
+
+.c8 {
+  margin: 0;
+  color: #000000;
+  font-weight: 400;
+  font-size: 16px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 20px;
+  margin-bottom: 20px;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+  margin-top: 0;
+  color: inherit;
+}
+
+.c10 .c6 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.c2 > *:last-child {
+  margin-bottom: 0;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  padding: 16px;
+  background-color: #E6E6E6;
+}
+
+.c0.c0:focus {
+  outline-color: #FEC813;
+  outline-style: solid;
+  outline-offset: 0px;
+  outline-width: 3px;
+}
+
+.c11 .c3 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-left: auto;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  -webkit-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.c9 {
+  line-height: 24px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.c1 {
+  margin-bottom: 16px;
+  background-color: #FEC813;
+}
+
+.c1 .alert-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.c1 .alert-content .icon {
+  margin-right: 16px;
+  min-width: 22px;
+  background-repeat: no-repeat;
+}
+
+.c1 .alert-content * {
+  color: #000000;
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:375px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+<div
+  aria-live="polite"
+  class="c0 c1"
+  data-testid="hasResultAlert"
+  role="alert"
+  tabindex="0"
+>
+  <div
+    class="c2"
+  >
+    <div
+      class="alert-content"
+    >
+      <span
+        class="c3 c4 icon"
+        size="22"
+      >
+        <svg
+          focusable="false"
+          viewBox="0 0 36 36"
+        >
+          <path
+            d="M33.63 30.9H2.37L18 3zm-24.44-4h17.62L18 11.19z"
+          />
+          <path
+            d="M17 16.99h2v4.95h-2zm0 5.95h2v1.95h-2z"
+          />
+        </svg>
+      </span>
+      <div>
+        <h3
+          class="c5 c6 c7"
+        >
+          Uw postcode en leeftijd
+        </h3>
+        <p
+          class="c8 c9"
+        >
+          U heeft bewezen dat u niet in Amsterdam woont en dat u jonger bent dan 18 jaar. U mag niet meebeslissen over ideeën voor een Amsterdamse buurt.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Demo2 should update the page after completing the IRMA flow for proving 18+ and living in Amsterdam 1`] = `
+.c0 {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:375px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+<img
+  alt="Foto uit Centrum-Oost"
+  class="c0"
+  data-testid="headerImage"
+  src="/assets/wijken/DX02-940.jpg"
+  srcset="/assets/wijken/DX02-290.jpg 580w, /assets/wijken/DX02-940.jpg 1880w"
+/>
+`;
+
+exports[`Demo2 should update the page after completing the IRMA flow for proving 18+ and living in Amsterdam 2`] = `
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 14px;
+  height: 14px;
+  box-sizing: content-box;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.c4 > svg {
+  width: 14px;
+  height: 14px;
+}
+
+.c4 svg circle,
+.c4 svg rect,
+.c4 svg polygon,
+.c4 svg path {
+  fill: #ffffff;
+}
+
+.c5 {
+  margin: 0;
+  color: #000000;
+  font-weight: 700;
+  font-size: 18px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 23px;
+  margin-bottom: 8px;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+}
+
+.c7 {
+  margin-top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c12 .c3 {
+  margin: 4px 4px 0 0;
+}
+
+.c12 .c3 svg circle,
+.c12 .c3 svg rect,
+.c12 .c3 svg polygon,
+.c12 .c3 svg path {
+  fill: #000000;
+}
+
+.c13 .c3 {
+  margin: 4px 4px 0 0;
+}
+
+.c13 .c3 svg circle,
+.c13 .c3 svg rect,
+.c13 .c3 svg polygon,
+.c13 .c3 svg path {
+  fill: #ffffff;
+}
+
+.c8 {
+  margin: 0;
+  color: #000000;
+  font-weight: 400;
+  font-size: 16px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 20px;
+  margin-bottom: 20px;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+  margin-top: 0;
+  color: inherit;
+}
+
+.c10 .c6 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.c2 > *:last-child {
+  margin-bottom: 0;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  padding: 16px;
+  background-color: #E6E6E6;
+}
+
+.c0.c0:focus {
+  outline-color: #FEC813;
+  outline-style: solid;
+  outline-offset: 0px;
+  outline-width: 3px;
+}
+
+.c11 .c3 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-left: auto;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  -webkit-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.c9 {
+  line-height: 24px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.c1 {
+  margin-bottom: 16px;
+  background-color: #0c8836;
+}
+
+.c1 .alert-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.c1 .alert-content .icon {
+  margin-right: 16px;
+  min-width: 14px;
+  background-repeat: no-repeat;
+}
+
+.c1 .alert-content * {
+  color: #ffffff;
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:375px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+<div
+  aria-live="polite"
+  class="c0 c1"
+  data-testid="hasResultAlert"
+  role="alert"
+  tabindex="0"
+>
+  <div
+    class="c2"
+  >
+    <div
+      class="alert-content"
+    >
+      <span
+        class="c3 c4 icon"
+        color="#ffffff"
+        size="14"
+      >
+        <svg
+          focusable="false"
+          viewBox="0 0 32 32"
+        >
+          <path
+            d="M12.216 27.016L0 14.168l2.91-2.77 9.346 9.837L29.129 4 32 6.8z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
+      <div>
+        <h3
+          class="c5 c6 c7"
+        >
+          Uw postcode en leeftijd
+        </h3>
+        <p
+          class="c8 c9"
+        >
+          U heeft bewezen dat u in Nieuwmarkt/Lastage woont en dat u ouder bent dan 18 jaar. U mag meebeslissen over ideeën voor uw buurt.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Demo2 should update the page after completing the IRMA flow for proving 18+ and not living in Amsterdam 1`] = `
+.c0 {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:375px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+<img
+  alt="Foto van verhuizing naar Amsterdam"
+  class="c0"
+  data-testid="headerImage"
+  src="/assets/niet-amsterdammer-18plus-940.jpg"
+  srcset="/assets/niet-amsterdammer-18plus-290.jpg 580w, /assets/niet-amsterdammer-18plus-940.jpg 1880w"
+/>
+`;
+
+exports[`Demo2 should update the page after completing the IRMA flow for proving 18+ and not living in Amsterdam 2`] = `
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 22px;
+  height: 22px;
+  box-sizing: content-box;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.c4 > svg {
+  width: 22px;
+  height: 22px;
+}
+
+.c5 {
+  margin: 0;
+  color: #000000;
+  font-weight: 700;
+  font-size: 18px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 23px;
+  margin-bottom: 8px;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+}
+
+.c7 {
+  margin-top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c12 .c3 {
+  margin: 4px 4px 0 0;
+}
+
+.c12 .c3 svg circle,
+.c12 .c3 svg rect,
+.c12 .c3 svg polygon,
+.c12 .c3 svg path {
+  fill: #000000;
+}
+
+.c13 .c3 {
+  margin: 4px 4px 0 0;
+}
+
+.c13 .c3 svg circle,
+.c13 .c3 svg rect,
+.c13 .c3 svg polygon,
+.c13 .c3 svg path {
+  fill: #ffffff;
+}
+
+.c8 {
+  margin: 0;
+  color: #000000;
+  font-weight: 400;
+  font-size: 16px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 20px;
+  margin-bottom: 20px;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+  margin-top: 0;
+  color: inherit;
+}
+
+.c10 .c6 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.c2 > *:last-child {
+  margin-bottom: 0;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  padding: 16px;
+  background-color: #E6E6E6;
+}
+
+.c0.c0:focus {
+  outline-color: #FEC813;
+  outline-style: solid;
+  outline-offset: 0px;
+  outline-width: 3px;
+}
+
+.c11 .c3 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-left: auto;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  -webkit-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.c9 {
+  line-height: 24px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.c1 {
+  margin-bottom: 16px;
+  background-color: #FEC813;
+}
+
+.c1 .alert-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.c1 .alert-content .icon {
+  margin-right: 16px;
+  min-width: 22px;
+  background-repeat: no-repeat;
+}
+
+.c1 .alert-content * {
+  color: #000000;
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:375px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+<div
+  aria-live="polite"
+  class="c0 c1"
+  data-testid="hasResultAlert"
+  role="alert"
+  tabindex="0"
+>
+  <div
+    class="c2"
+  >
+    <div
+      class="alert-content"
+    >
+      <span
+        class="c3 c4 icon"
+        size="22"
+      >
+        <svg
+          focusable="false"
+          viewBox="0 0 36 36"
+        >
+          <path
+            d="M33.63 30.9H2.37L18 3zm-24.44-4h17.62L18 11.19z"
+          />
+          <path
+            d="M17 16.99h2v4.95h-2zm0 5.95h2v1.95h-2z"
+          />
+        </svg>
+      </span>
+      <div>
+        <h3
+          class="c5 c6 c7"
+        >
+          Uw postcode en leeftijd
+        </h3>
+        <p
+          class="c8 c9"
+        >
+          U heeft bewezen dat u niet in Amsterdam woont en dat u ouder bent dan 18 jaar. U mag niet meebeslissen over ideeën voor een Amsterdamse buurt.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Demo2 should update the page after failing the IRMA flow 1`] = `
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 22px;
+  height: 22px;
+  box-sizing: content-box;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.c4 > svg {
+  width: 22px;
+  height: 22px;
+}
+
+.c5 {
+  margin: 0;
+  color: #000000;
+  font-weight: 700;
+  font-size: 18px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 23px;
+  margin-bottom: 8px;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+}
+
+.c7 {
+  margin-top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c12 .c3 {
+  margin: 4px 4px 0 0;
+}
+
+.c12 .c3 svg circle,
+.c12 .c3 svg rect,
+.c12 .c3 svg polygon,
+.c12 .c3 svg path {
+  fill: #000000;
+}
+
+.c13 .c3 {
+  margin: 4px 4px 0 0;
+}
+
+.c13 .c3 svg circle,
+.c13 .c3 svg rect,
+.c13 .c3 svg polygon,
+.c13 .c3 svg path {
+  fill: #ffffff;
+}
+
+.c8 {
+  margin: 0;
+  color: #000000;
+  font-weight: 400;
+  font-size: 16px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 20px;
+  margin-bottom: 20px;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+  margin-top: 0;
+  color: inherit;
+}
+
+.c10 .c6 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.c2 > *:last-child {
+  margin-bottom: 0;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  padding: 16px;
+  background-color: #E6E6E6;
+}
+
+.c0.c0:focus {
+  outline-color: #FEC813;
+  outline-style: solid;
+  outline-offset: 0px;
+  outline-width: 3px;
+}
+
+.c11 .c3 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-left: auto;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  -webkit-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.c9 {
+  line-height: 24px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.c1 {
+  margin-bottom: 16px;
+  background-color: #FEC813;
+}
+
+.c1 .alert-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+}
+
+.c1 .alert-content .icon {
+  margin-right: 16px;
+  min-width: 22px;
+  background-repeat: no-repeat;
+}
+
+.c1 .alert-content * {
+  color: #000000;
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:375px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media screen and (min-width:768px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+<div
+  aria-live="polite"
+  class="c0 c1"
+  data-testid="hasErrorAlert"
+  role="alert"
+  tabindex="0"
+>
+  <div
+    class="c2"
+  >
+    <div
+      class="alert-content"
+    >
+      <span
+        class="c3 c4 icon"
+        size="22"
+      >
+        <svg
+          focusable="false"
+          viewBox="0 0 36 36"
+        >
+          <path
+            d="M33.63 30.9H2.37L18 3zm-24.44-4h17.62L18 11.19z"
+          />
+          <path
+            d="M17 16.99h2v4.95h-2zm0 5.95h2v1.95h-2z"
+          />
+        </svg>
+      </span>
+      <div>
+        <h3
+          class="c5 c6 c7"
+        >
+          Niets doorgegeven
+        </h3>
+        <p
+          class="c8 c9"
+        >
+          U heeft uw gegevens niet doorgegeven aan de demosite van de gemeente Amsterdam.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

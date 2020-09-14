@@ -1,0 +1,218 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Map should render default map with input and no autosuggest visible 1`] = `
+.c0 {
+  height: 500px;
+  width: 100%;
+  cursor: pointer;
+  z-index: 0;
+}
+
+<div
+  class="c0 leaflet-container leaflet-grab leaflet-touch-drag"
+  data-testid="map"
+  style="position: relative;"
+  tabindex="0"
+>
+  <div
+    class="leaflet-pane leaflet-map-pane"
+    style="left: 0px; top: 0px;"
+  >
+    <div
+      class="leaflet-pane leaflet-tile-pane"
+    >
+      <div
+        class="leaflet-layer "
+        style="z-index: 1;"
+      >
+        <div
+          class="leaflet-tile-container leaflet-zoom-animated"
+          style="z-index: 18; left: 0px; top: 0px;"
+        >
+          <img
+            alt=""
+            class="leaflet-tile"
+            role="presentation"
+            src="https://t4.data.amsterdam.nl/topo_rd/10/472/540.png"
+            style="width: 256px; height: 256px; left: -230px; top: -173px;"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="leaflet-pane leaflet-shadow-pane"
+    />
+    <div
+      class="leaflet-pane leaflet-overlay-pane"
+    />
+    <div
+      class="leaflet-pane leaflet-marker-pane"
+    />
+    <div
+      class="leaflet-pane leaflet-tooltip-pane"
+    />
+    <div
+      class="leaflet-pane leaflet-popup-pane"
+    />
+  </div>
+  <div
+    class="leaflet-control-container"
+  >
+    <div
+      class="leaflet-top leaflet-left"
+    />
+    <div
+      class="leaflet-top leaflet-right"
+    />
+    <div
+      class="leaflet-bottom leaflet-left"
+    />
+    <div
+      class="leaflet-bottom leaflet-right"
+    >
+      <div
+        class="leaflet-control-attribution leaflet-control"
+      >
+        <a
+          href="https://leafletjs.com"
+          title="A JS library for interactive maps"
+        >
+          Leaflet
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Map should show autosuggest when input field has changed 1`] = `
+.c3 {
+  margin: 0;
+  color: #000000;
+  font-weight: inherit;
+  font-size: 16px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 22px;
+  margin-bottom: 0;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+}
+
+.c4 {
+  display: inline-block;
+  color: #004699;
+}
+
+.c4:focus {
+  background-color: #FEC813;
+}
+
+.c4:hover {
+  color: #ec0000;
+}
+
+.c1 {
+  word-break: break-word;
+  margin-bottom: 8px;
+}
+
+.c0 {
+  width: 100%;
+  background-color: #ffffff;
+  list-style-type: none;
+  padding: 6px 0 0 12px;
+  border: 1px solid #767676;
+}
+
+.c0 a {
+  display: inline;
+  color: #000000;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 14px;
+  height: 14px;
+  box-sizing: content-box;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  display: inline;
+  margin-right: 8px;
+}
+
+.c2 > svg {
+  width: 14px;
+  height: 14px;
+}
+
+@media screen and (min-width:1024px) {
+  .c3 {
+    font-size: 18px;
+    line-height: 25px;
+  }
+}
+
+<ul
+  class="c0"
+  data-testid="autosuggest"
+>
+  <li
+    class="c1"
+  >
+    <span
+      class="c2"
+      size="14"
+    >
+      <svg
+        focusable="false"
+        viewBox="0 0 32 32"
+      >
+        <path
+          d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+    <a
+      class="c3 c4"
+      href="#"
+    >
+      Dam 1, 1012JS Amsterdam
+    </a>
+  </li>
+  <li
+    class="c1"
+  >
+    <span
+      class="c2"
+      size="14"
+    >
+      <svg
+        focusable="false"
+        viewBox="0 0 32 32"
+      >
+        <path
+          d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </span>
+    <a
+      class="c3 c4"
+      href="#"
+    >
+      Damrak 1, 1012LG Amsterdam
+    </a>
+  </li>
+</ul>
+`;

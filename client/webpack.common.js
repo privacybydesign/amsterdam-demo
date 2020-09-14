@@ -10,11 +10,19 @@ module.exports = {
         strictExportPresence: true,
         rules: [
             {
-                test: /\.(j|t)sx?$/,
+                test: /\.(ts|tsx)?$/,
                 include: path.resolve(__dirname, 'src'),
                 use: {
                     loader: 'awesome-typescript-loader'
                 }
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(png|jpg)$/,
+                use: ['file-loader'],
             },
             {
                 // Load fonts

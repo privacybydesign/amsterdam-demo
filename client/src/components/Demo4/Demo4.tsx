@@ -3,7 +3,7 @@ import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { Accordion, ErrorMessage } from '@datapunt/asc-ui';
+import { Accordion } from '@datapunt/asc-ui';
 import { Checkmark, Alert } from '@datapunt/asc-assets';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
@@ -17,13 +17,14 @@ import { initialState, reducer } from './reducer';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import preloadDemoImages from '@services/preloadImages';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
+import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 
 export interface IProps {}
 
 const Demo4: React.FC<IProps> = () => {
     const formEl = useRef(null);
 
-    const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
+    const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const validateForm = () => {
@@ -45,8 +46,13 @@ const Demo4: React.FC<IProps> = () => {
     };
 
     const getSession = async () => {
+        let response = null;
         if (validateForm()) {
-            const response = await createIrmaSession('demo4', 'irma-qr', credentialSource === CredentialSource.DEMO);
+            response = await createIrmaSession(
+                'demo4',
+                'irma-qr',
+                credentialSource === CredentialSource.DEMO && { demo: true }
+            );
             if (response) {
                 dispatch({
                     type: 'setProperties',
@@ -54,7 +60,8 @@ const Demo4: React.FC<IProps> = () => {
                         name: response['fullname'],
                         street: `${response['street']} ${response['houseNumber']}`,
                         city: `${response['zipcode']} ${response['city']}`,
-                        telephone: response['mobilenumber']
+                        telephone: response['mobilenumber'],
+                        email: response['email']
                     }
                 });
             } else {
@@ -64,7 +71,9 @@ const Demo4: React.FC<IProps> = () => {
             }
 
             window.scrollTo(0, 0);
+            startUsabillaSurvey();
         }
+        return response;
     };
 
     const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
@@ -75,7 +84,7 @@ const Demo4: React.FC<IProps> = () => {
     const { hasResult, hasError, formValid } = state;
 
     function replaceVars(str, p1) {
-        return state[p1];
+        return state[p1] || '-';
     }
 
     // Update header image
@@ -119,6 +128,7 @@ const Demo4: React.FC<IProps> = () => {
                         iconSize={22}
                         heading={content.demoErrorAlert.heading}
                         content={content.demoErrorAlert.content}
+                        dataTestId="hasErrorAlert"
                     />
                 )}
 
@@ -128,6 +138,7 @@ const Demo4: React.FC<IProps> = () => {
                         icon={<Checkmark />}
                         heading={content.demo4.proven.alert.title}
                         content={content.demo4.proven.alert.body}
+                        dataTestId="hasResultAlert"
                     />
                 )}
             </ContentBlock>
@@ -140,7 +151,7 @@ const Demo4: React.FC<IProps> = () => {
                         <ContentBlock>
                             <ReactMarkDown
                                 source={content.demo4.unproven.intro1}
-                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
 
                             <AscLocal.AccordionContainer>
@@ -152,7 +163,7 @@ const Demo4: React.FC<IProps> = () => {
                                 </Accordion>
                             </AscLocal.AccordionContainer>
 
-                            <AscLocal.H2>Demo-aanvraag Geveltuin</AscLocal.H2>
+                            <AscLocal.H3>Demo-aanvraag Geveltuin</AscLocal.H3>
                             <form ref={formEl}>
                                 <ReactMarkDown
                                     source={content.demo4.form.owner}
@@ -160,19 +171,19 @@ const Demo4: React.FC<IProps> = () => {
                                 />
 
                                 <RadioGroup name="geveltuin" error={!formValid}>
-                                    <Label htmlFor="yes" label="Ja">
-                                        <Radio id="yes" variant="primary" value="Ja" />
+                                    <Label htmlFor="yes" label={content.demo4.form.optionYes}>
+                                        <Radio id="yes" variant="primary" value={content.demo4.form.optionYes} />
                                     </Label>
-                                    <Label htmlFor="no" label="Nee">
-                                        <Radio id="no" variant="primary" value="Nee" />
+                                    <Label htmlFor="no" label={content.demo4.form.optionNo}>
+                                        <Radio id="no" variant="primary" value={content.demo4.form.optionNo} />
                                     </Label>
                                 </RadioGroup>
-                                {!formValid && <ErrorMessage message={content.demo4.form.required} />}
+                                {!formValid && <AscLocal.ErrorMessage message={content.demo4.form.required} />}
                             </form>
 
                             <ReactMarkDown
                                 source={content.demo4.unproven.intro2}
-                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
 
                             <QRCode getSession={getSession} label={content.demo4.button} />
@@ -187,19 +198,19 @@ const Demo4: React.FC<IProps> = () => {
             ) : (
                 <>
                     <ContentBlock>
-                        <AscLocal.GreyContainer>
+                        <AscLocal.TintedContainerLevel3>
                             <ReactMarkDown
-                                source={content.demo4.result.uwDemoAanvraag.replace(/\{(.*?)\}/gm, replaceVars)}
+                                source={content.demo4.result.yourDemoRequest.replace(/\[(.*?)\]/gm, replaceVars)}
                                 renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
-                        </AscLocal.GreyContainer>
+                        </AscLocal.TintedContainerLevel3>
 
-                        <AscLocal.GreyContainer>
+                        <AscLocal.TintedContainerLevel3>
                             <ReactMarkDown
-                                source={content.demo4.result.uwGegevens.replace(/\{(.*?)\}/gm, replaceVars)}
+                                source={content.demo4.result.yourDetails.replace(/\[(.*?)\]/gm, replaceVars)}
                                 renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
-                        </AscLocal.GreyContainer>
+                        </AscLocal.TintedContainerLevel3>
 
                         <ReactMarkDown source={content.noSavePromise} />
                         <ReactMarkDown source={content.demo4.result.disclaimer} />
@@ -208,7 +219,7 @@ const Demo4: React.FC<IProps> = () => {
                         <ContentBlock>
                             <ReactMarkDown
                                 source={content.demo4.result.rest}
-                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
                         </ContentBlock>
                     </EmphasisBlock>
