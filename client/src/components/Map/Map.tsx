@@ -213,6 +213,7 @@ const StyledAutosuggest = styled.ul`
     padding: 6px 0 0 ${themeSpacing(3)};
     border: 1px solid ${themeColor('tint', 'level5')};
     a {
+        display: inline;
         color: ${themeColor('tint', 'level7')};
     }
 `;
