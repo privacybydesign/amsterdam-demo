@@ -113,28 +113,6 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
         locationRef.current.value = location && location.length ? location[0].weergavenaam : '';
     }, [location]);
 
-    const handleClickOutside = useCallback(
-        e => {
-            if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
-                dispatch({
-                    type: 'hideAutosuggest'
-                });
-
-                locationRef.current.value = '';
-            } else if (locationRef.current && locationRef.current.contains(e.target)) {
-                // do nothing
-            } else if (
-                mapRef.current &&
-                mapRef.current.contains(e.target) &&
-                !(e.target instanceof HTMLAnchorElement)
-            ) {
-                const latlng = mapInstance.mouseEventToLatLng(e);
-                onMapClick({ ...e, latlng });
-            }
-        },
-        [mapInstance, dispatch, onMapClick]
-    );
-
     const useFirstSuggestionOnEnter = useCallback(
         event => {
             if (event.key === 'Enter' && state.autosuggest?.length) {
@@ -143,16 +121,6 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
         },
         [state, onAutosuggestClick]
     );
-
-    useEffect(() => {
-        if (mapInstance) {
-            document.body.addEventListener('click', handleClickOutside, false);
-        }
-
-        return () => {
-            document.body.removeEventListener('click', handleClickOutside, false);
-        };
-    }, [mapInstance, handleClickOutside]);
 
     return (
         <MapParent ref={mapRef}>
@@ -193,6 +161,13 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                                     });
                                 }}
                                 onKeyPress={useFirstSuggestionOnEnter}
+                                onBlur={() => {
+                                    setTimeout(() => {
+                                        dispatch({
+                                            type: 'hideAutosuggest'
+                                        });
+                                    }, 150);
+                                }}
                             />
                             {showAutosuggest && query.length && autosuggest && autosuggest.length ? (
                                 <StyledAutosuggest data-testid="autosuggest" ref={wrapperRef}>
