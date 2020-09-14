@@ -123,7 +123,11 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                 locationRef.current.value = '';
             } else if (locationRef.current && locationRef.current.contains(e.target)) {
                 // do nothing
-            } else if (mapRef.current && mapRef.current.contains(e.target)) {
+            } else if (
+                mapRef.current &&
+                mapRef.current.contains(e.target) &&
+                !(e.target instanceof HTMLAnchorElement)
+            ) {
                 const latlng = mapInstance.mouseEventToLatLng(e);
                 onMapClick({ ...e, latlng });
             }
