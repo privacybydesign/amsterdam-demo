@@ -23,9 +23,10 @@ export interface IProps {
 
 const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateLocationCallback }) => {
     const validateOnChange = useCallback(() => validateForm(false), [validateForm]);
+    const onSubmit = useCallback(event => event.preventDefault(), []);
 
     return (
-        <form ref={forwardRef}>
+        <form ref={forwardRef} onSubmit={onSubmit}>
             {/* // Location */}
             <FormSection>
                 <ReactMarkDown

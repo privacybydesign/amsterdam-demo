@@ -74,7 +74,9 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
 
     const onAutosuggestClick = useCallback(
         async (e: React.SyntheticEvent<LeafletMouseEvent>, location: Location) => {
-            e.preventDefault();
+            if (e) {
+                e.preventDefault();
+            }
             if (location.weergavenaam) {
                 locationRef.current.value = location.weergavenaam;
                 dispatch({
@@ -129,6 +131,15 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
         [mapInstance, dispatch, onMapClick]
     );
 
+    const useFirstSuggestionOnEnter = useCallback(
+        event => {
+            if (event.key === 'Enter' && state.autosuggest?.length) {
+                onAutosuggestClick(null, state.autosuggest[0]);
+            }
+        },
+        [state, onAutosuggestClick]
+    );
+
     useEffect(() => {
         if (mapInstance) {
             document.body.addEventListener('click', handleClickOutside, false);
@@ -177,6 +188,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                                         }
                                     });
                                 }}
+                                onKeyPress={useFirstSuggestionOnEnter}
                             />
                             {showAutosuggest && query.length && autosuggest && autosuggest.length ? (
                                 <StyledAutosuggest data-testid="autosuggest" ref={wrapperRef}>
