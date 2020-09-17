@@ -85,10 +85,10 @@ const StyledButton = styled(Button)`
 
 export const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
     position: absolute;
-    width: 120px;
-    height: 120px;
-    top: 90px;
-    left: 90px;
+    width: 65px;
+    height: 65px;
+    top: 119px;
+    left: 119px;
 `;
 
 const StyledH3 = styled.h3``;

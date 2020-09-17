@@ -142,10 +142,10 @@ exports[`QR Code Clicking the QR Code button should show the modal and call getS
 
 .c10 {
   position: absolute;
-  width: 120px;
-  height: 120px;
-  top: 90px;
-  left: 90px;
+  width: 65px;
+  height: 65px;
+  top: 119px;
+  left: 119px;
 }
 
 .c7 {
