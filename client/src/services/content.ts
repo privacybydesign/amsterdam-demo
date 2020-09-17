@@ -443,7 +443,7 @@ Probeer nu nog een [demo-melding](/overlast-melden) te doen en kies dan om wel u
         column1: `# Contact
 Heeft u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.
 - [Contactformulier](https://formulieren.amsterdam.nl/tripleforms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx)
-- **[Bel het telefoonnummer 14 020](tel:14020)**\n  maandag tot en met vrijdag van 08.00 tot 18.00 uur
+- [Bel het telefoonnummer 14 020](tel:14020)  \n> maandag tot en met vrijdag van 08.00 tot 18.00 uur
 - [Contactgegevens en openingstijden](https://www.amsterdam.nl/contact/)`,
         column2: `# Volg de Gemeente
 - [Nieuwsbrief amsterdam.nl](https://action.spike.email/104050/Subscribe/9f53558f-601d-4db8-97d6-a78bccd6e39d?culture=nl-NL)

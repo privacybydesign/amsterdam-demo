@@ -63,6 +63,10 @@ const FooterSection = styled.div`
     p,
     li {
         color: ${themeColor('tint', 'level1')};
+
+        blockquote {
+            margin: 0 0 0 ${themeSpacing(4)};
+        }
     }
 `;
 
