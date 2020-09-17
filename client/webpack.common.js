@@ -22,7 +22,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg)$/,
-                use: ['file-loader'],
+                use: ['file-loader']
             },
             {
                 // Load fonts
@@ -43,7 +43,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.ejs',
             inject: true,
-            favicon: './public/favicon.png'
+            favicon: './public/favicon-32x32.png'
         }),
         new CopyWebpackPlugin({
             patterns: [
