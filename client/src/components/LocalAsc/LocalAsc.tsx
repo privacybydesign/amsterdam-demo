@@ -204,6 +204,19 @@ export const Alert = styled(
     }
 `;
 
+export const CroppedAlert = styled(Alert)`
+    padding: ${themeSpacing(2)};
+
+    h3,
+    p {
+        margin-bottom: 0;
+    }
+
+    p {
+        margin-top: ${themeSpacing(1)};
+    }
+`;
+
 export const Header = styled(AscHeader).attrs(({ theme }) => ({
     css: {
         zIndex: 10,
