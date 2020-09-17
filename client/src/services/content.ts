@@ -104,7 +104,7 @@ Ga naar de [website van IRMA](https://irma.app/)`
             heading: `Uw leeftijd`,
             content: `U bent jonger dan 65 jaar.`
         },
-        intro: `Met IRMA kunt u bewijzen hoe oud u bent zonder uw geboortedatum prijs te geven. U blijft dus anoniem.
+        intro: `**Met IRMA kunt u bewijzen hoe oud u bent zonder uw geboortedatum prijs te geven. U blijft dus anoniem.**
 # Probeer het uit
 Bewijs dat u ouder bent dan 18 jaar of 65 jaar door uzelf bekend te maken met de volgende gegevens:
 - Ouder dan 18
@@ -138,7 +138,7 @@ Bewijs dat u ouder bent dan 18 jaar of 65 jaar door uzelf bekend te maken met de
     demo2: {
         breadcrumbs: `- [Home](/)
 - [Demo 2: Ideeën voor uw buurt](/ideeen-voor-uw-buurt)`,
-        intro: `Met IRMA kunt u bewijzen in welke wijk u woont en zo meebeslissen over ideeën voor uw buurt zonder uw woonadres en geboortedatum prijs te geven. U blijft dus anoniem.
+        intro: `**Met IRMA kunt u bewijzen in welke wijk u woont en zo meebeslissen over ideeën voor uw buurt zonder uw woonadres en geboortedatum prijs te geven. U blijft dus anoniem.**
 # Probeer het uit
 Bewijs in welke wijk u woont en dat u ouder bent dan 18 jaar door uzelf bekend te maken met de volgende gegevens:
 - Postcode
@@ -186,7 +186,7 @@ Dit kan worden gebruikt voor:
                 title: `Uw naam en burgerservicenummer`,
                 body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
             },
-            intro: `Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.
+            intro: `**Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.**
 ## Probeer het uit
 Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgende gegevens:
 - Uw volledige naam
@@ -226,8 +226,8 @@ De gemeente Amsterdam biedt u straks een keuze. U kunt straks inloggen in Mijn A
                 title: `Uw naam en burgerservicenummer`,
                 body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
             },
-            intro1: `Met IRMA kunt u een aanvraag doen en hierin gegevens gebruiken die in uw IRMA-app staan.\n
-U hoeft minder in te vullen en de gemeente weet zeker dat u de aanvraag doet en dat de gegevens juist zijn.
+            intro1: `**Met IRMA kunt u een aanvraag doen en hierin gegevens gebruiken die in uw IRMA-app staan.**\n
+**U hoeft minder in te vullen en de gemeente weet zeker dat u de aanvraag doet en dat de gegevens juist zijn.**
 
 ## Probeer het uit
 Doe een demo-aanvraag door uzelf bekend te maken met de volgende gegevens:
@@ -308,8 +308,8 @@ Dit kan worden gebruikt voor:
 - [Demo 5: Overlast melden](/overlast-melden)`,
         unproven: {
             title: `# Demo 5: Overlast melden`,
-            intro1: `Met IRMA kunt u een melding van overlast aanvullen met het 06-nummer waarop u bereikbaar bent voor vragen en het e-mailadres waarop u een statusupdate wilt ontvangen.\n
-U gebruikt gegevens die in uw IRMA-app staan. De gemeente kan u dan benaderen en informeren.
+            intro1: `**Met IRMA kunt u een melding van overlast aanvullen met het 06-nummer waarop u bereikbaar bent voor vragen en het e-mailadres waarop u een statusupdate wilt ontvangen.**\n
+**U gebruikt gegevens die in uw IRMA-app staan. De gemeente kan u dan benaderen en informeren.**
 
 ## Probeer het uit
 Doe een demo-melding door uzelf bekend te maken met de volgende gegevens:
