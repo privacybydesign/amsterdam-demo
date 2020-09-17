@@ -172,14 +172,14 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                             {showAutosuggest && query.length && autosuggest && autosuggest.length ? (
                                 <StyledAutosuggest data-testid="autosuggest" ref={wrapperRef}>
                                     {autosuggest.map(item => (
-                                        <ListItem key={item.id}>
+                                        <StyledListItem key={item.id}>
                                             <StyledIcon size={14}>
                                                 <ChevronRight />
                                             </StyledIcon>
                                             <Link href="#" variant="inline" onClick={e => onAutosuggestClick(e, item)}>
                                                 {item.weergavenaam}
                                             </Link>
-                                        </ListItem>
+                                        </StyledListItem>
                                     ))}
                                 </StyledAutosuggest>
                             ) : null}
@@ -224,9 +224,17 @@ const StyledAutosuggest = styled.ul`
     list-style-type: none;
     padding: 6px 0 0 ${themeSpacing(3)};
     border: 1px solid ${themeColor('tint', 'level5')};
+`;
+
+const StyledListItem = styled(ListItem)`
+    display: flex;
+    align-items: flex-start;
+
     a {
         display: inline;
         color: ${themeColor('tint', 'level7')};
+        position: relative;
+        top: -4px;
     }
 `;
 
