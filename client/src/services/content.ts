@@ -271,6 +271,7 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
         },
         button: 'Aanvullen met IRMA',
         result: {
+            intro: `Hieronder vindt u alle gegevens van uw demo-aanvraag:`,
             yourDemoRequest: `### Uw demo-aanvraag
 ** Uw keuze **\n
 geveltuin\n

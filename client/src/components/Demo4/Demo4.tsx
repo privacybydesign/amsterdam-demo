@@ -207,6 +207,10 @@ const Demo4: React.FC<IProps> = () => {
             ) : (
                 <>
                     <ContentBlock>
+                        <ReactMarkDown
+                            source={content.demo4.result.intro}
+                            renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                        />
                         <AscLocal.TintedContainerLevel3>
                             <ReactMarkDown
                                 source={content.demo4.result.yourDemoRequest.replace(/\[(.*?)\]/gm, replaceVars)}
