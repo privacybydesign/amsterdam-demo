@@ -164,6 +164,15 @@ const Demo4: React.FC<IProps> = () => {
                             </AscLocal.AccordionContainer>
 
                             <AscLocal.H3>Demo-aanvraag Geveltuin</AscLocal.H3>
+
+                            <AscLocal.CroppedAlert
+                                color={AscLocal.AlertColor.PRIMARY}
+                                iconUrl="assets/icon-info.svg"
+                                iconSize={14}
+                                heading={content.demo4.unproven.alert.title}
+                                content={content.demo4.unproven.alert.body}
+                            />
+
                             <form ref={formEl}>
                                 <ReactMarkDown
                                     source={content.demo4.form.owner}

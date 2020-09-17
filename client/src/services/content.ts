@@ -223,8 +223,8 @@ De gemeente Amsterdam biedt u straks een keuze. U kunt straks inloggen in Mijn A
         unproven: {
             title: `# Demo 4: Geveltuin aanvragen`,
             alert: {
-                title: `Uw naam en burgerservicenummer`,
-                body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
+                title: `Dit is een demo`,
+                body: `Uw melding wordt niet naar de gemeente verstuurd.`
             },
             intro1: `**Met IRMA kunt u een aanvraag doen en hierin gegevens gebruiken die in uw IRMA-app staan.**\n
 **U hoeft minder in te vullen en de gemeente weet zeker dat u de aanvraag doet en dat de gegevens juist zijn.**

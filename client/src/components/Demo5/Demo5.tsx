@@ -245,7 +245,7 @@ const Demo5: React.FC<IProps> = () => {
                             </AscLocal.AccordionContainer>
                             <ReactMarkDown source={content.demo5.form.title} renderers={{ heading: AscLocal.H3 }} />
 
-                            <CroppedAlert
+                            <AscLocal.CroppedAlert
                                 color={AscLocal.AlertColor.PRIMARY}
                                 iconUrl="assets/icon-info.svg"
                                 iconSize={14}
@@ -373,19 +373,6 @@ const Demo5: React.FC<IProps> = () => {
         </PageTemplate>
     );
 };
-
-const CroppedAlert = styled(AscLocal.Alert)`
-    padding: ${themeSpacing(2)};
-
-    h3,
-    p {
-        margin-bottom: 0;
-    }
-
-    p {
-        margin-top: ${themeSpacing(1)};
-    }
-`;
 
 const StyledButton = styled(Button)`
     margin: ${themeSpacing(0, 6, 6, 0)};
