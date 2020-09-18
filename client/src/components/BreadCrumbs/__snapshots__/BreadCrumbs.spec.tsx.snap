@@ -119,12 +119,12 @@ exports[`BreadCrumbs should render 3 items correctly 1`] = `
     </svg>
   </span>
   <a
-    href="/innovatie"
+    href="/innovatie/demo"
   >
     <span
       class="c1"
     >
-      Innovatie
+      Demo
     </span>
   </a>
 </div>

@@ -9,7 +9,7 @@ describe('BreadCrumbs', () => {
             <BreadCrumbs>
                 <BreadCrumbs.Item href="/">home</BreadCrumbs.Item>
                 <BreadCrumbs.Item href="/innovatie">Innovatie</BreadCrumbs.Item>
-                <BreadCrumbs.Item href="/innovatie">Innovatie</BreadCrumbs.Item>
+                <BreadCrumbs.Item href="/innovatie/demo">Demo</BreadCrumbs.Item>
             </BreadCrumbs>
         );
         const el: HTMLElement = await screen.findByTestId('breadCrumbs');
