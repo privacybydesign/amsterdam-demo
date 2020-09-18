@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BreadCrumbs should render 3 items correctly 1`] = `
+.c1 a {
+  color: #767676;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-text-decoration-color: #767676;
+  text-decoration-color: #767676;
+}
+
+.c1:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c1 *:focus {
+  outline: auto;
+  outline-color: #FEC813;
+  outline-style: solid;
+  outline-width: 2px;
+  outline-offset: 4px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 14px;
+  height: 14px;
+  box-sizing: content-box;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  margin: 0 4px;
+}
+
+.c2 > svg {
+  width: 14px;
+  height: 14px;
+}
+
+.c2 svg circle,
+.c2 svg rect,
+.c2 svg polygon,
+.c2 svg path {
+  fill: #767676;
+}
+
+@media (min-width:1200px) {
+  .c0 {
+    margin: 20px 0;
+  }
+}
+
+<div
+  class="c0"
+  data-testid="breadCrumbs"
+>
+  <a
+    href="/"
+  >
+    <span
+      class="c1"
+    >
+      home
+    </span>
+  </a>
+  <span
+    class="sc-AxheI c2"
+    color="#767676"
+    size="14"
+  >
+    <svg
+      focusable="false"
+      viewBox="0 0 32 32"
+    >
+      <path
+        d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+        fill-rule="evenodd"
+      />
+    </svg>
+  </span>
+  <a
+    href="/innovatie"
+  >
+    <span
+      class="c1"
+    >
+      Innovatie
+    </span>
+  </a>
+  <span
+    class="sc-AxheI c2"
+    color="#767676"
+    size="14"
+  >
+    <svg
+      focusable="false"
+      viewBox="0 0 32 32"
+    >
+      <path
+        d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+        fill-rule="evenodd"
+      />
+    </svg>
+  </span>
+  <a
+    href="/innovatie"
+  >
+    <span
+      class="c1"
+    >
+      Innovatie
+    </span>
+  </a>
+</div>
+`;

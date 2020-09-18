@@ -17,7 +17,7 @@ const BreadCrumbs: React.FC<IBreadCrumbsProps> & IBreadCrumbsComposition = ({ ch
     const themeContext = { theme: useContext(ThemeContext) as Theme.ThemeInterface };
 
     return (
-        <Container className={className}>
+        <Container className={className} data-testid="breadCrumbs">
             {React.Children.map(children, (child, index) => (
                 <React.Fragment key={String(index)}>
                     {child}
