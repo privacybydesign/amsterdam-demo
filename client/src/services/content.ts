@@ -385,10 +385,10 @@ We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`
         result: {
             intro: `Hieronder vindt u alle gegevens van uw demo-melding:`,
             reportTitle: `### Uw demo-melding overlast`,
-            location: `** Locatie **  \n[]\n`,
-            report: `** Beschrijving **  \n[]\n`,
-            mobilenumber: `** Uw telefoonnummer **  \n[]\n`,
-            email: `** Uw e-mailadres **  \n[]`,
+            location: `Locatie\n** [] **\n`,
+            report: `Beschrijving\n** [] **\n`,
+            mobilenumber: `Uw telefoonnummer\n** [] **\n`,
+            email: `Uw e-mailadres\n** [] **`,
             rest: `## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om uw telefoonnummer en/of e-mailadres door te geven.
 - U heeft een melding gedaan met uw gegevens uit officiële bronnen.\n De gemeente weet dat deze gegevens kloppen en kan zo'n formulier sneller behandelen. \n
