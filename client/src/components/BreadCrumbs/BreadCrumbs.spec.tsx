@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, act, fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { wrappedRender } from '@test/utils';
 import BreadCrumbs from '@components/BreadCrumbs/BreadCrumbs';
 
