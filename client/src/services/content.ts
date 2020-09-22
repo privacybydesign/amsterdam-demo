@@ -279,16 +279,16 @@ geveltuin\n
 [owner]
 `,
             yourDetails: `### Uw gegevens\n
-** Naam **\n
-[name]\n
-** Straat en huisnummer **\n
-[street]\n
-** Postcode en plaats **\n
-[city]\n
-** Telefoonnummer **\n
-[telephone]\n
-** E-mail **\n
-[email]\n
+Naam\n
+** [name] **\n
+Straat en huisnummer\n
+** [street] **\n
+Postcode en plaats\n
+** [city] **\n
+Telefoonnummer\n
+** [telephone] **\n
+E-mail\n
+** [email] **\n
 `,
             disclaimer: `Dit is een demo; u bent geen aanvraag voor een geveltuin gestart.`,
             rest: `## Wat heeft u zojuist gedaan?
