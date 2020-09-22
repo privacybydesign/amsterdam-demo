@@ -2,7 +2,6 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common');
 const webpack = require('webpack');
-const CleanTerminalPlugin = require('clean-terminal-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const path = require('path');
@@ -22,8 +21,7 @@ module.exports = () =>
                 'process.env.NODE_ENV': JSON.stringify('development')
             }),
             new CaseSensitivePathsPlugin(),
-            new WriteFilePlugin(),
-            new CleanTerminalPlugin()
+            new WriteFilePlugin()
         ],
         devServer: {
             compress: true,
