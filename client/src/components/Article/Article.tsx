@@ -16,6 +16,8 @@ export interface IProps {
 }
 
 const Container = styled.section`
+    display: flex;
+    flex-direction: column;
     flex: 1;
     background-color: ${themeColor('tint', 'level2')};
     border-right: 2px solid black;
@@ -49,11 +51,6 @@ const StyledLink = styled(Link)`
         margin-bottom: ${themeSpacing(2)};
     }
 
-    .article-content {
-        display: flex;
-        flex-direction: column;
-    }
-
     .text {
         padding: 0 ${themeSpacing(6)} ${themeSpacing(3)} ${themeSpacing(4)};
     }
@@ -76,15 +73,13 @@ const Article: React.FC<IProps> = ({ imageSrc, imageAlt, title, children, href, 
         <StyledLink to={href}>
             <Container className={className}>
                 <HeaderImage filename={imageSrc} alt={imageAlt} />
-                <div className="article-content">
-                    <div className="text">
-                        <AscLocal.H3>{title}</AscLocal.H3>
-                        {children}
-                    </div>
-                    <Icon>
-                        <ChevronRight />
-                    </Icon>
+                <div className="text">
+                    <AscLocal.H3>{title}</AscLocal.H3>
+                    {children}
                 </div>
+                <Icon>
+                    <ChevronRight />
+                </Icon>
             </Container>
         </StyledLink>
     );
