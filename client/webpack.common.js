@@ -10,10 +10,42 @@ module.exports = {
         strictExportPresence: true,
         rules: [
             {
-                test: /\.(ts|tsx)?$/,
+                test: /\.tsx?$/,
                 include: path.resolve(__dirname, 'src'),
                 use: {
                     loader: 'awesome-typescript-loader'
+                }
+            },
+            {
+                test: /\.(js|jsx)?$/,
+                include: path.resolve(__dirname, 'node_modules/@datapunt'),
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            [
+                                '@babel/preset-env',
+                                {
+                                    modules: false,
+                                    useBuiltIns: 'usage',
+                                    corejs: 3,
+                                    targets: {
+                                        esmodules: false,
+                                        browsers: 'defaults, IE 11'
+                                    }
+                                }
+                            ],
+                            '@babel/preset-react'
+                        ],
+                        plugins: [
+                            [
+                                'babel-plugin-styled-components',
+                                {
+                                    pure: true
+                                }
+                            ]
+                        ]
+                    }
                 }
             },
             {
