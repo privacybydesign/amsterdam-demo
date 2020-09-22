@@ -221,8 +221,11 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
     css: {
         zIndex: 10,
         width: 'auto',
-        flex: 1,
-        '&::after': { backgroundColor: themeColor('tint', 'level2'), marginLeft: -188, marginRight: -188 },
+        '&::after': {
+            backgroundColor: themeColor('tint', 'level2'),
+            marginLeft: -188,
+            marginRight: -188
+        },
         paddingLeft: 32,
         [`@media ${theme.breakpoints.laptopM('max-width')}`]: {
             marginLeft: '-32px',
