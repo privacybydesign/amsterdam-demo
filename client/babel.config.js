@@ -1,7 +1,7 @@
 module.exports = {
     babelrc: false,
     presets: [
-        ['@babel/preset-env', { useBuiltIns: 'entry', targets: 'defaults, IE 11' }],
+        ['@babel/preset-env', { useBuiltIns: 'entry', corejs: 3, targets: 'defaults, IE 11' }],
         '@babel/preset-typescript',
         '@babel/preset-react'
     ],
