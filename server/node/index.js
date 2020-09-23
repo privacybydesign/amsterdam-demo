@@ -115,10 +115,10 @@ const createIrmaRequest = (content) => {
 // Setup basic authentication for acceptance
 const realm = require("express-http-auth").realm("private");
 const checkUser = function (req, res, next) {
-  if (req.username === "irma" && req.password === "demo2020") {
+  if (req.username === "irma" && req.password === "demo") {
     next();
   } else {
-    res.send(403);
+    res.sendFile(path.join(__dirname, "/pages/403.html"));
   }
 };
 const private = [realm, checkUser];
