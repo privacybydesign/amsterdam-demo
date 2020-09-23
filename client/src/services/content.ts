@@ -273,10 +273,10 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
         result: {
             intro: `Hieronder vindt u alle gegevens van uw demo-aanvraag:`,
             yourDemoRequest: `### Uw demo-aanvraag
-** Uw keuze **\n
-geveltuin\n
-** Bent u de eigenaar van de woning waar de geveltuin komt? **\n
-[owner]
+Uw keuze\n
+** geveltuin **\n
+Bent u de eigenaar van de woning waar de geveltuin komt?\n
+** [owner] **
 `,
             yourDetails: `### Uw gegevens\n
 Naam\n
