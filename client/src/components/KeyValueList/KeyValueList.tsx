@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { isMobile } from '@services/createIrmaSession';
+import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Link, Icon, themeSpacing, breakpoint } from '@datapunt/asc-ui';
 
 interface IKeyValueListProps {
@@ -9,13 +9,21 @@ interface IKeyValueListProps {
 }
 
 const KeyValueList: React.FC<IKeyValueListProps> = props => {
-    const { list } = props;
+    const { title, list } = props;
+    console.log('------', list);
+
     return (
-        <StyledDL>
-            {console.log('isMobile', isMobile())}
-            <dt>key</dt>
-            <dd>value</dd>
-        </StyledDL>
+        <>
+            <AscLocal.H3>{title}</AscLocal.H3>
+            <StyledDL>
+                {list.map(item => (
+                    <dl key={item.key}>
+                        <dt>{item.key}</dt>
+                        <dd>{item.value}</dd>
+                    </dl>
+                ))}
+            </StyledDL>
+        </>
     );
 };
 
