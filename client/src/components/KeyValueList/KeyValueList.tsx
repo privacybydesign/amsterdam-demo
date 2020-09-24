@@ -36,7 +36,7 @@ const StyledDL = styled.dl`
     }
 
     dt {
-        background-color: red;
+        background-color: blue;
         @media ${breakpoint('min-width', 'tabletM')} {
             display: inline-block;
             width: 40%;
@@ -44,7 +44,7 @@ const StyledDL = styled.dl`
     }
 
     dd {
-        background-color: blue;
+        background-color: red;
         @media ${breakpoint('min-width', 'tabletM')} {
             display: inline-block;
             width: 60%;

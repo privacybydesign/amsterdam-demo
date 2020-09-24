@@ -15,6 +15,7 @@ import { RadioGroup, Label, Radio } from '@datapunt/asc-ui';
 import QRCode from '@components/QRCode/QRCode';
 import { initialState, reducer } from './reducer';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
+import KeyValueList from '@components/KeyValueList/KeyValueList';
 import preloadDemoImages from '@services/preloadImages';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
@@ -207,6 +208,11 @@ const Demo4: React.FC<IProps> = () => {
             ) : (
                 <>
                     <ContentBlock>
+                        <KeyValueList
+                            list={content.demo4.result.yourDetails.getList(state)}
+                            title={content.demo4.result.yourDetails.title}
+                        />
+
                         <ReactMarkDown
                             source={content.demo4.result.intro}
                             renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
@@ -220,7 +226,7 @@ const Demo4: React.FC<IProps> = () => {
 
                         <AscLocal.TintedContainerLevel3>
                             <ReactMarkDown
-                                source={content.demo4.result.yourDetails.replace(/\[(.*?)\]/gm, replaceVars)}
+                                source={content.demo4.result.yourDetailsOld.replace(/\[(.*?)\]/gm, replaceVars)}
                                 renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
                         </AscLocal.TintedContainerLevel3>
