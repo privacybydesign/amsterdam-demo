@@ -208,10 +208,12 @@ const Demo4: React.FC<IProps> = () => {
             ) : (
                 <>
                     <ContentBlock>
-                        <KeyValueList
-                            list={content.demo4.result.yourDetails.getList(state)}
-                            title={content.demo4.result.yourDetails.title}
-                        />
+                        <AscLocal.TintedContainerLevel3>
+                            <KeyValueList
+                                list={content.demo4.result.yourDetails.getList(state)}
+                                title={content.demo4.result.yourDetails.title}
+                            />
+                        </AscLocal.TintedContainerLevel3>
 
                         <ReactMarkDown
                             source={content.demo4.result.intro}

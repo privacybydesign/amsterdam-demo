@@ -10,7 +10,6 @@ interface IKeyValueListProps {
 
 const KeyValueList: React.FC<IKeyValueListProps> = props => {
     const { title, list } = props;
-    console.log('------', list);
 
     return (
         <>
@@ -31,12 +30,14 @@ const StyledDL = styled.dl`
     dt,
     dd {
         line-height: 22px;
-        widith: 100%;
         margin: 0;
     }
 
+    dl {
+        margin: 0 0 8px 0;
+    }
+
     dt {
-        background-color: blue;
         @media ${breakpoint('min-width', 'tabletM')} {
             display: inline-block;
             width: 40%;
@@ -44,7 +45,7 @@ const StyledDL = styled.dl`
     }
 
     dd {
-        background-color: red;
+        font-weight: bold;
         @media ${breakpoint('min-width', 'tabletM')} {
             display: inline-block;
             width: 60%;
