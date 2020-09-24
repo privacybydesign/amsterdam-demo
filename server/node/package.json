@@ -14,6 +14,7 @@
     "@privacybydesign/irmajs": "^0.1.9",
     "cors": "^2.8.5",
     "express": "^4.17.0",
+    "express-http-auth": "^0.1.0",
     "express-http-proxy": "^1.5.1",
     "http-proxy-middleware": "^0.20.0",
     "nodemon": "^1.19.1",

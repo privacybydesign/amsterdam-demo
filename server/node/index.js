@@ -112,6 +112,17 @@ const createIrmaRequest = (content) => {
   };
 };
 
+// Setup basic authentication for acceptance
+const realm = require("express-http-auth").realm("private");
+const checkUser = function (req, res, next) {
+  if (req.username === "irma" && req.password === "demo") {
+    next();
+  } else {
+    res.sendFile(path.join(__dirname, "/pages/403.html"));
+  }
+};
+const private = [realm, checkUser];
+
 const init = async () => {
   if (!process.env.PRIVATE_KEY) {
     throw new Error("PRIVATE_KEY is not set");
@@ -141,7 +152,7 @@ const init = async () => {
       process.env.NODE_ENV === "production"
     ) {
       app.use(express.static(config.docroot));
-      app.get("*", function (req, res) {
+      app.get("*", private, function (req, res) {
         res.sendFile(path.join(__dirname, config.docroot, "index.html"));
       });
     } else {
