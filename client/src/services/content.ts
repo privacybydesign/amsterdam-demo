@@ -35,7 +35,7 @@ Download de IRMA-app voor iOS of Android:  \n
 [![Play Store](/assets/download-play-store.svg "Download IRMA in de Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
 
 Wilt u meer weten over IRMA?
-Ga naar de [website van IRMA](https://irma.app/)`
+Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
         },
         subtitle: `## Aan de slag met IRMA`,
         demo1Card: {
@@ -61,7 +61,7 @@ Ga naar de [website van IRMA](https://irma.app/)`
         sidebar: {
             box: `Eenvoudig en veilig in Amsterdam met IRMA
 ![](/assets/irma_logo.svg "Lees meer over IRMA")
-[Waarom IRMA?](https://irma.app/)
+[Waarom IRMA?](https://irma.app/?lang=nl)
           `,
             bottom: `# IRMA voor Amsterdammers
 [Hoe is IRMA getest met Amsterdammers?](https://irma.app/)`
@@ -71,7 +71,7 @@ Ga naar de [website van IRMA](https://irma.app/)`
         heading: `Dit is een demosite`,
         content: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
     },
-    downloadIrma: `Heeft u nog geen IRMA?  \n[Download IRMA](https://irma.app/)`,
+    downloadIrma: `Heeft u nog geen IRMA?  \n[Download IRMA](https://irma.app/?lang=nl)`,
     noSavePromise: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.`,
     callToAction: `[Probeer de andere demo’s](/)`,
     demoErrorAlert: {
