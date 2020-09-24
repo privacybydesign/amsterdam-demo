@@ -16,12 +16,9 @@ export default {
     home: {
         breadcrumbs: `- [Home](/)`,
         title: `# Probeer IRMA uit`,
-        intro: `IRMA is een app waarmee u online kunt aantonen wie u bent.
-        IRMA biedt een nieuwe manier van inloggen, anders dan u kent van bijvoorbeeld DigiD.
+        intro: `IRMA is een app waarmee u online kunt aantonen wie u bent. IRMA biedt een nieuwe manier van inloggen, anders dan u kent van bijvoorbeeld DigiD. Binnenkort kunt u IRMA gebruiken in Amsterdam.
 
-Binnenkort kunt u IRMA gebruiken in Amsterdam.
-
-Ervaar nu vast wat u met IRMA kunt via verschillende demo’s.
+Ervaar nu vast wat u met IRMA kunt via verschillende demo’s. U doet de demo's met uw eigen gegevens. De gemeente Amsterdam slaat deze gegevens niet op.
         `,
         requirements: {
             title: `Wat heeft u nodig?`,
@@ -31,7 +28,7 @@ Ervaar nu vast wat u met IRMA kunt via verschillende demo’s.
 - Uw e-mailadres
 - Uw telefoonnummer
 
-## IRMA downloaden
+## IRMA installeren
 
 Download de IRMA-app voor iOS of Android:  \n
 [![App Store](/assets/download-app-store.svg "Download IRMA in de App Store")](https://apps.apple.com/nl/app/irma-authenticatie/id1294092994)
@@ -224,7 +221,7 @@ De gemeente Amsterdam biedt u straks een keuze. U kunt straks inloggen in Mijn A
             title: `# Demo 4: Geveltuin aanvragen`,
             alert: {
                 title: `Dit is een demo`,
-                body: `Uw melding wordt niet naar de gemeente verstuurd.`
+                body: `Uw demo-aanvraag wordt niet naar de gemeente verstuurd.`
             },
             intro1: `**Met IRMA kunt u een aanvraag doen en hierin gegevens gebruiken die in uw IRMA-app staan.**\n
 **U hoeft minder in te vullen en de gemeente weet zeker dat u de aanvraag doet en dat de gegevens juist zijn.**
@@ -327,7 +324,7 @@ De gemeente kan u op de hoogte houden over uw melding. En u kunt met dit e-maila
             },
             alert: {
                 title: `Dit is een demo`,
-                body: `Uw melding wordt niet naar de gemeente verstuurd.`
+                body: `Uw demo-melding wordt niet naar de gemeente verstuurd.`
             },
             callToAction: `## Gegevens aanvullen met IRMA
 Vul uw demo-aanvraag aan met uw e-mail en/of telefoonnummer uit IRMA.`,
