@@ -30,6 +30,7 @@ const StyledDL = styled.dl`
     dt,
     dd {
         line-height: 22px;
+        vertical-align: top;
         margin: 0;
     }
 

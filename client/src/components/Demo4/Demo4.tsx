@@ -208,28 +208,22 @@ const Demo4: React.FC<IProps> = () => {
             ) : (
                 <>
                     <ContentBlock>
-                        <AscLocal.TintedContainerLevel3>
-                            <KeyValueList
-                                list={content.demo4.result.yourDetails.getList(state)}
-                                title={content.demo4.result.yourDetails.title}
-                            />
-                        </AscLocal.TintedContainerLevel3>
-
                         <ReactMarkDown
                             source={content.demo4.result.intro}
                             renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                         />
+
                         <AscLocal.TintedContainerLevel3>
-                            <ReactMarkDown
-                                source={content.demo4.result.yourDemoRequest.replace(/\[(.*?)\]/gm, replaceVars)}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            <KeyValueList
+                                list={content.demo4.result.yourDemoRequest.getList(state)}
+                                title={content.demo4.result.yourDemoRequest.title}
                             />
                         </AscLocal.TintedContainerLevel3>
 
                         <AscLocal.TintedContainerLevel3>
-                            <ReactMarkDown
-                                source={content.demo4.result.yourDetailsOld.replace(/\[(.*?)\]/gm, replaceVars)}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            <KeyValueList
+                                list={content.demo4.result.yourDetails.getList(state)}
+                                title={content.demo4.result.yourDetails.title}
                             />
                         </AscLocal.TintedContainerLevel3>
                     </ContentBlock>
