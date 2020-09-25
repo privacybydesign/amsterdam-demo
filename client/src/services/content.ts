@@ -4,7 +4,7 @@ import { IKeyValue } from '@components/KeyValueList/KeyValueList';
 // This file contains all textual content in Markdown markup
 // Content values can be changed freely, but don't change the data structure of this file.
 export const insertInPlaceholders = (sentence: string, values: string | string[]): string => {
-    if (!(values instanceof Arraxy)) {
+    if (!(values instanceof Array)) {
         return sentence.replace('[]', values as string);
     } else {
         values.forEach((value: string) => {
