@@ -5,7 +5,10 @@ import { themeSpacing, breakpoint } from '@datapunt/asc-ui';
 
 interface IKeyValueListProps {
     title: string;
-    list: any;
+    list: {
+        key: string;
+        value?: string;
+    }[];
 }
 
 const KeyValueList: React.FC<IKeyValueListProps> = props => {
