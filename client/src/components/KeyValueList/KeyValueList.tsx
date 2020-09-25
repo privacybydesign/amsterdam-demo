@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { themeSpacing, breakpoint } from '@datapunt/asc-ui';
 
+export interface IKeyValue {
+    key: string;
+    value?: string;
+}
+
 interface IKeyValueListProps {
     title: string;
-    list: {
-        key: string;
-        value?: string;
-    }[];
+    list: IKeyValue[];
 }
 
 const KeyValueList: React.FC<IKeyValueListProps> = props => {

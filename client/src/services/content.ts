@@ -1,8 +1,10 @@
+import { IKeyValue } from '@components/KeyValueList/KeyValueList';
+
 /* eslint-disable no-irregular-whitespace */
 // This file contains all textual content in Markdown markup
 // Content values can be changed freely, but don't change the data structure of this file.
 export const insertInPlaceholders = (sentence: string, values: string | string[]): string => {
-    if (!(values instanceof Array)) {
+    if (!(values instanceof Arraxy)) {
         return sentence.replace('[]', values as string);
     } else {
         values.forEach((value: string) => {
