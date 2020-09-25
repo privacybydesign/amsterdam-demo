@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback, useReducer } from 'react';
 import styled from 'styled-components';
 import createIrmaSession from '@services/createIrmaSession';
-import content, { insertInPlaceholders } from '@services/content';
+import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion, themeSpacing, Button } from '@datapunt/asc-ui';
@@ -15,6 +15,7 @@ import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderIm
 import QRCode from '@components/QRCode/QRCode';
 import { Checkmark } from '@datapunt/asc-assets';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
+import KeyValueList from '@components/KeyValueList/KeyValueList';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
@@ -315,39 +316,12 @@ const Demo5: React.FC<IProps> = () => {
                             renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                         />
                         <AscLocal.TintedContainerLevel2>
-                            <ReactMarkDown
-                                source={content.demo5.result.reportTitle}
-                                renderers={{
-                                    heading: AscLocal.H3,
-                                    paragraph: AscLocal.Paragraph,
-                                    list: AscLocal.UL
-                                }}
+                            <KeyValueList
+                                list={content.demo5.result.keyValueList.getList(state)}
+                                title={content.demo5.result.keyValueList.title}
                             />
-                            <ReactMarkDown
-                                source={insertInPlaceholders(
-                                    content.demo5.result.location,
-                                    state.location.weergavenaam
-                                )}
-                                renderers={{ paragraph: AscLocal.Paragraph }}
-                            />
-                            {/* // TODO: Include map here */}
-                            <ReactMarkDown
-                                source={insertInPlaceholders(content.demo5.result.report, state.report)}
-                                renderers={{ paragraph: AscLocal.Paragraph }}
-                            />
-                            {state.mobilenumber && (
-                                <ReactMarkDown
-                                    source={insertInPlaceholders(content.demo5.result.mobilenumber, state.mobilenumber)}
-                                    renderers={{ paragraph: AscLocal.Paragraph }}
-                                />
-                            )}
-                            {state.email && (
-                                <ReactMarkDown
-                                    source={insertInPlaceholders(content.demo5.result.email, state.email)}
-                                    renderers={{ paragraph: AscLocal.Paragraph }}
-                                />
-                            )}
                         </AscLocal.TintedContainerLevel2>
+
                         <ReactMarkDown
                             source={!state.hasError ? '' : content.demo5.result.disclaimerError}
                             renderers={{ paragraph: AscLocal.Paragraph }}

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { Link, Icon, themeSpacing, breakpoint } from '@datapunt/asc-ui';
+import { themeSpacing, breakpoint } from '@datapunt/asc-ui';
 
 interface IKeyValueListProps {
     title: string;
@@ -17,8 +17,12 @@ const KeyValueList: React.FC<IKeyValueListProps> = props => {
             <StyledDL>
                 {list.map(item => (
                     <dl key={item.key}>
-                        <dt>{item.key}</dt>
-                        <dd>{item.value}</dd>
+                        {item.value && (
+                            <dl>
+                                <dt>{item.key}</dt>
+                                <dd>{item.value}</dd>
+                            </dl>
+                        )}
                     </dl>
                 ))}
             </StyledDL>
@@ -35,7 +39,7 @@ const StyledDL = styled.dl`
     }
 
     dl {
-        margin: 0 0 8px 0;
+        margin: ${themeSpacing(0, 0, 2, 0)};
     }
 
     dt {
