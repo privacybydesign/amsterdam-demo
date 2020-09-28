@@ -112,16 +112,29 @@ const createIrmaRequest = (content) => {
   };
 };
 
-// Setup basic authentication for acceptance
-const realm = require("express-http-auth").realm("private");
-const checkUser = function (req, res, next) {
-  if (req.username === "irma" && req.password === "demo") {
-    next();
-  } else {
-    res.sendFile(path.join(__dirname, "/pages/403.html"));
+// Setup authentication for acceptance
+const secured = function (req, res, next) {
+  if (process.env.NODE_ENV !== "acceptance") {
+    return next();
   }
+
+  // check for basic auth header
+  if (
+    !req.headers.authorization ||
+    req.headers.authorization.indexOf("Basic ") === -1
+  ) {
+    res.setHeader("WWW-Authenticate", "Basic");
+    return res.status(401).sendFile(path.join(__dirname, "/pages/401.html"));
+  }
+
+  // check the entered credentials
+  const credentials = Buffer.from("irma:demo").toString("base64");
+  if (req.headers.authorization !== `Basic ${credentials}`) {
+    return res.sendFile(path.join(__dirname, "/pages/401.html"));
+  }
+
+  next();
 };
-const private = [realm, checkUser];
 
 const init = async () => {
   if (!process.env.PRIVATE_KEY) {
@@ -152,7 +165,7 @@ const init = async () => {
       process.env.NODE_ENV === "production"
     ) {
       app.use(express.static(config.docroot));
-      app.all("/*?", private, function (req, res) {
+      app.all("/*?", secured, function (req, res) {
         res.sendFile(path.join(__dirname, config.docroot, "index.html"));
       });
     } else {

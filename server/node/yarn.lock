@@ -606,11 +606,6 @@ expand-brackets@^2.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-express-http-auth@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/express-http-auth/-/express-http-auth-0.1.0.tgz#a1422d1cb6dd2c5b467d9935c31eae4b89ea99dc"
-  integrity sha1-oUItHLbdLFtGfZk1wx6uS4nqmdw=
-
 express-http-proxy@^1.5.1:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/express-http-proxy/-/express-http-proxy-1.6.0.tgz#8672b1093cc96b8a93e8e3da948dd111a668ef22"
