@@ -72,7 +72,7 @@ Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
         content: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
     },
     downloadIrma: `Heeft u nog geen IRMA?  \n[Download IRMA](https://irma.app/?lang=nl)`,
-    noSavePromise: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.`,
+    noSavePromise: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.**`,
     callToAction: `[Probeer de andere demo’s](/)`,
     demoErrorAlert: {
         heading: `Niets doorgegeven`,
@@ -268,7 +268,9 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
         },
         button: 'Aanvullen met IRMA',
         result: {
-            intro: `Hieronder vindt u alle gegevens van uw demo-aanvraag:`,
+            intro: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\nDit is een demo; u bent geen aanvraag voor een geveltuin gestart.**
+
+Hieronder vindt u alle gegevens van uw demo-aanvraag:`,
             yourDemoRequest: `### Uw demo-aanvraag
 Uw keuze\n
 ** geveltuin **\n
@@ -287,7 +289,6 @@ Telefoonnummer\n
 E-mail\n
 ** [email] **\n
 `,
-            disclaimer: `Dit is een demo; u bent geen aanvraag voor een geveltuin gestart.`,
             rest: `## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om een formulier in te vullen met uw gegevens.
 - U heeft een formulier ingevuld met gegevens uit officiële bronnen. De gemeente weet dat deze gegevens kloppen en kan zo’n aanvraag sneller behandelen.
@@ -380,7 +381,9 @@ We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`
         button: 'Aanvullen met IRMA',
         buttonNoIRMA: 'Demo-melding doen',
         result: {
-            intro: `Hieronder vindt u alle gegevens van uw demo-melding:`,
+            intro: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\nDit is een demo; u heeft geen melding overlast gedaan.**
+  
+Hieronder vindt u alle gegevens van uw demo-melding:`,
             reportTitle: `### Uw demo-melding overlast`,
             location: `Locatie\n** [] **\n`,
             report: `Beschrijving\n** [] **\n`,
@@ -394,12 +397,8 @@ Als u via IRMA een melding overlast doet, kunt u geen fouten maken bij invullen 
 Dit kan worden gebruikt voor:
 - Meldingen die u op de website van de gemeente Amsterdam doet.
 - U toegang te geven om de voortgang van uw melding te volgen via Mijn Amsterdam.`,
-            disclaimer: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd. Dit is een demo; u heeft geen melding overlast gedaan.`,
             restError: `## Wat heeft u zojuist gedaan?
-- U heeft geen gegevens uit IRMA gebruikt.
-
-Probeer nu nog een [demo-melding](/overlast-melden) te doen en kies dan om wel uw telefoonnummer en/of e-mailadres door te geven.
-`,
+- U heeft geen gegevens uit IRMA gebruikt.`,
             disclaimerError: `Dit is een demo; u heeft geen melding overlast gedaan.`
         }
     },
