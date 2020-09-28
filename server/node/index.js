@@ -130,6 +130,7 @@ const secured = function (req, res, next) {
   // check the entered credentials
   const credentials = Buffer.from("irma:demo").toString("base64");
   if (req.headers.authorization !== `Basic ${credentials}`) {
+    res.setHeader("WWW-Authenticate", "Basic");
     return res.sendFile(path.join(__dirname, "/pages/403.html"));
   }
 
