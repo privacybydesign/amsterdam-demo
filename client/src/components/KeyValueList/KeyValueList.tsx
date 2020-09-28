@@ -10,7 +10,7 @@ export interface IKeyValue {
 
 interface IKeyValueListProps {
     title: string;
-    list: IKeyValue[];
+    list: any;
 }
 
 const KeyValueList: React.FC<IKeyValueListProps> = props => {

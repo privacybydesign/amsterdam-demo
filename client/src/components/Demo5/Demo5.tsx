@@ -317,7 +317,7 @@ const Demo5: React.FC<IProps> = () => {
                         />
                         <AscLocal.TintedContainerLevel2>
                             <KeyValueList
-                                list={content.demo5.result.keyValueList.getList(state)}
+                                list={() => content.demo5.result.keyValueList.getList(state)}
                                 title={content.demo5.result.keyValueList.title}
                             />
                         </AscLocal.TintedContainerLevel2>

@@ -211,14 +211,14 @@ const Demo4: React.FC<IProps> = () => {
 
                         <AscLocal.TintedContainerLevel3>
                             <KeyValueList
-                                list={content.demo4.result.yourDemoRequest.getList(state)}
+                                list={() => content.demo4.result.yourDemoRequest.getList(state)}
                                 title={content.demo4.result.yourDemoRequest.title}
                             />
                         </AscLocal.TintedContainerLevel3>
 
                         <AscLocal.TintedContainerLevel3>
                             <KeyValueList
-                                list={content.demo4.result.yourDetails.getList(state)}
+                                list={() => content.demo4.result.yourDetails.getList(state)}
                                 title={content.demo4.result.yourDetails.title}
                             />
                         </AscLocal.TintedContainerLevel3>
