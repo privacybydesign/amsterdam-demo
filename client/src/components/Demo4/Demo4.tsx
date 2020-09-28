@@ -224,9 +224,6 @@ const Demo4: React.FC<IProps> = () => {
                                 renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
                         </AscLocal.TintedContainerLevel3>
-
-                        <ReactMarkDown source={content.noSavePromise} />
-                        <ReactMarkDown source={content.demo4.result.disclaimer} />
                     </ContentBlock>
                     <EmphasisBlock>
                         <ContentBlock>

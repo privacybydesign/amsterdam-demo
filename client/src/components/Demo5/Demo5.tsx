@@ -346,9 +346,7 @@ const Demo5: React.FC<IProps> = () => {
                             )}
                         </AscLocal.TintedContainerLevel2>
                         <ReactMarkDown
-                            source={
-                                !state.hasError ? content.demo5.result.disclaimer : content.demo5.result.disclaimerError
-                            }
+                            source={!state.hasError ? '' : content.demo5.result.disclaimerError}
                             renderers={{ paragraph: AscLocal.Paragraph }}
                         />
                     </ContentBlock>

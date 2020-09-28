@@ -268,8 +268,9 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
         },
         button: 'Aanvullen met IRMA',
         result: {
-            disclaimer: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\nDit is een demo; u bent geen aanvraag voor een geveltuin gestart.**`,
-            intro: `Hieronder vindt u alle gegevens van uw demo-aanvraag:`,
+            intro: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\nDit is een demo; u bent geen aanvraag voor een geveltuin gestart.**
+
+Hieronder vindt u alle gegevens van uw demo-aanvraag:`,
             yourDemoRequest: `### Uw demo-aanvraag
 Uw keuze\n
 ** geveltuin **\n
@@ -380,8 +381,9 @@ We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`
         button: 'Aanvullen met IRMA',
         buttonNoIRMA: 'Demo-melding doen',
         result: {
-            disclaimer: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\nDit is een demo; u heeft geen melding overlast gedaan.**`,
-            intro: `Hieronder vindt u alle gegevens van uw demo-melding:`,
+            intro: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\nDit is een demo; u heeft geen melding overlast gedaan.**
+  
+Hieronder vindt u alle gegevens van uw demo-melding:`,
             reportTitle: `### Uw demo-melding overlast`,
             location: `Locatie\n** [] **\n`,
             report: `Beschrijving\n** [] **\n`,
