@@ -152,7 +152,7 @@ const init = async () => {
       process.env.NODE_ENV === "production"
     ) {
       app.use(express.static(config.docroot));
-      app.get("/*", private, function (req, res) {
+      app.all("/*", private, function (req, res) {
         res.sendFile(path.join(__dirname, config.docroot, "index.html"));
       });
     } else {
