@@ -124,13 +124,13 @@ const secured = function (req, res, next) {
     req.headers.authorization.indexOf("Basic ") === -1
   ) {
     res.setHeader("WWW-Authenticate", "Basic");
-    return res.status(401).sendFile(path.join(__dirname, "/pages/401.html"));
+    return res.status(401).sendFile(path.join(__dirname, "/pages/403.html"));
   }
 
   // check the entered credentials
   const credentials = Buffer.from("irma:demo").toString("base64");
   if (req.headers.authorization !== `Basic ${credentials}`) {
-    return res.sendFile(path.join(__dirname, "/pages/401.html"));
+    return res.sendFile(path.join(__dirname, "/pages/403.html"));
   }
 
   next();
@@ -165,7 +165,7 @@ const init = async () => {
       process.env.NODE_ENV === "production"
     ) {
       app.use(express.static(config.docroot));
-      app.all("/*?", secured, function (req, res) {
+      app.get("/*?", secured, function (req, res) {
         res.sendFile(path.join(__dirname, config.docroot, "index.html"));
       });
     } else {
