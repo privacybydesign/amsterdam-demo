@@ -20,16 +20,17 @@ const KeyValueList: React.FC<IKeyValueListProps> = props => {
         <>
             <AscLocal.H3>{title}</AscLocal.H3>
             <StyledDL>
-                {list.map(item => (
-                    <dl key={item.key}>
-                        {item.value && (
-                            <dl>
-                                <dt>{item.key}</dt>
-                                <dd>{item.value}</dd>
-                            </dl>
-                        )}
-                    </dl>
-                ))}
+                {list.map &&
+                    list.map(item => (
+                        <dl key={item.key}>
+                            {item.value && (
+                                <dl>
+                                    <dt>{item.key}</dt>
+                                    <dd>{item.value}</dd>
+                                </dl>
+                            )}
+                        </dl>
+                    ))}
             </StyledDL>
         </>
     );

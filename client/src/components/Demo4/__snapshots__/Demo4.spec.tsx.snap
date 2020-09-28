@@ -391,6 +391,14 @@ exports[`Demo4 should update the page after completing the IRMA flow 1`] = `
 
 }
 
+@media (min-width:768px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
 @media (min-width:1024px) {
 
 }
@@ -776,6 +784,14 @@ exports[`Demo4 should update the page after completing the IRMA flow 2`] = `
 }
 
 @media (max-width:767px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:768px) {
 
 }
 
@@ -1457,14 +1473,4 @@ exports[`Demo4 should update the page after failing the IRMA flow 2`] = `
     </div>
   </div>
 </div>
-`;
-
-exports[`Demo4 should update the page after failing the IRMA flow 3`] = `
-<img
-  alt="Foto van geveltuin in straat"
-  class="sc-psQdR sc-pktCe hOARIe"
-  data-testid="headerImage"
-  src="/assets/geveltuin-940.jpg"
-  srcset="/assets/geveltuin-290.jpg 580w, /assets/geveltuin-940.jpg 1880w"
-/>
 `;
