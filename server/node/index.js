@@ -114,6 +114,7 @@ const createIrmaRequest = (content) => {
 
 // Setup authentication for acceptance
 const secured = function (req, res, next) {
+  console.log("SECURE ROUTE", process.env.NODE_ENV, req.headers);
   if (process.env.NODE_ENV !== "acceptance") {
     return next();
   }
@@ -167,10 +168,6 @@ const init = async () => {
     ) {
       app.use(express.static(config.docroot));
       app.get("*", secured, function (req, res) {
-        res.sendFile(path.join(__dirname, config.docroot, "index.html"));
-      });
-
-      app.get("/", secured, function (req, res) {
         res.sendFile(path.join(__dirname, config.docroot, "index.html"));
       });
     } else {
