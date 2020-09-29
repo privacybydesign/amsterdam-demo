@@ -166,7 +166,7 @@ const init = async () => {
       process.env.NODE_ENV === "acceptance" ||
       process.env.NODE_ENV === "production"
     ) {
-      app.use(express.static(config.docroot));
+      app.use(express.static(config.docroot, { index: false }));
       app.get("*", secured, function (req, res) {
         res.sendFile(path.join(__dirname, config.docroot, "index.html"));
       });
