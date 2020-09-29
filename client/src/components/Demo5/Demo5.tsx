@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
+import deflist from '@services/deflist';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion, themeSpacing, Button } from '@datapunt/asc-ui';
 import { Alert as AlertIcon } from '@datapunt/asc-assets';
@@ -15,7 +16,6 @@ import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderIm
 import QRCode from '@components/QRCode/QRCode';
 import { Checkmark } from '@datapunt/asc-assets';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
-import KeyValueList from '@components/KeyValueList/KeyValueList';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
@@ -36,6 +36,10 @@ const Demo5: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
     const [state, dispatch] = useReducer(reducer, initialState);
     const formRef = useRef<HTMLFormElement>(null);
+
+    function replaceVars(str, p1) {
+        return state[p1] || '-';
+    }
 
     // Form validator (uncontrolled)
     const validateForm = useCallback(
@@ -316,9 +320,24 @@ const Demo5: React.FC<IProps> = () => {
                             renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                         />
                         <AscLocal.TintedContainerLevel2>
-                            <KeyValueList
-                                list={() => content.demo5.result.keyValueList.getList(state)}
-                                title={content.demo5.result.keyValueList.title}
+                            <ReactMarkDown
+                                source={content.demo5.result.yourReportBeforeMap.replace(/\[(.*?)\]/gm, replaceVars)}
+                                renderers={{
+                                    heading: AscLocal.H3,
+                                    list: AscLocal.UL,
+                                    ...AscLocal.DefinitionList
+                                }}
+                                plugins={[deflist]}
+                            />
+                            {/* // Include map */}
+                            <ReactMarkDown
+                                source={content.demo5.result.yourReportAfterMap.replace(/\[(.*?)\]/gm, replaceVars)}
+                                renderers={{
+                                    heading: AscLocal.H3,
+                                    list: AscLocal.UL,
+                                    ...AscLocal.DefinitionList
+                                }}
+                                plugins={[deflist]}
                             />
                         </AscLocal.TintedContainerLevel2>
 

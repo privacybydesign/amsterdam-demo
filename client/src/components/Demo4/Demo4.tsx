@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useReducer } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
+import defList from '@services/deflist';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion } from '@datapunt/asc-ui';
 import { Checkmark, Alert } from '@datapunt/asc-assets';
@@ -15,7 +16,6 @@ import { RadioGroup, Label, Radio } from '@datapunt/asc-ui';
 import QRCode from '@components/QRCode/QRCode';
 import { initialState, reducer } from './reducer';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
-import KeyValueList from '@components/KeyValueList/KeyValueList';
 import preloadDemoImages from '@services/preloadImages';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
@@ -27,6 +27,10 @@ const Demo4: React.FC<IProps> = () => {
 
     const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
     const [state, dispatch] = useReducer(reducer, initialState);
+
+    function replaceVars(str, p1) {
+        return state[p1] || '-';
+    }
 
     const validateForm = () => {
         const el = formEl.current.querySelector('input[name=geveltuin]:checked');
@@ -210,16 +214,28 @@ const Demo4: React.FC<IProps> = () => {
                         />
 
                         <AscLocal.TintedContainerLevel3>
-                            <KeyValueList
-                                list={() => content.demo4.result.yourDemoRequest.getList(state)}
-                                title={content.demo4.result.yourDemoRequest.title}
+                            <ReactMarkDown
+                                source={content.demo4.result.yourDemoRequest.replace(/\[(.*?)\]/gm, replaceVars)}
+                                renderers={{
+                                    heading: AscLocal.H3,
+                                    paragraph: AscLocal.Paragraph,
+                                    list: AscLocal.UL,
+                                    ...AscLocal.DefinitionList
+                                }}
+                                plugins={[defList]}
                             />
                         </AscLocal.TintedContainerLevel3>
 
                         <AscLocal.TintedContainerLevel3>
-                            <KeyValueList
-                                list={() => content.demo4.result.yourDetails.getList(state)}
-                                title={content.demo4.result.yourDetails.title}
+                            <ReactMarkDown
+                                source={content.demo4.result.yourDetails.replace(/\[(.*?)\]/gm, replaceVars)}
+                                renderers={{
+                                    heading: AscLocal.H3,
+                                    paragraph: AscLocal.Paragraph,
+                                    list: AscLocal.UL,
+                                    ...AscLocal.DefinitionList
+                                }}
+                                plugins={[defList]}
                             />
                         </AscLocal.TintedContainerLevel3>
                     </ContentBlock>

@@ -91,6 +91,51 @@ export const OL = styled.ol`
     }
 `;
 
+export const DL = styled.dl`
+    margin: ${themeSpacing(0, 0, 2, 0)};
+`;
+
+export const DT = styled.dt`
+    line-height: 22px;
+    vertical-align: top;
+    margin: 0;
+
+    @media ${breakpoint('min-width', 'tabletM')} {
+        display: inline-block;
+        width: 40%;
+    }
+`;
+export const DD = styled.dd`
+    line-height: 22px;
+    vertical-align: top;
+    margin: 0;
+    font-weight: bold;
+
+    @media ${breakpoint('min-width', 'tabletM')} {
+        display: inline-block;
+        width: 60%;
+    }
+`;
+
+export const DefinitionList = {
+    definitionList: DL,
+    descriptionlist: DL,
+    descriptionterm: DT,
+    descriptiondetails: DD
+};
+
+//  (props) {
+//     return <dl>{props.children}</dl>;
+// }
+
+// function DefinitionTerm(props) {
+//     return <dt>{props.children}</dt>;
+// }
+
+// function DefinitionDetails(props) {
+//     return <dd>{props.children}</dd>;
+// }
+
 export const Image = styled.img`
     width: 100%;
     margin-bottom: ${themeSpacing(2)};
