@@ -114,7 +114,6 @@ const createIrmaRequest = (content) => {
 
 // Setup authentication for acceptance
 const secured = function (req, res, next) {
-  console.log("SECURE ROUTE", process.env.NODE_ENV, req.headers);
   if (process.env.NODE_ENV !== "acceptance") {
     return next();
   }
