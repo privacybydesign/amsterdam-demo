@@ -169,6 +169,10 @@ const init = async () => {
       app.get("*", secured, function (req, res) {
         res.sendFile(path.join(__dirname, config.docroot, "index.html"));
       });
+
+      app.get("/", secured, function (req, res) {
+        res.sendFile(path.join(__dirname, config.docroot, "index.html"));
+      });
     } else {
       console.log("Using proxy to the react app for development");
       // proxy the root to the react app container in development mode
