@@ -18,7 +18,7 @@ export interface IProps {
     errors?: string[];
     forwardRef: React.MutableRefObject<HTMLFormElement>;
     validateForm: (setErrors: boolean) => unknown;
-    updateLocationCallback: (location: Location[]) => void;
+    updateLocationCallback: (location: Location) => void;
 }
 
 const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateLocationCallback }) => {

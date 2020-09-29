@@ -7,6 +7,7 @@ import deflist from '@services/deflist';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion, themeSpacing, Button } from '@datapunt/asc-ui';
 import { Alert as AlertIcon } from '@datapunt/asc-assets';
+// import { Map, BaseLayer, Marker } from '@datapunt/arm-core';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
@@ -86,12 +87,11 @@ const Demo5: React.FC<IProps> = () => {
         [state.location]
     );
 
-    const updateLocationCallback = useCallback((location: Location[]) => {
-        const parsedLocation = location.length ? { id: location[0].id, weergavenaam: location[0].weergavenaam } : null;
+    const updateLocationCallback = useCallback((location: Location) => {
         dispatch({
             type: 'setLocation',
             payload: {
-                location: parsedLocation
+                location
             }
         });
     }, []);
@@ -329,7 +329,10 @@ const Demo5: React.FC<IProps> = () => {
                                 }}
                                 plugins={[deflist]}
                             />
-                            {/* // Include map */}
+                            {/* <Map data-testid="map">
+                                {state.location.latLng && <Marker latLng={state.location.latLng} />}
+                                <BaseLayer />
+                            </Map> */}
                             <ReactMarkDown
                                 source={content.demo5.result.yourReportAfterMap.replace(/\[(.*?)\]/gm, replaceVars)}
                                 renderers={{

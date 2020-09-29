@@ -8,10 +8,10 @@ import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@datapunt/arm-cor
 import { Input } from '@datapunt/asc-ui';
 import { Link, ListItem, Icon, themeColor, themeSpacing } from '@datapunt/asc-ui';
 import { ChevronRight } from '@datapunt/asc-assets';
-import { LatLng, LeafletMouseEvent } from 'leaflet';
+import { LeafletMouseEvent } from 'leaflet';
 
 interface IProps {
-    updateLocationCallback: (location: Location[]) => void;
+    updateLocationCallback: (location: Location | null) => void;
 }
 
 const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
@@ -25,7 +25,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
         'https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&distance=50&';
     const lookupUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/v3/lookup?id=';
 
-    const { mapInstance, url, query, autosuggest, latLng, location, showAutosuggest } = state;
+    const { mapInstance, url, query, autosuggest, location, showAutosuggest } = state;
 
     const fetchAutosuggest = useCallback(
         async url => {
@@ -33,70 +33,76 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
             dispatch({
                 type: 'setAutosuggest',
                 payload: {
-                    autosuggest: response.data?.response?.docs
+                    autosuggest: response.data?.response?.docs.map(doc => ({
+                        id: doc.id,
+                        weergavenaam: doc.weergavenaam
+                    }))
                 }
             });
         },
         [dispatch]
     );
 
-    const fetchLocation = useCallback(
-        async (loc: LatLng) => {
-            const response = await axios.get(`${locationUrl}&lat=${loc.lat}&lon=${loc.lng}`);
-            const location = response.data?.response?.docs;
-            dispatch({
-                type: 'setLocation',
-                payload: {
-                    location
-                }
-            });
-
-            if (updateLocationCallback) {
-                updateLocationCallback(location.length === 0 ? [{ weergavenaam: 'geenAdresGevonden' }] : location);
-            }
-        },
-        [locationUrl, dispatch, updateLocationCallback]
-    );
-
     const onMapClick = useCallback(
         async (e: LeafletMouseEvent) => {
-            dispatch({
-                type: 'setLatLng',
-                payload: {
-                    latLng: e.latlng
-                }
-            });
+            const response = await axios.get(`${locationUrl}&lat=${e.latlng.lat}&lon=${e.latlng.lng}`);
+            const foundLocation = response.data?.response?.docs[0];
+            let location: Location = null;
 
-            fetchLocation(e.latlng);
+            if (foundLocation) {
+                location = {
+                    id: foundLocation.id,
+                    weergavenaam: foundLocation.weergavenaam,
+                    latLng: e.latlng
+                };
+
+                dispatch({
+                    type: 'setLocation',
+                    payload: {
+                        location
+                    }
+                });
+            }
+
+            if (updateLocationCallback) {
+                updateLocationCallback(location || null);
+            }
         },
-        [dispatch, fetchLocation]
+        [dispatch, updateLocationCallback]
     );
 
     const onAutosuggestClick = useCallback(
-        async (e: React.SyntheticEvent<LeafletMouseEvent>, location: Location) => {
+        async (e: React.SyntheticEvent<LeafletMouseEvent>, autoSuggestLocation: Location) => {
             if (e) {
                 e.preventDefault();
             }
-            if (location.weergavenaam) {
-                locationRef.current.value = location.weergavenaam;
+
+            if (autoSuggestLocation.weergavenaam) {
+                locationRef.current.value = autoSuggestLocation.weergavenaam;
                 dispatch({
                     type: 'hideAutosuggest'
                 });
             }
 
-            const response = await axios.get(`${lookupUrl}${location.id}`);
+            const response = await axios.get(`${lookupUrl}${autoSuggestLocation.id}`);
             if (mapInstance && response.data.response.docs[0]) {
-                const loc = response.data.response.docs[0].centroide_ll.replace(/POINT\(|\)/, '').split(' ');
-                const targetLatlng = { lat: parseFloat(loc[1]), lng: parseFloat(loc[0]) };
-                mapInstance.flyTo(targetLatlng, 11);
+                const parsedCoordinates = response.data.response.docs[0].centroide_ll
+                    .replace(/POINT\(|\)/, '')
+                    .split(' ');
+                const latLng = { lat: parseFloat(parsedCoordinates[1]), lng: parseFloat(parsedCoordinates[0]) };
+                mapInstance.flyTo(latLng, 11);
+
+                const location: Location = { ...autoSuggestLocation, latLng };
+
                 dispatch({
-                    type: 'setLatLng',
+                    type: 'setLocation',
                     payload: {
-                        latLng: targetLatlng
+                        location
                     }
                 });
+
                 if (updateLocationCallback) {
-                    updateLocationCallback(response.data.response.docs);
+                    updateLocationCallback(location);
                 }
             }
         },
@@ -110,7 +116,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
     }, [url, fetchAutosuggest]);
 
     useEffect(() => {
-        locationRef.current.value = location && location.length ? location[0].weergavenaam : '';
+        locationRef.current.value = location?.weergavenaam || '';
     }, [location]);
 
     const useFirstSuggestionOnEnter = useCallback(
@@ -140,7 +146,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                     }
                 }}
             >
-                {latLng && <Marker latLng={latLng} />}
+                {location?.latLng && <Marker latLng={location.latLng} />}
                 <StyledViewerContainer
                     bottomRight={<Zoom />}
                     topLeft={
