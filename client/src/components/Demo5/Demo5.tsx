@@ -367,10 +367,17 @@ const Demo5: React.FC<IProps> = () => {
                             renderers={{ paragraph: AscLocal.Paragraph }}
                         />
                     </ContentBlock>
+
                     <EmphasisBlock>
                         <ContentBlock>
                             <ReactMarkDown
-                                source={!state.hasError ? content.demo5.result.rest : content.demo5.result.restError}
+                                source={
+                                    noIRMAFlow
+                                        ? content.demo5.result.restNoIRMA
+                                        : state.hasError
+                                        ? content.demo5.result.restError
+                                        : content.demo5.result.rest
+                                }
                                 renderers={{
                                     heading: AscLocal.H3,
                                     paragraph: AscLocal.Paragraph,

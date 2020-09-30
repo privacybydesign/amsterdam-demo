@@ -402,7 +402,7 @@ Als u via IRMA een melding overlast doet, kunt u geen fouten maken bij invullen 
 Dit kan worden gebruikt voor:
 - Meldingen die u op de website van de gemeente Amsterdam doet.
 - U toegang te geven om de voortgang van uw melding te volgen via Mijn Amsterdam.`,
-            restError: `## Wat heeft u zojuist gedaan?
+            restNoIRMA: `## Wat heeft u zojuist gedaan?
 - U heeft geen gegevens uit IRMA gebruikt.`,
             disclaimerError: `Dit is een demo; u heeft geen melding overlast gedaan.`
         }
