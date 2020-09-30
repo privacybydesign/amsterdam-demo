@@ -386,10 +386,10 @@ We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`
 Hieronder vindt u alle gegevens van uw demo-melding:`,
             yourReportBeforeMap: `### Uw demo-melding overlast\n
 Locatie  \n
-:   [locatie]  \n`,
+:   [location]  \n`,
             yourReportAfterMap: `
 Beschrijving  \n
-:   [street]  \n
+:   [report]  \n
 Uw telefoonnummer  \n
 :   [mobilenumber]  \n
 Uw e-mailadres  \n
