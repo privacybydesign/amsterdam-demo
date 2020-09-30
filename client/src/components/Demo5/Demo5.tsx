@@ -7,7 +7,7 @@ import deflist from '@services/deflist';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion, themeSpacing, Button } from '@datapunt/asc-ui';
 import { Alert as AlertIcon } from '@datapunt/asc-assets';
-// import { Map, BaseLayer, Marker } from '@datapunt/arm-core';
+import { Map, BaseLayer, Marker } from '@datapunt/arm-core';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
@@ -329,10 +329,25 @@ const Demo5: React.FC<IProps> = () => {
                                 }}
                                 plugins={[deflist]}
                             />
-                            {/* <Map data-testid="map">
-                                {state.location.latLng && <Marker latLng={state.location.latLng} />}
-                                <BaseLayer />
-                            </Map> */}
+                            {state.location.latLng && (
+                                <StyledMap
+                                    options={{
+                                        attributionControl: false,
+                                        zoomControl: false,
+                                        boxZoom: false,
+                                        dragging: false,
+                                        center: state.location.latLng,
+                                        zoom: 11,
+                                        keyboard: false,
+                                        tap: false,
+                                        scrollWheelZoom: false,
+                                        touchZoom: false
+                                    }}
+                                >
+                                    <Marker latLng={state.location.latLng} />
+                                    <BaseLayer />
+                                </StyledMap>
+                            )}
                             <ReactMarkDown
                                 source={content.demo5.result.yourReportAfterMap.replace(/\[(.*?)\]/gm, replaceVars)}
                                 renderers={{
@@ -373,6 +388,13 @@ const Demo5: React.FC<IProps> = () => {
 
 const StyledButton = styled(Button)`
     margin: ${themeSpacing(0, 6, 6, 0)};
+`;
+
+const StyledMap = styled(Map)`
+    height: 128px;
+    width: 100%;
+    margin: ${themeSpacing(4)} 0;
+    z-index: 0;
 `;
 
 export default Demo5;

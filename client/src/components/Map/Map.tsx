@@ -2,7 +2,6 @@ import React, { useEffect, useCallback, useRef, useReducer } from 'react';
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
 import axios, { AxiosResponse } from 'axios';
-
 import { initialState, reducer, Location } from './reducer';
 import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@datapunt/arm-core';
 import { Input } from '@datapunt/asc-ui';
