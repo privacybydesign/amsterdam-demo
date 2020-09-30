@@ -37,7 +37,7 @@ export const H3 = styled.h3`
 
 export const H4 = styled.h4`
     line-height: ${lineHeight};
-    margin: ${themeSpacing(2, 0)};
+    margin: ${themeSpacing(2, 0, 0, 0)};
 `;
 
 export const Paragraph = styled(AscParagraph)`
