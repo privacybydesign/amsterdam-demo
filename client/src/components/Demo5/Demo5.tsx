@@ -372,9 +372,7 @@ const Demo5: React.FC<IProps> = () => {
                         <ContentBlock>
                             <ReactMarkDown
                                 source={
-                                    noIRMAFlow
-                                        ? content.demo5.result.restNoIRMA
-                                        : state.hasError
+                                    noIRMAFlow || state.hasError
                                         ? content.demo5.result.restError
                                         : content.demo5.result.rest
                                 }
