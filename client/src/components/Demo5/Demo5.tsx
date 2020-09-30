@@ -39,7 +39,7 @@ const Demo5: React.FC<IProps> = () => {
     const formRef = useRef<HTMLFormElement>(null);
 
     function replaceVars(str, p1) {
-        return state[p1] || '-';
+        return state[p1] || null;
     }
 
     // Form validator (uncontrolled)
@@ -360,6 +360,28 @@ const Demo5: React.FC<IProps> = () => {
                                 }}
                                 plugins={[deflist]}
                             />
+                            {state.mobilenumber && (
+                                <ReactMarkDown
+                                    source={content.demo5.result.yourMobileNumber.replace(/\[(.*?)\]/gm, replaceVars)}
+                                    renderers={{
+                                        heading: AscLocal.H3,
+                                        list: AscLocal.UL,
+                                        ...AscLocal.DefinitionList
+                                    }}
+                                    plugins={[deflist]}
+                                />
+                            )}
+                            {state.email && (
+                                <ReactMarkDown
+                                    source={content.demo5.result.yourEmail.replace(/\[(.*?)\]/gm, replaceVars)}
+                                    renderers={{
+                                        heading: AscLocal.H3,
+                                        list: AscLocal.UL,
+                                        ...AscLocal.DefinitionList
+                                    }}
+                                    plugins={[deflist]}
+                                />
+                            )}
                         </AscLocal.TintedContainerLevel2>
 
                         <ReactMarkDown
@@ -373,7 +395,7 @@ const Demo5: React.FC<IProps> = () => {
                             <ReactMarkDown
                                 source={
                                     noIRMAFlow || state.hasError
-                                        ? content.demo5.result.restError
+                                        ? content.demo5.result.restNoIRMA
                                         : content.demo5.result.rest
                                 }
                                 renderers={{

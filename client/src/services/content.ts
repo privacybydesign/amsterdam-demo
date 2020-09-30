@@ -389,9 +389,11 @@ Locatie  \n
 :   [location]  \n`,
             yourReportAfterMap: `
 Beschrijving  \n
-:   [report]  \n
+:   [report]  \n`,
+            yourMobileNumber: `
 Uw telefoonnummer  \n
-:   [mobilenumber]  \n
+:   [mobilenumber]  \n`,
+            yourEmail: `
 Uw e-mailadres  \n
 :   [email]  \n`,
             rest: `## Wat heeft u zojuist gedaan?
