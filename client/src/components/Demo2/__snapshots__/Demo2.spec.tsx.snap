@@ -219,7 +219,7 @@ exports[`Demo2 should render the initial header image 1`] = `
 
 <img
   alt="Straat met zingende meisjes"
-  class="sc-psQdR c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/ideeen-voor-buurt-940.jpg"
   srcset="/assets/ideeen-voor-buurt-290.jpg 580w, /assets/ideeen-voor-buurt-940.jpg 1880w"
@@ -445,7 +445,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
 
 <img
   alt="Foto uit Centrum-Oost"
-  class="sc-psQdR c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/wijken/DX02-940.jpg"
   srcset="/assets/wijken/DX02-290.jpg 580w, /assets/wijken/DX02-940.jpg 1880w"
@@ -1109,7 +1109,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
 
 <img
   alt="Foto van kinderen die een huis in Amsterdam bekijken"
-  class="sc-psQdR c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/niet-amsterdammer-18min-940.jpg"
   srcset="/assets/niet-amsterdammer-18min-290.jpg 580w, /assets/niet-amsterdammer-18min-940.jpg 1880w"
@@ -1773,7 +1773,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
 
 <img
   alt="Foto uit Centrum-Oost"
-  class="sc-psQdR c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/wijken/DX02-940.jpg"
   srcset="/assets/wijken/DX02-290.jpg 580w, /assets/wijken/DX02-940.jpg 1880w"
@@ -2443,7 +2443,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
 
 <img
   alt="Foto van verhuizing naar Amsterdam"
-  class="sc-psQdR c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/niet-amsterdammer-18plus-940.jpg"
   srcset="/assets/niet-amsterdammer-18plus-290.jpg 580w, /assets/niet-amsterdammer-18plus-940.jpg 1880w"

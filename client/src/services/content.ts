@@ -272,22 +272,22 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
 
 Hieronder vindt u alle gegevens van uw demo-aanvraag:`,
             yourDemoRequest: `### Uw demo-aanvraag
-Uw keuze\n
-** geveltuin **\n
-Bent u de eigenaar van de woning waar de geveltuin komt?\n
-** [owner] **
+Uw keuze  \n
+:   geveltuin  \n
+Bent u de eigenaar van de woning waar de geveltuin komt?  \n
+:   [owner]
 `,
             yourDetails: `### Uw gegevens\n
-Naam\n
-** [name] **\n
-Straat en huisnummer\n
-** [street] **\n
-Postcode en plaats\n
-** [city] **\n
-Telefoonnummer\n
-** [telephone] **\n
-E-mail\n
-** [email] **\n
+Naam  \n
+:   [name]  \n
+Straat en huisnummer  \n
+:   [street]  \n
+Postcode en plaats  \n
+:   [city]\n
+Telefoonnummer  \n
+:   [telephone]  \n
+E-mail  \n
+:   [email]  \n
 `,
             rest: `## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om een formulier in te vullen met uw gegevens.
@@ -384,11 +384,16 @@ We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`
             intro: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\nDit is een demo; u heeft geen melding overlast gedaan.**
 
 Hieronder vindt u alle gegevens van uw demo-melding:`,
-            reportTitle: `### Uw demo-melding overlast`,
-            location: `Locatie\n** [] **\n`,
-            report: `Beschrijving\n** [] **\n`,
-            mobilenumber: `Uw telefoonnummer\n** [] **\n`,
-            email: `Uw e-mailadres\n** [] **`,
+            yourReportBeforeMap: `### Uw demo-melding overlast\n
+Locatie  \n
+:   [locatie]  \n`,
+            yourReportAfterMap: `
+Beschrijving  \n
+:   [street]  \n
+Uw telefoonnummer  \n
+:   [mobilenumber]  \n
+Uw e-mailadres  \n
+:   [email]  \n`,
             rest: `## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om uw telefoonnummer en/of e-mailadres door te geven.
 - U heeft een melding gedaan met uw gegevens uit officiële bronnen.\n De gemeente weet dat deze gegevens kloppen en kan zo'n formulier sneller behandelen. \n

@@ -1,5 +1,4 @@
-import { LatLngLiteral, Map } from 'leaflet';
-
+import { Map } from 'leaflet';
 import { initialState, reducer, Location } from './reducer';
 
 interface MockMap extends Map {
@@ -26,7 +25,7 @@ describe('map reducer', () => {
     });
 
     it('should setLocation', () => {
-        const mockLocation: Location[] = [{ id: '1' }];
+        const mockLocation: Location = { id: '1', weergavenaam: 'Test', latLng: null };
         expect(
             reducer(undefined, {
                 type: 'setLocation',
@@ -36,20 +35,6 @@ describe('map reducer', () => {
             })
         ).toMatchObject({
             location: mockLocation
-        });
-    });
-
-    it('should setLatLng', () => {
-        const mockLatLng: LatLngLiteral = { lng: 4, lat: 52 };
-        expect(
-            reducer(undefined, {
-                type: 'setLatLng',
-                payload: {
-                    latLng: mockLatLng
-                }
-            })
-        ).toMatchObject({
-            latLng: mockLatLng
         });
     });
 

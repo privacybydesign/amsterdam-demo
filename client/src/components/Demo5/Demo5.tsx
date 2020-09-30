@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback, useReducer } from 'react';
 import styled from 'styled-components';
 import createIrmaSession from '@services/createIrmaSession';
-import content, { insertInPlaceholders } from '@services/content';
+import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
+import deflist from '@services/deflist';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion, themeSpacing, Button } from '@datapunt/asc-ui';
 import { Alert as AlertIcon } from '@datapunt/asc-assets';
+import { Map, BaseLayer, Marker } from '@datapunt/arm-core';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
@@ -35,6 +37,10 @@ const Demo5: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
     const [state, dispatch] = useReducer(reducer, initialState);
     const formRef = useRef<HTMLFormElement>(null);
+
+    function replaceVars(str, p1) {
+        return state[p1] || '-';
+    }
 
     // Form validator (uncontrolled)
     const validateForm = useCallback(
@@ -81,12 +87,11 @@ const Demo5: React.FC<IProps> = () => {
         [state.location]
     );
 
-    const updateLocationCallback = useCallback((location: Location[]) => {
-        const parsedLocation = location.length ? { id: location[0].id, weergavenaam: location[0].weergavenaam } : null;
+    const updateLocationCallback = useCallback((location: Location) => {
         dispatch({
             type: 'setLocation',
             payload: {
-                location: parsedLocation
+                location
             }
         });
     }, []);
@@ -316,38 +321,44 @@ const Demo5: React.FC<IProps> = () => {
                         />
                         <AscLocal.TintedContainerLevel2>
                             <ReactMarkDown
-                                source={content.demo5.result.reportTitle}
+                                source={content.demo5.result.yourReportBeforeMap.replace(/\[(.*?)\]/gm, replaceVars)}
                                 renderers={{
                                     heading: AscLocal.H3,
-                                    paragraph: AscLocal.Paragraph,
-                                    list: AscLocal.UL
+                                    list: AscLocal.UL,
+                                    ...AscLocal.DefinitionList
                                 }}
+                                plugins={[deflist]}
                             />
-                            <ReactMarkDown
-                                source={insertInPlaceholders(
-                                    content.demo5.result.location,
-                                    state.location.weergavenaam
-                                )}
-                                renderers={{ paragraph: AscLocal.Paragraph }}
-                            />
-                            {/* // TODO: Include map here */}
-                            <ReactMarkDown
-                                source={insertInPlaceholders(content.demo5.result.report, state.report)}
-                                renderers={{ paragraph: AscLocal.Paragraph }}
-                            />
-                            {state.mobilenumber && (
-                                <ReactMarkDown
-                                    source={insertInPlaceholders(content.demo5.result.mobilenumber, state.mobilenumber)}
-                                    renderers={{ paragraph: AscLocal.Paragraph }}
-                                />
+                            {state.location.latLng && (
+                                <StyledMap
+                                    options={{
+                                        attributionControl: false,
+                                        zoomControl: false,
+                                        boxZoom: false,
+                                        dragging: false,
+                                        center: state.location.latLng,
+                                        zoom: 11,
+                                        keyboard: false,
+                                        tap: false,
+                                        scrollWheelZoom: false,
+                                        touchZoom: false
+                                    }}
+                                >
+                                    <Marker latLng={state.location.latLng} />
+                                    <BaseLayer />
+                                </StyledMap>
                             )}
-                            {state.email && (
-                                <ReactMarkDown
-                                    source={insertInPlaceholders(content.demo5.result.email, state.email)}
-                                    renderers={{ paragraph: AscLocal.Paragraph }}
-                                />
-                            )}
+                            <ReactMarkDown
+                                source={content.demo5.result.yourReportAfterMap.replace(/\[(.*?)\]/gm, replaceVars)}
+                                renderers={{
+                                    heading: AscLocal.H3,
+                                    list: AscLocal.UL,
+                                    ...AscLocal.DefinitionList
+                                }}
+                                plugins={[deflist]}
+                            />
                         </AscLocal.TintedContainerLevel2>
+
                         <ReactMarkDown
                             source={!state.hasError ? '' : content.demo5.result.disclaimerError}
                             renderers={{ paragraph: AscLocal.Paragraph }}
@@ -377,6 +388,13 @@ const Demo5: React.FC<IProps> = () => {
 
 const StyledButton = styled(Button)`
     margin: ${themeSpacing(0, 6, 6, 0)};
+`;
+
+const StyledMap = styled(Map)`
+    height: 128px;
+    width: 100%;
+    margin: ${themeSpacing(4)} 0;
+    z-index: 0;
 `;
 
 export default Demo5;

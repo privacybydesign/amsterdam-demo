@@ -199,7 +199,7 @@ exports[`Demo4 should render the initial header image 1`] = `
 
 <img
   alt="Foto van geveltuin in straat"
-  class="sc-psQdR c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/geveltuin-940.jpg"
   srcset="/assets/geveltuin-290.jpg 580w, /assets/geveltuin-940.jpg 1880w"
@@ -375,6 +375,14 @@ exports[`Demo4 should update the page after completing the IRMA flow 1`] = `
 
 }
 
+@media (min-width:768px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
 @media (max-width:1199px) {
 
 }
@@ -405,7 +413,7 @@ exports[`Demo4 should update the page after completing the IRMA flow 1`] = `
 
 <img
   alt="Foto van geveltuin in straat"
-  class="sc-psQdR c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/geveltuin-overzicht-940.jpg"
   srcset="/assets/geveltuin-overzicht-290.jpg 580w, /assets/geveltuin-overzicht-940.jpg 1880w"
@@ -763,6 +771,14 @@ exports[`Demo4 should update the page after completing the IRMA flow 2`] = `
 
 }
 
+@media (min-width:768px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
 @media (max-width:1199px) {
 
 }
@@ -1034,7 +1050,7 @@ exports[`Demo4 should update the page after failing the IRMA flow 1`] = `
 
 <img
   alt="Foto van geveltuin in straat"
-  class="sc-psQdR c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/geveltuin-940.jpg"
   srcset="/assets/geveltuin-290.jpg 580w, /assets/geveltuin-940.jpg 1880w"

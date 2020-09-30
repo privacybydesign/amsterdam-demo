@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useReducer } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
+import defList from '@services/deflist';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion } from '@datapunt/asc-ui';
 import { Checkmark, Alert } from '@datapunt/asc-assets';
@@ -26,6 +27,10 @@ const Demo4: React.FC<IProps> = () => {
 
     const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
     const [state, dispatch] = useReducer(reducer, initialState);
+
+    function replaceVars(str, p1) {
+        return state[p1] || '-';
+    }
 
     const validateForm = () => {
         const el = formEl.current.querySelector('input[name=geveltuin]:checked');
@@ -82,10 +87,6 @@ const Demo4: React.FC<IProps> = () => {
     });
 
     const { hasResult, hasError, formValid } = state;
-
-    function replaceVars(str, p1) {
-        return state[p1] || '-';
-    }
 
     // Update header image
     useEffect(() => {
@@ -211,17 +212,30 @@ const Demo4: React.FC<IProps> = () => {
                             source={content.demo4.result.intro}
                             renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                         />
+
                         <AscLocal.TintedContainerLevel3>
                             <ReactMarkDown
                                 source={content.demo4.result.yourDemoRequest.replace(/\[(.*?)\]/gm, replaceVars)}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                renderers={{
+                                    heading: AscLocal.H3,
+                                    paragraph: AscLocal.Paragraph,
+                                    list: AscLocal.UL,
+                                    ...AscLocal.DefinitionList
+                                }}
+                                plugins={[defList]}
                             />
                         </AscLocal.TintedContainerLevel3>
 
                         <AscLocal.TintedContainerLevel3>
                             <ReactMarkDown
                                 source={content.demo4.result.yourDetails.replace(/\[(.*?)\]/gm, replaceVars)}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                renderers={{
+                                    heading: AscLocal.H3,
+                                    paragraph: AscLocal.Paragraph,
+                                    list: AscLocal.UL,
+                                    ...AscLocal.DefinitionList
+                                }}
+                                plugins={[defList]}
                             />
                         </AscLocal.TintedContainerLevel3>
                     </ContentBlock>
