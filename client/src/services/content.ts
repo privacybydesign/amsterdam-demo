@@ -382,7 +382,7 @@ We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`
         buttonNoIRMA: 'Demo-melding doen',
         result: {
             intro: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\nDit is een demo; u heeft geen melding overlast gedaan.**
-  
+
 Hieronder vindt u alle gegevens van uw demo-melding:`,
             reportTitle: `### Uw demo-melding overlast`,
             location: `Locatie\n** [] **\n`,
@@ -401,6 +401,45 @@ Dit kan worden gebruikt voor:
 - U heeft geen gegevens uit IRMA gebruikt.`,
             disclaimerError: `Dit is een demo; u heeft geen melding overlast gedaan.`
         }
+    },
+
+    cookies: {
+        breadcrumbs: `- [Home](/)
+- [Cookies](/cookies)`,
+        intro: `# Cookies op deze site en privacy
+**Een cookie is een klein bestandje, dat met pagina's van deze website wordt meegestuurd en door uw browser op uw computer wordt opgeslagen. Wij gebruiken cookies om de website goed te laten functioneren en om het gebruik van de website te analyseren.**`,
+        explanation: {
+            title: `Hoe werken cookies?`,
+            body: `We kennen drie typen cookies.
+### Functionele cookies
+Deze cookies zijn nodig om de website te laten functioneren en instellingen of voorkeuren vast te houden tijdens een bezoek aan de website of tot een volgend bezoek. Bijvoorbeeld taalinstellingen, of ingevulde velden in een formulier.
+### Analytische cookies
+Deze cookies laten zien hoe u de website gebruikt. Wij weten dan welke delen van de website interessant zijn en welke niet, of de website goed werkt en hoe we de website kunnen verbeteren.
+### Cookies van websites van derden
+Bij onderdelen van de website zetten websites van derden cookies. Het gaat dan om handige extra’s: zoals een Google-plattegrond met interactieve routebeschrijving, een 'like'-knop van Facebook, of de mogelijkheid om iets door te twitteren. Door deze cookies 'weet' de website die u bekijkt, of u bij Google, Facebook of Twitter bent ingelogd.
+        `
+        },
+        list: `
+Hieronder volgt een overzicht van de cookies die binnen deze site in gebruik zijn:
+
+### NET
+Dit cookie wordt gebruikt door onze servers om contact te houden met de gebruiker tijdens het gebruik van de website (een zogenaamde sessiecookie) en wordt automatisch verwijderd zodra u de browser sluit.
+
+### __cfduid
+Dit cookie wordt gebruikt door onze Content Delivery Network-provider om oneigenlijk verkeer (van bijvoorbeeld robots en virussen) te weren.
+
+### Lettertype licenties
+Er worden een aantal cookies gebruikt om het gebruik van lettertypen en bijbehorende licenties te checken.
+
+### Campaign ID voor feedback formulier
+Ten behoeve van het feedback formulier slaan we een campaign ID op in localStorage.
+Dit zorgt ervoor dat feedback van gebruikers op de juiste plek wordt opgeslagen.
+`,
+        delete: {
+            title: `Cookies verwijderen`,
+            body: `U kunt uw cookies verwijderen via de instelling van uw browser. Ook kunt u via de instelling van uw browser de plaatsing van cookies helemaal of ten dele uitsluiten. Meer informatie over cookies en het uitschakelen van cookies vindt u op [veiliginternetten.nl](https://www.veiliginternetten.nl). Voor professionals: [Nationaal Cyber Security Centrum](https://www.ncsc.nl/).`
+        },
+        outro: `[Terug naar de homepage](/)`
     },
 
     responsiveImages: {
@@ -452,7 +491,7 @@ Heeft u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan c
 Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I amsterdam](https://www.iamsterdam.com/nl)`,
         bottom: `[Over deze site](https://www.amsterdam.nl/overdezesite/)
 [Privacy](https://www.amsterdam.nl/privacy/)
-[Cookies op deze site](https://www.amsterdam.nl/privacy/cookies-site/)`
+[Cookies op deze site](/cookies)`
     },
 
     qrcode: {
