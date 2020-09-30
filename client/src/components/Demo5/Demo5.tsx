@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ReactMarkDown from 'react-markdown';
 import { Accordion, themeSpacing, Button } from '@datapunt/asc-ui';
 import { Alert as AlertIcon } from '@datapunt/asc-assets';
-import { Map, BaseLayer, Marker } from '@datapunt/arm-core';
+import { Map, BaseLayer, Marker, getCrsRd } from '@datapunt/arm-core';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import deflist from '@services/deflist';
@@ -158,7 +158,6 @@ const Demo5: React.FC<IProps> = () => {
 
     // Determine if we are using the IRMA flow (e.g. user has selected at least one of both options)
     const noIRMAFlow = state.optionEmail === false && state.optionPhone === false;
-
     return (
         <PageTemplate>
             <ContentBlock>
@@ -335,12 +334,13 @@ const Demo5: React.FC<IProps> = () => {
                             {state.location.latLng && (
                                 <StyledMap
                                     options={{
+                                        crs: getCrsRd(),
                                         attributionControl: false,
                                         zoomControl: false,
                                         boxZoom: false,
                                         dragging: false,
                                         center: state.location.latLng,
-                                        zoom: 11,
+                                        zoom: 13,
                                         keyboard: false,
                                         tap: false,
                                         scrollWheelZoom: false,
