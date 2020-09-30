@@ -188,6 +188,10 @@ const init = async () => {
         } mode.`
       )
     );
+
+    if (process.env.NODE_ENV === "acceptance") {
+      console.log("Authentication is enabled.");
+    }
   } catch (e) {
     console.log(e);
     error(e);
