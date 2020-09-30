@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback, useReducer } from 'react';
 import styled from 'styled-components';
-import createIrmaSession from '@services/createIrmaSession';
-import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
-import deflist from '@services/deflist';
-import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion, themeSpacing, Button } from '@datapunt/asc-ui';
 import { Alert as AlertIcon } from '@datapunt/asc-assets';
 import { Map, BaseLayer, Marker } from '@datapunt/arm-core';
+import createIrmaSession from '@services/createIrmaSession';
+import content from '@services/content';
+import deflist from '@services/deflist';
+import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
