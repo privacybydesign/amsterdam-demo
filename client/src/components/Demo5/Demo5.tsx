@@ -321,7 +321,10 @@ const Demo5: React.FC<IProps> = () => {
                         />
                         <AscLocal.TintedContainerLevel2>
                             <ReactMarkDown
-                                source={content.demo5.result.yourReportBeforeMap.replace(/\[(.*?)\]/gm, replaceVars)}
+                                source={content.demo5.result.yourReportBeforeMap.replace(
+                                    /\[location\]/gm,
+                                    state.location.weergavenaam
+                                )}
                                 renderers={{
                                     heading: AscLocal.H3,
                                     list: AscLocal.UL,

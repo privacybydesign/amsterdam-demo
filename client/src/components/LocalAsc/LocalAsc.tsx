@@ -118,23 +118,11 @@ export const DD = styled.dd`
 `;
 
 export const DefinitionList = {
-    definitionList: DL,
+    definitionlist: DL,
     descriptionlist: DL,
     descriptionterm: DT,
     descriptiondetails: DD
 };
-
-//  (props) {
-//     return <dl>{props.children}</dl>;
-// }
-
-// function DefinitionTerm(props) {
-//     return <dt>{props.children}</dt>;
-// }
-
-// function DefinitionDetails(props) {
-//     return <dd>{props.children}</dd>;
-// }
 
 export const Image = styled.img`
     width: 100%;
