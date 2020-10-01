@@ -60,6 +60,7 @@ const FooterLink: React.FC<IFooterLinkProps> = ({ href, children }) => (
 );
 
 const FooterSection = styled.div`
+    width: 100%;
     p,
     li {
         color: ${themeColor('tint', 'level1')};
