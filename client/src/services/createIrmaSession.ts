@@ -1,6 +1,26 @@
 import axios from 'axios';
 import * as irma from '@privacybydesign/irmajs';
 
+const nativeDrawImage = CanvasRenderingContext2D.prototype.drawImage;
+
+const wrapDrawImage = (holderElementId: string) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    window.CanvasRenderingContext2D.prototype.drawImage = function (...args: any) {
+        // Draw the original image
+        nativeDrawImage.call(this, ...args);
+
+        // Remove the old logo
+        const canvas = document.getElementById(holderElementId) as HTMLCanvasElement;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#dddbdb';
+        ctx.fillRect(82, 62, 65, 100);
+    };
+};
+
+const unwrapDrawImage = () => {
+    window.CanvasRenderingContext2D.prototype.drawImage = nativeDrawImage;
+};
+
 // Types
 export interface IIrmaServerConfig {
     requestorname: string;
@@ -55,7 +75,11 @@ const createIrmaSession = async (dataType: string, holderElementId: string, quer
     }
 
     try {
+        // This function wraps the canvas context drawImage method to be able to run some code when the QR code disappears
+        wrapDrawImage(holderElementId);
         const result = await irma.handleSession(sessionPtr, sessionOptions);
+        unwrapDrawImage();
+
         // Only get the last part of each result
         return reduceIRMAResult(result.disclosed);
     } catch (e) {
