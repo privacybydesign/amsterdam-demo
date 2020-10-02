@@ -430,8 +430,8 @@ Dit cookie wordt gebruikt door onze Content Delivery Network-provider om oneigen
 ### Lettertype licenties
 Er worden een aantal cookies gebruikt om het gebruik van lettertypen en bijbehorende licenties te checken.
 
-### Campaign ID voor feedback formulier
-Ten behoeve van het feedback formulier slaan we een campaign ID op in localStorage.
+### Campaign ID voor feedbackformulier
+Ten behoeve van het feedbackformulier slaan we een campaign ID op in localStorage.
 Dit zorgt ervoor dat feedback van gebruikers op de juiste plek wordt opgeslagen.
 `,
         delete: {
