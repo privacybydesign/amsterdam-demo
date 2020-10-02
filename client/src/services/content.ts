@@ -157,7 +157,8 @@ Bewijs in welke wijk u woont en dat u ouder bent dan 18 jaar door uzelf bekend t
         },
         why: {
             title: `Waarom worden deze gegevens gevraagd?`,
-            body: `**Uw postcode**  \nDe gemeente weet dan in welke wijk u woont.  \n  \n**Ouder dan 18 jaar**  \nDe gemeente weet dan of u mag stemmen.`
+            body: `**Uw postcode**  \nDe gemeente weet dan in welke wijk u woont.\n
+**Ouder dan 18 jaar**  \nDe gemeente weet dan of u mag stemmen.`
         },
         button: `Bewijzen met IRMA`,
         result: `## Wat heeft u zojuist gedaan?
@@ -190,11 +191,8 @@ Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgen
 - Uw burgerservicenummer (BSN)`,
             why: {
                 title: `Waarom worden deze gegevens gevraagd?`,
-                body: `**Uw volledige naam**  \n
-De gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.  \n
-  \n
-**Uw burgerservicenummer (BSN)**  \n
-De gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.`
+                body: `**Uw volledige naam**  \nDe gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.\n
+**Uw burgerservicenummer (BSN)**  \nDe gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.`
             }
         },
         proven: {
@@ -238,14 +236,10 @@ Doe een demo-aanvraag door uzelf bekend te maken met de volgende gegevens:
 `,
             why: {
                 title: `Waarom worden deze gegevens gevraagd?`,
-                body: `**Volledige naam**\n
-De gemeente wil u graag aanspreken met uw naam.\n
-**Woonadres**\n
-De gemeente heeft uw straat, huisnummer en woonplaats nodig om te weten voor welke locatie de aanvraag is.\n
-**Mobiel telefoonnummer**\n
-De gemeente wil u kunnen bereiken voor vragen over uw aanvraag.\n
-**E-mailadres**\n
-De gemeente wil u een e-mail sturen met de bevestiging van uw aanvraag.\n
+                body: `**Volledige naam**  \nDe gemeente wil u graag aanspreken met uw naam.\n
+**Woonadres**  \nDe gemeente heeft uw straat, huisnummer en woonplaats nodig om te weten voor welke locatie de aanvraag is.\n
+**Mobiel telefoonnummer**  \nDe gemeente wil u kunnen bereiken voor vragen over uw aanvraag.\n
+**E-mailadres**  \nDe gemeente wil u een e-mail sturen met de bevestiging van uw aanvraag.\n
 `
             },
             intro2: `
@@ -317,10 +311,8 @@ Doe een demo-melding door uzelf bekend te maken met de volgende gegevens:
 `,
             why: {
                 title: `Waarom worden deze gegevens gevraagd?`,
-                body: `**Mobiel telefoonnummer**\n
-De gemeente kan u dan vragen stellen over uw melding.\n
-**E-mailadres**\n
-De gemeente kan u op de hoogte houden over uw melding. En u kunt met dit e-mailadres de voortgang volgen in Mijn Amsterdam.\n
+                body: `**Mobiel telefoonnummer**  \nDe gemeente kan u dan vragen stellen over uw melding.\n
+**E-mailadres**  \nDe gemeente kan u op de hoogte houden over uw melding. En u kunt met dit e-mailadres de voortgang volgen in Mijn Amsterdam.\n
 `
             },
             alert: {
