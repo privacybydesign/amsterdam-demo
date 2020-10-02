@@ -136,7 +136,6 @@ export const DownloadImage = styled.img`
 `;
 
 export const LinkWithChevron = styled(Link).attrs({ variant: 'with-chevron' })`
-    width: 100%;
     margin-right: ${themeSpacing(5)};
     a {
         color: ${themeColor('tint', 'level1')};

@@ -54,9 +54,9 @@ interface IFooterLinkProps {
 }
 
 const FooterLink: React.FC<IFooterLinkProps> = ({ href, children }) => (
-    <LinkWithChevron darkBackground href={href}>
+    <StyledLinkWithChevron darkBackground href={href}>
         {children}
-    </LinkWithChevron>
+    </StyledLinkWithChevron>
 );
 
 const FooterSection = styled.div`
@@ -103,6 +103,10 @@ const StyledFooterBottom = styled(FooterBottom)`
         margin: 0 -230px;
         padding: 0 230px;
     }
+`;
+
+const StyledLinkWithChevron = styled(LinkWithChevron)`
+    width: 100%;
 `;
 
 export default Footer;
