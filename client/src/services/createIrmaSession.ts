@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as irma from '@privacybydesign/irmajs';
 
-const nativeDrawImage = CanvasRenderingContext2D.prototype.drawImage;
+const nativeDrawImage = window.CanvasRenderingContext2D.prototype.drawImage;
 
 const wrapDrawImage = (holderElementId: string) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
