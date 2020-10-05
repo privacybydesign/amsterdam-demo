@@ -114,7 +114,10 @@ const createIrmaRequest = (content) => {
 
 // Setup authentication for acceptance
 const secured = function (req, res, next) {
-  if (process.env.NODE_ENV !== "acceptance") {
+  if (
+    process.env.NODE_ENV !== "acceptance" &&
+    process.env.NODE_ENV !== "production"
+  ) {
     return next();
   }
 
@@ -189,7 +192,10 @@ const init = async () => {
       )
     );
 
-    if (process.env.NODE_ENV === "acceptance") {
+    if (
+      process.env.NODE_ENV === "acceptance" ||
+      process.env.NODE_ENV === "production"
+    ) {
       console.log("Authentication is enabled.");
     }
   } catch (e) {
