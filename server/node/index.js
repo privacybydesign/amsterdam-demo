@@ -197,7 +197,7 @@ const init = async () => {
       process.env.NODE_ENV === "acceptance" ||
       process.env.NODE_ENV === "production"
     ) {
-      console.log("Authentication is enabled.");
+      console.log("Authentication is enabled!");
     }
   } catch (e) {
     console.log(e);
