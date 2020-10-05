@@ -54,15 +54,20 @@ interface IFooterLinkProps {
 }
 
 const FooterLink: React.FC<IFooterLinkProps> = ({ href, children }) => (
-    <LinkWithChevron darkBackground href={href}>
+    <StyledLinkWithChevron darkBackground href={href}>
         {children}
-    </LinkWithChevron>
+    </StyledLinkWithChevron>
 );
 
 const FooterSection = styled.div`
+    width: 100%;
     p,
     li {
         color: ${themeColor('tint', 'level1')};
+
+        blockquote {
+            margin: 0 0 0 ${themeSpacing(4)};
+        }
     }
 `;
 
@@ -98,6 +103,10 @@ const StyledFooterBottom = styled(FooterBottom)`
         margin: 0 -230px;
         padding: 0 230px;
     }
+`;
+
+const StyledLinkWithChevron = styled(LinkWithChevron)`
+    width: 100%;
 `;
 
 export default Footer;

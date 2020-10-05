@@ -1,6 +1,10 @@
 module.exports = {
     babelrc: false,
-    presets: ['@babel/preset-env', '@babel/preset-typescript', '@babel/preset-react'],
+    presets: [
+        ['@babel/preset-env', { useBuiltIns: 'entry', corejs: 3, targets: 'defaults, IE 11' }],
+        '@babel/preset-typescript',
+        '@babel/preset-react'
+    ],
     plugins: [
         '@babel/plugin-transform-runtime',
         '@babel/proposal-class-properties',

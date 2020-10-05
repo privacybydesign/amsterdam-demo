@@ -32,3 +32,5 @@ jest.mock('react-router-dom', () => ({
         state: ''
     })
 }));
+
+window.CanvasRenderingContext2D = Object;

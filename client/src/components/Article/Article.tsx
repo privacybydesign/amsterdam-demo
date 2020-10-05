@@ -48,7 +48,6 @@ const StyledLink = styled(Link)`
     }
 
     img {
-        width: 100%;
         margin-bottom: ${themeSpacing(2)};
     }
 

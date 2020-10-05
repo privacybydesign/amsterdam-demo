@@ -4,6 +4,9 @@ exports[`Demo1 should render the initial header image 1`] = `
 .c0 {
   width: 100%;
   margin-bottom: 8px;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 @media screen and (min-width:1200px) {
@@ -216,7 +219,7 @@ exports[`Demo1 should render the initial header image 1`] = `
 
 <img
   alt="Stadsbeeld van een terras"
-  class="c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/leeftijd-940.jpg"
   srcset="/assets/leeftijd-290.jpg 580w, /assets/leeftijd-940.jpg 1880w"
@@ -227,6 +230,9 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 .c0 {
   width: 100%;
   margin-bottom: 8px;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 @media screen and (min-width:1200px) {
@@ -439,7 +445,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 
 <img
   alt="Foto van een plein met kinderen"
-  class="c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/jonger-dan-18-940.jpg"
   srcset="/assets/jonger-dan-18-290.jpg 580w, /assets/jonger-dan-18-940.jpg 1880w"
@@ -888,6 +894,9 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 .c0 {
   width: 100%;
   margin-bottom: 8px;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 @media screen and (min-width:1200px) {
@@ -1100,7 +1109,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 
 <img
   alt="Straatbeeld van volwassenen op fiets"
-  class="c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/jonger-dan-65-940.jpg"
   srcset="/assets/jonger-dan-65-290.jpg 580w, /assets/jonger-dan-65-940.jpg 1880w"
@@ -1549,6 +1558,9 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 .c0 {
   width: 100%;
   margin-bottom: 8px;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 @media screen and (min-width:1200px) {
@@ -1761,7 +1773,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 
 <img
   alt="Foto van mensen in een café"
-  class="c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/ouder-dan-18-940.jpg"
   srcset="/assets/ouder-dan-18-290.jpg 580w, /assets/ouder-dan-18-940.jpg 1880w"
@@ -2216,6 +2228,9 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 .c0 {
   width: 100%;
   margin-bottom: 8px;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 @media screen and (min-width:1200px) {
@@ -2428,7 +2443,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 
 <img
   alt="Foto van dansende ouderen"
-  class="c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/ouder-dan-65-940.jpg"
   srcset="/assets/ouder-dan-65-290.jpg 580w, /assets/ouder-dan-65-940.jpg 1880w"

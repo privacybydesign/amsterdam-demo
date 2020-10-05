@@ -37,7 +37,7 @@ export const H3 = styled.h3`
 
 export const H4 = styled.h4`
     line-height: ${lineHeight};
-    margin: ${themeSpacing(2, 0)};
+    margin: ${themeSpacing(2, 0, 0, 0)};
 `;
 
 export const Paragraph = styled(AscParagraph)`
@@ -90,6 +90,39 @@ export const OL = styled.ol`
         margin-left: ${themeSpacing(4)};
     }
 `;
+
+export const DL = styled.dl`
+    margin: ${themeSpacing(0, 0, 2, 0)};
+`;
+
+export const DT = styled.dt`
+    line-height: 22px;
+    vertical-align: top;
+    margin: 0;
+
+    @media ${breakpoint('min-width', 'tabletM')} {
+        display: inline-block;
+        width: 40%;
+    }
+`;
+export const DD = styled.dd`
+    line-height: 22px;
+    vertical-align: top;
+    margin: 0;
+    font-weight: bold;
+
+    @media ${breakpoint('min-width', 'tabletM')} {
+        display: inline-block;
+        width: 60%;
+    }
+`;
+
+export const DefinitionList = {
+    definitionlist: DL,
+    descriptionlist: DL,
+    descriptionterm: DT,
+    descriptiondetails: DD
+};
 
 export const Image = styled.img`
     width: 100%;
@@ -204,12 +237,28 @@ export const Alert = styled(
     }
 `;
 
+export const CroppedAlert = styled(Alert)`
+    padding: ${themeSpacing(2)};
+
+    h3,
+    p {
+        margin-bottom: 0;
+    }
+
+    p {
+        margin-top: ${themeSpacing(1)};
+    }
+`;
+
 export const Header = styled(AscHeader).attrs(({ theme }) => ({
     css: {
         zIndex: 10,
         width: 'auto',
-        flex: 1,
-        '&::after': { backgroundColor: themeColor('tint', 'level2'), marginLeft: -188, marginRight: -188 },
+        '&::after': {
+            backgroundColor: themeColor('tint', 'level2'),
+            marginLeft: -188,
+            marginRight: -188
+        },
         paddingLeft: 32,
         [`@media ${theme.breakpoints.laptopM('max-width')}`]: {
             marginLeft: '-32px',

@@ -4,6 +4,9 @@ exports[`Demo5 should render the initial header image 1`] = `
 .c0 {
   width: 100%;
   margin-bottom: 8px;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 @media screen and (min-width:1200px) {
@@ -216,7 +219,7 @@ exports[`Demo5 should render the initial header image 1`] = `
 
 <img
   alt="Foto van straatafval"
-  class="c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/overlast-melden-straatafval-940.jpg"
   srcset="/assets/overlast-melden-straatafval-290.jpg 580w, /assets/overlast-melden-straatafval-940.jpg 1880w"
@@ -594,6 +597,14 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
 
 }
 
+@media (min-width:768px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
 @media (max-width:1199px) {
 
 }
@@ -671,6 +682,9 @@ exports[`Demo5 should update the page after completing the IRMA flow 2`] = `
 .c0 {
   width: 100%;
   margin-bottom: 8px;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 @media screen and (min-width:1200px) {
@@ -853,6 +867,14 @@ exports[`Demo5 should update the page after completing the IRMA flow 2`] = `
 
 }
 
+@media (min-width:768px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
 @media (max-width:1199px) {
 
 }
@@ -883,7 +905,7 @@ exports[`Demo5 should update the page after completing the IRMA flow 2`] = `
 
 <img
   alt="Foto van ondergrondse afvalbakken"
-  class="c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/overlast-melden-bloembakken-940.jpg"
   srcset="/assets/overlast-melden-bloembakken-290.jpg 580w, /assets/overlast-melden-bloembakken-940.jpg 1880w"
@@ -1254,6 +1276,14 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 
 }
 
+@media (min-width:768px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
 @media (max-width:1199px) {
 
 }
@@ -1332,6 +1362,9 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 .c0 {
   width: 100%;
   margin-bottom: 8px;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 @media screen and (min-width:1200px) {
@@ -1511,6 +1544,14 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 }
 
 @media screen and (min-width:768px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:768px) {
 
 }
 
@@ -1544,7 +1585,7 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 
 <img
   alt="Foto van ondergrondse afvalbakken"
-  class="c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/overlast-melden-bloembakken-940.jpg"
   srcset="/assets/overlast-melden-bloembakken-290.jpg 580w, /assets/overlast-melden-bloembakken-940.jpg 1880w"
@@ -1555,6 +1596,9 @@ exports[`Demo5 should update the page after failing the IRMA flow 1`] = `
 .c0 {
   width: 100%;
   margin-bottom: 8px;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 @media screen and (min-width:1200px) {
@@ -1737,6 +1781,14 @@ exports[`Demo5 should update the page after failing the IRMA flow 1`] = `
 
 }
 
+@media (min-width:768px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
 @media (max-width:1199px) {
 
 }
@@ -1767,7 +1819,7 @@ exports[`Demo5 should update the page after failing the IRMA flow 1`] = `
 
 <img
   alt="Foto van straatafval"
-  class="c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/overlast-melden-straatafval-940.jpg"
   srcset="/assets/overlast-melden-straatafval-290.jpg 580w, /assets/overlast-melden-straatafval-940.jpg 1880w"
@@ -2135,6 +2187,14 @@ exports[`Demo5 should update the page after failing the IRMA flow 2`] = `
 }
 
 @media screen and (min-width:768px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:768px) {
 
 }
 

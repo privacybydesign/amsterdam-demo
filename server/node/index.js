@@ -112,6 +112,34 @@ const createIrmaRequest = (content) => {
   };
 };
 
+// Setup authentication for acceptance
+const secured = function (req, res, next) {
+  if (
+    process.env.NODE_ENV !== "acceptance" &&
+    process.env.NODE_ENV !== "production"
+  ) {
+    return next();
+  }
+
+  // check for basic auth header
+  if (
+    !req.headers.authorization ||
+    req.headers.authorization.indexOf("Basic ") === -1
+  ) {
+    res.setHeader("WWW-Authenticate", "Basic");
+    return res.status(401).sendFile(path.join(__dirname, "/pages/403.html"));
+  }
+
+  // check the entered credentials
+  const credentials = Buffer.from("irma:demo").toString("base64");
+  if (req.headers.authorization !== `Basic ${credentials}`) {
+    res.setHeader("WWW-Authenticate", "Basic");
+    return res.sendFile(path.join(__dirname, "/pages/403.html"));
+  }
+
+  next();
+};
+
 const init = async () => {
   if (!process.env.PRIVATE_KEY) {
     throw new Error("PRIVATE_KEY is not set");
@@ -140,8 +168,8 @@ const init = async () => {
       process.env.NODE_ENV === "acceptance" ||
       process.env.NODE_ENV === "production"
     ) {
-      app.use(express.static(config.docroot));
-      app.get("*", function (req, res) {
+      app.use(express.static(config.docroot, { index: false }));
+      app.get("*", secured, function (req, res) {
         res.sendFile(path.join(__dirname, config.docroot, "index.html"));
       });
     } else {
@@ -163,6 +191,13 @@ const init = async () => {
         } mode.`
       )
     );
+
+    if (
+      process.env.NODE_ENV === "acceptance" ||
+      process.env.NODE_ENV === "production"
+    ) {
+      console.log("Authentication is enabled.");
+    }
   } catch (e) {
     console.log(e);
     error(e);

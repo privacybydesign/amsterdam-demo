@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback, useReducer } from 'react';
 import styled from 'styled-components';
-import createIrmaSession from '@services/createIrmaSession';
-import content, { insertInPlaceholders } from '@services/content';
 import ReactMarkDown from 'react-markdown';
-import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion, themeSpacing, Button } from '@datapunt/asc-ui';
 import { Alert as AlertIcon } from '@datapunt/asc-assets';
+import { Map, BaseLayer, Marker, getCrsRd } from '@datapunt/arm-core';
+import createIrmaSession from '@services/createIrmaSession';
+import content from '@services/content';
+import deflist from '@services/deflist';
+import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
@@ -35,6 +37,10 @@ const Demo5: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
     const [state, dispatch] = useReducer(reducer, initialState);
     const formRef = useRef<HTMLFormElement>(null);
+
+    function replaceVars(str, p1) {
+        return state[p1] || null;
+    }
 
     // Form validator (uncontrolled)
     const validateForm = useCallback(
@@ -81,12 +87,11 @@ const Demo5: React.FC<IProps> = () => {
         [state.location]
     );
 
-    const updateLocationCallback = useCallback((location: Location[]) => {
-        const parsedLocation = location.length ? { id: location[0].id, weergavenaam: location[0].weergavenaam } : null;
+    const updateLocationCallback = useCallback((location: Location) => {
         dispatch({
             type: 'setLocation',
             payload: {
-                location: parsedLocation
+                location
             }
         });
     }, []);
@@ -153,7 +158,6 @@ const Demo5: React.FC<IProps> = () => {
 
     // Determine if we are using the IRMA flow (e.g. user has selected at least one of both options)
     const noIRMAFlow = state.optionEmail === false && state.optionPhone === false;
-
     return (
         <PageTemplate>
             <ContentBlock>
@@ -245,7 +249,7 @@ const Demo5: React.FC<IProps> = () => {
                             </AscLocal.AccordionContainer>
                             <ReactMarkDown source={content.demo5.form.title} renderers={{ heading: AscLocal.H3 }} />
 
-                            <CroppedAlert
+                            <AscLocal.CroppedAlert
                                 color={AscLocal.AlertColor.PRIMARY}
                                 iconUrl="assets/icon-info.svg"
                                 iconSize={14}
@@ -310,52 +314,90 @@ const Demo5: React.FC<IProps> = () => {
             {(state.hasResult || state.hasError) && (
                 <>
                     <ContentBlock>
-                        <ReactMarkDown source={content.demo5.result.intro} />
+                        <ReactMarkDown
+                            source={content.demo5.result.intro}
+                            renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                        />
                         <AscLocal.TintedContainerLevel2>
                             <ReactMarkDown
-                                source={content.demo5.result.reportTitle}
-                                renderers={{
-                                    heading: AscLocal.H3,
-                                    paragraph: AscLocal.Paragraph,
-                                    list: AscLocal.UL
-                                }}
-                            />
-                            <ReactMarkDown
-                                source={insertInPlaceholders(
-                                    content.demo5.result.location,
+                                source={content.demo5.result.yourReportBeforeMap.replace(
+                                    /\[location\]/gm,
                                     state.location.weergavenaam
                                 )}
-                                renderers={{ paragraph: AscLocal.Paragraph }}
+                                renderers={{
+                                    heading: AscLocal.H3,
+                                    list: AscLocal.UL,
+                                    ...AscLocal.DefinitionList
+                                }}
+                                plugins={[deflist]}
                             />
-                            {/* // TODO: Include map here */}
+                            {state.location.latLng && (
+                                <StyledMap
+                                    options={{
+                                        crs: getCrsRd(),
+                                        attributionControl: false,
+                                        zoomControl: false,
+                                        boxZoom: false,
+                                        dragging: false,
+                                        center: state.location.latLng,
+                                        zoom: 13,
+                                        keyboard: false,
+                                        tap: false,
+                                        scrollWheelZoom: false,
+                                        touchZoom: false
+                                    }}
+                                >
+                                    <Marker latLng={state.location.latLng} />
+                                    <BaseLayer />
+                                </StyledMap>
+                            )}
                             <ReactMarkDown
-                                source={insertInPlaceholders(content.demo5.result.report, state.report)}
-                                renderers={{ paragraph: AscLocal.Paragraph }}
+                                source={content.demo5.result.yourReportAfterMap.replace(/\[(.*?)\]/gm, replaceVars)}
+                                renderers={{
+                                    heading: AscLocal.H3,
+                                    list: AscLocal.UL,
+                                    ...AscLocal.DefinitionList
+                                }}
+                                plugins={[deflist]}
                             />
                             {state.mobilenumber && (
                                 <ReactMarkDown
-                                    source={insertInPlaceholders(content.demo5.result.mobilenumber, state.mobilenumber)}
-                                    renderers={{ paragraph: AscLocal.Paragraph }}
+                                    source={content.demo5.result.yourMobileNumber.replace(/\[(.*?)\]/gm, replaceVars)}
+                                    renderers={{
+                                        heading: AscLocal.H3,
+                                        list: AscLocal.UL,
+                                        ...AscLocal.DefinitionList
+                                    }}
+                                    plugins={[deflist]}
                                 />
                             )}
                             {state.email && (
                                 <ReactMarkDown
-                                    source={insertInPlaceholders(content.demo5.result.email, state.email)}
-                                    renderers={{ paragraph: AscLocal.Paragraph }}
+                                    source={content.demo5.result.yourEmail.replace(/\[(.*?)\]/gm, replaceVars)}
+                                    renderers={{
+                                        heading: AscLocal.H3,
+                                        list: AscLocal.UL,
+                                        ...AscLocal.DefinitionList
+                                    }}
+                                    plugins={[deflist]}
                                 />
                             )}
                         </AscLocal.TintedContainerLevel2>
+
                         <ReactMarkDown
-                            source={
-                                !state.hasError ? content.demo5.result.disclaimer : content.demo5.result.disclaimerError
-                            }
+                            source={!state.hasError ? '' : content.demo5.result.disclaimerError}
                             renderers={{ paragraph: AscLocal.Paragraph }}
                         />
                     </ContentBlock>
+
                     <EmphasisBlock>
                         <ContentBlock>
                             <ReactMarkDown
-                                source={!state.hasError ? content.demo5.result.rest : content.demo5.result.restError}
+                                source={
+                                    noIRMAFlow || state.hasError
+                                        ? content.demo5.result.restNoIRMA
+                                        : content.demo5.result.rest
+                                }
                                 renderers={{
                                     heading: AscLocal.H3,
                                     paragraph: AscLocal.Paragraph,
@@ -374,21 +416,15 @@ const Demo5: React.FC<IProps> = () => {
     );
 };
 
-const CroppedAlert = styled(AscLocal.Alert)`
-    padding: ${themeSpacing(2)};
-
-    h3,
-    p {
-        margin-bottom: 0;
-    }
-
-    p {
-        margin-top: ${themeSpacing(1)};
-    }
-`;
-
 const StyledButton = styled(Button)`
     margin: ${themeSpacing(0, 6, 6, 0)};
+`;
+
+const StyledMap = styled(Map)`
+    height: 128px;
+    width: 100%;
+    margin: ${themeSpacing(4)} 0;
+    z-index: 0;
 `;
 
 export default Demo5;

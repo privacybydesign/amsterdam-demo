@@ -6,7 +6,7 @@ interface IState {
     query?: string;
     autosuggest?: Location[] | null;
     latLng?: LatLngLiteral | null;
-    location?: Location[] | null;
+    location?: Location | null;
     showAutosuggest?: boolean;
 }
 
@@ -17,8 +17,7 @@ interface IAction {
         url?: string;
         query?: string;
         autosuggest?: Location[] | null;
-        latLng?: LatLngLiteral | null;
-        location?: Location[] | null;
+        location?: Location | null;
         showAutosuggest?: boolean;
     };
 }
@@ -26,6 +25,7 @@ interface IAction {
 export interface Location {
     id?: string;
     weergavenaam?: string;
+    latLng?: LatLngLiteral;
 }
 
 export const initialState: IState = {
@@ -33,7 +33,6 @@ export const initialState: IState = {
     url: '',
     query: '',
     autosuggest: null,
-    latLng: null,
     location: null,
     showAutosuggest: false
 };
@@ -51,12 +50,6 @@ export const reducer = (state: IState = initialState, action: IAction): IState =
             return {
                 ...state,
                 location: action.payload.location
-            };
-
-        case 'setLatLng':
-            return {
-                ...state,
-                latLng: action.payload.latLng
             };
 
         case 'hideAutosuggest':

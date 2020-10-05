@@ -16,12 +16,9 @@ export default {
     home: {
         breadcrumbs: `- [Home](/)`,
         title: `# Probeer IRMA uit`,
-        intro: `IRMA is een app waarmee u online kunt aantonen wie u bent.
-        IRMA biedt een nieuwe manier van inloggen, anders dan u kent van bijvoorbeeld DigiD.
+        intro: `IRMA is een app waarmee u online kunt aantonen wie u bent. IRMA biedt een nieuwe manier van inloggen, anders dan u kent van bijvoorbeeld DigiD. Binnenkort kunt u IRMA gebruiken in Amsterdam.
 
-Binnenkort kunt u IRMA gebruiken in Amsterdam.
-
-Ervaar nu vast wat u met IRMA kunt via verschillende demo’s.
+Ervaar nu vast wat u met IRMA kunt via verschillende demo’s. U doet de demo's met uw eigen gegevens. De gemeente Amsterdam slaat deze gegevens niet op.
         `,
         requirements: {
             title: `Wat heeft u nodig?`,
@@ -31,14 +28,14 @@ Ervaar nu vast wat u met IRMA kunt via verschillende demo’s.
 - Uw e-mailadres
 - Uw telefoonnummer
 
-## IRMA downloaden
+## IRMA installeren
 
 Download de IRMA-app voor iOS of Android:  \n
 [![App Store](/assets/download-app-store.svg "Download IRMA in de App Store")](https://apps.apple.com/nl/app/irma-authenticatie/id1294092994)
 [![Play Store](/assets/download-play-store.svg "Download IRMA in de Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
 
 Wilt u meer weten over IRMA?
-Ga naar de [website van IRMA](https://irma.app/)`
+Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
         },
         subtitle: `## Aan de slag met IRMA`,
         demo1Card: {
@@ -64,7 +61,7 @@ Ga naar de [website van IRMA](https://irma.app/)`
         sidebar: {
             box: `Eenvoudig en veilig in Amsterdam met IRMA
 ![](/assets/irma_logo.svg "Lees meer over IRMA")
-[Waarom IRMA?](https://irma.app/)
+[Waarom IRMA?](https://irma.app/?lang=nl)
           `,
             bottom: `# IRMA voor Amsterdammers
 [Hoe is IRMA getest met Amsterdammers?](https://irma.app/)`
@@ -74,8 +71,8 @@ Ga naar de [website van IRMA](https://irma.app/)`
         heading: `Dit is een demosite`,
         content: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
     },
-    downloadIrma: `Heeft u nog geen IRMA?  \n[Download IRMA](https://irma.app/)`,
-    noSavePromise: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.`,
+    downloadIrma: `Heeft u nog geen IRMA?  \n[Download IRMA](https://irma.app/?lang=nl)`,
+    noSavePromise: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.**`,
     callToAction: `[Probeer de andere demo’s](/)`,
     demoErrorAlert: {
         heading: `Niets doorgegeven`,
@@ -104,7 +101,7 @@ Ga naar de [website van IRMA](https://irma.app/)`
             heading: `Uw leeftijd`,
             content: `U bent jonger dan 65 jaar.`
         },
-        intro: `Met IRMA kunt u bewijzen hoe oud u bent zonder uw geboortedatum prijs te geven. U blijft dus anoniem.
+        intro: `**Met IRMA kunt u bewijzen hoe oud u bent zonder uw geboortedatum prijs te geven. U blijft dus anoniem.**
 # Probeer het uit
 Bewijs dat u ouder bent dan 18 jaar of 65 jaar door uzelf bekend te maken met de volgende gegevens:
 - Ouder dan 18
@@ -138,7 +135,7 @@ Bewijs dat u ouder bent dan 18 jaar of 65 jaar door uzelf bekend te maken met de
     demo2: {
         breadcrumbs: `- [Home](/)
 - [Demo 2: Ideeën voor uw buurt](/ideeen-voor-uw-buurt)`,
-        intro: `Met IRMA kunt u bewijzen in welke wijk u woont en zo meebeslissen over ideeën voor uw buurt zonder uw woonadres en geboortedatum prijs te geven. U blijft dus anoniem.
+        intro: `**Met IRMA kunt u bewijzen in welke wijk u woont en zo meebeslissen over ideeën voor uw buurt zonder uw woonadres en geboortedatum prijs te geven. U blijft dus anoniem.**
 # Probeer het uit
 Bewijs in welke wijk u woont en dat u ouder bent dan 18 jaar door uzelf bekend te maken met de volgende gegevens:
 - Postcode
@@ -160,7 +157,8 @@ Bewijs in welke wijk u woont en dat u ouder bent dan 18 jaar door uzelf bekend t
         },
         why: {
             title: `Waarom worden deze gegevens gevraagd?`,
-            body: `**Uw postcode**  \nDe gemeente weet dan in welke wijk u woont.  \n  \n**Ouder dan 18 jaar**  \nDe gemeente weet dan of u mag stemmen.`
+            body: `**Uw postcode**  \nDe gemeente weet dan in welke wijk u woont.\n
+**Ouder dan 18 jaar**  \nDe gemeente weet dan of u mag stemmen.`
         },
         button: `Bewijzen met IRMA`,
         result: `## Wat heeft u zojuist gedaan?
@@ -186,18 +184,15 @@ Dit kan worden gebruikt voor:
                 title: `Uw naam en burgerservicenummer`,
                 body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
             },
-            intro: `Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.
+            intro: `**Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.**
 ## Probeer het uit
 Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgende gegevens:
 - Uw volledige naam
 - Uw burgerservicenummer (BSN)`,
             why: {
                 title: `Waarom worden deze gegevens gevraagd?`,
-                body: `**Uw volledige naam**  \n
-De gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.  \n
-  \n
-**Uw burgerservicenummer (BSN)**  \n
-De gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.`
+                body: `**Uw volledige naam**  \nDe gemeente wil u binnen Mijn Amsterdam graag aanspreken met uw naam.\n
+**Uw burgerservicenummer (BSN)**  \nDe gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.`
             }
         },
         proven: {
@@ -223,11 +218,11 @@ De gemeente Amsterdam biedt u straks een keuze. U kunt straks inloggen in Mijn A
         unproven: {
             title: `# Demo 4: Geveltuin aanvragen`,
             alert: {
-                title: `Uw naam en burgerservicenummer`,
-                body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
+                title: `Dit is een demo`,
+                body: `Uw demo-aanvraag wordt niet naar de gemeente verstuurd.`
             },
-            intro1: `Met IRMA kunt u een aanvraag doen en hierin gegevens gebruiken die in uw IRMA-app staan.\n
-U hoeft minder in te vullen en de gemeente weet zeker dat u de aanvraag doet en dat de gegevens juist zijn.
+            intro1: `**Met IRMA kunt u een aanvraag doen en hierin gegevens gebruiken die in uw IRMA-app staan.**\n
+**U hoeft minder in te vullen en de gemeente weet zeker dat u de aanvraag doet en dat de gegevens juist zijn.**
 
 ## Probeer het uit
 Doe een demo-aanvraag door uzelf bekend te maken met de volgende gegevens:
@@ -241,14 +236,10 @@ Doe een demo-aanvraag door uzelf bekend te maken met de volgende gegevens:
 `,
             why: {
                 title: `Waarom worden deze gegevens gevraagd?`,
-                body: `**Volledige naam**\n
-De gemeente wil u graag aanspreken met uw naam.\n
-**Woonadres**\n
-De gemeente heeft uw straat, huisnummer en woonplaats nodig om te weten voor welke locatie de aanvraag is.\n
-**Mobiel telefoonnummer**\n
-De gemeente wil u kunnen bereiken voor vragen over uw aanvraag.\n
-**E-mailadres**\n
-De gemeente wil u een e-mail sturen met de bevestiging van uw aanvraag.\n
+                body: `**Volledige naam**  \nDe gemeente wil u graag aanspreken met uw naam.\n
+**Woonadres**  \nDe gemeente heeft uw straat, huisnummer en woonplaats nodig om te weten voor welke locatie de aanvraag is.\n
+**Mobiel telefoonnummer**  \nDe gemeente wil u kunnen bereiken voor vragen over uw aanvraag.\n
+**E-mailadres**  \nDe gemeente wil u een e-mail sturen met de bevestiging van uw aanvraag.\n
 `
             },
             intro2: `
@@ -271,25 +262,27 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
         },
         button: 'Aanvullen met IRMA',
         result: {
+            intro: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\nDit is een demo; u bent geen aanvraag voor een geveltuin gestart.**
+
+Hieronder vindt u alle gegevens van uw demo-aanvraag:`,
             yourDemoRequest: `### Uw demo-aanvraag
-** Uw keuze **\n
-geveltuin\n
-** Bent u de eigenaar van de woning waar de geveltuin komt? **\n
-[owner]
+Uw keuze  \n
+:   geveltuin  \n
+Bent u de eigenaar van de woning waar de geveltuin komt?  \n
+:   [owner]
 `,
             yourDetails: `### Uw gegevens\n
-** Naam **\n
-[name]\n
-** Straat en huisnummer **\n
-[street]\n
-** Postcode en plaats **\n
-[city]\n
-** Telefoonnummer **\n
-[telephone]\n
-** E-mail **\n
-[email]\n
+Naam  \n
+:   [name]  \n
+Straat en huisnummer  \n
+:   [street]  \n
+Postcode en plaats  \n
+:   [city]\n
+Telefoonnummer  \n
+:   [telephone]  \n
+E-mail  \n
+:   [email]  \n
 `,
-            disclaimer: `Dit is een demo; u bent geen aanvraag voor een geveltuin gestart.`,
             rest: `## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om een formulier in te vullen met uw gegevens.
 - U heeft een formulier ingevuld met gegevens uit officiële bronnen. De gemeente weet dat deze gegevens kloppen en kan zo’n aanvraag sneller behandelen.
@@ -308,8 +301,8 @@ Dit kan worden gebruikt voor:
 - [Demo 5: Overlast melden](/overlast-melden)`,
         unproven: {
             title: `# Demo 5: Overlast melden`,
-            intro1: `Met IRMA kunt u een melding van overlast aanvullen met het 06-nummer waarop u bereikbaar bent voor vragen en het e-mailadres waarop u een statusupdate wilt ontvangen.\n
-U gebruikt gegevens die in uw IRMA-app staan. De gemeente kan u dan benaderen en informeren.
+            intro1: `**Met IRMA kunt u een melding van overlast aanvullen met het 06-nummer waarop u bereikbaar bent voor vragen en het e-mailadres waarop u een statusupdate wilt ontvangen.**\n
+**U gebruikt gegevens die in uw IRMA-app staan. De gemeente kan u dan benaderen en informeren.**
 
 ## Probeer het uit
 Doe een demo-melding door uzelf bekend te maken met de volgende gegevens:
@@ -318,15 +311,13 @@ Doe een demo-melding door uzelf bekend te maken met de volgende gegevens:
 `,
             why: {
                 title: `Waarom worden deze gegevens gevraagd?`,
-                body: `**Mobiel telefoonnummer**\n
-De gemeente kan u dan vragen stellen over uw melding.\n
-**E-mailadres**\n
-De gemeente kan u op de hoogte houden over uw melding. En u kunt met dit e-mailadres de voortgang volgen in Mijn Amsterdam.\n
+                body: `**Mobiel telefoonnummer**  \nDe gemeente kan u dan vragen stellen over uw melding.\n
+**E-mailadres**  \nDe gemeente kan u op de hoogte houden over uw melding. En u kunt met dit e-mailadres de voortgang volgen in Mijn Amsterdam.\n
 `
             },
             alert: {
                 title: `Dit is een demo`,
-                body: `Uw melding wordt niet naar de gemeente verstuurd.`
+                body: `Uw demo-melding wordt niet naar de gemeente verstuurd.`
             },
             callToAction: `## Gegevens aanvullen met IRMA
 Vul uw demo-aanvraag aan met uw e-mail en/of telefoonnummer uit IRMA.`,
@@ -382,12 +373,21 @@ We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`
         button: 'Aanvullen met IRMA',
         buttonNoIRMA: 'Demo-melding doen',
         result: {
-            intro: `Hieronder vindt u alle gegevens van uw demo-melding:`,
-            reportTitle: `### Uw demo-melding overlast`,
-            location: `** Locatie **  \n[]\n`,
-            report: `** Beschrijving **  \n[]\n`,
-            mobilenumber: `** Uw telefoonnummer **  \n[]\n`,
-            email: `** Uw e-mailadres **  \n[]`,
+            intro: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\nDit is een demo; u heeft geen melding overlast gedaan.**
+
+Hieronder vindt u alle gegevens van uw demo-melding:`,
+            yourReportBeforeMap: `### Uw demo-melding overlast\n
+Locatie  \n
+:   [location]  \n`,
+            yourReportAfterMap: `
+Beschrijving  \n
+:   [report]  \n`,
+            yourMobileNumber: `
+Uw telefoonnummer  \n
+:   [mobilenumber]  \n`,
+            yourEmail: `
+Uw e-mailadres  \n
+:   [email]  \n`,
             rest: `## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om uw telefoonnummer en/of e-mailadres door te geven.
 - U heeft een melding gedaan met uw gegevens uit officiële bronnen.\n De gemeente weet dat deze gegevens kloppen en kan zo'n formulier sneller behandelen. \n
@@ -396,14 +396,49 @@ Als u via IRMA een melding overlast doet, kunt u geen fouten maken bij invullen 
 Dit kan worden gebruikt voor:
 - Meldingen die u op de website van de gemeente Amsterdam doet.
 - U toegang te geven om de voortgang van uw melding te volgen via Mijn Amsterdam.`,
-            disclaimer: `De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd. Dit is een demo; u heeft geen melding overlast gedaan.`,
-            restError: `## Wat heeft u zojuist gedaan?
-- U heeft geen gegevens uit IRMA gebruikt.
-
-Probeer nu nog een [demo-melding](/overlast-melden) te doen en kies dan om wel uw telefoonnummer en/of e-mailadres door te geven.
-`,
+            restNoIRMA: `## Wat heeft u zojuist gedaan?
+- U heeft geen gegevens uit IRMA gebruikt.`,
             disclaimerError: `Dit is een demo; u heeft geen melding overlast gedaan.`
         }
+    },
+
+    cookies: {
+        breadcrumbs: `- [Home](/)
+- [Cookies](/cookies)`,
+        intro: `# Cookies op deze site en privacy
+**Een cookie is een klein bestandje, dat met pagina's van deze website wordt meegestuurd en door uw browser op uw computer wordt opgeslagen. Wij gebruiken cookies om de website goed te laten functioneren en om het gebruik van de website te analyseren.**`,
+        explanation: {
+            title: `Hoe werken cookies?`,
+            body: `We kennen drie typen cookies.
+### Functionele cookies
+Deze cookies zijn nodig om de website te laten functioneren en instellingen of voorkeuren vast te houden tijdens een bezoek aan de website of tot een volgend bezoek. Bijvoorbeeld taalinstellingen, of ingevulde velden in een formulier.
+### Analytische cookies
+Deze cookies laten zien hoe u de website gebruikt. Wij weten dan welke delen van de website interessant zijn en welke niet, of de website goed werkt en hoe we de website kunnen verbeteren.
+### Cookies van websites van derden
+Bij onderdelen van de website zetten websites van derden cookies. Het gaat dan om handige extra’s: zoals een Google-plattegrond met interactieve routebeschrijving, een 'like'-knop van Facebook, of de mogelijkheid om iets door te twitteren. Door deze cookies 'weet' de website die u bekijkt, of u bij Google, Facebook of Twitter bent ingelogd.
+        `
+        },
+        list: `
+Hieronder volgt een overzicht van de cookies die binnen deze site in gebruik zijn:
+
+### NET
+Dit cookie wordt gebruikt door onze servers om contact te houden met de gebruiker tijdens het gebruik van de website (een zogenaamde sessiecookie) en wordt automatisch verwijderd zodra u de browser sluit.
+
+### __cfduid
+Dit cookie wordt gebruikt door onze Content Delivery Network-provider om oneigenlijk verkeer (van bijvoorbeeld robots en virussen) te weren.
+
+### Lettertype licenties
+Er worden een aantal cookies gebruikt om het gebruik van lettertypen en bijbehorende licenties te checken.
+
+### Campaign ID voor feedbackformulier
+Ten behoeve van het feedbackformulier slaan we een campaign ID op in localStorage.
+Dit zorgt ervoor dat feedback van gebruikers op de juiste plek wordt opgeslagen.
+`,
+        delete: {
+            title: `Cookies verwijderen`,
+            body: `U kunt uw cookies verwijderen via de instelling van uw browser. Ook kunt u via de instelling van uw browser de plaatsing van cookies helemaal of ten dele uitsluiten. Meer informatie over cookies en het uitschakelen van cookies vindt u op [veiliginternetten.nl](https://www.veiliginternetten.nl). Voor professionals: [Nationaal Cyber Security Centrum](https://www.ncsc.nl/).`
+        },
+        outro: `[Terug naar de homepage](/)`
     },
 
     responsiveImages: {
@@ -442,7 +477,7 @@ Probeer nu nog een [demo-melding](/overlast-melden) te doen en kies dan om wel u
         column1: `# Contact
 Heeft u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan contact met ons op.
 - [Contactformulier](https://formulieren.amsterdam.nl/tripleforms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx)
-- **[Bel het telefoonnummer 14 020](tel:14020)**\n  maandag tot en met vrijdag van 08.00 tot 18.00 uur
+- [Bel het telefoonnummer 14 020](tel:14020)  \n> maandag tot en met vrijdag van 08.00 tot 18.00 uur
 - [Contactgegevens en openingstijden](https://www.amsterdam.nl/contact/)`,
         column2: `# Volg de Gemeente
 - [Nieuwsbrief amsterdam.nl](https://action.spike.email/104050/Subscribe/9f53558f-601d-4db8-97d6-a78bccd6e39d?culture=nl-NL)
@@ -455,7 +490,7 @@ Heeft u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan c
 Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I amsterdam](https://www.iamsterdam.com/nl)`,
         bottom: `[Over deze site](https://www.amsterdam.nl/overdezesite/)
 [Privacy](https://www.amsterdam.nl/privacy/)
-[Cookies op deze site](https://www.amsterdam.nl/privacy/cookies-site/)`
+[Cookies op deze site](/cookies)`
     },
 
     qrcode: {

@@ -4,6 +4,9 @@ exports[`Demo3 should render the initial header image 1`] = `
 .c0 {
   width: 100%;
   margin-bottom: 8px;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 @media screen and (min-width:1200px) {
@@ -216,7 +219,7 @@ exports[`Demo3 should render the initial header image 1`] = `
 
 <img
   alt=""
-  class="c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/probeer-irma-940.jpg"
   srcset="/assets/probeer-irma-290.jpg 580w, /assets/probeer-irma-940.jpg 1880w"
@@ -227,6 +230,9 @@ exports[`Demo3 should update the page after completing the IRMA flow 1`] = `
 .c0 {
   width: 100%;
   margin-bottom: 8px;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 @media screen and (min-width:1200px) {
@@ -439,7 +445,7 @@ exports[`Demo3 should update the page after completing the IRMA flow 1`] = `
 
 <img
   alt=""
-  class="c0"
+  class="sc-pzYib c0"
   data-testid="headerImage"
   src="/assets/mijn-amsterdam-940.jpg"
   srcset="/assets/mijn-amsterdam-290.jpg 580w, /assets/mijn-amsterdam-940.jpg 1880w"

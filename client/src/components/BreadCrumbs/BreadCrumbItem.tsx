@@ -23,17 +23,18 @@ const Item = styled.span`
         color: ${themeColor('tint', 'level5')};
         text-decoration: none;
         text-decoration-color: ${themeColor('tint', 'level5')};
-    }
 
-    &:hover {
-        text-decoration: underline;
-    }
+        &:hover {
+            color: ${themeColor('secondary', 'main')};
+            text-decoration: underline;
+        }
 
-    *:focus {
-        outline: auto;
-        outline-color: ${themeColor('support', 'focus')};
-        outline-style: solid;
-        outline-width: 2px;
-        outline-offset: 4px;
+        *:focus {
+            outline: auto;
+            outline-color: ${themeColor('support', 'focus')};
+            outline-style: solid;
+            outline-width: 2px;
+            outline-offset: 4px;
+        }
     }
 `;
