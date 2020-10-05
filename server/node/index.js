@@ -163,6 +163,7 @@ const init = async () => {
     app.get("/getsession/demo4", cors(), irmaDiscloseDemo4);
     app.get("/getsession/demo5", cors(), irmaDiscloseDemo5);
     app.get("/config", cors(), getConfig);
+    app.get("/health", cors(), health);
 
     if (
       process.env.NODE_ENV === "acceptance" ||
@@ -203,6 +204,10 @@ const init = async () => {
     error(e);
   }
 };
+
+const health = async (req, res) => {
+  return res.status(200).send('Healthy!');
+}
 
 const irmaDiscloseRequest = async (req, res, requestType, id) => {
   const authmethod = "publickey";
