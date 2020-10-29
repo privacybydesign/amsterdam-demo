@@ -47,8 +47,8 @@ Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
             body: `Bewijs met uw postcode dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.`
         },
         demo3Card: {
-            title: `Demo 3: Inloggen met IRMA`,
-            body: `Bekijk hoe u straks kunt inloggen met IRMA in Mijn Amsterdam.            `
+            title: `Demo 3: Inloggen`,
+            body: `Bekijk hoe u straks kunt inloggen met IRMA.`
         },
         demo4Card: {
             title: `Demo 4: Geveltuin aanvragen`,
@@ -177,9 +177,9 @@ Dit kan worden gebruikt voor:
 
     demo3: {
         breadcrumbs: `- [Home](/)
-- [Demo 3: Inloggen met IRMA](/inloggen-met-irma)`,
+- [Demo 3: Inloggen](/inloggen-met-irma)`,
         unproven: {
-            title: `# Demo 3: Inloggen met IRMA`,
+            title: `# Demo 3: Inloggen`,
             alert: {
                 title: `Uw naam en burgerservicenummer`,
                 body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
