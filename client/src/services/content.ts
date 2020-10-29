@@ -59,12 +59,9 @@ Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
             body: `Doe een melding van overlast en blijf op de hoogte door uw contactgegevens vrij te geven.`
         },
         sidebar: {
-            box: `Eenvoudig en veilig in Amsterdam met IRMA
+            box: `Eenvoudig en op maat online aantonen wie je bent met IRMA
 ![](/assets/irma_logo.svg "Lees meer over IRMA")
-[Waarom IRMA?](https://irma.app/?lang=nl)
-          `,
-            bottom: `# IRMA voor Amsterdammers
-[Hoe is IRMA getest met Amsterdammers?](https://irma.app/)`
+[Waarom IRMA](https://www.amsterdam.nl/wonen-leefomgeving/innovatie/de-digitale-stad/irma-nieuwe-manier-inloggen/)`
         }
     },
     demoNotification: {
