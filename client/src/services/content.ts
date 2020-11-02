@@ -174,7 +174,7 @@ Dit kan worden gebruikt voor:
 
     demo3: {
         breadcrumbs: `- [Home](/)
-- [Demo 3: Inloggen](/inloggen-met-irma)`,
+- [Demo 3: Inloggen](/inloggen)`,
         unproven: {
             title: `# Demo 3: Inloggen`,
             alert: {
