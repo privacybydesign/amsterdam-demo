@@ -7,6 +7,7 @@ exports[`Demo1 should render the initial header image 1`] = `
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
+  margin-bottom: 16px;
 }
 
 @media screen and (min-width:1200px) {
@@ -14,6 +15,14 @@ exports[`Demo1 should render the initial header image 1`] = `
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
 
 }
 
@@ -198,6 +207,10 @@ exports[`Demo1 should render the initial header image 1`] = `
 }
 
 @media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
 
 }
 
@@ -233,6 +246,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
+  margin-bottom: 16px;
 }
 
 @media screen and (min-width:1200px) {
@@ -240,6 +254,14 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
 
 }
 
@@ -424,6 +446,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 }
 
 @media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
 
 }
 
@@ -656,6 +682,14 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 
 }
 
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
 @media (min-width:1200px) {
 
 }
@@ -825,6 +859,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 }
 
 @media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
 
 }
 
@@ -897,6 +935,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
+  margin-bottom: 16px;
 }
 
 @media screen and (min-width:1200px) {
@@ -904,6 +943,14 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
 
 }
 
@@ -1088,6 +1135,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 }
 
 @media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
 
 }
 
@@ -1320,6 +1371,14 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 
 }
 
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
 @media (min-width:1200px) {
 
 }
@@ -1489,6 +1548,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 }
 
 @media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
 
 }
 
@@ -1561,6 +1624,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
+  margin-bottom: 16px;
 }
 
 @media screen and (min-width:1200px) {
@@ -1568,6 +1632,14 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
 
 }
 
@@ -1752,6 +1824,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 }
 
 @media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
 
 }
 
@@ -1991,6 +2067,14 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 
 }
 
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
 @media (min-width:1200px) {
 
 }
@@ -2160,6 +2244,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 }
 
 @media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
 
 }
 
@@ -2231,6 +2319,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
+  margin-bottom: 16px;
 }
 
 @media screen and (min-width:1200px) {
@@ -2238,6 +2327,14 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
 
 }
 
@@ -2422,6 +2519,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 }
 
 @media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
 
 }
 
@@ -2661,6 +2762,14 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 
 }
 
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
 @media (min-width:1200px) {
 
 }
@@ -2830,6 +2939,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 }
 
 @media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
 
 }
 
@@ -3098,6 +3211,14 @@ exports[`Demo1 should update the page after failing the IRMA flow 1`] = `
 
 }
 
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
 @media (min-width:1200px) {
 
 }
@@ -3267,6 +3388,10 @@ exports[`Demo1 should update the page after failing the IRMA flow 1`] = `
 }
 
 @media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
 
 }
 

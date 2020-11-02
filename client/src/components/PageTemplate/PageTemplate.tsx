@@ -19,6 +19,7 @@ const PageTemplate: React.FC<IProps> = ({ children, className }) => (
 
 const StyledColumn = styled(AscLocal.Column)`
     margin: ${themeSpacing(5)} 0;
+    max-width: 940px;
 `;
 
 const StyledRow = styled(Row)`
