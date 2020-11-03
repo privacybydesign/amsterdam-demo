@@ -33,11 +33,12 @@ const BoxLink = styled.a`
 const Container = styled.div`
     background-color: ${themeColor('tint', 'level2')};
     padding: ${themeSpacing(4)};
-    max-width: 220px;
+
     cursor: pointer;
 
     @media ${breakpoint('min-width', 'laptop')} {
         align-self: flex-end;
+        max-width: 220px;
     }
 
     p {
