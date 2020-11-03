@@ -19,6 +19,7 @@ import ContentBlock from '@components/ContentBlock/ContentBlock';
 import preloadDemoImages from '@services/preloadImages';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
+import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 
 export interface IProps {}
 
@@ -203,6 +204,17 @@ const Demo4: React.FC<IProps> = () => {
                                 renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
                             />
                         </ContentBlock>
+                    </AscLocal.Column>
+                    <AscLocal.Column
+                        span={{
+                            small: 1,
+                            medium: 2,
+                            big: 6,
+                            large: 3,
+                            xLarge: 3
+                        }}
+                    >
+                        <WhyIRMA />
                     </AscLocal.Column>
                 </AscLocal.Row>
             ) : (
