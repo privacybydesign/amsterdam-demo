@@ -9,24 +9,32 @@ interface IProps {}
 
 const WhyIRMA: React.FC<IProps> = () => {
     return (
-        <Container>
-            <ReactMarkdown
-                source={content.home.sidebar.box}
-                renderers={{
-                    heading: AscLocal.H2,
-                    paragraph: AscLocal.StrongParagraph,
-                    link: StyledLinkWithChevron,
-                    image: IRMALogo
-                }}
-            />
-        </Container>
+        <BoxLink href={content.home.sidebar.boxLink}>
+            <Container>
+                <ReactMarkdown
+                    source={content.home.sidebar.box}
+                    renderers={{
+                        heading: AscLocal.H2,
+                        paragraph: AscLocal.StrongParagraph,
+                        link: StyledLinkWithChevron,
+                        image: IRMALogo
+                    }}
+                />
+            </Container>
+        </BoxLink>
     );
 };
+
+const BoxLink = styled.a`
+    color: ${themeColor('tint', 'level7')};
+    text-decoration: none;
+`;
 
 const Container = styled.div`
     background-color: ${themeColor('tint', 'level2')};
     padding: ${themeSpacing(4)};
     max-width: 220px;
+    cursor: pointer;
 
     @media ${breakpoint('min-width', 'laptop')} {
         align-self: flex-end;

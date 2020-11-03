@@ -61,7 +61,8 @@ Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
         sidebar: {
             box: `Eenvoudig en op maat online aantonen wie je bent met IRMA
 ![](/assets/irma_logo.svg "Lees meer over IRMA")
-[Waarom IRMA](https://www.amsterdam.nl/wonen-leefomgeving/innovatie/de-digitale-stad/irma-nieuwe-manier-inloggen/)`
+[Waarom IRMA](https://www.amsterdam.nl/wonen-leefomgeving/innovatie/de-digitale-stad/irma-nieuwe-manier-inloggen/)`,
+            boxLink: `https://www.amsterdam.nl/wonen-leefomgeving/innovatie/de-digitale-stad/irma-nieuwe-manier-inloggen/`
         }
     },
     demoNotification: {
