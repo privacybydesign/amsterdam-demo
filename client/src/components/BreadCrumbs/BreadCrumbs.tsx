@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { Icon, themeColor, themeSpacing, breakpoint, Theme } from '@datapunt/asc-ui';
-import { ChevronRight } from '@datapunt/asc-assets';
+import { Icon, themeColor, themeSpacing, breakpoint, Theme } from '@amsterdam/asc-ui';
+import { ChevronRight } from '@amsterdam/asc-assets';
 import { BreadCrumbItem, IBreadCrumbItemProps } from './BreadCrumbItem';
 
 interface IBreadCrumbsProps {

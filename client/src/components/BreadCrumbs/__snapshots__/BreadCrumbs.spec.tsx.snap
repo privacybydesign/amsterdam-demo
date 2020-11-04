@@ -81,7 +81,8 @@ exports[`BreadCrumbs should render 3 items correctly 1`] = `
     </span>
   </a>
   <span
-    class="sc-AxheI c2"
+    class="sc-AxjAm c2"
+    color="#767676"
     size="14"
   >
     <svg
@@ -104,7 +105,8 @@ exports[`BreadCrumbs should render 3 items correctly 1`] = `
     </span>
   </a>
   <span
-    class="sc-AxheI c2"
+    class="sc-AxjAm c2"
+    color="#767676"
     size="14"
   >
     <svg

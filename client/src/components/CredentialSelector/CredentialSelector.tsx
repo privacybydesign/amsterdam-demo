@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { IIrmaServerConfig, getConfig } from '@services/createIrmaSession';
-import { Select, themeSpacing } from '@datapunt/asc-ui';
+import { Select, themeSpacing } from '@amsterdam/asc-ui';
 
 interface IProps {
     credentialSource: string;

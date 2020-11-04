@@ -3,10 +3,10 @@ import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
 import axios, { AxiosResponse } from 'axios';
 import { initialState, reducer, Location } from './reducer';
-import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@datapunt/arm-core';
-import { Input } from '@datapunt/asc-ui';
-import { Link, ListItem, Icon, themeColor, themeSpacing } from '@datapunt/asc-ui';
-import { ChevronRight } from '@datapunt/asc-assets';
+import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@amsterdam/arm-core';
+import { Input } from '@amsterdam/asc-ui';
+import { Link, ListItem, Icon, themeColor, themeSpacing } from '@amsterdam/asc-ui';
+import { ChevronRight } from '@amsterdam/asc-assets';
 import { LeafletMouseEvent } from 'leaflet';
 
 interface IProps {

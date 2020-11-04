@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { themeSpacing, RadioGroup, Label, Radio } from '@datapunt/asc-ui';
+import { themeSpacing, RadioGroup, Label, Radio } from '@amsterdam/asc-ui';
 import MapComponent from '@components/Map/Map';
 import { Location } from '@components/Map/reducer';
 

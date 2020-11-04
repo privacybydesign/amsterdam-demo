@@ -10,31 +10,35 @@ exports[`Demo4 should render the initial header image 1`] = `
   margin-bottom: 16px;
 }
 
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
 @media screen and (min-width:1200px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
 
 }
 
@@ -194,10 +198,6 @@ exports[`Demo4 should render the initial header image 1`] = `
 
 }
 
-@media screen and (min-width:768px) {
-
-}
-
 @media (max-width:1199px) {
 
 }
@@ -232,7 +232,7 @@ exports[`Demo4 should render the initial header image 1`] = `
 
 <img
   alt="Foto van geveltuin in straat"
-  class="sc-pzYib c0"
+  class="sc-qXRQq c0"
   data-testid="headerImage"
   src="/assets/geveltuin-940.jpg"
   srcset="/assets/geveltuin-290.jpg 580w, /assets/geveltuin-940.jpg 1880w"
@@ -249,31 +249,35 @@ exports[`Demo4 should update the page after completing the IRMA flow 1`] = `
   margin-bottom: 16px;
 }
 
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
 @media screen and (min-width:1200px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
 
 }
 
@@ -433,10 +437,6 @@ exports[`Demo4 should update the page after completing the IRMA flow 1`] = `
 
 }
 
-@media screen and (min-width:768px) {
-
-}
-
 @media (min-width:768px) {
 
 }
@@ -479,7 +479,7 @@ exports[`Demo4 should update the page after completing the IRMA flow 1`] = `
 
 <img
   alt="Foto van geveltuin in straat"
-  class="sc-pzYib c0"
+  class="sc-qXRQq c0"
   data-testid="headerImage"
   src="/assets/geveltuin-overzicht-940.jpg"
   srcset="/assets/geveltuin-overzicht-290.jpg 580w, /assets/geveltuin-overzicht-940.jpg 1880w"
@@ -510,6 +510,37 @@ exports[`Demo4 should update the page after completing the IRMA flow 2`] = `
 .c4 svg polygon,
 .c4 svg path {
   fill: #ffffff;
+}
+
+.c12 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c13 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c14 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c11 .c3 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-left: auto;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  -webkit-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .c5 {
@@ -549,56 +580,6 @@ exports[`Demo4 should update the page after completing the IRMA flow 2`] = `
   justify-content: space-between;
 }
 
-.c12 .c3 {
-  margin: 4px 4px 0 0;
-}
-
-.c12 .c3 svg circle,
-.c12 .c3 svg rect,
-.c12 .c3 svg polygon,
-.c12 .c3 svg path {
-  fill: #000000;
-}
-
-.c13 .c3 {
-  margin: 4px 4px 0 0;
-}
-
-.c13 .c3 svg circle,
-.c13 .c3 svg rect,
-.c13 .c3 svg polygon,
-.c13 .c3 svg path {
-  fill: #ffffff;
-}
-
-.c8 {
-  margin: 0;
-  color: #000000;
-  font-weight: 400;
-  font-size: 16px;
-  -webkit-letter-spacing: inherit;
-  -moz-letter-spacing: inherit;
-  -ms-letter-spacing: inherit;
-  letter-spacing: inherit;
-  line-height: 20px;
-  margin-bottom: 20px;
-  font-stretch: normal;
-  -webkit-letter-spacing: normal;
-  -moz-letter-spacing: normal;
-  -ms-letter-spacing: normal;
-  letter-spacing: normal;
-  margin-top: 0;
-  color: inherit;
-}
-
-.c10 .c6 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  margin-bottom: 0;
-}
-
 .c2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -625,24 +606,43 @@ exports[`Demo4 should update the page after completing the IRMA flow 2`] = `
   background-color: #E6E6E6;
 }
 
-.c0.c0:focus {
-  outline-color: #FEC813;
-  outline-style: solid;
-  outline-offset: 0px;
-  outline-width: 3px;
+.c8 {
+  margin: 0;
+  color: #000000;
+  font-weight: 400;
+  font-size: 16px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 20px;
+  margin-bottom: 20px;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+  margin-top: 0;
+  color: inherit;
 }
 
-.c11 .c3 {
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  margin-left: auto;
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: -webkit-transform 0.3s ease;
-  -webkit-transition: transform 0.3s ease;
-  transition: transform 0.3s ease;
+.c15 .c3 svg circle,
+.c15:hover .c3 svg circle,
+.c15 .c3 svg rect,
+.c15:hover .c3 svg rect,
+.c15 .c3 svg polygon,
+.c15:hover .c3 svg polygon,
+.c15 .c3 svg path,
+.c15:hover .c3 svg path {
+  fill: #ffffff;
+}
+
+.c10 .c6 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin-bottom: 0;
 }
 
 .c9 {
@@ -677,31 +677,35 @@ exports[`Demo4 should update the page after completing the IRMA flow 2`] = `
   color: #ffffff;
 }
 
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
 @media screen and (min-width:1200px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
 
 }
 
@@ -858,10 +862,6 @@ exports[`Demo4 should update the page after completing the IRMA flow 2`] = `
 }
 
 @media (min-width:1200px) {
-
-}
-
-@media screen and (min-width:768px) {
 
 }
 
@@ -959,31 +959,35 @@ exports[`Demo4 should update the page after failing the IRMA flow 1`] = `
   margin-bottom: 16px;
 }
 
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
 @media screen and (min-width:1200px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
 
 }
 
@@ -1143,10 +1147,6 @@ exports[`Demo4 should update the page after failing the IRMA flow 1`] = `
 
 }
 
-@media screen and (min-width:768px) {
-
-}
-
 @media (max-width:1199px) {
 
 }
@@ -1181,7 +1181,7 @@ exports[`Demo4 should update the page after failing the IRMA flow 1`] = `
 
 <img
   alt="Foto van geveltuin in straat"
-  class="sc-pzYib c0"
+  class="sc-qXRQq c0"
   data-testid="headerImage"
   src="/assets/geveltuin-940.jpg"
   srcset="/assets/geveltuin-290.jpg 580w, /assets/geveltuin-940.jpg 1880w"
@@ -1205,6 +1205,37 @@ exports[`Demo4 should update the page after failing the IRMA flow 2`] = `
 .c4 > svg {
   width: 22px;
   height: 22px;
+}
+
+.c12 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c13 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c14 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c11 .c3 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-left: auto;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  -webkit-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .c5 {
@@ -1244,56 +1275,6 @@ exports[`Demo4 should update the page after failing the IRMA flow 2`] = `
   justify-content: space-between;
 }
 
-.c12 .c3 {
-  margin: 4px 4px 0 0;
-}
-
-.c12 .c3 svg circle,
-.c12 .c3 svg rect,
-.c12 .c3 svg polygon,
-.c12 .c3 svg path {
-  fill: #000000;
-}
-
-.c13 .c3 {
-  margin: 4px 4px 0 0;
-}
-
-.c13 .c3 svg circle,
-.c13 .c3 svg rect,
-.c13 .c3 svg polygon,
-.c13 .c3 svg path {
-  fill: #ffffff;
-}
-
-.c8 {
-  margin: 0;
-  color: #000000;
-  font-weight: 400;
-  font-size: 16px;
-  -webkit-letter-spacing: inherit;
-  -moz-letter-spacing: inherit;
-  -ms-letter-spacing: inherit;
-  letter-spacing: inherit;
-  line-height: 20px;
-  margin-bottom: 20px;
-  font-stretch: normal;
-  -webkit-letter-spacing: normal;
-  -moz-letter-spacing: normal;
-  -ms-letter-spacing: normal;
-  letter-spacing: normal;
-  margin-top: 0;
-  color: inherit;
-}
-
-.c10 .c6 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  margin-bottom: 0;
-}
-
 .c2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1320,24 +1301,43 @@ exports[`Demo4 should update the page after failing the IRMA flow 2`] = `
   background-color: #E6E6E6;
 }
 
-.c0.c0:focus {
-  outline-color: #FEC813;
-  outline-style: solid;
-  outline-offset: 0px;
-  outline-width: 3px;
+.c8 {
+  margin: 0;
+  color: #000000;
+  font-weight: 400;
+  font-size: 16px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 20px;
+  margin-bottom: 20px;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+  margin-top: 0;
+  color: inherit;
 }
 
-.c11 .c3 {
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  margin-left: auto;
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: -webkit-transform 0.3s ease;
-  -webkit-transition: transform 0.3s ease;
-  transition: transform 0.3s ease;
+.c15 .c3 svg circle,
+.c15:hover .c3 svg circle,
+.c15 .c3 svg rect,
+.c15:hover .c3 svg rect,
+.c15 .c3 svg polygon,
+.c15:hover .c3 svg polygon,
+.c15 .c3 svg path,
+.c15:hover .c3 svg path {
+  fill: #ffffff;
+}
+
+.c10 .c6 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin-bottom: 0;
 }
 
 .c9 {
@@ -1372,31 +1372,35 @@ exports[`Demo4 should update the page after failing the IRMA flow 2`] = `
   color: #000000;
 }
 
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
 @media screen and (min-width:1200px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
 
 }
 
@@ -1553,10 +1557,6 @@ exports[`Demo4 should update the page after failing the IRMA flow 2`] = `
 }
 
 @media (min-width:1200px) {
-
-}
-
-@media screen and (min-width:768px) {
 
 }
 
@@ -1607,6 +1607,7 @@ exports[`Demo4 should update the page after failing the IRMA flow 2`] = `
     >
       <span
         class="c3 c4 icon"
+        color=""
         size="22"
       >
         <svg

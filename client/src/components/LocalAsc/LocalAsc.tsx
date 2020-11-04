@@ -15,8 +15,8 @@ import {
     ErrorMessage as AscErrorMessage,
     themeColor,
     Theme
-} from '@datapunt/asc-ui';
-import { TextAreaProps as AscTextAreaProps } from '@datapunt/asc-ui/lib/components/TextArea';
+} from '@amsterdam/asc-ui';
+import { TextAreaProps as AscTextAreaProps } from '@amsterdam/asc-ui/lib/components/TextArea';
 
 const lineHeight = '24px';
 
@@ -135,7 +135,7 @@ export const DownloadImage = styled.img`
     margin-right: ${themeSpacing(3)};
 `;
 
-export const LinkWithChevron = styled(Link).attrs({ variant: 'with-chevron' })`
+export const LinkWithChevron = styled(Link).attrs({ inList: true })`
     margin-right: ${themeSpacing(5)};
     a {
         color: ${themeColor('tint', 'level1')};
@@ -173,8 +173,9 @@ export const Alert = styled(
     ({ children, icon, iconUrl, iconSize, className, heading, content, color, dataTestId }: IAlertProps) => {
         const themeContext = { theme: useContext(ThemeContext) as Theme.ThemeInterface };
         const iconColor =
-            (color === AlertColor.PRIMARY || color === AlertColor.SUCCESS) &&
-            themeColor('tint', 'level1')(themeContext);
+            color === AlertColor.PRIMARY || color === AlertColor.SUCCESS
+                ? themeColor('tint', 'level1')(themeContext)
+                : '';
         return (
             <AscAlert className={className} data-testid={dataTestId}>
                 <div className="alert-content">
@@ -305,7 +306,7 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
     }
 `;
 
-export const InlineLink = styled(Link).attrs({ variant: 'inline' })``;
+export const InlineLink = styled(Link).attrs({ inList: true })``;
 
 export const Row = styled(AscRow)`
     padding: 0;

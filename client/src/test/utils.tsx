@@ -4,7 +4,7 @@ import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import { toBeVisible, toBeInTheDocument } from '@testing-library/jest-dom/matchers';
 import { render, RenderResult, RenderOptions, cleanup } from '@testing-library/react';
-import { GlobalStyle, ThemeProvider } from '@datapunt/asc-ui';
+import { GlobalStyle, ThemeProvider } from '@amsterdam/asc-ui';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import theme from '@services/theme';

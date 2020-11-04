@@ -18,7 +18,7 @@ module.exports = {
             },
             {
                 test: /\.(js|jsx)?$/,
-                include: path.resolve(__dirname, 'node_modules/@datapunt'),
+                include: path.resolve(__dirname, 'node_modules/@amsterdam'),
                 use: {
                     loader: 'babel-loader',
                     options: {

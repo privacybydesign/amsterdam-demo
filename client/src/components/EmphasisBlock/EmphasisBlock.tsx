@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { themeColor, themeSpacing, breakpoint } from '@datapunt/asc-ui';
+import { themeColor, themeSpacing, breakpoint } from '@amsterdam/asc-ui';
 
 export default styled.div`
     background-color: ${themeColor('tint', 'level2')};

@@ -2,6 +2,39 @@
 # yarn lockfile v1
 
 
+"@amsterdam/arm-core@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@amsterdam/arm-core/-/arm-core-0.4.0.tgz#c1c3354c265379cb9f63655be0d6211710f43639"
+  integrity sha512-+RDaeZCmMi9AgiU/Sx0huQ+kwfG2oKg6lSJ8/BYcr9JvJXHnD7lXJxTofUsGdkrbRA1567IRBj76duvl8mh95w==
+  dependencies:
+    geojson "^0.5.0"
+    proj4 "^2.6.2"
+    proj4leaflet "^1.0.2"
+    uuid "^8.1.0"
+
+"@amsterdam/asc-assets@^0.25.2":
+  version "0.25.2"
+  resolved "https://registry.yarnpkg.com/@amsterdam/asc-assets/-/asc-assets-0.25.2.tgz#6ba4ec227bddbb38b134d91e2b7dba014280503b"
+  integrity sha512-eKOAznYpOt07Csd4jHi8Q436hF1v7dF7tlp97ijld3n8o2Os4gnrN/a8vceyiR8Cwa3bAuwoKFrwf+/0g70cqA==
+
+"@amsterdam/asc-ui@^0.25.2":
+  version "0.25.2"
+  resolved "https://registry.yarnpkg.com/@amsterdam/asc-ui/-/asc-ui-0.25.2.tgz#7e608a01dbe3ff7e68703c7176e2ebe4a28a34af"
+  integrity sha512-ZbI3H6KpOYfDWib0vnq6jtWjzX43Ubqckahs4qApCdKmmVFpX0X9KL0UldbFmEloDZUvUcpmu+8WeCYTCA13rg==
+  dependencies:
+    "@amsterdam/asc-assets" "^0.25.2"
+    classnames "^2.2.6"
+    deepmerge "^4.2.2"
+    polished "^4.0.1"
+    react-uid "^2.3.0"
+  optionalDependencies:
+    objectFitPolyfill ">=2.3.0"
+
+"@amsterdam/react-maps@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@amsterdam/react-maps/-/react-maps-0.10.0.tgz#a29d9ab88bb9286cbe092c9a599d910373f5627e"
+  integrity sha512-WpN5uUL/KbT/BFajruKdy/I0QduJRpId8xKNgrgV1l+gm52VUbQEJp49QlpBqPjCVbnKzQ6wU1/Y1QfNp2U/Iw==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.1":
   version "7.10.1"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.10.1.tgz#d5481c5095daa1c57e16e54c6f9198443afb49ff"
@@ -906,6 +939,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.12.0":
+  version "7.12.5"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
+  integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.9.6":
   version "7.11.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.11.2.tgz#f549c13c754cc40b87644b9fa9f09a6a95fe0736"
@@ -958,39 +998,6 @@
   dependencies:
     exec-sh "^0.3.2"
     minimist "^1.2.0"
-
-"@datapunt/arm-core@^0.3.5":
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/@datapunt/arm-core/-/arm-core-0.3.5.tgz#7e08e340c52205b3064dcf57dcfbe937f220299a"
-  integrity sha512-ltZ/i/BGJuHFQy4Z+9ypi8V9Ej/FWtuh4Irtam3vYxblSycpfy5H3nAegVi5321RcxZ3Qsbftzgvpiy4v9tWMA==
-  dependencies:
-    geojson "^0.5.0"
-    proj4 "^2.6.2"
-    proj4leaflet "^1.0.2"
-    uuid "^8.1.0"
-
-"@datapunt/asc-assets@^0.21.1":
-  version "0.21.1"
-  resolved "https://registry.yarnpkg.com/@datapunt/asc-assets/-/asc-assets-0.21.1.tgz#fac82261ce555ce3845fdfff95c87b47ffd78429"
-  integrity sha512-zvrKl8KborzW1xNMJbFnGYTzg2onWpW9l+K6oPrRGPrcFcFg55DSqstTmvsubseVsmF4NCOa1S8dsGJxNZCXzA==
-
-"@datapunt/asc-ui@^0.21.1":
-  version "0.21.1"
-  resolved "https://registry.yarnpkg.com/@datapunt/asc-ui/-/asc-ui-0.21.1.tgz#65cb5c6673872a251b53ffe2a69bb3650bbcd512"
-  integrity sha512-VxV9SWG7iNE02geTWD4bLOm3Qz+6M4eUeqQp5X2G8SyPYAXX/fkP4crMYPBLIx1zY8PqctbNPh0Fsws13kSS7g==
-  dependencies:
-    "@datapunt/asc-assets" "^0.21.1"
-    classnames "^2.2.6"
-    deepmerge "^4.2.2"
-    polished "^3.5.1"
-    react-uid "^2.2.0"
-  optionalDependencies:
-    objectFitPolyfill ">=2.3.0"
-
-"@datapunt/react-maps@0.8.4-alpha.1":
-  version "0.8.4-alpha.1"
-  resolved "https://registry.yarnpkg.com/@datapunt/react-maps/-/react-maps-0.8.4-alpha.1.tgz#e964306435a392b441f389e89bc859ee0cee8c10"
-  integrity sha512-CfneGadPH7WLveEF9zmOMcBRZAZRWyEl2anSAm89aV6lejrDvk2olNUWZTg17UsSygJhbsF3KNw/mqsOTZNhgw==
 
 "@emotion/is-prop-valid@^0.8.8":
   version "0.8.8"
@@ -7542,12 +7549,12 @@ pngjs@^3.3.0:
   resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-3.4.0.tgz#99ca7d725965fb655814eaf65f38f12bbdbf555f"
   integrity sha512-NCrCHhWmnQklfH4MtJMRjZ2a8c80qXeMlQMv2uVp9ISJMTt562SbGd6n2oq0PaPgKm7Z6pL9E2UlLIhC+SHL3w==
 
-polished@^3.5.1:
-  version "3.6.5"
-  resolved "https://registry.yarnpkg.com/polished/-/polished-3.6.5.tgz#dbefdde64c675935ec55119fe2a2ab627ca82e9c"
-  integrity sha512-VwhC9MlhW7O5dg/z7k32dabcAFW1VI2+7fSe8cE/kXcfL7mVdoa5UxciYGW2sJU78ldDLT6+ROEKIZKFNTnUXQ==
+polished@^4.0.1:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-4.0.3.tgz#e2bde249f8884bdabc6997dd3eca225ee32f7a26"
+  integrity sha512-yOALHMrqcYHlHIxFkHvGX8NGsjsbSaYMZ8Z3uEElVpzF5ZgNmTgqMOh4bnSVXGC6sXjBTZCH6+GebTRWhJR4zQ==
   dependencies:
-    "@babel/runtime" "^7.9.2"
+    "@babel/runtime" "^7.12.0"
 
 portfinder@^1.0.26:
   version "1.0.26"
@@ -8017,7 +8024,7 @@ react-router@5.2.0:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-uid@^2.2.0:
+react-uid@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/react-uid/-/react-uid-2.3.0.tgz#bfd47cfd5ad3e37956ed1a8520964842d7bdcc6b"
   integrity sha512-tsPZ77GR0pISGYmpCLHAbZTabKXZ7zBniKPVqVMMfnXFyo39zq5g/psIlD5vLTKkjQEhWOO8JhqcHnxkwNu6eA==

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkDown from 'react-markdown';
-import { Accordion } from '@datapunt/asc-ui';
-import { Alert as AlertIcon } from '@datapunt/asc-assets';
-import { Checkmark } from '@datapunt/asc-assets';
+import { Accordion } from '@amsterdam/asc-ui';
+import { Alert as AlertIcon } from '@amsterdam/asc-assets';
+import { Checkmark } from '@amsterdam/asc-assets';
 import createIrmaSession from '@services/createIrmaSession';
 import content from '@services/content';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';

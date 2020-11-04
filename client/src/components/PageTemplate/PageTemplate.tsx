@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Row, themeSpacing, themeColor } from '@datapunt/asc-ui';
+import { Row, themeSpacing, themeColor } from '@amsterdam/asc-ui';
 import AppRoutes from '@app/AppRoutes';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import Footer from '@components/Footer/Footer';

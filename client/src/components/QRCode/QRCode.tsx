@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import ReactMarkDown from 'react-markdown';
-import { Button, Modal, themeSpacing, themeColor } from '@datapunt/asc-ui';
-import { Close } from '@datapunt/asc-assets';
+import { Button, Modal, themeSpacing, themeColor } from '@amsterdam/asc-ui';
+import { Close } from '@amsterdam/asc-assets';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { isMobile } from '@services/createIrmaSession';
 import content from '@services/content';
@@ -55,7 +55,13 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) 
                 {label || content.qrcode.knop}
             </StyledButton>
 
-            <Modal backdropOpacity={0.5} open={hasOverlay} onClose={closeModal} data-testid="qrCodeModal">
+            <Modal
+                backdropOpacity={0.5}
+                open={hasOverlay}
+                onClose={closeModal}
+                data-testid="qrCodeModal"
+                zIndexOffset={2}
+            >
                 <>
                     <StyledHeader>
                         <ReactMarkDown source={content.qrcode.title} renderers={{ heading: StyledH3 }} />

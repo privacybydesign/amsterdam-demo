@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { breakpoint, themeColor, themeSpacing } from '@datapunt/asc-ui';
+import { breakpoint, themeColor, themeSpacing } from '@amsterdam/asc-ui';
 import content from '@services/content';
 
 interface IProps {}
