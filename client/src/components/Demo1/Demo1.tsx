@@ -49,7 +49,11 @@ const Demo1: React.FC<IProps> = () => {
     };
 
     const getSessionOver65 = async (): Promise<null | unknown> => {
-        const response = await createIrmaSession('demo1/65', 'irma-qr', credentialSource === CredentialSource.DEMO);
+        const response = await createIrmaSession(
+            'demo1/65',
+            'irma-qr',
+            credentialSource === CredentialSource.DEMO && { demo: true }
+        );
         if (response) {
             setIsOver65(response['over65'] === 'Yes');
             setHasResult65(true);
