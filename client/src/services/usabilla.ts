@@ -1,9 +1,14 @@
 import '@services/lightning.js';
+import { isMobile } from './createIrmaSession';
 
 let usabilla_live;
 
 const initUsabilla = (): void => {
-    usabilla_live = window['lightningjs'].require('usabilla_live', '//w.usabilla.com/1400b371716f.js');
+    if (isMobile()) {
+        usabilla_live = window['lightningjs'].require('usabilla_live', '//w.usabilla.com/7eb436c19ab1.js');
+    } else {
+        usabilla_live = window['lightningjs'].require('usabilla_live', '//w.usabilla.com/1400b371716f.js');
+    }
 };
 
 export const updatePageView = (): void => {

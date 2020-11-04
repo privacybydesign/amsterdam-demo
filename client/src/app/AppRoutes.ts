@@ -20,7 +20,7 @@ const AppRoutes: IAppRoutes = {
     HOMEPAGE: { path: '/', component: Homepage, exact: true },
     DEMO1: { path: '/leeftijd-aantonen', component: Demo1, exact: false },
     DEMO2: { path: '/ideeen-voor-uw-buurt', component: Demo2, exact: false },
-    DEMO3: { path: '/inloggen-met-irma', component: Demo3, exact: false },
+    DEMO3: { path: '/inloggen', component: Demo3, exact: false },
     DEMO4: { path: '/geveltuin-aanvragen', component: Demo4, exact: false },
     DEMO5: { path: '/overlast-melden', component: Demo5, exact: false },
     COOKIES: { path: '/cookies', component: Cookies, exact: false }

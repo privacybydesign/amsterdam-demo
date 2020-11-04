@@ -47,8 +47,8 @@ Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
             body: `Bewijs met uw postcode dat u in een bepaalde Amsterdamse wijk woont en dat u ouder bent dan 18 jaar.`
         },
         demo3Card: {
-            title: `Demo 3: Inloggen met IRMA`,
-            body: `Bekijk hoe u straks kunt inloggen met IRMA in Mijn Amsterdam.            `
+            title: `Demo 3: Inloggen`,
+            body: `Bekijk hoe u straks kunt inloggen met IRMA.`
         },
         demo4Card: {
             title: `Demo 4: Geveltuin aanvragen`,
@@ -59,12 +59,10 @@ Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
             body: `Doe een melding van overlast en blijf op de hoogte door uw contactgegevens vrij te geven.`
         },
         sidebar: {
-            box: `Eenvoudig en veilig in Amsterdam met IRMA
+            box: `Eenvoudig en op maat online aantonen wie je bent met IRMA
 ![](/assets/irma_logo.svg "Lees meer over IRMA")
-[Waarom IRMA?](https://irma.app/?lang=nl)
-          `,
-            bottom: `# IRMA voor Amsterdammers
-[Hoe is IRMA getest met Amsterdammers?](https://irma.app/)`
+[Waarom IRMA](https://www.amsterdam.nl/wonen-leefomgeving/innovatie/de-digitale-stad/irma-nieuwe-manier-inloggen/)`,
+            boxLink: `https://www.amsterdam.nl/wonen-leefomgeving/innovatie/de-digitale-stad/irma-nieuwe-manier-inloggen/`
         }
     },
     demoNotification: {
@@ -177,9 +175,9 @@ Dit kan worden gebruikt voor:
 
     demo3: {
         breadcrumbs: `- [Home](/)
-- [Demo 3: Inloggen met IRMA](/inloggen-met-irma)`,
+- [Demo 3: Inloggen](/inloggen)`,
         unproven: {
-            title: `# Demo 3: Inloggen met IRMA`,
+            title: `# Demo 3: Inloggen`,
             alert: {
                 title: `Uw naam en burgerservicenummer`,
                 body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
