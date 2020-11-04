@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Icon, themeColor, themeSpacing, breakpoint } from '@datapunt/asc-ui';
+import React, { useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
+import { Icon, themeColor, themeSpacing, breakpoint, Theme } from '@datapunt/asc-ui';
 import { ChevronRight } from '@datapunt/asc-assets';
 import { BreadCrumbItem, IBreadCrumbItemProps } from './BreadCrumbItem';
 
@@ -13,13 +13,15 @@ interface IBreadCrumbsComposition {
 }
 
 const BreadCrumbs: React.FC<IBreadCrumbsProps> & IBreadCrumbsComposition = ({ children, className }) => {
+    const themeContext = { theme: useContext(ThemeContext) as Theme.ThemeInterface };
+    const iconColor = themeColor('tint', 'level5')(themeContext);
     return (
         <Container className={className} data-testid="breadCrumbs">
             {React.Children.map(children, (child, index) => (
                 <React.Fragment key={String(index)}>
                     {child}
                     {children instanceof Array && index < children.length - 1 && (
-                        <StyledIcon size={14} color={themeColor('tint', 'level5')}>
+                        <StyledIcon size={14} color={iconColor}>
                             <ChevronRight />
                         </StyledIcon>
                     )}
