@@ -15,7 +15,7 @@ interface IProps {
 
 const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
-    const locationRef = useRef(null);
+    const locationInputRef = useRef(null);
     const wrapperRef = useRef(null);
     const mapRef = useRef(null);
     const autosuggestUrl =
@@ -77,7 +77,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
             }
 
             if (autoSuggestLocation.weergavenaam) {
-                locationRef.current.value = autoSuggestLocation.weergavenaam;
+                locationInputRef.current.value = autoSuggestLocation.weergavenaam;
                 dispatch({
                     type: 'hideAutosuggest'
                 });
@@ -115,7 +115,9 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
     }, [url, fetchAutosuggest]);
 
     useEffect(() => {
-        locationRef.current.value = location?.weergavenaam || '';
+        if (locationInputRef.current) {
+            locationInputRef.current.value = location?.weergavenaam || '';
+        }
     }, [location]);
 
     const useFirstSuggestionOnEnter = useCallback(
@@ -153,7 +155,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                             <StyledInput
                                 id="location"
                                 data-testid="input"
-                                ref={locationRef}
+                                ref={locationInputRef}
                                 onChange={e => {
                                     if (e.target.value.length < 3) return;
                                     const value = encodeURIComponent(e.target.value);

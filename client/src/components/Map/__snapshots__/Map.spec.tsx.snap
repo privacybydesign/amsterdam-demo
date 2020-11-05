@@ -86,7 +86,13 @@ exports[`Map should render default map with input and no autosuggest visible 1`]
 `;
 
 exports[`Map should show autosuggest when input field has changed 1`] = `
-.c4 {
+.c7 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c5 {
   margin: 0;
   color: #000000;
   font-weight: inherit;
@@ -104,17 +110,30 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
   letter-spacing: normal;
 }
 
-.c5 {
-  display: inline-block;
+.c6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   color: #004699;
 }
 
-.c5:focus {
-  background-color: #FEC813;
+.c6 svg circle,
+.c6 svg rect,
+.c6 svg polygon,
+.c6 svg path {
+  fill: #004699;
 }
 
-.c5:hover {
+.c6:hover {
   color: #ec0000;
+}
+
+.c6:hover svg circle,
+.c6:hover svg rect,
+.c6:hover svg polygon,
+.c6:hover svg path {
+  fill: #ec0000;
 }
 
 .c1 {
@@ -148,7 +167,7 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
   top: -4px;
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -163,13 +182,13 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
   margin-right: 8px;
 }
 
-.c3 > svg {
+.c4 > svg {
   width: 14px;
   height: 14px;
 }
 
 @media screen and (min-width:1024px) {
-  .c4 {
+  .c5 {
     font-size: 18px;
     line-height: 25px;
   }
@@ -183,7 +202,7 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
     class="c1 c2"
   >
     <span
-      class="c3"
+      class="c3 c4"
       size="14"
     >
       <svg
@@ -197,7 +216,7 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
       </svg>
     </span>
     <a
-      class="c4 c5"
+      class="c5 c6"
       href="#"
     >
       Dam 1, 1012JS Amsterdam
@@ -207,7 +226,7 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
     class="c1 c2"
   >
     <span
-      class="c3"
+      class="c3 c4"
       size="14"
     >
       <svg
@@ -221,7 +240,7 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
       </svg>
     </span>
     <a
-      class="c4 c5"
+      class="c5 c6"
       href="#"
     >
       Damrak 1, 1012LG Amsterdam
