@@ -232,7 +232,7 @@ exports[`Demo5 should render the initial header image 1`] = `
 
 <img
   alt="Foto van straatafval"
-  class="sc-qXRQq c0"
+  class="sc-pQdCa c0"
   data-testid="headerImage"
   src="/assets/overlast-melden-straatafval-940.jpg"
   srcset="/assets/overlast-melden-straatafval-290.jpg 580w, /assets/overlast-melden-straatafval-940.jpg 1880w"
@@ -949,7 +949,7 @@ exports[`Demo5 should update the page after completing the IRMA flow 2`] = `
 
 <img
   alt="Foto van ondergrondse afvalbakken"
-  class="sc-qXRQq c0"
+  class="sc-pQdCa c0"
   data-testid="headerImage"
   src="/assets/overlast-melden-bloembakken-940.jpg"
   srcset="/assets/overlast-melden-bloembakken-290.jpg 580w, /assets/overlast-melden-bloembakken-940.jpg 1880w"
@@ -1655,7 +1655,7 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 
 <img
   alt="Foto van ondergrondse afvalbakken"
-  class="sc-qXRQq c0"
+  class="sc-pQdCa c0"
   data-testid="headerImage"
   src="/assets/overlast-melden-bloembakken-940.jpg"
   srcset="/assets/overlast-melden-bloembakken-290.jpg 580w, /assets/overlast-melden-bloembakken-940.jpg 1880w"
@@ -1902,7 +1902,7 @@ exports[`Demo5 should update the page after failing the IRMA flow 1`] = `
 
 <img
   alt="Foto van straatafval"
-  class="sc-qXRQq c0"
+  class="sc-pQdCa c0"
   data-testid="headerImage"
   src="/assets/overlast-melden-straatafval-940.jpg"
   srcset="/assets/overlast-melden-straatafval-290.jpg 580w, /assets/overlast-melden-straatafval-940.jpg 1880w"

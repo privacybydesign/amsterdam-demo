@@ -232,7 +232,7 @@ exports[`Demo4 should render the initial header image 1`] = `
 
 <img
   alt="Foto van geveltuin in straat"
-  class="sc-qXRQq c0"
+  class="sc-pQdCa c0"
   data-testid="headerImage"
   src="/assets/geveltuin-940.jpg"
   srcset="/assets/geveltuin-290.jpg 580w, /assets/geveltuin-940.jpg 1880w"
@@ -479,7 +479,7 @@ exports[`Demo4 should update the page after completing the IRMA flow 1`] = `
 
 <img
   alt="Foto van geveltuin in straat"
-  class="sc-qXRQq c0"
+  class="sc-pQdCa c0"
   data-testid="headerImage"
   src="/assets/geveltuin-overzicht-940.jpg"
   srcset="/assets/geveltuin-overzicht-290.jpg 580w, /assets/geveltuin-overzicht-940.jpg 1880w"
@@ -1181,7 +1181,7 @@ exports[`Demo4 should update the page after failing the IRMA flow 1`] = `
 
 <img
   alt="Foto van geveltuin in straat"
-  class="sc-qXRQq c0"
+  class="sc-pQdCa c0"
   data-testid="headerImage"
   src="/assets/geveltuin-940.jpg"
   srcset="/assets/geveltuin-290.jpg 580w, /assets/geveltuin-940.jpg 1880w"

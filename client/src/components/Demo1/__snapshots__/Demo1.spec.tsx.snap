@@ -232,7 +232,7 @@ exports[`Demo1 should render the initial header image 1`] = `
 
 <img
   alt="Stadsbeeld van een terras"
-  class="sc-qXRQq c0"
+  class="sc-pQdCa c0"
   data-testid="headerImage"
   src="/assets/leeftijd-940.jpg"
   srcset="/assets/leeftijd-290.jpg 580w, /assets/leeftijd-940.jpg 1880w"
@@ -471,7 +471,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 
 <img
   alt="Foto van een plein met kinderen"
-  class="sc-qXRQq c0"
+  class="sc-pQdCa c0"
   data-testid="headerImage"
   src="/assets/jonger-dan-18-940.jpg"
   srcset="/assets/jonger-dan-18-290.jpg 580w, /assets/jonger-dan-18-940.jpg 1880w"
@@ -1161,7 +1161,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 
 <img
   alt="Straatbeeld van volwassenen op fiets"
-  class="sc-qXRQq c0"
+  class="sc-pQdCa c0"
   data-testid="headerImage"
   src="/assets/jonger-dan-65-940.jpg"
   srcset="/assets/jonger-dan-65-290.jpg 580w, /assets/jonger-dan-65-940.jpg 1880w"
@@ -1851,7 +1851,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 
 <img
   alt="Foto van mensen in een café"
-  class="sc-qXRQq c0"
+  class="sc-pQdCa c0"
   data-testid="headerImage"
   src="/assets/ouder-dan-18-940.jpg"
   srcset="/assets/ouder-dan-18-290.jpg 580w, /assets/ouder-dan-18-940.jpg 1880w"
@@ -2546,7 +2546,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 
 <img
   alt="Foto van dansende ouderen"
-  class="sc-qXRQq c0"
+  class="sc-pQdCa c0"
   data-testid="headerImage"
   src="/assets/ouder-dan-65-940.jpg"
   srcset="/assets/ouder-dan-65-290.jpg 580w, /assets/ouder-dan-65-940.jpg 1880w"

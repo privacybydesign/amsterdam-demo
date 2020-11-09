@@ -19,7 +19,8 @@ exports[`QR Code Clicking the QR Code button should show the modal and call getS
   height: 20px;
 }
 
-.c17:not(:disabled).c3:hover .sc-AxirZ {
+.c17:not(:disabled).c3:focus .sc-AxirZ,
+.c17:not(:disabled).c17:hover .sc-AxirZ {
   border-left-color: #b90000;
 }
 
@@ -124,7 +125,7 @@ exports[`QR Code Clicking the QR Code button should show the modal and call getS
   z-index: 21;
 }
 
-.c1 .sc-fzoOEf {
+.c1 .sc-fzpdyU {
   min-height: 54px;
 }
 

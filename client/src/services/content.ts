@@ -122,7 +122,7 @@ Bewijs dat u ouder bent dan 18 jaar of 65 jaar door uzelf bekend te maken met de
 - U heeft uw geboortedatum (en andere gegevens) niet doorgegeven.`,
             isNotOver65: `- U heeft IRMA gebruikt om door te geven dat u jonger bent dan 65 jaar.
 - U heeft uw geboortedatum (en andere gegevens) niet doorgegeven.`,
-            whatsDifferentWithIrma: `## Wat is er anders met IRMA?  \nAls u via IRMA uw leeftijd doorgeeft, is bij de website bekend of u aan de leeftijdsgrens voldoet. U blijft anoniem.  \nDit kan worden gebruikt voor:
+            whatsDifferentWithIrma: `## Wat is er anders met IRMA?  \nAls u via IRMA uw leeftijd doorgeeft, is bij de website bekend of u aan de leeftijdsgrens voldoet. U blijft anoniem.  \n  \nDit kan worden gebruikt voor:
 - Toegang en korting op basis van uw leeftijd.
 - Alcohol kopen.
 - Stemmen voor lokale initiatieven.
