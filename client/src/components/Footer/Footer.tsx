@@ -13,7 +13,7 @@ import {
     themeColor,
     themeSpacing,
     breakpoint
-} from '@datapunt/asc-ui';
+} from '@amsterdam/asc-ui';
 import ReactMarkDown from 'react-markdown';
 import content from '@services/content';
 import { LinkWithChevron } from '@components/LocalAsc/LocalAsc';

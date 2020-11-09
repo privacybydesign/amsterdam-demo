@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Icon, themeColor, themeSpacing } from '@datapunt/asc-ui';
-import { ChevronRight } from '@datapunt/asc-assets';
+import { Icon, themeColor, themeSpacing } from '@amsterdam/asc-ui';
+import { ChevronRight } from '@amsterdam/asc-assets';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import HeaderImage from '@components/HeaderImage/HeaderImage';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link, Icon, themeSpacing } from '@datapunt/asc-ui';
-import { ExternalLink as ExternalLinkIcon } from '@datapunt/asc-assets';
+import { Link, Icon, themeSpacing } from '@amsterdam/asc-ui';
+import { ExternalLink as ExternalLinkIcon } from '@amsterdam/asc-assets';
 
 interface IExternalLinkProps {
     href: string;

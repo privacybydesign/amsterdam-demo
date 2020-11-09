@@ -1,5 +1,5 @@
-import { ascDefaultTheme, Theme } from '@datapunt/asc-ui';
-import { sizes } from '@datapunt/asc-ui/lib/theme/default/breakpoints';
+import { ascDefaultTheme, Theme } from '@amsterdam/asc-ui';
+import { sizes } from '@amsterdam/asc-ui/lib/theme/default/breakpoints';
 
 const theme: Partial<Theme.ThemeInterface> = {
     ...ascDefaultTheme,

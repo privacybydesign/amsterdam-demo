@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { themeSpacing } from '@datapunt/asc-ui';
+import { themeSpacing } from '@amsterdam/asc-ui';
 
 export interface IHeaderImageProps {
     filename: string;

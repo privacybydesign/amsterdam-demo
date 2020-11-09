@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import { GlobalStyle, ThemeProvider, themeColor } from '@datapunt/asc-ui';
+import { GlobalStyle, ThemeProvider, themeColor } from '@amsterdam/asc-ui';
 import theme from '@services/theme';
 import AppRoutes from './AppRoutes';
 import ScrollToTop from '@components/ScrollToTop/ScrollToTop';

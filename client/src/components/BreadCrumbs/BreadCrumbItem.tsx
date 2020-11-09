@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { themeColor } from '@datapunt/asc-ui';
+import { themeColor } from '@amsterdam/asc-ui';
 
 export interface IBreadCrumbItemProps {
     className?: string;

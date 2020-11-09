@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import BreadCrumbs from '@components/BreadCrumbs';
-import { Accordion, breakpoint, Link } from '@datapunt/asc-ui';
+import { Accordion, breakpoint, Link } from '@amsterdam/asc-ui';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import ReactMarkDown from 'react-markdown';
 import content from '@services/content';

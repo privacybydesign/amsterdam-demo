@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactMarkDown from 'react-markdown';
-import { Accordion } from '@datapunt/asc-ui';
+import { Accordion } from '@amsterdam/asc-ui';
 import content from '@services/content';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import PageTemplate from '@components/PageTemplate/PageTemplate';

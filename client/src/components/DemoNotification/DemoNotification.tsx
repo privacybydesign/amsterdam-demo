@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import content from '@services/content';
-import { breakpoint, themeSpacing } from '@datapunt/asc-ui';
+import { breakpoint, themeSpacing } from '@amsterdam/asc-ui';
 
 interface IProps {}
 
