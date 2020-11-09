@@ -12,17 +12,17 @@
     proj4leaflet "^1.0.2"
     uuid "^8.1.0"
 
-"@amsterdam/asc-assets@^0.25.2":
-  version "0.25.2"
-  resolved "https://registry.yarnpkg.com/@amsterdam/asc-assets/-/asc-assets-0.25.2.tgz#6ba4ec227bddbb38b134d91e2b7dba014280503b"
-  integrity sha512-eKOAznYpOt07Csd4jHi8Q436hF1v7dF7tlp97ijld3n8o2Os4gnrN/a8vceyiR8Cwa3bAuwoKFrwf+/0g70cqA==
+"@amsterdam/asc-assets@^0.26.0":
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/@amsterdam/asc-assets/-/asc-assets-0.26.0.tgz#e77b1ee2bd6feb7e71d744bf78ba102ee18949ba"
+  integrity sha512-hQKovIJIOlfIL4rRAX//pLSTp2KRudjIR+SWE4EE1SgtUDkYqB1L9VX83ryKDltL/4ZNeAyrYuB0y5Pwq1cTcw==
 
-"@amsterdam/asc-ui@^0.25.2":
-  version "0.25.2"
-  resolved "https://registry.yarnpkg.com/@amsterdam/asc-ui/-/asc-ui-0.25.2.tgz#7e608a01dbe3ff7e68703c7176e2ebe4a28a34af"
-  integrity sha512-ZbI3H6KpOYfDWib0vnq6jtWjzX43Ubqckahs4qApCdKmmVFpX0X9KL0UldbFmEloDZUvUcpmu+8WeCYTCA13rg==
+"@amsterdam/asc-ui@^0.26.0":
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/@amsterdam/asc-ui/-/asc-ui-0.26.0.tgz#7daad0c0a4e7f4bd1bef20b093624f4413ae2e2c"
+  integrity sha512-Zdob2u+QjCe5Ha/wqiT8A0Pd0kYnNQVt6bueNpUxPKBbmaiXKYob1ushWoCvIOkW57qCGr9MnxGysPrg3agsLw==
   dependencies:
-    "@amsterdam/asc-assets" "^0.25.2"
+    "@amsterdam/asc-assets" "^0.26.0"
     classnames "^2.2.6"
     deepmerge "^4.2.2"
     polished "^4.0.1"
@@ -8135,9 +8135,9 @@ regenerate@^1.4.0:
   integrity sha512-j2+C8+NtXQgEKWk49MMP5P/u2GhnahTtVkRIHr5R5lVRlbKvmQ+oS+A5aLKWp2ma5VkT8sh6v+v4hbH0YHR66A==
 
 regenerator-runtime@^0.13.4:
-  version "0.13.5"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.5.tgz#d878a1d094b4306d10b9096484b33ebd55e26697"
-  integrity sha512-ZS5w8CpKFinUzOwW3c83oPeVXoNsrLsaCoLtJvAClH135j/R77RuymhiSErhm2lKcwSCIpmvIWSbDkIfAqKQlA==
+  version "0.13.7"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
+  integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
 
 regenerator-transform@^0.14.2:
   version "0.14.4"
@@ -9548,7 +9548,12 @@ tsconfig-paths@^3.9.0:
     minimist "^1.2.0"
     strip-bom "^3.0.0"
 
-tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.10.0:
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
+  integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
+
+tslib@^1.8.1, tslib@^1.9.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"
   integrity sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==
@@ -9913,9 +9918,9 @@ uuid@^7.0.3:
   integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
 
 uuid@^8.1.0:
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.0.tgz#ab738085ca22dc9a8c92725e459b1d507df5d6ea"
-  integrity sha512-fX6Z5o4m6XsXBdli9g7DtWgAx+osMsRRZFKma1mIUsLCz6vRvv+pz5VNbyu9UEDzpMWulZfvpgb/cmDXVulYFQ==
+  version "8.3.1"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.1.tgz#2ba2e6ca000da60fce5a196954ab241131e05a31"
+  integrity sha512-FOmRr+FmWEIG8uhZv6C2bTgEVXsHk08kE7mPlrBbEe+c3r9pjceVPgupIfNIhc4yx55H69OXANrUaSuu9eInKg==
 
 v8-compile-cache@^2.0.3, v8-compile-cache@^2.1.1:
   version "2.1.1"
