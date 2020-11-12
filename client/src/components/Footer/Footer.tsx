@@ -41,11 +41,13 @@ const Footer: React.FC<IFooterProps> = () => (
                 </Column>
             </StyledRow>
         </FooterTop>
-        <StyledFooterBottom>
-            <StyledRow halign="flex-start">
-                <ReactMarkDown source={content.footer.bottom} renderers={{ link: LinkWithChevron }} />
-            </StyledRow>
-        </StyledFooterBottom>
+        <div className="footer-bottom">
+            <StyledFooterBottom>
+                <StyledRow halign="flex-start">
+                    <ReactMarkDown source={content.footer.bottom} renderers={{ link: LinkWithChevron }} />
+                </StyledRow>
+            </StyledFooterBottom>
+        </div>
     </StyledASCFooter>
 );
 
@@ -87,6 +89,19 @@ const StyledASCFooter = styled(ASCFooter)`
     @media ${breakpoint('min-width', 'laptop')} {
         margin: 0 -220px;
         padding: 0 220px;
+    }
+
+    .footer-bottom {
+        background-color: ${themeColor('tint', 'level1')};
+        margin: 0 -${themeSpacing(6)};
+
+        @media ${breakpoint('min-width', 'laptop')} {
+            margin: 0 -${themeSpacing(8)};
+        }
+
+        @media ${breakpoint('min-width', 'laptopM')} {
+            margin: 0 -220px;
+        }
     }
 `;
 
