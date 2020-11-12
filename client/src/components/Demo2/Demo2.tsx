@@ -45,7 +45,7 @@ function reducer(state, newState) {
 }
 
 const Demo2: React.FC<IProps> = () => {
-    const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
+    const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const getSession = async () => {

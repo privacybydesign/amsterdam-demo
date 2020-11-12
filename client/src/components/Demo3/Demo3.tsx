@@ -23,7 +23,7 @@ export interface IProps {}
 // @todo add error flow with incorrect data
 
 const Demo3: React.FC<IProps> = () => {
-    const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
+    const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [hasResult, setHasResult] = useState<boolean>(false);
     const [hasError, setHasError] = useState<boolean>(false);
     // const [bsn, setBsn] = useState<string>('');
