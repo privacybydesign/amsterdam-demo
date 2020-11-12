@@ -57,8 +57,8 @@ const CREDENTIALS_TO_REQUEST = {
     },
   },
   PRODUCTION: {
-    DEMO1_18: [[["pbdf.gemeente.personalData.over18"]]],
-    DEMO1_65: [[["pbdf.gemeente.personalData.over65"]]],
+    DEMO1_18: [[["pbdf.pilot-amsterdam.passport.over18"], ["pbdf.pilot-amsterdam.idcard.over18"], ["pbdf.gemeente.personalData.over18"]]],
+    DEMO1_65: [[["pbdf.pilot-amsterdam.passport.over65"], ["pbdf.pilot-amsterdam.idcard.over65"], ["pbdf.gemeente.personalData.over65"]]],
     DEMO2: [
       [["pbdf.gemeente.address.zipcode", "pbdf.gemeente.personalData.over18"]],
     ],
