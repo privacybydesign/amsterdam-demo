@@ -61,7 +61,12 @@ const Demo2: React.FC<IProps> = () => {
             newState.hasError = false;
 
             const ggwResponse = await getGGW(postcode);
-            newState.isOver18 = response['over18'] === 'Yes';
+
+            newState.isOver18 =
+                response['over18'] === 'Yes' ||
+                response['over18'] === 'yes' ||
+                response['over18'] === 'Ja' ||
+                response['over18'] === 'ja';
 
             if (ggwResponse) {
                 newState.wijk = ggwResponse.buurtcombinatieNamen;
