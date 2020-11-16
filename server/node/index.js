@@ -81,7 +81,7 @@ const CREDENTIALS_TO_REQUEST = {
         ],
       ],
       [["pbdf.pbdf.mobilenumber.mobilenumber"]],
-      [["pbdf.pbdf.email.email"]],
+      [["pbdf.pbdf.email.email"], ["pbdf.sidn-pbdf.email.email"]],
     ],
     DEMO5: (mobileNumber = "true", email = "true") => {
       const credentials = [];
@@ -90,7 +90,7 @@ const CREDENTIALS_TO_REQUEST = {
       }
 
       if (email === "true") {
-        credentials.push([["pbdf.pbdf.email.email"]]);
+        credentials.push([["pbdf.pbdf.email.email"], ["pbdf.sidn-pbdf.email.email"]]);
       }
       return credentials;
     },
