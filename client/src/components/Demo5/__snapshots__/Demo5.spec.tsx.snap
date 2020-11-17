@@ -226,6 +226,14 @@ exports[`Demo5 should render the initial header image 1`] = `
 
 }
 
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
 @media (min-width:1024px) {
 
 }
@@ -660,6 +668,14 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
 
 }
 
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
 @media (min-width:1024px) {
 
 }
@@ -936,6 +952,14 @@ exports[`Demo5 should update the page after completing the IRMA flow 2`] = `
 }
 
 @media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
 
 }
 
@@ -1364,6 +1388,14 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 
 }
 
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
 @media (min-width:1024px) {
 
 }
@@ -1649,6 +1681,14 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 
 }
 
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
 @media (min-width:1024px) {
 
 }
@@ -1889,6 +1929,14 @@ exports[`Demo5 should update the page after failing the IRMA flow 1`] = `
 }
 
 @media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
 
 }
 
@@ -2316,6 +2364,14 @@ exports[`Demo5 should update the page after failing the IRMA flow 2`] = `
 }
 
 @media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
 
 }
 

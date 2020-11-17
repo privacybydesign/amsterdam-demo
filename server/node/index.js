@@ -57,8 +57,8 @@ const CREDENTIALS_TO_REQUEST = {
     },
   },
   PRODUCTION: {
-    DEMO1_18: [[["pbdf.gemeente.personalData.over18"]]],
-    DEMO1_65: [[["pbdf.gemeente.personalData.over65"]]],
+    DEMO1_18: [[["pbdf.pilot-amsterdam.passport.over18"], ["pbdf.pilot-amsterdam.idcard.over18"], ["pbdf.gemeente.personalData.over18"]]],
+    DEMO1_65: [[["pbdf.pilot-amsterdam.passport.over65"], ["pbdf.pilot-amsterdam.idcard.over65"], ["pbdf.gemeente.personalData.over65"]]],
     DEMO2: [
       [["pbdf.gemeente.address.zipcode", "pbdf.gemeente.personalData.over18"]],
     ],
@@ -81,7 +81,7 @@ const CREDENTIALS_TO_REQUEST = {
         ],
       ],
       [["pbdf.pbdf.mobilenumber.mobilenumber"]],
-      [["pbdf.pbdf.email.email"]],
+      [["pbdf.pbdf.email.email"], ["pbdf.sidn-pbdf.email.email"]],
     ],
     DEMO5: (mobileNumber = "true", email = "true") => {
       const credentials = [];
@@ -90,7 +90,7 @@ const CREDENTIALS_TO_REQUEST = {
       }
 
       if (email === "true") {
-        credentials.push([["pbdf.pbdf.email.email"]]);
+        credentials.push([["pbdf.pbdf.email.email"], ["pbdf.sidn-pbdf.email.email"]]);
       }
       return credentials;
     },
@@ -110,6 +110,33 @@ const createIrmaRequest = (content) => {
     "@context": "https://irma.app/ld/request/disclosure/v2",
     disclose: [...content],
   };
+};
+
+// Setup authentication for acceptance
+const secured = function (req, res, next) {
+  if (
+    process.env.NODE_ENV !== "acceptance"
+  ) {
+    return next();
+  }
+
+  // check for basic auth header
+  if (
+    !req.headers.authorization ||
+    req.headers.authorization.indexOf("Basic ") === -1
+  ) {
+    res.setHeader("WWW-Authenticate", "Basic");
+    return res.status(401).sendFile(path.join(__dirname, "/pages/403.html"));
+  }
+
+  // check the entered credentials
+  const credentials = Buffer.from("irma:demo").toString("base64");
+  if (req.headers.authorization !== `Basic ${credentials}`) {
+    res.setHeader("WWW-Authenticate", "Basic");
+    return res.sendFile(path.join(__dirname, "/pages/403.html"));
+  }
+
+  next();
 };
 
 const init = async () => {
@@ -142,7 +169,7 @@ const init = async () => {
       process.env.NODE_ENV === "production"
     ) {
       app.use(express.static(config.docroot, { index: false }));
-      app.get("*", function (req, res) {
+      app.get("*", secured, function (req, res) {
         res.sendFile(path.join(__dirname, config.docroot, "index.html"));
       });
     } else {

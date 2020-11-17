@@ -26,7 +26,7 @@ export interface IProps {}
 const Demo4: React.FC<IProps> = () => {
     const formEl = useRef(null);
 
-    const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
+    const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [state, dispatch] = useReducer(reducer, initialState);
 
     function replaceVars(str, p1) {
