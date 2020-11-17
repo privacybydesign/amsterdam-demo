@@ -13,8 +13,8 @@ let config;
 
 const CREDENTIALS_TO_REQUEST = {
   DEMO: {
-    DEMO1_18: [[["irma-demo.gemeente.personalData.over18"]]],
-    DEMO1_65: [[["irma-demo.gemeente.personalData.over65"]]],
+    DEMO1_18: () => [[["irma-demo.gemeente.personalData.over18"]]],
+    DEMO1_65: () => [[["irma-demo.gemeente.personalData.over65"]]],
     DEMO2: [
       [
         [
@@ -57,8 +57,20 @@ const CREDENTIALS_TO_REQUEST = {
     },
   },
   PRODUCTION: {
-    DEMO1_18: [[["pbdf.pilot-amsterdam.passport.over18"], ["pbdf.pilot-amsterdam.idcard.over18"], ["pbdf.gemeente.personalData.over18"]]],
-    DEMO1_65: [[["pbdf.pilot-amsterdam.passport.over65"], ["pbdf.pilot-amsterdam.idcard.over65"], ["pbdf.gemeente.personalData.over65"]]],
+    DEMO1_18: () => {
+      const credentials = [[["pbdf.gemeente.personalData.over18"]]];
+      if (process.env.NODE_ENV !== "production") {
+        credentials[0].unshift(["pbdf.pilot-amsterdam.passport.over18"], ["pbdf.pilot-amsterdam.idcard.over18"]);
+      }
+      return credentials;
+    },
+    DEMO1_65: () => {
+      const credentials = [[["pbdf.gemeente.personalData.over65"]]];
+      if (process.env.NODE_ENV !== "production") {
+        credentials[0].unshift(["pbdf.pilot-amsterdam.passport.over65"], ["pbdf.pilot-amsterdam.idcard.over65"]);
+      }
+      return credentials;
+    },
     DEMO2: [
       [["pbdf.gemeente.address.zipcode", "pbdf.gemeente.personalData.over18"]],
     ],
@@ -247,7 +259,7 @@ async function irmaDiscloseDemo1_18(req, res) {
   return irmaDiscloseRequest(
     req,
     res,
-    getCredentialSourceFromRequest(req).DEMO1_18
+    getCredentialSourceFromRequest(req).DEMO1_18()
   );
 }
 
@@ -255,7 +267,7 @@ async function irmaDiscloseDemo1_65(req, res) {
   return irmaDiscloseRequest(
     req,
     res,
-    getCredentialSourceFromRequest(req).DEMO1_65
+    getCredentialSourceFromRequest(req).DEMO1_65()
   );
 }
 
