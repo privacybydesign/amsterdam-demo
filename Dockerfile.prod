@@ -19,6 +19,9 @@ FROM node:14.4-alpine3.12
 
 RUN adduser -D irma
 
+ENV NODE_EXTRA_CA_CERTS=/adp_rootca.crt
+COPY adp_rootca.crt /adp_rootca.crt
+
 COPY ./server/node /server
 WORKDIR /server
 RUN yarn install
