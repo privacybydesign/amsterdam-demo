@@ -20,7 +20,7 @@ node {
     stage("Build image") {
         tryStep "build", {
             def dockerfile = './Dockerfile.prod'
-            def image = docker.build("docker-registry.secure.amsterdam.nl/irma/irma-backend:${env.BUILD_NUMBER}", "-f ${dockerfile} ./")
+            def image = docker.build("docker-registry.secure.amsterdam.nl/irma/irma-frontend:${env.BUILD_NUMBER}", "-f ${dockerfile} ./")
             image.push()
         }
     }
@@ -30,7 +30,7 @@ if (BRANCH == "master" || BRANCH == "develop") {
     node {
         stage('Push acceptance image') {
             tryStep "image tagging", {
-                def image = docker.image("docker-registry.secure.amsterdam.nl/irma/irma-backend:${env.BUILD_NUMBER}")
+                def image = docker.image("docker-registry.secure.amsterdam.nl/irma/irma-frontend:${env.BUILD_NUMBER}")
                 image.pull()
                 image.push("acceptance")
             }
@@ -56,7 +56,7 @@ if (BRANCH == "master") {
     node {
         stage('Push production image') {
         tryStep "image tagging", {
-            def image = docker.image("docker-registry.secure.amsterdam.nl/irma/irma-backend:${env.BUILD_NUMBER}")
+            def image = docker.image("docker-registry.secure.amsterdam.nl/irma/irma-frontend:${env.BUILD_NUMBER}")
                 image.pull()
                 image.push("production")
                 image.push("latest")
