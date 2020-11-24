@@ -5,6 +5,9 @@ LABEL maintainer="datapunt@amsterdam.nl"
 ENV NODE_ENV=${ENVIRONMENT}
 ENV PATH /app/node_modules/.bin:$PATH
 
+ENV NODE_EXTRA_CA_CERTS=/adp_rootca.crt
+COPY adp_rootca.crt /adp_rootca.crt
+
 WORKDIR /app
 COPY ./client/package.json ./
 COPY ./client/yarn.lock ./
