@@ -1,6 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BreadCrumbs should render 3 items correctly 1`] = `
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 14px;
+  height: 14px;
+  box-sizing: content-box;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.c2 > svg {
+  width: 14px;
+  height: 14px;
+}
+
+.c2 svg circle,
+.c2 svg rect,
+.c2 svg polygon,
+.c2 svg path {
+  fill: #767676;
+}
+
 .c1 a {
   color: #767676;
   -webkit-text-decoration: none;
@@ -35,30 +60,8 @@ exports[`BreadCrumbs should render 3 items correctly 1`] = `
   margin: 16px 0;
 }
 
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 14px;
-  height: 14px;
-  box-sizing: content-box;
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
+.c3 {
   margin: 0 4px;
-}
-
-.c2 > svg {
-  width: 14px;
-  height: 14px;
-}
-
-.c2 svg circle,
-.c2 svg rect,
-.c2 svg polygon,
-.c2 svg path {
-  fill: #767676;
 }
 
 @media (min-width:1200px) {
@@ -81,7 +84,7 @@ exports[`BreadCrumbs should render 3 items correctly 1`] = `
     </span>
   </a>
   <span
-    class="sc-AxjAm c2"
+    class="c2 c3"
     color="#767676"
     size="14"
   >
@@ -105,7 +108,7 @@ exports[`BreadCrumbs should render 3 items correctly 1`] = `
     </span>
   </a>
   <span
-    class="sc-AxjAm c2"
+    class="c2 c3"
     color="#767676"
     size="14"
   >
