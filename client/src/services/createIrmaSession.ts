@@ -77,6 +77,8 @@ const createIrmaSession = async (dataType: string, holderElementId: string, quer
     try {
         // This function wraps the canvas context drawImage method to be able to run some code when the QR code disappears
         wrapDrawImage(holderElementId);
+        // Adjust malformed url returned from irma server due to rewrite
+        sessionPtr.u = sessionPtr.u.replace(/\/irma/g, '/irma/irma');
         const result = await irma.handleSession(sessionPtr, sessionOptions);
         unwrapDrawImage();
 
