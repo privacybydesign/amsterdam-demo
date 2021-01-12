@@ -19,22 +19,27 @@ import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
+import { reduceAndTranslateEmptyVars } from '@components/Demo4/Demo4';
 
 export interface IProps {}
 
 interface IState {
-    hasResult?: boolean;
-    hasError?: boolean;
-    isOver18?: null | boolean;
-    wijk?: string;
-    ggw?: string;
-    code?: string;
+    hasResult: boolean;
+    hasError: boolean;
+    hasEmptyVars: boolean;
+    emptyVars: string[];
+    isOver18: null | boolean;
+    wijk: string;
+    ggw: string;
+    code: string;
 }
 
 const initialState: IState = {
     hasResult: false,
     hasError: false,
     isOver18: null,
+    hasEmptyVars: false,
+    emptyVars: [],
     wijk: '',
     ggw: '',
     code: ''
@@ -56,11 +61,8 @@ const Demo2: React.FC<IProps> = () => {
         );
         const newState: IState = { ...initialState };
         if (response) {
-            const postcode = response['zipcode'].replace(/ /, '');
             newState.hasResult = true;
             newState.hasError = false;
-
-            const ggwResponse = await getGGW(postcode);
 
             newState.isOver18 =
                 response['over18'] === 'Yes' ||
@@ -68,10 +70,19 @@ const Demo2: React.FC<IProps> = () => {
                 response['over18'] === 'Ja' ||
                 response['over18'] === 'ja';
 
-            if (ggwResponse) {
-                newState.wijk = ggwResponse.buurtcombinatieNamen;
-                newState.code = ggwResponse.ggwCode;
-                newState.ggw = ggwResponse.ggwNaam;
+            if (!response['zipcode']) {
+                newState.hasEmptyVars = true;
+                newState.emptyVars = [...state.emptyVars, 'zipcode'];
+            } else {
+                const postcode = response['zipcode'].replace(/ /, '');
+
+                const ggwResponse = await getGGW(postcode);
+
+                if (ggwResponse) {
+                    newState.wijk = ggwResponse.buurtcombinatieNamen;
+                    newState.code = ggwResponse.ggwCode;
+                    newState.ggw = ggwResponse.ggwNaam;
+                }
             }
         } else {
             newState.hasError = true;
@@ -83,7 +94,7 @@ const Demo2: React.FC<IProps> = () => {
         return response;
     };
 
-    const { hasResult, hasError, isOver18, wijk, ggw, code } = state;
+    const { hasResult, hasError, hasEmptyVars, emptyVars, isOver18, wijk, ggw, code } = state;
 
     // Preload demo images
     useEffect(() => {
@@ -131,6 +142,18 @@ const Demo2: React.FC<IProps> = () => {
                     iconSize={22}
                     heading={content.demoErrorAlert.heading}
                     content={content.demoErrorAlert.content}
+                    dataTestId="hasErrorAlert"
+                />
+            );
+        } else if (hasEmptyVars) {
+            return (
+                <AscLocal.Alert
+                    color={AscLocal.AlertColor.ERROR}
+                    icon={<AlertIcon />}
+                    iconSize={22}
+                    heading={content.demoEmptyVarsAlert.heading}
+                    content={content.demoEmptyVarsAlert.content}
+                    contentExtended={`${reduceAndTranslateEmptyVars(state.emptyVars)}.`}
                     dataTestId="hasErrorAlert"
                 />
             );
