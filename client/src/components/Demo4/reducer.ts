@@ -31,7 +31,7 @@ export const initialState: IState = {
     hasResult: false,
     hasError: false,
     hasEmptyVars: false,
-    emptyVars: [];
+    emptyVars: [],
     formValid: true,
     irmaAttributes: {
         owner: '',
