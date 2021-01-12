@@ -76,6 +76,10 @@ Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
         heading: `Niets doorgegeven`,
         content: `U heeft uw gegevens niet doorgegeven aan de demosite van de gemeente Amsterdam.`
     },
+    demoEmptyVarsAlert: {
+        heading: `Ontbrekende gegevens`,
+        content: `U heeft niet alle gegevens doorgegeven die nodig zijn.`
+    },
     demo1: {
         breadcrumbs: `- [Home](/)
 - [Demo 1: Leeftijd aantonen](/leeftijd-aantonen)`,
@@ -273,7 +277,7 @@ Bent u de eigenaar van de woning waar de geveltuin komt?  \n
 Naam  \n
 :   [name]  \n
 Straat en huisnummer  \n
-:   [street]  \n
+:   [street] [houseNumber]\n
 Postcode en plaats  \n
 :   [city]\n
 Telefoonnummer  \n
@@ -497,5 +501,14 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
 1. Scan de QR-code hieronder met uw IRMA-app.  \n
 2. Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.`,
         knop: 'Inloggen met IRMA'
+    },
+    translatedIrmaAttributes: {
+        fullname: 'volledige naam',
+        street: 'straat',
+        housenumber: 'huisnummer',
+        city: 'stad',
+        zipcode: 'postcode',
+        email: 'email',
+        mobilenumber: 'telefoonnummer mobiel'
     }
 };
