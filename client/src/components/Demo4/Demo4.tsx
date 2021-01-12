@@ -23,6 +23,17 @@ import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 
 export interface IProps {}
 
+const OPTIONAL_IRMA_ATTRIBUTES = ['houseNumber'];
+
+export function reduceAndTranslateEmptyVars(emptyVars) {
+    return emptyVars
+        .reduce(
+            (acc, varToTranslate) => acc + `${content.translatedIrmaAttributes[varToTranslate]}, `,
+            'De volgende gegevens ontbreken: '
+        )
+        .slice(0, -2);
+}
+
 const Demo4: React.FC<IProps> = () => {
     const formEl = useRef(null);
 
@@ -30,8 +41,13 @@ const Demo4: React.FC<IProps> = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     function replaceVars(str, p1) {
-        return state[p1] || '-';
+        if (!OPTIONAL_IRMA_ATTRIBUTES.includes(p1)) {
+            return state.irmaAttributes[p1] || '-';
+        }
+        return '';
     }
+
+    console.log({ state });
 
     const validateForm = () => {
         const el = formEl.current.querySelector('input[name=geveltuin]:checked');
@@ -60,12 +76,19 @@ const Demo4: React.FC<IProps> = () => {
                 credentialSource === CredentialSource.DEMO && { demo: true }
             );
             if (response) {
+                const { fullname } = response;
                 dispatch({
                     type: 'setProperties',
                     payload: {
                         name: response['fullname'],
-                        street: `${response['street']} ${response['houseNumber']}`,
-                        city: `${response['zipcode']} ${response['city']}`,
+                        street:
+                            response['street'] && response['houseNumber']
+                                ? `${response['street']} ${response['houseNumber']}`
+                                : response['street'],
+                        city:
+                            response['zipcode'] && response['city']
+                                ? `${response['zipcode']}, ${response['city']}`
+                                : response['city'],
                         telephone: response['mobilenumber'],
                         email: response['email']
                     }
@@ -87,7 +110,7 @@ const Demo4: React.FC<IProps> = () => {
         alt: content.responsiveImages.demo4.header.alt
     });
 
-    const { hasResult, hasError, formValid } = state;
+    const { hasResult, hasError, hasEmptyVars, formValid } = state;
 
     // Update header image
     useEffect(() => {
@@ -96,6 +119,21 @@ const Demo4: React.FC<IProps> = () => {
                 filename: content.responsiveImages.demo4.headerResult.src,
                 alt: content.responsiveImages.demo4.headerResult.alt
             });
+        }
+    }, [hasResult]);
+
+    useEffect(() => {
+        if (hasResult) {
+            for (const [key, value] of Object.entries(state.irmaAttributes)) {
+                if (!value && !OPTIONAL_IRMA_ATTRIBUTES.includes(key)) {
+                    dispatch({
+                        type: 'setEmptyVars',
+                        payload: {
+                            emptyVar: key
+                        }
+                    });
+                }
+            }
         }
     }, [hasResult]);
 
@@ -134,7 +172,19 @@ const Demo4: React.FC<IProps> = () => {
                     />
                 )}
 
-                {hasResult && !hasError && (
+                {hasEmptyVars && !hasError && (
+                    <AscLocal.Alert
+                        color={AscLocal.AlertColor.ERROR}
+                        icon={<Alert />}
+                        iconSize={22}
+                        heading={content.demoEmptyVarsAlert.heading}
+                        content={content.demoEmptyVarsAlert.content}
+                        contentExtended={`${reduceAndTranslateEmptyVars(state.emptyVars)}.`}
+                        dataTestId="hasErrorAlert"
+                    />
+                )}
+
+                {hasResult && !hasError && !hasEmptyVars && (
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.SUCCESS}
                         icon={<Checkmark />}
