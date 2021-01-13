@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect, useReducer } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
 import getGGW from '@services/getGGW';
-import content, { insertInPlaceholders } from '@services/content';
+import content, { insertInPlaceholders, reduceAndTranslateEmptyVars } from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Link, Accordion } from '@amsterdam/asc-ui';
@@ -19,7 +19,6 @@ import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
-import { reduceAndTranslateEmptyVars } from '@components/Demo4/Demo4';
 
 export interface IProps {}
 
@@ -71,8 +70,7 @@ const Demo2: React.FC<IProps> = () => {
                 response['over18'] === 'ja';
 
             if (!response['zipcode']) {
-                newState.hasEmptyVars = true;
-                newState.emptyVars = [...state.emptyVars, 'zipcode'];
+                newState.emptyVars.push('zipcode');
             } else {
                 const postcode = response['zipcode'].replace(/ /, '');
 
@@ -94,7 +92,7 @@ const Demo2: React.FC<IProps> = () => {
         return response;
     };
 
-    const { hasResult, hasError, hasEmptyVars, emptyVars, isOver18, wijk, ggw, code } = state;
+    const { hasResult, hasError, emptyVars, isOver18, wijk, ggw, code } = state;
 
     // Preload demo images
     useEffect(() => {
@@ -145,7 +143,7 @@ const Demo2: React.FC<IProps> = () => {
                     dataTestId="hasErrorAlert"
                 />
             );
-        } else if (hasEmptyVars) {
+        } else if (emptyVars.length > 0) {
             return (
                 <AscLocal.Alert
                     color={AscLocal.AlertColor.ERROR}

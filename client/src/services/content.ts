@@ -12,7 +12,17 @@ export const insertInPlaceholders = (sentence: string, values: string | string[]
     }
 };
 
-export default {
+export const reduceAndTranslateEmptyVars = (emptyVars) => {
+    return emptyVars
+        .reduce(
+            (acc, varToTranslate) => acc + `${content.translatedIrmaAttributes[varToTranslate]}, `,
+            content.demoEmptyVarsAlert.contentExtended
+        )
+        .slice(0, -2);
+}
+
+
+const content = {
     home: {
         breadcrumbs: `- [Home](/)`,
         title: `# Probeer IRMA uit`,
@@ -78,7 +88,8 @@ Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
     },
     demoEmptyVarsAlert: {
         heading: `Ontbrekende gegevens`,
-        content: `U heeft niet alle gegevens doorgegeven die nodig zijn.`
+        content: `U heeft niet alle gegevens doorgegeven die nodig zijn.`,
+        contentExtended: `De volgende gegevens ontbreken: `
     },
     demo1: {
         breadcrumbs: `- [Home](/)
@@ -512,3 +523,6 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
         mobilenumber: 'telefoonnummer mobiel'
     }
 };
+
+export default content;
+

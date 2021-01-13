@@ -1,7 +1,6 @@
 interface IState {
     hasResult: boolean;
     hasError: boolean;
-    hasEmptyVars: boolean;
     emptyVars: string[];
     formValid: boolean;
     irmaAttributes: {
@@ -34,7 +33,6 @@ interface IAction {
 export const initialState: IState = {
     hasResult: false,
     hasError: false,
-    hasEmptyVars: false,
     emptyVars: [],
     formValid: true,
     irmaAttributes: {
@@ -93,7 +91,6 @@ export const reducer = (state: IState, action: IAction): IState => {
         case 'setEmptyVars':
             return {
                 ...state,
-                hasEmptyVars: true,
                 emptyVars: [
                     ...state.emptyVars,
                     action.payload['emptyVar']

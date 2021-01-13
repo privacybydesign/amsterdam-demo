@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useReducer } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
-import content from '@services/content';
+import content, { reduceAndTranslateEmptyVars } from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import defList from '@services/deflist';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
@@ -25,15 +25,6 @@ export interface IProps {}
 
 const OPTIONAL_IRMA_ATTRIBUTES = ['houseNumber'];
 
-export function reduceAndTranslateEmptyVars(emptyVars) {
-    return emptyVars
-        .reduce(
-            (acc, varToTranslate) => acc + `${content.translatedIrmaAttributes[varToTranslate]}, `,
-            'De volgende gegevens ontbreken: '
-        )
-        .slice(0, -2);
-}
-
 const Demo4: React.FC<IProps> = () => {
     const formEl = useRef(null);
 
@@ -46,8 +37,6 @@ const Demo4: React.FC<IProps> = () => {
         }
         return '';
     }
-
-    console.log({ state });
 
     const validateForm = () => {
         const el = formEl.current.querySelector('input[name=geveltuin]:checked');
@@ -106,7 +95,7 @@ const Demo4: React.FC<IProps> = () => {
         alt: content.responsiveImages.demo4.header.alt
     });
 
-    const { hasResult, hasError, hasEmptyVars, formValid } = state;
+    const { hasResult, hasError, emptyVars, formValid } = state;
 
     // Update header image
     useEffect(() => {
@@ -168,7 +157,7 @@ const Demo4: React.FC<IProps> = () => {
                     />
                 )}
 
-                {hasEmptyVars && !hasError && (
+                {emptyVars.length > 0 && !hasError && (
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.ERROR}
                         icon={<Alert />}
@@ -180,7 +169,7 @@ const Demo4: React.FC<IProps> = () => {
                     />
                 )}
 
-                {hasResult && !hasError && !hasEmptyVars && (
+                {hasResult && !hasError && emptyVars.length === 0 && (
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.SUCCESS}
                         icon={<Checkmark />}
