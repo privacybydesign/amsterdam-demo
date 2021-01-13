@@ -76,6 +76,10 @@ Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
         heading: `Niets doorgegeven`,
         content: `U heeft uw gegevens niet doorgegeven aan de demosite van de gemeente Amsterdam.`
     },
+    ieErrorAlert: {
+        heading: `Let op`,
+        content: `Deze demosite werkt niet goed in Internet Explorer. We raden je aan een andere browser te gebruiken.`
+    },
     demo1: {
         breadcrumbs: `- [Home](/)
 - [Demo 1: Leeftijd aantonen](/leeftijd-aantonen)`,
