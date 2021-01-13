@@ -279,7 +279,7 @@ Naam  \n
 Straat en huisnummer  \n
 :   [street] [houseNumber]\n
 Postcode en plaats  \n
-:   [city]\n
+:   [zipcode], [city]\n
 Telefoonnummer  \n
 :   [telephone]  \n
 E-mail  \n

@@ -81,14 +81,10 @@ const Demo4: React.FC<IProps> = () => {
                     type: 'setProperties',
                     payload: {
                         name: response['fullname'],
-                        street:
-                            response['street'] && response['houseNumber']
-                                ? `${response['street']} ${response['houseNumber']}`
-                                : response['street'],
-                        city:
-                            response['zipcode'] && response['city']
-                                ? `${response['zipcode']}, ${response['city']}`
-                                : response['city'],
+                        street: response['street'],
+                        houseNumber: response['houseNumber'],
+                        zipcode: response['zipcode'],
+                        city: response['city'],
                         telephone: response['mobilenumber'],
                         email: response['email']
                     }

@@ -8,6 +8,8 @@ interface IState {
         owner: string;
         name: string;
         street: string;
+        houseNumber: string;
+        zipcode: string;
         city: string;
         telephone: string;
         email: string;
@@ -20,7 +22,9 @@ interface IAction {
         owner?: string;
         name?: string;
         street?: string;
+        houseNumber?: string;
         city?: string;
+        zipcode?: string;
         telephone?: string;
         email?: string;
         emptyVar?: string;
@@ -37,6 +41,8 @@ export const initialState: IState = {
         owner: '',
         name: '',
         street: '',
+        houseNumber: '',
+        zipcode: '',
         city: '',
         telephone: '',
         email: ''
@@ -70,6 +76,8 @@ export const reducer = (state: IState, action: IAction): IState => {
                     ...state.irmaAttributes,
                     name: action.payload['name'],
                     street: action.payload['street'],
+                    houseNumber: action.payload['houseNumber'],
+                    zipcode: action.payload['zipcode'],
                     city: action.payload['city'],
                     telephone: action.payload['telephone'],
                     email: action.payload['email']
