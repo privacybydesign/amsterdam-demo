@@ -201,7 +201,7 @@ export const Alert = styled(
                             <>
                                 {heading && <Heading forwardedAs="h3">{heading}</Heading>}
                                 <Paragraph>{content}</Paragraph>
-                                <Paragraph>{contentExtended}</Paragraph>
+                                {contentExtended && <Paragraph>{contentExtended}</Paragraph>}
                             </>
                         ) : (
                             children
