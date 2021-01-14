@@ -16,7 +16,7 @@ export const reduceAndTranslateEmptyVars = (emptyVars) => {
     return emptyVars
         .reduce(
             (acc, varToTranslate) => acc + `${content.translatedIrmaAttributes[varToTranslate]}, `,
-            content.demoEmptyVarsAlert.contentExtended
+            ''
         )
         .slice(0, -2);
 }
@@ -99,16 +99,17 @@ De website **Probeer IRMA uit** maakt gebruik van de meest recente technologie e
 Concreet betekent het niet meer ondersteunen van Internet Explorer dat de site in die browser (veel) trager werkt dan in moderne browsers, pagina's er anders uitzien dan ze zijn ontworpen en meer complexe functies (bijvoorbeeld in de interactieve kaart) niet goed werken.
 
 Als je nog gebruik maakt van Internet Explorer, adviseren we je om zo snel mogelijk een andere browser te gaan gebruiken, zoals [Firefox](https://www.mozilla.org/nl/firefox/new/) en [Chrome](https://www.google.com/intl/nl_nl/chrome/). Ook Microsoft zelf [raadt aan](https://docs.microsoft.com/nl-nl/lifecycle/faq/internet-explorer-microsoft-edge#what-is-the-lifecycle-policy-for-internet-explorer) een andere browser te gebruiken.`,
-    errorAlert: {
-        heading: `Let op`,
-        content: `Deze demosite werkt niet goed in Internet Explorer. We raden je aan een andere browser te gebruiken.
-            
+        errorAlert: {
+            heading: `Let op`,
+            content: `Deze demosite werkt niet goed in Internet Explorer. We raden je aan een andere browser te gebruiken.
+                
 [Wat kan ik doen?](/ie-support)`
-        },
+        }
+    },
     demoEmptyVarsAlert: {
         heading: `Ontbrekende gegevens`,
-        content: `U heeft niet alle gegevens doorgegeven die nodig zijn.`,
-        contentExtended: `De volgende gegevens ontbreken: `
+        content: `U heeft niet alle gegevens doorgegeven die nodig zijn.
+        De volgende gegevens ontbreken: `,
     },
     demo1: {
         breadcrumbs: `- [Home](/)
@@ -544,4 +545,3 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
 };
 
 export default content;
-
