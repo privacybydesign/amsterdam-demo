@@ -1,5 +1,6 @@
 import React, { useContext, useCallback, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import ReactMarkdown from 'react-markdown';
 import {
     Heading,
     breakpoint,
@@ -17,6 +18,7 @@ import {
     Theme
 } from '@amsterdam/asc-ui';
 import { TextAreaProps as AscTextAreaProps } from '@amsterdam/asc-ui/lib/components/TextArea';
+import * as AscLocal from '@components/LocalAsc/LocalAsc';
 
 const lineHeight = '24px';
 
@@ -169,6 +171,14 @@ export enum AlertColor {
     SUCCESS = 'success'
 }
 
+export const ExternalLinkRenderer = props => {
+    return (
+        <a href={props.href} target="_blank">
+            {props.children}
+        </a>
+    );
+};
+
 export const Alert = styled(
     ({ children, icon, iconUrl, iconSize, className, heading, content, color, dataTestId }: IAlertProps) => {
         const themeContext = { theme: useContext(ThemeContext) as Theme.ThemeInterface };
@@ -188,7 +198,7 @@ export const Alert = styled(
                         {heading || content ? (
                             <>
                                 {heading && <Heading forwardedAs="h3">{heading}</Heading>}
-                                <Paragraph>{content}</Paragraph>
+                                <ReactMarkdown source={content} renderers={{ paragraph: AscLocal.Paragraph }} />
                             </>
                         ) : (
                             children
