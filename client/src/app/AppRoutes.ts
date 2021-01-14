@@ -6,6 +6,7 @@ import Demo3 from '@components/Demo3/Demo3';
 import Demo4 from '@components/Demo4/Demo4';
 import Demo5 from '@components/Demo5/Demo5';
 import Cookies from '@components/Cookies/Cookies';
+import IESupport from '@components/IESupport/IESupport';
 
 interface IRoute {
     path: string;
@@ -23,7 +24,8 @@ const AppRoutes: IAppRoutes = {
     DEMO3: { path: '/inloggen', component: Demo3, exact: false },
     DEMO4: { path: '/geveltuin-aanvragen', component: Demo4, exact: false },
     DEMO5: { path: '/overlast-melden', component: Demo5, exact: false },
-    COOKIES: { path: '/cookies', component: Cookies, exact: false }
+    COOKIES: { path: '/cookies', component: Cookies, exact: false },
+    IE_SUPPORT: { path: '/ie-support', component: IESupport, exact: false },
 };
 
 export default AppRoutes;
