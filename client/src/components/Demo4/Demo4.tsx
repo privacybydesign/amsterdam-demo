@@ -65,7 +65,6 @@ const Demo4: React.FC<IProps> = () => {
                 credentialSource === CredentialSource.DEMO && { demo: true }
             );
             if (response) {
-                const { fullname } = response;
                 dispatch({
                     type: 'setProperties',
                     payload: {
