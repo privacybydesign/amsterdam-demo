@@ -44,7 +44,7 @@ const PageTemplate: React.FC<IProps> = ({ children, className }) => {
 };
 
 const StyledColumn = styled(AscLocal.Column)`
-    margin: ${themeSpacing(5)} 0;
+    margin: ${themeSpacing(5)} 0 ${themeSpacing(10)} 0;
     max-width: 940px;
 `;
 
