@@ -1,13 +1,18 @@
 interface IState {
-    hasResult?: boolean;
-    hasError?: boolean;
-    formValid?: boolean;
-    owner?: string;
-    name?: string;
-    street?: string;
-    city?: string;
-    telephone?: string;
-    email?: string;
+    hasResult: boolean;
+    hasError: boolean;
+    emptyVars: string[];
+    formValid: boolean;
+    irmaAttributes: {
+        owner: string;
+        name: string;
+        street: string;
+        houseNumber: string;
+        zipcode: string;
+        city: string;
+        telephone: string;
+        email: string;
+    }
 }
 
 interface IAction {
@@ -16,22 +21,30 @@ interface IAction {
         owner?: string;
         name?: string;
         street?: string;
+        houseNumber?: string;
         city?: string;
+        zipcode?: string;
         telephone?: string;
         email?: string;
+        emptyVar?: string;
     };
 }
 
 export const initialState: IState = {
     hasResult: false,
     hasError: false,
+    emptyVars: [],
     formValid: true,
-    owner: '',
-    name: '',
-    street: '',
-    city: '',
-    telephone: '',
-    email: ''
+    irmaAttributes: {
+        owner: '',
+        name: '',
+        street: '',
+        houseNumber: '',
+        zipcode: '',
+        city: '',
+        telephone: '',
+        email: ''
+    }
 };
 
 export const reducer = (state: IState, action: IAction): IState => {
@@ -40,7 +53,10 @@ export const reducer = (state: IState, action: IAction): IState => {
             return {
                 ...state,
                 formValid: true,
-                owner: action.payload.owner
+                irmaAttributes: {
+                    ...state.irmaAttributes,
+                    owner: action.payload.owner
+                }
             };
 
         case 'invalidateForm':
@@ -54,11 +70,16 @@ export const reducer = (state: IState, action: IAction): IState => {
                 ...state,
                 hasResult: true,
                 hasError: false,
-                name: action.payload.name,
-                street: action.payload.street,
-                city: action.payload.city,
-                telephone: action.payload.telephone,
-                email: action.payload.email
+                irmaAttributes: {
+                    ...state.irmaAttributes,
+                    name: action.payload['name'],
+                    street: action.payload['street'],
+                    houseNumber: action.payload['houseNumber'],
+                    zipcode: action.payload['zipcode'],
+                    city: action.payload['city'],
+                    telephone: action.payload['telephone'],
+                    email: action.payload['email']
+                }
             };
 
         case 'setError':
@@ -66,6 +87,15 @@ export const reducer = (state: IState, action: IAction): IState => {
                 ...state,
                 hasError: true
             };
+
+        case 'setEmptyVars':
+            return {
+                ...state,
+                emptyVars: [
+                    ...state.emptyVars,
+                    action.payload['emptyVar']
+                ]
+            }
 
         default:
             return state;
