@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 import { Row, themeSpacing, themeColor } from '@amsterdam/asc-ui';
 import AppRoutes from '@app/AppRoutes';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
@@ -19,25 +20,28 @@ declare global {
 
 const isIE = /*@cc_on!@*/ false || !!document.documentMode;
 
-const PageTemplate: React.FC<IProps> = ({ children, className }) => (
-    <StyledRow className={className}>
-        <AscLocal.Header fullWidth={false} tall homeLink={AppRoutes.HOMEPAGE.path} />
-        <StyledColumn span={12}>
-            {isIE && (
-                <AscLocal.Alert
-                    color={AscLocal.AlertColor.ERROR}
-                    icon={<AlertIcon />}
-                    iconSize={22}
-                    heading={content.ieErrorAlert.heading}
-                    content={content.ieErrorAlert.content}
-                    dataTestId="hasErrorAlert"
-                />
-            )}
-            {children}
-        </StyledColumn>
-        <Footer />
-    </StyledRow>
-);
+const PageTemplate: React.FC<IProps> = ({ children, className }) => {
+    const location = useLocation();
+    return (
+        <StyledRow className={className}>
+            <AscLocal.Header fullWidth={false} tall homeLink={AppRoutes.HOMEPAGE.path} />
+            <StyledColumn span={12}>
+                {isIE && location.pathname !== '/ie-support' && (
+                    <AscLocal.Alert
+                        color={AscLocal.AlertColor.ERROR}
+                        icon={<AlertIcon />}
+                        iconSize={22}
+                        heading={content.ieSupport.errorAlert.heading}
+                        content={content.ieSupport.errorAlert.content}
+                        dataTestId="hasErrorAlert"
+                    />
+                )}
+                {children}
+            </StyledColumn>
+            <Footer />
+        </StyledRow>
+    );
+};
 
 const StyledColumn = styled(AscLocal.Column)`
     margin: ${themeSpacing(5)} 0;
