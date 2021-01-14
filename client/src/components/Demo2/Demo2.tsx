@@ -25,7 +25,6 @@ export interface IProps {}
 interface IState {
     hasResult: boolean;
     hasError: boolean;
-    hasEmptyVars: boolean;
     emptyVars: string[];
     isOver18: null | boolean;
     wijk: string;
@@ -37,7 +36,6 @@ const initialState: IState = {
     hasResult: false,
     hasError: false,
     isOver18: null,
-    hasEmptyVars: false,
     emptyVars: [],
     wijk: '',
     ggw: '',
