@@ -12,7 +12,17 @@ export const insertInPlaceholders = (sentence: string, values: string | string[]
     }
 };
 
-export default {
+export const reduceAndTranslateEmptyVars = (emptyVars) => {
+    return emptyVars
+        .reduce(
+            (acc, varToTranslate) => acc + `${content.translatedIrmaAttributes[varToTranslate]}, `,
+            content.demoEmptyVarsAlert.contentExtended
+        )
+        .slice(0, -2);
+}
+
+
+const content = {
     home: {
         breadcrumbs: `- [Home](/)`,
         title: `# Probeer IRMA uit`,
@@ -75,6 +85,11 @@ Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
     demoErrorAlert: {
         heading: `Niets doorgegeven`,
         content: `U heeft uw gegevens niet doorgegeven aan de demosite van de gemeente Amsterdam.`
+    },
+    demoEmptyVarsAlert: {
+        heading: `Ontbrekende gegevens`,
+        content: `U heeft niet alle gegevens doorgegeven die nodig zijn.`,
+        contentExtended: `De volgende gegevens ontbreken: `
     },
     demo1: {
         breadcrumbs: `- [Home](/)
@@ -273,9 +288,9 @@ Bent u de eigenaar van de woning waar de geveltuin komt?  \n
 Naam  \n
 :   [name]  \n
 Straat en huisnummer  \n
-:   [street]  \n
+:   [street] [houseNumber]\n
 Postcode en plaats  \n
-:   [city]\n
+:   [zipcode], [city]\n
 Telefoonnummer  \n
 :   [telephone]  \n
 E-mail  \n
@@ -497,5 +512,17 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
 1. Scan de QR-code hieronder met uw IRMA-app.  \n
 2. Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.`,
         knop: 'Inloggen met IRMA'
+    },
+    translatedIrmaAttributes: {
+        fullname: 'volledige naam',
+        street: 'straat',
+        housenumber: 'huisnummer',
+        city: 'stad',
+        zipcode: 'postcode',
+        email: 'email',
+        mobilenumber: 'telefoonnummer mobiel'
     }
 };
+
+export default content;
+

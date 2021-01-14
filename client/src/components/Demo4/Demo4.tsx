@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useReducer } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
-import content from '@services/content';
+import content, { reduceAndTranslateEmptyVars } from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import defList from '@services/deflist';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
@@ -23,6 +23,8 @@ import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 
 export interface IProps {}
 
+const OPTIONAL_IRMA_ATTRIBUTES = ['houseNumber'];
+
 const Demo4: React.FC<IProps> = () => {
     const formEl = useRef(null);
 
@@ -30,7 +32,10 @@ const Demo4: React.FC<IProps> = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     function replaceVars(str, p1) {
-        return state[p1] || '-';
+        if (!OPTIONAL_IRMA_ATTRIBUTES.includes(p1)) {
+            return state.irmaAttributes[p1] || '-';
+        }
+        return '';
     }
 
     const validateForm = () => {
@@ -64,8 +69,10 @@ const Demo4: React.FC<IProps> = () => {
                     type: 'setProperties',
                     payload: {
                         name: response['fullname'],
-                        street: `${response['street']} ${response['houseNumber']}`,
-                        city: `${response['zipcode']} ${response['city']}`,
+                        street: response['street'],
+                        houseNumber: response['houseNumber'],
+                        zipcode: response['zipcode'],
+                        city: response['city'],
                         telephone: response['mobilenumber'],
                         email: response['email']
                     }
@@ -87,7 +94,7 @@ const Demo4: React.FC<IProps> = () => {
         alt: content.responsiveImages.demo4.header.alt
     });
 
-    const { hasResult, hasError, formValid } = state;
+    const { hasResult, hasError, emptyVars, formValid } = state;
 
     // Update header image
     useEffect(() => {
@@ -96,6 +103,21 @@ const Demo4: React.FC<IProps> = () => {
                 filename: content.responsiveImages.demo4.headerResult.src,
                 alt: content.responsiveImages.demo4.headerResult.alt
             });
+        }
+    }, [hasResult]);
+
+    useEffect(() => {
+        if (hasResult) {
+            for (const [key, value] of Object.entries(state.irmaAttributes)) {
+                if (!value && !OPTIONAL_IRMA_ATTRIBUTES.includes(key)) {
+                    dispatch({
+                        type: 'setEmptyVars',
+                        payload: {
+                            emptyVar: key
+                        }
+                    });
+                }
+            }
         }
     }, [hasResult]);
 
@@ -134,7 +156,19 @@ const Demo4: React.FC<IProps> = () => {
                     />
                 )}
 
-                {hasResult && !hasError && (
+                {emptyVars.length > 0 && !hasError && (
+                    <AscLocal.Alert
+                        color={AscLocal.AlertColor.ERROR}
+                        icon={<Alert />}
+                        iconSize={22}
+                        heading={content.demoEmptyVarsAlert.heading}
+                        content={content.demoEmptyVarsAlert.content}
+                        contentExtended={`${reduceAndTranslateEmptyVars(state.emptyVars)}.`}
+                        dataTestId="hasErrorAlert"
+                    />
+                )}
+
+                {hasResult && !hasError && emptyVars.length === 0 && (
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.SUCCESS}
                         icon={<Checkmark />}

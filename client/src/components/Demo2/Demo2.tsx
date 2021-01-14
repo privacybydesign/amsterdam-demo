@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect, useReducer } from 'react';
 import createIrmaSession from '@services/createIrmaSession';
 import getGGW from '@services/getGGW';
-import content, { insertInPlaceholders } from '@services/content';
+import content, { insertInPlaceholders, reduceAndTranslateEmptyVars } from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Link, Accordion } from '@amsterdam/asc-ui';
@@ -23,18 +23,20 @@ import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 export interface IProps {}
 
 interface IState {
-    hasResult?: boolean;
-    hasError?: boolean;
-    isOver18?: null | boolean;
-    wijk?: string;
-    ggw?: string;
-    code?: string;
+    hasResult: boolean;
+    hasError: boolean;
+    emptyVars: string[];
+    isOver18: null | boolean;
+    wijk: string;
+    ggw: string;
+    code: string;
 }
 
 const initialState: IState = {
     hasResult: false,
     hasError: false,
     isOver18: null,
+    emptyVars: [],
     wijk: '',
     ggw: '',
     code: ''
@@ -56,11 +58,8 @@ const Demo2: React.FC<IProps> = () => {
         );
         const newState: IState = { ...initialState };
         if (response) {
-            const postcode = response['zipcode'].replace(/ /, '');
             newState.hasResult = true;
             newState.hasError = false;
-
-            const ggwResponse = await getGGW(postcode);
 
             newState.isOver18 =
                 response['over18'] === 'Yes' ||
@@ -68,10 +67,18 @@ const Demo2: React.FC<IProps> = () => {
                 response['over18'] === 'Ja' ||
                 response['over18'] === 'ja';
 
-            if (ggwResponse) {
-                newState.wijk = ggwResponse.buurtcombinatieNamen;
-                newState.code = ggwResponse.ggwCode;
-                newState.ggw = ggwResponse.ggwNaam;
+            if (!response['zipcode']) {
+                newState.emptyVars.push('zipcode');
+            } else {
+                const postcode = response['zipcode'].replace(/ /, '');
+
+                const ggwResponse = await getGGW(postcode);
+
+                if (ggwResponse) {
+                    newState.wijk = ggwResponse.buurtcombinatieNamen;
+                    newState.code = ggwResponse.ggwCode;
+                    newState.ggw = ggwResponse.ggwNaam;
+                }
             }
         } else {
             newState.hasError = true;
@@ -83,7 +90,7 @@ const Demo2: React.FC<IProps> = () => {
         return response;
     };
 
-    const { hasResult, hasError, isOver18, wijk, ggw, code } = state;
+    const { hasResult, hasError, emptyVars, isOver18, wijk, ggw, code } = state;
 
     // Preload demo images
     useEffect(() => {
@@ -131,6 +138,18 @@ const Demo2: React.FC<IProps> = () => {
                     iconSize={22}
                     heading={content.demoErrorAlert.heading}
                     content={content.demoErrorAlert.content}
+                    dataTestId="hasErrorAlert"
+                />
+            );
+        } else if (emptyVars.length > 0) {
+            return (
+                <AscLocal.Alert
+                    color={AscLocal.AlertColor.ERROR}
+                    icon={<AlertIcon />}
+                    iconSize={22}
+                    heading={content.demoEmptyVarsAlert.heading}
+                    content={content.demoEmptyVarsAlert.content}
+                    contentExtended={`${reduceAndTranslateEmptyVars(state.emptyVars)}.`}
                     dataTestId="hasErrorAlert"
                 />
             );

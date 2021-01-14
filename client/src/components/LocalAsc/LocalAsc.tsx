@@ -160,6 +160,7 @@ interface IAlertProps {
     iconSize?: number;
     heading?: string;
     content?: string;
+    contentExtended?: string;
     dataTestId?: string;
 }
 
@@ -170,7 +171,18 @@ export enum AlertColor {
 }
 
 export const Alert = styled(
-    ({ children, icon, iconUrl, iconSize, className, heading, content, color, dataTestId }: IAlertProps) => {
+    ({
+        children,
+        icon,
+        iconUrl,
+        iconSize,
+        className,
+        heading,
+        content,
+        contentExtended,
+        color,
+        dataTestId
+    }: IAlertProps) => {
         const themeContext = { theme: useContext(ThemeContext) as Theme.ThemeInterface };
         const iconColor =
             color === AlertColor.PRIMARY || color === AlertColor.SUCCESS
@@ -189,6 +201,7 @@ export const Alert = styled(
                             <>
                                 {heading && <Heading forwardedAs="h3">{heading}</Heading>}
                                 <Paragraph>{content}</Paragraph>
+                                {contentExtended && <Paragraph>{contentExtended}</Paragraph>}
                             </>
                         ) : (
                             children
