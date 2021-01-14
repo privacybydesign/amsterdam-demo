@@ -16,10 +16,8 @@ const IESupport: React.FC<IProps> = () => {
                     source={content.ieSupport.breadcrumbs}
                     renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
                 />
-                <ReactMarkDown source={content.ieSupport.intro} renderers={{ paragraph: AscLocal.Paragraph }} />
-                <br />
                 <ReactMarkDown
-                    source={content.ieSupport.explanation}
+                    source={content.ieSupport.content}
                     renderers={{ paragraph: AscLocal.Paragraph, link: AscLocal.ExternalLinkRenderer }}
                 />
             </ContentBlock>

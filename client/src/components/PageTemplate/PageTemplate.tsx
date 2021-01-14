@@ -18,7 +18,7 @@ declare global {
     }
 }
 
-const isIE = /*@cc_on!@*/ false || !!document.documentMode;
+const isIE = !!document.documentMode;
 
 const PageTemplate: React.FC<IProps> = ({ children, className }) => {
     const location = useLocation();
@@ -26,7 +26,7 @@ const PageTemplate: React.FC<IProps> = ({ children, className }) => {
         <StyledRow className={className}>
             <AscLocal.Header fullWidth={false} tall homeLink={AppRoutes.HOMEPAGE.path} />
             <StyledColumn span={12}>
-                {isIE && location.pathname !== '/ie-support' && (
+                {isIE && location.pathname !== AppRoutes.IE_SUPPORT.path && (
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.ERROR}
                         icon={<AlertIcon />}

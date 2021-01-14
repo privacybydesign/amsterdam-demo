@@ -18,7 +18,6 @@ import {
     Theme
 } from '@amsterdam/asc-ui';
 import { TextAreaProps as AscTextAreaProps } from '@amsterdam/asc-ui/lib/components/TextArea';
-import * as AscLocal from '@components/LocalAsc/LocalAsc';
 
 const lineHeight = '24px';
 
