@@ -197,7 +197,7 @@ export const Alert = styled(
                         {heading || content ? (
                             <>
                                 {heading && <Heading forwardedAs="h3">{heading}</Heading>}
-                                <ReactMarkdown source={content} renderers={{ paragraph: AscLocal.Paragraph }} />
+                                <ReactMarkdown source={content} renderers={{ paragraph: Paragraph }} />
                             </>
                         ) : (
                             children
