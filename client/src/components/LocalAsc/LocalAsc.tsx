@@ -1,5 +1,6 @@
 import React, { useContext, useCallback, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import ReactMarkdown from 'react-markdown';
 import {
     Heading,
     breakpoint,
@@ -170,6 +171,14 @@ export enum AlertColor {
     SUCCESS = 'success'
 }
 
+export const ExternalLinkRenderer = props => {
+    return (
+        <a href={props.href} target="_blank">
+            {props.children}
+        </a>
+    );
+};
+
 export const Alert = styled(
     ({
         children,
@@ -200,8 +209,7 @@ export const Alert = styled(
                         {heading || content ? (
                             <>
                                 {heading && <Heading forwardedAs="h3">{heading}</Heading>}
-                                <Paragraph>{content}</Paragraph>
-                                {contentExtended && <Paragraph>{contentExtended}</Paragraph>}
+                                <ReactMarkdown source={content} renderers={{ paragraph: Paragraph }} />
                             </>
                         ) : (
                             children
