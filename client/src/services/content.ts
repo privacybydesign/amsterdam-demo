@@ -537,7 +537,7 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
         fullname: 'volledige naam',
         street: 'straat',
         housenumber: 'huisnummer',
-        city: 'stad',
+        city: 'woonplaats',
         zipcode: 'postcode',
         email: 'email',
         mobilenumber: 'telefoonnummer mobiel'
