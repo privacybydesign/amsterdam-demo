@@ -66,7 +66,6 @@ const Demo2: React.FC<IProps> = () => {
                 response['over18'] === 'yes' ||
                 response['over18'] === 'Ja' ||
                 response['over18'] === 'ja';
-
             if (!response['zipcode']) {
                 newState.emptyVars.push('zipcode');
             } else {
@@ -148,8 +147,7 @@ const Demo2: React.FC<IProps> = () => {
                     icon={<AlertIcon />}
                     iconSize={22}
                     heading={content.demoEmptyVarsAlert.heading}
-                    content={content.demoEmptyVarsAlert.content}
-                    contentExtended={`${reduceAndTranslateEmptyVars(state.emptyVars)}.`}
+                    content={`${content.demoEmptyVarsAlert.content}${reduceAndTranslateEmptyVars(state.emptyVars)}.`}
                     dataTestId="hasErrorAlert"
                 />
             );
