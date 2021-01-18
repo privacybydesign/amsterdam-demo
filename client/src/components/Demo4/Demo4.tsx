@@ -162,7 +162,9 @@ const Demo4: React.FC<IProps> = () => {
                         icon={<Alert />}
                         iconSize={22}
                         heading={content.demoEmptyVarsAlert.heading}
-                        content={content.demoEmptyVarsAlert.content + reduceAndTranslateEmptyVars(state.emptyVars)}
+                        content={
+                            content.demoEmptyVarsAlert.content + reduceAndTranslateEmptyVars(state.emptyVars) + '.'
+                        }
                         dataTestId="hasErrorAlert"
                     />
                 )}
