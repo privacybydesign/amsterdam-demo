@@ -108,7 +108,7 @@ Als je nog gebruik maakt van Internet Explorer, adviseren we je om zo snel mogel
     },
     demoEmptyVarsAlert: {
         heading: `Ontbrekende gegevens`,
-        content: `U heeft niet alle gegevens doorgegeven die nodig zijn.
+        content: `De gegevens die u met IRMA heeft doorgegeven, zijn niet volledig.
         De volgende gegevens ontbreken: `,
     },
     demo1: {
