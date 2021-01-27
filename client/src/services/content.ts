@@ -12,15 +12,11 @@ export const insertInPlaceholders = (sentence: string, values: string | string[]
     }
 };
 
-export const reduceAndTranslateEmptyVars = (emptyVars) => {
+export const reduceAndTranslateEmptyVars = emptyVars => {
     return emptyVars
-        .reduce(
-            (acc, varToTranslate) => acc + `${content.translatedIrmaAttributes[varToTranslate]}, `,
-            ''
-        )
+        .reduce((acc, varToTranslate) => acc + `${content.translatedIrmaAttributes[varToTranslate]}, `, '')
         .slice(0, -2);
-}
-
+};
 
 const content = {
     home: {
@@ -108,8 +104,8 @@ Als je nog gebruik maakt van Internet Explorer, adviseren we je om zo snel mogel
     },
     demoEmptyVarsAlert: {
         heading: `Ontbrekende gegevens`,
-        content: `De gegevens die u met IRMA heeft doorgegeven, zijn niet volledig.
-        De volgende gegevens ontbreken: `,
+        content: `U heeft niet alle gegevens doorgegeven die nodig zijn.  \n
+De volgende gegevens ontbreken: `
     },
     demo1: {
         breadcrumbs: `- [Home](/)
@@ -540,7 +536,8 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
         city: 'woonplaats',
         zipcode: 'postcode',
         email: 'email',
-        mobilenumber: 'telefoonnummer mobiel'
+        mobilenumber: 'telefoonnummer mobiel',
+        over18: 'ouder dan 18'
     }
 };
 

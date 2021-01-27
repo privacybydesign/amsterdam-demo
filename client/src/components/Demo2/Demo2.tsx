@@ -61,11 +61,18 @@ const Demo2: React.FC<IProps> = () => {
             newState.hasResult = true;
             newState.hasError = false;
 
-            newState.isOver18 =
+            const isOver18 =
                 response['over18'] === 'Yes' ||
                 response['over18'] === 'yes' ||
                 response['over18'] === 'Ja' ||
                 response['over18'] === 'ja';
+
+            newState.isOver18 = isOver18;
+
+            if (!isOver18) {
+                newState.emptyVars.push('over18');
+            }
+
             if (!response['zipcode']) {
                 newState.emptyVars.push('zipcode');
             } else {
