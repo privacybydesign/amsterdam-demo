@@ -41,7 +41,8 @@ describe('Demo4', () => {
             houseNumber: 100,
             zipcode: '1011PT',
             city: 'Amsterdam',
-            mobilenumber: '0612345678'
+            mobilenumber: '0612345678',
+            email: 'test@test.com'
         });
 
         // Render demo 4

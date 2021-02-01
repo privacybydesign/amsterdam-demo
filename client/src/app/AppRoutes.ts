@@ -25,7 +25,7 @@ const AppRoutes: IAppRoutes = {
     DEMO4: { path: '/geveltuin-aanvragen', component: Demo4, exact: false },
     DEMO5: { path: '/overlast-melden', component: Demo5, exact: false },
     COOKIES: { path: '/cookies', component: Cookies, exact: false },
-    IE_SUPPORT: { path: '/ie-support', component: IESupport, exact: false },
+    IE_SUPPORT: { path: '/ie-support', component: IESupport, exact: false }
 };
 
 export default AppRoutes;
