@@ -12,7 +12,7 @@ export const insertInPlaceholders = (sentence: string, values: string | string[]
     }
 };
 
-export const reduceAndTranslateEmptyVars = emptyVars => {
+export const reduceAndTranslateEmptyVars = (emptyVars: string[]): string => {
     return emptyVars
         .reduce((acc, varToTranslate) => acc + `${content.translatedIrmaAttributes[varToTranslate]}, `, '')
         .slice(0, -2);
@@ -489,8 +489,8 @@ Dit zorgt ervoor dat feedback van gebruikers op de juiste plek wordt opgeslagen.
             }
         },
         demo3: {
-            header: { src: 'probeer-irma', alt: '' },
-            headerResult: { src: 'mijn-amsterdam', alt: '' }
+            header: { src: 'probeer-irma', alt: 'Gebruiker opent QR-code scanner op telefoon' },
+            headerResult: { src: 'mijn-amsterdam', alt: 'Gebruiker opent QR-code scanner op telefoon' }
         },
         demo4: {
             header: { src: 'geveltuin', alt: 'Foto van geveltuin in straat' },
