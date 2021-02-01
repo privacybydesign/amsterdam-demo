@@ -61,15 +61,13 @@ const Demo2: React.FC<IProps> = () => {
             newState.hasResult = true;
             newState.hasError = false;
 
-            const isOver18 =
+            newState.isOver18 =
                 response['over18'] === 'Yes' ||
                 response['over18'] === 'yes' ||
                 response['over18'] === 'Ja' ||
                 response['over18'] === 'ja';
 
-            newState.isOver18 = isOver18;
-
-            if (!isOver18) {
+            if (response['over18'].length === 0) {
                 newState.emptyVars.push('over18');
             }
 
@@ -203,7 +201,7 @@ const Demo2: React.FC<IProps> = () => {
                 />
             );
         }
-    }, [hasResult, hasError, isOver18, wijk]);
+    }, [hasResult, hasError, isOver18, wijk, emptyVars.length, state.emptyVars]);
 
     return (
         <PageTemplate>
