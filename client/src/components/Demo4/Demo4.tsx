@@ -119,7 +119,7 @@ const Demo4: React.FC<IProps> = () => {
                 }
             }
         }
-    }, [hasResult]);
+    }, [hasResult, state.irmaAttributes]);
 
     // Preload demo images
     useEffect(() => {

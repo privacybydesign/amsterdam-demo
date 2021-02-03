@@ -2,70 +2,95 @@
 
 exports[`Demo4 reducer should not update state when an unknown action is dispatched 1`] = `
 Object {
-  "city": "",
-  "email": "",
+  "emptyVars": Array [],
   "formValid": true,
   "hasError": false,
   "hasResult": false,
-  "name": "",
-  "owner": "",
-  "street": "",
-  "telephone": "",
+  "irmaAttributes": Object {
+    "city": "",
+    "email": "",
+    "houseNumber": "",
+    "name": "",
+    "owner": "",
+    "street": "",
+    "telephone": "",
+    "zipcode": "",
+  },
 }
 `;
 
 exports[`Demo4 reducer should update when action invalidateForm is dispatched 1`] = `
 Object {
-  "city": "",
-  "email": "",
+  "emptyVars": Array [],
   "formValid": false,
   "hasError": false,
   "hasResult": false,
-  "name": "",
-  "owner": "",
-  "street": "",
-  "telephone": "",
+  "irmaAttributes": Object {
+    "city": "",
+    "email": "",
+    "houseNumber": "",
+    "name": "",
+    "owner": "",
+    "street": "",
+    "telephone": "",
+    "zipcode": "",
+  },
 }
 `;
 
 exports[`Demo4 reducer should update when action setError is dispatched 1`] = `
 Object {
-  "city": "",
-  "email": "",
+  "emptyVars": Array [],
   "formValid": true,
   "hasError": true,
   "hasResult": false,
-  "name": "",
-  "owner": "",
-  "street": "",
-  "telephone": "",
+  "irmaAttributes": Object {
+    "city": "",
+    "email": "",
+    "houseNumber": "",
+    "name": "",
+    "owner": "",
+    "street": "",
+    "telephone": "",
+    "zipcode": "",
+  },
 }
 `;
 
 exports[`Demo4 reducer should update when action setProperties is dispatched 1`] = `
 Object {
-  "city": "Amsterdam",
-  "email": undefined,
+  "emptyVars": Array [],
   "formValid": true,
   "hasError": false,
   "hasResult": true,
-  "name": "Test test",
-  "owner": "",
-  "street": "Teststraat",
-  "telephone": "0612345678",
+  "irmaAttributes": Object {
+    "city": "Amsterdam",
+    "email": undefined,
+    "houseNumber": undefined,
+    "name": "Test test",
+    "owner": "",
+    "street": "Teststraat",
+    "telephone": "0612345678",
+    "zipcode": undefined,
+  },
 }
 `;
 
 exports[`Demo4 reducer should update when action validateForm is dispatched 1`] = `
 Object {
-  "city": "",
-  "email": "",
+  "emptyVars": Array [],
   "formValid": true,
   "hasError": false,
   "hasResult": false,
-  "name": "",
-  "owner": "test",
-  "street": "",
-  "telephone": "",
+  "irmaAttributes": Object {
+    "city": "",
+    "email": "",
+    "houseNumber": "",
+    "name": "",
+    "owner": "test",
+    "street": "",
+    "telephone": "",
+    "zipcode": "",
+  },
 }
 `;

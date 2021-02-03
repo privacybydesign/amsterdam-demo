@@ -12,7 +12,7 @@ interface IState {
         city: string;
         telephone: string;
         email: string;
-    }
+    };
 }
 
 interface IAction {
@@ -91,11 +91,8 @@ export const reducer = (state: IState, action: IAction): IState => {
         case 'setEmptyVars':
             return {
                 ...state,
-                emptyVars: [
-                    ...state.emptyVars,
-                    action.payload['emptyVar']
-                ]
-            }
+                emptyVars: [...state.emptyVars, action.payload['emptyVar']]
+            };
 
         default:
             return state;

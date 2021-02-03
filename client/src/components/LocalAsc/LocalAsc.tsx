@@ -1,4 +1,4 @@
-import React, { useContext, useCallback, useState } from 'react';
+import React, { useContext, useCallback, useState, ReactElement } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import {
@@ -171,27 +171,20 @@ export enum AlertColor {
     SUCCESS = 'success'
 }
 
-export const ExternalLinkRenderer = props => {
+type IExternalLinkRendererProps = {
+    href: string;
+};
+
+export const ExternalLinkRenderer: React.FC<IExternalLinkRendererProps> = (props): ReactElement => {
     return (
-        <a href={props.href} target="_blank">
+        <a href={props.href} target="_blank" rel="noreferrer">
             {props.children}
         </a>
     );
 };
 
 export const Alert = styled(
-    ({
-        children,
-        icon,
-        iconUrl,
-        iconSize,
-        className,
-        heading,
-        content,
-        contentExtended,
-        color,
-        dataTestId
-    }: IAlertProps) => {
+    ({ children, icon, iconUrl, iconSize, className, heading, content, color, dataTestId }: IAlertProps) => {
         const themeContext = { theme: useContext(ThemeContext) as Theme.ThemeInterface };
         const iconColor =
             color === AlertColor.PRIMARY || color === AlertColor.SUCCESS

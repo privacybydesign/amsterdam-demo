@@ -20,7 +20,7 @@ const Homepage: React.FC<IProps> = () => (
         />
         <ReactMarkDown source={content.home.title} renderers={{ heading: AscLocal.H1 }} />
         {/* // TODO: Make this a responsive image */}
-        <AscLocal.Image src="/assets/home.png" />
+        <AscLocal.Image src="/assets/home.png" alt="Gebruiker opent QR-code scanner op telefoon" />
         <AscLocal.Row>
             <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
                 <ReactMarkDown source={content.home.intro} renderers={{ paragraph: AscLocal.StrongParagraph }} />

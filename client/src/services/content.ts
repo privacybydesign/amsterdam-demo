@@ -12,15 +12,11 @@ export const insertInPlaceholders = (sentence: string, values: string | string[]
     }
 };
 
-export const reduceAndTranslateEmptyVars = (emptyVars) => {
+export const reduceAndTranslateEmptyVars = (emptyVars: string[]): string => {
     return emptyVars
-        .reduce(
-            (acc, varToTranslate) => acc + `${content.translatedIrmaAttributes[varToTranslate]}, `,
-            ''
-        )
+        .reduce((acc, varToTranslate) => acc + `${content.translatedIrmaAttributes[varToTranslate]}, `, '')
         .slice(0, -2);
-}
-
+};
 
 const content = {
     home: {
@@ -108,8 +104,8 @@ Als je nog gebruik maakt van Internet Explorer, adviseren we je om zo snel mogel
     },
     demoEmptyVarsAlert: {
         heading: `Ontbrekende gegevens`,
-        content: `U heeft niet alle gegevens doorgegeven die nodig zijn.
-        De volgende gegevens ontbreken: `,
+        content: `U heeft niet alle gegevens doorgegeven die nodig zijn.  \n
+De volgende gegevens ontbreken: `
     },
     demo1: {
         breadcrumbs: `- [Home](/)
@@ -493,8 +489,8 @@ Dit zorgt ervoor dat feedback van gebruikers op de juiste plek wordt opgeslagen.
             }
         },
         demo3: {
-            header: { src: 'probeer-irma', alt: '' },
-            headerResult: { src: 'mijn-amsterdam', alt: '' }
+            header: { src: 'probeer-irma', alt: 'Gebruiker opent QR-code scanner op telefoon' },
+            headerResult: { src: 'mijn-amsterdam', alt: 'Gebruiker opent QR-code scanner op telefoon' }
         },
         demo4: {
             header: { src: 'geveltuin', alt: 'Foto van geveltuin in straat' },
@@ -540,7 +536,8 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
         city: 'woonplaats',
         zipcode: 'postcode',
         email: 'email',
-        mobilenumber: 'telefoonnummer mobiel'
+        mobilenumber: 'telefoonnummer mobiel',
+        over18: 'ouder dan 18'
     }
 };
 

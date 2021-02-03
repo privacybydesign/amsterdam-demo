@@ -14,7 +14,7 @@ interface IProps {
 
 declare global {
     interface Document {
-        documentMode?: any;
+        documentMode?: Document;
     }
 }
 

@@ -242,7 +242,7 @@ exports[`Demo3 should render the initial header image 1`] = `
 }
 
 <img
-  alt=""
+  alt="Gebruiker opent QR-code scanner op telefoon"
   class="c0 c1"
   data-testid="headerImage"
   src="/assets/probeer-irma-940.jpg"
@@ -492,7 +492,7 @@ exports[`Demo3 should update the page after completing the IRMA flow 1`] = `
 }
 
 <img
-  alt=""
+  alt="Gebruiker opent QR-code scanner op telefoon"
   class="c0 c1"
   data-testid="headerImage"
   src="/assets/mijn-amsterdam-940.jpg"
