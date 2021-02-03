@@ -53,7 +53,7 @@ const Demo2: React.FC<IProps> = () => {
     const getSession = async () => {
         const response = await createIrmaSession(
             'demo2',
-            'irma-qr',
+            '#irma-web-form',
             credentialSource === CredentialSource.DEMO && { demo: true }
         );
         const newState: IState = { ...initialState };
@@ -244,6 +244,7 @@ const Demo2: React.FC<IProps> = () => {
                                     />
                                 </Accordion>
                             </AscLocal.AccordionContainer>
+                            <section id="irma-web-form" />
                             <QRCode getSession={getSession} label={content.demo2.button} />
                             <ReactMarkDown
                                 source={content.downloadIrma}
