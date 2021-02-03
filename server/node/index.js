@@ -1,5 +1,7 @@
 const express = require("express");
 const irma = require("@privacybydesign/irmajs");
+const IrmaBackend = require("@privacybydesign/irma-backend");
+const IrmaJwt = require("@privacybydesign/irma-jwt");
 const app = express();
 const cors = require("cors");
 const util = require("util");
@@ -60,14 +62,20 @@ const CREDENTIALS_TO_REQUEST = {
     DEMO1_18: () => {
       const credentials = [[["pbdf.gemeente.personalData.over18"]]];
       if (process.env.NODE_ENV !== "production") {
-        credentials[0].unshift(["pbdf.pilot-amsterdam.passport.over18"], ["pbdf.pilot-amsterdam.idcard.over18"]);
+        credentials[0].unshift(
+          ["pbdf.pilot-amsterdam.passport.over18"],
+          ["pbdf.pilot-amsterdam.idcard.over18"]
+        );
       }
       return credentials;
     },
     DEMO1_65: () => {
       const credentials = [[["pbdf.gemeente.personalData.over65"]]];
       if (process.env.NODE_ENV !== "production") {
-        credentials[0].unshift(["pbdf.pilot-amsterdam.passport.over65"], ["pbdf.pilot-amsterdam.idcard.over65"]);
+        credentials[0].unshift(
+          ["pbdf.pilot-amsterdam.passport.over65"],
+          ["pbdf.pilot-amsterdam.idcard.over65"]
+        );
       }
       return credentials;
     },
@@ -102,7 +110,10 @@ const CREDENTIALS_TO_REQUEST = {
       }
 
       if (email === "true") {
-        credentials.push([["pbdf.pbdf.email.email"], ["pbdf.sidn-pbdf.email.email"]]);
+        credentials.push([
+          ["pbdf.pbdf.email.email"],
+          ["pbdf.sidn-pbdf.email.email"],
+        ]);
       }
       return credentials;
     },
@@ -126,9 +137,7 @@ const createIrmaRequest = (content) => {
 
 // Setup authentication for acceptance
 const secured = function (req, res, next) {
-  if (
-    process.env.NODE_ENV !== "acceptance"
-  ) {
+  if (process.env.NODE_ENV !== "acceptance") {
     return next();
   }
 
@@ -221,10 +230,61 @@ const init = async () => {
 };
 
 const health = async (req, res) => {
-  return res.status(200).send('Healthy!');
-}
+  return res.status(200).send("Healthy!");
+};
+
+const createJWT = (authmethod, key, iss, irmaRequest) => {
+  const irmaJwt = new IrmaJwt(authmethod, { secretKey: key, iss });
+  const jwt = irmaJwt.signSessionRequest(irmaRequest);
+  return jwt;
+};
 
 const irmaDiscloseRequest = async (req, res, requestType, id) => {
+  const authmethod = "publickey";
+  const request = createIrmaRequest(requestType, req.query.clientReturnUrl);
+  const jwt = createJWT(
+    authmethod,
+    process.env.PRIVATE_KEY,
+    config.requestorname,
+    request
+  );
+
+  const irmaBackend = new IrmaBackend(config.irma, {
+    debugging: true,
+  });
+
+  console.log("irma.irmaDiscloseRequest called: ", {
+    url: config.irma,
+    request: JSON.stringify(request),
+    authmethod,
+  });
+
+  try {
+    const session = await irmaBackend.startSession(jwt);
+
+    console.log({ session });
+
+    // Subscribe for backend status events
+    irmaBackend.subscribeStatusEvents(session.token, (error, status) => {
+      if (error) return console.log("Error occured in session:", error);
+      if (status === IrmaBackend.SessionStatus.Done) {
+        irmaBackend
+          .getSessionResult(session.token)
+          .then((result) =>
+            console.log("Session successfully received by backend:\n", result)
+          );
+      }
+    });
+
+    // Strip off backend token such that frontend does not see it
+    res.json(session);
+  } catch (e) {
+    console.log("irma.startSession error:", JSON.stringify(e));
+    error(e, res);
+  }
+};
+
+const irmaDiscloseRequest2 = async (req, res, requestType, id) => {
   const authmethod = "publickey";
   const request = createIrmaRequest(requestType, req.query.clientReturnUrl);
 
