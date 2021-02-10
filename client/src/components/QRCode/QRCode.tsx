@@ -103,7 +103,6 @@ export const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
     height: 65px;
     top: 119px;
     left: 119px;
-    z-index: 2;
 `;
 
 const StyledH3 = styled.h3``;
@@ -141,13 +140,11 @@ const IrmaWebElement = styled.div`
     & .irma-web-content {
         margin: 0;
         & .irma-web-waiting-for-user-animation {
-            z-index: 3;
         }
     }
     & .irma-web-qr-canvas {
         width: 300px !important;
         height: 300px !important;
-        z-index: 1;
     }
 `;
 
