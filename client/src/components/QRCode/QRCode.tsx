@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useCallback, useRef, useEffect, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import ReactMarkDown from 'react-markdown';
 import { Button, Modal, themeSpacing, themeColor } from '@amsterdam/asc-ui';
@@ -36,12 +36,20 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) 
             if (!isMobile()) {
                 setHasOverlay(true);
             }
-            await getSession();
-            if (mountedRef.current) {
-                closeModal();
-            }
         }
-    }, [getSession, closeModal]);
+    }, [getSession]);
+
+    useLayoutEffect(() => {
+        const fn = async () => {
+            if (hasOverlay) {
+                await getSession();
+                if (mountedRef.current) {
+                    closeModal();
+                }
+            }
+        };
+        fn();
+    }, [hasOverlay]);
 
     return (
         <span className={className}>
@@ -76,7 +84,7 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) 
                             <QRCodeTopRight />
                             <QRCodeBottomRight />
                             <QRCodeBottomLeft />
-                            <Canvas id="irma-qr" />
+                            <IrmaWebElement id="irma-qr" />
                         </CanvasWrapper>
                     </ModalWrapper>
                 </>
@@ -95,6 +103,7 @@ export const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
     height: 65px;
     top: 119px;
     left: 119px;
+    z-index: 2;
 `;
 
 const StyledH3 = styled.h3``;
@@ -122,9 +131,24 @@ const CanvasWrapper = styled.div`
     margin: 50px auto;
 `;
 
-const Canvas = styled.canvas`
+const IrmaWebElement = styled.div`
     width: 300px !important;
     height: 300px !important;
+    background-color: transparent;
+    & .irma-web-header {
+        display: none;
+    }
+    & .irma-web-content {
+        margin: 0;
+        & .irma-web-waiting-for-user-animation {
+            z-index: 3;
+        }
+    }
+    & .irma-web-qr-canvas {
+        width: 300px !important;
+        height: 300px !important;
+        z-index: 1;
+    }
 `;
 
 const QRCodeTopLeft = styled.img.attrs({ src: '/assets/qr-top-left.svg' })`
