@@ -12,6 +12,7 @@ var proxy = require("http-proxy-middleware");
 
 // global configuration variable.
 let config;
+let token;
 
 const CREDENTIALS_TO_REQUEST = {
   DEMO: {
@@ -188,6 +189,7 @@ const init = async () => {
     app.get("/getsession/demo5", cors(), irmaDiscloseDemo5);
     app.get("/config", cors(), getConfig);
     app.get("/health", cors(), health);
+    app.get("/result", cors(), getIrmaSessionResult);
 
     if (
       process.env.NODE_ENV === "acceptance" ||
@@ -262,54 +264,41 @@ const irmaDiscloseRequest = async (req, res, requestType, id) => {
   try {
     const session = await irmaBackend.startSession(jwt);
 
-    console.log({ session });
+    token = session.token;
 
-    // Subscribe for backend status events
-    irmaBackend.subscribeStatusEvents(session.token, (error, status) => {
-      if (error) return console.log("Error occured in session:", error);
-      if (status === IrmaBackend.SessionStatus.Done) {
-        irmaBackend
-          .getSessionResult(session.token)
-          .then((result) =>
-            console.log("Session successfully received by backend:\n", result)
-          );
-      }
-    });
-
-    // Strip off backend token such that frontend does not see it
-    res.json(session);
+    res.json(session.sessionPtr);
   } catch (e) {
     console.log("irma.startSession error:", JSON.stringify(e));
     error(e, res);
   }
 };
 
-const irmaDiscloseRequest2 = async (req, res, requestType, id) => {
-  const authmethod = "publickey";
-  const request = createIrmaRequest(requestType, req.query.clientReturnUrl);
+// const irmaDiscloseRequest2 = async (req, res, requestType, id) => {
+//   const authmethod = "publickey";
+//   const request = createIrmaRequest(requestType, req.query.clientReturnUrl);
 
-  console.log("irma.irmaDiscloseRequest called: ", {
-    url: config.irma,
-    request: JSON.stringify(request),
-    authmethod,
-  });
+//   console.log("irma.irmaDiscloseRequest called: ", {
+//     url: config.irma,
+//     request: JSON.stringify(request),
+//     authmethod,
+//   });
 
-  try {
-    const session = await irma.startSession(
-      config.irma,
-      request,
-      authmethod,
-      process.env.PRIVATE_KEY,
-      config.requestorname
-    );
+//   try {
+//     const session = await irma.startSession(
+//       config.irma,
+//       request,
+//       authmethod,
+//       process.env.PRIVATE_KEY,
+//       config.requestorname
+//     );
 
-    console.log("session result", session);
-    res.json(session);
-  } catch (e) {
-    console.log("irma.startSession error:", JSON.stringify(e));
-    error(e, res);
-  }
-};
+//     console.log("session result", session);
+//     res.json(session);
+//   } catch (e) {
+//     console.log("irma.startSession error:", JSON.stringify(e));
+//     error(e, res);
+//   }
+// };
 
 const getCredentialSourceFromRequest = (req) => {
   return req &&
@@ -369,6 +358,18 @@ const getConfig = async (req, res) => {
   config.environment = process.env.NODE_ENV;
   console.log("get config", JSON.stringify(config));
   res.json(config);
+};
+
+const getIrmaSessionResult = async (req, res) => {
+  console.log("result");
+  if (!token) return;
+  try {
+    const result = await irmaBackend.getSessionResult(token);
+    res.json(result);
+  } catch (e) {
+    console.log("irma.getSessionResuilt error:", JSON.stringify(e));
+    error(e, res);
+  }
 };
 
 const error = (e, res) => {

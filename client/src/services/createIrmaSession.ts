@@ -3,9 +3,9 @@ import * as irma from '@privacybydesign/irmajs';
 import * as irmaNew from '@privacybydesign/irma-frontend';
 import '@privacybydesign/irma-css';
 import IrmaCore from '@privacybydesign/irma-core';
+import Popup from '@privacybydesign/irma-popup';
 import Web from '@privacybydesign/irma-web';
 import Client from '@privacybydesign/irma-client';
-import Console from '@privacybydesign/irma-console';
 
 const nativeDrawImage = window.CanvasRenderingContext2D.prototype.drawImage;
 
@@ -105,8 +105,8 @@ const createIrmaSession2 = async (dataType: string, holderElementId: string, que
         .join('&');
 
     const irma = new IrmaCore({
-        debugging: false, // Enable to get helpful output in the browser console
-        element: `${holderElementId}`, // Which DOM element to render to
+        debugging: true, // Enable to get helpful output in the browser console
+        element: holderElementId,
 
         // Back-end options
         session: {
@@ -116,13 +116,20 @@ const createIrmaSession2 = async (dataType: string, holderElementId: string, que
             start: {
                 url: o => `${o.url}`,
                 method: 'GET'
+            },
+
+            mapping: {
+                sessionPtr: sessionPtr => ({ ...sessionPtr, u: sessionPtr.u.replace(/\/irma/g, '/irma/irma') })
+            },
+
+            result: {
+                url: o => `/result`
             }
         }
     });
 
-    irma.use(Console);
-    irma.use(Web);
     irma.use(Client);
+    irma.use(Web);
 
     irma.start()
         .then(result => console.log('Successful disclosure! 🎉', result))
