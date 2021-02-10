@@ -1,9 +1,6 @@
 import axios from 'axios';
 import * as irma from '@privacybydesign/irmajs';
-import * as irmaNew from '@privacybydesign/irma-frontend';
-import '@privacybydesign/irma-css';
 import IrmaCore from '@privacybydesign/irma-core';
-import Popup from '@privacybydesign/irma-popup';
 import Web from '@privacybydesign/irma-web';
 import Client from '@privacybydesign/irma-client';
 
@@ -98,8 +95,6 @@ const createIrmaSession = async (dataType: string, holderElementId: string, quer
 };
 
 const createIrmaSession2 = async (dataType: string, holderElementId: string, query = {}): Promise<unknown> => {
-    const config = await getConfig();
-
     const queryString = Object.keys(query)
         .map((key, index) => `${index === 0 ? '?' : ''}${key}=${query[key]}`)
         .join('&');
@@ -119,11 +114,11 @@ const createIrmaSession2 = async (dataType: string, holderElementId: string, que
             },
 
             mapping: {
-                sessionPtr: sessionPtr => ({ ...sessionPtr, u: sessionPtr.u.replace(/\/irma/g, '/irma/irma') })
+                sessionPtr: r => ({ ...r.sessionPtr, u: r.sessionPtr.u.replace(/\/irma/g, '/irma/irma') })
             },
 
             result: {
-                url: o => `/result`
+                url: (o, { sessionToken }) => `/result?token=${sessionToken}`
             }
         }
     });
@@ -131,40 +126,12 @@ const createIrmaSession2 = async (dataType: string, holderElementId: string, que
     irma.use(Client);
     irma.use(Web);
 
-    irma.start()
-        .then(result => console.log('Successful disclosure! 🎉', result))
-        .catch(error => console.error("Couldn't do what you asked 😢", error));
-
-    // const { sessionPtr, token } = session;
-    // const sessionOptions = {
-    //     method: 'canvas',
-    //     element: holderElementId,
-    //     showConnectedIcon: true,
-    //     server: config.irma,
-    //     token,
-    //     language: 'nl',
-    //     disableMobile: true
-    // };
-
-    // if (isMobile()) {
-    //     sessionOptions.method = 'mobile';
-    //     sessionOptions.disableMobile = false;
-    // }
-
-    // try {
-    //     // This function wraps the canvas context drawImage method to be able to run some code when the QR code disappears
-    //     wrapDrawImage(holderElementId);
-    //     // Adjust malformed url returned from irma server due to rewrite
-    //     sessionPtr.u = sessionPtr.u.replace(/\/irma/g, '/irma/irma');
-    //     const result = await irma.handleSession(sessionPtr, sessionOptions);
-    //     console.log('result: ', result);
-    //     unwrapDrawImage();
-
-    //     // Only get the last part of each result
-    //     return reduceIRMAResult(result.disclosed);
-    // } catch (e) {
-    //     return null;
-    // }
+    try {
+        const result = await irma.start();
+        return reduceIRMAResult(result.disclosed);
+    } catch (e) {
+        return null;
+    }
 };
 
 interface IDisclosedCredentialSet {
