@@ -33,6 +33,7 @@
         "@privacybydesign/irma-console": "^0.3.2",
         "@privacybydesign/irma-core": "^0.3.2",
         "@privacybydesign/irma-css": "^0.3.2",
+        "@privacybydesign/irma-popup": "^0.3.2",
         "@privacybydesign/irma-web": "^0.3.2",
         "@testing-library/jest-dom": "^5.10.1",
         "@testing-library/react": "^10.3.0",
