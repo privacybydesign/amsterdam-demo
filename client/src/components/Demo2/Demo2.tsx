@@ -67,7 +67,7 @@ const Demo2: React.FC<IProps> = () => {
                 response['over18'] === 'Ja' ||
                 response['over18'] === 'ja';
 
-            if (response['over18'].length === 0) {
+            if (response['over18']?.length === 0) {
                 newState.emptyVars.push('over18');
             }
 
