@@ -189,6 +189,20 @@ exports[`QR Code Clicking the QR Code button should show the modal and call getS
 .c16 {
   width: 300px !important;
   height: 300px !important;
+  background-color: transparent;
+}
+
+.c16 .irma-web-header {
+  display: none;
+}
+
+.c16 .irma-web-content {
+  margin: 0;
+}
+
+.c16 .irma-web-qr-canvas {
+  width: 300px !important;
+  height: 300px !important;
 }
 
 .c12 {
@@ -303,7 +317,7 @@ exports[`QR Code Clicking the QR Code button should show the modal and call getS
           class="c15"
           src="/assets/qr-bottom-left.svg"
         />
-        <canvas
+        <div
           class="c16"
           id="irma-qr"
         />
