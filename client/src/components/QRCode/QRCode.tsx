@@ -61,7 +61,7 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) 
             }
         };
         fn();
-    }, [hasOverlay]);
+    }, [hasOverlay]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <span className={className}>

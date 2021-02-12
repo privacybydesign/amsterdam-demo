@@ -1,6 +1,5 @@
 import React from 'react';
 import IrmaCore from '@privacybydesign/irma-core';
-import IrmaWeb from '@privacybydesign/irma-web';
 import { setupMocks, wrappedRender } from '@test/utils';
 import { act } from 'react-dom/test-utils';
 import createIrmaSession, { getConfig, isMobile } from './createIrmaSession';
