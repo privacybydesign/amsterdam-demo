@@ -1,4 +1,5 @@
 import axios from 'axios';
+import '@privacybydesign/irma-css';
 import IrmaCore from '@privacybydesign/irma-core';
 import Web from '@privacybydesign/irma-web';
 import Client from '@privacybydesign/irma-client';
@@ -25,11 +26,37 @@ export const getConfig = async (): Promise<IIrmaServerConfig> => {
     return config;
 };
 
+export interface IStateChangeCallbackMapping {
+    [stateName: string]: () => void;
+}
+
+class IrmaStateChangeCallback {
+    mapping: IStateChangeCallbackMapping;
+    constructor({ options }) {
+        this.mapping = options.callBackMapping;
+    }
+
+    stateChange({ newState }) {
+        if (Object.keys(this.mapping).indexOf(newState) !== -1 && typeof this.mapping[newState] === 'function') {
+            this.mapping[newState]();
+        }
+    }
+
+    close() {
+        return Promise.resolve();
+    }
+}
+
 export const isMobile = (): boolean => {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 };
 
-const createIrmaSession = async (dataType: string, holderElementId: string, query = {}): Promise<unknown> => {
+const createIrmaSession = async (
+    dataType: string,
+    holderElementId: string,
+    query = {},
+    callBackMapping?: IStateChangeCallbackMapping
+): Promise<unknown> => {
     const queryString = Object.keys(query)
         .map((key, index) => `${index === 0 ? '?' : ''}${key}=${query[key]}`)
         .join('&');
@@ -37,6 +64,7 @@ const createIrmaSession = async (dataType: string, holderElementId: string, quer
     const irma = new IrmaCore({
         debugging: true, // Enable to get helpful output in the browser console
         element: holderElementId,
+        callBackMapping,
 
         // Back-end options
         session: {
@@ -60,6 +88,7 @@ const createIrmaSession = async (dataType: string, holderElementId: string, quer
 
     irma.use(Client);
     irma.use(Web);
+    irma.use(IrmaStateChangeCallback);
 
     try {
         const result = await irma.start();

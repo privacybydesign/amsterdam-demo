@@ -4,19 +4,20 @@ import ReactMarkDown from 'react-markdown';
 import { Button, Modal, themeSpacing, themeColor } from '@amsterdam/asc-ui';
 import { Close } from '@amsterdam/asc-assets';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { isMobile } from '@services/createIrmaSession';
+import { isMobile, IStateChangeCallbackMapping } from '@services/createIrmaSession';
 import content from '@services/content';
 import { OL } from '@components/LocalAsc/LocalAsc';
 
 export interface IProps {
     label?: string;
-    getSession(): Promise<null | unknown>;
+    getSession(callBackMapping: IStateChangeCallbackMapping): Promise<null | unknown>;
     className?: string;
     dataTestId?: string;
 }
 
 const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) => {
     const [hasOverlay, setHasOverlay] = useState(false);
+    const [showLogo, setShowLogo] = useState(true);
 
     //Set mountedRef to keep track of the mounting state
     const mountedRef = useRef<boolean>(false);
@@ -42,7 +43,18 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) 
     useLayoutEffect(() => {
         const fn = async () => {
             if (hasOverlay) {
-                await getSession();
+                const callBackMapping = {
+                    ShowingQRCode: () => {
+                        setShowLogo(true);
+                    },
+                    ContinueOn2ndDevice: () => {
+                        setShowLogo(false);
+                    },
+                    ContinueInIrmaApp: () => {
+                        setShowLogo(false);
+                    }
+                };
+                await getSession(callBackMapping);
                 if (mountedRef.current) {
                     closeModal();
                 }
@@ -79,7 +91,7 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) 
                         <ReactMarkDown source={content.qrcode.stappen} renderers={{ list: OL }} />
 
                         <CanvasWrapper>
-                            <IrmaLogo />
+                            {showLogo && <IrmaLogo />}
                             <QRCodeTopLeft />
                             <QRCodeTopRight />
                             <QRCodeBottomRight />
