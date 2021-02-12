@@ -53,7 +53,7 @@ const Demo2: React.FC<IProps> = () => {
     const getSession = async (callBackMapping?: IStateChangeCallbackMapping) => {
         const response = await createIrmaSession(
             'demo2',
-            '#irma-qr',
+            'irma-qr',
             credentialSource === CredentialSource.DEMO && { demo: true },
             callBackMapping
         );
