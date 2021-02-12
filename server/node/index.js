@@ -254,7 +254,7 @@ const createJWT = (authmethod, key, iss, irmaRequest) => {
 
 const irmaDiscloseRequest = async (req, res, requestType, id) => {
   const authmethod = "publickey";
-  const request = createIrmaRequest(requestType, req.query.clientReturnUrl);
+  const request = createIrmaRequest(requestType);
   const jwt = createJWT(
     authmethod,
     process.env.PRIVATE_KEY,
