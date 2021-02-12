@@ -63,7 +63,7 @@ const createIrmaSession = async (
 
     const irma = new IrmaCore({
         debugging: true, // Enable to get helpful output in the browser console
-        element: holderElementId,
+        element: `#${holderElementId}`,
         callBackMapping,
 
         // Back-end options
@@ -88,7 +88,9 @@ const createIrmaSession = async (
 
     irma.use(Client);
     irma.use(Web);
-    irma.use(IrmaStateChangeCallback);
+    if (callBackMapping) {
+        irma.use(IrmaStateChangeCallback);
+    }
 
     try {
         const result = await irma.start();
