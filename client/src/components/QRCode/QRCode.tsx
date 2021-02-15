@@ -1,22 +1,23 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useCallback, useRef, useEffect, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import ReactMarkDown from 'react-markdown';
 import { Button, Modal, themeSpacing, themeColor } from '@amsterdam/asc-ui';
 import { Close } from '@amsterdam/asc-assets';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { isMobile } from '@services/createIrmaSession';
+import { isMobile, IStateChangeCallbackMapping } from '@services/createIrmaSession';
 import content from '@services/content';
 import { OL } from '@components/LocalAsc/LocalAsc';
 
 export interface IProps {
     label?: string;
-    getSession(): Promise<null | unknown>;
+    getSession(callBackMapping: IStateChangeCallbackMapping): Promise<null | unknown>;
     className?: string;
     dataTestId?: string;
 }
 
 const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) => {
     const [hasOverlay, setHasOverlay] = useState(false);
+    const [showLogo, setShowLogo] = useState(true);
 
     //Set mountedRef to keep track of the mounting state
     const mountedRef = useRef<boolean>(false);
@@ -36,12 +37,31 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) 
             if (!isMobile()) {
                 setHasOverlay(true);
             }
-            await getSession();
-            if (mountedRef.current) {
-                closeModal();
-            }
         }
-    }, [getSession, closeModal]);
+    }, [getSession]);
+
+    useLayoutEffect(() => {
+        const fn = async () => {
+            if (hasOverlay) {
+                const callBackMapping = {
+                    ShowingQRCode: () => {
+                        setShowLogo(true);
+                    },
+                    ContinueOn2ndDevice: () => {
+                        setShowLogo(false);
+                    },
+                    ContinueInIrmaApp: () => {
+                        setShowLogo(false);
+                    }
+                };
+                await getSession(callBackMapping);
+                if (mountedRef.current) {
+                    closeModal();
+                }
+            }
+        };
+        fn();
+    }, [hasOverlay]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <span className={className}>
@@ -71,12 +91,12 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) 
                         <ReactMarkDown source={content.qrcode.stappen} renderers={{ list: OL }} />
 
                         <CanvasWrapper>
-                            <IrmaLogo />
+                            {showLogo && <IrmaLogo />}
                             <QRCodeTopLeft />
                             <QRCodeTopRight />
                             <QRCodeBottomRight />
                             <QRCodeBottomLeft />
-                            <Canvas id="irma-qr" />
+                            <IrmaWebElement id="irma-qr" />
                         </CanvasWrapper>
                     </ModalWrapper>
                 </>
@@ -122,9 +142,22 @@ const CanvasWrapper = styled.div`
     margin: 50px auto;
 `;
 
-const Canvas = styled.canvas`
+const IrmaWebElement = styled.div`
     width: 300px !important;
     height: 300px !important;
+    background-color: transparent;
+    & .irma-web-header {
+        display: none;
+    }
+    & .irma-web-content {
+        margin: 0;
+        & .irma-web-waiting-for-user-animation {
+        }
+    }
+    & .irma-web-qr-canvas {
+        width: 300px !important;
+        height: 300px !important;
+    }
 `;
 
 const QRCodeTopLeft = styled.img.attrs({ src: '/assets/qr-top-left.svg' })`

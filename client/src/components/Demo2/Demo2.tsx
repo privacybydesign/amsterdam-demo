@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useReducer } from 'react';
-import createIrmaSession from '@services/createIrmaSession';
+import createIrmaSession, { IStateChangeCallbackMapping } from '@services/createIrmaSession';
 import getGGW from '@services/getGGW';
 import content, { insertInPlaceholders, reduceAndTranslateEmptyVars } from '@services/content';
 import ReactMarkDown from 'react-markdown';
@@ -50,11 +50,12 @@ const Demo2: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const getSession = async () => {
+    const getSession = async (callBackMapping?: IStateChangeCallbackMapping) => {
         const response = await createIrmaSession(
             'demo2',
             'irma-qr',
-            credentialSource === CredentialSource.DEMO && { demo: true }
+            credentialSource === CredentialSource.DEMO && { demo: true },
+            callBackMapping
         );
         const newState: IState = { ...initialState };
         if (response) {
@@ -67,7 +68,7 @@ const Demo2: React.FC<IProps> = () => {
                 response['over18'] === 'Ja' ||
                 response['over18'] === 'ja';
 
-            if (response['over18'].length === 0) {
+            if (response['over18']?.length === 0) {
                 newState.emptyVars.push('over18');
             }
 

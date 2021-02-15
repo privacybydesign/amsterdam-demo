@@ -1,4 +1,7 @@
-import { setupMocks } from '@test/utils';
+import React from 'react';
+import IrmaCore from '@privacybydesign/irma-core';
+import { setupMocks, wrappedRender } from '@test/utils';
+import { act } from 'react-dom/test-utils';
 import createIrmaSession, { getConfig, isMobile } from './createIrmaSession';
 
 // Setup all the generic mocks
@@ -63,18 +66,6 @@ const irmaResult = [
     ]
 ];
 
-// Mock irma module
-jest.mock('@privacybydesign/irmajs', () => ({
-    ...jest.requireActual('@privacybydesign/irmajs'),
-    handleSession: () => ({
-        token: '1234567890abcdefg',
-        status: 'DONE',
-        type: 'disclosing',
-        proofStatus: 'VALID',
-        disclosed: irmaResult
-    })
-}));
-
 describe('createIrmaSession', () => {
     it('getConfig()', async () => {
         const config = await getConfig();
@@ -118,6 +109,16 @@ describe('createIrmaSession', () => {
     });
 
     it('createIrmaSession()', async () => {
+        await act(async () => await wrappedRender(<div id="test-elementID"></div>));
+
+        IrmaCore.prototype.start = jest.fn().mockReturnValue({
+            token: '1234567890abcdefg',
+            status: 'DONE',
+            type: 'disclosing',
+            proofStatus: 'VALID',
+            disclosed: irmaResult
+        });
+
         const sessionResult = await createIrmaSession('test', 'test-elementID', false);
         expect(sessionResult).toMatchInlineSnapshot(`
             Object {

@@ -11,7 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@privacybydesign/irmajs": "^0.1.9",
+    "@privacybydesign/irma-backend": "^0.1.4",
+    "@privacybydesign/irma-jwt": "^0.1.1",
     "cors": "^2.8.5",
     "express": "^4.17.0",
     "express-http-proxy": "^1.5.1",

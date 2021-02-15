@@ -12,23 +12,15 @@ var proxy = require('http-proxy-middleware');
 let config;
 
 const REQUESTS = {
-  USER_NAME: [['pbdf.sidn-pbdf.irma.pseudonym']],
+    USER_NAME: [['pbdf.sidn-pbdf.irma.pseudonym']],
 
-  POSTCODE: [['pbdf.gemeente.address.zipcode']],
+    POSTCODE: [['pbdf.gemeente.address.zipcode']],
 
-  AGE: [['pbdf.gemeente.personalData.over18']],
+    AGE: [['pbdf.gemeente.personalData.over18']],
 
-  EMAIL: [
-    ['pbdf.pbdf.email.email'],
-    ['pbdf.pbdf.mobilenumber.mobilenumber']
-  ],
+    EMAIL: [['pbdf.pbdf.email.email'], ['pbdf.pbdf.mobilenumber.mobilenumber']],
 
-  BSN: [
-    [
-      'pbdf.gemeente.personalData.fullname',
-      'pbdf.gemeente.personalData.bsn',
-    ],
-  ],
+    BSN: [['pbdf.gemeente.personalData.fullname', 'pbdf.gemeente.personalData.bsn']]
 };
 
 /**
@@ -40,120 +32,114 @@ const REQUESTS = {
  */
 
 const createIrmaRequest = content => {
-  return {
-    '@context': 'https://irma.app/ld/request/disclosure/v2',
-    disclose: [[...content]],
-  };
+    return {
+        '@context': 'https://irma.app/ld/request/disclosure/v2',
+        disclose: [[...content]]
+    };
 };
 
 const init = async () => {
-  if (!process.env.PRIVATE_KEY) {
-    throw new Error('PRIVATE_KEY is not set');
-  }
-
-  try {
-    // read the config file only once each session
-    if (config === undefined) {
-      const json = await util.promisify(fs.readFile)(
-        process.env.CONFIG,
-        'utf-8',
-      );
-      console.log('Using config', json);
-      config = JSON.parse(json);
+    if (!process.env.PRIVATE_KEY) {
+        throw new Error('PRIVATE_KEY is not set');
     }
 
-    app.use(express.json());
+    try {
+        // read the config file only once each session
+        if (config === undefined) {
+            const json = await util.promisify(fs.readFile)(process.env.CONFIG, 'utf-8');
+            console.log('Using config', json);
+            config = JSON.parse(json);
+        }
 
-    app.get('/getsession/postcode', cors(), irmaDisclosePostcode);
-    app.get('/getsession/bsn', cors(), irmaDiscloseBsn);
-    app.get('/getsession/age', cors(), irmaDiscloseAge);
-    app.get('/getsession/email', cors(), irmaDiscloseEmail);
-    app.get('/config', cors(), getConfig);
-    console.log('use express');
+        app.use(express.json());
 
-    if (process.env.NODE_ENV === 'production') {
-      app.use(express.static(config.docroot));
-      app.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname, config.docroot, 'index.html'));
-      });
-    } else {
-      console.log('Using proxy to the react app for development');
-      // proxy the root to the react app container in development mode
-      app.use(
-        '/',
-        proxy({
-          target: 'http://app:3000',
-          changeOrigin: true,
-        }),
-      );
+        app.get('/getsession/postcode', cors(), irmaDisclosePostcode);
+        app.get('/getsession/bsn', cors(), irmaDiscloseBsn);
+        app.get('/getsession/age', cors(), irmaDiscloseAge);
+        app.get('/getsession/email', cors(), irmaDiscloseEmail);
+        app.get('/config', cors(), getConfig);
+        console.log('use express');
+
+        if (process.env.NODE_ENV === 'production') {
+            app.use(express.static(config.docroot));
+            app.get('*', function (req, res) {
+                res.sendFile(path.join(__dirname, config.docroot, 'index.html'));
+            });
+        } else {
+            console.log('Using proxy to the react app for development');
+            // proxy the root to the react app container in development mode
+            app.use(
+                '/',
+                proxy({
+                    target: 'http://app:3000',
+                    changeOrigin: true
+                })
+            );
+        }
+
+        app.listen(config.port, () =>
+            console.log(`Voting app running in ${process.env.NODE_ENV || 'development'} mode.`)
+        );
+    } catch (e) {
+        error(e);
     }
-
-    app.listen(config.port, () =>
-      console.log(
-        `Voting app running in ${process.env.NODE_ENV || 'development'} mode.`,
-      ),
-    );
-  } catch (e) {
-    error(e);
-  }
 };
 
 const irmaDiscloseRequest = async (req, res, requestType, id) => {
-  const authmethod = 'publickey';
-  console.log(req);
-  const request = createIrmaRequest(requestType, req.query.clientReturnUrl);
+    const authmethod = 'publickey';
+    const request = createIrmaRequest(requestType, req.query.clientReturnUrl);
 
-  console.log('irma.irmaDiscloseRequest called: ', {
-    url: config.irma,
-    request: JSON.stringify(request),
-    authmethod,
-  });
+    console.log('irma.irmaDiscloseRequest called: ', {
+        url: config.irma,
+        request: JSON.stringify(request),
+        authmethod
+    });
 
-  try {
-    console.log(irma);
-    const session = await irma.startSession(
-      config.irma,
-      request,
-      authmethod,
-      process.env.PRIVATE_KEY,
-      config.requestorname,
-    );
+    try {
+        console.log(irma);
+        const session = await irma.startSession(
+            config.irma,
+            request,
+            authmethod,
+            process.env.PRIVATE_KEY,
+            config.requestorname
+        );
 
-    console.log('session result', session);
-    res.json(session);
-  } catch (e) {
-    console.log('irma.startSession error:', JSON.stringify(e));
-    error(e, res);
-  }
+        console.log('session result', session);
+        res.json(session);
+    } catch (e) {
+        console.log('irma.startSession error:', JSON.stringify(e));
+        error(e, res);
+    }
 };
 
 async function irmaDiscloseEmail(req, res) {
-  return irmaDiscloseRequest(req, res, REQUESTS.EMAIL);
+    return irmaDiscloseRequest(req, res, REQUESTS.EMAIL);
 }
 
 async function irmaDisclosePostcode(req, res) {
-  return irmaDiscloseRequest(req, res, REQUESTS.POSTCODE);
+    return irmaDiscloseRequest(req, res, REQUESTS.POSTCODE);
 }
 
 async function irmaDiscloseBsn(req, res) {
-  return irmaDiscloseRequest(req, res, REQUESTS.BSN);
+    return irmaDiscloseRequest(req, res, REQUESTS.BSN);
 }
 
 async function irmaDiscloseAge(req, res) {
-  return irmaDiscloseRequest(req, res, REQUESTS.AGE);
+    return irmaDiscloseRequest(req, res, REQUESTS.AGE);
 }
 
 const getConfig = async (req, res) => {
-  console.log('get config', JSON.stringify(config));
-  res.json(config);
+    console.log('get config', JSON.stringify(config));
+    res.json(config);
 };
 
 const error = (e, res) => {
-  const jsonError = JSON.stringify(e);
-  console.error('Node error', jsonError);
-  if (res) {
-    res.json({ error: jsonError });
-  }
+    const jsonError = JSON.stringify(e);
+    console.error('Node error', jsonError);
+    if (res) {
+        res.json({ error: jsonError });
+    }
 };
 
 init();
