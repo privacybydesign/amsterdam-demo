@@ -123,10 +123,10 @@ const CREDENTIALS_TO_REQUEST = {
 
 /**
  * Use this call to check the request:
- * `curl -H "Content-Type: application/json" -H 'X-IRMA-MinProtocolVersion: "2.4"' -H 'X-IRMA-MaxProtocolVersion: "2.5"' https://acc.attr.auth.amsterdam.nl/irma/session/zhvALcNoCbCyU0MMZNz5`
- * `curl -H "Content-Type: application/json" -H 'X-IRMA-MinProtocolVersion: "2.4"' -H 'X-IRMA-MaxProtocolVersion: "2.5"' http://localhost:8088/irma/session/WJGQXzbdepNfUg1dc3nT`
+ * `curl -H 'Content-Type: application/json' -H 'X-IRMA-MinProtocolVersion: '2.4'' -H 'X-IRMA-MaxProtocolVersion: '2.5'' https://acc.attr.auth.amsterdam.nl/irma/session/zhvALcNoCbCyU0MMZNz5`
+ * `curl -H 'Content-Type: application/json' -H 'X-IRMA-MinProtocolVersion: '2.4'' -H 'X-IRMA-MaxProtocolVersion: '2.5'' http://localhost:8088/irma/session/WJGQXzbdepNfUg1dc3nT`
  *
- * The result should look like `{"@context":"https://irma.app/ld/request/disclosure/v2","context":"AQ==","nonce":"VItsL+3+GiBHyIt1hIRwSQ==","protocolVersion":"2.5","disclose":[[["pbdf.sidn-pbdf.irma.pseudonym"]]]}`
+ * The result should look like `{'@context':'https://irma.app/ld/request/disclosure/v2','context':'AQ==','nonce':'VItsL+3+GiBHyIt1hIRwSQ==','protocolVersion':'2.5','disclose':[[['pbdf.sidn-pbdf.irma.pseudonym']]]}`
  */
 
 const createIrmaRequest = (content) => {
@@ -172,13 +172,14 @@ const setConfig = async () => {
   initializeIrmaBackend(config.irma);
 };
 
-initializeIrmaBackend = (irmaServerUrl) => {
+const initializeIrmaBackend = (irmaServerUrl) => {
   irmaBackend = new IrmaBackend(irmaServerUrl, {
     debugging: true,
   });
 };
 
 const init = async () => {
+  console.log("length private key: ", process.env.PRIVATE_KEY.length);
   if (!process.env.PRIVATE_KEY) {
     throw new Error("PRIVATE_KEY is not set");
   }
