@@ -34,7 +34,6 @@ const REQUESTS = {
  */
 
 const createIrmaRequest = (content) => {
-  console.log({ content });
   return {
     "@context": "https://irma.app/ld/request/disclosure/v2",
     disclose: [[...content]],
