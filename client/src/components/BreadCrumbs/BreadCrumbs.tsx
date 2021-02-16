@@ -31,7 +31,7 @@ const BreadCrumbs: React.FC<IBreadCrumbsProps> & IBreadCrumbsComposition = ({ ch
     );
 };
 
-const Container = styled.div`
+const Container = styled.nav`
     display: flex;
     align-items: center;
     margin: ${themeSpacing(4)} 0;

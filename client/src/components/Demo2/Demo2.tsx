@@ -12,7 +12,7 @@ import BreadCrumbs from '@components/BreadCrumbs';
 import QRCode from '@components/QRCode/QRCode';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
-import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
+import ResponsiveImage, { IHeaderImageProps } from '@components/ResponsiveImage/ResponsiveImage';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { Checkmark } from '@amsterdam/asc-assets';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
@@ -219,7 +219,7 @@ const Demo2: React.FC<IProps> = () => {
                 />
                 {resultAlert}
             </ContentBlock>
-            <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
+            <ResponsiveImage filename={headerImg.filename} alt={headerImg.alt} />
             {!hasResult ? (
                 <AscLocal.Row noMargin>
                     <AscLocal.Column
@@ -232,32 +232,40 @@ const Demo2: React.FC<IProps> = () => {
                         }}
                     >
                         <ContentBlock>
-                            <ReactMarkDown
-                                source={content.demo2.intro}
-                                renderers={{
-                                    heading: AscLocal.H2,
-                                    list: AscLocal.UL
-                                }}
-                            />
-                            <AscLocal.AccordionContainer>
-                                <Accordion title={content.demo2.why.title}>
-                                    <ReactMarkDown
-                                        source={content.demo2.why.body}
-                                        renderers={{
-                                            paragraph: AscLocal.Paragraph,
-                                            heading: AscLocal.AccordionHeading
-                                        }}
-                                    />
-                                </Accordion>
-                            </AscLocal.AccordionContainer>
-                            <QRCode getSession={getSession} label={content.demo2.button} />
-                            <ReactMarkDown
-                                source={content.downloadIrma}
-                                renderers={{
-                                    paragraph: AscLocal.Paragraph,
-                                    link: ExternalLink
-                                }}
-                            />
+                            <section>
+                                <ReactMarkDown
+                                    source={content.demo2.intro}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        list: AscLocal.UL
+                                    }}
+                                />
+                            </section>
+                            <section>
+                                <AscLocal.AccordionContainer>
+                                    <Accordion title={content.demo2.why.title}>
+                                        <ReactMarkDown
+                                            source={content.demo2.why.body}
+                                            renderers={{
+                                                paragraph: AscLocal.Paragraph,
+                                                heading: AscLocal.AccordionHeading
+                                            }}
+                                        />
+                                    </Accordion>
+                                </AscLocal.AccordionContainer>
+                            </section>
+                            <section>
+                                <QRCode getSession={getSession} label={content.demo2.button} />
+                            </section>
+                            <section>
+                                <ReactMarkDown
+                                    source={content.downloadIrma}
+                                    renderers={{
+                                        paragraph: AscLocal.Paragraph,
+                                        link: ExternalLink
+                                    }}
+                                />
+                            </section>
                         </ContentBlock>
                     </AscLocal.Column>
                     <AscLocal.Column
@@ -275,31 +283,37 @@ const Demo2: React.FC<IProps> = () => {
             ) : (
                 <>
                     <ContentBlock>
-                        <ReactMarkDown source={content.noSavePromise} />
+                        <section>
+                            <ReactMarkDown source={content.noSavePromise} />
+                        </section>
                     </ContentBlock>
                     <EmphasisBlock>
                         <ContentBlock>
+                            <section>
+                                <ReactMarkDown
+                                    source={content.demo2.result}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL,
+                                        link: Link
+                                    }}
+                                />
+                            </section>
+                        </ContentBlock>
+                    </EmphasisBlock>
+                    <ContentBlock>
+                        <section>
                             <ReactMarkDown
-                                source={content.demo2.result}
+                                source={content.callToAction}
                                 renderers={{
                                     heading: AscLocal.H2,
                                     paragraph: AscLocal.Paragraph,
                                     list: AscLocal.UL,
-                                    link: Link
+                                    link: AscLocal.InlineLink
                                 }}
                             />
-                        </ContentBlock>
-                    </EmphasisBlock>
-                    <ContentBlock>
-                        <ReactMarkDown
-                            source={content.callToAction}
-                            renderers={{
-                                heading: AscLocal.H2,
-                                paragraph: AscLocal.Paragraph,
-                                list: AscLocal.UL,
-                                link: AscLocal.InlineLink
-                            }}
-                        />
+                        </section>
                     </ContentBlock>
                 </>
             )}

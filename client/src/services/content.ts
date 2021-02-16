@@ -471,6 +471,7 @@ Dit zorgt ervoor dat feedback van gebruikers op de juiste plek wordt opgeslagen.
     },
 
     responsiveImages: {
+        home: { src: 'home', alt: 'Gebruiker opent QR-code scanner op telefoon.' },
         demo1: {
             header: { src: 'leeftijd', alt: 'Stadsbeeld van een terras' },
             isOver18: { src: 'ouder-dan-18', alt: 'Foto van mensen in een café' },

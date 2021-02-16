@@ -11,7 +11,7 @@ import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
-import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
+import ResponsiveImage, { IHeaderImageProps } from '@components/ResponsiveImage/ResponsiveImage';
 import QRCode from '@components/QRCode/QRCode';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
@@ -191,27 +191,33 @@ const Demo1: React.FC<IProps> = () => {
                 )}
             </ContentBlock>
 
-            <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
+            <ResponsiveImage filename={headerImg.filename} alt={headerImg.alt} />
 
             {!hasResult18 && !hasResult65 ? (
                 <AscLocal.Row noMargin>
                     <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
                         <ContentBlock>
-                            <ReactMarkDown
-                                source={content.demo1.intro}
-                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                            />
-
-                            <AscLocal.AccordionContainer>
-                                <Accordion title={content.demo1.why.title}>
-                                    <ReactMarkDown
-                                        source={content.demo1.why.body}
-                                        renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                                    />
-                                </Accordion>
-                            </AscLocal.AccordionContainer>
-
-                            <div>
+                            <section>
+                                <ReactMarkDown
+                                    source={content.demo1.intro}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL
+                                    }}
+                                />
+                            </section>
+                            <section>
+                                <AscLocal.AccordionContainer>
+                                    <Accordion title={content.demo1.why.title}>
+                                        <ReactMarkDown
+                                            source={content.demo1.why.body}
+                                            renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                        />
+                                    </Accordion>
+                                </AscLocal.AccordionContainer>
+                            </section>
+                            <section>
                                 <QRCode
                                     getSession={getSessionOver18}
                                     label={content.demo1.button18}
@@ -222,12 +228,13 @@ const Demo1: React.FC<IProps> = () => {
                                     label={content.demo1.button65}
                                     dataTestId="qrCodeButton65"
                                 />
-                            </div>
-
-                            <ReactMarkDown
-                                source={content.downloadIrma}
-                                renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
-                            />
+                            </section>
+                            <section>
+                                <ReactMarkDown
+                                    source={content.downloadIrma}
+                                    renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
+                                />
+                            </section>
                         </ContentBlock>
                     </AscLocal.Column>
                     <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
@@ -237,72 +244,77 @@ const Demo1: React.FC<IProps> = () => {
             ) : (
                 <>
                     <ContentBlock>
-                        <ReactMarkDown source={content.noSavePromise} />
+                        <section>
+                            <ReactMarkDown source={content.noSavePromise} />
+                        </section>
                     </ContentBlock>
                     <EmphasisBlock>
                         <ContentBlock>
                             <ReactMarkDown source={content.demo1.result.title} />
-                            {/* // TODO: Refactor renderers */}
-                            {hasResult18 && isOver18 && (
+                            <section>
+                                {hasResult18 && isOver18 && (
+                                    <ReactMarkDown
+                                        source={content.demo1.result.isOver18}
+                                        renderers={{
+                                            heading: AscLocal.H2,
+                                            paragraph: AscLocal.Paragraph,
+                                            list: AscLocal.UL
+                                        }}
+                                    />
+                                )}
+                                {hasResult18 && !isOver18 && (
+                                    <ReactMarkDown
+                                        source={content.demo1.result.isNotOver18}
+                                        renderers={{
+                                            heading: AscLocal.H2,
+                                            paragraph: AscLocal.Paragraph,
+                                            list: AscLocal.UL
+                                        }}
+                                    />
+                                )}
+                                {hasResult65 && isOver65 && (
+                                    <ReactMarkDown
+                                        source={content.demo1.result.isOver65}
+                                        renderers={{
+                                            heading: AscLocal.H2,
+                                            paragraph: AscLocal.Paragraph,
+                                            list: AscLocal.UL
+                                        }}
+                                    />
+                                )}
+                                {hasResult65 && !isOver65 && (
+                                    <ReactMarkDown
+                                        source={content.demo1.result.isNotOver65}
+                                        renderers={{
+                                            heading: AscLocal.H2,
+                                            paragraph: AscLocal.Paragraph,
+                                            list: AscLocal.UL
+                                        }}
+                                    />
+                                )}
                                 <ReactMarkDown
-                                    source={content.demo1.result.isOver18}
+                                    source={content.demo1.result.whatsDifferentWithIrma}
                                     renderers={{
                                         heading: AscLocal.H2,
                                         paragraph: AscLocal.Paragraph,
                                         list: AscLocal.UL
                                     }}
                                 />
-                            )}
-                            {hasResult18 && !isOver18 && (
-                                <ReactMarkDown
-                                    source={content.demo1.result.isNotOver18}
-                                    renderers={{
-                                        heading: AscLocal.H2,
-                                        paragraph: AscLocal.Paragraph,
-                                        list: AscLocal.UL
-                                    }}
-                                />
-                            )}
-                            {hasResult65 && isOver65 && (
-                                <ReactMarkDown
-                                    source={content.demo1.result.isOver65}
-                                    renderers={{
-                                        heading: AscLocal.H2,
-                                        paragraph: AscLocal.Paragraph,
-                                        list: AscLocal.UL
-                                    }}
-                                />
-                            )}
-                            {hasResult65 && !isOver65 && (
-                                <ReactMarkDown
-                                    source={content.demo1.result.isNotOver65}
-                                    renderers={{
-                                        heading: AscLocal.H2,
-                                        paragraph: AscLocal.Paragraph,
-                                        list: AscLocal.UL
-                                    }}
-                                />
-                            )}
-                            <ReactMarkDown
-                                source={content.demo1.result.whatsDifferentWithIrma}
-                                renderers={{
-                                    heading: AscLocal.H2,
-                                    paragraph: AscLocal.Paragraph,
-                                    list: AscLocal.UL
-                                }}
-                            />
+                            </section>
                         </ContentBlock>
                     </EmphasisBlock>
                     <ContentBlock>
-                        <ReactMarkDown
-                            source={content.callToAction}
-                            renderers={{
-                                heading: AscLocal.H2,
-                                paragraph: AscLocal.Paragraph,
-                                list: AscLocal.UL,
-                                link: AscLocal.InlineLink
-                            }}
-                        />
+                        <section>
+                            <ReactMarkDown
+                                source={content.callToAction}
+                                renderers={{
+                                    heading: AscLocal.H2,
+                                    paragraph: AscLocal.Paragraph,
+                                    list: AscLocal.UL,
+                                    link: AscLocal.InlineLink
+                                }}
+                            />
+                        </section>
                     </ContentBlock>
                 </>
             )}

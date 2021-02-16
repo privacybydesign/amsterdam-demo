@@ -13,7 +13,7 @@ import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
-import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
+import ResponsiveImage, { IHeaderImageProps } from '@components/ResponsiveImage/ResponsiveImage';
 import QRCode from '@components/QRCode/QRCode';
 import { Checkmark } from '@amsterdam/asc-assets';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
@@ -215,7 +215,7 @@ const Demo5: React.FC<IProps> = () => {
                     />
                 )}
             </ContentBlock>
-            <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
+            <ResponsiveImage filename={headerImg.filename} alt={headerImg.alt} />
             {!state.hasResult && !state.hasError && (
                 <AscLocal.Row noMargin>
                     <AscLocal.Column
@@ -228,74 +228,87 @@ const Demo5: React.FC<IProps> = () => {
                         }}
                     >
                         <ContentBlock>
-                            <ReactMarkDown
-                                source={content.demo5.unproven.intro1}
-                                renderers={{
-                                    heading: AscLocal.H2,
-                                    paragraph: AscLocal.Paragraph,
-                                    list: AscLocal.UL
-                                }}
-                            />
-                            <AscLocal.AccordionContainer>
-                                <Accordion title={content.demo5.unproven.why.title}>
-                                    <ReactMarkDown
-                                        source={content.demo5.unproven.why.body}
-                                        renderers={{
-                                            paragraph: AscLocal.Paragraph,
-                                            list: AscLocal.UL
-                                        }}
-                                    />
-                                </Accordion>
-                            </AscLocal.AccordionContainer>
-                            <ReactMarkDown source={content.demo5.form.title} renderers={{ heading: AscLocal.H2 }} />
+                            <section>
+                                <ReactMarkDown
+                                    source={content.demo5.unproven.intro1}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL
+                                    }}
+                                />
+                            </section>
+                            <section>
+                                <AscLocal.AccordionContainer>
+                                    <Accordion title={content.demo5.unproven.why.title}>
+                                        <ReactMarkDown
+                                            source={content.demo5.unproven.why.body}
+                                            renderers={{
+                                                paragraph: AscLocal.Paragraph,
+                                                list: AscLocal.UL
+                                            }}
+                                        />
+                                    </Accordion>
+                                </AscLocal.AccordionContainer>
+                            </section>
+                            <section>
+                                <ReactMarkDown source={content.demo5.form.title} renderers={{ heading: AscLocal.H2 }} />
+                            </section>
+                            <section>
+                                <AscLocal.CroppedAlert
+                                    color={AscLocal.AlertColor.PRIMARY}
+                                    iconUrl="assets/icon-info.svg"
+                                    iconSize={14}
+                                    heading={content.demo5.unproven.alert.title}
+                                    content={content.demo5.unproven.alert.body}
+                                />
+                            </section>
+                            <section>
+                                <Demo5Form
+                                    errors={state.formErrors}
+                                    forwardRef={formRef}
+                                    validateForm={validateForm}
+                                    updateLocationCallback={updateLocationCallback}
+                                />
+                            </section>
+                            <section>
+                                <ReactMarkDown
+                                    source={
+                                        noIRMAFlow
+                                            ? content.demo5.unproven.callToActionNoIRMA
+                                            : content.demo5.unproven.callToAction
+                                    }
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph
+                                    }}
+                                />
+                            </section>
+                            <section>
+                                {noIRMAFlow ? (
+                                    <StyledButton
+                                        data-testid={'noIRMAbutton'}
+                                        onClick={getSession}
+                                        variant="secondary"
+                                        iconSize={24}
+                                        iconLeft={<AscLocal.IrmaLogoIcon />}
+                                    >
+                                        {content.demo5.buttonNoIRMA}
+                                    </StyledButton>
+                                ) : (
+                                    <QRCode getSession={getSession} label={content.demo5.button} />
+                                )}
+                            </section>
 
-                            <AscLocal.CroppedAlert
-                                color={AscLocal.AlertColor.PRIMARY}
-                                iconUrl="assets/icon-info.svg"
-                                iconSize={14}
-                                heading={content.demo5.unproven.alert.title}
-                                content={content.demo5.unproven.alert.body}
-                            />
-
-                            <Demo5Form
-                                errors={state.formErrors}
-                                forwardRef={formRef}
-                                validateForm={validateForm}
-                                updateLocationCallback={updateLocationCallback}
-                            />
-
-                            <ReactMarkDown
-                                source={
-                                    noIRMAFlow
-                                        ? content.demo5.unproven.callToActionNoIRMA
-                                        : content.demo5.unproven.callToAction
-                                }
-                                renderers={{
-                                    heading: AscLocal.H2,
-                                    paragraph: AscLocal.Paragraph
-                                }}
-                            />
-                            {noIRMAFlow ? (
-                                <StyledButton
-                                    data-testid={'noIRMAbutton'}
-                                    onClick={getSession}
-                                    variant="secondary"
-                                    iconSize={24}
-                                    iconLeft={<AscLocal.IrmaLogoIcon />}
-                                >
-                                    {content.demo5.buttonNoIRMA}
-                                </StyledButton>
-                            ) : (
-                                <QRCode getSession={getSession} label={content.demo5.button} />
-                            )}
-
-                            <ReactMarkDown
-                                source={content.downloadIrma}
-                                renderers={{
-                                    paragraph: AscLocal.Paragraph,
-                                    link: ExternalLink
-                                }}
-                            />
+                            <section>
+                                <ReactMarkDown
+                                    source={content.downloadIrma}
+                                    renderers={{
+                                        paragraph: AscLocal.Paragraph,
+                                        link: ExternalLink
+                                    }}
+                                />
+                            </section>
                         </ContentBlock>
                     </AscLocal.Column>
                     <AscLocal.Column
@@ -307,108 +320,122 @@ const Demo5: React.FC<IProps> = () => {
                             xLarge: 3
                         }}
                     >
-                        <WhyIRMA />
+                        <section>
+                            <WhyIRMA />
+                        </section>
                     </AscLocal.Column>
                 </AscLocal.Row>
             )}
             {(state.hasResult || state.hasError) && (
                 <>
                     <ContentBlock>
-                        <ReactMarkDown
-                            source={content.demo5.result.intro}
-                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                        />
-                        <AscLocal.TintedContainerLevel2>
+                        <section>
                             <ReactMarkDown
-                                source={content.demo5.result.yourReportBeforeMap.replace(
-                                    /\[location\]/gm,
-                                    state.location.weergavenaam
+                                source={content.demo5.result.intro}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            />
+                        </section>
+                        <section>
+                            <AscLocal.TintedContainerLevel2>
+                                <ReactMarkDown
+                                    source={content.demo5.result.yourReportBeforeMap.replace(
+                                        /\[location\]/gm,
+                                        state.location.weergavenaam
+                                    )}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        list: AscLocal.UL,
+                                        ...AscLocal.DefinitionList
+                                    }}
+                                    plugins={[deflist]}
+                                />
+                                {state.location.latLng && (
+                                    <StyledMap
+                                        options={{
+                                            crs: getCrsRd(),
+                                            attributionControl: false,
+                                            zoomControl: false,
+                                            boxZoom: false,
+                                            dragging: false,
+                                            center: state.location.latLng,
+                                            zoom: 13,
+                                            keyboard: false,
+                                            tap: false,
+                                            scrollWheelZoom: false,
+                                            touchZoom: false
+                                        }}
+                                    >
+                                        <Marker latLng={state.location.latLng} />
+                                        <BaseLayer />
+                                    </StyledMap>
                                 )}
-                                renderers={{
-                                    heading: AscLocal.H2,
-                                    list: AscLocal.UL,
-                                    ...AscLocal.DefinitionList
-                                }}
-                                plugins={[deflist]}
-                            />
-                            {state.location.latLng && (
-                                <StyledMap
-                                    options={{
-                                        crs: getCrsRd(),
-                                        attributionControl: false,
-                                        zoomControl: false,
-                                        boxZoom: false,
-                                        dragging: false,
-                                        center: state.location.latLng,
-                                        zoom: 13,
-                                        keyboard: false,
-                                        tap: false,
-                                        scrollWheelZoom: false,
-                                        touchZoom: false
+                                <ReactMarkDown
+                                    source={content.demo5.result.yourReportAfterMap.replace(/\[(.*?)\]/gm, replaceVars)}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        list: AscLocal.UL,
+                                        ...AscLocal.DefinitionList
                                     }}
-                                >
-                                    <Marker latLng={state.location.latLng} />
-                                    <BaseLayer />
-                                </StyledMap>
-                            )}
+                                    plugins={[deflist]}
+                                />
+                                {state.mobilenumber && (
+                                    <ReactMarkDown
+                                        source={content.demo5.result.yourMobileNumber.replace(
+                                            /\[(.*?)\]/gm,
+                                            replaceVars
+                                        )}
+                                        renderers={{
+                                            heading: AscLocal.H2,
+                                            list: AscLocal.UL,
+                                            ...AscLocal.DefinitionList
+                                        }}
+                                        plugins={[deflist]}
+                                    />
+                                )}
+                                {state.email && (
+                                    <ReactMarkDown
+                                        source={content.demo5.result.yourEmail.replace(/\[(.*?)\]/gm, replaceVars)}
+                                        renderers={{
+                                            heading: AscLocal.H2,
+                                            list: AscLocal.UL,
+                                            ...AscLocal.DefinitionList
+                                        }}
+                                        plugins={[deflist]}
+                                    />
+                                )}
+                            </AscLocal.TintedContainerLevel2>
+                        </section>
+                        <section>
                             <ReactMarkDown
-                                source={content.demo5.result.yourReportAfterMap.replace(/\[(.*?)\]/gm, replaceVars)}
-                                renderers={{
-                                    heading: AscLocal.H2,
-                                    list: AscLocal.UL,
-                                    ...AscLocal.DefinitionList
-                                }}
-                                plugins={[deflist]}
+                                source={!state.hasError ? '' : content.demo5.result.disclaimerError}
+                                renderers={{ paragraph: AscLocal.Paragraph }}
                             />
-                            {state.mobilenumber && (
-                                <ReactMarkDown
-                                    source={content.demo5.result.yourMobileNumber.replace(/\[(.*?)\]/gm, replaceVars)}
-                                    renderers={{
-                                        heading: AscLocal.H2,
-                                        list: AscLocal.UL,
-                                        ...AscLocal.DefinitionList
-                                    }}
-                                    plugins={[deflist]}
-                                />
-                            )}
-                            {state.email && (
-                                <ReactMarkDown
-                                    source={content.demo5.result.yourEmail.replace(/\[(.*?)\]/gm, replaceVars)}
-                                    renderers={{
-                                        heading: AscLocal.H2,
-                                        list: AscLocal.UL,
-                                        ...AscLocal.DefinitionList
-                                    }}
-                                    plugins={[deflist]}
-                                />
-                            )}
-                        </AscLocal.TintedContainerLevel2>
-
-                        <ReactMarkDown
-                            source={!state.hasError ? '' : content.demo5.result.disclaimerError}
-                            renderers={{ paragraph: AscLocal.Paragraph }}
-                        />
+                        </section>
                     </ContentBlock>
 
                     <EmphasisBlock>
                         <ContentBlock>
-                            <ReactMarkDown
-                                source={
-                                    noIRMAFlow || state.hasError
-                                        ? content.demo5.result.restNoIRMA
-                                        : content.demo5.result.rest
-                                }
-                                renderers={{
-                                    heading: AscLocal.H2,
-                                    paragraph: AscLocal.Paragraph,
-                                    list: AscLocal.UL,
-                                    link: AscLocal.InlineLink
-                                }}
-                            />
+                            <section>
+                                <ReactMarkDown
+                                    source={
+                                        noIRMAFlow || state.hasError
+                                            ? content.demo5.result.restNoIRMA
+                                            : content.demo5.result.rest
+                                    }
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL,
+                                        link: AscLocal.InlineLink
+                                    }}
+                                />
+                            </section>
                         </ContentBlock>
                     </EmphasisBlock>
                     <ContentBlock>
-                        <ReactMarkDown source={content.callToAction} />
+                        <section>
+                            <ReactMarkDown source={content.callToAction} />
+                        </section>
                     </ContentBlock>
                 </>
             )}

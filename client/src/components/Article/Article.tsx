@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Icon, themeColor, themeSpacing } from '@amsterdam/asc-ui';
 import { ChevronRight } from '@amsterdam/asc-assets';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import HeaderImage from '@components/HeaderImage/HeaderImage';
+import ResponsiveImage from '@components/ResponsiveImage/ResponsiveImage';
 
 export interface IProps {
     imageSrc: string;
@@ -72,7 +72,7 @@ const Article: React.FC<IProps> = ({ imageSrc, imageAlt, title, children, href, 
     return (
         <StyledLink to={href}>
             <Container className={className}>
-                <HeaderImage filename={imageSrc} alt={imageAlt} />
+                <ResponsiveImage filename={imageSrc} alt={imageAlt} />
                 <div className="text">
                     <AscLocal.H3>{title}</AscLocal.H3>
                     {children}
