@@ -32,7 +32,7 @@ const Homepage: React.FC<IProps> = () => (
                         />
                     </Accordion>
                 </AscLocal.AccordionContainer>
-                <ReactMarkDown source={content.home.subtitle} renderers={{ heading: AscLocal.H3 }} />
+                <ReactMarkDown source={content.home.subtitle} renderers={{ heading: AscLocal.H2 }} />
                 <ArticleContainer>
                     <Article
                         imageSrc={content.responsiveImages.demo1.header.src}
