@@ -231,7 +231,7 @@ const Demo5: React.FC<IProps> = () => {
                             <ReactMarkDown
                                 source={content.demo5.unproven.intro1}
                                 renderers={{
-                                    heading: AscLocal.H3,
+                                    heading: AscLocal.H2,
                                     paragraph: AscLocal.Paragraph,
                                     list: AscLocal.UL
                                 }}
@@ -247,7 +247,7 @@ const Demo5: React.FC<IProps> = () => {
                                     />
                                 </Accordion>
                             </AscLocal.AccordionContainer>
-                            <ReactMarkDown source={content.demo5.form.title} renderers={{ heading: AscLocal.H3 }} />
+                            <ReactMarkDown source={content.demo5.form.title} renderers={{ heading: AscLocal.H2 }} />
 
                             <AscLocal.CroppedAlert
                                 color={AscLocal.AlertColor.PRIMARY}
@@ -271,7 +271,7 @@ const Demo5: React.FC<IProps> = () => {
                                         : content.demo5.unproven.callToAction
                                 }
                                 renderers={{
-                                    heading: AscLocal.H3,
+                                    heading: AscLocal.H2,
                                     paragraph: AscLocal.Paragraph
                                 }}
                             />
@@ -316,7 +316,7 @@ const Demo5: React.FC<IProps> = () => {
                     <ContentBlock>
                         <ReactMarkDown
                             source={content.demo5.result.intro}
-                            renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                         />
                         <AscLocal.TintedContainerLevel2>
                             <ReactMarkDown
@@ -325,7 +325,7 @@ const Demo5: React.FC<IProps> = () => {
                                     state.location.weergavenaam
                                 )}
                                 renderers={{
-                                    heading: AscLocal.H3,
+                                    heading: AscLocal.H2,
                                     list: AscLocal.UL,
                                     ...AscLocal.DefinitionList
                                 }}
@@ -354,7 +354,7 @@ const Demo5: React.FC<IProps> = () => {
                             <ReactMarkDown
                                 source={content.demo5.result.yourReportAfterMap.replace(/\[(.*?)\]/gm, replaceVars)}
                                 renderers={{
-                                    heading: AscLocal.H3,
+                                    heading: AscLocal.H2,
                                     list: AscLocal.UL,
                                     ...AscLocal.DefinitionList
                                 }}
@@ -364,7 +364,7 @@ const Demo5: React.FC<IProps> = () => {
                                 <ReactMarkDown
                                     source={content.demo5.result.yourMobileNumber.replace(/\[(.*?)\]/gm, replaceVars)}
                                     renderers={{
-                                        heading: AscLocal.H3,
+                                        heading: AscLocal.H2,
                                         list: AscLocal.UL,
                                         ...AscLocal.DefinitionList
                                     }}
@@ -375,7 +375,7 @@ const Demo5: React.FC<IProps> = () => {
                                 <ReactMarkDown
                                     source={content.demo5.result.yourEmail.replace(/\[(.*?)\]/gm, replaceVars)}
                                     renderers={{
-                                        heading: AscLocal.H3,
+                                        heading: AscLocal.H2,
                                         list: AscLocal.UL,
                                         ...AscLocal.DefinitionList
                                     }}
@@ -399,7 +399,7 @@ const Demo5: React.FC<IProps> = () => {
                                         : content.demo5.result.rest
                                 }
                                 renderers={{
-                                    heading: AscLocal.H3,
+                                    heading: AscLocal.H2,
                                     paragraph: AscLocal.Paragraph,
                                     list: AscLocal.UL,
                                     link: AscLocal.InlineLink

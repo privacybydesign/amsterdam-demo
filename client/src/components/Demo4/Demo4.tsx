@@ -188,7 +188,7 @@ const Demo4: React.FC<IProps> = () => {
                         <ContentBlock>
                             <ReactMarkDown
                                 source={content.demo4.unproven.intro1}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
 
                             <AscLocal.AccordionContainer>
@@ -200,7 +200,7 @@ const Demo4: React.FC<IProps> = () => {
                                 </Accordion>
                             </AscLocal.AccordionContainer>
 
-                            <AscLocal.H3>Demo-aanvraag Geveltuin</AscLocal.H3>
+                            <AscLocal.H2>Demo-aanvraag Geveltuin</AscLocal.H2>
 
                             <AscLocal.CroppedAlert
                                 color={AscLocal.AlertColor.PRIMARY}
@@ -229,7 +229,7 @@ const Demo4: React.FC<IProps> = () => {
 
                             <ReactMarkDown
                                 source={content.demo4.unproven.intro2}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
 
                             <QRCode getSession={getSession} label={content.demo4.button} />
@@ -257,14 +257,14 @@ const Demo4: React.FC<IProps> = () => {
                     <ContentBlock>
                         <ReactMarkDown
                             source={content.demo4.result.intro}
-                            renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                            renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                         />
 
                         <AscLocal.TintedContainerLevel3>
                             <ReactMarkDown
                                 source={content.demo4.result.yourDemoRequest.replace(/\[(.*?)\]/gm, replaceVars)}
                                 renderers={{
-                                    heading: AscLocal.H3,
+                                    heading: AscLocal.H2,
                                     paragraph: AscLocal.Paragraph,
                                     list: AscLocal.UL,
                                     ...AscLocal.DefinitionList
@@ -277,7 +277,7 @@ const Demo4: React.FC<IProps> = () => {
                             <ReactMarkDown
                                 source={content.demo4.result.yourDetails.replace(/\[(.*?)\]/gm, replaceVars)}
                                 renderers={{
-                                    heading: AscLocal.H3,
+                                    heading: AscLocal.H2,
                                     paragraph: AscLocal.Paragraph,
                                     list: AscLocal.UL,
                                     ...AscLocal.DefinitionList
@@ -290,7 +290,7 @@ const Demo4: React.FC<IProps> = () => {
                         <ContentBlock>
                             <ReactMarkDown
                                 source={content.demo4.result.rest}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
                         </ContentBlock>
                     </EmphasisBlock>
