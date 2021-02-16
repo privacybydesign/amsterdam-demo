@@ -19,87 +19,82 @@ const Homepage: React.FC<IProps> = () => (
             source={content.home.breadcrumbs}
             renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
         />
-        <main>
-            <ReactMarkDown source={content.home.title} renderers={{ heading: AscLocal.H1 }} />
+        <ReactMarkDown source={content.home.title} renderers={{ heading: AscLocal.H1 }} />
 
-            <ResponsiveImage filename={content.responsiveImages.home.src} alt={content.responsiveImages.home.alt} />
+        <ResponsiveImage filename={content.responsiveImages.home.src} alt={content.responsiveImages.home.alt} />
 
-            <AscLocal.Row>
-                <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
-                    <section>
-                        <ReactMarkDown
-                            source={content.home.intro}
-                            renderers={{ paragraph: AscLocal.StrongParagraph }}
-                        />
-                    </section>
-                    <section>
-                        <AscLocal.AccordionContainer>
-                            <Accordion title={content.home.requirements.title} id="nodig">
-                                <ReactMarkDown
-                                    source={content.home.requirements.body}
-                                    renderers={{
-                                        heading: AscLocal.H3,
-                                        list: AscLocal.UL,
-                                        image: DownloadButton,
-                                        link: Link
-                                    }}
-                                />
-                            </Accordion>
-                        </AscLocal.AccordionContainer>
-                    </section>
-                    <section>
-                        <ReactMarkDown source={content.home.subtitle} renderers={{ heading: AscLocal.H2 }} />
-                        <ArticleContainer>
-                            <Article
-                                imageSrc={content.responsiveImages.demo1.header.src}
-                                imageAlt={content.responsiveImages.demo1.header.alt}
-                                title={content.home.demo1Card.title}
-                                href={AppRoutes.DEMO1.path}
-                            >
-                                <ReactMarkDown source={content.home.demo1Card.body} />
-                            </Article>
-                            <Article
-                                imageSrc={content.responsiveImages.demo2.header.src}
-                                imageAlt={content.responsiveImages.demo2.header.alt}
-                                title={content.home.demo2Card.title}
-                                href={AppRoutes.DEMO2.path}
-                            >
-                                <ReactMarkDown source={content.home.demo2Card.body} />
-                            </Article>
-                            <Article
-                                imageSrc={content.responsiveImages.demo3.header.src}
-                                imageAlt={content.responsiveImages.demo3.header.alt}
-                                title={content.home.demo3Card.title}
-                                href={AppRoutes.DEMO3.path}
-                            >
-                                <ReactMarkDown source={content.home.demo3Card.body} />
-                            </Article>
-                            <Article
-                                imageSrc={content.responsiveImages.demo4.header.src}
-                                imageAlt={content.responsiveImages.demo4.header.alt}
-                                title={content.home.demo4Card.title}
-                                href={AppRoutes.DEMO4.path}
-                            >
-                                <ReactMarkDown source={content.home.demo4Card.body} />
-                            </Article>
-                            <Article
-                                imageSrc={content.responsiveImages.demo5.header.src}
-                                imageAlt={content.responsiveImages.demo5.header.alt}
-                                title={content.home.demo5Card.title}
-                                href={AppRoutes.DEMO5.path}
-                            >
-                                <ReactMarkDown source={content.home.demo5Card.body} />
-                            </Article>
-                        </ArticleContainer>
-                    </section>
-                </AscLocal.Column>
-                <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
-                    <aside>
-                        <WhyIRMA />
-                    </aside>
-                </AscLocal.Column>
-            </AscLocal.Row>
-        </main>
+        <AscLocal.Row>
+            <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
+                <section>
+                    <ReactMarkDown source={content.home.intro} renderers={{ paragraph: AscLocal.StrongParagraph }} />
+                </section>
+                <section>
+                    <AscLocal.AccordionContainer>
+                        <Accordion title={content.home.requirements.title} id="nodig">
+                            <ReactMarkDown
+                                source={content.home.requirements.body}
+                                renderers={{
+                                    heading: AscLocal.H3,
+                                    list: AscLocal.UL,
+                                    image: DownloadButton,
+                                    link: Link
+                                }}
+                            />
+                        </Accordion>
+                    </AscLocal.AccordionContainer>
+                </section>
+                <section>
+                    <ReactMarkDown source={content.home.subtitle} renderers={{ heading: AscLocal.H2 }} />
+                    <ArticleContainer>
+                        <Article
+                            imageSrc={content.responsiveImages.demo1.header.src}
+                            imageAlt={content.responsiveImages.demo1.header.alt}
+                            title={content.home.demo1Card.title}
+                            href={AppRoutes.DEMO1.path}
+                        >
+                            <ReactMarkDown source={content.home.demo1Card.body} />
+                        </Article>
+                        <Article
+                            imageSrc={content.responsiveImages.demo2.header.src}
+                            imageAlt={content.responsiveImages.demo2.header.alt}
+                            title={content.home.demo2Card.title}
+                            href={AppRoutes.DEMO2.path}
+                        >
+                            <ReactMarkDown source={content.home.demo2Card.body} />
+                        </Article>
+                        <Article
+                            imageSrc={content.responsiveImages.demo3.header.src}
+                            imageAlt={content.responsiveImages.demo3.header.alt}
+                            title={content.home.demo3Card.title}
+                            href={AppRoutes.DEMO3.path}
+                        >
+                            <ReactMarkDown source={content.home.demo3Card.body} />
+                        </Article>
+                        <Article
+                            imageSrc={content.responsiveImages.demo4.header.src}
+                            imageAlt={content.responsiveImages.demo4.header.alt}
+                            title={content.home.demo4Card.title}
+                            href={AppRoutes.DEMO4.path}
+                        >
+                            <ReactMarkDown source={content.home.demo4Card.body} />
+                        </Article>
+                        <Article
+                            imageSrc={content.responsiveImages.demo5.header.src}
+                            imageAlt={content.responsiveImages.demo5.header.alt}
+                            title={content.home.demo5Card.title}
+                            href={AppRoutes.DEMO5.path}
+                        >
+                            <ReactMarkDown source={content.home.demo5Card.body} />
+                        </Article>
+                    </ArticleContainer>
+                </section>
+            </AscLocal.Column>
+            <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
+                <aside>
+                    <WhyIRMA />
+                </aside>
+            </AscLocal.Column>
+        </AscLocal.Row>
     </PageTemplate>
 );
 

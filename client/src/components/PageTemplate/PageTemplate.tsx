@@ -26,17 +26,19 @@ const PageTemplate: React.FC<IProps> = ({ children, className }) => {
         <StyledRow className={className}>
             <AscLocal.Header fullWidth={false} tall homeLink={AppRoutes.HOMEPAGE.path} />
             <StyledColumn span={12}>
-                {isIE && location.pathname !== AppRoutes.IE_SUPPORT.path && (
-                    <AscLocal.Alert
-                        color={AscLocal.AlertColor.ERROR}
-                        icon={<AlertIcon />}
-                        iconSize={22}
-                        heading={content.ieSupport.errorAlert.heading}
-                        content={content.ieSupport.errorAlert.content}
-                        dataTestId="hasErrorAlert"
-                    />
-                )}
-                {children}
+                <main>
+                    {isIE && location.pathname !== AppRoutes.IE_SUPPORT.path && (
+                        <AscLocal.Alert
+                            color={AscLocal.AlertColor.ERROR}
+                            icon={<AlertIcon />}
+                            iconSize={22}
+                            heading={content.ieSupport.errorAlert.heading}
+                            content={content.ieSupport.errorAlert.content}
+                            dataTestId="hasErrorAlert"
+                        />
+                    )}
+                    {children}
+                </main>
             </StyledColumn>
             <Footer />
         </StyledRow>

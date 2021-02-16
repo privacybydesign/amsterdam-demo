@@ -46,7 +46,7 @@ const Container = styled.div`
     }
 `;
 
-const IRMALogo = styled.img`
+const IRMALogo = styled.img.attrs({ alt: 'IRMA Logo' })`
     width: 82px;
     margin: ${themeSpacing(1)} 0 ${themeSpacing(4)} ${themeSpacing(6)};
 `;
