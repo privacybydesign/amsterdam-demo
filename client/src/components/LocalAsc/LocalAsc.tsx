@@ -201,7 +201,7 @@ export const Alert = styled(
                     <div>
                         {heading || content ? (
                             <>
-                                {heading && <Heading forwardedAs="h3">{heading}</Heading>}
+                                {heading && <Heading forwardedAs="h2">{heading}</Heading>}
                                 <ReactMarkdown source={content} renderers={{ paragraph: Paragraph }} />
                             </>
                         ) : (
@@ -231,6 +231,10 @@ export const Alert = styled(
         display: flex;
         align-items: ${({ iconSize }) => (iconSize > 18 ? 'flex-start' : 'baseline')};
 
+        h2 {
+            font-size: 18px;
+        }
+
         .icon {
             margin-right: ${themeSpacing(4)};
             min-width: ${({ iconSize }) => iconSize}px;
@@ -255,7 +259,7 @@ export const Alert = styled(
 export const CroppedAlert = styled(Alert)`
     padding: ${themeSpacing(2)};
 
-    h3,
+    h2,
     p {
         margin-bottom: 0;
     }
