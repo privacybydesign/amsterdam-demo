@@ -51,6 +51,20 @@ export const isMobile = (): boolean => {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 };
 
+interface IStateMachine {
+    transition: (state: string) => void;
+}
+
+class IrmaAbortOnCancel {
+    _stateMachine: IStateMachine;
+    constructor({ stateMachine }) {
+        this._stateMachine = stateMachine;
+    }
+    stateChange({ newState }) {
+        if (newState === 'Cancelled') this._stateMachine.transition('abort');
+    }
+}
+
 const createIrmaSession = async (
     dataType: string,
     holderElementId: string,
@@ -62,13 +76,11 @@ const createIrmaSession = async (
         .join('&');
 
     const irma = new IrmaCore({
-        debugging: true, // Enable to get helpful output in the browser console
+        debugging: true,
         element: `#${holderElementId}`,
         callBackMapping,
 
-        // Back-end options
         session: {
-            // Point this to your controller:
             url: `/getsession/${dataType}${queryString}`,
 
             start: {
@@ -91,6 +103,7 @@ const createIrmaSession = async (
     if (callBackMapping) {
         irma.use(IrmaStateChangeCallback);
     }
+    irma.use(IrmaAbortOnCancel);
 
     try {
         const result = await irma.start();
