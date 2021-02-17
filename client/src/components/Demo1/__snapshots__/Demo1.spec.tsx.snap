@@ -21,6 +21,10 @@ exports[`Demo1 should render the initial header image 1`] = `
 
 }
 
+@media screen and (min-width:1024px) {
+
+}
+
 @media screen and (min-width:540px) {
 
 }
@@ -264,6 +268,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 }
 
 @media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
 
 }
 
@@ -519,25 +527,25 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
   height: 22px;
 }
 
-.c13 .c3 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c14 .c3 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c15 .c3 {
+.c11 .c3 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
 .c12 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c13 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c15 .c3 {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
@@ -554,12 +562,12 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
   margin: 0;
   color: #000000;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
   -webkit-letter-spacing: inherit;
   -moz-letter-spacing: inherit;
   -ms-letter-spacing: inherit;
   letter-spacing: inherit;
-  line-height: 23px;
+  line-height: 24px;
   margin-bottom: 8px;
   font-stretch: normal;
   -webkit-letter-spacing: normal;
@@ -621,7 +629,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
   fill: #ffffff;
 }
 
-.c11 .c6 {
+.c14 .c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -677,6 +685,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
   align-items: flex-start;
 }
 
+.c1 .alert-content h2 {
+  font-size: 18px;
+}
+
 .c1 .alert-content .icon {
   margin-right: 16px;
   min-width: 22px;
@@ -689,6 +701,13 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 
 @media screen and (min-width:1200px) {
 
+}
+
+@media screen and (min-width:1024px) {
+  .c5 {
+    font-size: 24px;
+    line-height: 30px;
+  }
 }
 
 @media screen and (min-width:1024px) {
@@ -946,11 +965,11 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
         </svg>
       </span>
       <div>
-        <h3
+        <h2
           class="c5 c6 c7"
         >
           Uw leeftijd
-        </h3>
+        </h2>
         <p
           class="c8 c9 c10"
         >
@@ -976,6 +995,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 }
 
 @media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
 
 }
 
@@ -1231,25 +1254,25 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
   height: 22px;
 }
 
-.c13 .c3 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c14 .c3 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c15 .c3 {
+.c11 .c3 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
 .c12 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c13 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c15 .c3 {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
@@ -1266,12 +1289,12 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
   margin: 0;
   color: #000000;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
   -webkit-letter-spacing: inherit;
   -moz-letter-spacing: inherit;
   -ms-letter-spacing: inherit;
   letter-spacing: inherit;
-  line-height: 23px;
+  line-height: 24px;
   margin-bottom: 8px;
   font-stretch: normal;
   -webkit-letter-spacing: normal;
@@ -1333,7 +1356,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
   fill: #ffffff;
 }
 
-.c11 .c6 {
+.c14 .c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1389,6 +1412,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
   align-items: flex-start;
 }
 
+.c1 .alert-content h2 {
+  font-size: 18px;
+}
+
 .c1 .alert-content .icon {
   margin-right: 16px;
   min-width: 22px;
@@ -1401,6 +1428,13 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 
 @media screen and (min-width:1200px) {
 
+}
+
+@media screen and (min-width:1024px) {
+  .c5 {
+    font-size: 24px;
+    line-height: 30px;
+  }
 }
 
 @media screen and (min-width:1024px) {
@@ -1658,11 +1692,11 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
         </svg>
       </span>
       <div>
-        <h3
+        <h2
           class="c5 c6 c7"
         >
           Uw leeftijd
-        </h3>
+        </h2>
         <p
           class="c8 c9 c10"
         >
@@ -1688,6 +1722,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 }
 
 @media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
 
 }
 
@@ -1950,25 +1988,25 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
   fill: #ffffff;
 }
 
-.c13 .c3 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c14 .c3 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c15 .c3 {
+.c11 .c3 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
 .c12 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c13 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c15 .c3 {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
@@ -1985,12 +2023,12 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
   margin: 0;
   color: #000000;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
   -webkit-letter-spacing: inherit;
   -moz-letter-spacing: inherit;
   -ms-letter-spacing: inherit;
   letter-spacing: inherit;
-  line-height: 23px;
+  line-height: 24px;
   margin-bottom: 8px;
   font-stretch: normal;
   -webkit-letter-spacing: normal;
@@ -2052,7 +2090,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
   fill: #ffffff;
 }
 
-.c11 .c6 {
+.c14 .c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -2108,6 +2146,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
   align-items: baseline;
 }
 
+.c1 .alert-content h2 {
+  font-size: 18px;
+}
+
 .c1 .alert-content .icon {
   margin-right: 16px;
   min-width: 14px;
@@ -2120,6 +2162,13 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 
 @media screen and (min-width:1200px) {
 
+}
+
+@media screen and (min-width:1024px) {
+  .c5 {
+    font-size: 24px;
+    line-height: 30px;
+  }
 }
 
 @media screen and (min-width:1024px) {
@@ -2375,11 +2424,11 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
         </svg>
       </span>
       <div>
-        <h3
+        <h2
           class="c5 c6 c7"
         >
           Uw leeftijd
-        </h3>
+        </h2>
         <p
           class="c8 c9 c10"
         >
@@ -2405,6 +2454,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 }
 
 @media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
 
 }
 
@@ -2667,25 +2720,25 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
   fill: #ffffff;
 }
 
-.c13 .c3 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c14 .c3 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c15 .c3 {
+.c11 .c3 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
 .c12 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c13 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c15 .c3 {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
@@ -2702,12 +2755,12 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
   margin: 0;
   color: #000000;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
   -webkit-letter-spacing: inherit;
   -moz-letter-spacing: inherit;
   -ms-letter-spacing: inherit;
   letter-spacing: inherit;
-  line-height: 23px;
+  line-height: 24px;
   margin-bottom: 8px;
   font-stretch: normal;
   -webkit-letter-spacing: normal;
@@ -2769,7 +2822,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
   fill: #ffffff;
 }
 
-.c11 .c6 {
+.c14 .c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -2825,6 +2878,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
   align-items: baseline;
 }
 
+.c1 .alert-content h2 {
+  font-size: 18px;
+}
+
 .c1 .alert-content .icon {
   margin-right: 16px;
   min-width: 14px;
@@ -2837,6 +2894,13 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 
 @media screen and (min-width:1200px) {
 
+}
+
+@media screen and (min-width:1024px) {
+  .c5 {
+    font-size: 24px;
+    line-height: 30px;
+  }
 }
 
 @media screen and (min-width:1024px) {
@@ -3092,11 +3156,11 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
         </svg>
       </span>
       <div>
-        <h3
+        <h2
           class="c5 c6 c7"
         >
           Uw leeftijd
-        </h3>
+        </h2>
         <p
           class="c8 c9 c10"
         >
@@ -3127,25 +3191,25 @@ exports[`Demo1 should update the page after failing the IRMA flow 1`] = `
   height: 22px;
 }
 
-.c13 .c3 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c14 .c3 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c15 .c3 {
+.c11 .c3 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
 }
 
 .c12 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c13 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c15 .c3 {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
@@ -3162,12 +3226,12 @@ exports[`Demo1 should update the page after failing the IRMA flow 1`] = `
   margin: 0;
   color: #000000;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
   -webkit-letter-spacing: inherit;
   -moz-letter-spacing: inherit;
   -ms-letter-spacing: inherit;
   letter-spacing: inherit;
-  line-height: 23px;
+  line-height: 24px;
   margin-bottom: 8px;
   font-stretch: normal;
   -webkit-letter-spacing: normal;
@@ -3229,7 +3293,7 @@ exports[`Demo1 should update the page after failing the IRMA flow 1`] = `
   fill: #ffffff;
 }
 
-.c11 .c6 {
+.c14 .c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -3285,6 +3349,10 @@ exports[`Demo1 should update the page after failing the IRMA flow 1`] = `
   align-items: flex-start;
 }
 
+.c1 .alert-content h2 {
+  font-size: 18px;
+}
+
 .c1 .alert-content .icon {
   margin-right: 16px;
   min-width: 22px;
@@ -3297,6 +3365,13 @@ exports[`Demo1 should update the page after failing the IRMA flow 1`] = `
 
 @media screen and (min-width:1200px) {
 
+}
+
+@media screen and (min-width:1024px) {
+  .c5 {
+    font-size: 24px;
+    line-height: 30px;
+  }
 }
 
 @media screen and (min-width:1024px) {
@@ -3554,11 +3629,11 @@ exports[`Demo1 should update the page after failing the IRMA flow 1`] = `
         </svg>
       </span>
       <div>
-        <h3
+        <h2
           class="c5 c6 c7"
         >
           Niets doorgegeven
-        </h3>
+        </h2>
         <p
           class="c8 c9 c10"
         >

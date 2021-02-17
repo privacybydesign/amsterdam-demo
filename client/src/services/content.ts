@@ -19,6 +19,9 @@ export const reduceAndTranslateEmptyVars = (emptyVars: string[]): string => {
 };
 
 const content = {
+    header: {
+        skipLink: `Naar hoofdinhoud`
+    },
     home: {
         breadcrumbs: `- [Home](/)`,
         title: `# Probeer IRMA uit`,

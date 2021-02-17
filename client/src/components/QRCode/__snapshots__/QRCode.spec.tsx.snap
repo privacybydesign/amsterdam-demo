@@ -240,6 +240,7 @@ exports[`QR Code Clicking the QR Code button should show the modal and call getS
 <div
   class="c0"
   data-testid="qrCodeModal"
+  title="### Maak uzelf bekend"
 >
   <div
     class="c1"
@@ -254,6 +255,7 @@ exports[`QR Code Clicking the QR Code button should show the modal and call getS
         Maak uzelf bekend
       </h3>
       <button
+        aria-label="Sluiten"
         class="c3 c4 c5"
         size="30"
       >
@@ -299,22 +301,27 @@ exports[`QR Code Clicking the QR Code button should show the modal and call getS
       >
         <img
           class="c11"
+          role="presentation"
           src="/assets/irma_logo.svg"
         />
         <img
           class="c12"
+          role="presentation"
           src="/assets/qr-top-left.svg"
         />
         <img
           class="c13"
+          role="presentation"
           src="/assets/qr-top-right.svg"
         />
         <img
           class="c14"
+          role="presentation"
           src="/assets/qr-bottom-right.svg"
         />
         <img
           class="c15"
+          role="presentation"
           src="/assets/qr-bottom-left.svg"
         />
         <div

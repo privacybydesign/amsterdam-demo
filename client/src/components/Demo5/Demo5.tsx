@@ -24,6 +24,7 @@ import { reducer, initialState } from './reducer';
 import { Location } from '@components/Map/reducer';
 import Demo5Form, { FormFields } from './Demo5Form';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
+import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 
 export interface IProps {}
 
@@ -169,6 +170,7 @@ const Demo5: React.FC<IProps> = () => {
                     renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
                 />
 
+                {SkipLinkEntry}
                 <ReactMarkDown
                     source={content.demo5[state.hasResult ? 'proven' : 'unproven'].title}
                     renderers={{ heading: AscLocal.H1 }}

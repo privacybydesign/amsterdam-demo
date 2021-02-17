@@ -216,6 +216,10 @@ const StyledMap = styled(Map)`
     width: 100%;
     cursor: pointer;
     z-index: 0;
+
+    .leaflet-control-attribution {
+        display: none;
+    }
 `;
 
 const StyledViewerContainer = styled(ViewerContainer)`

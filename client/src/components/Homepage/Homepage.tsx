@@ -10,6 +10,7 @@ import PageTemplate from '@components/PageTemplate/PageTemplate';
 import Article from '@components/Article/Article';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import ResponsiveImage from '@components/ResponsiveImage/ResponsiveImage';
+import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 
 interface IProps {}
 
@@ -19,6 +20,7 @@ const Homepage: React.FC<IProps> = () => (
             source={content.home.breadcrumbs}
             renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
         />
+        {SkipLinkEntry}
         <ReactMarkDown source={content.home.title} renderers={{ heading: AscLocal.H1 }} />
 
         <ResponsiveImage filename={content.responsiveImages.home.src} alt={content.responsiveImages.home.alt} />

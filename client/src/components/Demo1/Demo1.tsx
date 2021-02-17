@@ -18,6 +18,7 @@ import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
+import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 
 export interface IProps {}
 
@@ -133,6 +134,7 @@ const Demo1: React.FC<IProps> = () => {
                     source={content.demo1.breadcrumbs}
                     renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
                 />
+                {SkipLinkEntry}
                 <ReactMarkDown
                     source={content.demo1.title[hasResult18 || hasResult65 ? 'hasResult' : 'noResult']}
                     renderers={{ heading: AscLocal.H1 }}
