@@ -4,7 +4,7 @@ import getGGW from '@services/getGGW';
 import content, { insertInPlaceholders, reduceAndTranslateEmptyVars } from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import { Link, Accordion } from '@amsterdam/asc-ui';
+import { Accordion } from '@amsterdam/asc-ui';
 import { Alert as AlertIcon } from '@amsterdam/asc-assets';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
@@ -296,7 +296,7 @@ const Demo2: React.FC<IProps> = () => {
                                         heading: AscLocal.H2,
                                         paragraph: AscLocal.Paragraph,
                                         list: AscLocal.UL,
-                                        link: Link
+                                        link: AscLocal.UnderlinedLink
                                     }}
                                 />
                             </section>
