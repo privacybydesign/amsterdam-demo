@@ -44,7 +44,7 @@ Download de IRMA-app voor iOS of Android:  \n
 [![Play Store](/assets/download-play-store.svg "Download IRMA in de Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
 
 Wilt u meer weten over IRMA?
-Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
+[Ga naar de website van IRMA](https://irma.app/?lang=nl)`
         },
         subtitle: `## Aan de slag met IRMA`,
         demo1Card: {
@@ -70,7 +70,7 @@ Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
         sidebar: {
             box: `Eenvoudig en op maat online aantonen wie je bent met IRMA
 ![IRMA Logo](/assets/irma_logo.svg "Lees meer over IRMA")
-# Waarom IRMA`,
+# Waarom IRMA?`,
             boxLink: `https://www.amsterdam.nl/wonen-leefomgeving/innovatie/de-digitale-stad/irma-nieuwe-manier-inloggen/`
         }
     },
