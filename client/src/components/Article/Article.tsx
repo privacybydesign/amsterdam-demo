@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Icon, themeColor, themeSpacing, breakpoint, Link } from '@amsterdam/asc-ui';
+import { Icon, themeColor, themeSpacing, Link } from '@amsterdam/asc-ui';
 import { ChevronRight } from '@amsterdam/asc-assets';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import ResponsiveImage from '@components/ResponsiveImage/ResponsiveImage';

@@ -31,7 +31,7 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
             <FormSection>
                 <ReactMarkDown
                     source={content.demo5.form.location.label}
-                    renderers={{ heading: AscLocal.H4, paragraph: AscLocal.Paragraph }}
+                    renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph }}
                 />
                 <MapComponent updateLocationCallback={updateLocationCallback} />
                 {errors.includes(FormFields.LOCATION) && (
@@ -43,7 +43,7 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
             <FormSection>
                 <ReactMarkDown
                     source={content.demo5.form.report.label}
-                    renderers={{ heading: AscLocal.H4, paragraph: AscLocal.Paragraph }}
+                    renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph }}
                 />
                 <AscLocal.TextArea
                     id={FormFields.REPORT}
@@ -51,6 +51,7 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
                     maxLength={1000}
                     showCounter={true}
                     data-testid="report"
+                    aria-label={content.demo5.form.report.label}
                 />
                 {errors.includes(FormFields.REPORT) && (
                     <AscLocal.ErrorMessage message={content.demo5.form.report.required} />
@@ -61,7 +62,7 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
             <FormSection>
                 <ReactMarkDown
                     source={content.demo5.form.optionPhone.label}
-                    renderers={{ heading: AscLocal.H4, paragraph: AscLocal.Paragraph }}
+                    renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph }}
                 />
                 <RadioGroup
                     name={FormFields.OPTION_PHONE}
@@ -94,7 +95,7 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
             <FormSection>
                 <ReactMarkDown
                     source={content.demo5.form.optionEmail.label}
-                    renderers={{ heading: AscLocal.H4, paragraph: AscLocal.Paragraph }}
+                    renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph }}
                 />
                 <RadioGroup
                     name={FormFields.OPTION_EMAIL}
