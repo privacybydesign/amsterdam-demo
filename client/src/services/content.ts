@@ -525,10 +525,11 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
 
     qrcode: {
         title: '### Maak uzelf bekend',
-        stappen: `Doorloop de volgende stappen: \n
+        steps: `Doorloop de volgende stappen: \n
 1. Scan de QR-code hieronder met uw IRMA-app.  \n
 2. Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.`,
-        knop: 'Inloggen met IRMA'
+        button: 'Inloggen met IRMA',
+        close: 'Sluiten'
     },
     translatedIrmaAttributes: {
         fullname: 'volledige naam',

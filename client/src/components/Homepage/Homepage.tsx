@@ -90,9 +90,9 @@ const Homepage: React.FC<IProps> = () => (
                 </section>
             </AscLocal.Column>
             <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
-                <aside>
+                <section>
                     <WhyIRMA />
-                </aside>
+                </section>
             </AscLocal.Column>
         </AscLocal.Row>
     </PageTemplate>
