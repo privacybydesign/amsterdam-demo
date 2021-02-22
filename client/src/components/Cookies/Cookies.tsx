@@ -6,6 +6,7 @@ import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
+import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 
 export interface IProps {}
 
@@ -17,6 +18,7 @@ const Cookies: React.FC<IProps> = () => {
                     source={content.cookies.breadcrumbs}
                     renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
                 />
+                {SkipLinkEntry}
                 <ReactMarkDown
                     source={content.cookies.intro}
                     renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}

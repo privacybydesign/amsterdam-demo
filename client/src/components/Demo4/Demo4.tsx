@@ -11,7 +11,7 @@ import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
-import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
+import ResponsiveImage, { IHeaderImageProps } from '@components/ResponsiveImage/ResponsiveImage';
 import { RadioGroup, Label, Radio } from '@amsterdam/asc-ui';
 import QRCode from '@components/QRCode/QRCode';
 import { initialState, reducer } from './reducer';
@@ -20,6 +20,7 @@ import preloadDemoImages from '@services/preloadImages';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
+import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 
 export interface IProps {}
 
@@ -140,6 +141,7 @@ const Demo4: React.FC<IProps> = () => {
                     renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
                 />
 
+                {SkipLinkEntry}
                 <ReactMarkDown
                     source={content.demo4[hasResult ? 'proven' : 'unproven'].title}
                     renderers={{ heading: AscLocal.H1 }}
@@ -180,27 +182,34 @@ const Demo4: React.FC<IProps> = () => {
                 )}
             </ContentBlock>
 
-            <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
+            <ResponsiveImage filename={headerImg.filename} alt={headerImg.alt} />
 
             {!hasResult ? (
                 <AscLocal.Row noMargin>
                     <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
                         <ContentBlock>
-                            <ReactMarkDown
-                                source={content.demo4.unproven.intro1}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                            />
+                            <section>
+                                <ReactMarkDown
+                                    source={content.demo4.unproven.intro1}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL
+                                    }}
+                                />
+                            </section>
+                            <section>
+                                <AscLocal.AccordionContainer>
+                                    <Accordion title={content.demo4.unproven.why.title}>
+                                        <ReactMarkDown
+                                            source={content.demo4.unproven.why.body}
+                                            renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                        />
+                                    </Accordion>
+                                </AscLocal.AccordionContainer>
+                            </section>
 
-                            <AscLocal.AccordionContainer>
-                                <Accordion title={content.demo4.unproven.why.title}>
-                                    <ReactMarkDown
-                                        source={content.demo4.unproven.why.body}
-                                        renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                                    />
-                                </Accordion>
-                            </AscLocal.AccordionContainer>
-
-                            <AscLocal.H3>Demo-aanvraag Geveltuin</AscLocal.H3>
+                            <AscLocal.H2>Demo-aanvraag Geveltuin</AscLocal.H2>
 
                             <AscLocal.CroppedAlert
                                 color={AscLocal.AlertColor.PRIMARY}
@@ -209,35 +218,43 @@ const Demo4: React.FC<IProps> = () => {
                                 heading={content.demo4.unproven.alert.title}
                                 content={content.demo4.unproven.alert.body}
                             />
+                            <section>
+                                <form ref={formEl}>
+                                    <ReactMarkDown
+                                        source={content.demo4.form.owner}
+                                        renderers={{ paragraph: AscLocal.Paragraph }}
+                                    />
 
-                            <form ref={formEl}>
+                                    <RadioGroup name="geveltuin" error={!formValid}>
+                                        <Label htmlFor="yes" label={content.demo4.form.optionYes}>
+                                            <Radio id="yes" variant="primary" value={content.demo4.form.optionYes} />
+                                        </Label>
+                                        <Label htmlFor="no" label={content.demo4.form.optionNo}>
+                                            <Radio id="no" variant="primary" value={content.demo4.form.optionNo} />
+                                        </Label>
+                                    </RadioGroup>
+                                    {!formValid && <AscLocal.ErrorMessage message={content.demo4.form.required} />}
+                                </form>
+                            </section>
+                            <section>
                                 <ReactMarkDown
-                                    source={content.demo4.form.owner}
-                                    renderers={{ paragraph: AscLocal.Paragraph }}
+                                    source={content.demo4.unproven.intro2}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL
+                                    }}
                                 />
-
-                                <RadioGroup name="geveltuin" error={!formValid}>
-                                    <Label htmlFor="yes" label={content.demo4.form.optionYes}>
-                                        <Radio id="yes" variant="primary" value={content.demo4.form.optionYes} />
-                                    </Label>
-                                    <Label htmlFor="no" label={content.demo4.form.optionNo}>
-                                        <Radio id="no" variant="primary" value={content.demo4.form.optionNo} />
-                                    </Label>
-                                </RadioGroup>
-                                {!formValid && <AscLocal.ErrorMessage message={content.demo4.form.required} />}
-                            </form>
-
-                            <ReactMarkDown
-                                source={content.demo4.unproven.intro2}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                            />
-
-                            <QRCode getSession={getSession} label={content.demo4.button} />
-
-                            <ReactMarkDown
-                                source={content.downloadIrma}
-                                renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
-                            />
+                            </section>
+                            <section>
+                                <QRCode getSession={getSession} label={content.demo4.button} />
+                            </section>
+                            <section>
+                                <ReactMarkDown
+                                    source={content.downloadIrma}
+                                    renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
+                                />
+                            </section>
                         </ContentBlock>
                     </AscLocal.Column>
                     <AscLocal.Column
@@ -255,47 +272,58 @@ const Demo4: React.FC<IProps> = () => {
             ) : (
                 <>
                     <ContentBlock>
-                        <ReactMarkDown
-                            source={content.demo4.result.intro}
-                            renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                        />
-
-                        <AscLocal.TintedContainerLevel3>
+                        <section>
                             <ReactMarkDown
-                                source={content.demo4.result.yourDemoRequest.replace(/\[(.*?)\]/gm, replaceVars)}
-                                renderers={{
-                                    heading: AscLocal.H3,
-                                    paragraph: AscLocal.Paragraph,
-                                    list: AscLocal.UL,
-                                    ...AscLocal.DefinitionList
-                                }}
-                                plugins={[defList]}
+                                source={content.demo4.result.intro}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
-                        </AscLocal.TintedContainerLevel3>
+                        </section>
+                        <section>
+                            <AscLocal.TintedContainerLevel3>
+                                <ReactMarkDown
+                                    source={content.demo4.result.yourDemoRequest.replace(/\[(.*?)\]/gm, replaceVars)}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL,
+                                        ...AscLocal.DefinitionList
+                                    }}
+                                    plugins={[defList]}
+                                />
+                            </AscLocal.TintedContainerLevel3>
 
-                        <AscLocal.TintedContainerLevel3>
-                            <ReactMarkDown
-                                source={content.demo4.result.yourDetails.replace(/\[(.*?)\]/gm, replaceVars)}
-                                renderers={{
-                                    heading: AscLocal.H3,
-                                    paragraph: AscLocal.Paragraph,
-                                    list: AscLocal.UL,
-                                    ...AscLocal.DefinitionList
-                                }}
-                                plugins={[defList]}
-                            />
-                        </AscLocal.TintedContainerLevel3>
+                            <AscLocal.TintedContainerLevel3>
+                                <ReactMarkDown
+                                    source={content.demo4.result.yourDetails.replace(/\[(.*?)\]/gm, replaceVars)}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL,
+                                        ...AscLocal.DefinitionList
+                                    }}
+                                    plugins={[defList]}
+                                />
+                            </AscLocal.TintedContainerLevel3>
+                        </section>
                     </ContentBlock>
                     <EmphasisBlock>
                         <ContentBlock>
-                            <ReactMarkDown
-                                source={content.demo4.result.rest}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                            />
+                            <section>
+                                <ReactMarkDown
+                                    source={content.demo4.result.rest}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL
+                                    }}
+                                />
+                            </section>
                         </ContentBlock>
                     </EmphasisBlock>
                     <ContentBlock>
-                        <ReactMarkDown source={content.callToAction} />
+                        <section>
+                            <ReactMarkDown source={content.callToAction} />
+                        </section>
                     </ContentBlock>
                 </>
             )}

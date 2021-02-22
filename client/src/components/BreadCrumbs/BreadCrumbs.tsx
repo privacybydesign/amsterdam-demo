@@ -16,7 +16,7 @@ const BreadCrumbs: React.FC<IBreadCrumbsProps> & IBreadCrumbsComposition = ({ ch
     const themeContext = { theme: useContext(ThemeContext) as Theme.ThemeInterface };
     const iconColor = themeColor('tint', 'level5')(themeContext);
     return (
-        <Container className={className} data-testid="breadCrumbs">
+        <Container className={className} aria-label="Breadcrumbs" data-testid="breadCrumbs">
             {React.Children.map(children, (child, index) => (
                 <React.Fragment key={String(index)}>
                     {child}
@@ -31,7 +31,7 @@ const BreadCrumbs: React.FC<IBreadCrumbsProps> & IBreadCrumbsComposition = ({ ch
     );
 };
 
-const Container = styled.div`
+const Container = styled.nav`
     display: flex;
     align-items: center;
     margin: ${themeSpacing(4)} 0;

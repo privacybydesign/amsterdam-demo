@@ -72,7 +72,7 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) 
                 iconSize={24}
                 iconLeft={<AscLocal.IrmaLogoIcon />}
             >
-                {label || content.qrcode.knop}
+                {label || content.qrcode.button}
             </StyledButton>
 
             <Modal
@@ -81,14 +81,21 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) 
                 onClose={closeModal}
                 data-testid="qrCodeModal"
                 zIndexOffset={2}
+                title={content.qrcode.title}
             >
                 <>
                     <StyledHeader>
                         <ReactMarkDown source={content.qrcode.title} renderers={{ heading: StyledH3 }} />
-                        <CloseButton size={30} variant="blank" icon={<Close />} onClick={closeModal} />
+                        <CloseButton
+                            size={30}
+                            variant="blank"
+                            icon={<Close />}
+                            onClick={closeModal}
+                            aria-label="Sluiten"
+                        />
                     </StyledHeader>
                     <ModalWrapper>
-                        <ReactMarkDown source={content.qrcode.stappen} renderers={{ list: OL }} />
+                        <ReactMarkDown source={content.qrcode.steps} renderers={{ list: OL }} />
 
                         <CanvasWrapper>
                             {showLogo && <IrmaLogo />}
@@ -109,7 +116,7 @@ const StyledButton = styled(Button)`
     margin: ${themeSpacing(0, 6, 6, 0)};
 `;
 
-export const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
+export const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg', role: 'presentation' })`
     position: absolute;
     width: 65px;
     height: 65px;
@@ -160,7 +167,7 @@ const IrmaWebElement = styled.div`
     }
 `;
 
-const QRCodeTopLeft = styled.img.attrs({ src: '/assets/qr-top-left.svg' })`
+const QRCodeTopLeft = styled.img.attrs({ src: '/assets/qr-top-left.svg', role: 'presentation' })`
     width: 40px;
     height: 40px;
     position: absolute;
@@ -168,7 +175,7 @@ const QRCodeTopLeft = styled.img.attrs({ src: '/assets/qr-top-left.svg' })`
     left: -20px;
 `;
 
-const QRCodeTopRight = styled.img.attrs({ src: '/assets/qr-top-right.svg' })`
+const QRCodeTopRight = styled.img.attrs({ src: '/assets/qr-top-right.svg', role: 'presentation' })`
     width: 40px;
     height: 40px;
     position: absolute;
@@ -176,7 +183,7 @@ const QRCodeTopRight = styled.img.attrs({ src: '/assets/qr-top-right.svg' })`
     right: -20px;
 `;
 
-const QRCodeBottomRight = styled.img.attrs({ src: '/assets/qr-bottom-right.svg' })`
+const QRCodeBottomRight = styled.img.attrs({ src: '/assets/qr-bottom-right.svg', role: 'presentation' })`
     width: 40px;
     height: 40px;
     position: absolute;
@@ -184,7 +191,7 @@ const QRCodeBottomRight = styled.img.attrs({ src: '/assets/qr-bottom-right.svg' 
     right: -20px;
 `;
 
-const QRCodeBottomLeft = styled.img.attrs({ src: '/assets/qr-bottom-left.svg' })`
+const QRCodeBottomLeft = styled.img.attrs({ src: '/assets/qr-bottom-left.svg', role: 'presentation' })`
     width: 40px;
     height: 40px;
     position: absolute;

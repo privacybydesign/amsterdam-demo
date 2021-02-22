@@ -47,6 +47,10 @@ export const Paragraph = styled(AscParagraph)`
     margin-bottom: ${themeSpacing(2)};
 `;
 
+export const UnderlinedLink = styled(Link)`
+    text-decoration: underline;
+`;
+
 const TintedContainer = styled.div`
     padding: ${themeSpacing(4)} ${themeSpacing(6)};
     margin-bottom: ${themeSpacing(4)};
@@ -136,7 +140,7 @@ export const DownloadImage = styled.img`
     margin-right: ${themeSpacing(3)};
 `;
 
-export const LinkWithChevron = styled(Link).attrs({ inList: true })`
+export const LinkWithChevron = styled(UnderlinedLink).attrs({ inList: true })`
     margin-right: ${themeSpacing(5)};
     a {
         color: ${themeColor('tint', 'level1')};
@@ -201,7 +205,7 @@ export const Alert = styled(
                     <div>
                         {heading || content ? (
                             <>
-                                {heading && <Heading forwardedAs="h3">{heading}</Heading>}
+                                {heading && <Heading forwardedAs="h2">{heading}</Heading>}
                                 <ReactMarkdown source={content} renderers={{ paragraph: Paragraph }} />
                             </>
                         ) : (
@@ -231,6 +235,10 @@ export const Alert = styled(
         display: flex;
         align-items: ${({ iconSize }) => (iconSize > 18 ? 'flex-start' : 'baseline')};
 
+        h2 {
+            font-size: 18px;
+        }
+
         .icon {
             margin-right: ${themeSpacing(4)};
             min-width: ${({ iconSize }) => iconSize}px;
@@ -255,7 +263,7 @@ export const Alert = styled(
 export const CroppedAlert = styled(Alert)`
     padding: ${themeSpacing(2)};
 
-    h3,
+    h2,
     p {
         margin-bottom: 0;
     }
@@ -320,7 +328,7 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
     }
 `;
 
-export const InlineLink = styled(Link).attrs({ inList: true })``;
+export const InlineLink = styled(UnderlinedLink).attrs({ inList: true })``;
 
 export const Row = styled(AscRow)`
     padding: 0;
@@ -368,7 +376,7 @@ export const TextArea = styled(({ showCounter, className, ...props }: AscTextAre
     }
 `;
 
-export const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
+export const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg', alt: 'IRMA Logo' })`
     width: 24px;
 `;
 

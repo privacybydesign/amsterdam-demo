@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link, Icon, themeSpacing } from '@amsterdam/asc-ui';
+import { Icon, themeSpacing } from '@amsterdam/asc-ui';
 import { ExternalLink as ExternalLinkIcon } from '@amsterdam/asc-assets';
+import { UnderlinedLink } from '@components/LocalAsc/LocalAsc';
 
 interface IExternalLinkProps {
     href: string;
@@ -10,12 +11,12 @@ interface IExternalLinkProps {
 const ExternalLink: React.FC<IExternalLinkProps> = props => {
     const { href, children } = props;
     return (
-        <Link href={href}>
+        <UnderlinedLink href={href}>
             {children}
             <StyledIcon size={16}>
                 <ExternalLinkIcon />
             </StyledIcon>
-        </Link>
+        </UnderlinedLink>
     );
 };
 

@@ -5,9 +5,10 @@ import axios, { AxiosResponse } from 'axios';
 import { initialState, reducer, Location } from './reducer';
 import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@amsterdam/arm-core';
 import { Input } from '@amsterdam/asc-ui';
-import { Link, ListItem, Icon, themeColor, themeSpacing } from '@amsterdam/asc-ui';
+import { ListItem, Icon, themeColor, themeSpacing } from '@amsterdam/asc-ui';
 import { ChevronRight } from '@amsterdam/asc-assets';
 import { LeafletMouseEvent } from 'leaflet';
+import { UnderlinedLink } from '@components/LocalAsc/LocalAsc';
 
 interface IProps {
     updateLocationCallback: (location: Location | null) => void;
@@ -183,9 +184,13 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                                             <StyledIcon size={14}>
                                                 <ChevronRight />
                                             </StyledIcon>
-                                            <Link href="#" variant="inline" onClick={e => onAutosuggestClick(e, item)}>
+                                            <UnderlinedLink
+                                                href="#"
+                                                variant="inline"
+                                                onClick={e => onAutosuggestClick(e, item)}
+                                            >
                                                 {item.weergavenaam}
-                                            </Link>
+                                            </UnderlinedLink>
                                         </StyledListItem>
                                     ))}
                                 </StyledAutosuggest>
@@ -211,6 +216,10 @@ const StyledMap = styled(Map)`
     width: 100%;
     cursor: pointer;
     z-index: 0;
+
+    .leaflet-control-attribution {
+        display: none;
+    }
 `;
 
 const StyledViewerContainer = styled(ViewerContainer)`
