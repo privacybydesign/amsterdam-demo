@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Icon, themeColor, themeSpacing, Link } from '@amsterdam/asc-ui';
+import { Link } from 'react-router-dom';
+import { Icon, themeColor, themeSpacing } from '@amsterdam/asc-ui';
 import { ChevronRight } from '@amsterdam/asc-assets';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import ResponsiveImage from '@components/ResponsiveImage/ResponsiveImage';
@@ -45,6 +46,7 @@ const LinkBox = styled(Link)`
     display: flex;
     cursor: pointer;
     margin-bottom: ${themeSpacing(7)};
+    text-decoration: none;
 
     s {
         color: pink;
