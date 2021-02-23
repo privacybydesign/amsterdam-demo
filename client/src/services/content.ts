@@ -19,6 +19,9 @@ export const reduceAndTranslateEmptyVars = (emptyVars: string[]): string => {
 };
 
 const content = {
+    header: {
+        skipLink: `Naar hoofdinhoud`
+    },
     home: {
         breadcrumbs: `- [Home](/)`,
         title: `# Probeer IRMA uit`,
@@ -41,7 +44,7 @@ Download de IRMA-app voor iOS of Android:  \n
 [![Play Store](/assets/download-play-store.svg "Download IRMA in de Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
 
 Wilt u meer weten over IRMA?
-Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
+[Ga naar de website van IRMA](https://irma.app/?lang=nl)`
         },
         subtitle: `## Aan de slag met IRMA`,
         demo1Card: {
@@ -66,8 +69,8 @@ Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
         },
         sidebar: {
             box: `Eenvoudig en op maat online aantonen wie je bent met IRMA
-![](/assets/irma_logo.svg "Lees meer over IRMA")
-# Waarom IRMA`,
+![IRMA Logo](/assets/irma_logo.svg "Lees meer over IRMA")
+# Waarom IRMA?`,
             boxLink: `https://www.amsterdam.nl/wonen-leefomgeving/innovatie/de-digitale-stad/irma-nieuwe-manier-inloggen/`
         }
     },
@@ -471,6 +474,7 @@ Dit zorgt ervoor dat feedback van gebruikers op de juiste plek wordt opgeslagen.
     },
 
     responsiveImages: {
+        home: { src: 'home', alt: 'Gebruiker opent QR-code scanner op telefoon.' },
         demo1: {
             header: { src: 'leeftijd', alt: 'Stadsbeeld van een terras' },
             isOver18: { src: 'ouder-dan-18', alt: 'Foto van mensen in een café' },
@@ -524,10 +528,11 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
 
     qrcode: {
         title: '### Maak uzelf bekend',
-        stappen: `Doorloop de volgende stappen: \n
+        steps: `Doorloop de volgende stappen: \n
 1. Scan de QR-code hieronder met uw IRMA-app.  \n
 2. Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.`,
-        knop: 'Inloggen met IRMA'
+        button: 'Inloggen met IRMA',
+        close: 'Sluiten'
     },
     translatedIrmaAttributes: {
         fullname: 'volledige naam',

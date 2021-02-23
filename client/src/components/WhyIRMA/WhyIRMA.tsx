@@ -27,6 +27,10 @@ const WhyIRMA: React.FC<IProps> = () => {
 const BoxLink = styled.a`
     color: ${themeColor('tint', 'level7')};
     text-decoration: none;
+
+    &:hover a {
+        color: ${themeColor('secondary', 'main')};
+    }
 `;
 
 const Container = styled.div`
@@ -46,12 +50,12 @@ const Container = styled.div`
     }
 `;
 
-const IRMALogo = styled.img`
+const IRMALogo = styled.img.attrs({ alt: 'IRMA Logo' })`
     width: 82px;
     margin: ${themeSpacing(1)} 0 ${themeSpacing(4)} ${themeSpacing(6)};
 `;
 
-const StyledLinkWithChevron = styled(AscLocal.LinkWithChevron).attrs({ forwardedAs: 'span' })`
+const StyledLinkWithChevron = styled(AscLocal.LinkWithChevron)`
     text-decoration: underline;
     font-size: 16px;
     align-items: center;
