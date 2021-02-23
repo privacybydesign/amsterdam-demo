@@ -24,6 +24,7 @@ const SkipLinkContainer = styled.div`
         width: 0;
         height: 0;
         padding: 0;
+        overflow: hidden;
 
         &:focus {
             width: auto;
