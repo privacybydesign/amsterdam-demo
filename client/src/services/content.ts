@@ -20,7 +20,10 @@ export const reduceAndTranslateEmptyVars = (emptyVars: string[]): string => {
 
 const content = {
     header: {
-        skipLink: `Naar hoofdinhoud`
+        skipLink: {
+            content: `Direct naar hoofdinhoud`,
+            footer: `Direct naar footer`
+        }
     },
     home: {
         breadcrumbs: `- [Home](/)`,
