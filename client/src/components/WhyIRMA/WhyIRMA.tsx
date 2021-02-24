@@ -55,7 +55,7 @@ const IRMALogo = styled.img.attrs({ alt: 'IRMA Logo' })`
     margin: ${themeSpacing(1)} 0 ${themeSpacing(4)} ${themeSpacing(6)};
 `;
 
-const StyledLinkWithChevron = styled(AscLocal.LinkWithChevron)`
+const StyledLinkWithChevron = styled(AscLocal.LinkWithChevron).attrs({ forwardedAs: 'h3' })`
     text-decoration: underline;
     font-size: 16px;
     align-items: center;
