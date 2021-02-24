@@ -91,7 +91,7 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) 
                             variant="blank"
                             icon={<Close />}
                             onClick={closeModal}
-                            aria-label="Sluiten"
+                            aria-label={content.qrcode.close}
                         />
                     </StyledHeader>
                     <ModalWrapper>
