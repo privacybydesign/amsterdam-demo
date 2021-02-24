@@ -23,16 +23,11 @@ const Container = styled.section`
     border-right: 2px solid black;
     padding-bottom: ${themeSpacing(4)};
 
-    h3 {
-        text-decoration: underline;
-    }
-
     &:hover {
         border-color: ${themeColor('secondary', 'main')};
 
         h3 {
             color: ${themeColor('secondary', 'main')};
-            text-decoration: underline;
         }
 
         svg {
