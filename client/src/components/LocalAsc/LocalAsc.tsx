@@ -140,7 +140,7 @@ export const DownloadImage = styled.img`
     margin-right: ${themeSpacing(3)};
 `;
 
-export const LinkWithChevron = styled(UnderlinedLink).attrs({ inList: true })`
+export const LinkWithChevron = styled(Link).attrs({ inList: true })`
     margin-right: ${themeSpacing(5)};
     a {
         color: ${themeColor('tint', 'level1')};
