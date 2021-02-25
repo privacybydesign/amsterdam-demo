@@ -23,16 +23,11 @@ const Container = styled.section`
     border-right: 2px solid black;
     padding-bottom: ${themeSpacing(4)};
 
-    h3 {
-        text-decoration: underline;
-    }
-
     &:hover {
         border-color: ${themeColor('secondary', 'main')};
 
         h3 {
             color: ${themeColor('secondary', 'main')};
-            text-decoration: underline;
         }
 
         svg {
@@ -79,7 +74,7 @@ const LinkBox = styled(Link)`
 
 const Article: React.FC<IProps> = ({ imageSrc, imageAlt, title, children, href, className }) => {
     return (
-        <LinkBox href={href} variant="blank">
+        <LinkBox to={href} variant="blank">
             <Container className={className}>
                 <ResponsiveImage filename={imageSrc} alt={imageAlt} />
                 <div className="text">

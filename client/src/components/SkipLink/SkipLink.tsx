@@ -7,18 +7,23 @@ interface IProps {
     className?: string;
 }
 
+export const SkipLinkTargetIds = { content: 'skiplink-entry', footer: 'skiplink-footer-entry' };
+
 export const SkipLink: React.FC<IProps> = ({ className }) => {
     return (
         <SkipLinkContainer className={className}>
-            <Button variant="secondary" as="a" href="#skiplink-entry">
-                {content.header.skipLink}
+            <Button variant="secondary" as="a" href={`#${SkipLinkTargetIds.content}`}>
+                {content.header.skipLink.content}
+            </Button>
+            <Button variant="secondary" as="a" href={`#${SkipLinkTargetIds.footer}`}>
+                {content.header.skipLink.footer}
             </Button>
         </SkipLinkContainer>
     );
 };
 
 const SkipLinkContainer = styled.div`
-    max-width: 200px;
+    max-width: 400px;
 
     a {
         width: 0;
@@ -35,4 +40,5 @@ const SkipLinkContainer = styled.div`
     }
 `;
 
-export const SkipLinkEntry = <div id="skiplink-entry" />;
+export const SkipLinkEntry = <div id={SkipLinkTargetIds.content} />;
+export const SkipLinkFooterEntry = <div id={SkipLinkTargetIds.footer} />;
