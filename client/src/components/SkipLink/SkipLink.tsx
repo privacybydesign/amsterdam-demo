@@ -12,10 +12,10 @@ export const SkipLinkTargetIds = { content: 'skiplink-entry', footer: 'skiplink-
 export const SkipLink: React.FC<IProps> = ({ className }) => {
     return (
         <SkipLinkContainer className={className}>
-            <Button variant="secondary" as="a" href={`#${SkipLinkTargetIds.content}`}>
+            <Button variant="textButton" as="a" href={`#${SkipLinkTargetIds.content}`}>
                 {content.header.skipLink.content}
             </Button>
-            <Button variant="secondary" as="a" href={`#${SkipLinkTargetIds.footer}`}>
+            <Button variant="textButton" as="a" href={`#${SkipLinkTargetIds.footer}`}>
                 {content.header.skipLink.footer}
             </Button>
         </SkipLinkContainer>
@@ -26,6 +26,7 @@ const SkipLinkContainer = styled.div`
     max-width: 400px;
 
     a {
+        min-width: 0;
         width: 0;
         height: 0;
         padding: 0;
@@ -35,7 +36,6 @@ const SkipLinkContainer = styled.div`
             width: auto;
             height: auto;
             padding: ${themeSpacing(3)} ${themeSpacing(4)};
-            background-color: ${themeColor('secondary', 'main')};
         }
     }
 `;

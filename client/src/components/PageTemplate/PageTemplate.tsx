@@ -50,7 +50,8 @@ const PageTemplate: React.FC<IProps> = ({ children, className }) => {
 const StyledSkipLink = styled(SkipLink)`
     position: fixed;
     top: ${themeSpacing(3)};
-    right: ${themeSpacing(6)};
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 15;
 `;
 
