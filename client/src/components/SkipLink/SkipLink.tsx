@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button, themeColor, themeSpacing } from '@amsterdam/asc-ui';
+import { Button, themeSpacing } from '@amsterdam/asc-ui';
 import content from '@services/content';
 
 interface IProps {
