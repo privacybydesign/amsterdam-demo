@@ -123,13 +123,18 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
 
     const onInputKeyPress = useCallback(
         event => {
+            /*
+                keyCode is deprecated but key is not supported by all browsers.
+                Then, a fallback to keyCode is still the best solution.
+            */
+            const key = event.key || event.keyCode;
             // Select first autosuggest item on enter
-            if (event.key === 'Enter' && state.autosuggest?.length) {
+            if ((key === 'Enter' || key === 13) && state.autosuggest?.length) {
                 onAutosuggestClick(null, state.autosuggest[0]);
             }
 
             // Hide autosuggest on ESC
-            if (event.keyCode === 27) {
+            if (key === 'Escape' || key === 'Esc' || key === 27) {
                 dispatch({
                     type: 'hideAutosuggest'
                 });
@@ -188,7 +193,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                                 data-testid="input"
                                 ref={locationInputRef}
                                 onChange={onInputChange}
-                                onKeyPress={onInputKeyPress}
+                                onKeyUp={onInputKeyPress}
                             />
                             {showAutosuggest && query.length && autosuggest && autosuggest.length ? (
                                 <StyledAutosuggest data-testid="autosuggest" ref={wrapperRef}>
