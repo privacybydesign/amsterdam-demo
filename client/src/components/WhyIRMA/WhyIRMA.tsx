@@ -50,7 +50,7 @@ const Container = styled.div`
     }
 `;
 
-const IRMALogo = styled.img.attrs({ alt: '' })`
+const IRMALogo = styled.img.attrs({ alt: '', role: 'presentation' })`
     width: 82px;
     margin: ${themeSpacing(1)} 0 ${themeSpacing(4)} ${themeSpacing(6)};
 `;
