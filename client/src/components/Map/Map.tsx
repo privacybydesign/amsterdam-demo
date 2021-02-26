@@ -121,17 +121,52 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
         }
     }, [location]);
 
-    const useFirstSuggestionOnEnter = useCallback(
+    const onInputKeyPress = useCallback(
         event => {
-            if (event.key === 'Enter' && state.autosuggest?.length) {
+            /*
+                keyCode is deprecated but key is not supported by all browsers.
+                Then, a fallback to keyCode is still the best solution.
+            */
+            const key = event.key || event.keyCode;
+            // Select first autosuggest item on enter
+            if ((key === 'Enter' || key === 13) && state.autosuggest?.length) {
                 onAutosuggestClick(null, state.autosuggest[0]);
+            }
+
+            // Hide autosuggest on ESC
+            if (key === 'Escape' || key === 'Esc' || key === 27) {
+                dispatch({
+                    type: 'hideAutosuggest'
+                });
             }
         },
         [state, onAutosuggestClick]
     );
 
+    const onInputChange = useCallback(e => {
+        if (e.target.value.length < 3) return;
+        const value = encodeURIComponent(e.target.value);
+        dispatch({
+            type: 'onChangeLocation',
+            payload: {
+                query: e.target.value,
+                url: `${autosuggestUrl}${value}`
+            }
+        });
+    }, []);
+
     return (
-        <MapParent ref={mapRef}>
+        <MapParent
+            ref={mapRef}
+            onBlur={e => {
+                // Hide autosuggest if focus is outside map
+                if (!mapRef.current.contains(e.relatedTarget)) {
+                    dispatch({
+                        type: 'hideAutosuggest'
+                    });
+                }
+            }}
+        >
             <StyledMap
                 data-testid="map"
                 setInstance={instance => {
@@ -157,25 +192,8 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                                 id="location"
                                 data-testid="input"
                                 ref={locationInputRef}
-                                onChange={e => {
-                                    if (e.target.value.length < 3) return;
-                                    const value = encodeURIComponent(e.target.value);
-                                    dispatch({
-                                        type: 'onChangeLocation',
-                                        payload: {
-                                            query: e.target.value,
-                                            url: `${autosuggestUrl}${value}`
-                                        }
-                                    });
-                                }}
-                                onKeyPress={useFirstSuggestionOnEnter}
-                                onBlur={() => {
-                                    setTimeout(() => {
-                                        dispatch({
-                                            type: 'hideAutosuggest'
-                                        });
-                                    }, 150);
-                                }}
+                                onChange={onInputChange}
+                                onKeyUp={onInputKeyPress}
                             />
                             {showAutosuggest && query.length && autosuggest && autosuggest.length ? (
                                 <StyledAutosuggest data-testid="autosuggest" ref={wrapperRef}>
