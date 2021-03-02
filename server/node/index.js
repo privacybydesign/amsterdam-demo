@@ -148,7 +148,6 @@ const initializeIrmaBackend = irmaServerUrl => {
 };
 
 const init = async () => {
-    console.log('length private key: ', process.env.PRIVATE_KEY.length);
     if (!process.env.PRIVATE_KEY) {
         throw new Error('PRIVATE_KEY is not set');
     }
@@ -263,13 +262,19 @@ async function irmaDiscloseDemo5(req, res) {
 
 const getConfig = async (req, res) => {
     config.environment = process.env.NODE_ENV;
-    console.log('get config', JSON.stringify(config));
     res.json(config);
 };
 
 const getIrmaSessionResult = async (req, res) => {
     try {
         const result = await irmaBackend.getSessionResult(req.query.token);
+
+        // Remove the session if it is done, otherwise others may be able to fetch the result too
+        if (result.status === "DONE") {
+            const res = await irmaBackend.cancelSession(req.query.token);
+        }
+
+
         res.json(result);
     } catch (e) {
         console.log('irma.getSessionResuilt error:', JSON.stringify(e));
