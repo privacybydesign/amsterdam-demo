@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieSession = require('cookie-session')
 const IrmaBackend = require('@privacybydesign/irma-backend');
 const IrmaJwt = require('@privacybydesign/irma-jwt');
 const app = express();
@@ -223,10 +224,12 @@ const irmaDiscloseRequest = async (req, res, requestType, id) => {
     });
 
     try {
-        const session = await irmaBackend.startSession(jwt);
-
-        res.json(session);
+        const { sessionPtr, token } = await irmaBackend.startSession(jwt);
+        console.log(token);
+        req.session.token = token;
+        return res.status(200).json(sessionPtr);
     } catch (e) {
+        console.log(e);
         console.log('irma.startSession error:', JSON.stringify(e));
         error(e, res);
     }
@@ -269,11 +272,11 @@ const getIrmaSessionResult = async (req, res) => {
     try {
         const result = await irmaBackend.getSessionResult(req.query.token);
 
-        // Remove the session if it is done, otherwise others may be able to fetch the result too
+        // Remove the IRMA and backend session if status is DONE
         if (result.status === "DONE") {
             const res = await irmaBackend.cancelSession(req.query.token);
+            req.session = null;
         }
-
 
         res.json(result);
     } catch (e) {
