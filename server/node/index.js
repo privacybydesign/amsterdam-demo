@@ -2,7 +2,6 @@ const express = require('express');
 const cookieSession = require('cookie-session')
 const IrmaBackend = require('@privacybydesign/irma-backend');
 const IrmaJwt = require('@privacybydesign/irma-jwt');
-const app = express();
 const cors = require('cors');
 const util = require('util');
 const fs = require('fs');
@@ -148,6 +147,8 @@ const initializeIrmaBackend = irmaServerUrl => {
     });
 };
 
+const app = express();
+
 const init = async () => {
     if (!process.env.PRIVATE_KEY) {
         throw new Error('PRIVATE_KEY is not set');
@@ -160,6 +161,17 @@ const init = async () => {
         }
 
         app.use(express.json());
+
+        // Cookie setup
+        app.use(
+            cookieSession({
+            // TODO: maxAge, secure, domain, sameSite all according to
+            // node.ENV == "dev" or "production" etc.
+            name: 'session',
+            keys: ['key1', 'key2'],
+            })
+        )
+  
 
         // Note: To use the demo credentials on non-production environments add ?demo=true to the URL
         app.get('/getsession/demo1/18', cors(), irmaDiscloseDemo1_18);
