@@ -376,7 +376,7 @@ export const TextArea = styled(({ showCounter, className, ...props }: AscTextAre
     }
 `;
 
-export const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg', alt: 'IRMA Logo' })`
+export const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg', alt: '', role: 'presentation' })`
     width: 24px;
 `;
 
