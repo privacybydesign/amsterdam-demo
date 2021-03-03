@@ -1,12 +1,12 @@
 const express = require('express');
+const session = require('express-session');
 const IrmaBackend = require('@privacybydesign/irma-backend');
 const IrmaJwt = require('@privacybydesign/irma-jwt');
-const app = express();
 const cors = require('cors');
 const util = require('util');
 const fs = require('fs');
 const path = require('path');
-var proxy = require('http-proxy-middleware');
+const proxy = require('http-proxy-middleware');
 
 // global configuration variable.
 let config;
@@ -147,8 +147,8 @@ const initializeIrmaBackend = irmaServerUrl => {
     });
 };
 
+const app = express();
 const init = async () => {
-    console.log('length private key: ', process.env.PRIVATE_KEY.length);
     if (!process.env.PRIVATE_KEY) {
         throw new Error('PRIVATE_KEY is not set');
     }
@@ -160,6 +160,33 @@ const init = async () => {
         }
 
         app.use(express.json());
+
+        // Cookie setup
+        const sessionOptions = {
+            name: 'irma-demo',
+            secret: 'local secret',
+            cookie: {
+                httpOnly: true,
+                sameSite: true,
+                // Enable the cookie to remain for only the duration of the user-agent
+                expires: false
+            },
+            unset: 'destroy',
+            // Use MemoryStore for now.
+            // TODO: Enable RedisStore once there is availability in team basis to help deploy redis
+        };
+        
+        // Enable secure cookies on TLS environments
+        if (process.env.NODE_ENV === 'acceptance' || process.env.NODE_ENV === 'production') {
+            sessionOptions.cookie.secure = true;
+            // TODO: Store secret outside codebase
+            sessionOptions.secret = 'TODO >> Generate and store this somewhere';
+        }
+
+        app.use(
+            session(sessionOptions)
+        );
+  
 
         // Note: To use the demo credentials on non-production environments add ?demo=true to the URL
         app.get('/getsession/demo1/18', cors(), irmaDiscloseDemo1_18);
@@ -183,7 +210,7 @@ const init = async () => {
             app.use(
                 '/',
                 proxy({
-                    target: 'http://fe:9000',
+                    target: process.env.FE_URL,
                     changeOrigin: true
                 })
             );
@@ -224,9 +251,9 @@ const irmaDiscloseRequest = async (req, res, requestType, id) => {
     });
 
     try {
-        const session = await irmaBackend.startSession(jwt);
-
-        res.json(session);
+        const { sessionPtr, token } = await irmaBackend.startSession(jwt);
+        req.session.token = token;
+        return res.status(200).json(sessionPtr);
     } catch (e) {
         console.log('irma.startSession error:', JSON.stringify(e));
         error(e, res);
@@ -263,13 +290,19 @@ async function irmaDiscloseDemo5(req, res) {
 
 const getConfig = async (req, res) => {
     config.environment = process.env.NODE_ENV;
-    console.log('get config', JSON.stringify(config));
     res.json(config);
 };
 
 const getIrmaSessionResult = async (req, res) => {
     try {
-        const result = await irmaBackend.getSessionResult(req.query.token);
+        const result = await irmaBackend.getSessionResult(req.session.token);
+
+        // Remove the IRMA and backend session if status is DONE
+        if (result.status === "DONE") {
+            const res = await irmaBackend.cancelSession(req.session.token);
+            req.session.destroy();
+        }
+
         res.json(result);
     } catch (e) {
         console.log('irma.getSessionResuilt error:', JSON.stringify(e));
@@ -278,8 +311,6 @@ const getIrmaSessionResult = async (req, res) => {
 };
 
 const error = (e, res) => {
-    const jsonError = JSON.stringify(e);
-    console.error('Node error', jsonError);
     if (res) {
         res.json({ error: jsonError });
     }
