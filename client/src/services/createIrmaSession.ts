@@ -89,11 +89,11 @@ const createIrmaSession = async (
             },
 
             mapping: {
-                sessionPtr: r => ({ ...r.sessionPtr, u: r.sessionPtr.u.replace(/\/irma/g, '/irma/irma') })
+                sessionPtr: sessionPtr => ({ ...sessionPtr, u: sessionPtr.u.replace(/\/irma/g, '/irma/irma') })
             },
 
             result: {
-                url: (o, { sessionToken }) => `/result?token=${sessionToken}`
+                url: () => `/result`
             }
         }
     });

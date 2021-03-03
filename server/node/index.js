@@ -1,5 +1,5 @@
 const express = require('express');
-const cookieSession = require('cookie-session')
+const session = require('express-session');
 const IrmaBackend = require('@privacybydesign/irma-backend');
 const IrmaJwt = require('@privacybydesign/irma-jwt');
 const cors = require('cors');
@@ -163,14 +163,28 @@ const init = async () => {
         app.use(express.json());
 
         // Cookie setup
+        const sessionOptions = {
+            name: 'irma-demo',
+            secret: 'local secret',
+            cookie: {
+                sameSite: true,
+                // Enable the cookie to remain for only the duration of the user-agent
+                expires: false
+            },
+            unset: 'destroy'
+        };
+        
+        // Enable secure cookies on TLS environments
+        if (process.env.NODE_ENV === 'acceptance' || process.env.NODE_ENV === 'production') {
+            sessionOptions.cookie.secure = true;
+            // TODO: Store secret outside codebase
+            sessionOptions.secret = 'TODO >> Generate and store this somewhere';
+            // TODO: Set up a different store than the default MemoryStore for non-local environments
+        }
+
         app.use(
-            cookieSession({
-            // TODO: maxAge, secure, domain, sameSite all according to
-            // node.ENV == "dev" or "production" etc.
-            name: 'session',
-            keys: ['key1', 'key2'],
-            })
-        )
+            session(sessionOptions)
+        );
   
 
         // Note: To use the demo credentials on non-production environments add ?demo=true to the URL
@@ -237,11 +251,9 @@ const irmaDiscloseRequest = async (req, res, requestType, id) => {
 
     try {
         const { sessionPtr, token } = await irmaBackend.startSession(jwt);
-        console.log(token);
         req.session.token = token;
         return res.status(200).json(sessionPtr);
     } catch (e) {
-        console.log(e);
         console.log('irma.startSession error:', JSON.stringify(e));
         error(e, res);
     }
@@ -282,11 +294,11 @@ const getConfig = async (req, res) => {
 
 const getIrmaSessionResult = async (req, res) => {
     try {
-        const result = await irmaBackend.getSessionResult(req.query.token);
+        const result = await irmaBackend.getSessionResult(req.session.token);
 
         // Remove the IRMA and backend session if status is DONE
         if (result.status === "DONE") {
-            const res = await irmaBackend.cancelSession(req.query.token);
+            const res = await irmaBackend.cancelSession(req.session.token);
             req.session = null;
         }
 
@@ -298,8 +310,6 @@ const getIrmaSessionResult = async (req, res) => {
 };
 
 const error = (e, res) => {
-    const jsonError = JSON.stringify(e);
-    console.error('Node error', jsonError);
     if (res) {
         res.json({ error: jsonError });
     }
