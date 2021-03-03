@@ -6,7 +6,9 @@ const cors = require('cors');
 const util = require('util');
 const fs = require('fs');
 const path = require('path');
-var proxy = require('http-proxy-middleware');
+const proxy = require('http-proxy-middleware');
+const redis = require('redis');
+const RedisStore = require('connect-redis')(session);
 
 // global configuration variable.
 let config;
@@ -149,6 +151,15 @@ const initializeIrmaBackend = irmaServerUrl => {
 
 const app = express();
 
+// Initialize redis for session management
+let redisClient;
+try {
+    redisClient = redis.createClient(process.env.REDIS_URL);
+}  catch (e) {
+    console.log('Error connecting to redis', e);
+    error(e);
+}
+
 const init = async () => {
     if (!process.env.PRIVATE_KEY) {
         throw new Error('PRIVATE_KEY is not set');
@@ -167,11 +178,13 @@ const init = async () => {
             name: 'irma-demo',
             secret: 'local secret',
             cookie: {
+                httpOnly: true,
                 sameSite: true,
                 // Enable the cookie to remain for only the duration of the user-agent
                 expires: false
             },
-            unset: 'destroy'
+            unset: 'destroy',
+            store: new RedisStore({ client: redisClient })
         };
         
         // Enable secure cookies on TLS environments
@@ -179,7 +192,6 @@ const init = async () => {
             sessionOptions.cookie.secure = true;
             // TODO: Store secret outside codebase
             sessionOptions.secret = 'TODO >> Generate and store this somewhere';
-            // TODO: Set up a different store than the default MemoryStore for non-local environments
         }
 
         app.use(
@@ -209,7 +221,7 @@ const init = async () => {
             app.use(
                 '/',
                 proxy({
-                    target: 'http://fe:9000',
+                    target: process.env.FE_URL,
                     changeOrigin: true
                 })
             );
@@ -299,7 +311,7 @@ const getIrmaSessionResult = async (req, res) => {
         // Remove the IRMA and backend session if status is DONE
         if (result.status === "DONE") {
             const res = await irmaBackend.cancelSession(req.session.token);
-            req.session = null;
+            req.session.destroy();
         }
 
         res.json(result);
