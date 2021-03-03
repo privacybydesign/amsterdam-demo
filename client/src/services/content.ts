@@ -476,6 +476,32 @@ Dit zorgt ervoor dat feedback van gebruikers op de juiste plek wordt opgeslagen.
         outro: `[Terug naar de homepage](/)`
     },
 
+    a11y: {
+        breadcrumbs: `- [Home](/)
+- [Toegankelijkheidsverklaring](/toegankelijkheidsverklaring)`,
+        intro: `# Volledige toegankelijkheidsverklaring
+**De gemeente Amsterdam wil dat iedereen Mijn Amsterdam kan gebruiken. Komt u toch een pagina tegen die u niet kunt lezen of gebruiken? Meld het via ons [contactformulier](https://formulieren.amsterdam.nl/TripleForms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx).**`,
+        article: `
+### Toegankelijk Mijn Amsterdam
+Iedereen moet websites van de overheid kunnen gebruiken. Dit is wat wij doen om Mijn Amsterdam toegankelijk te maken en te houden voor iedereen:
+- Wij ontwikkelen Mijn Amsterdam samen met u, de Amsterdammer.
+- We doen regelmatig gebruikersonderzoek en testen Mijn Amsterdam op toegankelijkheid.
+- We lossen knelpunten op.
+- Onze medewerkers houden hun kennis over toegankelijkheid op peil.
+### Onderdelen die nog niet toegankelijk zijn
+- Pdf-bestanden zijn nog niet altijd toegankelijk.
+- De persoonlijke plattegrond ‘Mijn buurt’ is nog niet helemaal toegankelijk. We werken eraan om de plattegrond zo volledig toegankelijk te maken.
+### Voor deze onderdelen geldt WCAG status C
+- Mijn Erfpacht
+- Erfpacht Overstapportaal
+- Kredietbank
+- Milieuzone
+WCAG status C betekent dat wij de eerste stappen hebben gezet om deze onderdelen toegankelijk te maken. We hebben onderzoek ingepland. Na dit onderzoek gaan we de onderdelen zo snel mogelijk volledig toegankelijk maken.
+### Toegankelijkheidsverklaring
+De eisen voor een toegankelijke website staan in het [Tijdelijk besluit digitale toegankelijkheid overheid](https://wetten.overheid.nl/BWBR0040936/2018-07-01). In dat besluit staat ook dat wij een toegankelijkheidsverklaring op Mijn Amsterdam moeten zetten. Lees hier onze [volledige toegankelijkheidsverklaring](https://docs.google.com/spreadsheets/d/1ke6RqJSTDo25hK-1KBA0WFG0mhZz5jGzpt9PRFJJnGc/edit?ts=602f864d#gid=1569634392).        
+`
+    },
+
     responsiveImages: {
         home: { src: 'home', alt: 'Gebruiker opent QR-code scanner op telefoon.' },
         demo1: {
