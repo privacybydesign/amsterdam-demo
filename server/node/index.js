@@ -7,8 +7,6 @@ const util = require('util');
 const fs = require('fs');
 const path = require('path');
 const proxy = require('http-proxy-middleware');
-const redis = require('redis');
-const RedisStore = require('connect-redis')(session);
 
 // global configuration variable.
 let config;
@@ -150,16 +148,6 @@ const initializeIrmaBackend = irmaServerUrl => {
 };
 
 const app = express();
-
-// Initialize redis for session management
-let redisClient;
-try {
-    redisClient = redis.createClient(process.env.REDIS_URL);
-}  catch (e) {
-    console.log('Error connecting to redis', e);
-    error(e);
-}
-
 const init = async () => {
     if (!process.env.PRIVATE_KEY) {
         throw new Error('PRIVATE_KEY is not set');
@@ -184,7 +172,8 @@ const init = async () => {
                 expires: false
             },
             unset: 'destroy',
-            store: new RedisStore({ client: redisClient })
+            // Use MemoryStore for now.
+            // TODO: Enable RedisStore once there is availability in team basis to help deploy redis
         };
         
         // Enable secure cookies on TLS environments
