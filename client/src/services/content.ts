@@ -548,6 +548,7 @@ Heeft u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan c
 Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I amsterdam](https://www.iamsterdam.com/nl)`,
         bottom: `[Over deze site](https://www.amsterdam.nl/overdezesite/)
 [Privacy](https://www.amsterdam.nl/privacy/)
+[Toegankelijkheid](/toegankelijkheidsverklaring)
 [Cookies op deze site](/cookies)`
     },
 
