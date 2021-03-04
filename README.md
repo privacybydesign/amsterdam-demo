@@ -1,127 +1,33 @@
-# TODO: Revise this README
+# Digitale Identiteit - IRMA Demo site
 
-# Repository di_node_container
+This project provides the source code of the Amsterdam IRMA demo website.
+It consists of a React frontend and NodeJS backend which is in charge of communicating with an IRMA server. 
+This project does not provide a locally running IRMA server.
 
-## Config
+## Configure
 
-The `CONFIG` environment variable points to a configuration file.
+Make sure to configure the backend properly. By default it is configured to connect to the Amsterdam IRMA server on the Acceptance environment. To be able to connect locally you will need to obtain the PRIVATE key.
+
+Open ```/server/config/config.json```.
 
 ```javascript
 {
-    /* The requestor defined in irmaserver.json in the IRMA server */
-    "requestorname": "openstad_voting_pk",
-
-    /* Every poll must have it's unique uuid, use a generator to create one */
-    "uuid": "06c5a013-4e71-439a-b8da-65e35b6419f0",
+    /* The requestor defined in the configuration of the IRMA server */
+    "requestorname": "irma-demo",
 
     /* URL of the IRMA server */
     "irma": "https://attr.auth.amsterdam.nl",
-
-    /* URL of Node server, optional with port number */
-    "nodeUrl": "http://localhost:8000",
 
     /* Port number the Node server listens to */
     "port": 8000,
 
     /* Document root of site to serve, only for demo */
     "docroot": "../openstad",
-
-    /* Keys of voting options */
-    "voting_options": ["community", "tech", "zen"]
 }
 ```
-
-## Install
-
-```shell
-cd voting_node
-docker build -t voting_node .
-```
-
-## Run
-
-1. Make sure IRMA is running (see `https://github.com/Amsterdam/di-irma-server`)
-2. Add the URL of IRMA to `server/*.json`)
-3. Make sure PostgreSQL is running and a user is created:
+## Run with docker-copmose
 
 ```shell
-cd dev/db
-./postgres.sh
+docker-compose up
 ```
-
-## Run locally without Docker
-
-```shell
-cd voting_node/server
-npm install
-cd ../../dev
-./start.sh
-```
-
-## Run production mode
-
-```shell
-cd voting_node
-docker run --rm -p80:8000 -e NODE_ENV=production -e CONFIG=config-prod.json -e PRIVATE_KEY="$(cat ../dev/private_key.pem)" -e POSTGRES_HOST=localhost -e POSTGRES_DATABASE=postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=hj21kjy --name voting_container voting_node
-```
-
-Replace POSTGRES_HOST=localhost with IP address of Postgres.
-
-## Run development mode
-
-```shell
-cd voting_node
-cp ../dev/config-dev.json server
-docker build -t voting_node .
-docker run -it --rm -p80:8000 -e CONFIG=config-dev.json -e PRIVATE_KEY="$(cat ../dev/private_key.pem)" -e POSTGRES_HOST=localhost -e POSTGRES_DATABASE=postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=hj21kjy --name voting_container voting_node
-```
-
-Replace POSTGRES_HOST=localhost with IP address of Postgres.
-
-
-## How to spin up a local development enviroment from scratch
-
-generate the keys
-
-```shell
-$ ./dev/keygen.sh
-```
-
-copy the public_key.pem to irma_server_constainer/config/public_key.pem
-
-```shell
-$ cp ./dev/keypair/public_key.pem ../irma_server_container/config/public_key.pem
-```
-
-copy the private_key.pem the the local express server ./voting_node/server
-
-```shell
-$ cp ./dev/keypair/private_key.pem ./voting_node/server
-```
-
-install ngrok
-
-- run ./dev/ngrok/ngrok.sh in a separate terminal
-- copy the url generated for port 8088 and set it in ./dev/config-dev.json (`irma` setting) and in the
-  docker-compose.yml for the BASE_URL environment variable
-- the ngrok tunnel will be available for 8 hours or until the ngrok session is exited. The update of the `irma` setting
-  in config-dev.json has to be done each time the ngrok session expires or is restarted.
-
-create and configure the certificates
-
-- run ./dev/keygen.sh to generate the certificates (public_key.pem en private_key.pem) in ./dev/keypair
-- in [irma_server_container](https://gitlab.com/stanguldemond/irma_server_container) project:
-  - copy the public_key.pem to the irma_server_container in de config folder
-  - configure "key_file": "./config/public_key.pem" in ./config/irmaserver.json
-- this project:
-  - copy private_key.pem to ./dev/
-
-run the dockers
-
-- run `docker-compose build`
-- build the irma_server_container image and rename this to `irmaservercontainer_irma`
-    - docker rename `<old-name>` irmaservercontainer_irma
-
-- run `docker-compose up` and go to http://localhost:8000
-
 
