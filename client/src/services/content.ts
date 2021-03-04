@@ -480,7 +480,7 @@ Dit zorgt ervoor dat feedback van gebruikers op de juiste plek wordt opgeslagen.
         breadcrumbs: `- [Home](/)
 - [Toegankelijkheidsverklaring](/toegankelijkheidsverklaring)`,
         intro: `# Volledige toegankelijkheidsverklaring
-**De gemeente Amsterdam wil dat iedereen de website 'Probeer IRMA uit’ kan gebruiken. Komt u toch een pagina tegen die u niet kunt lezen of gebruiken? Meld het via ons [contactformulier](https://formulieren.amsterdam.nl/TripleForms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx).**`,
+**De gemeente Amsterdam wil dat iedereen de website 'Probeer IRMA uit’ kan gebruiken.**`,
         article: `
 ## Toegankelijk ‘Probeer IRMA uit’
 Iedereen moet websites van de overheid kunnen gebruiken. Dit is wat wij doen om ‘Probeer IRMA uit’ toegankelijk te maken en te houden voor iedereen:
@@ -490,7 +490,8 @@ Iedereen moet websites van de overheid kunnen gebruiken. Dit is wat wij doen om 
 - Onze medewerkers houden hun kennis over toegankelijkheid op peil.
 ## Onderdelen die nog niet toegankelijk zijn
 - De mogelijkheid om te reageren via ‘Uw mening’ is nog niet helemaal toegankelijk. We werken eraan om dit volledig toegankelijk te maken.
-- De IRMA-QR-codes verschijnen alleen als stijlen ‘aan’ staan.
+- De IRMA-QR-codes verschijnen alleen als stijlen ‘aan’ staan.\n
+Komt u toch een pagina tegen die u niet kunt lezen of gebruiken? Meld het via ons [contactformulier](https://formulieren.amsterdam.nl/TripleForms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx).
 ## Toegankelijkheidsverklaring
 De eisen voor een toegankelijke website staan in het [Tijdelijk besluit digitale toegankelijkheid overheid](https://wetten.overheid.nl/BWBR0040936/2018-07-01). In dat besluit staat ook dat wij een toegankelijkheidsverklaring op deze website ‘Probeer IRMA uit’ moeten zetten.
 Onze aanvraag voor een volledige toegankelijkheidsverklaring is onderhanden. In de [Toegankelijkheidcheck 'Probeer IRMA uit'](https://docs.google.com/spreadsheets/d/1ke6RqJSTDo25hK-1KBA0WFG0mhZz5jGzpt9PRFJJnGc/edit?ts=602f864d#gid=1569634392) staan de toegankelijkheidsrichtlijnen voor niveaus A en AA en de mate waarin onderdelen van ‘Probeer IRMA uit’ aan die richtlijnen voldoen.        
