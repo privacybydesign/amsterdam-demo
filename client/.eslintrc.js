@@ -9,9 +9,7 @@ module.exports = {
         'plugin:react/recommended',
         'plugin:jsx-a11y/recommended',
         'prettier/babel',
-        'prettier/react',
-        'prettier/standard',
-        'prettier/@typescript-eslint'
+        'prettier/react'
     ],
     env: {
         es6: true,

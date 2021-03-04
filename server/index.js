@@ -171,11 +171,11 @@ const init = async () => {
                 // Enable the cookie to remain for only the duration of the user-agent
                 expires: false
             },
-            unset: 'destroy',
+            unset: 'destroy'
             // Use MemoryStore for now.
             // TODO: Enable RedisStore once there is availability in team basis to help deploy redis
         };
-        
+
         // Enable secure cookies on TLS environments
         if (process.env.NODE_ENV === 'acceptance' || process.env.NODE_ENV === 'production') {
             sessionOptions.cookie.secure = true;
@@ -183,10 +183,7 @@ const init = async () => {
             sessionOptions.secret = 'TODO >> Generate and store this somewhere';
         }
 
-        app.use(
-            session(sessionOptions)
-        );
-  
+        app.use(session(sessionOptions));
 
         // Note: To use the demo credentials on non-production environments add ?demo=true to the URL
         app.get('/getsession/demo1/18', cors(), irmaDiscloseDemo1_18);
@@ -239,7 +236,7 @@ const createJWT = (authmethod, key, iss, irmaRequest) => {
     return jwt;
 };
 
-const irmaDiscloseRequest = async (req, res, requestType, id) => {
+const irmaDiscloseRequest = async (req, res, requestType) => {
     const authmethod = 'publickey';
     const request = createIrmaRequest(requestType);
     const jwt = createJWT(authmethod, process.env.PRIVATE_KEY, config.requestorname, request);
@@ -298,8 +295,8 @@ const getIrmaSessionResult = async (req, res) => {
         const result = await irmaBackend.getSessionResult(req.session.token);
 
         // Remove the IRMA and backend session if status is DONE
-        if (result.status === "DONE") {
-            const res = await irmaBackend.cancelSession(req.session.token);
+        if (result.status === 'DONE') {
+            await irmaBackend.cancelSession(req.session.token);
             req.session.destroy();
         }
 
@@ -312,7 +309,7 @@ const getIrmaSessionResult = async (req, res) => {
 
 const error = (e, res) => {
     if (res) {
-        res.json({ error: jsonError });
+        res.json({ error: e });
     }
 };
 
