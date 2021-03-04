@@ -7,9 +7,7 @@ import Client from '@privacybydesign/irma-client';
 // Types
 export interface IIrmaServerConfig {
     requestorname: string;
-    uuid: string;
     irma: string;
-    nodeUrl: string;
     docroot: string;
     port: number;
     environment: string;

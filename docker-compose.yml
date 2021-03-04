@@ -10,18 +10,14 @@ services:
   be:
     container_name: be
     build:
-      context: ./server/node
+      context: ./server
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
     volumes:
-      - ./server/node:/usr/src/app
+      - ./server:/usr/src/app
     environment:
       - NODE_ENV=development
       - CONFIG=config.json
       - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
       - FE_URL=http://fe:9000
-      - REDIS_URL=redis://cache:6379
-  cache:
-    image: redis:alpine
-    container_name: cache

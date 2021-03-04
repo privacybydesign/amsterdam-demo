@@ -25,7 +25,7 @@ RUN adduser -D irma
 ENV NODE_EXTRA_CA_CERTS=/adp_rootca.crt
 COPY adp_rootca.crt /adp_rootca.crt
 
-COPY ./server/node /server
+COPY ./server /server
 WORKDIR /server
 RUN yarn install
 
