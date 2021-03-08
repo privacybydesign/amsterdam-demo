@@ -1,13 +1,13 @@
-import { Location } from '@components/Map/reducer';
+import { LatLng } from "leaflet";
 
-interface IState {
+export interface IState {
     hasResult?: boolean;
     hasError?: boolean;
     formErrors?: string[];
-    location?: Location | null;
+    location?: ILocation | null;
     report?: string;
-    optionPhone?: boolean;
-    optionEmail?: boolean;
+    optionPhone?: boolean | null;
+    optionEmail?: boolean | null;
     mobilenumber?: string;
     email?: string;
 }
@@ -15,6 +15,12 @@ interface IState {
 interface IAction {
     type: string;
     payload?: IState;
+}
+
+interface ILocation {
+    id: string;
+    displayName: string;
+    latLng?: LatLng | null;
 }
 
 export const initialState: IState = {
@@ -34,24 +40,24 @@ export const reducer = (state: IState, action: IAction): IState => {
         case 'validateForm':
             return {
                 ...state,
-                location: action.payload.location,
-                report: action.payload.report,
-                optionPhone: action.payload.optionPhone,
-                optionEmail: action.payload.optionEmail,
-                formErrors: action.payload.formErrors
+                location: action.payload?.location,
+                report: action.payload?.report,
+                optionPhone: action.payload?.optionPhone,
+                optionEmail: action.payload?.optionEmail,
+                formErrors: action.payload?.formErrors
             };
         case 'setLocation':
             return {
                 ...state,
-                location: action.payload.location
+                location: action.payload?.location
             };
         case 'setResult':
             return {
                 ...state,
                 hasResult: true,
                 hasError: false,
-                mobilenumber: action.payload.mobilenumber,
-                email: action.payload.email
+                mobilenumber: action.payload?.mobilenumber,
+                email: action.payload?.email
             };
         case 'setError':
             return {

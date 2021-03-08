@@ -25,7 +25,7 @@ describe('map reducer', () => {
     });
 
     it('should setLocation', () => {
-        const mockLocation: Location = { id: '1', weergavenaam: 'Test', latLng: null };
+        const mockLocation: Location = { id: '1', displayName: 'Test', latLng: null };
         expect(
             reducer(undefined, {
                 type: 'setLocation',

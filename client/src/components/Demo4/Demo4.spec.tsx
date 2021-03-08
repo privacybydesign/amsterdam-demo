@@ -14,18 +14,18 @@ jest.mock('@services/createIrmaSession');
 describe('Demo4', () => {
     it('should render the initial header image', async () => {
         // Render demo 4
-        await act(async () => await wrappedRender(<Demo4 />));
+        await act(async (): Promise<any> => await wrappedRender(<Demo4 />));
         const headerImage: HTMLElement = await screen.findByTestId('headerImage');
         expect(headerImage).toMatchSnapshot();
     });
 
     it('should fail to start the IRMA flow when form is not filled', async () => {
         // Render demo 4
-        await act(async () => await wrappedRender(<Demo4 />));
+        await act(async (): Promise<any> => await wrappedRender(<Demo4 />));
 
         // Trigger IRMA flow
         const QRCodeButton = screen.getByTestId('qrCodeButton');
-        await act(async () => await fireEvent.click(QRCodeButton));
+        await act(async (): Promise<any> => await fireEvent.click(QRCodeButton));
 
         // Expect modal not to be shown
         const QRCodeModal = screen.queryByTestId('qrCodeModal');
@@ -46,7 +46,7 @@ describe('Demo4', () => {
         });
 
         // Render demo 4
-        await act(async () => await wrappedRender(<Demo4 />));
+        await act(async (): Promise<any> => await wrappedRender(<Demo4 />));
 
         // Fill in form
         const radioOption = screen.getByLabelText(content.demo4.form.optionYes);
@@ -56,7 +56,7 @@ describe('Demo4', () => {
 
         // Trigger IRMA flow
         const QRCodeButton = screen.getByTestId('qrCodeButton');
-        await act(async () => await fireEvent.click(QRCodeButton));
+        await act(async (): Promise<any> => await fireEvent.click(QRCodeButton));
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');
@@ -77,7 +77,7 @@ describe('Demo4', () => {
         mockedCreateIrmaSession.mockReturnValue(null);
 
         // Render demo 4
-        await act(async () => await wrappedRender(<Demo4 />));
+        await act(async (): Promise<any> => await wrappedRender(<Demo4 />));
 
         // Fill in form
         const radioOption = screen.getByLabelText(content.demo4.form.optionYes);
@@ -87,7 +87,7 @@ describe('Demo4', () => {
 
         // Trigger IRMA flow
         const QRCodeButton = screen.getByTestId('qrCodeButton');
-        await act(async () => await fireEvent.click(QRCodeButton));
+        await act(async (): Promise<any> => await fireEvent.click(QRCodeButton));
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');

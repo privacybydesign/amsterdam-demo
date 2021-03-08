@@ -4,7 +4,7 @@ import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import content from '@services/content';
 import { breakpoint, themeSpacing } from '@amsterdam/asc-ui';
 
-interface IProps {}
+interface IProps { }
 
 const DemoNotification: React.FC<IProps> = () => (
     <FullWidthAlert

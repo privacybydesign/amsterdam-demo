@@ -1,15 +1,25 @@
 module.exports = {
     parser: '@typescript-eslint/parser',
-    plugins: ['babel', '@typescript-eslint', 'jest', 'prettier', 'jsx-a11y', 'import', 'react-hooks'],
+    plugins: [
+        'babel',
+        'typescript',
+        '@typescript-eslint',
+        'jest',
+        'prettier',
+        'jsx-a11y',
+        'import',
+        'react',
+        'react-hooks'
+    ],
     extends: [
         'eslint:recommended',
-        'plugin:prettier/recommended',
-        'plugin:@typescript-eslint/eslint-recommended',
-        'plugin:@typescript-eslint/recommended',
         'plugin:react/recommended',
         'plugin:jsx-a11y/recommended',
         'prettier/babel',
-        'prettier/react'
+        'prettier/react',
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:prettier/recommended'
     ],
     env: {
         es6: true,
@@ -32,7 +42,7 @@ module.exports = {
         'react-hooks/rules-of-hooks': 2,
         'react-hooks/exhaustive-deps': 1,
         'no-unused-vars': 0,
-        '@typescript-eslint/no-unused-vars': 2,
+        '@typescript-eslint/no-unused-vars': 0,
         '@typescript-eslint/no-empty-interface': 0
     }
 };

@@ -14,7 +14,7 @@ export const insertInPlaceholders = (sentence: string, values: string | string[]
 
 export const reduceAndTranslateEmptyVars = (emptyVars: string[]): string => {
     return emptyVars
-        .reduce((acc, varToTranslate) => acc + `${content.translatedIrmaAttributes[varToTranslate]}, `, '')
+        .reduce((acc, varToTranslate) => acc + `${(content.translatedIrmaAttributes as any)[varToTranslate]}, `, '')
         .slice(0, -2);
 };
 

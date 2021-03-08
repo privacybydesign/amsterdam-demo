@@ -36,7 +36,7 @@ Object {
   "hasResult": false,
   "location": Object {
     "id": "testId",
-    "weergavenaam": "Test",
+    "displayName": "Test",
   },
   "mobilenumber": "",
   "optionEmail": null,
@@ -67,7 +67,7 @@ Object {
   "hasResult": false,
   "location": Object {
     "id": "testId",
-    "weergavenaam": "Test",
+    "displayName": "Test",
   },
   "mobilenumber": "",
   "optionEmail": true,

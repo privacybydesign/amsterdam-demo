@@ -14,7 +14,7 @@ import DemoNotification from '@components/DemoNotification/DemoNotification';
 import ResponsiveImage, { IHeaderImageProps } from '@components/ResponsiveImage/ResponsiveImage';
 import { RadioGroup, Label, Radio } from '@amsterdam/asc-ui';
 import QRCode from '@components/QRCode/QRCode';
-import { initialState, reducer } from './reducer';
+import { initialState, reducer, IState } from './reducer';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import preloadDemoImages from '@services/preloadImages';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
@@ -22,7 +22,7 @@ import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 
-export interface IProps {}
+export interface IProps { }
 
 const OPTIONAL_IRMA_ATTRIBUTES = ['houseNumber'];
 
@@ -32,7 +32,7 @@ const Demo4: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    function replaceVars(str, p1) {
+    function replaceVars(str: string, p1: keyof IState["irmaAttributes"]) {
         if (!OPTIONAL_IRMA_ATTRIBUTES.includes(p1)) {
             return state.irmaAttributes[p1] || '-';
         }
@@ -40,7 +40,10 @@ const Demo4: React.FC<IProps> = () => {
     }
 
     const validateForm = () => {
-        const el = formEl.current.querySelector('input[name=geveltuin]:checked');
+        if (!formEl.current || formEl.current == null) {
+            return;
+        }
+        const el = (formEl as any).current.querySelector('input[name=geveltuin]:checked');
         if (el) {
             dispatch({
                 type: 'validateForm',
@@ -58,7 +61,7 @@ const Demo4: React.FC<IProps> = () => {
     };
 
     const getSession = async () => {
-        let response = null;
+        let response: any = null;
         if (validateForm()) {
             response = await createIrmaSession(
                 'demo4',
@@ -125,7 +128,7 @@ const Demo4: React.FC<IProps> = () => {
     // Preload demo images
     useEffect(() => {
         preloadDemoImages(
-            Object.keys(content.responsiveImages.demo4).map(key => content.responsiveImages.demo4[key].src)
+            Object.keys(content.responsiveImages.demo4).map(key => (content.responsiveImages.demo4 as any)[key].src)
         );
     }, []);
 
@@ -185,7 +188,7 @@ const Demo4: React.FC<IProps> = () => {
             <ResponsiveImage filename={headerImg.filename} alt={headerImg.alt} />
 
             {!hasResult ? (
-                <AscLocal.Row noMargin>
+                <AscLocal.Row hasMargin={false}>
                     <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
                         <ContentBlock>
                             <section>

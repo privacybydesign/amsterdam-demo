@@ -13,7 +13,7 @@ jest.mock('@services/createIrmaSession');
 describe('Demo3', () => {
     it('should render the initial header image', async () => {
         // Render demo 3
-        await act(async () => await wrappedRender(<Demo3 />));
+        await act(async (): Promise<any> => await wrappedRender(<Demo3 />));
         const headerImage: HTMLElement = await screen.findByTestId('headerImage');
         expect(headerImage).toMatchSnapshot();
     });
@@ -26,11 +26,11 @@ describe('Demo3', () => {
         });
 
         // Render demo 3
-        await act(async () => await wrappedRender(<Demo3 />));
+        await act(async (): Promise<any> => await wrappedRender(<Demo3 />));
 
         // Trigger IRMA flow
         const QRCodeButton = screen.getByTestId('qrCodeButton');
-        await act(async () => await fireEvent.click(QRCodeButton));
+        await act(async (): Promise<any> => await fireEvent.click(QRCodeButton));
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');
@@ -51,11 +51,11 @@ describe('Demo3', () => {
         mockedCreateIrmaSession.mockReturnValue(null);
 
         // Render demo 3
-        await act(async () => await wrappedRender(<Demo3 />));
+        await act(async (): Promise<any> => await wrappedRender(<Demo3 />));
 
         // Trigger IRMA flow
         const QRCodeButton = screen.getByTestId('qrCodeButton');
-        await act(async () => await fireEvent.click(QRCodeButton));
+        await act(async (): Promise<any> => await fireEvent.click(QRCodeButton));
 
         // Check if demo notification is not visible
         const demoNotification = screen.queryByTestId('demoNotification');

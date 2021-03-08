@@ -12,7 +12,7 @@ import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import ResponsiveImage from '@components/ResponsiveImage/ResponsiveImage';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 
-interface IProps {}
+interface IProps { }
 
 const Homepage: React.FC<IProps> = () => (
     <PageTemplate>

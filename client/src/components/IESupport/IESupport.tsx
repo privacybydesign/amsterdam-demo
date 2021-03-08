@@ -7,7 +7,7 @@ import BreadCrumbs from '@components/BreadCrumbs';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 
-export interface IProps {}
+export interface IProps { }
 
 const IESupport: React.FC<IProps> = () => {
     return (

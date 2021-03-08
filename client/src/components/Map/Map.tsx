@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useRef, useReducer } from 'react';
 import 'leaflet/dist/leaflet.css';
 import styled from 'styled-components';
 import axios, { AxiosResponse } from 'axios';
-import { initialState, reducer, Location } from './reducer';
+import { initialState, reducer, ILocation } from './reducer';
 import { Map, BaseLayer, ViewerContainer, Zoom, Marker } from '@amsterdam/arm-core';
 import { Input } from '@amsterdam/asc-ui';
 import { ListItem, Icon, themeColor, themeSpacing } from '@amsterdam/asc-ui';
@@ -11,7 +11,7 @@ import { LeafletMouseEvent } from 'leaflet';
 import { UnderlinedLink } from '@components/LocalAsc/LocalAsc';
 
 interface IProps {
-    updateLocationCallback: (location: Location | null) => void;
+    updateLocationCallback: (location: ILocation | null) => void;
 }
 
 const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
@@ -33,9 +33,9 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
             dispatch({
                 type: 'setAutosuggest',
                 payload: {
-                    autosuggest: response.data?.response?.docs.map(doc => ({
+                    autosuggest: response.data?.response?.docs.map((doc: any) => ({
                         id: doc.id,
-                        weergavenaam: doc.weergavenaam
+                        displayName: doc.weergavenaam
                     }))
                 }
             });
@@ -47,12 +47,12 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
         async (e: LeafletMouseEvent) => {
             const response = await axios.get(`${locationUrl}&lat=${e.latlng.lat}&lon=${e.latlng.lng}`);
             const foundLocation = response.data?.response?.docs[0];
-            let location: Location = null;
+            let location: ILocation | null = null;
 
             if (foundLocation) {
                 location = {
                     id: foundLocation.id,
-                    weergavenaam: foundLocation.weergavenaam,
+                    displayName: foundLocation.displayName,
                     latLng: e.latlng
                 };
 
@@ -72,13 +72,13 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
     );
 
     const onAutosuggestClick = useCallback(
-        async (e: React.SyntheticEvent<LeafletMouseEvent>, autoSuggestLocation: Location) => {
+        async (e: React.SyntheticEvent<LeafletMouseEvent> | null, autoSuggestLocation: ILocation) => {
             if (e) {
                 e.preventDefault();
             }
 
-            if (autoSuggestLocation.weergavenaam) {
-                locationInputRef.current.value = autoSuggestLocation.weergavenaam;
+            if (locationInputRef.current && autoSuggestLocation.displayName) {
+                (locationInputRef.current as any).value = autoSuggestLocation.displayName;
                 dispatch({
                     type: 'hideAutosuggest'
                 });
@@ -92,7 +92,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                 const latLng = { lat: parseFloat(parsedCoordinates[1]), lng: parseFloat(parsedCoordinates[0]) };
                 mapInstance.flyTo(latLng, 11);
 
-                const location: Location = { ...autoSuggestLocation, latLng };
+                const location: ILocation = { ...autoSuggestLocation, latLng };
 
                 dispatch({
                     type: 'setLocation',
@@ -110,14 +110,14 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
     );
 
     useEffect(() => {
-        if (url.length) {
+        if (url && url.length) {
             fetchAutosuggest(url);
         }
     }, [url, fetchAutosuggest]);
 
     useEffect(() => {
         if (locationInputRef.current) {
-            locationInputRef.current.value = location?.weergavenaam || '';
+            (locationInputRef.current as any).value = location?.displayName || '';
         }
     }, [location]);
 
@@ -160,7 +160,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
             ref={mapRef}
             onBlur={e => {
                 // Hide autosuggest if focus is outside map
-                if (!mapRef.current.contains(e.relatedTarget)) {
+                if (mapRef.current && !(mapRef.current as any).contains(e.relatedTarget)) {
                     dispatch({
                         type: 'hideAutosuggest'
                     });
@@ -196,7 +196,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                                 onKeyUp={onInputKeyPress}
                                 aria-label="location"
                             />
-                            {showAutosuggest && query.length && autosuggest && autosuggest.length ? (
+                            {showAutosuggest && query && query.length && autosuggest && autosuggest.length ? (
                                 <StyledAutosuggest data-testid="autosuggest" ref={wrapperRef}>
                                     {autosuggest.map(item => (
                                         <StyledListItem key={item.id}>
@@ -206,9 +206,9 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                                             <UnderlinedLink
                                                 href="#"
                                                 variant="inline"
-                                                onClick={e => onAutosuggestClick(e, item)}
+                                                onClick={(e: React.SyntheticEvent<LeafletMouseEvent>) => onAutosuggestClick(e, item)}
                                             >
-                                                {item.weergavenaam}
+                                                {item.displayName}
                                             </UnderlinedLink>
                                         </StyledListItem>
                                     ))}

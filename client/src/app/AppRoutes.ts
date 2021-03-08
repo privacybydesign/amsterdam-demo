@@ -1,4 +1,3 @@
-import React from 'react';
 import Homepage from '@components/Homepage/Homepage';
 import Demo1 from '@components/Demo1/Demo1';
 import Demo2 from '@components/Demo2/Demo2';

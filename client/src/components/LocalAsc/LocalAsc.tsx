@@ -157,8 +157,8 @@ export const AccordionHeading = styled(Heading).attrs({ as: 'h4' })`
 `;
 
 interface IAlertProps {
-    className: string;
-    children: React.ReactNode;
+    className?: string;
+    children?: React.ReactNode;
     color?: AlertColor;
     icon?: React.ReactNode;
     iconUrl?: string;
@@ -233,7 +233,7 @@ export const Alert = styled(
 
     .alert-content {
         display: flex;
-        align-items: ${({ iconSize }) => (iconSize > 18 ? 'flex-start' : 'baseline')};
+        align-items: ${({ iconSize }) => (iconSize && iconSize > 18 ? 'flex-start' : 'baseline')};
 
         h2 {
             font-size: 18px;
@@ -247,15 +247,15 @@ export const Alert = styled(
 
         * {
             color: ${({ color }) => {
-                switch (color) {
-                    default:
-                    case AlertColor.PRIMARY:
-                    case AlertColor.SUCCESS:
-                        return themeColor('tint', 'level1');
-                    case AlertColor.ERROR:
-                        return themeColor('tint', 'level7');
-                }
-            }};
+        switch (color) {
+            default:
+            case AlertColor.PRIMARY:
+            case AlertColor.SUCCESS:
+                return themeColor('tint', 'level1');
+            case AlertColor.ERROR:
+                return themeColor('tint', 'level7');
+        }
+    }};
         }
     }
 `;
@@ -332,7 +332,7 @@ export const InlineLink = styled(UnderlinedLink).attrs({ inList: true })``;
 
 export const Row = styled(AscRow)`
     padding: 0;
-    margin: ${({ noMargin }) => (noMargin ? '0' : '0 auto')};
+    margin: ${({ hasMargin }) => (hasMargin ? '0' : '0 auto')};
 `;
 
 export const Column = styled(AscColumn)`
@@ -340,15 +340,15 @@ export const Column = styled(AscColumn)`
     justify-content: flex-start;
 `;
 
-interface IStrongParagraphProps {}
+interface IStrongParagraphProps { }
 
 export const StrongParagraph: React.FC<IStrongParagraphProps> = ({ children }) => (
     <Paragraph strong>{children}</Paragraph>
 );
 
 interface ITextAreaProps {
-    areaHeight: number;
-    showCounter: boolean;
+    areaHeight?: number;
+    showCounter?: boolean;
 }
 
 export const TextArea = styled(({ showCounter, className, ...props }: AscTextAreaProps & ITextAreaProps) => {
@@ -372,14 +372,14 @@ export const TextArea = styled(({ showCounter, className, ...props }: AscTextAre
         height: ${({ areaHeight }) => areaHeight || '150'}px;
     }
     .counter {
-        color: ${themeColor('tint', 'level5')};
-    }
+    color: ${themeColor('tint', 'level5')};
+}
 `;
 
 export const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg', alt: '', role: 'presentation' })`
-    width: 24px;
+width: 24px;
 `;
 
 export const ErrorMessage = styled(AscErrorMessage)`
-    margin-top: ${themeSpacing(2)};
+margin - top: ${themeSpacing(2)};
 `;

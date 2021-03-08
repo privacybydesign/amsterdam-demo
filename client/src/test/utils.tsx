@@ -26,7 +26,7 @@ export const wrappedRender = (ui: ReactElement, options?: RenderOptions): Render
     render(ui, { wrapper: providers, ...options });
 
 export const setupMocks = (): void => {
-    let mockedAxios;
+    let mockedAxios: MockAdapter;
 
     beforeEach(() => {
         // Mock timers
