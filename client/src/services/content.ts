@@ -489,7 +489,6 @@ Iedereen moet websites van de overheid kunnen gebruiken. Dit is wat wij doen om 
 - We lossen knelpunten op.
 - Onze medewerkers houden hun kennis over toegankelijkheid op peil.
 ## Onderdelen die nog niet toegankelijk zijn
-- De mogelijkheid om te reageren via ‘Uw mening’ is nog niet helemaal toegankelijk. We werken eraan om dit volledig toegankelijk te maken.
 - De IRMA-QR-codes verschijnen alleen als stijlen ‘aan’ staan.\n
 Komt u nog een pagina tegen die u niet kunt lezen of gebruiken? Meld het via ons [contactformulier](https://formulieren.amsterdam.nl/TripleForms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx).
 ## Toegankelijkheidsverklaring
