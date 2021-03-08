@@ -194,6 +194,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                                 ref={locationInputRef}
                                 onChange={onInputChange}
                                 onKeyUp={onInputKeyPress}
+                                aria-label="location"
                             />
                             {showAutosuggest && query.length && autosuggest && autosuggest.length ? (
                                 <StyledAutosuggest data-testid="autosuggest" ref={wrapperRef}>
