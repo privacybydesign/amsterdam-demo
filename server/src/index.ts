@@ -1,6 +1,7 @@
-const express = require('express');
-const session = require('express-session');
+import express, { Request, Response, NextFunction } from 'express';
+import session, { SessionOptions } from 'express-session';
 const IrmaBackend = require('@privacybydesign/irma-backend');
+
 const IrmaJwt = require('@privacybydesign/irma-jwt');
 const cors = require('cors');
 const util = require('util');
@@ -8,9 +9,17 @@ const fs = require('fs');
 const path = require('path');
 const proxy = require('http-proxy-middleware');
 
+export interface IConfig {
+    requestorname: string;
+    irma: string;
+    docroot: string;
+    port: number;
+    environment?: string;
+}
+
 // global configuration variable.
-let config;
-let irmaBackend;
+let config: IConfig;
+let irmaBackend: any;
 
 const CREDENTIALS_TO_REQUEST = {
     DEMO: {
@@ -31,13 +40,13 @@ const CREDENTIALS_TO_REQUEST = {
             [['irma-demo.pbdf.mobilenumber.mobilenumber']],
             [['irma-demo.sidn-pbdf.email.email']]
         ],
-        DEMO5: (mobileNumber = true, email = true) => {
+        DEMO5: (mobileNumber: boolean, email: boolean) => {
             const credentials = [];
-            if (mobileNumber === 'true') {
+            if (mobileNumber === true) {
                 credentials.push([['irma-demo.pbdf.mobilenumber.mobilenumber']]);
             }
 
-            if (email === 'true') {
+            if (email === true) {
                 credentials.push([['irma-demo.sidn-pbdf.email.email']]);
             }
             return credentials;
@@ -79,13 +88,13 @@ const CREDENTIALS_TO_REQUEST = {
             [['pbdf.pbdf.mobilenumber.mobilenumber']],
             [['pbdf.pbdf.email.email'], ['pbdf.sidn-pbdf.email.email']]
         ],
-        DEMO5: (mobileNumber = 'true', email = 'true') => {
+        DEMO5: (mobileNumber: boolean, email: boolean) => {
             const credentials = [];
-            if (mobileNumber === 'true') {
+            if (mobileNumber === true) {
                 credentials.push([['pbdf.pbdf.mobilenumber.mobilenumber']]);
             }
 
-            if (email === 'true') {
+            if (email === true) {
                 credentials.push([['pbdf.pbdf.email.email'], ['pbdf.sidn-pbdf.email.email']]);
             }
             return credentials;
@@ -101,7 +110,7 @@ const CREDENTIALS_TO_REQUEST = {
  * The result should look like `{'@context':'https://irma.app/ld/request/disclosure/v2','context':'AQ==','nonce':'VItsL+3+GiBHyIt1hIRwSQ==','protocolVersion':'2.5','disclose':[[['pbdf.sidn-pbdf.irma.pseudonym']]]}`
  */
 
-const createIrmaRequest = content => {
+const createIrmaRequest = (content: any) => {
     return {
         '@context': 'https://irma.app/ld/request/disclosure/v2',
         disclose: [...content]
@@ -109,7 +118,7 @@ const createIrmaRequest = content => {
 };
 
 // Setup authentication for acceptance
-const secured = function (req, res, next) {
+const secured = function (req: Request, res: Response, next: NextFunction) {
     if (process.env.NODE_ENV !== 'acceptance') {
         return next();
     }
@@ -117,31 +126,28 @@ const secured = function (req, res, next) {
     // check for basic auth header
     if (!req.headers.authorization || req.headers.authorization.indexOf('Basic ') === -1) {
         res.setHeader('WWW-Authenticate', 'Basic');
-        return res.status(401).sendFile(path.join(__dirname, '/pages/403.html'));
+        return res.status(401).sendFile(path.join(__dirname, '/static/403.html'));
     }
 
     // check the entered credentials
     const credentials = Buffer.from('irma:demo').toString('base64');
     if (req.headers.authorization !== `Basic ${credentials}`) {
         res.setHeader('WWW-Authenticate', 'Basic');
-        return res.sendFile(path.join(__dirname, '/pages/403.html'));
+        return res.sendFile(path.join(__dirname, '/static/403.html'));
     }
 
     next();
 };
 
 const setConfig = async () => {
-    let configFile = 'config.json';
-    if (process.env.NODE_ENV === 'production') {
-        configFile = 'config.prod.json';
-    }
+    const configFile = path.join(__dirname, `/config/${process.env.CONFIG}`);
     const json = await util.promisify(fs.readFile)(configFile, 'utf-8');
     console.log('Using config', json);
     config = JSON.parse(json);
     initializeIrmaBackend(config.irma);
 };
 
-const initializeIrmaBackend = irmaServerUrl => {
+const initializeIrmaBackend = (irmaServerUrl: string) => {
     irmaBackend = new IrmaBackend(irmaServerUrl, {
         debugging: true
     });
@@ -162,23 +168,22 @@ const init = async () => {
         app.use(express.json());
 
         // Cookie setup
-        const sessionOptions = {
+        const sessionOptions: SessionOptions = {
             name: 'irma-demo',
             secret: 'local secret',
             cookie: {
                 httpOnly: true,
-                sameSite: true,
-                // Enable the cookie to remain for only the duration of the user-agent
-                expires: false
+                sameSite: true
             },
             unset: 'destroy'
             // Use MemoryStore for now.
-            // TODO: Enable RedisStore once there is availability in team basis to help deploy redis
+            // TODO: Enable RedisStore once there is availability in team basis to help deploy redis.
+            // NOTE: Implementation for Redis integration is present in commit history
         };
 
         // Enable secure cookies on TLS environments
         if (process.env.NODE_ENV === 'acceptance' || process.env.NODE_ENV === 'production') {
-            sessionOptions.cookie.secure = true;
+            sessionOptions!.cookie!.secure = true;
             // TODO: Store secret outside codebase
             sessionOptions.secret = 'TODO >> Generate and store this somewhere';
         }
@@ -222,24 +227,23 @@ const init = async () => {
         }
     } catch (e) {
         console.log(e);
-        error(e);
     }
 };
 
-const health = async (req, res) => {
+const health = async (req: Request, res: Response) => {
     return res.status(200).send('Healthy!');
 };
 
-const createJWT = (authmethod, key, iss, irmaRequest) => {
+const createJWT = (authmethod: string, key: string, iss: string, irmaRequest: any) => {
     const irmaJwt = new IrmaJwt(authmethod, { secretKey: key, iss });
     const jwt = irmaJwt.signSessionRequest(irmaRequest);
     return jwt;
 };
 
-const irmaDiscloseRequest = async (req, res, requestType) => {
+const irmaDiscloseRequest = async (req: Request, res: Response, requestType: any) => {
     const authmethod = 'publickey';
     const request = createIrmaRequest(requestType);
-    const jwt = createJWT(authmethod, process.env.PRIVATE_KEY, config.requestorname, request);
+    const jwt = createJWT(authmethod, process.env.PRIVATE_KEY as string, config.requestorname, request);
 
     console.log('irma.irmaDiscloseRequest called: ', {
         url: config.irma,
@@ -249,7 +253,7 @@ const irmaDiscloseRequest = async (req, res, requestType) => {
 
     try {
         const { sessionPtr, token } = await irmaBackend.startSession(jwt);
-        req.session.token = token;
+        req.session!.token = token;
         return res.status(200).json(sessionPtr);
     } catch (e) {
         console.log('irma.startSession error:', JSON.stringify(e));
@@ -257,47 +261,49 @@ const irmaDiscloseRequest = async (req, res, requestType) => {
     }
 };
 
-const getCredentialSourceFromRequest = req => {
+const getCredentialSourceFromRequest = (req: Request) => {
     return req && req.query.demo === 'true' && process.env.NODE_ENV !== 'production'
         ? CREDENTIALS_TO_REQUEST.DEMO
         : CREDENTIALS_TO_REQUEST.PRODUCTION;
 };
 
-async function irmaDiscloseDemo1_18(req, res) {
+async function irmaDiscloseDemo1_18(req: Request, res: Response) {
     return irmaDiscloseRequest(req, res, getCredentialSourceFromRequest(req).DEMO1_18());
 }
 
-async function irmaDiscloseDemo1_65(req, res) {
+async function irmaDiscloseDemo1_65(req: Request, res: Response) {
     return irmaDiscloseRequest(req, res, getCredentialSourceFromRequest(req).DEMO1_65());
 }
 
-async function irmaDiscloseDemo2(req, res) {
+async function irmaDiscloseDemo2(req: Request, res: Response) {
     return irmaDiscloseRequest(req, res, getCredentialSourceFromRequest(req).DEMO2);
 }
-async function irmaDiscloseDemo3(req, res) {
+async function irmaDiscloseDemo3(req: Request, res: Response) {
     return irmaDiscloseRequest(req, res, getCredentialSourceFromRequest(req).DEMO3);
 }
-async function irmaDiscloseDemo4(req, res) {
+async function irmaDiscloseDemo4(req: Request, res: Response) {
     return irmaDiscloseRequest(req, res, getCredentialSourceFromRequest(req).DEMO4);
 }
 
-async function irmaDiscloseDemo5(req, res) {
-    return irmaDiscloseRequest(req, res, getCredentialSourceFromRequest(req).DEMO5(req.query.phone, req.query.email));
+async function irmaDiscloseDemo5(req: Request, res: Response) {
+    const askPhone: boolean = req.query.phone === 'true';
+    const askEmail: boolean = req.query.email === 'true';
+    return irmaDiscloseRequest(req, res, getCredentialSourceFromRequest(req).DEMO5(askPhone, askEmail));
 }
 
-const getConfig = async (req, res) => {
+const getConfig = async (req: Request, res: Response) => {
     config.environment = process.env.NODE_ENV;
     res.json(config);
 };
 
-const getIrmaSessionResult = async (req, res) => {
+const getIrmaSessionResult = async (req: Request, res: Response) => {
     try {
-        const result = await irmaBackend.getSessionResult(req.session.token);
+        const result = await irmaBackend.getSessionResult(req.session!.token);
 
         // Remove the IRMA and backend session if status is DONE
         if (result.status === 'DONE') {
-            await irmaBackend.cancelSession(req.session.token);
-            req.session.destroy();
+            await irmaBackend.cancelSession(req.session!.token);
+            (req.session!.destroy as any)();
         }
 
         res.json(result);
@@ -307,7 +313,7 @@ const getIrmaSessionResult = async (req, res) => {
     }
 };
 
-const error = (e, res) => {
+const error = (e: Error, res: Response) => {
     if (res) {
         res.json({ error: e });
     }

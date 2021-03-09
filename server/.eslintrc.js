@@ -1,6 +1,7 @@
 module.exports = {
     parser: '@typescript-eslint/parser',
     parserOptions: {
+        ecmaVersion: 11,
         sourceType: 'module'
     },
     plugins: ['@typescript-eslint', 'prettier', 'import'],
@@ -21,6 +22,8 @@ module.exports = {
         window: true
     },
     rules: {
-        '@typescript-eslint/no-var-requires': 0
+        '@typescript-eslint/no-var-requires': 0,
+        ...require('eslint-config-prettier').rules,
+        ...require('eslint-config-prettier/@typescript-eslint').rules
     }
 };

@@ -1,18 +1,48 @@
 {
     "include": [
-        "**/*"
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
     ],
     "compilerOptions": {
-        "module": "commonjs",
-        "esModuleInterop": true,
         "target": "es6",
+        "module": "commonjs",
         "noImplicitAny": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "removeComments": true,
         "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "importHelpers": true,
+        "incremental": true,
+        "watch": true,
         "sourceMap": true,
-        "baseUrl": ".",
+        "baseUrl": "./src",
+        "outDir": "./dist",
         "paths": {
-            "*": [
-                "node_modules/*"
+            "@config/*": [
+                "config/*"
+            ],
+            "@api/*": [
+                "api/*"
+            ],
+            "@loaders/*": [
+                "loaders/*"
+            ],
+            "@services/*": [
+                "services/*"
+            ],
+            "@types/*": [
+                "types/*"
+            ],
+            "@test/*": [
+                "test/*"
             ]
         }
     }
