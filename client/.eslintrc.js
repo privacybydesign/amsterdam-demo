@@ -3,13 +3,14 @@ module.exports = {
     plugins: [
         'babel',
         'typescript',
-        '@typescript-eslint',
+        '@typescript-eslint/eslint-plugin',
         'jest',
         'prettier',
         'jsx-a11y',
         'import',
         'react',
-        'react-hooks'
+        'react-hooks',
+        'testing-library'
     ],
     extends: [
         'eslint:recommended',
@@ -43,6 +44,8 @@ module.exports = {
         'react-hooks/exhaustive-deps': 1,
         'no-unused-vars': 0,
         '@typescript-eslint/no-unused-vars': 0,
-        '@typescript-eslint/no-empty-interface': 0
+        '@typescript-eslint/no-empty-interface': 0,
+        // TODO: Remove this, and fix the issues
+        '@typescript-eslint/no-explicit-any': 0
     }
 };

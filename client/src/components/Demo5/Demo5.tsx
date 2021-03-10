@@ -25,7 +25,7 @@ import Demo5Form, { FormFields } from './Demo5Form';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 
-export interface IProps { }
+export interface IProps {}
 
 export interface IDemo5Query {
     demo?: boolean;
@@ -45,7 +45,9 @@ const Demo5: React.FC<IProps> = () => {
     // Form validator (uncontrolled)
     const validateForm = useCallback(
         (setErrors = true) => {
-            if (!formRef.current) { return }
+            if (!formRef.current) {
+                return;
+            }
 
             const formErrors = [];
 
@@ -373,7 +375,10 @@ const Demo5: React.FC<IProps> = () => {
                                     </StyledMap>
                                 )}
                                 <ReactMarkDown
-                                    source={content.demo5.result.yourReportAfterMap.replace(/\[(.*?)\]/gm, (replaceVars as any))}
+                                    source={content.demo5.result.yourReportAfterMap.replace(
+                                        /\[(.*?)\]/gm,
+                                        replaceVars as any
+                                    )}
                                     renderers={{
                                         heading: AscLocal.H2,
                                         list: AscLocal.UL,
@@ -385,7 +390,7 @@ const Demo5: React.FC<IProps> = () => {
                                     <ReactMarkDown
                                         source={content.demo5.result.yourMobileNumber.replace(
                                             /\[(.*?)\]/gm,
-                                            (replaceVars as any)
+                                            replaceVars as any
                                         )}
                                         renderers={{
                                             heading: AscLocal.H2,
@@ -397,7 +402,10 @@ const Demo5: React.FC<IProps> = () => {
                                 )}
                                 {state.email && (
                                     <ReactMarkDown
-                                        source={content.demo5.result.yourEmail.replace(/\[(.*?)\]/gm, (replaceVars as any))}
+                                        source={content.demo5.result.yourEmail.replace(
+                                            /\[(.*?)\]/gm,
+                                            replaceVars as any
+                                        )}
                                         renderers={{
                                             heading: AscLocal.H2,
                                             list: AscLocal.UL,

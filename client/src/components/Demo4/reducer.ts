@@ -91,7 +91,7 @@ export const reducer = (state: IState, action: IAction): IState => {
         case 'setEmptyVars':
             return {
                 ...state,
-                emptyVars: [...state.emptyVars, (action.payload?.emptyVar as string)]
+                emptyVars: [...state.emptyVars, action.payload?.emptyVar as string]
             };
 
         default:

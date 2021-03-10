@@ -128,7 +128,10 @@ const reduceIRMAResult = (disclosedCredentialSets: IDisclosedCredentialSet[]) =>
     disclosedCredentialSets.forEach((conjunction: IDisclosedCredential[]) => {
         joinedResults = {
             ...joinedResults,
-            ...conjunction.reduce((acc, { id, rawvalue }) => ({ ...acc, [(id as any).match(/[^.]*$/g)[0]]: rawvalue }), {})
+            ...conjunction.reduce(
+                (acc, { id, rawvalue }) => ({ ...acc, [(id as any).match(/[^.]*$/g)[0]]: rawvalue }),
+                {}
+            )
         };
     });
     return joinedResults;

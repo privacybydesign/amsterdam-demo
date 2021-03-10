@@ -21,7 +21,7 @@ import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 
-export interface IProps { }
+export interface IProps {}
 
 interface IState {
     hasResult: boolean;

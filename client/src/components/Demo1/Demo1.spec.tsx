@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, act, fireEvent, RenderResult } from '@testing-library/react';
+import { screen, act, fireEvent } from '@testing-library/react';
 import { setupMocks, wrappedRender } from '@test/utils';
 import Demo1 from '@components/Demo1/Demo1';
 import createIrmaSession from '@services/createIrmaSession';

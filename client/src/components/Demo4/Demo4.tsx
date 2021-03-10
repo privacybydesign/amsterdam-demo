@@ -22,7 +22,7 @@ import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 
-export interface IProps { }
+export interface IProps {}
 
 const OPTIONAL_IRMA_ATTRIBUTES = ['houseNumber'];
 
@@ -32,7 +32,7 @@ const Demo4: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    function replaceVars(str: string, p1: keyof IState["irmaAttributes"]) {
+    function replaceVars(str: string, p1: keyof IState['irmaAttributes']) {
         if (!OPTIONAL_IRMA_ATTRIBUTES.includes(p1)) {
             return state.irmaAttributes[p1] || '-';
         }

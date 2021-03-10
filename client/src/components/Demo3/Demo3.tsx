@@ -20,7 +20,7 @@ import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 
-export interface IProps { }
+export interface IProps {}
 // @todo add error flow with incorrect data
 
 const Demo3: React.FC<IProps> = () => {

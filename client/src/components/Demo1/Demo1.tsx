@@ -20,7 +20,7 @@ import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 
-export interface IProps { }
+export interface IProps {}
 
 const Demo1: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
@@ -39,9 +39,9 @@ const Demo1: React.FC<IProps> = () => {
         if (response) {
             setIsOver18(
                 response['over18'] === 'Yes' ||
-                response['over18'] === 'yes' ||
-                response['over18'] === 'Ja' ||
-                response['over18'] === 'ja'
+                    response['over18'] === 'yes' ||
+                    response['over18'] === 'Ja' ||
+                    response['over18'] === 'ja'
             );
             setHasResult18(true);
             setHasError(false);
@@ -63,9 +63,9 @@ const Demo1: React.FC<IProps> = () => {
         if (response) {
             setIsOver65(
                 (response as any)['over65'] === 'Yes' ||
-                (response as any)['over65'] === 'yes' ||
-                (response as any)['over65'] === 'Ja' ||
-                (response as any)['over65'] === 'ja'
+                    (response as any)['over65'] === 'yes' ||
+                    (response as any)['over65'] === 'Ja' ||
+                    (response as any)['over65'] === 'ja'
             );
             setHasResult65(true);
             setHasError(false);
@@ -81,7 +81,9 @@ const Demo1: React.FC<IProps> = () => {
     // Preload demo images
     useEffect(() => {
         preloadDemoImages(
-            Object.keys(content.responsiveImages.demo1).map((key: any) => (content.responsiveImages.demo1 as any)[key].src)
+            Object.keys(content.responsiveImages.demo1).map(
+                (key: any) => (content.responsiveImages.demo1 as any)[key].src
+            )
         );
     }, []);
 

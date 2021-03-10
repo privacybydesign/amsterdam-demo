@@ -5,7 +5,7 @@ import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { breakpoint, themeColor, themeSpacing } from '@amsterdam/asc-ui';
 import content from '@services/content';
 
-interface IProps { }
+interface IProps {}
 
 const WhyIRMA: React.FC<IProps> = () => {
     return (

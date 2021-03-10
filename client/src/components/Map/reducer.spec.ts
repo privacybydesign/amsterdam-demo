@@ -11,7 +11,10 @@ describe('map reducer', () => {
     });
 
     it('should setAutosuggest', () => {
-        const mockAutosuggest: ILocation[] = [{ id: '1', displayName: '1' }, { id: '2', displayName: '2' }];
+        const mockAutosuggest: ILocation[] = [
+            { id: '1', displayName: '1' },
+            { id: '2', displayName: '2' }
+        ];
         expect(
             reducer(undefined, {
                 type: 'setAutosuggest',

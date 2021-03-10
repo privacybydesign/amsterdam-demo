@@ -11,9 +11,9 @@ interface IState {
 }
 
 export interface ILocation {
-    id?: string,
-    displayName: string,
-    latLng?: LatLngLiteral
+    id?: string;
+    displayName: string;
+    latLng?: LatLngLiteral;
 }
 
 interface IAction {

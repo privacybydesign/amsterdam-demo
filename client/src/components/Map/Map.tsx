@@ -206,7 +206,9 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                                             <UnderlinedLink
                                                 href="#"
                                                 variant="inline"
-                                                onClick={(e: React.SyntheticEvent<LeafletMouseEvent>) => onAutosuggestClick(e, item)}
+                                                onClick={(e: React.SyntheticEvent<LeafletMouseEvent>) =>
+                                                    onAutosuggestClick(e, item)
+                                                }
                                             >
                                                 {item.displayName}
                                             </UnderlinedLink>

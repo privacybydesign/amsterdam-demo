@@ -247,15 +247,15 @@ export const Alert = styled(
 
         * {
             color: ${({ color }) => {
-        switch (color) {
-            default:
-            case AlertColor.PRIMARY:
-            case AlertColor.SUCCESS:
-                return themeColor('tint', 'level1');
-            case AlertColor.ERROR:
-                return themeColor('tint', 'level7');
-        }
-    }};
+                switch (color) {
+                    default:
+                    case AlertColor.PRIMARY:
+                    case AlertColor.SUCCESS:
+                        return themeColor('tint', 'level1');
+                    case AlertColor.ERROR:
+                        return themeColor('tint', 'level7');
+                }
+            }};
         }
     }
 `;
@@ -340,7 +340,7 @@ export const Column = styled(AscColumn)`
     justify-content: flex-start;
 `;
 
-interface IStrongParagraphProps { }
+interface IStrongParagraphProps {}
 
 export const StrongParagraph: React.FC<IStrongParagraphProps> = ({ children }) => (
     <Paragraph strong>{children}</Paragraph>
@@ -372,12 +372,12 @@ export const TextArea = styled(({ showCounter, className, ...props }: AscTextAre
         height: ${({ areaHeight }) => areaHeight || '150'}px;
     }
     .counter {
-    color: ${themeColor('tint', 'level5')};
-}
+        color: ${themeColor('tint', 'level5')};
+    }
 `;
 
 export const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg', alt: '', role: 'presentation' })`
-width: 24px;
+    width: 24px;
 `;
 
 export const ErrorMessage = styled(AscErrorMessage)`

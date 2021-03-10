@@ -19,7 +19,7 @@ import content from '@services/content';
 import { LinkWithChevron } from '@components/LocalAsc/LocalAsc';
 import { SkipLinkFooterEntry } from '@components/SkipLink/SkipLink';
 
-interface IFooterProps { }
+interface IFooterProps {}
 
 const Footer: React.FC<IFooterProps> = () => (
     <StyledASCFooter>

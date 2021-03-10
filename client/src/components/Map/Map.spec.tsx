@@ -20,7 +20,7 @@ describe('Map', () => {
     it('should show autosuggest when input field has changed', async () => {
         await act(async (): Promise<any> => await wrappedRender(<Map updateLocationCallback={jest.fn()} />));
         await act(async () => {
-            await fireEvent.change((screen.queryByTestId('input') as any), { target: { value: 'Dam 1' } });
+            await fireEvent.change(screen.queryByTestId('input') as any, { target: { value: 'Dam 1' } });
         });
         expect(screen.getByTestId('autosuggest')).toMatchSnapshot();
     });
@@ -29,7 +29,7 @@ describe('Map', () => {
         const spy = jest.fn();
         await act(async (): Promise<any> => await wrappedRender(<Map updateLocationCallback={spy} />));
         await act(async () => {
-            await fireEvent.change((screen.queryByTestId('input') as any), { target: { value: 'Dam 1' } });
+            await fireEvent.change(screen.queryByTestId('input') as any, { target: { value: 'Dam 1' } });
         });
 
         const autoSuggestOption = screen.getByText('Dam 1, 1012JS Amsterdam');

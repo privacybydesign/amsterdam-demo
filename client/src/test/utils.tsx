@@ -13,7 +13,7 @@ expect.extend({ toBeVisible, toBeInTheDocument });
 
 export const history = createMemoryHistory();
 
-const providers: React.FC<{}> = ({ children }): ReactElement => (
+const providers: React.FC = ({ children }): ReactElement => (
     <ThemeProvider overrides={theme}>
         <GlobalStyle />
         <Router history={history}>
