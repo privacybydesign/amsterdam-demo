@@ -11,12 +11,6 @@
     "lint-staged": {
         "*.{js,jsx,ts,tsx}": "precommit-fe && yarn precommit-be"
     },
-    "husky": {
-        "hooks": {
-            "pre-commit": "yarn lint-staged",
-            "pre-push": "yarn prepush-fe && yarn be"
-        }
-    },
     "keywords": [],
     "author": "",
     "license": "ISC",
