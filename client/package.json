@@ -88,7 +88,6 @@
     "scripts": {
         "build": "webpack --progress --config webpack.prod.js",
         "format": "prettier --list-different 'src/**/*.{ts,tsx}'",
-        "format:write": "prettier --write 'src/**/*.{ts,tsx}'",
         "lint": "eslint --ext .ts,.tsx src",
         "start": "webpack-dev-server --config webpack.dev.js --color --progress",
         "test": "jest",
