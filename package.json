@@ -6,7 +6,8 @@
         "precommit-fe": "cd client && yarn format && yarn lint",
         "precommit-be": "cd server && yarn format && yarn lint ",
         "prepush-fe": "cd client && yarn format && yarn lint && yarn test",
-        "prepush-be": "cd server && yarn format && yarn lint && yarn test"
+        "prepush-be": "cd server && yarn format && yarn lint && yarn test",
+        "prepare": "husky install"
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx}": "precommit-fe && yarn precommit-be"

@@ -1,2 +1,0 @@
-yarn lint-staged
-exit 1 # Commit will be aborted
