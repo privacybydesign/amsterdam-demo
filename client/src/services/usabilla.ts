@@ -2,6 +2,7 @@ import '@services/lightning.js';
 import { isMobile } from './createIrmaSession';
 
 let usabilla_live: any;
+const test = 'test';
 
 const initUsabilla = (): void => {
     if (isMobile()) {
