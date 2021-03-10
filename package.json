@@ -1,0 +1,23 @@
+{
+    "name": "di-demo",
+    "version": "1.0.0",
+    "description": "IRMA Demo repo",
+    "scripts": {
+        "fe": "cd client && yarn format && yarn lint && yarn test",
+        "be": "cd server && yarn format && yarn lint && yarn test"
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": "yarn fe && yarn be"
+    },
+    "husky": {
+        "hooks": {
+            "pre-push": "yarn lint-staged"
+        }
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "husky": "^5.1.3"
+    }
+}
