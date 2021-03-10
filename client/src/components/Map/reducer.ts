@@ -11,9 +11,9 @@ interface IState {
 }
 
 export interface ILocation {
-    id: string,
+    id?: string,
     displayName: string,
-    latLng: LatLngLiteral
+    latLng?: LatLngLiteral
 }
 
 interface IAction {
@@ -26,12 +26,6 @@ interface IAction {
         location?: ILocation | null;
         showAutosuggest?: boolean;
     };
-}
-
-export interface Location {
-    id?: string;
-    weergavenaam?: string;
-    latLng?: LatLngLiteral;
 }
 
 export const initialState: IState = {

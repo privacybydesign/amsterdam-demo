@@ -1,3 +1,4 @@
+require('dotenv').config();
 import express, { Request, Response, NextFunction } from 'express';
 import session, { SessionOptions } from 'express-session';
 const IrmaBackend = require('@privacybydesign/irma-backend');

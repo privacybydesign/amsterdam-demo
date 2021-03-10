@@ -5,7 +5,7 @@
 import visit from 'unist-util-visit';
 import toString from 'mdast-util-to-string';
 
-const isdeflist = (node, i, parent) =>
+const isdeflist = (node: any, i: number, parent: any) =>
     i > 0 &&
     /^:\s/.test(toString(node)) &&
     !/^:\s/.test(toString(parent.children[i - 1])) &&
@@ -13,14 +13,14 @@ const isdeflist = (node, i, parent) =>
     parent.children[i - 1].type === 'paragraph';
 
 export default () => (tree: unknown): void => {
-    visit(tree, ['paragraph'], (node, i, parent) => {
+    visit(tree, ['paragraph'], (node: any, i: number, parent: any) => {
         const isdef = isdeflist(node, i, parent);
         if (!isdef) {
             return;
         }
 
         // Remove the ": " that we use to identify a deflist to begin with.
-        visit(node, n => {
+        visit(node, (n: any) => {
             if (typeof n.value !== 'undefined') {
                 n.value = n.value.replace(/^:\s+/, '');
             }

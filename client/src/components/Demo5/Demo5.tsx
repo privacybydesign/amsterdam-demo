@@ -21,7 +21,6 @@ import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import { reducer, initialState, IState } from './reducer';
-import { Location } from '@components/Map/reducer';
 import Demo5Form, { FormFields } from './Demo5Form';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';

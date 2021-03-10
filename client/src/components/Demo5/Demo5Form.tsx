@@ -5,7 +5,7 @@ import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { themeSpacing, RadioGroup, Label, Radio } from '@amsterdam/asc-ui';
 import MapComponent from '@components/Map/Map';
-import { Location } from '@components/Map/reducer';
+import { ILocation } from '@components/Map/reducer';
 
 export enum FormFields {
     LOCATION = 'location',
@@ -18,7 +18,7 @@ export interface IProps {
     errors?: string[];
     forwardRef: React.MutableRefObject<HTMLFormElement>;
     validateForm: (setErrors: boolean) => unknown;
-    updateLocationCallback: (location: Location) => void;
+    updateLocationCallback: (location: ILocation) => void;
 }
 
 const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateLocationCallback }) => {
