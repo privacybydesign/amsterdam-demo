@@ -3,6 +3,15 @@
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
+    "scripts": {
+        "build": "webpack --progress --config webpack.prod.js",
+        "format": "prettier --write 'src/**/*.{ts,js}'",
+        "lint": "eslint --fix",
+        "start": "webpack-dev-server --config webpack.dev.js --color --progress",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage"
+    },
     "dependencies": {
         "@amsterdam/arm-core": "^0.4.0",
         "@amsterdam/asc-assets": "^0.26.0",
@@ -85,14 +94,5 @@
         "webpack-merge": "^4.2.2",
         "webpack-node-externals": "^1.7.2",
         "write-file-webpack-plugin": "^4.5.1"
-    },
-    "scripts": {
-        "build": "webpack --progress --config webpack.prod.js",
-        "format": "prettier --write",
-        "lint": "eslint --fix",
-        "start": "webpack-dev-server --config webpack.dev.js --color --progress",
-        "test": "jest",
-        "test:watch": "jest --watch",
-        "test:coverage": "jest --coverage"
     }
 }

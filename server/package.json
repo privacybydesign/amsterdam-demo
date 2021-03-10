@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon src/index.ts",
     "build": "tsc --build ./",
-    "format": "prettier --write",
+    "format": "prettier --write 'src/**/*.{ts,js}'",
     "lint": "eslint --fix",
     "test": "echo \"Error: no test specified\" && exit 0",
     "test:watch": "jest --watch",
