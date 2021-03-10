@@ -3,15 +3,18 @@
     "version": "1.0.0",
     "description": "IRMA Demo repo",
     "scripts": {
-        "fe": "cd client && yarn format && yarn lint && yarn test",
-        "be": "cd server && yarn format && yarn lint && yarn test"
+        "precommit-fe": "cd client && yarn format && yarn lint",
+        "precommit-be": "cd server && yarn format && yarn lint ",
+        "prepush-fe": "cd client && yarn format && yarn lint && yarn test",
+        "prepush-be": "cd server && yarn format && yarn lint && yarn test"
     },
     "lint-staged": {
-        "*.{js,jsx,ts,tsx}": "yarn fe && yarn be"
+        "*.{js,jsx,ts,tsx}": "precommit-fe && yarn precommit-be"
     },
     "husky": {
         "hooks": {
-            "pre-push": "yarn lint-staged"
+            "pre-commit": "yarn lint-staged",
+            "pre-push": "yarn prepush-fe && yarn be"
         }
     },
     "keywords": [],
