@@ -6,17 +6,17 @@ import { processDemoRequest } from './index';
 
 // Credentials used in demo
 const demoCredentials: IDemoCredentials = {
-    DEMO: [[['irma-demo.RU.idinData.zipcode', 'irma-demo.gemeente.personalData.over18']]],
-    PRODUCTION: [[['pbdf.gemeente.address.zipcode', 'pbdf.gemeente.personalData.over18']]],
+    DEMO: [[['irma-demo.gemeente.personalData.fullname', 'irma-demo.gemeente.personalData.bsn']]],
+    PRODUCTION: [[['pbdf.gemeente.personalData.fullname', 'pbdf.gemeente.personalData.bsn']]],
 };
 
 // Define routes for demo
 export default (router: Router) => {
     router.get(
-        '/demo2',
+        '/demo3',
         cors(),
         async (req: Request, res: Response, next: NextFunction) => {
-            logger.info(`Incoming request for demo 2`);
+            logger.info(`Incoming request for demo 3`);
             return processDemoRequest(demoCredentials, req, res, next);
         }
     );

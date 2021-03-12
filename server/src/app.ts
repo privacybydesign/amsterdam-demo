@@ -25,7 +25,6 @@ init();
 // MOVE TO BUSINESS LOGIC OF DEMO's
 const CREDENTIALS_TO_REQUEST = {
     DEMO: {
-        DEMO3: [[['irma-demo.gemeente.personalData.fullname', 'irma-demo.gemeente.personalData.bsn']]],
         DEMO4: [
             [
                 [
@@ -52,7 +51,6 @@ const CREDENTIALS_TO_REQUEST = {
         }
     },
     PRODUCTION: {
-        DEMO3: [[['pbdf.gemeente.personalData.fullname', 'pbdf.gemeente.personalData.bsn']]],
         DEMO4: [
             [
                 [
@@ -82,8 +80,6 @@ const CREDENTIALS_TO_REQUEST = {
 
 
 // MOVE ROUTES
-
-app.get('/getsession/demo3', cors(), irmaDiscloseDemo3);
 app.get('/getsession/demo4', cors(), irmaDiscloseDemo4);
 app.get('/getsession/demo5', cors(), irmaDiscloseDemo5);
 app.get('/config', cors(), getConfig);
@@ -91,10 +87,6 @@ app.get('/result', cors(), getIrmaSessionResult);
 
 /// MOVE THESE
 
-
-async function irmaDiscloseDemo3(req: Request, res: Response) {
-    return irmaDiscloseRequest(req, res, getCredentialSourceFromRequest(req).DEMO3);
-}
 async function irmaDiscloseDemo4(req: Request, res: Response) {
     return irmaDiscloseRequest(req, res, getCredentialSourceFromRequest(req).DEMO4);
 }

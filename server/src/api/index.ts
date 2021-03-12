@@ -5,11 +5,13 @@ import logger from '@loaders/logger';
 import IrmaService from '@services/IrmaService';
 import demo1 from './demo1';
 import demo2 from './demo2';
+import demo3 from './demo3';
 
 export default () => {
     const router = Router();
     demo1(router);
     demo2(router);
+    demo3(router);
     return router;
 };
 

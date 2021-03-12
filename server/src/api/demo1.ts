@@ -33,9 +33,9 @@ const demoCredentials65: IDemoCredentials = {
     }
 }
 
-// Define routes for demo 1
+// Define routes for demo
 export default (router: Router) => {
-    // Demo 1 - 18+
+    // 18+
     router.get(
         '/demo1/18',
         cors(),
@@ -45,7 +45,7 @@ export default (router: Router) => {
         }
     );
 
-    // Demo 1 - 65+
+    // 65+
     router.get(
         '/demo1/65',
         cors(),
