@@ -1,5 +1,4 @@
 import dotenv from 'dotenv';
-import { Container } from 'typedi';
 import configDev from './config.dev';
 import configProd from './config.prod';
 
@@ -21,4 +20,7 @@ export interface IConfig {
     environment?: string;
 }
 
-export const config: IConfig = process.env.NODE_ENV === 'development' ? configDev : configProd;
+const configToUse = process.env.NODE_ENV === 'development' ? configDev : configProd;
+configToUse.environment = process.env.NODE_ENV;
+
+export const config: IConfig = configToUse;

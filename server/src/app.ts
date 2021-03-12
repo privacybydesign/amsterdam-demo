@@ -23,15 +23,9 @@ init();
 
 
 // MOVE ROUTES
-app.get('/config', cors(), getConfig);
 app.get('/result', cors(), getIrmaSessionResult);
 
 /// MOVE THESE
-
-const getConfig = async (req: Request, res: Response) => {
-    config.environment = process.env.NODE_ENV;
-    res.json(config);
-};
 
 const getIrmaSessionResult = async (req: Request, res: Response) => {
     try {
