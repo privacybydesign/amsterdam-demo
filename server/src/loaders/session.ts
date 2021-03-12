@@ -1,4 +1,3 @@
-import LoggerInstance from '@loaders/logger';
 import logger from '@loaders/logger';
 import session, { SessionOptions } from 'express-session';
 import { ILoaderArgs } from '.';
