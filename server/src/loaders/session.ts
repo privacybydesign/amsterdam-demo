@@ -1,4 +1,4 @@
-import logger from '@loaders/logger';
+import Logger from '@loaders/logger';
 import session, { SessionOptions } from 'express-session';
 import { ILoaderArgs } from '.';
 
@@ -25,5 +25,5 @@ export default ({ app, config }: ILoaderArgs) => {
     }
 
     app.use(session(sessionOptions));
-    logger.info('Session management initialized.');
+    Logger.info('Session management initialized.');
 };

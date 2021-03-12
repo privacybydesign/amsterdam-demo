@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
-import logger from '@loaders/logger';
+import Logger from '@loaders/logger';
 import { IDemoCredentials } from 'types/index';
 import { processDemoRequest } from './index';
 
@@ -16,7 +16,7 @@ export default (router: Router) => {
         '/demo2',
         cors(),
         async (req: Request, res: Response, next: NextFunction) => {
-            logger.info(`Incoming request for demo 2`);
+            Logger.info(`Incoming request for demo 2`);
             return processDemoRequest(demoCredentials, req, res, next);
         }
     );
