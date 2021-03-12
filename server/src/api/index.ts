@@ -3,19 +3,23 @@ import { Container } from 'typedi';
 import { CredentialSet, CredentialSetFunction, IDemoCredentials } from 'types';
 import Logger from '@loaders/logger';
 import IrmaService from '@services/IrmaService';
+import config from './config';
 import demo1 from './demo1';
 import demo2 from './demo2';
 import demo3 from './demo3';
 import demo4 from './demo4';
 import demo5 from './demo5';
+import result from './result';
 
 export default () => {
     const router = Router();
+    config(router);
     demo1(router);
     demo2(router);
     demo3(router);
     demo4(router);
     demo5(router);
+    result(router);
     return router;
 };
 

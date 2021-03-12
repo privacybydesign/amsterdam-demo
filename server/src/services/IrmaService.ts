@@ -40,4 +40,20 @@ export default class {
         // Return sessionPtr (QR Code) and token
         return await this.irmaBackend.startSession(jwt);
     };
+
+    public requestSessionResult = async (token: string): Promise<any> => {
+        try {
+            const result = await this.irmaBackend.getSessionResult(token);
+
+            // Remove the IRMA and backend session if status is DONE
+            if (result.status === 'DONE') {
+                await this.irmaBackend.cancelSession(token);
+            }
+
+            return result;
+        } catch (e) {
+            // TODO: Fix error handling
+            throw new Error(e);
+        }
+    }
 }

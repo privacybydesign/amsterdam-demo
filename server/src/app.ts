@@ -17,31 +17,3 @@ async function init() {
 }
 
 init();
-
-/*
-
-
-
-// MOVE ROUTES
-app.get('/result', cors(), getIrmaSessionResult);
-
-/// MOVE THESE
-
-const getIrmaSessionResult = async (req: Request, res: Response) => {
-    try {
-        const result = await irmaBackend.getSessionResult(req.session!.token);
-
-        // Remove the IRMA and backend session if status is DONE
-        if (result.status === 'DONE') {
-            await irmaBackend.cancelSession(req.session!.token);
-            (req.session!.destroy as any)();
-        }
-
-        res.json(result);
-    } catch (e) {
-        console.log('irma.getSessionResuilt error:', JSON.stringify(e));
-        error(e, res);
-    }
-};
-
-*/

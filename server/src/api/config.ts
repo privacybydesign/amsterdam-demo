@@ -3,11 +3,6 @@ import cors from 'cors';
 import Logger from '@loaders/logger';
 import { config } from '@config/index';
 
-const getConfig = async (req: Request, res: Response) => {
-    config.environment = process.env.NODE_ENV;
-    res.json(config);
-};
-
 // Define routes for demo
 export default (router: Router) => {
     router.get(
