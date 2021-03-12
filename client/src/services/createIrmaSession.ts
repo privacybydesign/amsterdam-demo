@@ -79,7 +79,7 @@ const createIrmaSession = async (
         callBackMapping,
 
         session: {
-            url: `/getsession/${dataType}${queryString}`,
+            url: `/${dataType}${queryString}`,
 
             start: {
                 url: (o: any) => `${o.url}`,

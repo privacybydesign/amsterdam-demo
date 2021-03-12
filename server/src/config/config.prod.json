@@ -1,6 +1,0 @@
-{
-    "requestorname": "irma-demo",
-    "irma": "https://id.amsterdam.nl/irma",
-    "docroot": "../client",
-    "port": 8000
-}

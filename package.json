@@ -10,7 +10,7 @@
         "prepare": "husky install"
     },
     "lint-staged": {
-        "*.{js,jsx,ts,tsx}": "precommit-fe && yarn precommit-be"
+        "*.{js,jsx,ts,tsx}": "echo 'No precommit'"
     },
     "keywords": [],
     "author": "",
