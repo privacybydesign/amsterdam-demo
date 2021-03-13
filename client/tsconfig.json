@@ -1,10 +1,10 @@
 {
     "include": [
-        "./src/**/*"
+        "src/**/*"
     ],
     "exclude": [
-        "./node_modules/**/*",
-        "./dist/**/*"
+        "node_modules/**/*",
+        "dist/**/*"
     ],
     "compilerOptions": {
         "jsx": "react",
@@ -25,6 +25,7 @@
         "noUnusedParameters": false,
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
         "importHelpers": true,
         "incremental": true,
         "watch": true,
