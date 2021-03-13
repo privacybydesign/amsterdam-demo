@@ -55,5 +55,5 @@ export default class {
             // TODO: Fix error handling
             throw new Error(e);
         }
-    }
+    };
 }

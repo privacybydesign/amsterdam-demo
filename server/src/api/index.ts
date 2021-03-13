@@ -42,7 +42,13 @@ export const selectCredentialsToRequest = (
     }
 };
 
-export const processDemoRequest = async (demoCredentials: IDemoCredentials, req: Request, res: Response, next: NextFunction, ...args: any[]) => {
+export const processDemoRequest = async (
+    demoCredentials: IDemoCredentials,
+    req: Request,
+    res: Response,
+    next: NextFunction,
+    ...args: any[]
+) => {
     try {
         const irmaServiceInstance = Container.get(IrmaService);
         const credentialsToRequest = selectCredentialsToRequest(req, demoCredentials, ...args);
@@ -53,7 +59,6 @@ export const processDemoRequest = async (demoCredentials: IDemoCredentials, req:
 
         // Return QR Code
         return res.status(200).json(sessionPtr);
-
     } catch (e) {
         Logger.error('🔥 error: %o', e);
         return next(e);

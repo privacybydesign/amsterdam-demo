@@ -10,10 +10,7 @@ const demoCredentials18: IDemoCredentials = {
     PRODUCTION: () => {
         const credentials = [[['pbdf.gemeente.personalData.over18']]];
         if (process.env.NODE_ENV !== 'production') {
-            credentials[0].unshift(
-                ['pbdf.pilot-amsterdam.passport.over18'],
-                ['pbdf.pilot-amsterdam.idcard.over18']
-            );
+            credentials[0].unshift(['pbdf.pilot-amsterdam.passport.over18'], ['pbdf.pilot-amsterdam.idcard.over18']);
         }
         return credentials;
     }
@@ -24,34 +21,23 @@ const demoCredentials65: IDemoCredentials = {
     PRODUCTION: () => {
         const credentials = [[['pbdf.gemeente.personalData.over65']]];
         if (process.env.NODE_ENV !== 'production') {
-            credentials[0].unshift(
-                ['pbdf.pilot-amsterdam.passport.over65'],
-                ['pbdf.pilot-amsterdam.idcard.over65']
-            );
+            credentials[0].unshift(['pbdf.pilot-amsterdam.passport.over65'], ['pbdf.pilot-amsterdam.idcard.over65']);
         }
         return credentials;
     }
-}
+};
 
 // Define routes for demo
 export default (router: Router) => {
     // 18+
-    router.get(
-        '/demo1/18',
-        cors(),
-        async (req: Request, res: Response, next: NextFunction) => {
-            Logger.info(`Incoming request for demo 1 - 18+`);
-            return processDemoRequest(demoCredentials18, req, res, next);
-        }
-    );
+    router.get('/demo1/18', cors(), async (req: Request, res: Response, next: NextFunction) => {
+        Logger.info(`Incoming request for demo 1 - 18+`);
+        return processDemoRequest(demoCredentials18, req, res, next);
+    });
 
     // 65+
-    router.get(
-        '/demo1/65',
-        cors(),
-        async (req: Request, res: Response, next: NextFunction) => {
-            Logger.info(`Incoming request for demo 1 - 65+`);
-            return processDemoRequest(demoCredentials65, req, res, next);
-        }
-    );
+    router.get('/demo1/65', cors(), async (req: Request, res: Response, next: NextFunction) => {
+        Logger.info(`Incoming request for demo 1 - 65+`);
+        return processDemoRequest(demoCredentials65, req, res, next);
+    });
 };

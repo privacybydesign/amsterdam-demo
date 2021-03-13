@@ -31,17 +31,13 @@ const demoCredentials: IDemoCredentials = {
         ],
         [['pbdf.pbdf.mobilenumber.mobilenumber']],
         [['pbdf.pbdf.email.email'], ['pbdf.sidn-pbdf.email.email']]
-    ],
+    ]
 };
 
 // Define routes for demo
 export default (router: Router) => {
-    router.get(
-        '/demo4',
-        cors(),
-        async (req: Request, res: Response, next: NextFunction) => {
-            Logger.info(`Incoming request for demo 4`);
-            return processDemoRequest(demoCredentials, req, res, next);
-        }
-    );
+    router.get('/demo4', cors(), async (req: Request, res: Response, next: NextFunction) => {
+        Logger.info(`Incoming request for demo 4`);
+        return processDemoRequest(demoCredentials, req, res, next);
+    });
 };
