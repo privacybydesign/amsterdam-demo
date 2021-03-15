@@ -25,6 +25,7 @@
     "express-session": "^1.17.1",
     "http-proxy-middleware": "^0.20.0",
     "pg-promise": "^8.7.2",
+    "tslib": "^2.1.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
