@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { Container } from 'typedi';
-import { CredentialSet, CredentialSetFunction, IDemoCredentials } from 'types';
+import { CredentialSet, CredentialSetFunction, IDemoCredentials } from '@typedefs/index';
 import Logger from '@loaders/logger';
 import IrmaService from '@services/IrmaService';
 import config from './config';

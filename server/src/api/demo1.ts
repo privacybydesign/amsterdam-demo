@@ -1,7 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import Logger from '@loaders/logger';
-import { IDemoCredentials } from 'types/index';
+import { IDemoCredentials } from '@typedefs/index';
 import { processDemoRequest } from './index';
 
 // Credentials used in demo
