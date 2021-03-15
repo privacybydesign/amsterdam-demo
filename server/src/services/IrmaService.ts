@@ -1,7 +1,6 @@
-import { Request } from 'express';
 import { Service } from 'typedi';
 import { config } from '@config/index';
-import { CredentialSet, IDemoCredentials } from 'types';
+import { CredentialSet } from '@typedefs/index';
 import Logger from '@loaders/logger';
 
 // Load IRMA libraries

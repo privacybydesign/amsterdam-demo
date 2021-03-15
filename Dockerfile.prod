@@ -9,12 +9,9 @@ ENV NODE_EXTRA_CA_CERTS=/adp_rootca.crt
 COPY adp_rootca.crt /adp_rootca.crt
 
 WORKDIR /app
-COPY ./client/package.json ./
-COPY ./client/yarn.lock ./
+COPY ./client ./
 
 RUN yarn install
-
-COPY ./client ./
 RUN yarn build
 
 # Build server backend
@@ -28,20 +25,24 @@ ENV NODE_EXTRA_CA_CERTS=/adp_rootca.crt
 COPY adp_rootca.crt /adp_rootca.crt
 
 WORKDIR /app
+
+## Compile typescript to js in /dist
 COPY ./server/package.json ./
 COPY ./server/yarn.lock ./
-
-RUN yarn install
-
-COPY ./server ./
+COPY ./server/tsconfig.json ./
+COPY ./server/src ./src
+RUN yarn install 
 RUN yarn build
 
+## Install production modules in /dist
+RUN yarn install --production --modules-folder ./dist/node_modules
+
+## Copy static assets in /dist
 COPY ./server/static ./dist/static
 
 # Build server and include frontend (docroot is set to ../client in config.json)
 FROM node:14.4-alpine3.12
 
-RUN adduser -D irma
 
 ENV NODE_EXTRA_CA_CERTS=/adp_rootca.crt
 COPY adp_rootca.crt /adp_rootca.crt
@@ -49,8 +50,10 @@ COPY adp_rootca.crt /adp_rootca.crt
 COPY --from=be-builder /app/dist/. /server
 COPY --from=fe-builder /app/dist/. /client
 
-USER irma
+RUN npm install pm2 -g
+CMD ["pm2-runtime","./server/app.js"]
 
-CMD ["npx", "nodemon", "index.js", "--verbose"]
+RUN adduser -D irma
+USER irma
 
 EXPOSE 8000
