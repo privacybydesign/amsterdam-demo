@@ -21,8 +21,8 @@ Open ```/server/config/config.json```.
     /* Port number the Node server listens to */
     "port": 8000,
 
-    /* Document root of site to serve, only for demo */
-    "docroot": "../openstad",
+    /* Document root of frontend to serve, only for demo */
+    "docroot": "../client",
 }
 ```
 ## Run with docker-copmose
