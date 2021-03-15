@@ -51,6 +51,6 @@ COPY --from=fe-builder /app/dist/. /client
 
 USER irma
 
-CMD ["npx", "nodemon", "index.js", "--verbose"]
+CMD ["npx", "nodemon", "./server/app.js", "--verbose"]
 
 EXPOSE 8000
