@@ -157,8 +157,8 @@ export const AccordionHeading = styled(Heading).attrs({ as: 'h4' })`
 `;
 
 interface IAlertProps {
-    className: string;
-    children: React.ReactNode;
+    className?: string;
+    children?: React.ReactNode;
     color?: AlertColor;
     icon?: React.ReactNode;
     iconUrl?: string;
@@ -233,7 +233,7 @@ export const Alert = styled(
 
     .alert-content {
         display: flex;
-        align-items: ${({ iconSize }) => (iconSize > 18 ? 'flex-start' : 'baseline')};
+        align-items: ${({ iconSize }) => (iconSize && iconSize > 18 ? 'flex-start' : 'baseline')};
 
         h2 {
             font-size: 18px;
@@ -332,7 +332,7 @@ export const InlineLink = styled(UnderlinedLink).attrs({ inList: true })``;
 
 export const Row = styled(AscRow)`
     padding: 0;
-    margin: ${({ noMargin }) => (noMargin ? '0' : '0 auto')};
+    margin: ${({ hasMargin }) => (hasMargin ? '0' : '0 auto')};
 `;
 
 export const Column = styled(AscColumn)`
@@ -347,8 +347,8 @@ export const StrongParagraph: React.FC<IStrongParagraphProps> = ({ children }) =
 );
 
 interface ITextAreaProps {
-    areaHeight: number;
-    showCounter: boolean;
+    areaHeight?: number;
+    showCounter?: boolean;
 }
 
 export const TextArea = styled(({ showCounter, className, ...props }: AscTextAreaProps & ITextAreaProps) => {
@@ -381,5 +381,5 @@ export const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg', alt
 `;
 
 export const ErrorMessage = styled(AscErrorMessage)`
-    margin-top: ${themeSpacing(2)};
+margin - top: ${themeSpacing(2)};
 `;

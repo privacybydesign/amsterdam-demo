@@ -20,8 +20,7 @@ import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
-import { reducer, initialState } from './reducer';
-import { Location } from '@components/Map/reducer';
+import { reducer, initialState, IState } from './reducer';
 import Demo5Form, { FormFields } from './Demo5Form';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
@@ -39,13 +38,17 @@ const Demo5: React.FC<IProps> = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const formRef = useRef<HTMLFormElement>(null);
 
-    function replaceVars(str, p1) {
+    function replaceVars(str: string, p1: keyof IState) {
         return state[p1] || null;
     }
 
     // Form validator (uncontrolled)
     const validateForm = useCallback(
         (setErrors = true) => {
+            if (!formRef.current) {
+                return;
+            }
+
             const formErrors = [];
 
             // TODO: Include location
@@ -60,7 +63,7 @@ const Demo5: React.FC<IProps> = () => {
             }
 
             let optionPhone;
-            const optionPhoneChecked: HTMLInputElement = formRef.current.querySelector(
+            const optionPhoneChecked: HTMLInputElement | null = formRef.current.querySelector(
                 `input[name=${FormFields.OPTION_PHONE}]:checked`
             );
             if (!optionPhoneChecked) {
@@ -70,7 +73,7 @@ const Demo5: React.FC<IProps> = () => {
             }
 
             let optionEmail;
-            const optionEmailChecked: HTMLInputElement = formRef.current.querySelector(
+            const optionEmailChecked: HTMLInputElement | null = formRef.current.querySelector(
                 `input[name=${FormFields.OPTION_EMAIL}]:checked`
             );
             if (!optionEmailChecked) {
@@ -88,7 +91,7 @@ const Demo5: React.FC<IProps> = () => {
         [state.location]
     );
 
-    const updateLocationCallback = useCallback((location: Location) => {
+    const updateLocationCallback = useCallback((location: any) => {
         dispatch({
             type: 'setLocation',
             payload: {
@@ -99,15 +102,15 @@ const Demo5: React.FC<IProps> = () => {
 
     // IRMA session
     const getSession = async () => {
-        let response = null;
+        let response: any = null;
         const validatedForm = validateForm();
 
-        if (!validatedForm.errors.length) {
+        if (validatedForm !== undefined && !validatedForm.errors.length) {
             // Only use IRMA flow when the user selected the Yes option phone, email or both
             if (validatedForm.values.optionPhone === true || validatedForm.values.optionEmail === true) {
                 const query: IDemo5Query = {
-                    phone: validatedForm.values.optionPhone,
-                    email: validatedForm.values.optionEmail
+                    phone: Boolean(validatedForm.values.optionPhone),
+                    email: Boolean(validatedForm.values.optionEmail)
                 };
                 if (credentialSource === CredentialSource.DEMO) {
                     query.demo = true;
@@ -143,7 +146,7 @@ const Demo5: React.FC<IProps> = () => {
     // Preload demo images
     useEffect(() => {
         preloadDemoImages(
-            Object.keys(content.responsiveImages.demo5).map(key => content.responsiveImages.demo5[key].src)
+            Object.keys(content.responsiveImages.demo5).map(key => (content.responsiveImages.demo5 as any)[key].src)
         );
     }, []);
 
@@ -182,12 +185,12 @@ const Demo5: React.FC<IProps> = () => {
                         icon={<Checkmark />}
                         iconSize={14}
                         content={
-                            content.demo5.proven[
+                            (content.demo5.proven as any)[
                                 `alert${state.mobilenumber ? 'Phone' : ''}${state.email ? 'Email' : ''}`
                             ].body
                         }
                         heading={
-                            content.demo5.proven[
+                            (content.demo5.proven as any)[
                                 `alert${state.mobilenumber ? 'Phone' : ''}${state.email ? 'Email' : ''}`
                             ].title
                         }
@@ -219,7 +222,7 @@ const Demo5: React.FC<IProps> = () => {
             </ContentBlock>
             <ResponsiveImage filename={headerImg.filename} alt={headerImg.alt} />
             {!state.hasResult && !state.hasError && (
-                <AscLocal.Row noMargin>
+                <AscLocal.Row hasMargin={false}>
                     <AscLocal.Column
                         span={{
                             small: 1,
@@ -268,7 +271,7 @@ const Demo5: React.FC<IProps> = () => {
                             <section>
                                 <Demo5Form
                                     errors={state.formErrors}
-                                    forwardRef={formRef}
+                                    forwardRef={formRef as any}
                                     validateForm={validateForm}
                                     updateLocationCallback={updateLocationCallback}
                                 />
@@ -342,7 +345,7 @@ const Demo5: React.FC<IProps> = () => {
                                 <ReactMarkDown
                                     source={content.demo5.result.yourReportBeforeMap.replace(
                                         /\[location\]/gm,
-                                        state.location.weergavenaam
+                                        (state.location as any).displayName
                                     )}
                                     renderers={{
                                         heading: AscLocal.H2,
@@ -351,7 +354,7 @@ const Demo5: React.FC<IProps> = () => {
                                     }}
                                     plugins={[deflist]}
                                 />
-                                {state.location.latLng && (
+                                {(state.location as any).latLng && (
                                     <StyledMap
                                         options={{
                                             crs: getCrsRd(),
@@ -359,7 +362,7 @@ const Demo5: React.FC<IProps> = () => {
                                             zoomControl: false,
                                             boxZoom: false,
                                             dragging: false,
-                                            center: state.location.latLng,
+                                            center: (state.location as any).latLng,
                                             zoom: 13,
                                             keyboard: false,
                                             tap: false,
@@ -367,12 +370,15 @@ const Demo5: React.FC<IProps> = () => {
                                             touchZoom: false
                                         }}
                                     >
-                                        <Marker latLng={state.location.latLng} />
+                                        <Marker latLng={(state.location as any).latLng} />
                                         <BaseLayer />
                                     </StyledMap>
                                 )}
                                 <ReactMarkDown
-                                    source={content.demo5.result.yourReportAfterMap.replace(/\[(.*?)\]/gm, replaceVars)}
+                                    source={content.demo5.result.yourReportAfterMap.replace(
+                                        /\[(.*?)\]/gm,
+                                        replaceVars as any
+                                    )}
                                     renderers={{
                                         heading: AscLocal.H2,
                                         list: AscLocal.UL,
@@ -384,7 +390,7 @@ const Demo5: React.FC<IProps> = () => {
                                     <ReactMarkDown
                                         source={content.demo5.result.yourMobileNumber.replace(
                                             /\[(.*?)\]/gm,
-                                            replaceVars
+                                            replaceVars as any
                                         )}
                                         renderers={{
                                             heading: AscLocal.H2,
@@ -396,7 +402,10 @@ const Demo5: React.FC<IProps> = () => {
                                 )}
                                 {state.email && (
                                     <ReactMarkDown
-                                        source={content.demo5.result.yourEmail.replace(/\[(.*?)\]/gm, replaceVars)}
+                                        source={content.demo5.result.yourEmail.replace(
+                                            /\[(.*?)\]/gm,
+                                            replaceVars as any
+                                        )}
                                         renderers={{
                                             heading: AscLocal.H2,
                                             list: AscLocal.UL,

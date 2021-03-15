@@ -31,7 +31,7 @@ const Demo3: React.FC<IProps> = () => {
     const [name, setName] = useState<string>('');
 
     const getSession = async () => {
-        const response = await createIrmaSession(
+        const response: any = await createIrmaSession(
             'demo3',
             'irma-qr',
             credentialSource === CredentialSource.DEMO && { demo: true }
@@ -58,7 +58,7 @@ const Demo3: React.FC<IProps> = () => {
     // Preload demo images
     useEffect(() => {
         preloadDemoImages(
-            Object.keys(content.responsiveImages.demo3).map(key => content.responsiveImages.demo3[key].src)
+            Object.keys(content.responsiveImages.demo3).map(key => (content.responsiveImages.demo3 as any)[key].src)
         );
     }, []);
 
@@ -113,7 +113,7 @@ const Demo3: React.FC<IProps> = () => {
             <ResponsiveImage filename={headerImg.filename} alt={headerImg.alt} />
 
             {!hasResult ? (
-                <AscLocal.Row noMargin>
+                <AscLocal.Row hasMargin={false}>
                     <AscLocal.Column
                         span={{
                             small: 1,

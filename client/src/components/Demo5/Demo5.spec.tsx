@@ -13,18 +13,18 @@ jest.mock('@services/createIrmaSession');
 describe('Demo5', () => {
     it('should render the initial header image', async () => {
         // Render demo 4
-        await act(async () => await wrappedRender(<Demo5 />));
+        await act(async (): Promise<any> => await wrappedRender(<Demo5 />));
         const headerImage: HTMLElement = await screen.findByTestId('headerImage');
         expect(headerImage).toMatchSnapshot();
     });
 
     it('should fail to start the IRMA flow when form is not filled', async () => {
         // Render demo 4data-testid={'noIRMAbutton'}
-        await act(async () => await wrappedRender(<Demo5 />));
+        await act(async (): Promise<any> => await wrappedRender(<Demo5 />));
 
         // Trigger IRMA flow
         const QRCodeButton = screen.getByTestId('qrCodeButton');
-        await act(async () => await fireEvent.click(QRCodeButton));
+        await act(async (): Promise<any> => await fireEvent.click(QRCodeButton));
 
         // Expect modal not to be shown
         const QRCodeModal = screen.queryByTestId('qrCodeModal');
@@ -40,11 +40,11 @@ describe('Demo5', () => {
         });
 
         // Render demo 5
-        await act(async () => await wrappedRender(<Demo5 />));
+        await act(async (): Promise<any> => await wrappedRender(<Demo5 />));
 
         // Fill in form
         const map = screen.getByTestId('map');
-        await act(async () => await fireEvent.click(map));
+        await act(async (): Promise<any> => await fireEvent.click(map));
 
         const report = screen.getByTestId('report');
         act(() => {
@@ -63,7 +63,7 @@ describe('Demo5', () => {
 
         // Trigger IRMA flow
         const QRCodeButton = screen.getByTestId('qrCodeButton');
-        await act(async () => await fireEvent.click(QRCodeButton));
+        await act(async (): Promise<any> => await fireEvent.click(QRCodeButton));
 
         // Wait for update and check if correct alert is shown
         const hasResultAlert = screen.getByTestId('hasResultAlert');
@@ -80,11 +80,11 @@ describe('Demo5', () => {
 
     it('should update the page after completing the demo without IRMA flow', async () => {
         // Render demo 5
-        await act(async () => await wrappedRender(<Demo5 />));
+        await act(async (): Promise<any> => await wrappedRender(<Demo5 />));
 
         // Fill in form
         const map = screen.getByTestId('map');
-        await act(async () => await fireEvent.click(map));
+        await act(async (): Promise<any> => await fireEvent.click(map));
 
         const report = screen.getByTestId('report');
         act(() => {
@@ -103,7 +103,7 @@ describe('Demo5', () => {
 
         // Trigger IRMA flow
         const SubmitButton = screen.getByTestId('noIRMAbutton');
-        await act(async () => await fireEvent.click(SubmitButton));
+        await act(async (): Promise<any> => await fireEvent.click(SubmitButton));
 
         // Wait for update and check if correct alert is shown
         const hasResultAlert = screen.getByTestId('hasNoIrmaFlowAlert');
@@ -124,11 +124,11 @@ describe('Demo5', () => {
         mockedCreateIrmaSession.mockReturnValue(null);
 
         // Render demo 5
-        await act(async () => await wrappedRender(<Demo5 />));
+        await act(async (): Promise<any> => await wrappedRender(<Demo5 />));
 
         // Fill in form
         const map = screen.getByTestId('map');
-        await act(async () => await fireEvent.click(map));
+        await act(async (): Promise<any> => await fireEvent.click(map));
 
         const report = screen.getByTestId('report');
         act(() => {
@@ -147,7 +147,7 @@ describe('Demo5', () => {
 
         // Trigger IRMA flow
         const QRCodeButton = screen.getByTestId('qrCodeButton');
-        await act(async () => await fireEvent.click(QRCodeButton));
+        await act(async (): Promise<any> => await fireEvent.click(QRCodeButton));
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');

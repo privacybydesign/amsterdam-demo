@@ -6,15 +6,17 @@ interface GgwResult {
     ggwNaam: string;
 }
 
-const getGGW = async (postcode: string): Promise<GgwResult> => {
+const getGGW = async (postcode: string): Promise<GgwResult | null> => {
     const response = await axios.get(`https://api.data.amsterdam.nl/dataselectie/bag/?size=1&postcode=${postcode}`);
 
-    let buurtcombinatieNamen: string;
-    let ggwCode: string;
-    let ggwNaam: string;
+    let buurtcombinatieNamen!: string;
+    let ggwCode!: string;
+    let ggwNaam!: string;
 
     if (response.data.aggs_list.buurtcombinatie_naam.doc_count > 0) {
-        const namesArray = response.data.aggs_list.buurtcombinatie_naam.buckets.map(wijk => wijk.key);
+        const namesArray = response.data.aggs_list.buurtcombinatie_naam.buckets.map(
+            (wijk: { key: string }) => wijk.key
+        );
         buurtcombinatieNamen = namesArray.join(', ');
         if (namesArray.length > 2) {
             buurtcombinatieNamen = buurtcombinatieNamen.replace(/(, )(?!.*,)/g, ' of ');

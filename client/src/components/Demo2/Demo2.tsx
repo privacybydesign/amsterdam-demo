@@ -43,7 +43,7 @@ const initialState: IState = {
     code: ''
 };
 
-function reducer(state, newState) {
+function reducer(state: IState, newState: IState) {
     return { ...state, ...newState };
 }
 
@@ -52,7 +52,7 @@ const Demo2: React.FC<IProps> = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const getSession = async (callBackMapping?: IStateChangeCallbackMapping) => {
-        const response = await createIrmaSession(
+        const response: any = await createIrmaSession(
             'demo2',
             'irma-qr',
             credentialSource === CredentialSource.DEMO && { demo: true },
@@ -102,7 +102,7 @@ const Demo2: React.FC<IProps> = () => {
     useEffect(() => {
         // Note that we're not preloading all the 'wijk'-photos
         preloadDemoImages(
-            Object.keys(content.responsiveImages.demo2).map(key => content.responsiveImages.demo2[key].src)
+            Object.keys(content.responsiveImages.demo2).map(key => (content.responsiveImages.demo2 as any)[key].src)
         );
     }, []);
 
@@ -125,7 +125,7 @@ const Demo2: React.FC<IProps> = () => {
                 filename: content.responsiveImages.demo2.postcodeNegative.src,
                 alt: content.responsiveImages.demo2.postcodeNegative.alt
             };
-        } else if (!isOver18) {
+        } else {
             return {
                 filename: content.responsiveImages.demo2.ageAndPostcodeNegative.src,
                 alt: content.responsiveImages.demo2.ageAndPostcodeNegative.alt
@@ -133,7 +133,7 @@ const Demo2: React.FC<IProps> = () => {
         }
     }, [hasResult, wijk, code, ggw, isOver18]);
 
-    const resultAlert: JSX.Element = useMemo(() => {
+    const resultAlert: JSX.Element | null | undefined = useMemo(() => {
         if (!hasResult && !hasError) {
             return null;
         } else if (hasError) {
@@ -223,7 +223,7 @@ const Demo2: React.FC<IProps> = () => {
             </ContentBlock>
             <ResponsiveImage filename={headerImg.filename} alt={headerImg.alt} />
             {!hasResult ? (
-                <AscLocal.Row noMargin>
+                <AscLocal.Row hasMargin={false}>
                     <AscLocal.Column
                         span={{
                             small: 1,

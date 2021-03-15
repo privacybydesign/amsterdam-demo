@@ -1,4 +1,4 @@
-interface IState {
+export interface IState {
     hasResult: boolean;
     hasError: boolean;
     emptyVars: string[];
@@ -55,7 +55,7 @@ export const reducer = (state: IState, action: IAction): IState => {
                 formValid: true,
                 irmaAttributes: {
                     ...state.irmaAttributes,
-                    owner: action.payload.owner
+                    owner: action.payload?.owner as string
                 }
             };
 
@@ -72,13 +72,13 @@ export const reducer = (state: IState, action: IAction): IState => {
                 hasError: false,
                 irmaAttributes: {
                     ...state.irmaAttributes,
-                    name: action.payload['name'],
-                    street: action.payload['street'],
-                    houseNumber: action.payload['houseNumber'],
-                    zipcode: action.payload['zipcode'],
-                    city: action.payload['city'],
-                    telephone: action.payload['telephone'],
-                    email: action.payload['email']
+                    name: action.payload?.name as string,
+                    street: action.payload?.street as string,
+                    houseNumber: action.payload?.houseNumber as string,
+                    zipcode: action.payload?.zipcode as string,
+                    city: action.payload?.city as string,
+                    telephone: action.payload?.telephone as string,
+                    email: action.payload?.email as string
                 }
             };
 
@@ -91,7 +91,7 @@ export const reducer = (state: IState, action: IAction): IState => {
         case 'setEmptyVars':
             return {
                 ...state,
-                emptyVars: [...state.emptyVars, action.payload['emptyVar']]
+                emptyVars: [...state.emptyVars, action.payload?.emptyVar as string]
             };
 
         default:

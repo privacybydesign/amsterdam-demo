@@ -1,5 +1,5 @@
 import { Map } from 'leaflet';
-import { initialState, reducer, Location } from './reducer';
+import { initialState, reducer, ILocation } from './reducer';
 
 interface MockMap extends Map {
     flyTo: jest.Mock;
@@ -7,11 +7,14 @@ interface MockMap extends Map {
 
 describe('map reducer', () => {
     it('should set default state', () => {
-        expect(reducer(undefined, { type: null })).toEqual(initialState);
+        expect(reducer(undefined, { type: '' })).toEqual(initialState);
     });
 
     it('should setAutosuggest', () => {
-        const mockAutosuggest: Location[] = [{ id: '1' }, { id: '2' }];
+        const mockAutosuggest: ILocation[] = [
+            { id: '1', displayName: '1' },
+            { id: '2', displayName: '2' }
+        ];
         expect(
             reducer(undefined, {
                 type: 'setAutosuggest',
@@ -25,7 +28,7 @@ describe('map reducer', () => {
     });
 
     it('should setLocation', () => {
-        const mockLocation: Location = { id: '1', weergavenaam: 'Test', latLng: null };
+        const mockLocation: ILocation = { id: '1', displayName: 'Test' };
         expect(
             reducer(undefined, {
                 type: 'setLocation',

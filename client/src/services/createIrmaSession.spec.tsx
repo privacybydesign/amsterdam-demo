@@ -8,7 +8,7 @@ import createIrmaSession, { getConfig, isMobile } from './createIrmaSession';
 setupMocks();
 
 // Mock user agent
-let mockedUserAgent = null;
+let mockedUserAgent: any = null;
 Object.defineProperty(global.navigator, 'userAgent', {
     get() {
         return mockedUserAgent;
@@ -109,7 +109,7 @@ describe('createIrmaSession', () => {
     });
 
     it('createIrmaSession()', async () => {
-        await act(async () => await wrappedRender(<div id="test-elementID"></div>));
+        await act(async (): Promise<any> => await wrappedRender(<div id="test-elementID"></div>));
 
         IrmaCore.prototype.start = jest.fn().mockReturnValue({
             token: '1234567890abcdefg',

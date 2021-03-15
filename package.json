@@ -1,0 +1,22 @@
+{
+    "name": "di-demo",
+    "version": "1.0.0",
+    "description": "IRMA Demo repo",
+    "scripts": {
+        "precommit-fe": "cd client && yarn format && yarn lint",
+        "precommit-be": "cd server && yarn format && yarn lint ",
+        "prepush-fe": "cd client && yarn format && yarn lint && yarn test",
+        "prepush-be": "cd server && yarn format && yarn lint && yarn test",
+        "prepare": "husky install"
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": "echo 'No precommit'"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "husky": "^5.1.3",
+        "lint-staged": "^10.5.4"
+    }
+}

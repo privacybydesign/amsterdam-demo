@@ -5,7 +5,7 @@ import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { themeSpacing, RadioGroup, Label, Radio } from '@amsterdam/asc-ui';
 import MapComponent from '@components/Map/Map';
-import { Location } from '@components/Map/reducer';
+import { ILocation } from '@components/Map/reducer';
 
 export enum FormFields {
     LOCATION = 'location',
@@ -18,7 +18,7 @@ export interface IProps {
     errors?: string[];
     forwardRef: React.MutableRefObject<HTMLFormElement>;
     validateForm: (setErrors: boolean) => unknown;
-    updateLocationCallback: (location: Location) => void;
+    updateLocationCallback: (location: ILocation) => void;
 }
 
 const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateLocationCallback }) => {
@@ -34,7 +34,7 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
                     renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph }}
                 />
                 <MapComponent updateLocationCallback={updateLocationCallback} />
-                {errors.includes(FormFields.LOCATION) && (
+                {errors && errors.includes(FormFields.LOCATION) && (
                     <AscLocal.ErrorMessage message={content.demo5.form.location.required} />
                 )}
             </FormSection>
@@ -47,13 +47,13 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
                 />
                 <AscLocal.TextArea
                     id={FormFields.REPORT}
-                    error={errors.includes(FormFields.REPORT)}
+                    error={errors && errors.includes(FormFields.REPORT)}
                     maxLength={1000}
                     showCounter={true}
                     data-testid="report"
                     aria-label={content.demo5.form.report.label}
                 />
-                {errors.includes(FormFields.REPORT) && (
+                {errors && errors.includes(FormFields.REPORT) && (
                     <AscLocal.ErrorMessage message={content.demo5.form.report.required} />
                 )}
             </FormSection>
@@ -66,7 +66,7 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
                 />
                 <RadioGroup
                     name={FormFields.OPTION_PHONE}
-                    error={errors.includes(FormFields.OPTION_PHONE)}
+                    error={errors && errors.includes(FormFields.OPTION_PHONE)}
                     onChange={validateOnChange}
                 >
                     <Label htmlFor="optionMobileNumberYes" label={content.demo5.form.optionPhone.optionYes}>
@@ -86,7 +86,7 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
                         />
                     </Label>
                 </RadioGroup>
-                {errors.includes(FormFields.OPTION_PHONE) && (
+                {errors && errors.includes(FormFields.OPTION_PHONE) && (
                     <AscLocal.ErrorMessage message={content.demo5.form.optionPhone.required} />
                 )}
             </FormSection>
@@ -99,7 +99,7 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
                 />
                 <RadioGroup
                     name={FormFields.OPTION_EMAIL}
-                    error={errors.includes(FormFields.OPTION_EMAIL)}
+                    error={errors && errors.includes(FormFields.OPTION_EMAIL)}
                     onChange={() => validateForm(false)}
                 >
                     <Label htmlFor="optionEmailYes" label={content.demo5.form.optionEmail.optionYes}>
@@ -119,7 +119,7 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
                         />
                     </Label>
                 </RadioGroup>
-                {errors.includes(FormFields.OPTION_EMAIL) && (
+                {errors && errors.includes(FormFields.OPTION_EMAIL) && (
                     <AscLocal.ErrorMessage message={content.demo5.form.optionEmail.required} />
                 )}
             </FormSection>

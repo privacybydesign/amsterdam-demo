@@ -1,5 +1,5 @@
 # Build client frontend
-FROM node:14.4-alpine3.12 AS builder
+FROM node:14.4-alpine3.12 AS fe-builder
 LABEL maintainer="datapunt@amsterdam.nl"
 
 ENV NODE_ENV=${ENVIRONMENT}
@@ -17,6 +17,27 @@ RUN yarn install
 COPY ./client ./
 RUN yarn build
 
+# Build server backend
+FROM node:14.4-alpine3.12 AS be-builder
+LABEL maintainer="datapunt@amsterdam.nl"
+
+ENV NODE_ENV=${ENVIRONMENT}
+ENV PATH /app/node_modules/.bin:$PATH
+
+ENV NODE_EXTRA_CA_CERTS=/adp_rootca.crt
+COPY adp_rootca.crt /adp_rootca.crt
+
+WORKDIR /app
+COPY ./server/package.json ./
+COPY ./server/yarn.lock ./
+
+RUN yarn install
+
+COPY ./server ./
+RUN yarn build
+
+COPY ./server/static ./dist/static
+
 # Build server and include frontend (docroot is set to ../client in config.json)
 FROM node:14.4-alpine3.12
 
@@ -25,11 +46,8 @@ RUN adduser -D irma
 ENV NODE_EXTRA_CA_CERTS=/adp_rootca.crt
 COPY adp_rootca.crt /adp_rootca.crt
 
-COPY ./server/node /server
-WORKDIR /server
-RUN yarn install
-
-COPY --from=builder /app/dist/. /client
+COPY --from=be-builder /app/dist/. /server
+COPY --from=fe-builder /app/dist/. /client
 
 USER irma
 

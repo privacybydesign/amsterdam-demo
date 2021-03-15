@@ -32,12 +32,12 @@ const Footer: React.FC<IFooterProps> = () => (
                     </FooterSection>
                 </Column>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
-                    <FooterSection hideAt="tabletM">
+                    <FooterSection>
                         <ReactMarkDown source={content.footer.column2} renderers={FooterMarkDownRenderers} />
                     </FooterSection>
                 </Column>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
-                    <FooterSection hideAt="tabletM">
+                    <FooterSection>
                         <ReactMarkDown source={content.footer.column3} renderers={FooterMarkDownRenderers} />
                     </FooterSection>
                 </Column>

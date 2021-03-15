@@ -4,10 +4,16 @@ interface IState {
     mapInstance?: Map | null;
     url?: string;
     query?: string;
-    autosuggest?: Location[] | null;
+    autosuggest?: ILocation[] | null;
     latLng?: LatLngLiteral | null;
-    location?: Location | null;
+    location?: ILocation | null;
     showAutosuggest?: boolean;
+}
+
+export interface ILocation {
+    id?: string;
+    displayName: string;
+    latLng?: LatLngLiteral;
 }
 
 interface IAction {
@@ -16,16 +22,10 @@ interface IAction {
         mapInstance?: Map | null;
         url?: string;
         query?: string;
-        autosuggest?: Location[] | null;
-        location?: Location | null;
+        autosuggest?: ILocation[] | null;
+        location?: ILocation | null;
         showAutosuggest?: boolean;
     };
-}
-
-export interface Location {
-    id?: string;
-    weergavenaam?: string;
-    latLng?: LatLngLiteral;
 }
 
 export const initialState: IState = {
@@ -42,14 +42,14 @@ export const reducer = (state: IState = initialState, action: IAction): IState =
         case 'setAutosuggest':
             return {
                 ...state,
-                autosuggest: action.payload.autosuggest,
+                autosuggest: (action.payload as any).autosuggest,
                 showAutosuggest: true
             };
 
         case 'setLocation':
             return {
                 ...state,
-                location: action.payload.location
+                location: (action.payload as any).location
             };
 
         case 'hideAutosuggest':
@@ -61,14 +61,14 @@ export const reducer = (state: IState = initialState, action: IAction): IState =
         case 'setMapInstance':
             return {
                 ...state,
-                mapInstance: action.payload.mapInstance
+                mapInstance: (action.payload as any).mapInstance
             };
 
         case 'onChangeLocation':
             return {
                 ...state,
-                query: action.payload.query,
-                url: action.payload.url
+                query: (action.payload as any).query,
+                url: (action.payload as any).url
             };
         default:
             return state;

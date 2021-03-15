@@ -36,7 +36,7 @@ const Container = styled.section`
     }
 `;
 
-const LinkBox = styled(Link)`
+const LinkBox = styled(Link).attrs({ variant: 'blank' })`
     color: ${themeColor('tint', 'level7')};
     display: flex;
     cursor: pointer;
@@ -74,7 +74,7 @@ const LinkBox = styled(Link)`
 
 const Article: React.FC<IProps> = ({ imageSrc, imageAlt, title, children, href, className }) => {
     return (
-        <LinkBox to={href} variant="blank">
+        <LinkBox to={href}>
             <Container className={className}>
                 <ResponsiveImage filename={imageSrc} alt={imageAlt} />
                 <div className="text">

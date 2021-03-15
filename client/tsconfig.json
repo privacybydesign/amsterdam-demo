@@ -1,28 +1,53 @@
 {
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules/**/*",
+        "dist/**/*"
+    ],
     "compilerOptions": {
         "jsx": "react",
-        "lib": ["es6", "es2017", "dom", "esnext"],
+        "lib": [
+            "es6",
+            "es2017",
+            "dom",
+            "esnext"
+        ],
         "module": "esnext",
+        "noImplicitAny": true,
+        "strictNullChecks": true,
         "esModuleInterop": true,
         "removeComments": true,
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "noUnusedLocals": false,
         "noUnusedParameters": false,
-        "sourceMap": true,
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
         "importHelpers": true,
         "incremental": true,
         "watch": true,
+        "sourceMap": true,
         "target": "es2017",
         "baseUrl": "src",
         "paths": {
-            "@config/*": ["config/*"],
-            "@app/*": ["app/*"],
-            "@components/*": ["components/*"],
-            "@services/*": ["services/*"],
-            "@test/*": ["test/*"]
+            "@config/*": [
+                "config/*"
+            ],
+            "@app/*": [
+                "app/*"
+            ],
+            "@components/*": [
+                "components/*"
+            ],
+            "@services/*": [
+                "services/*"
+            ],
+            "@test/*": [
+                "test/*"
+            ]
         }
     },
     "awesomeTypescriptLoaderOptions": {

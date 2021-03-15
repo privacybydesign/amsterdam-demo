@@ -169,6 +169,26 @@ exports[`Demo1 should render the initial header image 1`] = `
 
 }
 
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
 @media screen and (min-width:540px) {
 
 }
@@ -300,6 +320,26 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
 
 }
 
@@ -864,6 +904,26 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 
 }
 
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
 @media screen and (min-width:540px) {
 
 }
@@ -1033,6 +1093,26 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
 
 }
 
@@ -1597,6 +1677,26 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 
 }
 
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
 @media screen and (min-width:540px) {
 
 }
@@ -1766,6 +1866,26 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
 
 }
 
@@ -2337,6 +2457,26 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 
 }
 
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
 @media screen and (min-width:540px) {
 
 }
@@ -2504,6 +2644,26 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
 
 }
 
@@ -3075,6 +3235,26 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 
 }
 
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
 @media screen and (min-width:540px) {
 
 }
@@ -3429,6 +3609,26 @@ exports[`Demo1 should update the page after failing the IRMA flow 1`] = `
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
 
 }
 

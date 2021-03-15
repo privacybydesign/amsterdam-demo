@@ -7,9 +7,7 @@ import Client from '@privacybydesign/irma-client';
 // Types
 export interface IIrmaServerConfig {
     requestorname: string;
-    uuid: string;
     irma: string;
-    nodeUrl: string;
     docroot: string;
     port: number;
     environment: string;
@@ -32,11 +30,11 @@ export interface IStateChangeCallbackMapping {
 
 class IrmaStateChangeCallback {
     mapping: IStateChangeCallbackMapping;
-    constructor({ options }) {
+    constructor({ options }: { options: any }) {
         this.mapping = options.callBackMapping;
     }
 
-    stateChange({ newState }) {
+    stateChange({ newState }: { newState: any }) {
         if (Object.keys(this.mapping).indexOf(newState) !== -1 && typeof this.mapping[newState] === 'function') {
             this.mapping[newState]();
         }
@@ -57,10 +55,10 @@ interface IStateMachine {
 
 class IrmaAbortOnCancel {
     _stateMachine: IStateMachine;
-    constructor({ stateMachine }) {
+    constructor({ stateMachine }: { stateMachine: any }) {
         this._stateMachine = stateMachine;
     }
-    stateChange({ newState }) {
+    stateChange({ newState }: { newState: any }) {
         if (newState === 'Cancelled') this._stateMachine.transition('abort');
     }
 }
@@ -72,7 +70,7 @@ const createIrmaSession = async (
     callBackMapping?: IStateChangeCallbackMapping
 ): Promise<unknown> => {
     const queryString = Object.keys(query)
-        .map((key, index) => `${index === 0 ? '?' : ''}${key}=${query[key]}`)
+        .map((key, index) => `${index === 0 ? '?' : ''}${key}=${(query as any)[key]}`)
         .join('&');
 
     const irma = new IrmaCore({
@@ -81,15 +79,15 @@ const createIrmaSession = async (
         callBackMapping,
 
         session: {
-            url: `/getsession/${dataType}${queryString}`,
+            url: `/${dataType}${queryString}`,
 
             start: {
-                url: o => `${o.url}`,
+                url: (o: any) => `${o.url}`,
                 method: 'GET'
             },
 
             mapping: {
-                sessionPtr: sessionPtr => ({ ...sessionPtr, u: sessionPtr.u.replace(/\/irma/g, '/irma/irma') })
+                sessionPtr: (sessionPtr: any) => ({ ...sessionPtr, u: sessionPtr.u.replace(/\/irma/g, '/irma/irma') })
             },
 
             result: {
@@ -130,7 +128,10 @@ const reduceIRMAResult = (disclosedCredentialSets: IDisclosedCredentialSet[]) =>
     disclosedCredentialSets.forEach((conjunction: IDisclosedCredential[]) => {
         joinedResults = {
             ...joinedResults,
-            ...conjunction.reduce((acc, { id, rawvalue }) => ({ ...acc, [id.match(/[^.]*$/g)[0]]: rawvalue }), {})
+            ...conjunction.reduce(
+                (acc, { id, rawvalue }) => ({ ...acc, [(id as any).match(/[^.]*$/g)[0]]: rawvalue }),
+                {}
+            )
         };
     });
     return joinedResults;
