@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import configDev from './config.dev';
+import configAcc from './config.acc';
 import configProd from './config.prod';
 
 // Load .env file (if present)
@@ -20,7 +21,13 @@ export interface IConfig {
     environment?: string;
 }
 
-const configToUse = process.env.NODE_ENV === 'development' ? configDev : configProd;
+let configToUse: IConfig = configDev;
+if (process.env.NODE_ENV === 'acceptance') {
+    configToUse = configAcc;
+} else if (process.env.NODE_ENV === 'production') {
+    configToUse = configProd;
+}
+
 configToUse.environment = process.env.NODE_ENV;
 
 export const config: IConfig = configToUse;
