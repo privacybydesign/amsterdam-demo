@@ -13,14 +13,14 @@ const secured = function (req: Request, res: Response, next: NextFunction) {
     // check for basic auth header
     if (!req.headers.authorization || req.headers.authorization.indexOf('Basic ') === -1) {
         res.setHeader('WWW-Authenticate', 'Basic');
-        return res.status(401).sendFile(path.join(process.cwd(), 'static/403.html'));
+        return res.status(401).sendFile(path.join(__dirname, '../../static/403.html'));
     }
 
     // check the entered credentials
     const credentials = Buffer.from('irma:demo').toString('base64');
     if (req.headers.authorization !== `Basic ${credentials}`) {
         res.setHeader('WWW-Authenticate', 'Basic');
-        return res.sendFile(path.join(process.cwd(), '../static/403.html'));
+        return res.sendFile(path.join(__dirname, '../../static/403.html'));
     }
 
     Logger.info('Frontend authentication is enabled.');
@@ -33,7 +33,7 @@ export default ({ app, config }: ILoaderArgs) => {
     if (process.env.NODE_ENV !== 'development') {
         app.use(express.static(config.docroot, { index: false }));
         app.get('*', secured, function (req, res) {
-            res.sendFile(path.join(process.cwd(), config.docroot, 'index.html'));
+            res.sendFile(path.join(__dirname, config.docroot, 'index.html'));
         });
     } else {
         Logger.info('Set up proxy to frontend.');
