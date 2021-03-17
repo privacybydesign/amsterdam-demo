@@ -157,7 +157,6 @@ const IrmaWebElement = styled.div`
         display: none;
     }
     & .irma-web-content {
-        flex: none;
         margin: 0;
         & .irma-web-waiting-for-user-animation {
         }
