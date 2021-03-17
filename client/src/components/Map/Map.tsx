@@ -48,11 +48,10 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
             const response = await axios.get(`${locationUrl}&lat=${e.latlng.lat}&lon=${e.latlng.lng}`);
             const foundLocation = response.data?.response?.docs[0];
             let location: ILocation | null = null;
-
             if (foundLocation) {
                 location = {
                     id: foundLocation.id,
-                    displayName: foundLocation.displayName,
+                    displayName: foundLocation.weergavenaam,
                     latLng: e.latlng
                 };
 
