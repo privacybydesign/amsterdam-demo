@@ -51,7 +51,7 @@ const Demo2: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const getSession = async (callBackMapping?: IStateChangeCallbackMapping) => {
+    const getSession = async (callBackMapping?: IStateChangeCallbackMapping): Promise<null | unknown> => {
         const response: any = await createIrmaSession(
             'demo2',
             'irma-qr',

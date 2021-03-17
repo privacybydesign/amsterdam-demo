@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import createIrmaSession from '@services/createIrmaSession';
+import createIrmaSession, { IStateChangeCallbackMapping } from '@services/createIrmaSession';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
@@ -30,11 +30,12 @@ const Demo3: React.FC<IProps> = () => {
     // const [bsn, setBsn] = useState<string>('');
     const [name, setName] = useState<string>('');
 
-    const getSession = async () => {
+    const getSession = async (callBackMapping?: IStateChangeCallbackMapping): Promise<null | unknown> => {
         const response: any = await createIrmaSession(
             'demo3',
             'irma-qr',
-            credentialSource === CredentialSource.DEMO && { demo: true }
+            credentialSource === CredentialSource.DEMO && { demo: true },
+            callBackMapping
         );
         if (response) {
             setHasResult(true);

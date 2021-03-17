@@ -4,7 +4,7 @@ import ReactMarkDown from 'react-markdown';
 import { Accordion, themeSpacing, Button } from '@amsterdam/asc-ui';
 import { Alert as AlertIcon } from '@amsterdam/asc-assets';
 import { Map, BaseLayer, Marker, getCrsRd } from '@amsterdam/arm-core';
-import createIrmaSession from '@services/createIrmaSession';
+import createIrmaSession, { IStateChangeCallbackMapping } from '@services/createIrmaSession';
 import content from '@services/content';
 import deflist from '@services/deflist';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
@@ -101,25 +101,20 @@ const Demo5: React.FC<IProps> = () => {
     }, []);
 
     // IRMA session
-    const getSession = async () => {
+    // Only use IRMA flow when the user selected the Yes option phone, email or both
+    const getSession = async (callBackMapping?: IStateChangeCallbackMapping): Promise<null | unknown> => {
         let response: any = null;
         const validatedForm = validateForm();
 
         if (validatedForm !== undefined && !validatedForm.errors.length) {
-            // Only use IRMA flow when the user selected the Yes option phone, email or both
-            if (validatedForm.values.optionPhone === true || validatedForm.values.optionEmail === true) {
-                const query: IDemo5Query = {
-                    phone: Boolean(validatedForm.values.optionPhone),
-                    email: Boolean(validatedForm.values.optionEmail)
-                };
-                if (credentialSource === CredentialSource.DEMO) {
-                    query.demo = true;
-                }
-                response = await createIrmaSession('demo5', 'irma-qr', query);
-            } else {
-                // No IRMA flow, as the user didn't select any Yes option.
-                response = {};
+            const query: IDemo5Query = {
+                phone: Boolean(validatedForm.values.optionPhone),
+                email: Boolean(validatedForm.values.optionEmail)
+            };
+            if (credentialSource === CredentialSource.DEMO) {
+                query.demo = true;
             }
+            response = await createIrmaSession('demo5', 'irma-qr', query, callBackMapping);
             if (response) {
                 dispatch({
                     type: 'setResult',
@@ -136,6 +131,22 @@ const Demo5: React.FC<IProps> = () => {
         }
         return response;
     };
+
+    // No IRMA flow, for when the user doesn't select any Yes option.
+    const finishSessionWithoutIRMA = useCallback(() => {
+        const response: any = null;
+        const validatedForm = validateForm();
+        if (validatedForm !== undefined && !validatedForm.errors.length) {
+            dispatch({
+                type: 'setResult',
+                payload: {}
+            });
+            window.scrollTo(0, 0);
+            startUsabillaSurvey();
+        }
+
+        return response;
+    }, [validateForm]);
 
     // Define dynamic header image
     const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
@@ -293,7 +304,7 @@ const Demo5: React.FC<IProps> = () => {
                                 {noIRMAFlow ? (
                                     <StyledButton
                                         data-testid={'noIRMAbutton'}
-                                        onClick={getSession}
+                                        onClick={finishSessionWithoutIRMA}
                                         variant="secondary"
                                         iconSize={24}
                                         iconLeft={<AscLocal.IrmaLogoIcon />}
