@@ -34,7 +34,7 @@ export default class {
         const request = this.createDisclosureRequest(credentialsToRequest);
         const jwt = this.createJWT(authmethod, process.env.PRIVATE_KEY as string, config.requestorname, request);
 
-        Logger.info(`IrmaService.createDisclosureRequest called: ${JSON.stringify(request)}`);
+        Logger.info(`IrmaService.createDisclosureRequest called with request ${JSON.stringify(request)}`);
 
         // Return sessionPtr (QR Code) and token
         return await this.irmaBackend.startSession(jwt);
@@ -42,6 +42,7 @@ export default class {
 
     public requestSessionResult = async (token: string): Promise<any> => {
         try {
+            Logger.info(`IrmaService.requestSessionResult called for session ${token}`);
             const result = await this.irmaBackend.getSessionResult(token);
 
             // Remove the IRMA and backend session if status is DONE
