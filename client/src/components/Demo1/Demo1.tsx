@@ -3,7 +3,7 @@ import ReactMarkDown from 'react-markdown';
 import { Accordion } from '@amsterdam/asc-ui';
 import { Alert as AlertIcon } from '@amsterdam/asc-assets';
 import { Checkmark } from '@amsterdam/asc-assets';
-import createIrmaSession from '@services/createIrmaSession';
+import createIrmaSession, { IStateChangeCallbackMapping } from '@services/createIrmaSession';
 import content from '@services/content';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
@@ -30,11 +30,12 @@ const Demo1: React.FC<IProps> = () => {
     const [hasResult65, setHasResult65] = useState<boolean>(false);
     const [hasError, setHasError] = useState<boolean>(false);
 
-    const getSessionOver18 = async (): Promise<null | unknown> => {
+    const getSessionOver18 = async (callBackMapping?: IStateChangeCallbackMapping): Promise<null | unknown> => {
         const response: any = await createIrmaSession(
             'demo1/18',
             'irma-qr',
-            credentialSource === CredentialSource.DEMO && { demo: true }
+            credentialSource === CredentialSource.DEMO && { demo: true },
+            callBackMapping
         );
         if (response) {
             setIsOver18(
@@ -54,11 +55,12 @@ const Demo1: React.FC<IProps> = () => {
         return response;
     };
 
-    const getSessionOver65 = async (): Promise<null | unknown> => {
+    const getSessionOver65 = async (callBackMapping?: IStateChangeCallbackMapping): Promise<null | unknown> => {
         const response = await createIrmaSession(
             'demo1/65',
             'irma-qr',
-            credentialSource === CredentialSource.DEMO && { demo: true }
+            credentialSource === CredentialSource.DEMO && { demo: true },
+            callBackMapping
         );
         if (response) {
             setIsOver65(

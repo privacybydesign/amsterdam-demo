@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useReducer } from 'react';
-import createIrmaSession from '@services/createIrmaSession';
+import createIrmaSession, { IStateChangeCallbackMapping } from '@services/createIrmaSession';
 import content, { reduceAndTranslateEmptyVars } from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import defList from '@services/deflist';
@@ -60,13 +60,14 @@ const Demo4: React.FC<IProps> = () => {
         return false;
     };
 
-    const getSession = async () => {
+    const getSession = async (callBackMapping?: IStateChangeCallbackMapping): Promise<null | unknown> => {
         let response: any = null;
         if (validateForm()) {
             response = await createIrmaSession(
                 'demo4',
                 'irma-qr',
-                credentialSource === CredentialSource.DEMO && { demo: true }
+                credentialSource === CredentialSource.DEMO && { demo: true },
+                callBackMapping
             );
             if (response) {
                 dispatch({
