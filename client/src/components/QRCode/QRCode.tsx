@@ -47,10 +47,7 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) 
                     ShowingQRCode: () => {
                         setShowLogo(true);
                     },
-                    ContinueOn2ndDevice: () => {
-                        setShowLogo(false);
-                    },
-                    ContinueInIrmaApp: () => {
+                    rest: () => {
                         setShowLogo(false);
                     }
                 };
@@ -152,7 +149,9 @@ const CanvasWrapper = styled.div`
 const IrmaWebElement = styled.div`
     width: 300px !important;
     height: 300px !important;
+    min-height: 300px;
     background-color: transparent;
+
     & .irma-web-header {
         display: none;
     }

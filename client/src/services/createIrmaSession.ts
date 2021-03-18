@@ -37,6 +37,8 @@ class IrmaStateChangeCallback {
     stateChange({ newState }: { newState: any }) {
         if (Object.keys(this.mapping).indexOf(newState) !== -1 && typeof this.mapping[newState] === 'function') {
             this.mapping[newState]();
+        } else if (this.mapping.rest && typeof this.mapping.rest === 'function') {
+            this.mapping.rest();
         }
     }
 
