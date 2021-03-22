@@ -1,10 +1,12 @@
 import Logger from '@loaders/logger';
 import session, { SessionOptions } from 'express-session';
+const FileStore = require('session-file-store')(session);
 import { ILoaderArgs } from '.';
 
 // Setup session management
 export default ({ app, config }: ILoaderArgs) => {
     const sessionOptions: SessionOptions = {
+        store: new FileStore({ ttl: 360 }),
         name: config.requestorname,
         secret: 'local secret',
         cookie: {
