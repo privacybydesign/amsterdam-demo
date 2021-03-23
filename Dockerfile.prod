@@ -33,6 +33,7 @@ COPY ./server/package.json ./
 COPY ./server/yarn.lock ./
 COPY ./server/tsconfig.json ./
 COPY ./server/src ./src
+
 RUN yarn install 
 RUN yarn build
 
@@ -56,9 +57,11 @@ COPY --from=fe-builder /app/dist/. /client
 
 RUN npm install pm2 -g
 WORKDIR /server
-CMD ["pm2-runtime","./app.js"]
 
 RUN adduser -D irma
+RUN mkdir sessions
+RUN chmod -R 777 sessions
 USER irma
 
+CMD ["pm2-runtime","./app.js"]
 EXPOSE 8000
