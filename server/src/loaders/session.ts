@@ -1,4 +1,5 @@
 import Logger from '@loaders/logger';
+import path from 'path';
 import session, { SessionOptions } from 'express-session';
 const FileStore = require('session-file-store')(session);
 import { ILoaderArgs } from '.';
