@@ -63,5 +63,7 @@ RUN mkdir sessions
 RUN chmod -R 777 sessions
 USER irma
 
+ENV DEBUG=express-session
+
 CMD ["pm2-runtime","./app.js"]
 EXPOSE 8000
