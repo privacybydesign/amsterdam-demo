@@ -569,6 +569,7 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
         close: 'Sluiten'
     },
     translatedIrmaAttributes: {
+        name: 'naam',
         fullname: 'volledige naam',
         street: 'straat',
         housenumber: 'huisnummer',
