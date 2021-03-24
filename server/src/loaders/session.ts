@@ -6,10 +6,11 @@ import { ILoaderArgs } from '.';
 // Setup session management
 export default ({ app, config }: ILoaderArgs) => {
     const sessionOptions: SessionOptions = {
-        store: new FileStore({ ttl: 360, path: './sessions' }),
+        store: new FileStore({ ttl: 360 }),
         name: `${config.requestorname}.sid`,
         secret: 'local',
         cookie: {
+            path: '/demos',
             httpOnly: true,
             sameSite: true
         },

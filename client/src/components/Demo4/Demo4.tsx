@@ -64,7 +64,7 @@ const Demo4: React.FC<IProps> = () => {
         let response: any = null;
         if (validateForm()) {
             response = await createIrmaSession(
-                'demo4',
+                'demos/demo4',
                 'irma-qr',
                 credentialSource === CredentialSource.DEMO && { demo: true },
                 callBackMapping

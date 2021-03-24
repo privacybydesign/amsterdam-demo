@@ -30,13 +30,13 @@ const demoCredentials65: IDemoCredentials = {
 // Define routes for demo
 export default (router: Router) => {
     // 18+
-    router.get('/demo1/18', cors(), async (req: Request, res: Response, next: NextFunction) => {
+    router.get('/demos/demo1/18', cors(), async (req: Request, res: Response, next: NextFunction) => {
         Logger.info(`Incoming request for demo 1 - 18+`);
         return processDemoRequest(demoCredentials18, req, res, next);
     });
 
     // 65+
-    router.get('/demo1/65', cors(), async (req: Request, res: Response, next: NextFunction) => {
+    router.get('/demos/demo1/65', cors(), async (req: Request, res: Response, next: NextFunction) => {
         Logger.info(`Incoming request for demo 1 - 65+`);
         return processDemoRequest(demoCredentials65, req, res, next);
     });

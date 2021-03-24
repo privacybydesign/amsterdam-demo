@@ -93,7 +93,7 @@ const createIrmaSession = async (
             },
 
             result: {
-                url: () => `/result`
+                url: () => `/demos/result`
             }
         }
     });

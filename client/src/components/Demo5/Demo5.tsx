@@ -114,7 +114,7 @@ const Demo5: React.FC<IProps> = () => {
             if (credentialSource === CredentialSource.DEMO) {
                 query.demo = true;
             }
-            response = await createIrmaSession('demo5', 'irma-qr', query, callBackMapping);
+            response = await createIrmaSession('demos/demo5', 'irma-qr', query, callBackMapping);
             if (response) {
                 dispatch({
                     type: 'setResult',

@@ -12,7 +12,7 @@ const demoCredentials: IDemoCredentials = {
 
 // Define routes for demo
 export default (router: Router) => {
-    router.get('/demo3', cors(), async (req: Request, res: Response, next: NextFunction) => {
+    router.get('/demos/demo3', cors(), async (req: Request, res: Response, next: NextFunction) => {
         Logger.info(`Incoming request for demo 3`);
         return processDemoRequest(demoCredentials, req, res, next);
     });
