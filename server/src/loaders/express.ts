@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 
 // Setup Express
 export default ({ app }: { app: express.Application }) => {
@@ -8,6 +9,14 @@ export default ({ app }: { app: express.Application }) => {
 
     // Enable Cross Origin Resource Sharing to all origins by default
     app.use(cors());
+
+    // Use helmet to protect from some HTTP header vulnerabilities
+    // TODO: Add contentSecurityPolicy
+    app.use(
+        helmet({
+            contentSecurityPolicy: false
+        })
+    );
 
     // Parse request body as JSON
     app.use(express.json());
