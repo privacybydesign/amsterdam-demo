@@ -7,6 +7,7 @@ import Demo5 from '@components/Demo5/Demo5';
 import Cookies from '@components/Cookies/Cookies';
 import IESupport from '@components/IESupport/IESupport';
 import A11Y from '@components/A11Y/A11Y';
+import VotePage from 'pages/Vote';
 
 interface IRoute {
     path: string;
@@ -26,7 +27,8 @@ const AppRoutes: IAppRoutes = {
     DEMO5: { path: '/overlast-melden', component: Demo5, exact: false },
     COOKIES: { path: '/cookies', component: Cookies, exact: false },
     IE_SUPPORT: { path: '/ie-support', component: IESupport, exact: false },
-    A11Y: { path: '/toegankelijkheidsverklaring', component: A11Y, exact: false }
+    A11Y: { path: '/toegankelijkheidsverklaring', component: A11Y, exact: false },
+    VOTE: { path: '/openstad-stemmen-met-irma', component: VotePage, exact: false }
 };
 
 export default AppRoutes;
