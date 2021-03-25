@@ -24,14 +24,23 @@ export const getConfig = async (): Promise<IIrmaServerConfig> => {
     return config;
 };
 
+// TODO: Make this more solid
+export const isMobile = (): boolean => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
+
+// Types for Irma Plugins
 export interface IStateChangeCallbackMapping {
     [stateName: string]: () => void;
 }
+
+export interface IIrmaSessionData {}
 
 interface IStateMachine {
     transition: (state: string, payload?: any) => void;
 }
 
+// IRMA Custom Plugins
 class IrmaSkipMobileChoiceIfPossible {
     stateChange({ newState, payload }: { newState: any; payload: any }) {
         if (newState === 'ShowingIrmaButton') {
@@ -59,11 +68,6 @@ class IrmaStateChangeCallback {
     }
 }
 
-// TODO: Make this more solid
-export const isMobile = (): boolean => {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-};
-
 class IrmaAbortOnCancel {
     _stateMachine: IStateMachine;
     constructor({ stateMachine }: { stateMachine: any }) {
@@ -73,6 +77,8 @@ class IrmaAbortOnCancel {
         if (newState === 'Cancelled') this._stateMachine.transition('abort');
     }
 }
+
+// IRMA Session handler
 
 const createIrmaSession = async (
     dataType: string,
