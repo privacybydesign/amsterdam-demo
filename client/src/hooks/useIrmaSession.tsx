@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+import React, { useCallback, useLayoutEffect, useState } from 'react';
 import IrmaSessionModal from '@components/IrmaSessionModal/IrmaSessionModal';
 import createIrmaSession from '@services/createIrmaSession';
 
@@ -6,6 +6,7 @@ interface IIrmaSessionInputData {
     demoPath: string;
     useDemoCredentials: boolean;
     resultCallback: (irmaSessionResult: any) => void;
+    extraQuery?: { [key: string]: string };
 }
 
 export interface IIrmaSessionOutputData {
@@ -49,7 +50,7 @@ const useIrmaSession = (): IIrmaSessionOutputData => {
             const result: any = await createIrmaSession(
                 activeIrmaSessionData.demoPath,
                 'irma-qr',
-                { demo: activeIrmaSessionData.useDemoCredentials },
+                { demo: activeIrmaSessionData.useDemoCredentials, ...activeIrmaSessionData.extraQuery },
                 callBackMapping
             );
             activeIrmaSessionData.resultCallback(result);

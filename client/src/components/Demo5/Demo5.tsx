@@ -24,6 +24,7 @@ import { reducer, initialState, IState } from './reducer';
 import Demo5Form, { FormFields } from './Demo5Form';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
+import useIrmaSession, { IIrmaSessionOutputData } from '@hooks/useIrmaSession';
 
 export interface IProps {}
 
@@ -102,35 +103,39 @@ const Demo5: React.FC<IProps> = () => {
 
     // IRMA session
     // Only use IRMA flow when the user selected the Yes option phone, email or both
-    const getSession = async (callBackMapping?: IStateChangeCallbackMapping): Promise<null | unknown> => {
-        let response: any = null;
-        const validatedForm = validateForm();
+    const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
+    const getSession = useCallback(() => {
+        const validatedForm = validateForm();
         if (validatedForm !== undefined && !validatedForm.errors.length) {
+            // Define URL variables based on form input
             const query: IDemo5Query = {
                 phone: Boolean(validatedForm.values.optionPhone),
                 email: Boolean(validatedForm.values.optionEmail)
             };
-            if (credentialSource === CredentialSource.DEMO) {
-                query.demo = true;
-            }
-            response = await createIrmaSession('demos/demo5', 'irma-qr', query, callBackMapping);
-            if (response) {
-                dispatch({
-                    type: 'setResult',
-                    payload: {
-                        mobilenumber: response['mobilenumber'],
-                        email: response['email']
+
+            startIrmaSession({
+                demoPath: 'demos/demo5',
+                useDemoCredentials: credentialSource === CredentialSource.DEMO,
+                resultCallback: async (result: any) => {
+                    if (result) {
+                        dispatch({
+                            type: 'setResult',
+                            payload: {
+                                mobilenumber: result['mobilenumber'],
+                                email: result['email']
+                            }
+                        });
+                    } else {
+                        dispatch({ type: 'setError' });
                     }
-                });
-            } else {
-                dispatch({ type: 'setError' });
-            }
-            window.scrollTo(0, 0);
-            startUsabillaSurvey();
+                    window.scrollTo(0, 0);
+                    startUsabillaSurvey();
+                },
+                extraQuery: query as any
+            });
         }
-        return response;
-    };
+    }, [credentialSource, startIrmaSession, validateForm]);
 
     // No IRMA flow, for when the user doesn't select any Yes option.
     const finishSessionWithoutIRMA = useCallback(() => {
@@ -312,7 +317,12 @@ const Demo5: React.FC<IProps> = () => {
                                         {content.demo5.buttonNoIRMA}
                                     </StyledButton>
                                 ) : (
-                                    <QRCode getSession={getSession} label={content.demo5.button} />
+                                    <>
+                                        <AscLocal.QRCodeButton onClick={getSession}>
+                                            {content.demo5.button}
+                                        </AscLocal.QRCodeButton>
+                                        {modal}
+                                    </>
                                 )}
                             </section>
 
