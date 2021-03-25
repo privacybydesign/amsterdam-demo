@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ReactMarkDown from 'react-markdown';
 import { Accordion } from '@amsterdam/asc-ui';
 import { Alert as AlertIcon } from '@amsterdam/asc-assets';
 import { Checkmark } from '@amsterdam/asc-assets';
-import createIrmaSession, { IStateChangeCallbackMapping } from '@services/createIrmaSession';
+import useIrmaSession, { IIrmaSessionOutputData } from '@hooks/useIrmaSession';
 import content from '@services/content';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
@@ -12,7 +12,6 @@ import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
 import ResponsiveImage, { IHeaderImageProps } from '@components/ResponsiveImage/ResponsiveImage';
-import QRCode from '@components/QRCode/QRCode';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
@@ -30,55 +29,55 @@ const Demo1: React.FC<IProps> = () => {
     const [hasResult65, setHasResult65] = useState<boolean>(false);
     const [hasError, setHasError] = useState<boolean>(false);
 
-    const getSessionOver18 = async (callBackMapping?: IStateChangeCallbackMapping): Promise<null | unknown> => {
-        const response: any = await createIrmaSession(
-            'demos/demo1/18',
-            'irma-qr',
-            credentialSource === CredentialSource.DEMO && { demo: true },
-            callBackMapping
-        );
-        if (response) {
-            setIsOver18(
-                response['over18'] === 'Yes' ||
-                    response['over18'] === 'yes' ||
-                    response['over18'] === 'Ja' ||
-                    response['over18'] === 'ja'
-            );
-            setHasResult18(true);
-            setHasError(false);
-        } else {
-            setHasError(true);
-        }
+    const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
-        window.scrollTo(0, 0);
-        startUsabillaSurvey();
-        return response;
-    };
+    const getSessionOver18 = useCallback(() => {
+        startIrmaSession({
+            demoPath: 'demos/demo1/18',
+            useDemoCredentials: credentialSource === CredentialSource.DEMO,
+            resultCallback: (result: any) => {
+                if (result) {
+                    setIsOver18(
+                        result['over18'] === 'Yes' ||
+                            result['over18'] === 'yes' ||
+                            result['over18'] === 'Ja' ||
+                            result['over18'] === 'ja'
+                    );
+                    setHasResult18(true);
+                    setHasError(false);
+                } else {
+                    setHasError(true);
+                }
 
-    const getSessionOver65 = async (callBackMapping?: IStateChangeCallbackMapping): Promise<null | unknown> => {
-        const response = await createIrmaSession(
-            'demos/demo1/65',
-            'irma-qr',
-            credentialSource === CredentialSource.DEMO && { demo: true },
-            callBackMapping
-        );
-        if (response) {
-            setIsOver65(
-                (response as any)['over65'] === 'Yes' ||
-                    (response as any)['over65'] === 'yes' ||
-                    (response as any)['over65'] === 'Ja' ||
-                    (response as any)['over65'] === 'ja'
-            );
-            setHasResult65(true);
-            setHasError(false);
-        } else {
-            setHasError(true);
-        }
+                window.scrollTo(0, 0);
+                startUsabillaSurvey();
+            }
+        });
+    }, [credentialSource, startIrmaSession]);
 
-        window.scrollTo(0, 0);
-        startUsabillaSurvey();
-        return response;
-    };
+    const getSessionOver65 = useCallback(() => {
+        startIrmaSession({
+            demoPath: 'demos/demo1/65',
+            useDemoCredentials: credentialSource === CredentialSource.DEMO,
+            resultCallback: (result: any) => {
+                if (result) {
+                    setIsOver65(
+                        (result as any)['over65'] === 'Yes' ||
+                            (result as any)['over65'] === 'yes' ||
+                            (result as any)['over65'] === 'Ja' ||
+                            (result as any)['over65'] === 'ja'
+                    );
+                    setHasResult65(true);
+                    setHasError(false);
+                } else {
+                    setHasError(true);
+                }
+
+                window.scrollTo(0, 0);
+                startUsabillaSurvey();
+            }
+        });
+    }, [credentialSource, startIrmaSession]);
 
     // Preload demo images
     useEffect(() => {
@@ -224,16 +223,13 @@ const Demo1: React.FC<IProps> = () => {
                                 </AscLocal.AccordionContainer>
                             </section>
                             <section>
-                                <QRCode
-                                    getSession={getSessionOver18}
-                                    label={content.demo1.button18}
-                                    dataTestId="qrCodeButton18"
-                                />
-                                <QRCode
-                                    getSession={getSessionOver65}
-                                    label={content.demo1.button65}
-                                    dataTestId="qrCodeButton65"
-                                />
+                                <AscLocal.QRCodeButton dataTestId="qrCodeButton18" onClick={getSessionOver18}>
+                                    {content.demo1.button18}
+                                </AscLocal.QRCodeButton>
+                                <AscLocal.QRCodeButton dataTestId="qrCodeButton65" onClick={getSessionOver65}>
+                                    {content.demo1.button65}
+                                </AscLocal.QRCodeButton>
+                                {modal}
                             </section>
                             <section>
                                 <ReactMarkDown
