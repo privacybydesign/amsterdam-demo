@@ -1,5 +1,4 @@
-import React, { useState, useMemo, useEffect, useReducer } from 'react';
-import createIrmaSession, { IStateChangeCallbackMapping } from '@services/createIrmaSession';
+import React, { useState, useMemo, useEffect, useReducer, useCallback } from 'react';
 import getGGW from '@services/getGGW';
 import content, { insertInPlaceholders, reduceAndTranslateEmptyVars } from '@services/content';
 import ReactMarkDown from 'react-markdown';
@@ -9,7 +8,6 @@ import { Alert as AlertIcon } from '@amsterdam/asc-assets';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
-import QRCode from '@components/QRCode/QRCode';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
 import ExternalLink from '@components/ExternalLink/ExternalLink';
 import ResponsiveImage, { IHeaderImageProps } from '@components/ResponsiveImage/ResponsiveImage';
@@ -20,6 +18,7 @@ import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
+import useIrmaSession, { IIrmaSessionOutputData } from '@hooks/useIrmaSession';
 
 export interface IProps {}
 
@@ -51,50 +50,51 @@ const Demo2: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const getSession = async (callBackMapping?: IStateChangeCallbackMapping): Promise<null | unknown> => {
-        const response: any = await createIrmaSession(
-            'demos/demo2',
-            'irma-qr',
-            credentialSource === CredentialSource.DEMO && { demo: true },
-            callBackMapping
-        );
-        const newState: IState = { ...initialState };
-        if (response) {
-            newState.hasResult = true;
-            newState.hasError = false;
+    const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
-            newState.isOver18 =
-                response['over18'] === 'Yes' ||
-                response['over18'] === 'yes' ||
-                response['over18'] === 'Ja' ||
-                response['over18'] === 'ja';
+    const getSession = useCallback(() => {
+        startIrmaSession({
+            demoPath: 'demos/demo2',
+            useDemoCredentials: credentialSource === CredentialSource.DEMO,
+            resultCallback: async (result: any) => {
+                const newState: IState = { ...initialState };
+                if (result) {
+                    newState.hasResult = true;
+                    newState.hasError = false;
 
-            if (response['over18']?.length === 0) {
-                newState.emptyVars.push('over18');
-            }
+                    newState.isOver18 =
+                        result['over18'] === 'Yes' ||
+                        result['over18'] === 'yes' ||
+                        result['over18'] === 'Ja' ||
+                        result['over18'] === 'ja';
 
-            if (!response['zipcode']) {
-                newState.emptyVars.push('zipcode');
-            } else {
-                const postcode = response['zipcode'].replace(/ /, '');
+                    if (result['over18']?.length === 0) {
+                        newState.emptyVars.push('over18');
+                    }
 
-                const ggwResponse = await getGGW(postcode);
+                    if (!result['zipcode']) {
+                        newState.emptyVars.push('zipcode');
+                    } else {
+                        const postcode = result['zipcode'].replace(/ /, '');
 
-                if (ggwResponse) {
-                    newState.wijk = ggwResponse.buurtcombinatieNamen;
-                    newState.code = ggwResponse.ggwCode;
-                    newState.ggw = ggwResponse.ggwNaam;
+                        const ggwResponse = await getGGW(postcode);
+
+                        if (ggwResponse) {
+                            newState.wijk = ggwResponse.buurtcombinatieNamen;
+                            newState.code = ggwResponse.ggwCode;
+                            newState.ggw = ggwResponse.ggwNaam;
+                        }
+                    }
+                } else {
+                    newState.hasError = true;
                 }
-            }
-        } else {
-            newState.hasError = true;
-        }
 
-        dispatch(newState);
-        window.scrollTo(0, 0);
-        startUsabillaSurvey();
-        return response;
-    };
+                dispatch(newState);
+                window.scrollTo(0, 0);
+                startUsabillaSurvey();
+            }
+        });
+    }, [credentialSource, startIrmaSession]);
 
     const { hasResult, hasError, emptyVars, isOver18, wijk, ggw, code } = state;
 
@@ -257,7 +257,10 @@ const Demo2: React.FC<IProps> = () => {
                                 </AscLocal.AccordionContainer>
                             </section>
                             <section>
-                                <QRCode getSession={getSession} label={content.demo2.button} />
+                                <AscLocal.QRCodeButton onClick={getSession}>
+                                    {content.demo2.button}
+                                </AscLocal.QRCodeButton>
+                                {modal}
                             </section>
                             <section>
                                 <ReactMarkDown

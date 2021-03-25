@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react'
 import IrmaSessionModal from '@components/IrmaSessionModal/IrmaSessionModal';
 import createIrmaSession from '@services/createIrmaSession';
 
-export interface IIrmaSessionInputData {
+interface IIrmaSessionInputData {
     demoPath: string;
     useDemoCredentials: boolean;
     resultCallback: (irmaSessionResult: any) => void;
@@ -13,7 +13,7 @@ export interface IIrmaSessionOutputData {
     startIrmaSession: (irmaSessionInputData: IIrmaSessionInputData) => void;
 }
 
-const useIrmaSession = (): any => {
+const useIrmaSession = (): IIrmaSessionOutputData => {
     const [showLogo, setShowLogo] = useState<boolean>(false);
     const [activeIrmaSessionData, setActiveIrmaSessionData] = useState<IIrmaSessionInputData | undefined>();
 
