@@ -1,12 +1,13 @@
 import React, { useCallback, useLayoutEffect, useState } from 'react';
 import IrmaSessionModal from '@components/IrmaSessionModal/IrmaSessionModal';
-import createIrmaSession from '@services/createIrmaSession';
+import createIrmaSession, { isMobile } from '@services/createIrmaSession';
 
 interface IIrmaSessionInputData {
     demoPath: string;
     useDemoCredentials: boolean;
     resultCallback: (irmaSessionResult: any) => void;
     extraQuery?: { [key: string]: string };
+    alwaysShowQRCode?: boolean;
 }
 
 export interface IIrmaSessionOutputData {
@@ -60,7 +61,13 @@ const useIrmaSession = (): IIrmaSessionOutputData => {
     }, [activeIrmaSessionData, closeModal]);
 
     const modalElement = (
-        <IrmaSessionModal showModal={activeIrmaSessionData !== undefined} showLogo={showLogo} closeModal={closeModal} />
+        <IrmaSessionModal
+            showModal={activeIrmaSessionData !== undefined}
+            showLogo={showLogo}
+            closeModal={closeModal}
+            // Make the modal invisible for mobile flow unless alwaysShowQRCode is explicitly set
+            hideForMobileFlow={isMobile() && activeIrmaSessionData?.alwaysShowQRCode !== true}
+        />
     );
 
     const irmaSessionOutputData: IIrmaSessionOutputData = { modal: modalElement, startIrmaSession };

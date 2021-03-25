@@ -9,12 +9,19 @@ import { OL } from '@components/LocalAsc/LocalAsc';
 export interface IProps extends React.HTMLAttributes<any> {
     showModal: boolean;
     showLogo: boolean;
+    hideForMobileFlow?: boolean;
     closeModal: () => void;
 }
 
-const IrmaSessionModal: React.FC<IProps> = ({ showModal, showLogo, closeModal, className }) => {
+const IrmaSessionModal: React.FC<IProps> = ({
+    showModal,
+    showLogo,
+    closeModal,
+    className,
+    hideForMobileFlow = false
+}) => {
     return (
-        <Modal
+        <StyledModal
             backdropOpacity={0.5}
             open={showModal}
             className={className}
@@ -22,6 +29,7 @@ const IrmaSessionModal: React.FC<IProps> = ({ showModal, showLogo, closeModal, c
             data-testid="qrCodeModal"
             zIndexOffset={2}
             title={content.qrcode.title}
+            hideForMobileFlow={hideForMobileFlow}
         >
             <>
                 <StyledHeader>
@@ -46,16 +54,20 @@ const IrmaSessionModal: React.FC<IProps> = ({ showModal, showLogo, closeModal, c
                     </CanvasWrapper>
                 </ModalWrapper>
             </>
-        </Modal>
+        </StyledModal>
     );
 };
 
-export const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg', role: 'presentation' })`
+const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg', role: 'presentation' })`
     position: absolute;
     width: 65px;
     height: 65px;
     top: 119px;
     left: 119px;
+`;
+
+const StyledModal = styled(Modal)<{ hideForMobileFlow: boolean }>`
+    visibility: ${({ hideForMobileFlow }) => (hideForMobileFlow ? 'hidden' : 'visible')};
 `;
 
 const StyledH3 = styled.h3``;
