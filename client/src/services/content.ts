@@ -566,7 +566,7 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
         city: 'woonplaats',
         zipcode: 'postcode',
         email: 'email',
-        mobilenumber: 'telefoonnummer mobiel',
+        telephone: 'telefoonnummer mobiel',
         over18: 'ouder dan 18'
     }
 };
