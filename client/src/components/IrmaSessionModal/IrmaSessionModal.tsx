@@ -113,6 +113,13 @@ const IrmaWebElement = styled.div`
         width: 300px !important;
         height: 300px !important;
     }
+
+    p,
+    a {
+        color: ${themeColor('tint', 'level7')} !important;
+        font-family: 'Avenir Next' !important;
+        font-size: 17px !important;
+    }
 `;
 
 const QRCodeTopLeft = styled.img.attrs({ src: '/assets/qr-top-left.svg', role: 'presentation' })`
