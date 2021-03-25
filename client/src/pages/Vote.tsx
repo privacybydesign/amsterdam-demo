@@ -59,8 +59,6 @@ const VotePage: React.FC = () => {
         fn();
     }, []);
 
-    console.log({ sessionResult });
-
     return (
         <div className="vote-page">
             <h1>VOTE PAGE</h1>
