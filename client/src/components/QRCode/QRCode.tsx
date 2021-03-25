@@ -34,9 +34,7 @@ const QRCode: React.FC<IProps> = ({ label, getSession, className, dataTestId }) 
 
     const getQRSession = useCallback(async () => {
         if (typeof getSession === 'function') {
-            if (!isMobile()) {
-                setHasOverlay(true);
-            }
+            setHasOverlay(true);
         }
     }, [getSession]);
 

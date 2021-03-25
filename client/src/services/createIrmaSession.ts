@@ -28,6 +28,18 @@ export interface IStateChangeCallbackMapping {
     [stateName: string]: () => void;
 }
 
+interface IStateMachine {
+    transition: (state: string, payload?: any) => void;
+}
+
+class IrmaSkipMobileChoiceIfPossible {
+    stateChange({ newState, payload }: { newState: any; payload: any }) {
+        if (newState === 'ShowingIrmaButton') {
+            window.location = payload.mobile;
+        }
+    }
+}
+
 class IrmaStateChangeCallback {
     mapping: IStateChangeCallbackMapping;
     constructor({ options }: { options: any }) {
@@ -47,13 +59,10 @@ class IrmaStateChangeCallback {
     }
 }
 
+// TODO: Make this more solid
 export const isMobile = (): boolean => {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 };
-
-interface IStateMachine {
-    transition: (state: string) => void;
-}
 
 class IrmaAbortOnCancel {
     _stateMachine: IStateMachine;
@@ -100,6 +109,7 @@ const createIrmaSession = async (
 
     irma.use(Client);
     irma.use(Web);
+    irma.use(IrmaSkipMobileChoiceIfPossible);
     if (callBackMapping) {
         irma.use(IrmaStateChangeCallback);
     }
