@@ -10,6 +10,7 @@ import demo3 from './demo3';
 import demo4 from './demo4';
 import demo5 from './demo5';
 import result from './result';
+import vote from './vote';
 
 export default () => {
     const router = Router();
@@ -20,6 +21,7 @@ export default () => {
     demo4(router);
     demo5(router);
     result(router);
+    vote(router);
     return router;
 };
 
