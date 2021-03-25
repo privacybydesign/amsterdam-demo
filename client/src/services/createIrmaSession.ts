@@ -87,7 +87,7 @@ class IrmaAbortOnCancel {
     constructor({ stateMachine }: { stateMachine: any }) {
         this._stateMachine = stateMachine;
     }
-    stateChange({ newState }: { newState: any }) {
+    stateChange({ newState }: { newState: any }): void {
         if (newState === 'Cancelled') this._stateMachine.transition('abort');
     }
 }
