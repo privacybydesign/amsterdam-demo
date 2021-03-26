@@ -15,7 +15,8 @@ import {
     TextArea as AscTextArea,
     ErrorMessage as AscErrorMessage,
     themeColor,
-    Theme
+    Theme,
+    Button
 } from '@amsterdam/asc-ui';
 import { TextAreaProps as AscTextAreaProps } from '@amsterdam/asc-ui/lib/components/TextArea';
 
@@ -154,6 +155,15 @@ export const AccordionContainer = styled.div`
 export const AccordionHeading = styled(Heading).attrs({ as: 'h4' })`
     line-height: ${lineHeight};
     margin: 0;
+`;
+
+export const QRCodeButton: React.FC<any> = styled(Button).attrs(props => ({
+    'data-testid': (props as any).dataTestId || 'qrCodeButton',
+    variant: 'secondary',
+    iconSize: 24,
+    iconLeft: <IrmaLogoIcon />
+}))`
+    margin: ${themeSpacing(0, 6, 6, 0)};
 `;
 
 interface IAlertProps {

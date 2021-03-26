@@ -507,6 +507,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 
 }
 
+@media screen and (max-width:768px) {
+
+}
+
 @media (min-width:1200px) {
 
 }
@@ -968,6 +972,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 
 }
 
+@media screen and (max-width:768px) {
+
+}
+
 @media (min-width:1200px) {
 
 }
@@ -1277,6 +1285,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 }
 
 @media (min-width:1200px) {
+
+}
+
+@media screen and (max-width:768px) {
 
 }
 
@@ -1741,6 +1753,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
 
 }
 
+@media screen and (max-width:768px) {
+
+}
+
 @media (min-width:1200px) {
 
 }
@@ -2050,6 +2066,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 }
 
 @media (min-width:1200px) {
+
+}
+
+@media screen and (max-width:768px) {
 
 }
 
@@ -2521,6 +2541,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 
 }
 
+@media screen and (max-width:768px) {
+
+}
+
 @media (min-width:1200px) {
 
 }
@@ -2828,6 +2852,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 }
 
 @media (min-width:1200px) {
+
+}
+
+@media screen and (max-width:768px) {
 
 }
 
@@ -3296,6 +3324,10 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
 }
 
 @media (min-width:1200px) {
+
+}
+
+@media screen and (max-width:768px) {
 
 }
 
@@ -3793,6 +3825,10 @@ exports[`Demo1 should update the page after failing the IRMA flow 1`] = `
 }
 
 @media (min-width:1200px) {
+
+}
+
+@media screen and (max-width:768px) {
 
 }
 

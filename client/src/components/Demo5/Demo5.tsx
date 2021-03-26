@@ -4,7 +4,6 @@ import ReactMarkDown from 'react-markdown';
 import { Accordion, themeSpacing, Button } from '@amsterdam/asc-ui';
 import { Alert as AlertIcon } from '@amsterdam/asc-assets';
 import { Map, BaseLayer, Marker, getCrsRd } from '@amsterdam/arm-core';
-import createIrmaSession, { IStateChangeCallbackMapping } from '@services/createIrmaSession';
 import content from '@services/content';
 import deflist from '@services/deflist';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
@@ -14,7 +13,6 @@ import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
 import ResponsiveImage, { IHeaderImageProps } from '@components/ResponsiveImage/ResponsiveImage';
-import QRCode from '@components/QRCode/QRCode';
 import { Checkmark } from '@amsterdam/asc-assets';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
@@ -24,6 +22,8 @@ import { reducer, initialState, IState } from './reducer';
 import Demo5Form, { FormFields } from './Demo5Form';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
+import useIrmaSession, { IIrmaSessionOutputData } from '@hooks/useIrmaSession';
+import { isMobile } from '@services/createIrmaSession';
 
 export interface IProps {}
 
@@ -102,35 +102,44 @@ const Demo5: React.FC<IProps> = () => {
 
     // IRMA session
     // Only use IRMA flow when the user selected the Yes option phone, email or both
-    const getSession = async (callBackMapping?: IStateChangeCallbackMapping): Promise<null | unknown> => {
-        let response: any = null;
-        const validatedForm = validateForm();
+    const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
-        if (validatedForm !== undefined && !validatedForm.errors.length) {
-            const query: IDemo5Query = {
-                phone: Boolean(validatedForm.values.optionPhone),
-                email: Boolean(validatedForm.values.optionEmail)
-            };
-            if (credentialSource === CredentialSource.DEMO) {
-                query.demo = true;
-            }
-            response = await createIrmaSession('demos/demo5', 'irma-qr', query, callBackMapping);
-            if (response) {
-                dispatch({
-                    type: 'setResult',
-                    payload: {
-                        mobilenumber: response['mobilenumber'],
-                        email: response['email']
-                    }
+    const getSession = useCallback(
+        (event, alwaysShowQRCode = false) => {
+            event.persist();
+            const validatedForm = validateForm();
+            if (validatedForm !== undefined && !validatedForm.errors.length) {
+                // Define URL variables based on form input
+                const query: IDemo5Query = {
+                    phone: Boolean(validatedForm.values.optionPhone),
+                    email: Boolean(validatedForm.values.optionEmail)
+                };
+
+                startIrmaSession({
+                    demoPath: 'demos/demo5',
+                    useDemoCredentials: credentialSource === CredentialSource.DEMO,
+                    alwaysShowQRCode,
+                    resultCallback: async (result: any) => {
+                        if (result) {
+                            dispatch({
+                                type: 'setResult',
+                                payload: {
+                                    mobilenumber: result['mobilenumber'],
+                                    email: result['email']
+                                }
+                            });
+                        } else {
+                            dispatch({ type: 'setError' });
+                        }
+                        window.scrollTo(0, 0);
+                        startUsabillaSurvey();
+                    },
+                    extraQuery: query as any
                 });
-            } else {
-                dispatch({ type: 'setError' });
             }
-            window.scrollTo(0, 0);
-            startUsabillaSurvey();
-        }
-        return response;
-    };
+        },
+        [credentialSource, startIrmaSession, validateForm]
+    );
 
     // No IRMA flow, for when the user doesn't select any Yes option.
     const finishSessionWithoutIRMA = useCallback(() => {
@@ -312,7 +321,12 @@ const Demo5: React.FC<IProps> = () => {
                                         {content.demo5.buttonNoIRMA}
                                     </StyledButton>
                                 ) : (
-                                    <QRCode getSession={getSession} label={content.demo5.button} />
+                                    <>
+                                        <AscLocal.QRCodeButton onClick={getSession}>
+                                            {content.demo5.button}
+                                        </AscLocal.QRCodeButton>
+                                        {modal}
+                                    </>
                                 )}
                             </section>
 
@@ -325,6 +339,20 @@ const Demo5: React.FC<IProps> = () => {
                                     }}
                                 />
                             </section>
+
+                            {isMobile() && (
+                                <section>
+                                    <p>
+                                        {content.showQrOnMobile.label}
+                                        <br />
+                                        <AscLocal.UnderlinedLink
+                                            onClick={(e: React.SyntheticEvent) => getSession(e, true)}
+                                        >
+                                            {content.showQrOnMobile.link}
+                                        </AscLocal.UnderlinedLink>
+                                    </p>
+                                </section>
+                            )}
                         </ContentBlock>
                     </AscLocal.Column>
                     <AscLocal.Column

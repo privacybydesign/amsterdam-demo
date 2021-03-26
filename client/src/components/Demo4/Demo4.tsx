@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef, useReducer } from 'react';
-import createIrmaSession, { IStateChangeCallbackMapping } from '@services/createIrmaSession';
+import React, { useState, useEffect, useRef, useReducer, useCallback } from 'react';
 import content, { reduceAndTranslateEmptyVars } from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import defList from '@services/deflist';
@@ -13,7 +12,6 @@ import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
 import ResponsiveImage, { IHeaderImageProps } from '@components/ResponsiveImage/ResponsiveImage';
 import { RadioGroup, Label, Radio } from '@amsterdam/asc-ui';
-import QRCode from '@components/QRCode/QRCode';
 import { initialState, reducer, IState } from './reducer';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import preloadDemoImages from '@services/preloadImages';
@@ -21,6 +19,8 @@ import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
+import useIrmaSession, { IIrmaSessionOutputData } from '@hooks/useIrmaSession';
+import { isMobile } from '@services/createIrmaSession';
 
 export interface IProps {}
 
@@ -60,39 +60,44 @@ const Demo4: React.FC<IProps> = () => {
         return false;
     };
 
-    const getSession = async (callBackMapping?: IStateChangeCallbackMapping): Promise<null | unknown> => {
-        let response: any = null;
-        if (validateForm()) {
-            response = await createIrmaSession(
-                'demos/demo4',
-                'irma-qr',
-                credentialSource === CredentialSource.DEMO && { demo: true },
-                callBackMapping
-            );
-            if (response) {
-                dispatch({
-                    type: 'setProperties',
-                    payload: {
-                        name: response['fullname'],
-                        street: response['street'],
-                        houseNumber: response['houseNumber'],
-                        zipcode: response['zipcode'],
-                        city: response['city'],
-                        telephone: response['mobilenumber'],
-                        email: response['email']
+    const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
+
+    const getSession = useCallback(
+        (event, alwaysShowQRCode = false) => {
+            event.persist();
+            if (validateForm()) {
+                startIrmaSession({
+                    demoPath: 'demos/demo4',
+                    useDemoCredentials: credentialSource === CredentialSource.DEMO,
+                    alwaysShowQRCode,
+                    resultCallback: async (result: any) => {
+                        if (result) {
+                            dispatch({
+                                type: 'setProperties',
+                                payload: {
+                                    name: result['fullname'],
+                                    street: result['street'],
+                                    houseNumber: result['houseNumber'],
+                                    zipcode: result['zipcode'],
+                                    city: result['city'],
+                                    telephone: result['mobilenumber'],
+                                    email: result['email']
+                                }
+                            });
+                        } else {
+                            dispatch({
+                                type: 'setError'
+                            });
+                        }
+
+                        window.scrollTo(0, 0);
+                        startUsabillaSurvey();
                     }
                 });
-            } else {
-                dispatch({
-                    type: 'setError'
-                });
             }
-
-            window.scrollTo(0, 0);
-            startUsabillaSurvey();
-        }
-        return response;
-    };
+        },
+        [credentialSource, startIrmaSession]
+    );
 
     const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
         filename: content.responsiveImages.demo4.header.src,
@@ -251,7 +256,10 @@ const Demo4: React.FC<IProps> = () => {
                                 />
                             </section>
                             <section>
-                                <QRCode getSession={getSession} label={content.demo4.button} />
+                                <AscLocal.QRCodeButton onClick={getSession}>
+                                    {content.demo4.button}
+                                </AscLocal.QRCodeButton>
+                                {modal}
                             </section>
                             <section>
                                 <ReactMarkDown
@@ -259,6 +267,19 @@ const Demo4: React.FC<IProps> = () => {
                                     renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
                                 />
                             </section>
+                            {isMobile() && (
+                                <section>
+                                    <p>
+                                        {content.showQrOnMobile.label}
+                                        <br />
+                                        <AscLocal.UnderlinedLink
+                                            onClick={(e: React.SyntheticEvent) => getSession(e, true)}
+                                        >
+                                            {content.showQrOnMobile.link}
+                                        </AscLocal.UnderlinedLink>
+                                    </p>
+                                </section>
+                            )}
                         </ContentBlock>
                     </AscLocal.Column>
                     <AscLocal.Column

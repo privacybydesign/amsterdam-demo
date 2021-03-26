@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import createIrmaSession, { IStateChangeCallbackMapping } from '@services/createIrmaSession';
+import React, { useState, useEffect, useCallback } from 'react';
 import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
@@ -11,7 +10,6 @@ import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
 import ResponsiveImage, { IHeaderImageProps } from '@components/ResponsiveImage/ResponsiveImage';
-import QRCode from '@components/QRCode/QRCode';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { Checkmark } from '@amsterdam/asc-assets';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
@@ -19,6 +17,8 @@ import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
+import useIrmaSession, { IIrmaSessionOutputData } from '@hooks/useIrmaSession';
+import { isMobile } from '@services/createIrmaSession';
 
 export interface IProps {}
 // @todo add error flow with incorrect data
@@ -30,25 +30,31 @@ const Demo3: React.FC<IProps> = () => {
     // const [bsn, setBsn] = useState<string>('');
     const [name, setName] = useState<string>('');
 
-    const getSession = async (callBackMapping?: IStateChangeCallbackMapping): Promise<null | unknown> => {
-        const response: any = await createIrmaSession(
-            'demos/demo3',
-            'irma-qr',
-            credentialSource === CredentialSource.DEMO && { demo: true },
-            callBackMapping
-        );
-        if (response) {
-            setHasResult(true);
-            setHasError(false);
-            // setBsn(response['bsn']);
-            setName(response['fullname']);
-        } else {
-            setHasError(true);
-        }
-        window.scrollTo(0, 0);
-        startUsabillaSurvey();
-        return response;
-    };
+    const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
+
+    const getSession = useCallback(
+        (event, alwaysShowQRCode = false) => {
+            event.persist();
+            startIrmaSession({
+                demoPath: 'demos/demo3',
+                useDemoCredentials: credentialSource === CredentialSource.DEMO,
+                alwaysShowQRCode,
+                resultCallback: async (result: any) => {
+                    if (result) {
+                        setHasResult(true);
+                        setHasError(false);
+                        // setBsn(response['bsn']);
+                        setName(result['fullname']);
+                    } else {
+                        setHasError(true);
+                    }
+                    window.scrollTo(0, 0);
+                    startUsabillaSurvey();
+                }
+            });
+        },
+        [credentialSource, startIrmaSession]
+    );
 
     // Define dynamic header image
     const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
@@ -149,7 +155,10 @@ const Demo3: React.FC<IProps> = () => {
                                 </AscLocal.AccordionContainer>
                             </section>
                             <section>
-                                <QRCode getSession={getSession} label={content.demo3.button} />
+                                <AscLocal.QRCodeButton onClick={getSession}>
+                                    {content.demo3.button}
+                                </AscLocal.QRCodeButton>
+                                {modal}
                             </section>
                             <section>
                                 <ReactMarkDown
@@ -160,6 +169,19 @@ const Demo3: React.FC<IProps> = () => {
                                     }}
                                 />
                             </section>
+                            {isMobile() && (
+                                <section>
+                                    <p>
+                                        {content.showQrOnMobile.label}
+                                        <br />
+                                        <AscLocal.UnderlinedLink
+                                            onClick={(e: React.SyntheticEvent) => getSession(e, true)}
+                                        >
+                                            {content.showQrOnMobile.link}
+                                        </AscLocal.UnderlinedLink>
+                                    </p>
+                                </section>
+                            )}
                         </ContentBlock>
                     </AscLocal.Column>
                     <AscLocal.Column
