@@ -20,6 +20,7 @@ import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 import useIrmaSession, { IIrmaSessionOutputData } from '@hooks/useIrmaSession';
+import { isMobile } from '@services/createIrmaSession';
 
 export interface IProps {}
 
@@ -61,37 +62,41 @@ const Demo4: React.FC<IProps> = () => {
 
     const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
-    const getSession = useCallback(() => {
-        if (validateForm()) {
-            startIrmaSession({
-                demoPath: 'demos/demo3',
-                useDemoCredentials: credentialSource === CredentialSource.DEMO,
-                resultCallback: async (result: any) => {
-                    if (result) {
-                        dispatch({
-                            type: 'setProperties',
-                            payload: {
-                                name: result['fullname'],
-                                street: result['street'],
-                                houseNumber: result['houseNumber'],
-                                zipcode: result['zipcode'],
-                                city: result['city'],
-                                telephone: result['mobilenumber'],
-                                email: result['email']
-                            }
-                        });
-                    } else {
-                        dispatch({
-                            type: 'setError'
-                        });
-                    }
+    const getSession = useCallback(
+        (alwaysShowQRCode = false) => {
+            if (validateForm()) {
+                startIrmaSession({
+                    demoPath: 'demos/demo4',
+                    useDemoCredentials: credentialSource === CredentialSource.DEMO,
+                    alwaysShowQRCode,
+                    resultCallback: async (result: any) => {
+                        if (result) {
+                            dispatch({
+                                type: 'setProperties',
+                                payload: {
+                                    name: result['fullname'],
+                                    street: result['street'],
+                                    houseNumber: result['houseNumber'],
+                                    zipcode: result['zipcode'],
+                                    city: result['city'],
+                                    telephone: result['mobilenumber'],
+                                    email: result['email']
+                                }
+                            });
+                        } else {
+                            dispatch({
+                                type: 'setError'
+                            });
+                        }
 
-                    window.scrollTo(0, 0);
-                    startUsabillaSurvey();
-                }
-            });
-        }
-    }, [credentialSource, startIrmaSession]);
+                        window.scrollTo(0, 0);
+                        startUsabillaSurvey();
+                    }
+                });
+            }
+        },
+        [credentialSource, startIrmaSession]
+    );
 
     const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
         filename: content.responsiveImages.demo4.header.src,
@@ -261,6 +266,15 @@ const Demo4: React.FC<IProps> = () => {
                                     renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
                                 />
                             </section>
+                            {isMobile() && (
+                                <section>
+                                    {content.showQrOnMobile.label}
+                                    <br />
+                                    <AscLocal.UnderlinedLink onClick={() => getSession(true)}>
+                                        {content.showQrOnMobile.link}
+                                    </AscLocal.UnderlinedLink>
+                                </section>
+                            )}
                         </ContentBlock>
                     </AscLocal.Column>
                     <AscLocal.Column

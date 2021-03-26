@@ -18,6 +18,7 @@ import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 import useIrmaSession, { IIrmaSessionOutputData } from '@hooks/useIrmaSession';
+import { isMobile } from '@services/createIrmaSession';
 
 export interface IProps {}
 // @todo add error flow with incorrect data
@@ -31,24 +32,28 @@ const Demo3: React.FC<IProps> = () => {
 
     const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
-    const getSession = useCallback(() => {
-        startIrmaSession({
-            demoPath: 'demos/demo3',
-            useDemoCredentials: credentialSource === CredentialSource.DEMO,
-            resultCallback: async (result: any) => {
-                if (result) {
-                    setHasResult(true);
-                    setHasError(false);
-                    // setBsn(response['bsn']);
-                    setName(result['fullname']);
-                } else {
-                    setHasError(true);
+    const getSession = useCallback(
+        (alwaysShowQRCode = false) => {
+            startIrmaSession({
+                demoPath: 'demos/demo3',
+                useDemoCredentials: credentialSource === CredentialSource.DEMO,
+                alwaysShowQRCode,
+                resultCallback: async (result: any) => {
+                    if (result) {
+                        setHasResult(true);
+                        setHasError(false);
+                        // setBsn(response['bsn']);
+                        setName(result['fullname']);
+                    } else {
+                        setHasError(true);
+                    }
+                    window.scrollTo(0, 0);
+                    startUsabillaSurvey();
                 }
-                window.scrollTo(0, 0);
-                startUsabillaSurvey();
-            }
-        });
-    }, [credentialSource, startIrmaSession]);
+            });
+        },
+        [credentialSource, startIrmaSession]
+    );
 
     // Define dynamic header image
     const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
@@ -163,6 +168,15 @@ const Demo3: React.FC<IProps> = () => {
                                     }}
                                 />
                             </section>
+                            {isMobile() && (
+                                <section>
+                                    {content.showQrOnMobile.label}
+                                    <br />
+                                    <AscLocal.UnderlinedLink onClick={() => getSession(true)}>
+                                        {content.showQrOnMobile.link}
+                                    </AscLocal.UnderlinedLink>
+                                </section>
+                            )}
                         </ContentBlock>
                     </AscLocal.Column>
                     <AscLocal.Column

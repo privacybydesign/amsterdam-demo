@@ -19,6 +19,7 @@ import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 import useIrmaSession, { IIrmaSessionOutputData } from '@hooks/useIrmaSession';
+import { isMobile } from '@services/createIrmaSession';
 
 export interface IProps {}
 
@@ -52,49 +53,53 @@ const Demo2: React.FC<IProps> = () => {
 
     const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
-    const getSession = useCallback(() => {
-        startIrmaSession({
-            demoPath: 'demos/demo2',
-            useDemoCredentials: credentialSource === CredentialSource.DEMO,
-            resultCallback: async (result: any) => {
-                const newState: IState = { ...initialState };
-                if (result) {
-                    newState.hasResult = true;
-                    newState.hasError = false;
+    const getSession = useCallback(
+        (alwaysShowQRCode = false) => {
+            startIrmaSession({
+                demoPath: 'demos/demo2',
+                useDemoCredentials: credentialSource === CredentialSource.DEMO,
+                alwaysShowQRCode,
+                resultCallback: async (result: any) => {
+                    const newState: IState = { ...initialState };
+                    if (result) {
+                        newState.hasResult = true;
+                        newState.hasError = false;
 
-                    newState.isOver18 =
-                        result['over18'] === 'Yes' ||
-                        result['over18'] === 'yes' ||
-                        result['over18'] === 'Ja' ||
-                        result['over18'] === 'ja';
+                        newState.isOver18 =
+                            result['over18'] === 'Yes' ||
+                            result['over18'] === 'yes' ||
+                            result['over18'] === 'Ja' ||
+                            result['over18'] === 'ja';
 
-                    if (result['over18']?.length === 0) {
-                        newState.emptyVars.push('over18');
-                    }
-
-                    if (!result['zipcode']) {
-                        newState.emptyVars.push('zipcode');
-                    } else {
-                        const postcode = result['zipcode'].replace(/ /, '');
-
-                        const ggwResponse = await getGGW(postcode);
-
-                        if (ggwResponse) {
-                            newState.wijk = ggwResponse.buurtcombinatieNamen;
-                            newState.code = ggwResponse.ggwCode;
-                            newState.ggw = ggwResponse.ggwNaam;
+                        if (result['over18']?.length === 0) {
+                            newState.emptyVars.push('over18');
                         }
-                    }
-                } else {
-                    newState.hasError = true;
-                }
 
-                dispatch(newState);
-                window.scrollTo(0, 0);
-                startUsabillaSurvey();
-            }
-        });
-    }, [credentialSource, startIrmaSession]);
+                        if (!result['zipcode']) {
+                            newState.emptyVars.push('zipcode');
+                        } else {
+                            const postcode = result['zipcode'].replace(/ /, '');
+
+                            const ggwResponse = await getGGW(postcode);
+
+                            if (ggwResponse) {
+                                newState.wijk = ggwResponse.buurtcombinatieNamen;
+                                newState.code = ggwResponse.ggwCode;
+                                newState.ggw = ggwResponse.ggwNaam;
+                            }
+                        }
+                    } else {
+                        newState.hasError = true;
+                    }
+
+                    dispatch(newState);
+                    window.scrollTo(0, 0);
+                    startUsabillaSurvey();
+                }
+            });
+        },
+        [credentialSource, startIrmaSession]
+    );
 
     const { hasResult, hasError, emptyVars, isOver18, wijk, ggw, code } = state;
 
@@ -271,6 +276,15 @@ const Demo2: React.FC<IProps> = () => {
                                     }}
                                 />
                             </section>
+                            {isMobile() && (
+                                <section>
+                                    {content.showQrOnMobile.label}
+                                    <br />
+                                    <AscLocal.UnderlinedLink onClick={() => getSession(true)}>
+                                        {content.showQrOnMobile.link}
+                                    </AscLocal.UnderlinedLink>
+                                </section>
+                            )}
                         </ContentBlock>
                     </AscLocal.Column>
                     <AscLocal.Column

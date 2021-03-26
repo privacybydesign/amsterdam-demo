@@ -23,6 +23,7 @@ import Demo5Form, { FormFields } from './Demo5Form';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 import useIrmaSession, { IIrmaSessionOutputData } from '@hooks/useIrmaSession';
+import { isMobile } from '@services/createIrmaSession';
 
 export interface IProps {}
 
@@ -103,37 +104,41 @@ const Demo5: React.FC<IProps> = () => {
     // Only use IRMA flow when the user selected the Yes option phone, email or both
     const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
-    const getSession = useCallback(() => {
-        const validatedForm = validateForm();
-        if (validatedForm !== undefined && !validatedForm.errors.length) {
-            // Define URL variables based on form input
-            const query: IDemo5Query = {
-                phone: Boolean(validatedForm.values.optionPhone),
-                email: Boolean(validatedForm.values.optionEmail)
-            };
+    const getSession = useCallback(
+        (alwaysShowQRCode = false) => {
+            const validatedForm = validateForm();
+            if (validatedForm !== undefined && !validatedForm.errors.length) {
+                // Define URL variables based on form input
+                const query: IDemo5Query = {
+                    phone: Boolean(validatedForm.values.optionPhone),
+                    email: Boolean(validatedForm.values.optionEmail)
+                };
 
-            startIrmaSession({
-                demoPath: 'demos/demo5',
-                useDemoCredentials: credentialSource === CredentialSource.DEMO,
-                resultCallback: async (result: any) => {
-                    if (result) {
-                        dispatch({
-                            type: 'setResult',
-                            payload: {
-                                mobilenumber: result['mobilenumber'],
-                                email: result['email']
-                            }
-                        });
-                    } else {
-                        dispatch({ type: 'setError' });
-                    }
-                    window.scrollTo(0, 0);
-                    startUsabillaSurvey();
-                },
-                extraQuery: query as any
-            });
-        }
-    }, [credentialSource, startIrmaSession, validateForm]);
+                startIrmaSession({
+                    demoPath: 'demos/demo5',
+                    useDemoCredentials: credentialSource === CredentialSource.DEMO,
+                    alwaysShowQRCode,
+                    resultCallback: async (result: any) => {
+                        if (result) {
+                            dispatch({
+                                type: 'setResult',
+                                payload: {
+                                    mobilenumber: result['mobilenumber'],
+                                    email: result['email']
+                                }
+                            });
+                        } else {
+                            dispatch({ type: 'setError' });
+                        }
+                        window.scrollTo(0, 0);
+                        startUsabillaSurvey();
+                    },
+                    extraQuery: query as any
+                });
+            }
+        },
+        [credentialSource, startIrmaSession, validateForm]
+    );
 
     // No IRMA flow, for when the user doesn't select any Yes option.
     const finishSessionWithoutIRMA = useCallback(() => {
@@ -333,6 +338,16 @@ const Demo5: React.FC<IProps> = () => {
                                     }}
                                 />
                             </section>
+
+                            {isMobile() && (
+                                <section>
+                                    {content.showQrOnMobile.label}
+                                    <br />
+                                    <AscLocal.UnderlinedLink onClick={() => getSession(true)}>
+                                        {content.showQrOnMobile.link}
+                                    </AscLocal.UnderlinedLink>
+                                </section>
+                            )}
                         </ContentBlock>
                     </AscLocal.Column>
                     <AscLocal.Column
