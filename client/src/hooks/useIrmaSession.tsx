@@ -41,6 +41,9 @@ const useIrmaSession = (): IIrmaSessionOutputData => {
             ShowingQRCode: () => {
                 setShowLogo(true);
             },
+            ShowingIrmaButton: () => {
+                setShowLogo(true);
+            },
             rest: () => {
                 setShowLogo(false);
             }
