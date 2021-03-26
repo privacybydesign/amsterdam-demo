@@ -164,6 +164,10 @@ Bewijs dat u ouder bent dan 18 jaar of 65 jaar door uzelf bekend te maken met de
 - Alcohol kopen.
 - Stemmen voor lokale initiatieven.
 `
+        },
+        showQrOnMobile: {
+            link18: `Toon QR-code voor 18+ bewijzen`,
+            link65: `Toon QR-code voor 65+ bewijzen`
         }
     },
 
@@ -435,6 +439,11 @@ Dit kan worden gebruikt voor:
 - U heeft geen gegevens uit IRMA gebruikt.`,
             disclaimerError: `Dit is een demo; u heeft geen melding overlast gedaan.`
         }
+    },
+
+    showQrOnMobile: {
+        label: `Heeft u IRMA op een ander apparaat?`,
+        link: `Toon QR-code`
     },
 
     cookies: {

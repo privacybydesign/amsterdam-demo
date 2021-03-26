@@ -18,6 +18,7 @@ import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
+import { isMobile } from '@services/createIrmaSession';
 
 export interface IProps {}
 
@@ -31,53 +32,61 @@ const Demo1: React.FC<IProps> = () => {
 
     const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
-    const getSessionOver18 = useCallback(() => {
-        startIrmaSession({
-            demoPath: 'demos/demo1/18',
-            useDemoCredentials: credentialSource === CredentialSource.DEMO,
-            resultCallback: (result: any) => {
-                if (result) {
-                    setIsOver18(
-                        result['over18'] === 'Yes' ||
-                            result['over18'] === 'yes' ||
-                            result['over18'] === 'Ja' ||
-                            result['over18'] === 'ja'
-                    );
-                    setHasResult18(true);
-                    setHasError(false);
-                } else {
-                    setHasError(true);
+    const getSessionOver18 = useCallback(
+        (alwaysShowQRCode = false) => {
+            startIrmaSession({
+                demoPath: 'demos/demo1/18',
+                useDemoCredentials: credentialSource === CredentialSource.DEMO,
+                alwaysShowQRCode,
+                resultCallback: (result: any) => {
+                    if (result) {
+                        setIsOver18(
+                            result['over18'] === 'Yes' ||
+                                result['over18'] === 'yes' ||
+                                result['over18'] === 'Ja' ||
+                                result['over18'] === 'ja'
+                        );
+                        setHasResult18(true);
+                        setHasError(false);
+                    } else {
+                        setHasError(true);
+                    }
+
+                    window.scrollTo(0, 0);
+                    startUsabillaSurvey();
                 }
+            });
+        },
+        [credentialSource, startIrmaSession]
+    );
 
-                window.scrollTo(0, 0);
-                startUsabillaSurvey();
-            }
-        });
-    }, [credentialSource, startIrmaSession]);
+    const getSessionOver65 = useCallback(
+        (alwaysShowQRCode = false) => {
+            startIrmaSession({
+                demoPath: 'demos/demo1/65',
+                useDemoCredentials: credentialSource === CredentialSource.DEMO,
+                alwaysShowQRCode,
+                resultCallback: (result: any) => {
+                    if (result) {
+                        setIsOver65(
+                            (result as any)['over65'] === 'Yes' ||
+                                (result as any)['over65'] === 'yes' ||
+                                (result as any)['over65'] === 'Ja' ||
+                                (result as any)['over65'] === 'ja'
+                        );
+                        setHasResult65(true);
+                        setHasError(false);
+                    } else {
+                        setHasError(true);
+                    }
 
-    const getSessionOver65 = useCallback(() => {
-        startIrmaSession({
-            demoPath: 'demos/demo1/65',
-            useDemoCredentials: credentialSource === CredentialSource.DEMO,
-            resultCallback: (result: any) => {
-                if (result) {
-                    setIsOver65(
-                        (result as any)['over65'] === 'Yes' ||
-                            (result as any)['over65'] === 'yes' ||
-                            (result as any)['over65'] === 'Ja' ||
-                            (result as any)['over65'] === 'ja'
-                    );
-                    setHasResult65(true);
-                    setHasError(false);
-                } else {
-                    setHasError(true);
+                    window.scrollTo(0, 0);
+                    startUsabillaSurvey();
                 }
-
-                window.scrollTo(0, 0);
-                startUsabillaSurvey();
-            }
-        });
-    }, [credentialSource, startIrmaSession]);
+            });
+        },
+        [credentialSource, startIrmaSession]
+    );
 
     // Preload demo images
     useEffect(() => {
@@ -237,6 +246,19 @@ const Demo1: React.FC<IProps> = () => {
                                     renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
                                 />
                             </section>
+                            {isMobile() && (
+                                <section>
+                                    {content.showQrOnMobile.label}
+                                    <br />
+                                    <AscLocal.UnderlinedLink onClick={() => getSessionOver18(true)}>
+                                        {content.demo1.showQrOnMobile.link18}
+                                    </AscLocal.UnderlinedLink>
+                                    <br />
+                                    <AscLocal.UnderlinedLink onClick={() => getSessionOver65(true)}>
+                                        {content.demo1.showQrOnMobile.link65}
+                                    </AscLocal.UnderlinedLink>
+                                </section>
+                            )}
                         </ContentBlock>
                     </AscLocal.Column>
                     <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>

@@ -52,7 +52,8 @@ const useIrmaSession = (): IIrmaSessionOutputData => {
                 activeIrmaSessionData.demoPath,
                 'irma-qr',
                 { demo: activeIrmaSessionData.useDemoCredentials, ...activeIrmaSessionData.extraQuery },
-                callBackMapping
+                callBackMapping,
+                activeIrmaSessionData.alwaysShowQRCode
             );
             activeIrmaSessionData.resultCallback(result);
             closeModal();
