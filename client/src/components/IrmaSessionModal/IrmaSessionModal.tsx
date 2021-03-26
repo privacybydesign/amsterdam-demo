@@ -62,8 +62,9 @@ const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg', role: 'present
     position: absolute;
     width: 65px;
     height: 65px;
-    top: 119px;
-    left: 119px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 `;
 
 const StyledModal = styled(Modal)<{ hideForMobileFlow: boolean }>`
@@ -117,6 +118,11 @@ const IrmaWebElement = styled.div`
     & .irma-web-qr-canvas {
         width: ${() => (isMobile() ? '250' : '300')}px !important;
         height: ${() => (isMobile() ? '250' : '300')}px !important;
+        & + p {
+            @media screen and (max-width: 768px) {
+                display: none;
+            }
+        }
     }
 
     p,
