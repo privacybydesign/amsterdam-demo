@@ -12,7 +12,6 @@ export default (router: Router) => {
         const sessionToken = (req.session! as any).token;
         Logger.info(`Incoming request for session result for session ${sessionToken}`);
 
-        console.log('TRY TO READ');
         try {
             const files = await readdir('sessions');
             console.log('DIR IS READ');

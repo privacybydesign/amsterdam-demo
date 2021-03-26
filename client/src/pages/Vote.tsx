@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import '@privacybydesign/irma-css';
 import IrmaCore from '@privacybydesign/irma-core';
 import Web from '@privacybydesign/irma-web';
 import Client from '@privacybydesign/irma-client';

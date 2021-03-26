@@ -17,7 +17,7 @@ const credentialsToRequest: CredentialSet = [
     ]
 ];
 
-export const processVoteRequest = async (message: string, req: Request, res: Response, next: NextFunction) => {
+const processVoteRequest = async (message: string, req: Request, res: Response, next: NextFunction) => {
     try {
         const irmaServiceInstance = Container.get(IrmaService);
 
