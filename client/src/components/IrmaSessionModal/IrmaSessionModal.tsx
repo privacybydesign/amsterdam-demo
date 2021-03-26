@@ -5,7 +5,7 @@ import { Button, Modal, themeSpacing, themeColor } from '@amsterdam/asc-ui';
 import { Close } from '@amsterdam/asc-assets';
 import content from '@services/content';
 import { OL } from '@components/LocalAsc/LocalAsc';
-
+import { isMobile } from '@services/createIrmaSession';
 export interface IProps extends React.HTMLAttributes<any> {
     showModal: boolean;
     showLogo: boolean;
@@ -68,6 +68,10 @@ const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg', role: 'present
 
 const StyledModal = styled(Modal)<{ hideForMobileFlow: boolean }>`
     visibility: ${({ hideForMobileFlow }) => (hideForMobileFlow ? 'hidden' : 'visible')};
+
+    > div {
+        max-height: 100vh;
+    }
 `;
 
 const StyledH3 = styled.h3``;
@@ -90,15 +94,16 @@ const CloseButton = styled(Button)`
 
 const CanvasWrapper = styled.div`
     position: relative;
-    width: 300px !important;
-    height: 300px !important;
+    width: ${() => (isMobile() ? '250' : '300')}px !important;
+    height: ${() => (isMobile() ? '250' : '300')}px !important;
     margin: 50px auto;
 `;
 
 const IrmaWebElement = styled.div`
-    width: 300px !important;
-    height: 300px !important;
-    min-height: 300px;
+    width: ${() => (isMobile() ? '250' : '300')}px !important;
+    height: ${() => (isMobile() ? '250' : '300')}px !important;
+    min-width: ${() => (isMobile() ? '250' : '300')}px;
+    min-height: ${() => (isMobile() ? '250' : '300')}px;
     background-color: transparent;
 
     & .irma-web-header {
@@ -110,8 +115,8 @@ const IrmaWebElement = styled.div`
         }
     }
     & .irma-web-qr-canvas {
-        width: 300px !important;
-        height: 300px !important;
+        width: ${() => (isMobile() ? '250' : '300')}px !important;
+        height: ${() => (isMobile() ? '250' : '300')}px !important;
     }
 
     p,
