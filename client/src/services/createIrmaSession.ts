@@ -26,7 +26,7 @@ export const getConfig = async (): Promise<IIrmaServerConfig> => {
 
 // TODO: Make this more solid
 export const isMobile = (): boolean => {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    return /mobile/i.test(navigator.userAgent) && !/ipad|tablet/i.test(navigator.userAgent);
 };
 
 // Types for Irma Plugins
@@ -36,30 +36,44 @@ export interface IStateChangeCallbackMapping {
 
 export interface IIrmaSessionData {}
 
-interface IStateMachine {
+export interface IStateMachine {
     transition: (state: string, payload?: any) => void;
 }
 
 // IRMA Custom Plugins
-class IrmaSkipMobileChoiceIfPossible {
+class IrmaSkipMobileChoice {
+    _stateMachine: IStateMachine;
+    _alwaysShowQRCode = false;
+
+    constructor({ stateMachine, options }: { stateMachine: any; options: any }) {
+        this._stateMachine = stateMachine;
+        if (options.alwaysShowQRCode) {
+            this._alwaysShowQRCode = options.alwaysShowQRCode;
+        }
+    }
+
+    // Skip the qr/app choice screen on mobile and decide for ourselves.
     stateChange({ newState, payload }: { newState: any; payload: any }) {
         if (newState === 'ShowingIrmaButton') {
-            window.location = payload.mobile;
+            if (this._alwaysShowQRCode) {
+                this._stateMachine.transition('chooseQR', payload);
+            } else {
+                window.location = payload.mobile;
+            }
         }
     }
 }
-
 class IrmaStateChangeCallback {
-    mapping: IStateChangeCallbackMapping;
+    _mapping: IStateChangeCallbackMapping;
     constructor({ options }: { options: any }) {
-        this.mapping = options.callBackMapping;
+        this._mapping = options.callBackMapping;
     }
 
     stateChange({ newState }: { newState: any }) {
-        if (Object.keys(this.mapping).indexOf(newState) !== -1 && typeof this.mapping[newState] === 'function') {
-            this.mapping[newState]();
-        } else if (this.mapping.rest && typeof this.mapping.rest === 'function') {
-            this.mapping.rest();
+        if (Object.keys(this._mapping).indexOf(newState) !== -1 && typeof this._mapping[newState] === 'function') {
+            this._mapping[newState]();
+        } else if (this._mapping.rest && typeof this._mapping.rest === 'function') {
+            this._mapping.rest();
         }
     }
 
@@ -84,7 +98,8 @@ const createIrmaSession = async (
     dataType: string,
     holderElementId: string,
     query = {},
-    callBackMapping?: IStateChangeCallbackMapping
+    callBackMapping?: IStateChangeCallbackMapping,
+    alwaysShowQRCode = false
 ): Promise<unknown> => {
     const queryString = Object.keys(query)
         .map((key, index) => `${index === 0 ? '?' : ''}${key}=${(query as any)[key]}`)
@@ -94,7 +109,7 @@ const createIrmaSession = async (
         debugging: true,
         element: `#${holderElementId}`,
         callBackMapping,
-
+        alwaysShowQRCode,
         session: {
             url: `/${dataType}${queryString}`,
 
@@ -115,7 +130,11 @@ const createIrmaSession = async (
 
     irma.use(Client);
     irma.use(Web);
-    irma.use(IrmaSkipMobileChoiceIfPossible);
+
+    if (isMobile()) {
+        irma.use(IrmaSkipMobileChoice);
+    }
+
     if (callBackMapping) {
         irma.use(IrmaStateChangeCallback);
     }
