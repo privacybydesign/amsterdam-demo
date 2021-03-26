@@ -171,11 +171,15 @@ const Demo3: React.FC<IProps> = () => {
                             </section>
                             {isMobile() && (
                                 <section>
-                                    {content.showQrOnMobile.label}
-                                    <br />
-                                    <AscLocal.UnderlinedLink onClick={(e: React.SyntheticEvent) => getSession(e, true)}>
-                                        {content.showQrOnMobile.link}
-                                    </AscLocal.UnderlinedLink>
+                                    <p>
+                                        {content.showQrOnMobile.label}
+                                        <br />
+                                        <AscLocal.UnderlinedLink
+                                            onClick={(e: React.SyntheticEvent) => getSession(e, true)}
+                                        >
+                                            {content.showQrOnMobile.link}
+                                        </AscLocal.UnderlinedLink>
+                                    </p>
                                 </section>
                             )}
                         </ContentBlock>

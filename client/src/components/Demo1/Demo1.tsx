@@ -250,19 +250,21 @@ const Demo1: React.FC<IProps> = () => {
                             </section>
                             {isMobile() && (
                                 <section>
-                                    {content.showQrOnMobile.label}
-                                    <br />
-                                    <AscLocal.UnderlinedLink
-                                        onClick={(e: React.SyntheticEvent) => getSessionOver18(e, true)}
-                                    >
-                                        {content.demo1.showQrOnMobile.link18}
-                                    </AscLocal.UnderlinedLink>
-                                    <br />
-                                    <AscLocal.UnderlinedLink
-                                        onClick={(e: React.SyntheticEvent) => getSessionOver65(e, true)}
-                                    >
-                                        {content.demo1.showQrOnMobile.link65}
-                                    </AscLocal.UnderlinedLink>
+                                    <p>
+                                        {content.showQrOnMobile.label}
+                                        <br />
+                                        <AscLocal.UnderlinedLink
+                                            onClick={(e: React.SyntheticEvent) => getSessionOver18(e, true)}
+                                        >
+                                            {content.demo1.showQrOnMobile.link18}
+                                        </AscLocal.UnderlinedLink>
+                                        <br />
+                                        <AscLocal.UnderlinedLink
+                                            onClick={(e: React.SyntheticEvent) => getSessionOver65(e, true)}
+                                        >
+                                            {content.demo1.showQrOnMobile.link65}
+                                        </AscLocal.UnderlinedLink>
+                                    </p>
                                 </section>
                             )}
                         </ContentBlock>
