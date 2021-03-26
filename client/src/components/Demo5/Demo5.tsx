@@ -105,7 +105,8 @@ const Demo5: React.FC<IProps> = () => {
     const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
     const getSession = useCallback(
-        (alwaysShowQRCode = false) => {
+        (event, alwaysShowQRCode = false) => {
+            event.persist();
             const validatedForm = validateForm();
             if (validatedForm !== undefined && !validatedForm.errors.length) {
                 // Define URL variables based on form input
@@ -343,7 +344,7 @@ const Demo5: React.FC<IProps> = () => {
                                 <section>
                                     {content.showQrOnMobile.label}
                                     <br />
-                                    <AscLocal.UnderlinedLink onClick={() => getSession(true)}>
+                                    <AscLocal.UnderlinedLink onClick={(e: React.SyntheticEvent) => getSession(e, true)}>
                                         {content.showQrOnMobile.link}
                                     </AscLocal.UnderlinedLink>
                                 </section>

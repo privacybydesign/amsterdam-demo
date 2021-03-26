@@ -54,7 +54,8 @@ const Demo2: React.FC<IProps> = () => {
     const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
     const getSession = useCallback(
-        (alwaysShowQRCode = false) => {
+        (event, alwaysShowQRCode = false) => {
+            event.persist();
             startIrmaSession({
                 demoPath: 'demos/demo2',
                 useDemoCredentials: credentialSource === CredentialSource.DEMO,
@@ -280,7 +281,7 @@ const Demo2: React.FC<IProps> = () => {
                                 <section>
                                     {content.showQrOnMobile.label}
                                     <br />
-                                    <AscLocal.UnderlinedLink onClick={() => getSession(true)}>
+                                    <AscLocal.UnderlinedLink onClick={(e: React.SyntheticEvent) => getSession(e, true)}>
                                         {content.showQrOnMobile.link}
                                     </AscLocal.UnderlinedLink>
                                 </section>

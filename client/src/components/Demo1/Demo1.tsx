@@ -33,7 +33,8 @@ const Demo1: React.FC<IProps> = () => {
     const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
     const getSessionOver18 = useCallback(
-        (alwaysShowQRCode = false) => {
+        (event, alwaysShowQRCode = false) => {
+            event.persist();
             startIrmaSession({
                 demoPath: 'demos/demo1/18',
                 useDemoCredentials: credentialSource === CredentialSource.DEMO,
@@ -61,7 +62,8 @@ const Demo1: React.FC<IProps> = () => {
     );
 
     const getSessionOver65 = useCallback(
-        (alwaysShowQRCode = false) => {
+        (event, alwaysShowQRCode = false) => {
+            event.persist();
             startIrmaSession({
                 demoPath: 'demos/demo1/65',
                 useDemoCredentials: credentialSource === CredentialSource.DEMO,
@@ -250,11 +252,15 @@ const Demo1: React.FC<IProps> = () => {
                                 <section>
                                     {content.showQrOnMobile.label}
                                     <br />
-                                    <AscLocal.UnderlinedLink onClick={() => getSessionOver18(true)}>
+                                    <AscLocal.UnderlinedLink
+                                        onClick={(e: React.SyntheticEvent) => getSessionOver18(e, true)}
+                                    >
                                         {content.demo1.showQrOnMobile.link18}
                                     </AscLocal.UnderlinedLink>
                                     <br />
-                                    <AscLocal.UnderlinedLink onClick={() => getSessionOver65(true)}>
+                                    <AscLocal.UnderlinedLink
+                                        onClick={(e: React.SyntheticEvent) => getSessionOver65(e, true)}
+                                    >
                                         {content.demo1.showQrOnMobile.link65}
                                     </AscLocal.UnderlinedLink>
                                 </section>
