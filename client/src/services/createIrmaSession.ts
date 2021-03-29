@@ -3,6 +3,7 @@ import '@privacybydesign/irma-css';
 import IrmaCore from '@privacybydesign/irma-core';
 import Web from '@privacybydesign/irma-web';
 import Client from '@privacybydesign/irma-client';
+import userAgent from './userAgent';
 
 // Types
 export interface IIrmaServerConfig {
@@ -24,9 +25,8 @@ export const getConfig = async (): Promise<IIrmaServerConfig> => {
     return config;
 };
 
-// TODO: Make this more solid
 export const isMobile = (): boolean => {
-    return /mobile/i.test(navigator.userAgent) && !/ipad|tablet/i.test(navigator.userAgent);
+    return userAgent === 'Android' || userAgent === 'iOS';
 };
 
 // Types for Irma Plugins
