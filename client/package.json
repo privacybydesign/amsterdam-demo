@@ -36,6 +36,7 @@
         "@babel/plugin-proposal-class-properties": "^7.10.1",
         "@babel/plugin-proposal-object-rest-spread": "^7.10.1",
         "@babel/plugin-proposal-optional-chaining": "^7.10.1",
+        "@babel/plugin-transform-reserved-words": "^7.12.13",
         "@babel/plugin-transform-runtime": "^7.10.1",
         "@babel/preset-env": "^7.10.2",
         "@babel/preset-react": "^7.10.1",

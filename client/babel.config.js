@@ -10,6 +10,7 @@ module.exports = {
         '@babel/proposal-class-properties',
         '@babel/proposal-object-rest-spread',
         '@babel/plugin-proposal-optional-chaining',
+        '@babel/plugin-transform-reserved-words',
         'babel-plugin-styled-components',
         'react-hot-loader/babel'
     ]

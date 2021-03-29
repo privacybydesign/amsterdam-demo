@@ -168,7 +168,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
         >
             <StyledMap
                 data-testid="map"
-                setInstance={instance => {
+                setInstance={(instance: any) => {
                     dispatch({
                         type: 'setMapInstance',
                         payload: {
