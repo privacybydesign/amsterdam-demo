@@ -31,7 +31,7 @@ module.exports = {
                                     corejs: 3,
                                     targets: {
                                         esmodules: false,
-                                        browsers: 'defaults, IE 11'
+                                        browsers: ['> 1%', 'last 2 versions', 'not ie <= 11']
                                     }
                                 }
                             ],
