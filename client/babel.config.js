@@ -9,7 +9,7 @@ module.exports = {
                 corejs: 3,
                 targets: {
                     esmodules: false,
-                    browsers: 'defaults, IE 11'
+                    browsers: ['> 1%', 'last 2 versions', 'not ie <= 11']
                 }
             }
         ],
@@ -18,6 +18,7 @@ module.exports = {
     ],
     plugins: [
         '@babel/plugin-transform-runtime',
+        '@babel/plugin-transform-modules-commonjs',
         '@babel/proposal-class-properties',
         '@babel/proposal-object-rest-spread',
         '@babel/plugin-proposal-optional-chaining',
