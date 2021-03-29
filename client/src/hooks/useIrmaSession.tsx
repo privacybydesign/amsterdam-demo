@@ -41,8 +41,13 @@ const useIrmaSession = (): IIrmaSessionOutputData => {
             ShowingQRCode: () => {
                 setShowLogo(true);
             },
-            ShowingIrmaButton: () => {
+            ShowingQRCodeInstead: () => {
                 setShowLogo(true);
+            },
+            ShowingIrmaButton: () => {
+                if (isMobile() && activeIrmaSessionData?.alwaysShowQRCode !== true) {
+                    closeModal();
+                }
             },
             rest: () => {
                 setShowLogo(false);
