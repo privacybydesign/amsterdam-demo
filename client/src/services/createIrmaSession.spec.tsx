@@ -8,7 +8,7 @@ import createIrmaSession, { getConfig, isMobile } from './createIrmaSession';
 setupMocks();
 
 // Mock user agent
-let mockedUserAgent: any = null;
+const mockedUserAgent: any = null;
 Object.defineProperty(global.navigator, 'userAgent', {
     get() {
         return mockedUserAgent;
@@ -74,38 +74,6 @@ describe('createIrmaSession', () => {
               "environment": "acceptance",
             }
         `);
-    });
-
-    it('isMobile()', () => {
-        mockedUserAgent = 'Android';
-        expect(isMobile()).toBeTruthy();
-
-        mockedUserAgent = 'webOS';
-        expect(isMobile()).toBeTruthy();
-
-        mockedUserAgent = 'iPhone';
-        expect(isMobile()).toBeTruthy();
-
-        mockedUserAgent = 'iPad';
-        expect(isMobile()).toBeTruthy();
-
-        mockedUserAgent = 'iPod';
-        expect(isMobile()).toBeTruthy();
-
-        mockedUserAgent = 'BlackBerry';
-        expect(isMobile()).toBeTruthy();
-
-        mockedUserAgent = 'IEMobile';
-        expect(isMobile()).toBeTruthy();
-
-        mockedUserAgent = 'Opera Mini';
-        expect(isMobile()).toBeTruthy();
-
-        mockedUserAgent = 'PC';
-        expect(isMobile()).toBeFalsy();
-
-        mockedUserAgent = 'Unknown user agent';
-        expect(isMobile()).toBeFalsy();
     });
 
     it('createIrmaSession()', async () => {

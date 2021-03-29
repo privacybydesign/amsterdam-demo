@@ -12,7 +12,7 @@ module.exports = {
         ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/src/' })
     },
     setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-    testRegex: 'Demo1.spec.(js|ts|tsx)$',
+    testRegex: '.spec.(js|ts|tsx)$',
     transform: {
         '^.+\\.(js|jsx|mjs)$': 'babel-jest',
         '^.+\\.tsx?$': 'ts-jest'

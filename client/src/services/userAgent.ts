@@ -1,11 +1,12 @@
 const userAgent = (): string => {
     if (typeof window === 'undefined') return 'nodejs';
+    const navigator = window.navigator;
 
     // IE11 doesn't have window.navigator, test differently
     // https://stackoverflow.com/questions/21825157/internet-explorer-11-detection
     if (!!window.MSInputMethodContext && !!document.documentMode) return 'Desktop';
 
-    if (/Android/i.test(window.navigator.userAgent)) {
+    if (/Android/i.test(navigator.userAgent)) {
         return 'Android';
     }
 
