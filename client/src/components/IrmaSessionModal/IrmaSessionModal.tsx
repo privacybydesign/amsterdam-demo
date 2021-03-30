@@ -119,9 +119,7 @@ const IrmaWebElement = styled.div`
         width: ${() => (isMobile() ? '250' : '300')}px !important;
         height: ${() => (isMobile() ? '250' : '300')}px !important;
         & + p {
-            @media screen and (max-width: 768px) {
-                display: none;
-            }
+            display: none;
         }
     }
 
