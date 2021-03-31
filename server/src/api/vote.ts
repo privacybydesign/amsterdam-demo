@@ -11,11 +11,15 @@ const credentialsToRequest: CredentialSet = [
             { type: 'irma-demo.stemmen.stempas.votingnumber', value: null },
             {
                 type: 'irma-demo.stemmen.stempas.election',
-                value: 'test'
+                value: 'radboudgebouw'
             }
         ]
     ]
 ];
+
+export interface IQueryObj {
+    [key: string]: string;
+}
 
 const processVoteRequest = async (message: string, req: Request, res: Response, next: NextFunction) => {
     try {
@@ -34,9 +38,17 @@ const processVoteRequest = async (message: string, req: Request, res: Response, 
     }
 };
 
+const createReadableMessage = (obj: IQueryObj): string => {
+    return Object.keys(obj)
+        .reduce((acc, key) => {
+            return acc + key + ': ' + obj[key] + '\n';
+        }, '')
+        .slice(0, -1);
+};
+
 export default (router: Router) => {
     router.post('/demos/vote/start', cors(), async (req: Request, res: Response, next: NextFunction) => {
         Logger.info(`Incoming request for signing with vote-card`);
-        return processVoteRequest(JSON.stringify(req.body.msg), req, res, next);
+        return processVoteRequest(createReadableMessage(req.body.msg), req, res, next);
     });
 };
