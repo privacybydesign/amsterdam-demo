@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import IrmaCore from '@privacybydesign/irma-core';
 import Web from '@privacybydesign/irma-web';
 import Client from '@privacybydesign/irma-client';
 import { IrmaAbortOnCancel } from '@services/createIrmaSession';
+import { IQueryObj } from '../../../server/src/api/vote';
 
 const HOLDER_ELEMENT_ID = 'irma-web-form';
-const MOCK_DATA = {
-    1: 'Speeltuin',
-    2: 'Parkeerplaats',
-    3: 'Park'
-};
 
-const createIrmaSession = async (): Promise<unknown> => {
+const createIrmaSession = async (objectToSign: IQueryObj): Promise<unknown> => {
     const irma = new IrmaCore({
         debugging: true,
         element: `#${HOLDER_ELEMENT_ID}`,
@@ -23,7 +20,7 @@ const createIrmaSession = async (): Promise<unknown> => {
                 url: (o: any) => `${o.url}/start`,
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ msg: MOCK_DATA })
+                body: JSON.stringify({ msg: objectToSign })
             },
 
             mapping: {
@@ -31,7 +28,7 @@ const createIrmaSession = async (): Promise<unknown> => {
             },
 
             result: {
-                url: () => `/result`
+                url: () => `/demos/result`
             }
         }
     });
@@ -42,6 +39,7 @@ const createIrmaSession = async (): Promise<unknown> => {
 
     try {
         const result = await irma.start();
+        console.log(result);
         return result.disclosed;
     } catch (e) {
         return null;
@@ -49,10 +47,15 @@ const createIrmaSession = async (): Promise<unknown> => {
 };
 
 const VotePage: React.FC = () => {
+    const queryObj: IQueryObj = {};
+    const query = new URLSearchParams(useLocation().search);
+    query.forEach((value: string, key: string) => {
+        queryObj[key] = value;
+    });
     const [sessionResult, setSessionResult] = useState<unknown>(null);
     useEffect(() => {
         const fn = async () => {
-            const response = await createIrmaSession();
+            const response = await createIrmaSession(queryObj);
             setSessionResult(response);
         };
         fn();
