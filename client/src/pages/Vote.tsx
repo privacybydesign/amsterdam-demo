@@ -4,9 +4,12 @@ import IrmaCore from '@privacybydesign/irma-core';
 import Web from '@privacybydesign/irma-web';
 import Client from '@privacybydesign/irma-client';
 import { IrmaAbortOnCancel } from '@services/createIrmaSession';
-import { IQueryObj } from '../../../server/src/api/vote';
 
 const HOLDER_ELEMENT_ID = 'irma-web-form';
+
+export interface IQueryObj {
+    [key: string]: string;
+}
 
 const createIrmaSession = async (objectToSign: IQueryObj): Promise<unknown> => {
     const irma = new IrmaCore({
