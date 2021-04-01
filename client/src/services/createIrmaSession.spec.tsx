@@ -2,7 +2,7 @@ import React from 'react';
 import IrmaCore from '@privacybydesign/irma-core';
 import { setupMocks, wrappedRender } from '@test/utils';
 import { act } from 'react-dom/test-utils';
-import createIrmaSession, { getConfig, isMobile } from './createIrmaSession';
+import createIrmaSession, { getConfig } from './createIrmaSession';
 
 // Setup all the generic mocks
 setupMocks();
