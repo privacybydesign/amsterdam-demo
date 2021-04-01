@@ -82,7 +82,7 @@ class IrmaStateChangeCallback {
     }
 }
 
-class IrmaAbortOnCancel {
+export class IrmaAbortOnCancel {
     _stateMachine: IStateMachine;
     constructor({ stateMachine }: { stateMachine: any }) {
         this._stateMachine = stateMachine;
