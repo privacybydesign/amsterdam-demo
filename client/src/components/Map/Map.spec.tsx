@@ -34,7 +34,7 @@ describe('Map', () => {
 
         const autoSuggestOption = screen.getByText('Dam 1, 1012JS Amsterdam');
         await act(async () => {
-            await fireEvent.click(autoSuggestOption);
+            await fireEvent.mouseDown(autoSuggestOption);
         });
 
         expect(spy).toBeCalled();

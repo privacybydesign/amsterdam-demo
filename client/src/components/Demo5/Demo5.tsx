@@ -340,7 +340,7 @@ const Demo5: React.FC<IProps> = () => {
                                 />
                             </section>
 
-                            {isMobile() && (
+                            {isMobile() && !noIRMAFlow && (
                                 <section>
                                     <p>
                                         {content.showQrOnMobile.label}

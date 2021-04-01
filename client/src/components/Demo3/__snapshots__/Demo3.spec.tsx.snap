@@ -515,10 +515,6 @@ exports[`Demo3 should update the page after completing the IRMA flow 1`] = `
 
 }
 
-@media screen and (max-width:768px) {
-
-}
-
 @media (max-width:767px) {
 
 }
@@ -984,10 +980,6 @@ exports[`Demo3 should update the page after completing the IRMA flow 2`] = `
 }
 
 @media (min-width:1024px) {
-
-}
-
-@media screen and (max-width:768px) {
 
 }
 
@@ -1485,10 +1477,6 @@ exports[`Demo3 should update the page after failing the IRMA flow 1`] = `
 }
 
 @media (min-width:1024px) {
-
-}
-
-@media screen and (max-width:768px) {
 
 }
 
