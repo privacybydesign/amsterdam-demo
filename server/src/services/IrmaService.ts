@@ -21,23 +21,43 @@ export default class {
         };
     };
 
+    private createSignatureRequest = (content: any, message: string) => {
+        return {
+            '@context': 'https://irma.app/ld/request/signature/v2',
+            message: message,
+            disclose: [...content]
+        };
+    };
+
     private createJWT = (authmethod: string, key: string, iss: string, irmaRequest: any) => {
         const irmaJwt = new IrmaJwt(authmethod, { secretKey: key, iss });
         const jwt = irmaJwt.signSessionRequest(irmaRequest);
         return jwt;
     };
 
-    public requestDisclosureSession = async (
-        credentialsToRequest: CredentialSet
-    ): Promise<{ sessionPtr: string; token: string }> => {
+    private requestSession = async (request: unknown): Promise<{ sessionPtr: string; token: string }> => {
         const authmethod = 'publickey';
-        const request = this.createDisclosureRequest(credentialsToRequest);
         const jwt = this.createJWT(authmethod, process.env.PRIVATE_KEY as string, config.requestorname, request);
 
         Logger.info(`IrmaService.createDisclosureRequest called with request ${JSON.stringify(request)}`);
 
         // Return sessionPtr (QR Code) and token
         return await this.irmaBackend.startSession(jwt);
+    };
+
+    public requestDisclosureSession = async (
+        credentialsToRequest: CredentialSet
+    ): Promise<{ sessionPtr: string; token: string }> => {
+        const request = this.createDisclosureRequest(credentialsToRequest);
+        return await this.requestSession(request);
+    };
+
+    public requestSignatureSession = async (
+        credentialsToRequest: CredentialSet,
+        message: string
+    ): Promise<{ sessionPtr: string; token: string }> => {
+        const request = this.createSignatureRequest(credentialsToRequest, message);
+        return await this.requestSession(request);
     };
 
     public requestSessionResult = async (token: string): Promise<any> => {
