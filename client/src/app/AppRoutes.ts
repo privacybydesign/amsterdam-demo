@@ -7,7 +7,7 @@ import Demo5 from '@components/Demo5/Demo5';
 import Cookies from '@components/Cookies/Cookies';
 import IESupport from '@components/IESupport/IESupport';
 import A11Y from '@components/A11Y/A11Y';
-import VotePage from '../pages/Vote';
+import VotePage from '@pages/Vote';
 
 interface IRoute {
     path: string;

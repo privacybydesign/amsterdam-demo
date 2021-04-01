@@ -43,6 +43,9 @@
             "@components/*": [
                 "components/*"
             ],
+            "@pages/*": [
+                "pages/*"
+            ],
             "@hooks/*": [
                 "hooks/*"
             ],

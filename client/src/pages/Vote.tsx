@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import IrmaCore from '@privacybydesign/irma-core';
 import Web from '@privacybydesign/irma-web';
@@ -39,7 +39,6 @@ const createIrmaSession = async (objectToSign: IQueryObj): Promise<unknown> => {
 
     try {
         const result = await irma.start();
-        console.log(result);
         return result.disclosed;
     } catch (e) {
         return null;
@@ -47,7 +46,7 @@ const createIrmaSession = async (objectToSign: IQueryObj): Promise<unknown> => {
 };
 
 const VotePage: React.FC = () => {
-    const queryObj: IQueryObj = {};
+    const queryObj: IQueryObj = useMemo(() => ({}), []);
     const query = new URLSearchParams(useLocation().search);
     query.forEach((value: string, key: string) => {
         queryObj[key] = value;
@@ -59,7 +58,7 @@ const VotePage: React.FC = () => {
             setSessionResult(response);
         };
         fn();
-    }, []);
+    }, [queryObj]);
 
     return (
         <div className="vote-page">
