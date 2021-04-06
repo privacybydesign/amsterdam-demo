@@ -1,5 +1,3 @@
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
 import 'reflect-metadata';
 import express from 'express';
 import { config } from '@config/index';
