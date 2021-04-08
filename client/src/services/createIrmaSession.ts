@@ -58,7 +58,7 @@ class IrmaSkipMobileChoice {
             if (this._alwaysShowQRCode) {
                 this._stateMachine.transition('chooseQR', payload);
             } else {
-                window.open(payload.mobile);
+                window.location.href = payload.mobile;
             }
         }
     }
