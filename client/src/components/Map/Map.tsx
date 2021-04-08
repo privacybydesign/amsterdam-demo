@@ -205,9 +205,13 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                                             <UnderlinedLink
                                                 href="#"
                                                 variant="inline"
+                                                // Use both onMouseDown and onClick in order to retain both focus and keyboard control
                                                 onMouseDown={(e: React.SyntheticEvent<LeafletMouseEvent>) =>
                                                     onAutosuggestClick(e, item)
                                                 }
+                                                onClick={(e: React.SyntheticEvent<LeafletMouseEvent>) => {
+                                                    onAutosuggestClick(e, item);
+                                                }}
                                             >
                                                 {item.displayName}
                                             </UnderlinedLink>
