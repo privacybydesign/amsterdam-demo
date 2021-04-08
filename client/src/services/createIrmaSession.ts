@@ -132,7 +132,7 @@ const createIrmaSession = async (
     irma.use(Web);
 
     if (isMobile()) {
-        irma.use(IrmaSkipMobileChoice);
+        // irma.use(IrmaSkipMobileChoice);
     }
 
     if (callBackMapping) {
