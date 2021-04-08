@@ -46,7 +46,7 @@ const useIrmaSession = (): IIrmaSessionOutputData => {
             },
             ShowingIrmaButton: () => {
                 if (isMobile() && activeIrmaSessionData?.alwaysShowQRCode !== true) {
-                    // closeModal();
+                    closeModal();
                 }
             },
             rest: () => {

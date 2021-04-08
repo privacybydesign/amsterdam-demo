@@ -68,7 +68,7 @@ const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg', role: 'present
 `;
 
 const StyledModal = styled(Modal)<{ hideForMobileFlow: boolean }>`
-    visibility: ${({ hideForMobileFlow }) => (hideForMobileFlow ? 'visible' : 'visible')};
+    visibility: ${({ hideForMobileFlow }) => (hideForMobileFlow ? 'hidden' : 'visible')};
 
     > div {
         max-height: 100vh;
