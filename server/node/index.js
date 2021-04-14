@@ -180,6 +180,11 @@ const init = async () => {
     app.get("/config", cors(), getConfig);
     app.get("/health", cors(), health);
 
+    // Temporarily add redirect for vooruit inparkeren
+    app.get("/zonder-gedoe-op-pad", (req, res) => {
+      res.status(301).redirect("https://www.notion.so/Zonder-gedoe-op-pad-90d725fc2e2745e6bee322b76985125b")
+    });
+
     if (
       process.env.NODE_ENV === "acceptance" ||
       process.env.NODE_ENV === "production"
