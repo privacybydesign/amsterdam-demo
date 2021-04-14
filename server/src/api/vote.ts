@@ -5,13 +5,17 @@ import { Container } from 'typedi';
 import IrmaService from '@services/IrmaService';
 import { CredentialSet } from 'typedefs/index';
 
+const IRMA_CONF = {
+    ELECTION_NAME: 'Best of Amsterdam Light Festival'
+};
+
 const credentialsToRequest: CredentialSet = [
     [
         [
-            { type: 'irma-demo.stemmen.stempas.votingnumber', value: null },
+            { type: 'irma-demo.stemmen.stempas.votingnumber' },
             {
                 type: 'irma-demo.stemmen.stempas.election',
-                value: 'radboudgebouw'
+                value: IRMA_CONF.ELECTION_NAME
             }
         ]
     ]
