@@ -11,6 +11,7 @@ import demo4 from './demo4';
 import demo5 from './demo5';
 import result from './result';
 import vote from './vote';
+import redirects from './redirects';
 
 export default () => {
     const router = Router();
@@ -22,6 +23,7 @@ export default () => {
     demo5(router);
     result(router);
     vote(router);
+    redirects(router);
     return router;
 };
 
