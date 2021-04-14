@@ -49,10 +49,11 @@ const VotePage: React.FC = () => {
     }, [queryObj]);
 
     useEffect(() => {
-        const { redirectUrl } = queryObj;
+        let { redirectUrl } = queryObj;
         if (sessionResult) {
+            redirectUrl += (redirectUrl.match(/\?/) ? '&' : '?') + 'result=';
             setTimeout(() => {
-                window.location.href = redirectUrl + '?result=' + encodeURIComponent(JSON.stringify(sessionResult));
+                window.location.href = redirectUrl + encodeURIComponent(JSON.stringify(sessionResult));
             }, 1000);
         }
     }, [queryObj, sessionResult]);
