@@ -115,7 +115,13 @@ const createIrmaSession = async (
 
             start: {
                 url: (o: any) => `${o.url}`,
-                method: 'GET'
+                parseResponse: async (response: any) => {
+                    // If the response after starting an irma session contains a session cookie, we'll store it in sessionStorage too.
+                    // This is because of a bug with Set-Cookie header in older iOS versions.
+                    const { sessionId, sessionPtr } = await response.json();
+                    sessionStorage.setItem('irma-demo.sid', sessionId);
+                    return sessionPtr;
+                }
             },
 
             mapping: {
@@ -123,7 +129,7 @@ const createIrmaSession = async (
             },
 
             result: {
-                url: () => `/demos/result`
+                url: () => `/demos/result?sid=${sessionStorage.getItem('irma-demo.sid')}`
             }
         }
     });

@@ -61,8 +61,9 @@ export const processDemoRequest = async (
         // Store token in session
         (req.session as any)!.token = token;
 
-        // Return QR Code
-        return res.status(200).json(sessionPtr);
+        // Return QR Code and also the signed session id
+        const sessionId = encodeURIComponent(req.sessionID);
+        return res.status(200).json({ sessionPtr, sessionId });
     } catch (e) {
         Logger.error('🔥 error: %o', e);
         return next(e);

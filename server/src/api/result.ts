@@ -8,11 +8,19 @@ import Logger from '@loaders/logger';
 // Define routes for demo
 export default (router: Router) => {
     router.get('/demos/result', cors(), async (req: Request, res: Response) => {
-        const sessionToken = (req.session! as any).token;
+        let sessionToken = (req.session! as any).token;
+
+        // If the session was not found because of missing cookie header, try and find it ourselves with the query param (ios 10 fix)
+        if (!sessionToken) {
+            sessionToken = await (() => new Promise((resolve, reject) => {
+                (req as any).sessionStore.get(req.query.sid, (error: any, session: any) => { console.log(session, '!'); if (session && session.token) { resolve(session.token) } else { reject(error) } })
+            }))();
+        }
+
         Logger.info(`Incoming request for session result for session ${sessionToken}`);
 
         const irmaServiceInstance = Container.get(IrmaService);
-        if (req.session && sessionToken) {
+        if (sessionToken) {
             const result = await irmaServiceInstance.requestSessionResult(sessionToken);
 
             // Destroy session when session is done
