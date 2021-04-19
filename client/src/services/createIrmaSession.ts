@@ -1,32 +1,14 @@
 import axios from 'axios';
-import * as irma from '@privacybydesign/irmajs';
-
-const nativeDrawImage = window.CanvasRenderingContext2D.prototype.drawImage;
-
-const wrapDrawImage = (holderElementId: string) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    window.CanvasRenderingContext2D.prototype.drawImage = function (...args: any) {
-        // Draw the original image
-        nativeDrawImage.call(this, ...args);
-
-        // Remove the old logo
-        const canvas = document.getElementById(holderElementId) as HTMLCanvasElement;
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#dddbdb';
-        ctx.fillRect(82, 62, 65, 100);
-    };
-};
-
-const unwrapDrawImage = () => {
-    window.CanvasRenderingContext2D.prototype.drawImage = nativeDrawImage;
-};
+import '@privacybydesign/irma-css';
+import IrmaCore from '@privacybydesign/irma-core';
+import Web from '@privacybydesign/irma-web';
+import Client from '@privacybydesign/irma-client';
+import userAgent from './userAgent';
 
 // Types
 export interface IIrmaServerConfig {
     requestorname: string;
-    uuid: string;
     irma: string;
-    nodeUrl: string;
     docroot: string;
     port: number;
     environment: string;
@@ -44,45 +26,128 @@ export const getConfig = async (): Promise<IIrmaServerConfig> => {
 };
 
 export const isMobile = (): boolean => {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    return userAgent === 'Android' || userAgent === 'iOS';
 };
 
-// Note: To use the demo credentials on non-production environments add ?demo=true to the URL
-const createIrmaSession = async (dataType: string, holderElementId: string, query = {}): Promise<unknown> => {
-    const config = await getConfig();
+// Types for Irma Plugins
+export interface IStateChangeCallbackMapping {
+    [stateName: string]: () => void;
+}
 
-    const queryString = Object.keys(query)
-        .map((key, index) => `${index === 0 ? '?' : ''}${key}=${query[key]}`)
-        .join('&');
+export interface IIrmaSessionData {}
 
-    const irmaResponse = await axios.get(`/getsession/${dataType}${queryString}`);
-    const session = await irmaResponse.data;
+export interface IStateMachine {
+    transition: (state: string, payload?: any) => void;
+}
 
-    const { sessionPtr, token } = session;
-    const sessionOptions = {
-        method: 'canvas',
-        element: holderElementId,
-        showConnectedIcon: true,
-        server: config.irma,
-        token,
-        language: 'nl',
-        disableMobile: true
-    };
+// IRMA Custom Plugins
+class IrmaSkipMobileChoice {
+    _stateMachine: IStateMachine;
+    _alwaysShowQRCode = false;
 
-    if (isMobile()) {
-        sessionOptions.method = 'mobile';
-        sessionOptions.disableMobile = false;
+    constructor({ stateMachine, options }: { stateMachine: any; options: any }) {
+        this._stateMachine = stateMachine;
+        if (options.alwaysShowQRCode) {
+            this._alwaysShowQRCode = options.alwaysShowQRCode;
+        }
     }
 
-    try {
-        // This function wraps the canvas context drawImage method to be able to run some code when the QR code disappears
-        wrapDrawImage(holderElementId);
-        // Adjust malformed url returned from irma server due to rewrite
-        sessionPtr.u = sessionPtr.u.replace(/\/irma/g, '/irma/irma');
-        const result = await irma.handleSession(sessionPtr, sessionOptions);
-        unwrapDrawImage();
+    // Skip the qr/app choice screen on mobile and decide for ourselves.
+    stateChange({ newState, payload }: { newState: any; payload: any }) {
+        if (newState === 'ShowingIrmaButton') {
+            if (this._alwaysShowQRCode) {
+                this._stateMachine.transition('chooseQR', payload);
+            } else {
+                window.location.href = payload.mobile;
+            }
+        }
+    }
+}
+class IrmaStateChangeCallback {
+    _mapping: IStateChangeCallbackMapping;
+    constructor({ options }: { options: any }) {
+        this._mapping = options.callBackMapping;
+    }
 
-        // Only get the last part of each result
+    stateChange({ newState }: { newState: any }) {
+        if (Object.keys(this._mapping).indexOf(newState) !== -1 && typeof this._mapping[newState] === 'function') {
+            this._mapping[newState]();
+        } else if (this._mapping.rest && typeof this._mapping.rest === 'function') {
+            this._mapping.rest();
+        }
+    }
+
+    close() {
+        return Promise.resolve();
+    }
+}
+
+export class IrmaAbortOnCancel {
+    _stateMachine: IStateMachine;
+    constructor({ stateMachine }: { stateMachine: any }) {
+        this._stateMachine = stateMachine;
+    }
+    stateChange({ newState }: { newState: any }): void {
+        if (newState === 'Cancelled') this._stateMachine.transition('abort');
+    }
+}
+
+// IRMA Session handler
+
+const createIrmaSession = async (
+    dataType: string,
+    holderElementId: string,
+    query = {},
+    callBackMapping?: IStateChangeCallbackMapping,
+    alwaysShowQRCode = false
+): Promise<unknown> => {
+    const queryString = Object.keys(query)
+        .map((key, index) => `${index === 0 ? '?' : ''}${key}=${(query as any)[key]}`)
+        .join('&');
+
+    const irma = new IrmaCore({
+        debugging: true,
+        element: `#${holderElementId}`,
+        callBackMapping,
+        alwaysShowQRCode,
+        session: {
+            url: `/${dataType}${queryString}`,
+
+            start: {
+                url: (o: any) => `${o.url}`,
+                parseResponse: async (response: any) => {
+                    // If the response after starting an irma session contains a session cookie, we'll store it in sessionStorage too.
+                    // This is because of a bug with Set-Cookie header in older iOS versions.
+                    const { sessionId, sessionPtr } = await response.json();
+                    sessionStorage.setItem('irma-demo.sid', sessionId);
+                    return sessionPtr;
+                }
+            },
+
+            mapping: {
+                sessionPtr: (sessionPtr: any) => ({ ...sessionPtr, u: sessionPtr.u.replace(/\/irma/g, '/irma/irma') })
+            },
+
+            result: {
+                url: () => `/demos/result?sid=${sessionStorage.getItem('irma-demo.sid')}`
+            }
+        }
+    });
+
+    irma.use(Client);
+    irma.use(Web);
+
+    if (isMobile()) {
+        irma.use(IrmaSkipMobileChoice);
+    }
+
+    if (callBackMapping) {
+        irma.use(IrmaStateChangeCallback);
+    }
+    irma.use(IrmaAbortOnCancel);
+
+    try {
+        const result = await irma.start();
         return reduceIRMAResult(result.disclosed);
     } catch (e) {
         return null;
@@ -106,7 +171,10 @@ const reduceIRMAResult = (disclosedCredentialSets: IDisclosedCredentialSet[]) =>
     disclosedCredentialSets.forEach((conjunction: IDisclosedCredential[]) => {
         joinedResults = {
             ...joinedResults,
-            ...conjunction.reduce((acc, { id, rawvalue }) => ({ ...acc, [id.match(/[^.]*$/g)[0]]: rawvalue }), {})
+            ...conjunction.reduce(
+                (acc, { id, rawvalue }) => ({ ...acc, [(id as any).match(/[^.]*$/g)[0]]: rawvalue }),
+                {}
+            )
         };
     });
     return joinedResults;

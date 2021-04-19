@@ -8,6 +8,10 @@ exports[`Map should render default map with input and no autosuggest visible 1`]
   z-index: 0;
 }
 
+.c0 .leaflet-control-attribution {
+  display: none;
+}
+
 <div
   class="c0 leaflet-container leaflet-grab leaflet-touch-drag"
   data-testid="map"
@@ -104,7 +108,7 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
   height: 14px;
 }
 
-.c8 .c3 {
+.c9 .c3 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -157,6 +161,11 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
 .c1 {
   word-break: break-word;
   margin-bottom: 8px;
+}
+
+.c8 {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
 }
 
 .c0 {
@@ -219,7 +228,7 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
       </svg>
     </span>
     <a
-      class="c6 c7"
+      class="c6 c7 c8"
       href="#"
     >
       Dam 1, 1012JS Amsterdam
@@ -243,7 +252,7 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
       </svg>
     </span>
     <a
-      class="c6 c7"
+      class="c6 c7 c8"
       href="#"
     >
       Damrak 1, 1012LG Amsterdam

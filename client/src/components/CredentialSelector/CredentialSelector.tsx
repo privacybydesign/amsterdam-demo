@@ -37,7 +37,13 @@ const CredentialSelector: React.FC<IProps> = ({
     if (config && config.environment !== 'production') {
         return (
             <Container>
-                <Select label="Laad attributen van:" onChange={onChange} value={credentialSource}>
+                <Select
+                    aria-label="Laad attributen van:"
+                    label="Laad attributen van:"
+                    title="Laad attributen van:"
+                    onChange={onChange}
+                    value={credentialSource}
+                >
                     <option value={CredentialSource.DEMO}>{CredentialSource.DEMO}</option>
                     <option value={CredentialSource.PRODUCTION}>{CredentialSource.PRODUCTION}</option>
                 </Select>

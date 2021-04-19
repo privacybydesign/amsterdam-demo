@@ -10,24 +10,14 @@ services:
   be:
     container_name: be
     build:
-      context: ./server/node
+      context: ./server
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
     volumes:
-      - ./server/node:/usr/src/app
+      - ./server:/usr/src/app
     environment:
       - NODE_ENV=development
       - CONFIG=config.json
       - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
-    links:
-      - fe:fe
-      # - irma-server
-  # irma-server:
-  #   container_name: irma-server
-  #   image: di-irma-server_irma
-  #   ports:
-  #     - '8088:8088'
-  #   environment:
-  #     - BASE_URL=https://acc.attr.auth.amsterdam.nl
-  # - BASE_URL=http://d3064d0d.eu.ngrok.io
+      - FE_URL=http://fe:9000

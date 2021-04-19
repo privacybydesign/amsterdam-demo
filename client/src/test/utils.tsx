@@ -13,7 +13,7 @@ expect.extend({ toBeVisible, toBeInTheDocument });
 
 export const history = createMemoryHistory();
 
-const providers = ({ children }): ReactElement => (
+const providers: React.FC = ({ children }): ReactElement => (
     <ThemeProvider overrides={theme}>
         <GlobalStyle />
         <Router history={history}>
@@ -26,7 +26,7 @@ export const wrappedRender = (ui: ReactElement, options?: RenderOptions): Render
     render(ui, { wrapper: providers, ...options });
 
 export const setupMocks = (): void => {
-    let mockedAxios;
+    let mockedAxios: MockAdapter;
 
     beforeEach(() => {
         // Mock timers

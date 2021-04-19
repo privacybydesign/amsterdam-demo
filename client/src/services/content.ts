@@ -12,7 +12,19 @@ export const insertInPlaceholders = (sentence: string, values: string | string[]
     }
 };
 
-export default {
+export const reduceAndTranslateEmptyVars = (emptyVars: string[]): string => {
+    return emptyVars
+        .reduce((acc, varToTranslate) => acc + `${(content.translatedIrmaAttributes as any)[varToTranslate]}, `, '')
+        .slice(0, -2);
+};
+
+const content = {
+    header: {
+        skipLink: {
+            content: `Direct naar hoofdinhoud`,
+            footer: `Direct naar footer`
+        }
+    },
     home: {
         breadcrumbs: `- [Home](/)`,
         title: `# Probeer IRMA uit`,
@@ -35,7 +47,7 @@ Download de IRMA-app voor iOS of Android:  \n
 [![Play Store](/assets/download-play-store.svg "Download IRMA in de Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
 
 Wilt u meer weten over IRMA?
-Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
+[Ga naar de website van IRMA](https://irma.app/?lang=nl)`
         },
         subtitle: `## Aan de slag met IRMA`,
         demo1Card: {
@@ -60,8 +72,8 @@ Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
         },
         sidebar: {
             box: `Eenvoudig en op maat online aantonen wie je bent met IRMA
-![](/assets/irma_logo.svg "Lees meer over IRMA")
-# Waarom IRMA`,
+![IRMA Logo](/assets/irma_logo.svg "Lees meer over IRMA")
+# Waarom IRMA?`,
             boxLink: `https://www.amsterdam.nl/wonen-leefomgeving/innovatie/de-digitale-stad/irma-nieuwe-manier-inloggen/`
         }
     },
@@ -75,6 +87,31 @@ Ga naar de [website van IRMA](https://irma.app/?lang=nl)`
     demoErrorAlert: {
         heading: `Niets doorgegeven`,
         content: `U heeft uw gegevens niet doorgegeven aan de demosite van de gemeente Amsterdam.`
+    },
+    ieSupport: {
+        breadcrumbs: `- [Home](/)`,
+        content: `# Internet Explorer niet meer ondersteund
+**Deze demosite werkt niet goed in Internet Explorer. We raden je aan een andere browser te gebruiken. We adviseren je zo snel mogelijk over te stappen naar een andere browser zoals Firefox of Chrome.**
+  &nbsp;
+  
+  &nbsp;
+  
+De website **Probeer IRMA uit** maakt gebruik van de meest recente technologie en webstandaarden. De verouderde browser Internet Explorer van Microsoft kan daar steeds minder goed mee overweg. Het ondersteunen van die browser is daardoor een drempel voor het optimaliseren van de functionaliteit van de site.
+
+Concreet betekent het niet meer ondersteunen van Internet Explorer dat de site in die browser (veel) trager werkt dan in moderne browsers, pagina's er anders uitzien dan ze zijn ontworpen en meer complexe functies (bijvoorbeeld in de interactieve kaart) niet goed werken.
+
+Als je nog gebruik maakt van Internet Explorer, adviseren we je om zo snel mogelijk een andere browser te gaan gebruiken, zoals [Firefox](https://www.mozilla.org/nl/firefox/new/) en [Chrome](https://www.google.com/intl/nl_nl/chrome/). Ook Microsoft zelf [raadt aan](https://docs.microsoft.com/nl-nl/lifecycle/faq/internet-explorer-microsoft-edge#what-is-the-lifecycle-policy-for-internet-explorer) een andere browser te gebruiken.`,
+        errorAlert: {
+            heading: `Let op`,
+            content: `Deze demosite werkt niet goed in Internet Explorer. We raden je aan een andere browser te gebruiken.
+                
+[Wat kan ik doen?](/ie-support)`
+        }
+    },
+    demoEmptyVarsAlert: {
+        heading: `Ontbrekende gegevens`,
+        content: `U heeft niet alle gegevens doorgegeven die nodig zijn.  \n
+De volgende gegevens ontbreken: `
     },
     demo1: {
         breadcrumbs: `- [Home](/)
@@ -127,6 +164,10 @@ Bewijs dat u ouder bent dan 18 jaar of 65 jaar door uzelf bekend te maken met de
 - Alcohol kopen.
 - Stemmen voor lokale initiatieven.
 `
+        },
+        showQrOnMobile: {
+            link18: `Toon QR-code voor 18+ bewijzen`,
+            link65: `Toon QR-code voor 65+ bewijzen`
         }
     },
 
@@ -273,9 +314,9 @@ Bent u de eigenaar van de woning waar de geveltuin komt?  \n
 Naam  \n
 :   [name]  \n
 Straat en huisnummer  \n
-:   [street]  \n
+:   [street] [houseNumber]\n
 Postcode en plaats  \n
-:   [city]\n
+:   [zipcode], [city]\n
 Telefoonnummer  \n
 :   [telephone]  \n
 E-mail  \n
@@ -400,6 +441,11 @@ Dit kan worden gebruikt voor:
         }
     },
 
+    showQrOnMobile: {
+        label: `Heeft u IRMA op een ander apparaat?`,
+        link: `Toon QR-code`
+    },
+
     cookies: {
         breadcrumbs: `- [Home](/)
 - [Cookies](/cookies)`,
@@ -439,7 +485,29 @@ Dit zorgt ervoor dat feedback van gebruikers op de juiste plek wordt opgeslagen.
         outro: `[Terug naar de homepage](/)`
     },
 
+    a11y: {
+        breadcrumbs: `- [Home](/)
+- [Toegankelijkheidsverklaring](/toegankelijkheidsverklaring)`,
+        intro: `# Volledige toegankelijkheidsverklaring
+**De gemeente Amsterdam wil dat iedereen de website 'Probeer IRMA uit’ kan gebruiken.**`,
+        article: `
+## Toegankelijk ‘Probeer IRMA uit’
+Iedereen moet websites van de overheid kunnen gebruiken. Dit is wat wij doen om ‘Probeer IRMA uit’ toegankelijk te maken en te houden voor iedereen:
+- Wij ontwikkelen ‘Probeer IRMA uit’ samen met u, de Amsterdammer.
+- We doen regelmatig gebruikersonderzoek en testen ‘Probeer IRMA uit’ op toegankelijkheid.
+- We lossen knelpunten op.
+- Onze medewerkers houden hun kennis over toegankelijkheid op peil.
+## Onderdelen die nog niet toegankelijk zijn
+- De IRMA-QR-codes verschijnen alleen als stijlen ‘aan’ staan.\n
+Komt u nog een pagina tegen die u niet kunt lezen of gebruiken? Meld het via ons [contactformulier](https://formulieren.amsterdam.nl/TripleForms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx).
+## Toegankelijkheidsverklaring
+De eisen voor een toegankelijke website staan in het [Tijdelijk besluit digitale toegankelijkheid overheid](https://wetten.overheid.nl/BWBR0040936/2018-07-01). In dat besluit staat ook dat wij een toegankelijkheidsverklaring op deze website ‘Probeer IRMA uit’ moeten zetten.
+Onze aanvraag voor een volledige toegankelijkheidsverklaring is onderhanden. In de [Toegankelijkheidcheck 'Probeer IRMA uit'](https://docs.google.com/spreadsheets/d/1ke6RqJSTDo25hK-1KBA0WFG0mhZz5jGzpt9PRFJJnGc/edit?usp=sharing) staan de toegankelijkheidsrichtlijnen voor niveaus A en AA en de mate waarin onderdelen van ‘Probeer IRMA uit’ aan die richtlijnen voldoen.        
+`
+    },
+
     responsiveImages: {
+        home: { src: 'home', alt: 'Gebruiker opent QR-code scanner op telefoon.' },
         demo1: {
             header: { src: 'leeftijd', alt: 'Stadsbeeld van een terras' },
             isOver18: { src: 'ouder-dan-18', alt: 'Foto van mensen in een café' },
@@ -458,8 +526,8 @@ Dit zorgt ervoor dat feedback van gebruikers op de juiste plek wordt opgeslagen.
             }
         },
         demo3: {
-            header: { src: 'probeer-irma', alt: '' },
-            headerResult: { src: 'mijn-amsterdam', alt: '' }
+            header: { src: 'probeer-irma', alt: 'Gebruiker opent QR-code scanner op telefoon' },
+            headerResult: { src: 'mijn-amsterdam', alt: 'Gebruiker opent QR-code scanner op telefoon' }
         },
         demo4: {
             header: { src: 'geveltuin', alt: 'Foto van geveltuin in straat' },
@@ -488,14 +556,29 @@ Heeft u een vraag en kunt u het antwoord niet vinden op deze website? Neem dan c
 Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I amsterdam](https://www.iamsterdam.com/nl)`,
         bottom: `[Over deze site](https://www.amsterdam.nl/overdezesite/)
 [Privacy](https://www.amsterdam.nl/privacy/)
+[Toegankelijkheid](/toegankelijkheidsverklaring)
 [Cookies op deze site](/cookies)`
     },
 
     qrcode: {
         title: '### Maak uzelf bekend',
-        stappen: `Doorloop de volgende stappen: \n
+        steps: `Doorloop de volgende stappen: \n
 1. Scan de QR-code hieronder met uw IRMA-app.  \n
 2. Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.`,
-        knop: 'Inloggen met IRMA'
+        button: 'Inloggen met IRMA',
+        close: 'Sluiten'
+    },
+    translatedIrmaAttributes: {
+        name: 'naam',
+        fullname: 'volledige naam',
+        street: 'straat',
+        housenumber: 'huisnummer',
+        city: 'woonplaats',
+        zipcode: 'postcode',
+        email: 'email',
+        telephone: 'telefoonnummer mobiel',
+        over18: 'ouder dan 18'
     }
 };
+
+export default content;

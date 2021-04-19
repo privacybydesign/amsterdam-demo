@@ -70,7 +70,8 @@ exports[`BreadCrumbs should render 3 items correctly 1`] = `
   }
 }
 
-<div
+<nav
+  aria-label="Breadcrumbs"
   class="c0"
   data-testid="breadCrumbs"
 >
@@ -131,5 +132,5 @@ exports[`BreadCrumbs should render 3 items correctly 1`] = `
       Demo
     </span>
   </a>
-</div>
+</nav>
 `;

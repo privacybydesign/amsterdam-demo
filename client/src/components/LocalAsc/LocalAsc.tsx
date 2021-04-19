@@ -1,5 +1,6 @@
-import React, { useContext, useCallback, useState } from 'react';
+import React, { useContext, useCallback, useState, ReactElement } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import ReactMarkdown from 'react-markdown';
 import {
     Heading,
     breakpoint,
@@ -14,13 +15,15 @@ import {
     TextArea as AscTextArea,
     ErrorMessage as AscErrorMessage,
     themeColor,
-    Theme
+    Theme,
+    Button
 } from '@amsterdam/asc-ui';
 import { TextAreaProps as AscTextAreaProps } from '@amsterdam/asc-ui/lib/components/TextArea';
 
 const lineHeight = '24px';
 
 export const H1 = styled(Heading)`
+    word-break: break-word;
     line-height: ${lineHeight};
     margin: ${themeSpacing(4, 0, 4, 0)};
 `;
@@ -44,6 +47,10 @@ export const Paragraph = styled(AscParagraph)`
     line-height: ${lineHeight};
     margin-top: ${themeSpacing(2)};
     margin-bottom: ${themeSpacing(2)};
+`;
+
+export const UnderlinedLink = styled(Link)`
+    text-decoration: underline;
 `;
 
 const TintedContainer = styled.div`
@@ -151,15 +158,25 @@ export const AccordionHeading = styled(Heading).attrs({ as: 'h4' })`
     margin: 0;
 `;
 
+export const QRCodeButton: React.FC<any> = styled(Button).attrs(props => ({
+    'data-testid': (props as any).dataTestId || 'qrCodeButton',
+    variant: 'secondary',
+    iconSize: 24,
+    iconLeft: <IrmaLogoIcon />
+}))`
+    margin: ${themeSpacing(0, 6, 6, 0)};
+`;
+
 interface IAlertProps {
-    className: string;
-    children: React.ReactNode;
+    className?: string;
+    children?: React.ReactNode;
     color?: AlertColor;
     icon?: React.ReactNode;
     iconUrl?: string;
     iconSize?: number;
     heading?: string;
     content?: string;
+    contentExtended?: string;
     dataTestId?: string;
 }
 
@@ -168,6 +185,18 @@ export enum AlertColor {
     ERROR = 'error',
     SUCCESS = 'success'
 }
+
+type IExternalLinkRendererProps = {
+    href: string;
+};
+
+export const ExternalLinkRenderer: React.FC<IExternalLinkRendererProps> = (props): ReactElement => {
+    return (
+        <a href={props.href} target="_blank" rel="noreferrer">
+            {props.children}
+        </a>
+    );
+};
 
 export const Alert = styled(
     ({ children, icon, iconUrl, iconSize, className, heading, content, color, dataTestId }: IAlertProps) => {
@@ -187,8 +216,8 @@ export const Alert = styled(
                     <div>
                         {heading || content ? (
                             <>
-                                {heading && <Heading forwardedAs="h3">{heading}</Heading>}
-                                <Paragraph>{content}</Paragraph>
+                                {heading && <Heading forwardedAs="h2">{heading}</Heading>}
+                                <ReactMarkdown source={content} renderers={{ paragraph: Paragraph }} />
                             </>
                         ) : (
                             children
@@ -215,7 +244,11 @@ export const Alert = styled(
 
     .alert-content {
         display: flex;
-        align-items: ${({ iconSize }) => (iconSize > 18 ? 'flex-start' : 'baseline')};
+        align-items: ${({ iconSize }) => (iconSize && iconSize > 18 ? 'flex-start' : 'baseline')};
+
+        h2 {
+            font-size: 18px;
+        }
 
         .icon {
             margin-right: ${themeSpacing(4)};
@@ -241,7 +274,7 @@ export const Alert = styled(
 export const CroppedAlert = styled(Alert)`
     padding: ${themeSpacing(2)};
 
-    h3,
+    h2,
     p {
         margin-bottom: 0;
     }
@@ -306,11 +339,11 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
     }
 `;
 
-export const InlineLink = styled(Link).attrs({ inList: true })``;
+export const InlineLink = styled(UnderlinedLink).attrs({ inList: true })``;
 
 export const Row = styled(AscRow)`
     padding: 0;
-    margin: ${({ noMargin }) => (noMargin ? '0' : '0 auto')};
+    margin: ${({ hasMargin }) => (hasMargin ? '0' : '0 auto')};
 `;
 
 export const Column = styled(AscColumn)`
@@ -325,8 +358,8 @@ export const StrongParagraph: React.FC<IStrongParagraphProps> = ({ children }) =
 );
 
 interface ITextAreaProps {
-    areaHeight: number;
-    showCounter: boolean;
+    areaHeight?: number;
+    showCounter?: boolean;
 }
 
 export const TextArea = styled(({ showCounter, className, ...props }: AscTextAreaProps & ITextAreaProps) => {
@@ -354,10 +387,10 @@ export const TextArea = styled(({ showCounter, className, ...props }: AscTextAre
     }
 `;
 
-export const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg' })`
+export const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg', alt: '', role: 'presentation' })`
     width: 24px;
 `;
 
 export const ErrorMessage = styled(AscErrorMessage)`
-    margin-top: ${themeSpacing(2)};
+margin - top: ${themeSpacing(2)};
 `;

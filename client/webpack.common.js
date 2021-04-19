@@ -18,7 +18,10 @@ module.exports = {
             },
             {
                 test: /\.(js|jsx)?$/,
-                include: path.resolve(__dirname, 'node_modules/@amsterdam'),
+                include: [
+                    path.resolve(__dirname, 'node_modules/@amsterdam'),
+                    path.resolve(__dirname, 'node_modules/@privacybydesign')
+                ],
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -26,13 +29,9 @@ module.exports = {
                             [
                                 '@babel/preset-env',
                                 {
-                                    modules: false,
                                     useBuiltIns: 'usage',
                                     corejs: 3,
-                                    targets: {
-                                        esmodules: false,
-                                        browsers: 'defaults, IE 11'
-                                    }
+                                    modules: false
                                 }
                             ],
                             '@babel/preset-react'

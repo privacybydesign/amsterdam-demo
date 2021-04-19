@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Icon, themeColor, themeSpacing } from '@amsterdam/asc-ui';
 import { ChevronRight } from '@amsterdam/asc-assets';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import HeaderImage from '@components/HeaderImage/HeaderImage';
+import ResponsiveImage from '@components/ResponsiveImage/ResponsiveImage';
 
 export interface IProps {
     imageSrc: string;
@@ -22,14 +22,12 @@ const Container = styled.section`
     background-color: ${themeColor('tint', 'level2')};
     border-right: 2px solid black;
     padding-bottom: ${themeSpacing(4)};
-    margin-bottom: ${themeSpacing(7)};
 
     &:hover {
         border-color: ${themeColor('secondary', 'main')};
 
-        h2 {
+        h3 {
             color: ${themeColor('secondary', 'main')};
-            text-decoration: underline;
         }
 
         svg {
@@ -38,10 +36,12 @@ const Container = styled.section`
     }
 `;
 
-const StyledLink = styled(Link)`
+const LinkBox = styled(Link).attrs({ variant: 'blank' })`
     color: ${themeColor('tint', 'level7')};
-    text-decoration: none;
     display: flex;
+    cursor: pointer;
+    margin-bottom: ${themeSpacing(7)};
+    text-decoration: none;
 
     s {
         color: pink;
@@ -66,13 +66,17 @@ const StyledLink = styled(Link)`
         outline-style: solid;
         outline-width: 2px;
     }
+
+    &:hover h3 {
+        color: ${themeColor('secondary', 'main')};
+    }
 `;
 
 const Article: React.FC<IProps> = ({ imageSrc, imageAlt, title, children, href, className }) => {
     return (
-        <StyledLink to={href}>
+        <LinkBox to={href}>
             <Container className={className}>
-                <HeaderImage filename={imageSrc} alt={imageAlt} />
+                <ResponsiveImage filename={imageSrc} alt={imageAlt} />
                 <div className="text">
                     <AscLocal.H3>{title}</AscLocal.H3>
                     {children}
@@ -81,7 +85,7 @@ const Article: React.FC<IProps> = ({ imageSrc, imageAlt, title, children, href, 
                     <ChevronRight />
                 </Icon>
             </Container>
-        </StyledLink>
+        </LinkBox>
     );
 };
 

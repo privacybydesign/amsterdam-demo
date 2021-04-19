@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef, useReducer } from 'react';
-import createIrmaSession from '@services/createIrmaSession';
-import content from '@services/content';
+import React, { useState, useEffect, useRef, useReducer, useCallback } from 'react';
+import content, { reduceAndTranslateEmptyVars } from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import defList from '@services/deflist';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
@@ -11,17 +10,21 @@ import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
-import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
+import ResponsiveImage, { IHeaderImageProps } from '@components/ResponsiveImage/ResponsiveImage';
 import { RadioGroup, Label, Radio } from '@amsterdam/asc-ui';
-import QRCode from '@components/QRCode/QRCode';
-import { initialState, reducer } from './reducer';
+import { initialState, reducer, IState } from './reducer';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import preloadDemoImages from '@services/preloadImages';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
+import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
+import useIrmaSession, { IIrmaSessionOutputData } from '@hooks/useIrmaSession';
+import { isMobile } from '@services/createIrmaSession';
 
 export interface IProps {}
+
+const OPTIONAL_IRMA_ATTRIBUTES = ['houseNumber'];
 
 const Demo4: React.FC<IProps> = () => {
     const formEl = useRef(null);
@@ -29,12 +32,18 @@ const Demo4: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    function replaceVars(str, p1) {
-        return state[p1] || '-';
+    function replaceVars(str: string, p1: keyof IState['irmaAttributes']) {
+        if (!OPTIONAL_IRMA_ATTRIBUTES.includes(p1)) {
+            return state.irmaAttributes[p1] || '-';
+        }
+        return '';
     }
 
     const validateForm = () => {
-        const el = formEl.current.querySelector('input[name=geveltuin]:checked');
+        if (!formEl.current || formEl.current == null) {
+            return;
+        }
+        const el = (formEl as any).current.querySelector('input[name=geveltuin]:checked');
         if (el) {
             dispatch({
                 type: 'validateForm',
@@ -51,43 +60,51 @@ const Demo4: React.FC<IProps> = () => {
         return false;
     };
 
-    const getSession = async () => {
-        let response = null;
-        if (validateForm()) {
-            response = await createIrmaSession(
-                'demo4',
-                'irma-qr',
-                credentialSource === CredentialSource.DEMO && { demo: true }
-            );
-            if (response) {
-                dispatch({
-                    type: 'setProperties',
-                    payload: {
-                        name: response['fullname'],
-                        street: `${response['street']} ${response['houseNumber']}`,
-                        city: `${response['zipcode']} ${response['city']}`,
-                        telephone: response['mobilenumber'],
-                        email: response['email']
+    const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
+
+    const getSession = useCallback(
+        (event, alwaysShowQRCode = false) => {
+            event.persist();
+            if (validateForm()) {
+                startIrmaSession({
+                    demoPath: 'demos/demo4',
+                    useDemoCredentials: credentialSource === CredentialSource.DEMO,
+                    alwaysShowQRCode,
+                    resultCallback: async (result: any) => {
+                        if (result) {
+                            dispatch({
+                                type: 'setProperties',
+                                payload: {
+                                    name: result['fullname'],
+                                    street: result['street'],
+                                    houseNumber: result['houseNumber'],
+                                    zipcode: result['zipcode'],
+                                    city: result['city'],
+                                    telephone: result['mobilenumber'],
+                                    email: result['email']
+                                }
+                            });
+                        } else {
+                            dispatch({
+                                type: 'setError'
+                            });
+                        }
+
+                        window.scrollTo(0, 0);
+                        startUsabillaSurvey();
                     }
                 });
-            } else {
-                dispatch({
-                    type: 'setError'
-                });
             }
-
-            window.scrollTo(0, 0);
-            startUsabillaSurvey();
-        }
-        return response;
-    };
+        },
+        [credentialSource, startIrmaSession]
+    );
 
     const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
         filename: content.responsiveImages.demo4.header.src,
         alt: content.responsiveImages.demo4.header.alt
     });
 
-    const { hasResult, hasError, formValid } = state;
+    const { hasResult, hasError, emptyVars, formValid } = state;
 
     // Update header image
     useEffect(() => {
@@ -99,10 +116,25 @@ const Demo4: React.FC<IProps> = () => {
         }
     }, [hasResult]);
 
+    useEffect(() => {
+        if (hasResult) {
+            for (const [key, value] of Object.entries(state.irmaAttributes)) {
+                if (!value && !OPTIONAL_IRMA_ATTRIBUTES.includes(key)) {
+                    dispatch({
+                        type: 'setEmptyVars',
+                        payload: {
+                            emptyVar: key
+                        }
+                    });
+                }
+            }
+        }
+    }, [hasResult, state.irmaAttributes]);
+
     // Preload demo images
     useEffect(() => {
         preloadDemoImages(
-            Object.keys(content.responsiveImages.demo4).map(key => content.responsiveImages.demo4[key].src)
+            Object.keys(content.responsiveImages.demo4).map(key => (content.responsiveImages.demo4 as any)[key].src)
         );
     }, []);
 
@@ -118,6 +150,7 @@ const Demo4: React.FC<IProps> = () => {
                     renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
                 />
 
+                {SkipLinkEntry}
                 <ReactMarkDown
                     source={content.demo4[hasResult ? 'proven' : 'unproven'].title}
                     renderers={{ heading: AscLocal.H1 }}
@@ -134,7 +167,20 @@ const Demo4: React.FC<IProps> = () => {
                     />
                 )}
 
-                {hasResult && !hasError && (
+                {emptyVars.length > 0 && !hasError && (
+                    <AscLocal.Alert
+                        color={AscLocal.AlertColor.ERROR}
+                        icon={<Alert />}
+                        iconSize={22}
+                        heading={content.demoEmptyVarsAlert.heading}
+                        content={
+                            content.demoEmptyVarsAlert.content + reduceAndTranslateEmptyVars(state.emptyVars) + '.'
+                        }
+                        dataTestId="hasErrorAlert"
+                    />
+                )}
+
+                {hasResult && !hasError && emptyVars.length === 0 && (
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.SUCCESS}
                         icon={<Checkmark />}
@@ -145,27 +191,34 @@ const Demo4: React.FC<IProps> = () => {
                 )}
             </ContentBlock>
 
-            <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
+            <ResponsiveImage filename={headerImg.filename} alt={headerImg.alt} />
 
             {!hasResult ? (
-                <AscLocal.Row noMargin>
+                <AscLocal.Row hasMargin={false}>
                     <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
                         <ContentBlock>
-                            <ReactMarkDown
-                                source={content.demo4.unproven.intro1}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                            />
+                            <section>
+                                <ReactMarkDown
+                                    source={content.demo4.unproven.intro1}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL
+                                    }}
+                                />
+                            </section>
+                            <section>
+                                <AscLocal.AccordionContainer>
+                                    <Accordion title={content.demo4.unproven.why.title}>
+                                        <ReactMarkDown
+                                            source={content.demo4.unproven.why.body}
+                                            renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                        />
+                                    </Accordion>
+                                </AscLocal.AccordionContainer>
+                            </section>
 
-                            <AscLocal.AccordionContainer>
-                                <Accordion title={content.demo4.unproven.why.title}>
-                                    <ReactMarkDown
-                                        source={content.demo4.unproven.why.body}
-                                        renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                                    />
-                                </Accordion>
-                            </AscLocal.AccordionContainer>
-
-                            <AscLocal.H3>Demo-aanvraag Geveltuin</AscLocal.H3>
+                            <AscLocal.H2>Demo-aanvraag Geveltuin</AscLocal.H2>
 
                             <AscLocal.CroppedAlert
                                 color={AscLocal.AlertColor.PRIMARY}
@@ -174,35 +227,59 @@ const Demo4: React.FC<IProps> = () => {
                                 heading={content.demo4.unproven.alert.title}
                                 content={content.demo4.unproven.alert.body}
                             />
+                            <section>
+                                <form ref={formEl}>
+                                    <ReactMarkDown
+                                        source={content.demo4.form.owner}
+                                        renderers={{ paragraph: AscLocal.Paragraph }}
+                                    />
 
-                            <form ref={formEl}>
+                                    <RadioGroup name="geveltuin" error={!formValid}>
+                                        <Label htmlFor="yes" label={content.demo4.form.optionYes}>
+                                            <Radio id="yes" variant="primary" value={content.demo4.form.optionYes} />
+                                        </Label>
+                                        <Label htmlFor="no" label={content.demo4.form.optionNo}>
+                                            <Radio id="no" variant="primary" value={content.demo4.form.optionNo} />
+                                        </Label>
+                                    </RadioGroup>
+                                    {!formValid && <AscLocal.ErrorMessage message={content.demo4.form.required} />}
+                                </form>
+                            </section>
+                            <section>
                                 <ReactMarkDown
-                                    source={content.demo4.form.owner}
-                                    renderers={{ paragraph: AscLocal.Paragraph }}
+                                    source={content.demo4.unproven.intro2}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL
+                                    }}
                                 />
-
-                                <RadioGroup name="geveltuin" error={!formValid}>
-                                    <Label htmlFor="yes" label={content.demo4.form.optionYes}>
-                                        <Radio id="yes" variant="primary" value={content.demo4.form.optionYes} />
-                                    </Label>
-                                    <Label htmlFor="no" label={content.demo4.form.optionNo}>
-                                        <Radio id="no" variant="primary" value={content.demo4.form.optionNo} />
-                                    </Label>
-                                </RadioGroup>
-                                {!formValid && <AscLocal.ErrorMessage message={content.demo4.form.required} />}
-                            </form>
-
-                            <ReactMarkDown
-                                source={content.demo4.unproven.intro2}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                            />
-
-                            <QRCode getSession={getSession} label={content.demo4.button} />
-
-                            <ReactMarkDown
-                                source={content.downloadIrma}
-                                renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
-                            />
+                            </section>
+                            <section>
+                                <AscLocal.QRCodeButton onClick={getSession}>
+                                    {content.demo4.button}
+                                </AscLocal.QRCodeButton>
+                                {modal}
+                            </section>
+                            <section>
+                                <ReactMarkDown
+                                    source={content.downloadIrma}
+                                    renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
+                                />
+                            </section>
+                            {isMobile() && (
+                                <section>
+                                    <p>
+                                        {content.showQrOnMobile.label}
+                                        <br />
+                                        <AscLocal.UnderlinedLink
+                                            onClick={(e: React.SyntheticEvent) => getSession(e, true)}
+                                        >
+                                            {content.showQrOnMobile.link}
+                                        </AscLocal.UnderlinedLink>
+                                    </p>
+                                </section>
+                            )}
                         </ContentBlock>
                     </AscLocal.Column>
                     <AscLocal.Column
@@ -220,47 +297,58 @@ const Demo4: React.FC<IProps> = () => {
             ) : (
                 <>
                     <ContentBlock>
-                        <ReactMarkDown
-                            source={content.demo4.result.intro}
-                            renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                        />
-
-                        <AscLocal.TintedContainerLevel3>
+                        <section>
                             <ReactMarkDown
-                                source={content.demo4.result.yourDemoRequest.replace(/\[(.*?)\]/gm, replaceVars)}
-                                renderers={{
-                                    heading: AscLocal.H3,
-                                    paragraph: AscLocal.Paragraph,
-                                    list: AscLocal.UL,
-                                    ...AscLocal.DefinitionList
-                                }}
-                                plugins={[defList]}
+                                source={content.demo4.result.intro}
+                                renderers={{ heading: AscLocal.H2, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
                             />
-                        </AscLocal.TintedContainerLevel3>
+                        </section>
+                        <section>
+                            <AscLocal.TintedContainerLevel3>
+                                <ReactMarkDown
+                                    source={content.demo4.result.yourDemoRequest.replace(/\[(.*?)\]/gm, replaceVars)}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL,
+                                        ...AscLocal.DefinitionList
+                                    }}
+                                    plugins={[defList]}
+                                />
+                            </AscLocal.TintedContainerLevel3>
 
-                        <AscLocal.TintedContainerLevel3>
-                            <ReactMarkDown
-                                source={content.demo4.result.yourDetails.replace(/\[(.*?)\]/gm, replaceVars)}
-                                renderers={{
-                                    heading: AscLocal.H3,
-                                    paragraph: AscLocal.Paragraph,
-                                    list: AscLocal.UL,
-                                    ...AscLocal.DefinitionList
-                                }}
-                                plugins={[defList]}
-                            />
-                        </AscLocal.TintedContainerLevel3>
+                            <AscLocal.TintedContainerLevel3>
+                                <ReactMarkDown
+                                    source={content.demo4.result.yourDetails.replace(/\[(.*?)\]/gm, replaceVars)}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL,
+                                        ...AscLocal.DefinitionList
+                                    }}
+                                    plugins={[defList]}
+                                />
+                            </AscLocal.TintedContainerLevel3>
+                        </section>
                     </ContentBlock>
                     <EmphasisBlock>
                         <ContentBlock>
-                            <ReactMarkDown
-                                source={content.demo4.result.rest}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                            />
+                            <section>
+                                <ReactMarkDown
+                                    source={content.demo4.result.rest}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL
+                                    }}
+                                />
+                            </section>
                         </ContentBlock>
                     </EmphasisBlock>
                     <ContentBlock>
-                        <ReactMarkDown source={content.callToAction} />
+                        <section>
+                            <ReactMarkDown source={content.callToAction} />
+                        </section>
                     </ContentBlock>
                 </>
             )}

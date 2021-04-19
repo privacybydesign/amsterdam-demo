@@ -35,8 +35,8 @@ Object {
   "hasError": false,
   "hasResult": false,
   "location": Object {
+    "displayName": "Test",
     "id": "testId",
-    "weergavenaam": "Test",
   },
   "mobilenumber": "",
   "optionEmail": null,
@@ -66,8 +66,8 @@ Object {
   "hasError": false,
   "hasResult": false,
   "location": Object {
+    "displayName": "Test",
     "id": "testId",
-    "weergavenaam": "Test",
   },
   "mobilenumber": "",
   "optionEmail": true,

@@ -5,7 +5,7 @@ describe('Demo5 reducer', () => {
         const newState = reducer(initialState, {
             type: 'validateForm',
             payload: {
-                location: { id: 'testId', weergavenaam: 'Test' },
+                location: { id: 'testId', displayName: 'Test' },
                 report: 'Test melding',
                 optionPhone: true,
                 optionEmail: true,
@@ -18,7 +18,7 @@ describe('Demo5 reducer', () => {
     it('should update when action setLocation is dispatched', () => {
         const newState = reducer(initialState, {
             type: 'setLocation',
-            payload: { location: { id: 'testId', weergavenaam: 'Test' } }
+            payload: { location: { id: 'testId', displayName: 'Test' } }
         });
         expect(newState).toMatchSnapshot();
     });

@@ -21,14 +21,6 @@ exports[`Demo5 should render the initial header image 1`] = `
 
 }
 
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
 @media screen and (min-width:1024px) {
 
 }
@@ -42,6 +34,38 @@ exports[`Demo5 should render the initial header image 1`] = `
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
 
 }
 
@@ -276,6 +300,18 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
   fill: #ffffff;
 }
 
+.c11 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c12 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c13 .c3 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -294,13 +330,7 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
   flex-shrink: 0;
 }
 
-.c16 .c3 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c12 .c3 {
+.c17 .c3 {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
@@ -317,12 +347,12 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
   margin: 0;
   color: #000000;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
   -webkit-letter-spacing: inherit;
   -moz-letter-spacing: inherit;
   -ms-letter-spacing: inherit;
   letter-spacing: inherit;
-  line-height: 23px;
+  line-height: 24px;
   margin-bottom: 8px;
   font-stretch: normal;
   -webkit-letter-spacing: normal;
@@ -373,18 +403,18 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
   justify-content: space-between;
 }
 
-.c17 .c3 svg circle,
-.c17:hover .c3 svg circle,
-.c17 .c3 svg rect,
-.c17:hover .c3 svg rect,
-.c17 .c3 svg polygon,
-.c17:hover .c3 svg polygon,
-.c17 .c3 svg path,
-.c17:hover .c3 svg path {
+.c18 .c3 svg circle,
+.c18:hover .c3 svg circle,
+.c18 .c3 svg rect,
+.c18:hover .c3 svg rect,
+.c18 .c3 svg polygon,
+.c18:hover .c3 svg polygon,
+.c18 .c3 svg path,
+.c18:hover .c3 svg path {
   fill: #ffffff;
 }
 
-.c11 .c6 {
+.c16 .c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -440,6 +470,10 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
   align-items: baseline;
 }
 
+.c1 .alert-content h2 {
+  font-size: 18px;
+}
+
 .c1 .alert-content .icon {
   margin-right: 16px;
   min-width: 14px;
@@ -455,15 +489,10 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
 }
 
 @media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
+  .c5 {
+    font-size: 24px;
+    line-height: 30px;
+  }
 }
 
 @media screen and (min-width:1024px) {
@@ -479,6 +508,38 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
 
 }
 
@@ -715,11 +776,11 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
         </svg>
       </span>
       <div>
-        <h3
+        <h2
           class="c5 c6 c7"
         >
           Uw contactgegevens
-        </h3>
+        </h2>
         <p
           class="c8 c9 c10"
         >
@@ -752,14 +813,6 @@ exports[`Demo5 should update the page after completing the IRMA flow 2`] = `
 
 }
 
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
 @media screen and (min-width:1024px) {
 
 }
@@ -773,6 +826,38 @@ exports[`Demo5 should update the page after completing the IRMA flow 2`] = `
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
 
 }
 
@@ -1008,6 +1093,18 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
   height: 22px;
 }
 
+.c11 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c12 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c13 .c3 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -1020,13 +1117,7 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
   flex-shrink: 0;
 }
 
-.c15 .c3 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c12 .c3 {
+.c16 .c3 {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
@@ -1043,12 +1134,12 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
   margin: 0;
   color: #000000;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
   -webkit-letter-spacing: inherit;
   -moz-letter-spacing: inherit;
   -ms-letter-spacing: inherit;
   letter-spacing: inherit;
-  line-height: 23px;
+  line-height: 24px;
   margin-bottom: 8px;
   font-stretch: normal;
   -webkit-letter-spacing: normal;
@@ -1099,18 +1190,18 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
   justify-content: space-between;
 }
 
-.c16 .c3 svg circle,
-.c16:hover .c3 svg circle,
-.c16 .c3 svg rect,
-.c16:hover .c3 svg rect,
-.c16 .c3 svg polygon,
-.c16:hover .c3 svg polygon,
-.c16 .c3 svg path,
-.c16:hover .c3 svg path {
+.c17 .c3 svg circle,
+.c17:hover .c3 svg circle,
+.c17 .c3 svg rect,
+.c17:hover .c3 svg rect,
+.c17 .c3 svg polygon,
+.c17:hover .c3 svg polygon,
+.c17 .c3 svg path,
+.c17:hover .c3 svg path {
   fill: #ffffff;
 }
 
-.c11 .c6 {
+.c15 .c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1166,6 +1257,10 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
   align-items: flex-start;
 }
 
+.c1 .alert-content h2 {
+  font-size: 18px;
+}
+
 .c1 .alert-content .icon {
   margin-right: 16px;
   min-width: 22px;
@@ -1181,15 +1276,10 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 }
 
 @media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
+  .c5 {
+    font-size: 24px;
+    line-height: 30px;
+  }
 }
 
 @media screen and (min-width:1024px) {
@@ -1205,6 +1295,38 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
 
 }
 
@@ -1443,11 +1565,11 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
         </svg>
       </span>
       <div>
-        <h3
+        <h2
           class="c5 c6 c7"
         >
           Geen contactgegevens
-        </h3>
+        </h2>
         <p
           class="c8 c9 c10"
         >
@@ -1480,14 +1602,6 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 
 }
 
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
 @media screen and (min-width:1024px) {
 
 }
@@ -1501,6 +1615,38 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
 
 }
 
@@ -1738,14 +1884,6 @@ exports[`Demo5 should update the page after failing the IRMA flow 1`] = `
 
 }
 
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
-}
-
 @media screen and (min-width:1024px) {
 
 }
@@ -1759,6 +1897,38 @@ exports[`Demo5 should update the page after failing the IRMA flow 1`] = `
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
 
 }
 
@@ -1994,6 +2164,18 @@ exports[`Demo5 should update the page after failing the IRMA flow 2`] = `
   height: 22px;
 }
 
+.c11 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c12 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
 .c13 .c3 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -2012,13 +2194,7 @@ exports[`Demo5 should update the page after failing the IRMA flow 2`] = `
   flex-shrink: 0;
 }
 
-.c16 .c3 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c12 .c3 {
+.c17 .c3 {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
@@ -2035,12 +2211,12 @@ exports[`Demo5 should update the page after failing the IRMA flow 2`] = `
   margin: 0;
   color: #000000;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
   -webkit-letter-spacing: inherit;
   -moz-letter-spacing: inherit;
   -ms-letter-spacing: inherit;
   letter-spacing: inherit;
-  line-height: 23px;
+  line-height: 24px;
   margin-bottom: 8px;
   font-stretch: normal;
   -webkit-letter-spacing: normal;
@@ -2091,18 +2267,18 @@ exports[`Demo5 should update the page after failing the IRMA flow 2`] = `
   justify-content: space-between;
 }
 
-.c17 .c3 svg circle,
-.c17:hover .c3 svg circle,
-.c17 .c3 svg rect,
-.c17:hover .c3 svg rect,
-.c17 .c3 svg polygon,
-.c17:hover .c3 svg polygon,
-.c17 .c3 svg path,
-.c17:hover .c3 svg path {
+.c18 .c3 svg circle,
+.c18:hover .c3 svg circle,
+.c18 .c3 svg rect,
+.c18:hover .c3 svg rect,
+.c18 .c3 svg polygon,
+.c18:hover .c3 svg polygon,
+.c18 .c3 svg path,
+.c18:hover .c3 svg path {
   fill: #ffffff;
 }
 
-.c11 .c6 {
+.c16 .c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -2158,6 +2334,10 @@ exports[`Demo5 should update the page after failing the IRMA flow 2`] = `
   align-items: flex-start;
 }
 
+.c1 .alert-content h2 {
+  font-size: 18px;
+}
+
 .c1 .alert-content .icon {
   margin-right: 16px;
   min-width: 22px;
@@ -2173,15 +2353,10 @@ exports[`Demo5 should update the page after failing the IRMA flow 2`] = `
 }
 
 @media screen and (min-width:1024px) {
-
-}
-
-@media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
-
+  .c5 {
+    font-size: 24px;
+    line-height: 30px;
+  }
 }
 
 @media screen and (min-width:1024px) {
@@ -2197,6 +2372,38 @@ exports[`Demo5 should update the page after failing the IRMA flow 2`] = `
 }
 
 @media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
 
 }
 
@@ -2435,11 +2642,11 @@ exports[`Demo5 should update the page after failing the IRMA flow 2`] = `
         </svg>
       </span>
       <div>
-        <h3
+        <h2
           class="c5 c6 c7"
         >
           Niets doorgegeven
-        </h3>
+        </h2>
         <p
           class="c8 c9 c10"
         >

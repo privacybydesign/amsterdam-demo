@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ReactMarkDown from 'react-markdown';
-import { Accordion } from '@amsterdam/asc-ui';
+import styled from 'styled-components';
+import { Accordion, themeSpacing } from '@amsterdam/asc-ui';
 import { Alert as AlertIcon } from '@amsterdam/asc-assets';
 import { Checkmark } from '@amsterdam/asc-assets';
-import createIrmaSession from '@services/createIrmaSession';
+import useIrmaSession, { IIrmaSessionOutputData } from '@hooks/useIrmaSession';
 import content from '@services/content';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import CredentialSelector, { CredentialSource } from '@components/CredentialSelector/CredentialSelector';
@@ -11,13 +12,14 @@ import ExternalLink from '@components/ExternalLink/ExternalLink';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import BreadCrumbs from '@components/BreadCrumbs';
 import DemoNotification from '@components/DemoNotification/DemoNotification';
-import HeaderImage, { IHeaderImageProps } from '@components/HeaderImage/HeaderImage';
-import QRCode from '@components/QRCode/QRCode';
+import ResponsiveImage, { IHeaderImageProps } from '@components/ResponsiveImage/ResponsiveImage';
 import EmphasisBlock from '@components/EmphasisBlock/EmphasisBlock';
 import ContentBlock from '@components/ContentBlock/ContentBlock';
 import WhyIRMA from '@components/WhyIRMA/WhyIRMA';
 import preloadDemoImages from '@services/preloadImages';
 import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
+import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
+import { isMobile } from '@services/createIrmaSession';
 
 export interface IProps {}
 
@@ -29,58 +31,72 @@ const Demo1: React.FC<IProps> = () => {
     const [hasResult65, setHasResult65] = useState<boolean>(false);
     const [hasError, setHasError] = useState<boolean>(false);
 
-    const getSessionOver18 = async (): Promise<null | unknown> => {
-        const response = await createIrmaSession(
-            'demo1/18',
-            'irma-qr',
-            credentialSource === CredentialSource.DEMO && { demo: true }
-        );
-        if (response) {
-            setIsOver18(
-                response['over18'] === 'Yes' ||
-                    response['over18'] === 'yes' ||
-                    response['over18'] === 'Ja' ||
-                    response['over18'] === 'ja'
-            );
-            setHasResult18(true);
-            setHasError(false);
-        } else {
-            setHasError(true);
-        }
+    const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
-        window.scrollTo(0, 0);
-        startUsabillaSurvey();
-        return response;
-    };
+    const getSessionOver18 = useCallback(
+        (event, alwaysShowQRCode = false) => {
+            event.persist();
+            startIrmaSession({
+                demoPath: 'demos/demo1/18',
+                useDemoCredentials: credentialSource === CredentialSource.DEMO,
+                alwaysShowQRCode,
+                resultCallback: (result: any) => {
+                    if (result) {
+                        setIsOver18(
+                            result['over18'] === 'Yes' ||
+                                result['over18'] === 'yes' ||
+                                result['over18'] === 'Ja' ||
+                                result['over18'] === 'ja'
+                        );
+                        setHasResult18(true);
+                        setHasError(false);
+                    } else {
+                        setHasError(true);
+                    }
 
-    const getSessionOver65 = async (): Promise<null | unknown> => {
-        const response = await createIrmaSession(
-            'demo1/65',
-            'irma-qr',
-            credentialSource === CredentialSource.DEMO && { demo: true }
-        );
-        if (response) {
-            setIsOver65(
-                response['over65'] === 'Yes' ||
-                    response['over65'] === 'yes' ||
-                    response['over65'] === 'Ja' ||
-                    response['over65'] === 'ja'
-            );
-            setHasResult65(true);
-            setHasError(false);
-        } else {
-            setHasError(true);
-        }
+                    window.scrollTo(0, 0);
+                    startUsabillaSurvey();
+                }
+            });
+        },
+        [credentialSource, startIrmaSession]
+    );
 
-        window.scrollTo(0, 0);
-        startUsabillaSurvey();
-        return response;
-    };
+    const getSessionOver65 = useCallback(
+        (event, alwaysShowQRCode = false) => {
+            event.persist();
+            startIrmaSession({
+                demoPath: 'demos/demo1/65',
+                useDemoCredentials: credentialSource === CredentialSource.DEMO,
+                alwaysShowQRCode,
+                resultCallback: (result: any) => {
+                    if (result) {
+                        setIsOver65(
+                            (result as any)['over65'] === 'Yes' ||
+                                (result as any)['over65'] === 'yes' ||
+                                (result as any)['over65'] === 'Ja' ||
+                                (result as any)['over65'] === 'ja'
+                        );
+                        setHasResult65(true);
+                        setHasError(false);
+                    } else {
+                        setHasError(true);
+                    }
+
+                    window.scrollTo(0, 0);
+                    startUsabillaSurvey();
+                }
+            });
+        },
+        [credentialSource, startIrmaSession]
+    );
 
     // Preload demo images
     useEffect(() => {
         preloadDemoImages(
-            Object.keys(content.responsiveImages.demo1).map(key => content.responsiveImages.demo1[key].src)
+            Object.keys(content.responsiveImages.demo1).map(
+                (key: any) => (content.responsiveImages.demo1 as any)[key].src
+            )
         );
     }, []);
 
@@ -133,6 +149,7 @@ const Demo1: React.FC<IProps> = () => {
                     source={content.demo1.breadcrumbs}
                     renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
                 />
+                {SkipLinkEntry}
                 <ReactMarkDown
                     source={content.demo1.title[hasResult18 || hasResult65 ? 'hasResult' : 'noResult']}
                     renderers={{ heading: AscLocal.H1 }}
@@ -191,43 +208,60 @@ const Demo1: React.FC<IProps> = () => {
                 )}
             </ContentBlock>
 
-            <HeaderImage filename={headerImg.filename} alt={headerImg.alt} />
+            <ResponsiveImage filename={headerImg.filename} alt={headerImg.alt} />
 
             {!hasResult18 && !hasResult65 ? (
-                <AscLocal.Row noMargin>
+                <AscLocal.Row hasMargin={false}>
                     <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 9, xLarge: 9 }}>
                         <ContentBlock>
-                            <ReactMarkDown
-                                source={content.demo1.intro}
-                                renderers={{ heading: AscLocal.H3, paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                            />
-
-                            <AscLocal.AccordionContainer>
-                                <Accordion title={content.demo1.why.title}>
-                                    <ReactMarkDown
-                                        source={content.demo1.why.body}
-                                        renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
-                                    />
-                                </Accordion>
-                            </AscLocal.AccordionContainer>
-
-                            <div>
-                                <QRCode
-                                    getSession={getSessionOver18}
-                                    label={content.demo1.button18}
-                                    dataTestId="qrCodeButton18"
+                            <section>
+                                <ReactMarkDown
+                                    source={content.demo1.intro}
+                                    renderers={{
+                                        heading: AscLocal.H2,
+                                        paragraph: AscLocal.Paragraph,
+                                        list: AscLocal.UL
+                                    }}
                                 />
-                                <QRCode
-                                    getSession={getSessionOver65}
-                                    label={content.demo1.button65}
-                                    dataTestId="qrCodeButton65"
+                            </section>
+                            <section>
+                                <AscLocal.AccordionContainer>
+                                    <Accordion title={content.demo1.why.title}>
+                                        <ReactMarkDown
+                                            source={content.demo1.why.body}
+                                            renderers={{ paragraph: AscLocal.Paragraph, list: AscLocal.UL }}
+                                        />
+                                    </Accordion>
+                                </AscLocal.AccordionContainer>
+                            </section>
+                            <section>
+                                <AscLocal.QRCodeButton dataTestId="qrCodeButton18" onClick={getSessionOver18}>
+                                    {content.demo1.button18}
+                                </AscLocal.QRCodeButton>
+                                <AscLocal.QRCodeButton dataTestId="qrCodeButton65" onClick={getSessionOver65}>
+                                    {content.demo1.button65}
+                                </AscLocal.QRCodeButton>
+                                {modal}
+                            </section>
+                            <section>
+                                <ReactMarkDown
+                                    source={content.downloadIrma}
+                                    renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
                                 />
-                            </div>
-
-                            <ReactMarkDown
-                                source={content.downloadIrma}
-                                renderers={{ paragraph: AscLocal.Paragraph, link: ExternalLink }}
-                            />
+                            </section>
+                            {isMobile() && (
+                                <section>
+                                    <p>
+                                        {content.showQrOnMobile.label}
+                                        <ShowQRLink onClick={(e: React.SyntheticEvent) => getSessionOver18(e, true)}>
+                                            {content.demo1.showQrOnMobile.link18}
+                                        </ShowQRLink>
+                                        <ShowQRLink onClick={(e: React.SyntheticEvent) => getSessionOver65(e, true)}>
+                                            {content.demo1.showQrOnMobile.link65}
+                                        </ShowQRLink>
+                                    </p>
+                                </section>
+                            )}
                         </ContentBlock>
                     </AscLocal.Column>
                     <AscLocal.Column span={{ small: 1, medium: 2, big: 6, large: 3, xLarge: 3 }}>
@@ -237,77 +271,87 @@ const Demo1: React.FC<IProps> = () => {
             ) : (
                 <>
                     <ContentBlock>
-                        <ReactMarkDown source={content.noSavePromise} />
+                        <section>
+                            <ReactMarkDown source={content.noSavePromise} />
+                        </section>
                     </ContentBlock>
                     <EmphasisBlock>
                         <ContentBlock>
                             <ReactMarkDown source={content.demo1.result.title} />
-                            {/* // TODO: Refactor renderers */}
-                            {hasResult18 && isOver18 && (
+                            <section>
+                                {hasResult18 && isOver18 && (
+                                    <ReactMarkDown
+                                        source={content.demo1.result.isOver18}
+                                        renderers={{
+                                            heading: AscLocal.H2,
+                                            paragraph: AscLocal.Paragraph,
+                                            list: AscLocal.UL
+                                        }}
+                                    />
+                                )}
+                                {hasResult18 && !isOver18 && (
+                                    <ReactMarkDown
+                                        source={content.demo1.result.isNotOver18}
+                                        renderers={{
+                                            heading: AscLocal.H2,
+                                            paragraph: AscLocal.Paragraph,
+                                            list: AscLocal.UL
+                                        }}
+                                    />
+                                )}
+                                {hasResult65 && isOver65 && (
+                                    <ReactMarkDown
+                                        source={content.demo1.result.isOver65}
+                                        renderers={{
+                                            heading: AscLocal.H2,
+                                            paragraph: AscLocal.Paragraph,
+                                            list: AscLocal.UL
+                                        }}
+                                    />
+                                )}
+                                {hasResult65 && !isOver65 && (
+                                    <ReactMarkDown
+                                        source={content.demo1.result.isNotOver65}
+                                        renderers={{
+                                            heading: AscLocal.H2,
+                                            paragraph: AscLocal.Paragraph,
+                                            list: AscLocal.UL
+                                        }}
+                                    />
+                                )}
                                 <ReactMarkDown
-                                    source={content.demo1.result.isOver18}
+                                    source={content.demo1.result.whatsDifferentWithIrma}
                                     renderers={{
-                                        heading: AscLocal.H3,
+                                        heading: AscLocal.H2,
                                         paragraph: AscLocal.Paragraph,
                                         list: AscLocal.UL
                                     }}
                                 />
-                            )}
-                            {hasResult18 && !isOver18 && (
-                                <ReactMarkDown
-                                    source={content.demo1.result.isNotOver18}
-                                    renderers={{
-                                        heading: AscLocal.H3,
-                                        paragraph: AscLocal.Paragraph,
-                                        list: AscLocal.UL
-                                    }}
-                                />
-                            )}
-                            {hasResult65 && isOver65 && (
-                                <ReactMarkDown
-                                    source={content.demo1.result.isOver65}
-                                    renderers={{
-                                        heading: AscLocal.H3,
-                                        paragraph: AscLocal.Paragraph,
-                                        list: AscLocal.UL
-                                    }}
-                                />
-                            )}
-                            {hasResult65 && !isOver65 && (
-                                <ReactMarkDown
-                                    source={content.demo1.result.isNotOver65}
-                                    renderers={{
-                                        heading: AscLocal.H3,
-                                        paragraph: AscLocal.Paragraph,
-                                        list: AscLocal.UL
-                                    }}
-                                />
-                            )}
-                            <ReactMarkDown
-                                source={content.demo1.result.whatsDifferentWithIrma}
-                                renderers={{
-                                    heading: AscLocal.H3,
-                                    paragraph: AscLocal.Paragraph,
-                                    list: AscLocal.UL
-                                }}
-                            />
+                            </section>
                         </ContentBlock>
                     </EmphasisBlock>
                     <ContentBlock>
-                        <ReactMarkDown
-                            source={content.callToAction}
-                            renderers={{
-                                heading: AscLocal.H3,
-                                paragraph: AscLocal.Paragraph,
-                                list: AscLocal.UL,
-                                link: AscLocal.InlineLink
-                            }}
-                        />
+                        <section>
+                            <ReactMarkDown
+                                source={content.callToAction}
+                                renderers={{
+                                    heading: AscLocal.H2,
+                                    paragraph: AscLocal.Paragraph,
+                                    list: AscLocal.UL,
+                                    link: AscLocal.InlineLink
+                                }}
+                            />
+                        </section>
                     </ContentBlock>
                 </>
             )}
         </PageTemplate>
     );
 };
+
+const ShowQRLink = styled(AscLocal.UnderlinedLink)`
+    display: block;
+    margin: ${themeSpacing(2)} 0;
+`;
 
 export default Demo1;

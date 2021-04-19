@@ -17,11 +17,13 @@ import {
 import ReactMarkDown from 'react-markdown';
 import content from '@services/content';
 import { LinkWithChevron } from '@components/LocalAsc/LocalAsc';
+import { SkipLinkFooterEntry } from '@components/SkipLink/SkipLink';
 
 interface IFooterProps {}
 
 const Footer: React.FC<IFooterProps> = () => (
     <StyledASCFooter>
+        {SkipLinkFooterEntry}
         <FooterTop>
             <StyledRow>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
@@ -30,12 +32,12 @@ const Footer: React.FC<IFooterProps> = () => (
                     </FooterSection>
                 </Column>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
-                    <FooterSection hideAt="tabletM">
+                    <FooterSection>
                         <ReactMarkDown source={content.footer.column2} renderers={FooterMarkDownRenderers} />
                     </FooterSection>
                 </Column>
                 <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
-                    <FooterSection hideAt="tabletM">
+                    <FooterSection>
                         <ReactMarkDown source={content.footer.column3} renderers={FooterMarkDownRenderers} />
                     </FooterSection>
                 </Column>
