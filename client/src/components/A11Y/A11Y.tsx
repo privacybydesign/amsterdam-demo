@@ -21,6 +21,7 @@ const A11Y: React.FC<IProps> = () => {
                 <ReactMarkDown
                     source={content.a11y.intro}
                     renderers={{
+                        heading: AscLocal.H1,
                         paragraph: AscLocal.Paragraph,
                         list: AscLocal.UL,
                         link: AscLocal.ExternalLinkRenderer

@@ -23,6 +23,7 @@ import { TextAreaProps as AscTextAreaProps } from '@amsterdam/asc-ui/lib/compone
 const lineHeight = '24px';
 
 export const H1 = styled(Heading)`
+    word-break: break-word;
     line-height: ${lineHeight};
     margin: ${themeSpacing(4, 0, 4, 0)};
 `;

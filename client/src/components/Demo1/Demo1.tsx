@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ReactMarkDown from 'react-markdown';
-import { Accordion } from '@amsterdam/asc-ui';
+import styled from 'styled-components';
+import { Accordion, themeSpacing } from '@amsterdam/asc-ui';
 import { Alert as AlertIcon } from '@amsterdam/asc-assets';
 import { Checkmark } from '@amsterdam/asc-assets';
 import useIrmaSession, { IIrmaSessionOutputData } from '@hooks/useIrmaSession';
@@ -252,18 +253,12 @@ const Demo1: React.FC<IProps> = () => {
                                 <section>
                                     <p>
                                         {content.showQrOnMobile.label}
-                                        <br />
-                                        <AscLocal.UnderlinedLink
-                                            onClick={(e: React.SyntheticEvent) => getSessionOver18(e, true)}
-                                        >
+                                        <ShowQRLink onClick={(e: React.SyntheticEvent) => getSessionOver18(e, true)}>
                                             {content.demo1.showQrOnMobile.link18}
-                                        </AscLocal.UnderlinedLink>
-                                        <br />
-                                        <AscLocal.UnderlinedLink
-                                            onClick={(e: React.SyntheticEvent) => getSessionOver65(e, true)}
-                                        >
+                                        </ShowQRLink>
+                                        <ShowQRLink onClick={(e: React.SyntheticEvent) => getSessionOver65(e, true)}>
                                             {content.demo1.showQrOnMobile.link65}
-                                        </AscLocal.UnderlinedLink>
+                                        </ShowQRLink>
                                     </p>
                                 </section>
                             )}
@@ -353,5 +348,10 @@ const Demo1: React.FC<IProps> = () => {
         </PageTemplate>
     );
 };
+
+const ShowQRLink = styled(AscLocal.UnderlinedLink)`
+    display: block;
+    margin: ${themeSpacing(2)} 0;
+`;
 
 export default Demo1;
