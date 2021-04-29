@@ -230,6 +230,7 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
     <a
       class="c6 c7 c8"
       href="#"
+      tabindex="-1"
     >
       Dam 1, 1012JS Amsterdam
     </a>
@@ -254,6 +255,7 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
     <a
       class="c6 c7 c8"
       href="#"
+      tabindex="-1"
     >
       Damrak 1, 1012LG Amsterdam
     </a>
