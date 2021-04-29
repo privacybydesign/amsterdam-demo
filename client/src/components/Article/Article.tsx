@@ -60,13 +60,6 @@ const LinkBox = styled(Link).attrs({ variant: 'blank' })`
         align-self: flex-end;
     }
 
-    &:focus section {
-        outline: auto;
-        outline-color: ${themeColor('support', 'focus')};
-        outline-style: solid;
-        outline-width: 2px;
-    }
-
     &:hover h3 {
         color: ${themeColor('secondary', 'main')};
     }

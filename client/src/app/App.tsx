@@ -25,6 +25,14 @@ const App: React.FC<IProps> = () => (
 
 const Bg = styled.div`
     background-color: ${themeColor('tint', 'level3')};
+
+    *:focus {
+        outline: auto !important;
+        outline-color: ${themeColor('support', 'focus')} !important;
+        outline-style: solid !important;
+        outline-width: 2px !important;
+        outline-offset: 4px !important;
+    }
 `;
 
 export default App;
