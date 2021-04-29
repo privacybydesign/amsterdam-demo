@@ -246,7 +246,18 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                                             <StyledIcon size={14}>
                                                 <ChevronRight />
                                             </StyledIcon>
-                                            <UnderlinedLink href="#" variant="inline" tabIndex={-1}>
+                                            <UnderlinedLink
+                                                href="#"
+                                                variant="inline"
+                                                tabIndex={-1}
+                                                // Use both onMouseDown and onClick in order to retain both focus and keyboard control
+                                                onMouseDown={(e: React.SyntheticEvent<LeafletMouseEvent>) =>
+                                                    onAutosuggestClick(e, item)
+                                                }
+                                                onClick={(e: React.SyntheticEvent<LeafletMouseEvent>) => {
+                                                    onAutosuggestClick(e, item);
+                                                }}
+                                            >
                                                 {item.displayName}
                                             </UnderlinedLink>
                                         </StyledListItem>
