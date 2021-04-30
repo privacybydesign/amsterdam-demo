@@ -73,7 +73,6 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
                         <Radio
                             id="optionMobileNumberYes"
                             data-testid="optionMobileNumberYes"
-                            variant="primary"
                             value={content.demo5.form.optionPhone.optionYes}
                         />
                     </Label>
@@ -81,7 +80,6 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
                         <Radio
                             id="optionMobileNumberNo"
                             data-testid="optionMobileNumberNo"
-                            variant="primary"
                             value={content.demo5.form.optionPhone.optionNo}
                         />
                     </Label>
@@ -106,7 +104,6 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
                         <Radio
                             id="optionEmailYes"
                             data-testid="optionEmailYes"
-                            variant="primary"
                             value={content.demo5.form.optionEmail.optionYes}
                         />
                     </Label>
@@ -114,7 +111,6 @@ const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateL
                         <Radio
                             id="optionEmailNo"
                             data-testid="optionEmailNo"
-                            variant="primary"
                             value={content.demo5.form.optionEmail.optionNo}
                         />
                     </Label>
