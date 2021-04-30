@@ -12,17 +12,22 @@
     proj4leaflet "^1.0.2"
     uuid "^8.1.0"
 
-"@amsterdam/asc-assets@^0.26.0", "@amsterdam/asc-assets@^0.26.1":
+"@amsterdam/asc-assets@^0.26.0":
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/@amsterdam/asc-assets/-/asc-assets-0.26.1.tgz"
   integrity sha512-u7RwYTJC8ZuxBQMOtwUezcTvyKmrXiWgZCO2lXlgFfCSqDPVCgtPgfw97C20uUOG4hOnUTI8ze6PXnpYUpH9Ow==
 
-"@amsterdam/asc-ui@^0.26.0":
-  version "0.26.1"
-  resolved "https://registry.yarnpkg.com/@amsterdam/asc-ui/-/asc-ui-0.26.1.tgz"
-  integrity sha512-QlYMpdafrBaGBFvIxYmDBO+1fL1lVNOrdKLoxj27CNShA9V0MYPbYWxSK5oXSL5eXN+756rXekz46SgCkodQlw==
+"@amsterdam/asc-assets@^0.29.3":
+  version "0.29.3"
+  resolved "https://registry.yarnpkg.com/@amsterdam/asc-assets/-/asc-assets-0.29.3.tgz#81da9a34c52d93d429595439cffa4454fa5c9b6c"
+  integrity sha512-8ducas4eYhe938X0gxmXyDnc2iyjrxxVpbvvm7B/RRO2qoXhoC37fvqYadksr460z85p8Y/LmaNaKwXm4518/w==
+
+"@amsterdam/asc-ui@^0.29.3":
+  version "0.29.3"
+  resolved "https://registry.yarnpkg.com/@amsterdam/asc-ui/-/asc-ui-0.29.3.tgz#d9ea4156b7f9cce8cd0baa874702a9a62a9ffe72"
+  integrity sha512-mUOVRxTx88BMrfgENDU1A6mjgpWKGnFvEKfKqkDFUr32FF+MSy0kuaIc4pqhG30LGRD2MqRnYYMZvnbzQajx4g==
   dependencies:
-    "@amsterdam/asc-assets" "^0.26.1"
+    "@amsterdam/asc-assets" "^0.29.3"
     classnames "^2.2.6"
     deepmerge "^4.2.2"
     polished "^4.0.1"
