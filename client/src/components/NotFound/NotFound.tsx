@@ -4,15 +4,10 @@ import styled from 'styled-components';
 import content from '@services/content';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
-import ContentBlock from '@components/ContentBlock/ContentBlock';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
-import userAgent from '@services/userAgent';
 import { breakpoint, themeSpacing } from '@amsterdam/asc-ui';
 
 export interface IProps {}
-
-const BgImgSrc =
-    userAgent === 'iOS' || userAgent === 'Android' ? '/assets/404-huizen-mobiel.svg' : '/assets/404-huizen-desktop.svg';
 
 const NotFound: React.FC<IProps> = () => {
     return (
@@ -26,7 +21,10 @@ const NotFound: React.FC<IProps> = () => {
                 />
             </StyledText>
             <StyledImages>
-                <StyledBgImage src={BgImgSrc} role="presentation" alt=""></StyledBgImage>
+                <StyledPicture>
+                    <source media="(min-width: 1024px)" srcSet="/assets/404-huizen-desktop.svg" />
+                    <img src="/assets/404-huizen-mobiel.svg" alt="" role="presentation" />
+                </StyledPicture>
                 <StyledFgImage src="/assets/404-dame.svg" role="presentation" alt=""></StyledFgImage>
             </StyledImages>
         </PageTemplate>
@@ -47,8 +45,10 @@ const StyledImages = styled.div`
     }
 `;
 
-const StyledBgImage = styled.img`
-    width: 100%;
+const StyledPicture = styled.picture`
+    img {
+        width: 100%;
+    }
 `;
 
 const StyledFgImage = styled.img`
