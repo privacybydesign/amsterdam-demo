@@ -513,8 +513,9 @@ Bent u niet tevreden met de manier waarop uw vraag of klacht is behandeld? Of he
 Dan kunt u contact opnemen via het [klachtenformulier van de nationale ombudsman](https://www.nationaleombudsman.nl/klacht-indienen/uw-klacht).
 
 ## Toegankelijkheidsverklaring
-De eisen voor een toegankelijke website staan in het [Tijdelijk besluit digitale toegankelijkheid overheid](https://wetten.overheid.nl/BWBR0040936/2018-07-01). In dat besluit staat ook dat wij een toegankelijkheidsverklaring op deze website ‘Probeer IRMA uit’ moeten zetten.
-Onze aanvraag voor een volledige toegankelijkheidsverklaring is onderhanden. In de [Toegankelijkheidcheck 'Probeer IRMA uit'](https://docs.google.com/spreadsheets/d/1ke6RqJSTDo25hK-1KBA0WFG0mhZz5jGzpt9PRFJJnGc/edit?usp=sharing) staan de toegankelijkheidsrichtlijnen voor niveaus A en AA en de mate waarin onderdelen van ‘Probeer IRMA uit’ aan die richtlijnen voldoen.        
+De website ‘Probeer IRMA uit’ voldoet gedeeltelijk aan het Besluit digitale toegankelijkheid overheid.
+De toegankelijkheidsverklaring is beschikbaar in het [Register van toegankelijkheidsverklaringen](https://www.toegankelijkheidsverklaring.nl/register/4096).
+Deze verklaring is gebaseerd op de [Toegankelijkheidcheck 'Probeer IRMA uit'](https://docs.google.com/spreadsheets/d/1ke6RqJSTDo25hK-1KBA0WFG0mhZz5jGzpt9PRFJJnGc/edit?usp=sharing). In deze check vindt u alle WCAG 2.1 succescriteria waarop deze website is getoetst.  
 `
     },
 
