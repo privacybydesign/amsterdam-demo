@@ -108,6 +108,10 @@ Als je nog gebruik maakt van Internet Explorer, adviseren we je om zo snel mogel
 [Wat kan ik doen?](/ie-support)`
         }
     },
+    notFound: {
+        title: `# Sorry`,
+        content: `De pagina die u zoekt bestaat niet meer of is verhuisd. Gelukkig zijn de IRMA-demo’s er nog wel. Kijkt u maar op \n[Probeer IRMA uit](/)`
+    },
     demoEmptyVarsAlert: {
         heading: `Ontbrekende gegevens`,
         content: `U heeft niet alle gegevens doorgegeven die nodig zijn.  \n
