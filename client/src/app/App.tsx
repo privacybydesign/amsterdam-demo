@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { GlobalStyle, ThemeProvider, themeColor } from '@amsterdam/asc-ui';
 import theme from '@services/theme';
 import AppRoutes from './AppRoutes';
@@ -14,10 +14,12 @@ const App: React.FC<IProps> = () => (
             <GlobalStyle />
             <Router>
                 <ScrollToTop />
-                {Object.keys(AppRoutes).map(key => {
-                    const { path, component, exact } = AppRoutes[key];
-                    return <Route key={key} path={path} component={component} exact={exact} />;
-                })}
+                <Switch>
+                    {Object.keys(AppRoutes).map(key => {
+                        const { path, component, exact } = AppRoutes[key];
+                        return <Route key={key} path={path} component={component} exact={exact} />;
+                    })}
+                </Switch>
             </Router>
         </Bg>
     </ThemeProvider>
