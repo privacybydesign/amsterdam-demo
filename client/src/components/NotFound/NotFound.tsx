@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ReactMarkDown from 'react-markdown';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import content from '@services/content';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
-import { breakpoint, themeSpacing } from '@amsterdam/asc-ui';
+import { breakpoint, themeSpacing, Theme } from '@amsterdam/asc-ui';
 
 export interface IProps {}
 
 const NotFound: React.FC<IProps> = () => {
+    const themeContext = { theme: useContext(ThemeContext) as Theme.ThemeInterface };
     return (
         <PageTemplate>
             {SkipLinkEntry}
@@ -22,7 +23,10 @@ const NotFound: React.FC<IProps> = () => {
             </StyledText>
             <StyledImages>
                 <StyledPicture>
-                    <source media="(min-width: 1024px)" srcSet="/assets/404-huizen-desktop.svg" />
+                    <source
+                        media={`${breakpoint('min-width', 'tabletM')(themeContext)}`}
+                        srcSet="/assets/404-huizen-desktop.svg"
+                    />
                     <img src="/assets/404-huizen-mobiel.svg" alt="" role="presentation" />
                 </StyledPicture>
                 <StyledFgImage src="/assets/404-dame.svg" role="presentation" alt=""></StyledFgImage>
@@ -53,13 +57,14 @@ const StyledPicture = styled.picture`
 
 const StyledFgImage = styled.img`
     position: absolute;
-    left: 10%;
-    top: -10%;
-    width: 80%;
+    left: 18%;
+    top: 2%;
+    width: 65%;
+
     @media ${breakpoint('min-width', 'tabletM')} {
-        top: -63%;
-        left: 28%;
-        width: 60%;
+        top: -55%;
+        left: 29%;
+        width: 58%;
     }
 `;
 
