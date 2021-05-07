@@ -8,10 +8,11 @@ import Cookies from '@components/Cookies/Cookies';
 import IESupport from '@components/IESupport/IESupport';
 import A11Y from '@components/A11Y/A11Y';
 import VotePage from '@pages/Vote';
+import NotFound from '@components/NotFound/NotFound';
 
 interface IRoute {
     path: string;
-    exact: boolean;
+    exact?: boolean;
     component: React.ComponentType<unknown>;
 }
 interface IAppRoutes {
@@ -20,15 +21,16 @@ interface IAppRoutes {
 
 const AppRoutes: IAppRoutes = {
     HOMEPAGE: { path: '/', component: Homepage, exact: true },
-    DEMO1: { path: '/leeftijd-aantonen', component: Demo1, exact: false },
-    DEMO2: { path: '/ideeen-voor-uw-buurt', component: Demo2, exact: false },
-    DEMO3: { path: '/inloggen', component: Demo3, exact: false },
-    DEMO4: { path: '/geveltuin-aanvragen', component: Demo4, exact: false },
-    DEMO5: { path: '/overlast-melden', component: Demo5, exact: false },
-    COOKIES: { path: '/cookies', component: Cookies, exact: false },
-    IE_SUPPORT: { path: '/ie-support', component: IESupport, exact: false },
-    A11Y: { path: '/toegankelijkheidsverklaring', component: A11Y, exact: false },
-    VOTE: { path: '/openstad-stemmen-met-irma', component: VotePage, exact: false }
+    DEMO1: { path: '/leeftijd-aantonen', component: Demo1 },
+    DEMO2: { path: '/ideeen-voor-uw-buurt', component: Demo2 },
+    DEMO3: { path: '/inloggen', component: Demo3 },
+    DEMO4: { path: '/geveltuin-aanvragen', component: Demo4 },
+    DEMO5: { path: '/overlast-melden', component: Demo5 },
+    COOKIES: { path: '/cookies', component: Cookies },
+    IE_SUPPORT: { path: '/ie-support', component: IESupport },
+    A11Y: { path: '/toegankelijkheidsverklaring', component: A11Y },
+    VOTE: { path: '/openstad-stemmen-met-irma', component: VotePage },
+    NO_MATCH: { path: '*', component: NotFound }
 };
 
 export default AppRoutes;

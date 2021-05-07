@@ -166,6 +166,7 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
 .c8 {
   -webkit-text-decoration: underline;
   text-decoration: underline;
+  padding: 0;
 }
 
 .c0 {
