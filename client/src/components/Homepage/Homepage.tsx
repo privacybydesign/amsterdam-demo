@@ -36,7 +36,7 @@ const Homepage: React.FC<IProps> = () => (
                             <ReactMarkDown
                                 source={content.home.requirements.body}
                                 renderers={{
-                                    heading: AscLocal.H3,
+                                    heading: AscLocal.H2,
                                     list: AscLocal.UL,
                                     image: DownloadButton,
                                     link: AscLocal.UnderlinedLink
