@@ -505,7 +505,7 @@ Iedereen moet websites van de overheid kunnen gebruiken. Dit is wat wij doen om 
 ## Onderdelen die nog niet toegankelijk zijn
 - Als stylesheets uitstaan, verschijnt de IRMA-QR-code onderin de pagina. De QR-code kan dan alleen via toetsenbord focus krijgen.
 - In het Usabilla feedback panel wordt geen tooltip getoond bij elk van de vijf waarderingssterren.
-- In het Usabilla feedback panel mist de tekst ‘Powered by GetFeedback’ een language attribuut.\n
+- In het Usabilla feedback panel mist de tekst ‘Powered by GetFeedback’ een taalattribuut 'NL'.\n
 Komt u nog een pagina tegen die u niet kunt lezen of gebruiken? Meld het via ons [contactformulier](https://formulieren.amsterdam.nl/TripleForms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx).
 
 ## Wat kunt u van ons verwachten?
