@@ -120,16 +120,42 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
         }
     }, [location]);
 
+    const changeAutoSuggestActiveItem = useCallback(
+        (direction: string) => {
+            let autosuggestActiveItem;
+            if (autosuggest?.length && state.autosuggestActiveItem) {
+                autosuggestActiveItem = selectNextorPreviousFromList(
+                    autosuggest,
+                    state.autosuggestActiveItem,
+                    direction
+                );
+            }
+            if (autosuggest?.length && !state.autosuggestActiveItem) {
+                autosuggestActiveItem = autosuggest[0];
+            }
+            if (autosuggestActiveItem) {
+                dispatch({
+                    type: 'setAutosuggestActiveItem',
+                    payload: {
+                        autosuggestActiveItem
+                    }
+                });
+            }
+        },
+        [autosuggest, state.autosuggestActiveItem]
+    );
+
     const onInputKeyPress = useCallback(
         event => {
             /*
                 keyCode is deprecated but key is not supported by all browsers.
                 Then, a fallback to keyCode is still the best solution.
             */
+            const { autosuggest } = state;
             const key = event.key || event.keyCode;
-            // Select first autosuggest item on enter
-            if ((key === 'Enter' || key === 13) && state.autosuggest?.length) {
-                onAutosuggestClick(null, state.autosuggest[0]);
+
+            if ((key === 'Enter' || key === 13) && autosuggest?.length) {
+                onAutosuggestClick(null, state.autosuggestActiveItem || autosuggest[0]);
             }
 
             // Hide autosuggest on ESC
@@ -138,9 +164,27 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                     type: 'hideAutosuggest'
                 });
             }
+
+            if (key === 38 || key === 'ArrowUp') {
+                changeAutoSuggestActiveItem('up');
+            }
+            if (key === 40 || key === 'ArrowDown') {
+                changeAutoSuggestActiveItem('down');
+            }
         },
-        [state, onAutosuggestClick]
+        [state, onAutosuggestClick, changeAutoSuggestActiveItem]
     );
+
+    const selectNextorPreviousFromList = (list: any[], currentItem: unknown, direction: string) => {
+        let returnItem;
+        if (direction === 'down') {
+            returnItem = list[list.indexOf(currentItem) + 1];
+        }
+        if (direction === 'up') {
+            returnItem = list[list.indexOf(currentItem) - 1];
+        }
+        return returnItem;
+    };
 
     const onInputChange = useCallback(e => {
         if (e.target.value.length < 3) return;
@@ -198,13 +242,14 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                             {showAutosuggest && query && query.length && autosuggest && autosuggest.length ? (
                                 <StyledAutosuggest data-testid="autosuggest" ref={wrapperRef}>
                                     {autosuggest.map(item => (
-                                        <StyledListItem key={item.id}>
+                                        <StyledListItem key={item.id} selected={item === state.autosuggestActiveItem}>
                                             <StyledIcon size={14}>
                                                 <ChevronRight />
                                             </StyledIcon>
                                             <UnderlinedLink
                                                 href="#"
                                                 variant="inline"
+                                                tabIndex={-1}
                                                 // Use both onMouseDown and onClick in order to retain both focus and keyboard control
                                                 onMouseDown={(e: React.SyntheticEvent<LeafletMouseEvent>) =>
                                                     onAutosuggestClick(e, item)
@@ -266,13 +311,13 @@ const StyledAutosuggest = styled.ul`
     border: 1px solid ${themeColor('tint', 'level5')};
 `;
 
-const StyledListItem = styled(ListItem)`
+const StyledListItem = styled(ListItem)<{ selected: boolean }>`
     display: flex;
     align-items: flex-start;
 
     a {
         display: inline;
-        color: ${themeColor('tint', 'level7')};
+        color: ${props => (props.selected ? '#ec0000' : themeColor('tint', 'level7'))};
         position: relative;
         top: -4px;
     }

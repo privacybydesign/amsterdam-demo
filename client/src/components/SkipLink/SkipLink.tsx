@@ -23,19 +23,22 @@ export const SkipLink: React.FC<IProps> = ({ className }) => {
 };
 
 const SkipLinkContainer = styled.div`
-    max-width: 400px;
+    width: 400px;
 
     a {
-        min-width: 0;
-        width: 0;
-        height: 0;
-        padding: 0;
-        overflow: hidden;
+        display: block;
+        left: -5000px;
+        padding: ${themeSpacing(3)} ${themeSpacing(4)};
+        position: absolute;
+        top: -5000px;
 
         &:focus {
-            width: auto;
             height: auto;
-            padding: ${themeSpacing(3)} ${themeSpacing(4)};
+            left: 0;
+            top: 0;
+            width: auto;
+            text-align: center;
+            z-index: 999;
         }
     }
 `;

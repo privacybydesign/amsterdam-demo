@@ -51,6 +51,7 @@ export const Paragraph = styled(AscParagraph)`
 
 export const UnderlinedLink = styled(Link)`
     text-decoration: underline;
+    padding: 0;
 `;
 
 const TintedContainer = styled.div`

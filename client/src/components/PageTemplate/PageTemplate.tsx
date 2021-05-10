@@ -51,7 +51,6 @@ const StyledSkipLink = styled(SkipLink)`
     position: fixed;
     top: ${themeSpacing(3)};
     left: 50%;
-    transform: translateX(-50%);
     z-index: 15;
 `;
 

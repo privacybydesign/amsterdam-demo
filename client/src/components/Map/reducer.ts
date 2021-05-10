@@ -4,10 +4,11 @@ interface IState {
     mapInstance?: Map | null;
     url?: string;
     query?: string;
-    autosuggest?: ILocation[] | null;
+    autosuggest: ILocation[] | null;
     latLng?: LatLngLiteral | null;
     location?: ILocation | null;
     showAutosuggest?: boolean;
+    autosuggestActiveItem: ILocation | null;
 }
 
 export interface ILocation {
@@ -25,6 +26,7 @@ interface IAction {
         autosuggest?: ILocation[] | null;
         location?: ILocation | null;
         showAutosuggest?: boolean;
+        autosuggestActiveItem?: ILocation | null;
     };
 }
 
@@ -34,7 +36,8 @@ export const initialState: IState = {
     query: '',
     autosuggest: null,
     location: null,
-    showAutosuggest: false
+    showAutosuggest: false,
+    autosuggestActiveItem: null
 };
 
 export const reducer = (state: IState = initialState, action: IAction): IState => {
@@ -44,6 +47,11 @@ export const reducer = (state: IState = initialState, action: IAction): IState =
                 ...state,
                 autosuggest: (action.payload as any).autosuggest,
                 showAutosuggest: true
+            };
+        case 'setAutosuggestActiveItem':
+            return {
+                ...state,
+                autosuggestActiveItem: (action.payload as any).autosuggestActiveItem
             };
 
         case 'setLocation':

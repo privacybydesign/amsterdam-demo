@@ -15,7 +15,7 @@
     "dependencies": {
         "@amsterdam/arm-core": "^0.4.0",
         "@amsterdam/asc-assets": "^0.26.0",
-        "@amsterdam/asc-ui": "^0.26.0",
+        "@amsterdam/asc-ui": "^0.29.3",
         "@amsterdam/react-maps": "^0.10.0",
         "@privacybydesign/irma-client": "^0.3.3",
         "@privacybydesign/irma-core": "^0.3.3",
