@@ -20,6 +20,10 @@ const NotFound: React.FC<IProps> = () => {
                     source={content.notFound.content}
                     renderers={{ paragraph: AscLocal.StrongParagraph, link: AscLocal.UnderlinedLink }}
                 />
+                <ReactMarkDown
+                    source={content.notFound.link}
+                    renderers={{ paragraph: AscLocal.Paragraph, link: AscLocal.UnderlinedLink }}
+                />
             </StyledText>
             <StyledImages>
                 <StyledPicture>
