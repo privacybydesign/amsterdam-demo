@@ -60,7 +60,7 @@ Wilt u meer weten over IRMA?
         },
         demo3Card: {
             title: `Demo 3: Inloggen`,
-            body: `Bekijk hoe u straks kunt inloggen met IRMA.`
+            body: `Bekijk hoe u kunt inloggen met IRMA.`
         },
         demo4Card: {
             title: `Demo 4: Geveltuin aanvragen`,
