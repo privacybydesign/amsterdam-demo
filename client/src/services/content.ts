@@ -60,7 +60,7 @@ Wilt u meer weten over IRMA?
         },
         demo3Card: {
             title: `Demo 3: Inloggen`,
-            body: `Bekijk hoe u straks kunt inloggen met IRMA.`
+            body: `Bekijk hoe u kunt inloggen met IRMA.`
         },
         demo4Card: {
             title: `Demo 4: Geveltuin aanvragen`,
@@ -230,7 +230,7 @@ Dit kan worden gebruikt voor:
             },
             intro: `**Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.**
 ## Probeer het uit
-Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgende gegevens:
+Over enige tijd kunt u bijvoorbeeld inloggen op Mijn Amsterdam door uzelf bekend te maken met de volgende gegevens:
 - Uw volledige naam
 - Uw burgerservicenummer (BSN)`,
             why: {
@@ -505,7 +505,7 @@ Iedereen moet websites van de overheid kunnen gebruiken. Dit is wat wij doen om 
 ## Onderdelen die nog niet toegankelijk zijn
 - Als stylesheets uitstaan, verschijnt de IRMA-QR-code onderin de pagina. De QR-code kan dan alleen via toetsenbord focus krijgen.
 - In het Usabilla feedback panel wordt geen tooltip getoond bij elk van de vijf waarderingssterren.
-- In het Usabilla feedback panel mist de tekst ‘Powered by GetFeedback’ een language attribuut.\n
+- In het Usabilla feedback panel mist de tekst ‘Powered by GetFeedback’ een taalattribuut 'UK'.\n
 Komt u nog een pagina tegen die u niet kunt lezen of gebruiken? Meld het via ons [contactformulier](https://formulieren.amsterdam.nl/TripleForms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx).
 
 ## Wat kunt u van ons verwachten?
