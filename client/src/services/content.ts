@@ -230,7 +230,7 @@ Dit kan worden gebruikt voor:
             },
             intro: `**Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.**
 ## Probeer het uit
-Login op de demosite van Mijn Amsterdam door uzelf bekend te maken met de volgende gegevens:
+Over enige tijd kunt u bijvoorbeeld inloggen op Mijn Amsterdam door uzelf bekend te maken met de volgende gegevens:
 - Uw volledige naam
 - Uw burgerservicenummer (BSN)`,
             why: {
