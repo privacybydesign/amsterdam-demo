@@ -300,7 +300,7 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
         },
         form: {
             owner: 'Bent u eigenaar van de woning waar de geveltuin komt?',
-            required: 'Vergeet niet om hierboven wat in te vullen.',
+            required: 'Vergeet niet om aan te geven of u eigenaar bent van de woning waar de geveltuin komt.',
             optionYes: 'Ja',
             optionNo: 'Nee'
         },
