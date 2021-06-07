@@ -120,6 +120,7 @@ const createIrmaVoteSession = async (
 };
 
 export const reduceIrmaResult = (result: IIrmaResult): IReduceIrmaResult => {
+    console.log({ result });
     const votingnumber = result.disclosed[0].find(attr => attr.id == IRMA_CONF.NUMBER_ID)?.rawvalue;
 
     const message = result.signature.message;
