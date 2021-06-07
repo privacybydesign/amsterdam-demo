@@ -52,9 +52,9 @@ const VotePage: React.FC = () => {
         let { redirectUrl } = queryObj;
         if (sessionResult) {
             redirectUrl += (redirectUrl.match(/\?/) ? '&' : '?') + 'result=';
-            setTimeout(() => {
-                window.location.href = redirectUrl + encodeURIComponent(JSON.stringify(sessionResult));
-            }, 1000);
+            // setTimeout(() => {
+            //     window.location.href = redirectUrl + encodeURIComponent(JSON.stringify(sessionResult));
+            // }, 1000);
         }
     }, [queryObj, sessionResult]);
 
