@@ -75,8 +75,10 @@ const FooterSection = styled.div`
     }
 `;
 
+const StyledFooterHeading: React.FC = props => <FooterHeading as="h2" {...props} />;
+
 const FooterMarkDownRenderers = {
-    heading: FooterHeading,
+    heading: StyledFooterHeading,
     list: List,
     listItem: ListItem,
     link: FooterLink,
