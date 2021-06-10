@@ -109,7 +109,7 @@ Als je nog gebruik maakt van Internet Explorer, adviseren we je om zo snel mogel
         }
     },
     notFound: {
-        title: `# Sorry`,
+        title: `# Sorry, pagina niet gevonden.`,
         content: `De pagina die u zoekt bestaat niet meer of is verhuisd. Gelukkig zijn de IRMA-demo’s er nog wel.`,
         link: `Kijkt u maar op [Probeer IRMA uit](/).`
     },
