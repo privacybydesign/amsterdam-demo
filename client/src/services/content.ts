@@ -21,6 +21,7 @@ export const reduceAndTranslateEmptyVars = (emptyVars: string[]): string => {
 const content = {
     header: {
         title: `Probeer IRMA uit`,
+        homeLink: `https://amsterdam.nl/`,
         skipLink: {
             content: `Direct naar hoofdinhoud`,
             footer: `Direct naar footer`

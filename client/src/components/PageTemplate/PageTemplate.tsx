@@ -29,7 +29,7 @@ const PageTemplate: React.FC<IProps> = ({ children, className, hideTitle }) => {
     return (
         <StyledRow className={className}>
             <StyledSkipLink />
-            <StyledHeader fullWidth={false} tall homeLink={AppRoutes.HOMEPAGE.path} navigation={title} />
+            <StyledHeader fullWidth={false} tall homeLink={content.header.homeLink} navigation={title} />
             <StyledColumn span={12}>
                 <main>
                     {isIE && location.pathname !== AppRoutes.IE_SUPPORT.path && (
