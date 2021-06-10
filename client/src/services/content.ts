@@ -584,7 +584,12 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
 1. Scan de QR-code hieronder met uw IRMA-app.  \n
 2. Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.`,
         button: 'Inloggen met IRMA',
-        close: 'Sluiten'
+        close: 'Sluiten',
+        counter: 'Deze QR-code is nog [] geldig.',
+        minute: 'minuut',
+        minutePlural: 'minuten',
+        second: 'seconde',
+        secondPlural: 'seconden'
     },
     translatedIrmaAttributes: {
         name: 'naam',

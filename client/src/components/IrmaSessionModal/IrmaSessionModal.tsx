@@ -5,17 +5,18 @@ import { Button, Modal, themeSpacing, themeColor } from '@amsterdam/asc-ui';
 import { Close } from '@amsterdam/asc-assets';
 import content from '@services/content';
 import { OL } from '@components/LocalAsc/LocalAsc';
+import IrmaSessionCounter from '@components/IrmaSessionCounter/IrmaSessionCounter';
 import { isMobile } from '@services/createIrmaSession';
 export interface IProps extends React.HTMLAttributes<any> {
     showModal: boolean;
-    showLogo: boolean;
+    QRIsShowing: boolean;
     hideForMobileFlow?: boolean;
     closeModal: () => void;
 }
 
 const IrmaSessionModal: React.FC<IProps> = ({
     showModal,
-    showLogo,
+    QRIsShowing,
     closeModal,
     className,
     hideForMobileFlow = false
@@ -34,6 +35,9 @@ const IrmaSessionModal: React.FC<IProps> = ({
             <>
                 <StyledHeader>
                     <ReactMarkDown source={content.qrcode.title} renderers={{ heading: StyledH3 }} />
+                    <CounterContainer>
+                        <IrmaSessionCounter minutes={5} QRIsShowing={QRIsShowing} />
+                    </CounterContainer>
                     <CloseButton
                         size={30}
                         variant="blank"
@@ -45,7 +49,7 @@ const IrmaSessionModal: React.FC<IProps> = ({
                 <ModalWrapper>
                     <ReactMarkDown source={content.qrcode.steps} renderers={{ list: OL }} />
                     <CanvasWrapper>
-                        {showLogo && <IrmaLogo />}
+                        {QRIsShowing && <IrmaLogo />}
                         <QRCodeTopLeft />
                         <QRCodeTopRight />
                         <QRCodeBottomRight />
@@ -75,6 +79,11 @@ const StyledModal = styled(Modal)<{ hideForMobileFlow: boolean }>`
     }
 `;
 
+const CounterContainer = styled.div`
+    text-align: center;
+    font-style: italic;
+`;
+
 const StyledH3 = styled.h3``;
 
 const ModalWrapper = styled.div`
@@ -86,11 +95,12 @@ const StyledHeader = styled.div`
     display: flex;
     padding-left: ${themeSpacing(5)};
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
 `;
 
 const CloseButton = styled(Button)`
     margin-right: ${themeSpacing(3)};
+    align-self: center;
 `;
 
 const CanvasWrapper = styled.div`
