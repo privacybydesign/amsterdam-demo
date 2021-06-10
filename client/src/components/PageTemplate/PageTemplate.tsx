@@ -11,6 +11,7 @@ import { SkipLink } from '@components/SkipLink/SkipLink';
 
 interface IProps {
     className?: string;
+    hideTitle?: boolean;
 }
 
 declare global {
@@ -21,12 +22,14 @@ declare global {
 
 const isIE = !!document.documentMode;
 
-const PageTemplate: React.FC<IProps> = ({ children, className }) => {
+const PageTemplate: React.FC<IProps> = ({ children, className, hideTitle }) => {
     const location = useLocation();
+    const title = hideTitle ? undefined : <div>{content.header.title}</div>;
+
     return (
         <StyledRow className={className}>
             <StyledSkipLink />
-            <AscLocal.Header fullWidth={false} tall homeLink={AppRoutes.HOMEPAGE.path} />
+            <StyledHeader fullWidth={false} tall homeLink={AppRoutes.HOMEPAGE.path} navigation={title} />
             <StyledColumn span={12}>
                 <main>
                     {isIE && location.pathname !== AppRoutes.IE_SUPPORT.path && (
@@ -46,6 +49,14 @@ const PageTemplate: React.FC<IProps> = ({ children, className }) => {
         </StyledRow>
     );
 };
+
+const StyledHeader = styled(AscLocal.Header)`
+    nav {
+        justify-content: flex-start;
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+`;
 
 const StyledSkipLink = styled(SkipLink)`
     position: fixed;

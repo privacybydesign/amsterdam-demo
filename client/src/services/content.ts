@@ -20,6 +20,7 @@ export const reduceAndTranslateEmptyVars = (emptyVars: string[]): string => {
 
 const content = {
     header: {
+        title: `Probeer IRMA uit`,
         skipLink: {
             content: `Direct naar hoofdinhoud`,
             footer: `Direct naar footer`
@@ -494,7 +495,7 @@ Dit zorgt ervoor dat feedback van gebruikers op de juiste plek wordt opgeslagen.
         breadcrumbs: `- [Home](/)
 - [Toegankelijkheidsverklaring](/toegankelijkheidsverklaring)`,
         intro: `# Volledige toegankelijkheidsverklaring
-**De gemeente Amsterdam wil dat iedereen de website 'Probeer IRMA uit’ kan gebruiken.**`,
+**De gemeente Amsterdam wil dat iedereen de website ‘Probeer IRMA uit’ kan gebruiken.**`,
         article: `
 ## Toegankelijk ‘Probeer IRMA uit’
 Iedereen moet websites van de overheid kunnen gebruiken. Dit is wat wij doen om ‘Probeer IRMA uit’ toegankelijk te maken en te houden voor iedereen:
