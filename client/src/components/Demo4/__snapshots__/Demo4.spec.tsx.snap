@@ -1016,7 +1016,7 @@ exports[`Demo4 should update the page after completing the IRMA flow 2`] = `
   aria-live="polite"
   class="c0 c1"
   data-testid="hasResultAlert"
-  id="alert-sc-ksXhwv c1"
+  id="alert-sc-kHNMoK c1"
   role="alert"
   tabindex="-1"
 >
@@ -1780,7 +1780,7 @@ exports[`Demo4 should update the page after failing the IRMA flow 2`] = `
   aria-live="polite"
   class="c0 c1"
   data-testid="hasErrorAlert"
-  id="alert-sc-ksXhwv c1"
+  id="alert-sc-kHNMoK c1"
   role="alert"
   tabindex="-1"
 >
