@@ -15,7 +15,7 @@ import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 interface IProps {}
 
 const Homepage: React.FC<IProps> = () => (
-    <PageTemplate hideTitle={true}>
+    <PageTemplate>
         <ReactMarkDown
             source={content.home.breadcrumbs}
             renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}

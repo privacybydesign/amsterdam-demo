@@ -29,7 +29,7 @@ const content = {
     },
     home: {
         breadcrumbs: `- [Home](/)`,
-        title: `# Probeer IRMA uit`,
+        title: `# Ontdek IRMA via vijf demo’s`,
         intro: `IRMA is een app waarmee u online kunt aantonen wie u bent. IRMA biedt een nieuwe manier van inloggen, anders dan u kent van bijvoorbeeld DigiD. Binnenkort kunt u IRMA gebruiken in Amsterdam.
 
 Ervaar nu vast wat u met IRMA kunt via verschillende demo’s. U doet de demo's met uw eigen gegevens. De gemeente Amsterdam slaat deze gegevens niet op.
