@@ -51,7 +51,7 @@ const IrmaSessionCounter: React.FC<IProps> = ({ className, minutes = 5, QRIsShow
     useEffect(() => {
         if (QRIsShowing === true) {
             onIntervalUpdate(Date.now());
-            const interval = setInterval(onIntervalUpdate, 1000, Date.now());
+            const interval = setInterval(onIntervalUpdate, 1000, Date.now()) as any;
             intervalRef.current = interval;
         }
     }, [QRIsShowing, onIntervalUpdate]);
