@@ -32,7 +32,7 @@ const secured = function (req: Request, res: Response, next: NextFunction) {
 export default ({ app, config }: ILoaderArgs) => {
     if (process.env.NODE_ENV !== 'development') {
         app.use(express.static(config.docroot, { index: false }));
-        app.get('*', function (req, res) {
+        app.get('*', secured, function (req, res) {
             res.sendFile(path.join(process.cwd(), config.docroot, 'index.html'));
         });
     } else {
