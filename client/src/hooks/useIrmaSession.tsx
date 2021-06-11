@@ -16,7 +16,7 @@ export interface IIrmaSessionOutputData {
 }
 
 const useIrmaSession = (): IIrmaSessionOutputData => {
-    const [showLogo, setShowLogo] = useState<boolean>(false);
+    const [QRIsShowing, setQRIsShowing] = useState<boolean>(false);
     const [activeIrmaSessionData, setActiveIrmaSessionData] = useState<IIrmaSessionInputData | undefined>();
 
     // Create a trigger function that opens the modal with session data and wait for it to be rendered
@@ -26,8 +26,8 @@ const useIrmaSession = (): IIrmaSessionOutputData => {
 
     // Define callback to manually close modal
     const closeModal = useCallback(() => {
+        setQRIsShowing(false);
         setActiveIrmaSessionData(undefined);
-        setShowLogo(false);
     }, []);
 
     // // Init trigger to start session (after modal has mounted)
@@ -39,10 +39,10 @@ const useIrmaSession = (): IIrmaSessionOutputData => {
         // Define the callback mapping that triggers functions on IRMA state changes
         const callBackMapping = {
             ShowingQRCode: () => {
-                setShowLogo(true);
+                setQRIsShowing(true);
             },
             ShowingQRCodeInstead: () => {
-                setShowLogo(true);
+                setQRIsShowing(true);
             },
             ShowingIrmaButton: () => {
                 if (isMobile() && activeIrmaSessionData?.alwaysShowQRCode !== true) {
@@ -50,7 +50,7 @@ const useIrmaSession = (): IIrmaSessionOutputData => {
                 }
             },
             rest: () => {
-                setShowLogo(false);
+                setQRIsShowing(false);
             }
         };
 
@@ -72,7 +72,7 @@ const useIrmaSession = (): IIrmaSessionOutputData => {
     const modalElement = (
         <IrmaSessionModal
             showModal={activeIrmaSessionData !== undefined}
-            showLogo={showLogo}
+            QRIsShowing={QRIsShowing}
             closeModal={closeModal}
             // Make the modal invisible for mobile flow unless alwaysShowQRCode is explicitly set
             hideForMobileFlow={isMobile() && activeIrmaSessionData?.alwaysShowQRCode !== true}

@@ -45,10 +45,6 @@ exports[`Demo2 should render the initial header image 1`] = `
 
 }
 
-@media screen and (min-width:1024px) {
-
-}
-
 @media (min-width:1200px) {
 
 }
@@ -312,10 +308,6 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
 }
 
 @media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
 
 }
 
@@ -717,6 +709,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
 
 .c1 {
   margin-bottom: 16px;
+  pointer-events: none;
   background-color: #FEC813;
 }
 
@@ -773,10 +766,6 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
 }
 
 @media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
 
 }
 
@@ -1004,8 +993,9 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
   aria-live="polite"
   class="c0 c1"
   data-testid="hasResultAlert"
+  id="alert-sc-ksXhwv c1"
   role="alert"
-  tabindex="0"
+  tabindex="-1"
 >
   <div
     class="c2"
@@ -1085,10 +1075,6 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
 }
 
 @media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
 
 }
 
@@ -1490,6 +1476,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
 
 .c1 {
   margin-bottom: 16px;
+  pointer-events: none;
   background-color: #FEC813;
 }
 
@@ -1546,10 +1533,6 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
 }
 
 @media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
 
 }
 
@@ -1777,8 +1760,9 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
   aria-live="polite"
   class="c0 c1"
   data-testid="hasResultAlert"
+  id="alert-sc-ksXhwv c1"
   role="alert"
-  tabindex="0"
+  tabindex="-1"
 >
   <div
     class="c2"
@@ -1858,10 +1842,6 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
 }
 
 @media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
 
 }
 
@@ -2270,6 +2250,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
 
 .c1 {
   margin-bottom: 16px;
+  pointer-events: none;
   background-color: #0c8836;
 }
 
@@ -2326,10 +2307,6 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
 }
 
 @media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
 
 }
 
@@ -2557,8 +2534,9 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
   aria-live="polite"
   class="c0 c1"
   data-testid="hasResultAlert"
+  id="alert-sc-ksXhwv c1"
   role="alert"
-  tabindex="0"
+  tabindex="-1"
 >
   <div
     class="c2"
@@ -2636,10 +2614,6 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
 }
 
 @media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
 
 }
 
@@ -3041,6 +3015,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
 
 .c1 {
   margin-bottom: 16px;
+  pointer-events: none;
   background-color: #FEC813;
 }
 
@@ -3097,10 +3072,6 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
 }
 
 @media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
 
 }
 
@@ -3328,8 +3299,9 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
   aria-live="polite"
   class="c0 c1"
   data-testid="hasResultAlert"
+  id="alert-sc-ksXhwv c1"
   role="alert"
-  tabindex="0"
+  tabindex="-1"
 >
   <div
     class="c2"
@@ -3540,6 +3512,7 @@ exports[`Demo2 should update the page after failing the IRMA flow 1`] = `
 
 .c1 {
   margin-bottom: 16px;
+  pointer-events: none;
   background-color: #FEC813;
 }
 
@@ -3596,10 +3569,6 @@ exports[`Demo2 should update the page after failing the IRMA flow 1`] = `
 }
 
 @media screen and (min-width:540px) {
-
-}
-
-@media screen and (min-width:1024px) {
 
 }
 
@@ -3827,8 +3796,9 @@ exports[`Demo2 should update the page after failing the IRMA flow 1`] = `
   aria-live="polite"
   class="c0 c1"
   data-testid="hasErrorAlert"
+  id="alert-sc-ksXhwv c1"
   role="alert"
-  tabindex="0"
+  tabindex="-1"
 >
   <div
     class="c2"

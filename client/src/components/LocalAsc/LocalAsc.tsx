@@ -1,4 +1,4 @@
-import React, { useContext, useCallback, useState, ReactElement } from 'react';
+import React, { useContext, useCallback, useState, useLayoutEffect, ReactElement } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import {
@@ -206,8 +206,17 @@ export const Alert = styled(
             color === AlertColor.PRIMARY || color === AlertColor.SUCCESS
                 ? themeColor('tint', 'level1')(themeContext)
                 : '';
+
+        // Override ASC tab index after rendering to remove focusability
+        useLayoutEffect(() => {
+            const alertEl = document.getElementById(`alert-${className}`);
+            if (alertEl) {
+                alertEl.tabIndex = -1;
+            }
+        }, [className]);
+
         return (
-            <AscAlert className={className} data-testid={dataTestId}>
+            <AscAlert className={className} data-testid={dataTestId} id={`alert-${className}`}>
                 <div className="alert-content">
                     {(icon || iconUrl) && (
                         <Icon className="icon" size={iconSize} iconUrl={iconUrl} color={iconColor}>
@@ -230,6 +239,7 @@ export const Alert = styled(
     }
 )`
     margin-bottom: ${themeSpacing(4)};
+    pointer-events: none;
 
     background-color: ${({ color }) => {
         switch (color) {

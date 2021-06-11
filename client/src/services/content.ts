@@ -20,6 +20,8 @@ export const reduceAndTranslateEmptyVars = (emptyVars: string[]): string => {
 
 const content = {
     header: {
+        title: `Probeer IRMA uit`,
+        homeLink: `https://amsterdam.nl/`,
         skipLink: {
             content: `Direct naar hoofdinhoud`,
             footer: `Direct naar footer`
@@ -109,7 +111,7 @@ Als je nog gebruik maakt van Internet Explorer, adviseren we je om zo snel mogel
         }
     },
     notFound: {
-        title: `# Sorry`,
+        title: `# Sorry, pagina niet gevonden.`,
         content: `De pagina die u zoekt bestaat niet meer of is verhuisd. Gelukkig zijn de IRMA-demo’s er nog wel.`,
         link: `Kijkt u maar op [Probeer IRMA uit](/).`
     },
@@ -494,7 +496,7 @@ Dit zorgt ervoor dat feedback van gebruikers op de juiste plek wordt opgeslagen.
         breadcrumbs: `- [Home](/)
 - [Toegankelijkheidsverklaring](/toegankelijkheidsverklaring)`,
         intro: `# Volledige toegankelijkheidsverklaring
-**De gemeente Amsterdam wil dat iedereen de website 'Probeer IRMA uit’ kan gebruiken.**`,
+**De gemeente Amsterdam wil dat iedereen de website ‘Probeer IRMA uit’ kan gebruiken.**`,
         article: `
 ## Toegankelijk ‘Probeer IRMA uit’
 Iedereen moet websites van de overheid kunnen gebruiken. Dit is wat wij doen om ‘Probeer IRMA uit’ toegankelijk te maken en te houden voor iedereen:
@@ -584,7 +586,12 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
 1. Scan de QR-code hieronder met uw IRMA-app.  \n
 2. Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven om in te loggen op Mijn Amsterdam.`,
         button: 'Inloggen met IRMA',
-        close: 'Sluiten'
+        close: 'Sluiten',
+        counter: 'Deze QR-code is nog [] geldig.',
+        minute: 'minuut',
+        minutePlural: 'minuten',
+        second: 'seconde',
+        secondPlural: 'seconden'
     },
     translatedIrmaAttributes: {
         name: 'naam',
