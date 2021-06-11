@@ -8,7 +8,7 @@ interface IProps extends React.HTMLAttributes<HTMLSpanElement> {
 
 const IrmaSessionCounter: React.FC<IProps> = ({ className, minutes = 5, QRIsShowing }) => {
     const [timeLeftLabel, setTimeLeftLabel] = useState<string>('');
-    const intervalRef = useRef<NodeJS.Timeout | null>();
+    const intervalRef = useRef<any>();
 
     const stopInterval = useCallback(() => {
         if (intervalRef.current) {
