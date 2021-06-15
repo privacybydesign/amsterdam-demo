@@ -14,8 +14,8 @@ const NotFound: React.FC<IProps> = () => {
     return (
         <PageTemplate>
             {SkipLinkEntry}
+            <ReactMarkDown source={content.notFound.title} renderers={{ heading: AscLocal.H1 }} />
             <StyledText>
-                <ReactMarkDown source={content.notFound.title} renderers={{ heading: AscLocal.H1 }} />
                 <ReactMarkDown
                     source={content.notFound.content}
                     renderers={{ paragraph: AscLocal.StrongParagraph, link: AscLocal.UnderlinedLink }}
