@@ -20,7 +20,7 @@ import {
 } from '@amsterdam/asc-ui';
 import { TextAreaProps as AscTextAreaProps } from '@amsterdam/asc-ui/lib/components/TextArea';
 
-const lineHeight = '24px';
+const lineHeight = '1.25em';
 
 export const H1 = styled(Heading)`
     word-break: break-word;
@@ -104,7 +104,7 @@ export const DL = styled.dl`
 `;
 
 export const DT = styled.dt`
-    line-height: 22px;
+    line-height: ${lineHeight};
     vertical-align: top;
     margin: 0;
 
@@ -114,7 +114,7 @@ export const DT = styled.dt`
     }
 `;
 export const DD = styled.dd`
-    line-height: 22px;
+    line-height: ${lineHeight};
     vertical-align: top;
     margin: 0;
     font-weight: bold;
