@@ -37,8 +37,7 @@ const IrmaSessionCounter: React.FC<IProps> = ({ className, minutes = 5, QRIsShow
                 );
             } else if (timeLeftInSec === 1) {
                 newLabel = insertInPlaceholders(content.qrcode.counter, `1 ${content.qrcode.second}`);
-            } else {
-                newLabel = '';
+            } else if (timeLeftInSec === 0) {
                 // Stop updating if there is no time left.
                 stopInterval();
             }
