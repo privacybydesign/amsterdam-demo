@@ -29,7 +29,7 @@ const PageTemplate: React.FC<IProps> = ({ children, className, hideTitle }) => {
     return (
         <StyledRow className={className}>
             <StyledSkipLink />
-            <StyledHeader fullWidth={false} tall homeLink={content.header.homeLink} navigation={title} />
+            <AscLocal.Header fullWidth={false} tall homeLink={content.header.homeLink} navigation={title} />
             <StyledColumn span={12}>
                 <main>
                     {isIE && location.pathname !== AppRoutes.IE_SUPPORT.path && (
@@ -49,14 +49,6 @@ const PageTemplate: React.FC<IProps> = ({ children, className, hideTitle }) => {
         </StyledRow>
     );
 };
-
-const StyledHeader = styled(AscLocal.Header)`
-    nav {
-        justify-content: flex-start;
-        font-weight: 600;
-        font-size: 1.1rem;
-    }
-`;
 
 const StyledSkipLink = styled(SkipLink)`
     position: fixed;

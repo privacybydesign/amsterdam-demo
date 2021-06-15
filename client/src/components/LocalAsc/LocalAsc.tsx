@@ -302,7 +302,8 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
         '&::after': {
             backgroundColor: themeColor('tint', 'level2'),
             marginLeft: -188,
-            marginRight: -188
+            marginRight: -188,
+            marginTop: 0
         },
         paddingLeft: 32,
         [`@media ${theme.breakpoints.laptopM('max-width')}`]: {
@@ -325,9 +326,10 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
         }
     }
 }))`
-    padding: 0;
-
     &&& {
+        flex-wrap: nowrap;
+        padding: 0;
+
         @media ${breakpoint('max-width', 'laptopM')} {
             height: 68px;
             h1:first-child a {
@@ -342,10 +344,20 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
                 margin-left: 16px;
                 margin-top: 0;
             }
+
+            && {
+                nav {
+                    margin-top: 9px;
+                    font-size: 1.8rem;
+                }
+            }
         }
 
         nav {
-            margin: 0;
+            margin: 4px 0 0 0;
+            justify-content: flex-start;
+            font-weight: 500;
+            font-size: 1.2rem;
         }
     }
 `;
