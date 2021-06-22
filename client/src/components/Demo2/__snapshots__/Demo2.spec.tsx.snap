@@ -702,7 +702,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
 }
 
 .c10 {
-  line-height: 1.25em;
+  line-height: 1.5em;
   margin-top: 8px;
   margin-bottom: 8px;
 }
@@ -1469,7 +1469,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
 }
 
 .c10 {
-  line-height: 1.25em;
+  line-height: 1.5em;
   margin-top: 8px;
   margin-bottom: 8px;
 }
@@ -2243,7 +2243,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
 }
 
 .c10 {
-  line-height: 1.25em;
+  line-height: 1.5em;
   margin-top: 8px;
   margin-bottom: 8px;
 }
@@ -3008,7 +3008,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
 }
 
 .c10 {
-  line-height: 1.25em;
+  line-height: 1.5em;
   margin-top: 8px;
   margin-bottom: 8px;
 }
@@ -3505,7 +3505,7 @@ exports[`Demo2 should update the page after failing the IRMA flow 1`] = `
 }
 
 .c10 {
-  line-height: 1.25em;
+  line-height: 1.5em;
   margin-top: 8px;
   margin-bottom: 8px;
 }

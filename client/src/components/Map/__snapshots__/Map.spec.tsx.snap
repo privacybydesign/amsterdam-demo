@@ -13,6 +13,7 @@ exports[`Map should render default map with input and no autosuggest visible 1`]
 }
 
 <div
+  aria-label="Kaart"
   class="c0 leaflet-container leaflet-grab leaflet-touch-drag"
   data-testid="map"
   style="position: relative;"
