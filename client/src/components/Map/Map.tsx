@@ -9,6 +9,7 @@ import { ListItem, Icon, themeColor, themeSpacing } from '@amsterdam/asc-ui';
 import { ChevronRight } from '@amsterdam/asc-assets';
 import { LeafletMouseEvent } from 'leaflet';
 import { UnderlinedLink } from '@components/LocalAsc/LocalAsc';
+import content from '@services/content';
 
 interface IProps {
     updateLocationCallback: (location: ILocation | null) => void;
@@ -212,6 +213,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
         >
             <StyledMap
                 data-testid="map"
+                aria-label={content.demo5.form.location.mapLabel}
                 setInstance={(instance: any) => {
                     dispatch({
                         type: 'setMapInstance',
@@ -237,7 +239,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
                                 ref={locationInputRef}
                                 onChange={onInputChange}
                                 onKeyUp={onInputKeyPress}
-                                aria-label="location"
+                                aria-label={content.demo5.form.location.locationInputLabel}
                                 autoComplete="street-address"
                             />
                             {showAutosuggest && query && query.length && autosuggest && autosuggest.length ? (

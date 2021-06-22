@@ -395,23 +395,26 @@ Doe uw demo-melding zonder uw e-mailadres en/of telefoonnummer vrij te geven met
             location: {
                 label: `### Waar is het?
 Typ het dichstbijzijnde adres of klik de locatie aan op de kaart.`,
+                mapLabel: 'Kaart',
+                locationInputLabel: 'Locatie',
                 required: `Vergeet niet om een locatie te selecteren.`
             },
             report: {
                 label: `### Waar gaat het om?
 Typ geen persoonsgegevens in deze omschrijving, dit wordt apart gevraagd.`,
+                ariaLabel: `Omschrijving van de melding`,
                 required: 'Vergeet niet om uw melding te omschrijven.'
             },
             optionPhone: {
-                label: `### Mogen we u bellen voor vragen?
-Zo kunt u ons helpen het probleem sneller of beter op te lossen.`,
+                label: `Mogen we u bellen voor vragen?`,
+                remark: `Zo kunt u ons helpen het probleem sneller of beter op te lossen.`,
                 optionYes: 'Ja',
                 optionNo: 'Nee',
                 required: 'Vergeet niet om aan te geven of we u mogen bellen voor vragen.'
             },
             optionEmail: {
-                label: `### Wilt u op de hoogte blijven?
-We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`,
+                label: `Wilt u op de hoogte blijven?`,
+                remark: `We mailen om u te vertellen wat we met uw melding doen en wanneer het klaar is.`,
                 optionYes: 'Ja',
                 optionNo: 'Nee',
                 required: 'Vergeet niet om aan te geven of u op de hoogte gehouden wilt worden.'
