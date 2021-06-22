@@ -20,7 +20,7 @@ import {
 } from '@amsterdam/asc-ui';
 import { TextAreaProps as AscTextAreaProps } from '@amsterdam/asc-ui/lib/components/TextArea';
 
-const lineHeight = '1.25em';
+const lineHeight = '1.5em';
 
 export const H1 = styled(Heading)`
     word-break: break-word;
