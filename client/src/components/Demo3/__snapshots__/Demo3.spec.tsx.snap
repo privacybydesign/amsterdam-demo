@@ -1029,12 +1029,12 @@ exports[`Demo3 should update the page after completing the IRMA flow 2`] = `
         <h2
           class="c5 c6 c7"
         >
-          Uw naam en burgerservicenummer  
+          Uw naam en e-mailadres  
         </h2>
         <p
           class="c8 c9 c10"
         >
-          U heeft bewezen dat u Test test bent en u heeft uw burgerservicenummer (BSN) gedeeld.
+          U heeft bewezen dat u Test test bent en u heeft uw e-mailadres gedeeld.
         </p>
       </div>
     </div>
