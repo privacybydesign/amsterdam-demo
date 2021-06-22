@@ -255,8 +255,8 @@ U kunt bijvoorbeeld inloggen door uzelf bekend te maken met de volgende gegevens
 - U heeft uw naam en uw e-mailadres aan de demosite doorgegeven via IRMA.
 
 ## Wat is er anders met IRMA?
-Inloggen met IRMA is een alternatief voor DigiD.
-- Met uw e-mailadres kan de gemeente uw gegevens ophalen en aan u tonen.`
+Inloggen met IRMA is anders dan inloggen zoals u nu op websites gewend bent.
+U hoeft geen profiel aan te maken en allerlei persoonlijke gegevens prijs te geven.`
     },
 
     demo4: {
