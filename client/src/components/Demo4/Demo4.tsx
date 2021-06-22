@@ -229,19 +229,19 @@ const Demo4: React.FC<IProps> = () => {
                             />
                             <section>
                                 <form ref={formEl}>
-                                    <ReactMarkDown
-                                        source={content.demo4.form.owner}
-                                        renderers={{ paragraph: AscLocal.Paragraph }}
-                                    />
-                                    <RadioGroup name="geveltuin" error={!formValid}>
-                                        <Label htmlFor="yes" label={content.demo4.form.optionYes}>
-                                            <Radio id="yes" value={content.demo4.form.optionYes} />
-                                        </Label>
-                                        <Label htmlFor="no" label={content.demo4.form.optionNo}>
-                                            <Radio id="no" value={content.demo4.form.optionNo} />
-                                        </Label>
-                                    </RadioGroup>
-                                    {!formValid && <AscLocal.ErrorMessage message={content.demo4.form.required} />}
+                                    <AscLocal.Fieldset>
+                                        <legend>{content.demo4.form.owner}</legend>
+
+                                        <RadioGroup name="geveltuin" error={!formValid}>
+                                            <Label htmlFor="yes" label={content.demo4.form.optionYes}>
+                                                <Radio id="yes" value={content.demo4.form.optionYes} />
+                                            </Label>
+                                            <Label htmlFor="no" label={content.demo4.form.optionNo}>
+                                                <Radio id="no" value={content.demo4.form.optionNo} />
+                                            </Label>
+                                        </RadioGroup>
+                                        {!formValid && <AscLocal.ErrorMessage message={content.demo4.form.required} />}
+                                    </AscLocal.Fieldset>
                                 </form>
                             </section>
                             <section>

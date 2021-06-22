@@ -132,6 +132,12 @@ export const DefinitionList = {
     descriptiondetails: DD
 };
 
+export const Fieldset = styled.fieldset`
+    padding: 0;
+    border: 0;
+    line-height: ${lineHeight};
+`;
+
 export const Image = styled.img`
     width: 100%;
     margin-bottom: ${themeSpacing(2)};
