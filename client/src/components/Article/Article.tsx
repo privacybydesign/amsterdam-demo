@@ -67,7 +67,7 @@ const LinkBox = styled(Link).attrs({ variant: 'blank' })`
 
 const Article: React.FC<IProps> = ({ imageSrc, imageAlt, title, children, href, className }) => {
     return (
-        <LinkBox to={href}>
+        <LinkBox to={href} aria-label={title}>
             <Container className={className}>
                 <ResponsiveImage filename={imageSrc} alt={imageAlt} />
                 <div className="text">

@@ -9,7 +9,7 @@ interface IProps {}
 
 const WhyIRMA: React.FC<IProps> = () => {
     return (
-        <BoxLink href={content.home.sidebar.boxLink}>
+        <BoxLink href={content.home.sidebar.boxLink} aria-label={content.home.sidebar.boxLabel}>
             <Container>
                 <ReactMarkdown
                     source={content.home.sidebar.box}

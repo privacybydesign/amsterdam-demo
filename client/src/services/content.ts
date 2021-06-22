@@ -76,7 +76,8 @@ Wilt u meer weten over IRMA?
             box: `Eenvoudig en op maat online aantonen wie je bent met IRMA
 ![IRMA Logo](/assets/irma_logo.svg "Lees meer over IRMA")
 # Waarom IRMA?`,
-            boxLink: `https://www.amsterdam.nl/inloggen-met-irma`
+            boxLink: `https://www.amsterdam.nl/inloggen-met-irma`,
+            boxLabel: `Waarom IRMA?`
         }
     },
     demoNotification: {

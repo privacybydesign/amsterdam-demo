@@ -108,7 +108,7 @@ interface IDownloadButtonProps {
 }
 
 const DownloadButton = styled(({ alt, title, src, className }: IDownloadButtonProps) => {
-    return <AscLocal.Image src={src} alt={alt} title={title} className={className} />;
+    return <AscLocal.Image src={src} alt={alt} title={title} aria-label={title} className={className} />;
 })`
     display: inline-block;
     width: auto;
