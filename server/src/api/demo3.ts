@@ -7,8 +7,7 @@ import { processDemoRequest } from './index';
 // Credentials used in demo
 const demoCredentials: IDemoCredentials = {
     DEMO: [[['irma-demo.gemeente.personalData.fullname', 'irma-demo.sidn-pbdf.email.email']]],
-    PRODUCTION: [[['pbdf.gemeente.personalData.fullname']], [['pbdf.pbdf.email.email'], ['pbdf.sidn-pbdf.email.email']]
-    ]
+    PRODUCTION: [[['pbdf.gemeente.personalData.fullname']], [['pbdf.pbdf.email.email'], ['pbdf.sidn-pbdf.email.email']]]
 };
 
 // Define routes for demo
