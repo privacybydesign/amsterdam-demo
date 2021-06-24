@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import content from '@services/content';
+import content, { insertInPlaceholders } from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion } from '@amsterdam/asc-ui';
@@ -27,7 +27,7 @@ const Demo3: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [hasResult, setHasResult] = useState<boolean>(false);
     const [hasError, setHasError] = useState<boolean>(false);
-    // const [bsn, setBsn] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
     const [name, setName] = useState<string>('');
 
     const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
@@ -43,7 +43,7 @@ const Demo3: React.FC<IProps> = () => {
                     if (result) {
                         setHasResult(true);
                         setHasError(false);
-                        // setBsn(response['bsn']);
+                        setEmail(result['email']);
                         setName(result['fullname']);
                     } else {
                         setHasError(true);
@@ -93,18 +93,16 @@ const Demo3: React.FC<IProps> = () => {
                     source={content.demo3[hasResult ? 'proven' : 'unproven'].title}
                     renderers={{ heading: AscLocal.H1 }}
                 />
-
                 {hasResult && !hasError && (
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.SUCCESS}
                         icon={<Checkmark />}
                         iconSize={14}
                         heading={content.demo3.proven.alert.title}
-                        content={content.demo3.proven.alert.body.replace(/\[\]/, name)}
+                        content={insertInPlaceholders(content.demo3.proven.alert.body, [name, email])}
                         dataTestId="hasResultAlert"
                     />
                 )}
-
                 {hasError && (
                     <AscLocal.Alert
                         color={AscLocal.AlertColor.ERROR}

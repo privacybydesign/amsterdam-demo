@@ -6,7 +6,7 @@ export const insertInPlaceholders = (sentence: string, values: string | string[]
         return sentence.replace('[]', values as string);
     } else {
         values.forEach((value: string) => {
-            sentence.replace('[]', value);
+            sentence = sentence.replace('[]', value);
         });
         return sentence;
     }
@@ -62,7 +62,7 @@ Wilt u meer weten over IRMA?
         },
         demo3Card: {
             title: `Demo 3: Inloggen`,
-            body: `Bekijk hoe u kunt inloggen met IRMA.`
+            body: `Login met uw naam en e-mailadres.`
         },
         demo4Card: {
             title: `Demo 4: Geveltuin aanvragen`,
@@ -231,32 +231,34 @@ Dit kan worden gebruikt voor:
                 title: `Uw naam en e-mailadres`,
                 body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
             },
-            intro: `**Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord en/of een profiel aan te maken.**
+            intro: `**Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord aan te maken.**
 ## Probeer het uit
-U kunt bijvoorbeeld inloggen door uzelf bekend te maken met de volgende gegevens:
+Login bij de gemeente door uzelf bekend te maken met de volgende gegevens:
 - Uw volledige naam
 - Uw e-mailadres`,
             why: {
                 title: `Waarom worden deze gegevens gevraagd?`,
                 body: `**Uw volledige naam**  \nDe gemeente wil u graag aanspreken met uw naam.\n
-**Uw e-mailadres**  \nDe gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente welke gegevens ze van u heeft vastgelegd.`
+**Uw e-mailadres**  \nVoor diensten waarbij de gemeente niet om uw BSN mag vragen, kan uw e-mailadres gevraagd worden om in te loggen.`
             }
         },
         proven: {
-            title: `# Demo 3: Inloggen met IRMA`,
+            title: `# Demo 3: Uw naam en e-mailadres`,
             alert: {
                 title: `Uw naam en e-mailadres  `,
-                body: `U heeft bewezen dat u [] bent en u heeft uw e-mailadres gedeeld.`
+                body: `U heeft bewezen dat u [] bent en dat u toegang heeft tot e-mail die naar [] wordt gestuurd.`
             }
         },
         button: 'Inloggen met IRMA',
         result: `## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om in te loggen.
-- U heeft uw naam en uw e-mailadres aan de demosite doorgegeven via IRMA.
+- U heeft uw naam en uw e-mailadres doorgegeven via IRMA.
 
 ## Wat is er anders met IRMA?
-Inloggen met IRMA is anders dan inloggen zoals u nu op websites gewend bent.
-U hoeft geen profiel aan te maken en allerlei persoonlijke gegevens prijs te geven.`
+Inloggen met IRMA is anders dan u nu op websites gewend bent.
+U hoeft geen profiel aan te maken en allerlei persoonlijke gegevens prijs te geven.
+- Met uw e-mailadres kan de gemeente gegevens van uw aanvraag of melding tonen.
+- Als u via IRMA uw e-mailadres deelt, kan de gemeente u berichten sturen over de status van uw aanvraag of melding.`
     },
 
     demo4: {
