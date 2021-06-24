@@ -14,7 +14,7 @@ const NotFound: React.FC<IProps> = () => {
     return (
         <PageTemplate>
             {SkipLinkEntry}
-            <ReactMarkDown source={content.notFound.title} renderers={{ heading: AscLocal.H1 }} />
+            <ReactMarkDown source={content.notFound.title} renderers={{ heading: StyledH1 }} />
             <StyledText>
                 <ReactMarkDown
                     source={content.notFound.content}
@@ -38,6 +38,10 @@ const NotFound: React.FC<IProps> = () => {
         </PageTemplate>
     );
 };
+
+const StyledH1 = styled(AscLocal.H1)`
+    word-break: break-word;
+`;
 
 const StyledText = styled.div`
     @media ${breakpoint('min-width', 'tabletM')} {
