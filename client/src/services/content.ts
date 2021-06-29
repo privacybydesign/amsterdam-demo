@@ -85,7 +85,7 @@ Wilt u meer weten over IRMA?
         content: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
     },
     downloadIrma: `Heeft u nog geen IRMA?  \n[Download IRMA](https://irma.app/?lang=nl)`,
-    noSavePromise: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.**`,
+    noSavePromise: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard.**`,
     callToAction: `[Probeer de andere demo’s](/)`,
     demoErrorAlert: {
         heading: `Niets doorgegeven`,
@@ -311,7 +311,7 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
         },
         button: 'Aanvullen met IRMA',
         result: {
-            intro: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\nDit is een demo; u bent geen aanvraag voor een geveltuin gestart.**
+            intro: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard.\nDit is een demo; u bent geen aanvraag voor een geveltuin gestart.**
 
 Hieronder vindt u alle gegevens van uw demo-aanvraag:`,
             yourDemoRequest: `### Uw demo-aanvraag
@@ -552,8 +552,8 @@ Deze verklaring is gebaseerd op de [Toegankelijkheidcheck 'Probeer IRMA uit'](ht
             }
         },
         demo3: {
-            header: { src: 'probeer-irma', alt: 'Gebruiker opent QR-code scanner op telefoon' },
-            headerResult: { src: 'mijn-amsterdam', alt: 'Gebruiker opent QR-code scanner op telefoon' }
+            header: { src: 'inloggen', alt: 'Gebruiker opent beelden van amsterdam op tablet' },
+            headerResult: { src: 'inloggen', alt: 'Gebruiker opent beelden van amsterdam op tablet' }
         },
         demo4: {
             header: { src: 'geveltuin', alt: 'Foto van geveltuin in straat' },

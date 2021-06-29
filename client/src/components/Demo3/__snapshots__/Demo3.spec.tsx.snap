@@ -262,11 +262,11 @@ exports[`Demo3 should render the initial header image 1`] = `
 }
 
 <img
-  alt="Gebruiker opent QR-code scanner op telefoon"
+  alt="Gebruiker opent beelden van amsterdam op tablet"
   class="c0 c1"
   data-testid="headerImage"
-  src="/assets/probeer-irma-940.jpg"
-  srcset="/assets/probeer-irma-290.jpg 580w, /assets/probeer-irma-940.jpg 1880w"
+  src="/assets/inloggen-940.jpg"
+  srcset="/assets/inloggen-290.jpg 580w, /assets/inloggen-940.jpg 1880w"
 />
 `;
 
@@ -532,11 +532,11 @@ exports[`Demo3 should update the page after completing the IRMA flow 1`] = `
 }
 
 <img
-  alt="Gebruiker opent QR-code scanner op telefoon"
+  alt="Gebruiker opent beelden van amsterdam op tablet"
   class="c0 c1"
   data-testid="headerImage"
-  src="/assets/mijn-amsterdam-940.jpg"
-  srcset="/assets/mijn-amsterdam-290.jpg 580w, /assets/mijn-amsterdam-940.jpg 1880w"
+  src="/assets/inloggen-940.jpg"
+  srcset="/assets/inloggen-290.jpg 580w, /assets/inloggen-940.jpg 1880w"
 />
 `;
 
