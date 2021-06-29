@@ -528,7 +528,7 @@ Dan kunt u contact opnemen via het [klachtenformulier van de nationale ombudsman
 ## Toegankelijkheidsverklaring
 De website ‘Probeer IRMA uit’ voldoet gedeeltelijk aan het Besluit digitale toegankelijkheid overheid.
 De toegankelijkheidsverklaring is beschikbaar in het [Register van toegankelijkheidsverklaringen](https://www.toegankelijkheidsverklaring.nl/register/4096).
-Deze verklaring is gebaseerd op de [Toegankelijkheidcheck 'Probeer IRMA uit'](https://docs.google.com/spreadsheets/d/1ke6RqJSTDo25hK-1KBA0WFG0mhZz5jGzpt9PRFJJnGc/edit?usp=sharing). In deze check vindt u alle WCAG 2.1 succescriteria waarop deze website is getoetst.  
+Deze verklaring is gebaseerd op de [Toegankelijkheidcheck 'Probeer IRMA uit'](/assets/toegankelijkheidscheck_website_Probeer_IRMA_uit.pdf). In deze check vindt u alle WCAG 2.1 succescriteria waarop deze website is getoetst.  
 `
     },
 
