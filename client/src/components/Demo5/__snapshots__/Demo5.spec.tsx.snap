@@ -271,6 +271,522 @@ exports[`Demo5 should render the initial header image 1`] = `
 `;
 
 exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 14px;
+  height: 14px;
+  box-sizing: content-box;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.c4 > svg {
+  width: 14px;
+  height: 14px;
+}
+
+.c4 svg circle,
+.c4 svg rect,
+.c4 svg polygon,
+.c4 svg path {
+  fill: #ffffff;
+}
+
+.c11 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c12 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c13 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c14 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c15 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c17 .c3 {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-left: auto;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: -webkit-transform 0.3s ease;
+  -webkit-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.c5 {
+  margin: 0;
+  color: #000000;
+  font-weight: 700;
+  font-size: 20px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 24px;
+  margin-bottom: 8px;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+}
+
+.c8 {
+  margin: 0;
+  color: #000000;
+  font-weight: 400;
+  font-size: 16px;
+  -webkit-letter-spacing: inherit;
+  -moz-letter-spacing: inherit;
+  -ms-letter-spacing: inherit;
+  letter-spacing: inherit;
+  line-height: 20px;
+  margin-bottom: 20px;
+  font-stretch: normal;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+}
+
+.c9 {
+  margin-top: 0;
+  color: inherit;
+}
+
+.c7 {
+  margin-top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c18 .c3 svg circle,
+.c18:hover .c3 svg circle,
+.c18 .c3 svg rect,
+.c18:hover .c3 svg rect,
+.c18 .c3 svg polygon,
+.c18:hover .c3 svg polygon,
+.c18 .c3 svg path,
+.c18:hover .c3 svg path {
+  fill: #ffffff;
+}
+
+.c16 .c6 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.c2 > *:last-child {
+  margin-bottom: 0;
+}
+
+.c0 {
+  position: relative;
+  width: 100%;
+  padding: 16px;
+  background-color: #E6E6E6;
+}
+
+.c10 {
+  line-height: 1.5em;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.c1 {
+  margin-bottom: 16px;
+  pointer-events: none;
+  background-color: #0c8836;
+}
+
+.c1 .alert-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.c1 .alert-content h2 {
+  font-size: 18px;
+}
+
+.c1 .alert-content .icon {
+  margin-right: 16px;
+  min-width: 14px;
+  background-repeat: no-repeat;
+}
+
+.c1 .alert-content * {
+  color: #ffffff;
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media screen and (min-width:1024px) {
+  .c5 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) and (max-width:1199px) {
+
+}
+
+@media (min-width:700px) and (max-width:1023px) {
+
+}
+
+@media (min-width:414px) and (max-width:699px) {
+
+}
+
+@media (max-width:413px) {
+
+}
+
+@media screen and (min-width:540px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:375px) {
+
+}
+
+@media screen and (max-width:1199px) {
+
+}
+
+@media screen and (min-width:1200px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (min-width:768px) {
+
+}
+
+@media (max-width:1199px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1200px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+@media (min-width:1024px) {
+
+}
+
+<div
+  aria-live="polite"
+  class="c0 c1"
+  data-testid="hasResultAlert"
+  id="alert-sc-ksXhwv c1"
+  role="alert"
+  tabindex="-1"
+>
+  <div
+    class="c2"
+  >
+    <div
+      class="alert-content"
+    >
+      <span
+        class="c3 c4 icon"
+        color="#ffffff"
+        size="14"
+      >
+        <svg
+          focusable="false"
+          viewBox="0 0 32 32"
+        >
+          <path
+            d="M12.216 27.016L0 14.168l2.91-2.77 9.346 9.837L29.129 4 32 6.8z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
+      <div>
+        <h2
+          class="c5 c6 c7"
+        >
+          Uw contactgegevens
+        </h2>
+        <p
+          class="c8 c9 c10"
+        >
+          U heeft een formulier aangevuld met uw telefoonnummer en uw e-mailadres.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Demo5 should update the page after completing the IRMA flow 2`] = `
 .c0 {
   width: 100%;
   margin-bottom: 8px;
