@@ -217,11 +217,11 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
   >
     <span
       class="c3 c4 c5"
-      size="14"
     >
       <svg
         focusable="false"
         viewBox="0 0 32 32"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
@@ -242,11 +242,11 @@ exports[`Map should show autosuggest when input field has changed 1`] = `
   >
     <span
       class="c3 c4 c5"
-      size="14"
     >
       <svg
         focusable="false"
         viewBox="0 0 32 32"
+        xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
