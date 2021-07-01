@@ -1,32 +1,28 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Route, BrowserRouter as Router, Switch, useLocation } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { GlobalStyle, ThemeProvider, themeColor } from '@amsterdam/asc-ui';
 import theme from '@services/theme';
+import usePageViews from '@hooks/usePageViews';
 import AppRoutes from './AppRoutes';
 import ScrollToTop from '@components/ScrollToTop/ScrollToTop';
 
 interface IProps {}
 
 const App: React.FC<IProps> = () => {
-    const location = useLocation();
-    useEffect(() => {
-        console.log(location);
-    }, [location]);
+    usePageViews();
 
     return (
         <ThemeProvider overrides={theme}>
             <Bg>
                 <GlobalStyle />
-                <Router>
-                    <ScrollToTop />
-                    <Switch>
-                        {Object.keys(AppRoutes).map(key => {
-                            const { path, component, exact } = AppRoutes[key];
-                            return <Route key={key} path={path} component={component} exact={exact} />;
-                        })}
-                    </Switch>
-                </Router>
+                <ScrollToTop />
+                <Switch>
+                    {Object.keys(AppRoutes).map(key => {
+                        const { path, component, exact } = AppRoutes[key];
+                        return <Route key={key} path={path} component={component} exact={exact} />;
+                    })}
+                </Switch>
             </Bg>
         </ThemeProvider>
     );
