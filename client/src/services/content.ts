@@ -479,14 +479,14 @@ Bij onderdelen van de website zetten websites van derden cookies. Het gaat dan o
 Hieronder volgt een overzicht van de cookies die binnen deze site in gebruik zijn:
 
 ### SiteImprove
-De cookies AWSELBCORS en nmstat worden gezet door SiteImprove. Wij gebruiken deze statistiekendienst om inzicht te krijgen in klikpaden en deze te optimaliseren zodat gebruikers sneller bij de juiste informatie kunnen komen. Deze gegevens zijn geanonimiseerd en zijn niet te herleiden naar een persoon.
+De cookies 'AWSELB / AWSELBCOR' en 'nmstat' worden gezet door SiteImprove. Wij gebruiken deze statistiekendienst om inzicht te krijgen in klikpaden en deze te optimaliseren. De gegevens in de cookies zijn geanonimiseerd en zijn dus niet te herleiden naar een persoon.
 
 ### Lettertype licenties
 Er worden een aantal cookies gebruikt om het gebruik van lettertypen en bijbehorende licenties te checken.
 
 ### Campaign ID voor feedbackformulier
 Ten behoeve van het feedbackformulier slaan we een campaign ID op in localStorage.
-Dit zorgt ervoor dat feedback van gebruikers op de juiste plek wordt opgeslagen.
+Zo kunnen wij u na het doorlopen van een demo eenmalig om feedback vragen.
 `,
         delete: {
             title: `Cookies verwijderen`,
