@@ -479,7 +479,7 @@ Bij onderdelen van de website zetten websites van derden cookies. Het gaat dan o
 Hieronder volgt een overzicht van de cookies die binnen deze site in gebruik zijn:
 
 ### SiteImprove
-De cookies 'AWSELB / AWSELBCOR' en 'nmstat' worden gezet door SiteImprove. Wij gebruiken deze statistiekendienst om inzicht te krijgen in klikpaden en deze te optimaliseren. De gegevens in de cookies zijn geanonimiseerd en zijn dus niet te herleiden naar een persoon.
+De cookies 'AWSELB / AWSELBCOR' en 'nmstat' worden gezet door SiteImprove. Wij gebruiken deze statistiekendienst om inzicht te krijgen welke pagina's worden bezocht. De gegevens in de cookies zijn geanonimiseerd en zijn dus niet te herleiden naar een persoon.
 
 ### Lettertype licenties
 Er worden een aantal cookies gebruikt om het gebruik van lettertypen en bijbehorende licenties te checken.
