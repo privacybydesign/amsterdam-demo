@@ -478,18 +478,15 @@ Bij onderdelen van de website zetten websites van derden cookies. Het gaat dan o
         list: `
 Hieronder volgt een overzicht van de cookies die binnen deze site in gebruik zijn:
 
-### NET
-Dit cookie wordt gebruikt door onze servers om contact te houden met de gebruiker tijdens het gebruik van de website (een zogenaamde sessiecookie) en wordt automatisch verwijderd zodra u de browser sluit.
-
-### __cfduid
-Dit cookie wordt gebruikt door onze Content Delivery Network-provider om oneigenlijk verkeer (van bijvoorbeeld robots en virussen) te weren.
+### SiteImprove
+De cookies 'AWSELB / AWSELBCOR' en 'nmstat' worden gezet door SiteImprove. Wij gebruiken deze statistiekendienst om inzicht te krijgen welke pagina's worden bezocht. De gegevens in de cookies zijn geanonimiseerd en zijn dus niet te herleiden naar een persoon.
 
 ### Lettertype licenties
 Er worden een aantal cookies gebruikt om het gebruik van lettertypen en bijbehorende licenties te checken.
 
 ### Campaign ID voor feedbackformulier
 Ten behoeve van het feedbackformulier slaan we een campaign ID op in localStorage.
-Dit zorgt ervoor dat feedback van gebruikers op de juiste plek wordt opgeslagen.
+Zo kunnen wij u na het doorlopen van een demo eenmalig om feedback vragen.
 `,
         delete: {
             title: `Cookies verwijderen`,
