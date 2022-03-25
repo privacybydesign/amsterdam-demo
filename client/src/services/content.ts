@@ -62,7 +62,7 @@ Wilt u meer weten over IRMA?
         },
         demo3Card: {
             title: `Demo 3: Inloggen`,
-            body: `Login met uw naam en e-mailadres.`
+            body: `Login met uw naam en burgerservicenummer.`
         },
         demo4Card: {
             title: `Demo 4: Geveltuin aanvragen`,
@@ -228,37 +228,36 @@ Dit kan worden gebruikt voor:
         unproven: {
             title: `# Demo 3: Inloggen`,
             alert: {
-                title: `Uw naam en e-mailadres`,
+                title: `Uw naam en burgerservicenummer`,
                 body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
             },
             intro: `**Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord aan te maken.**
 ## Probeer het uit
 Login bij de gemeente door uzelf bekend te maken met de volgende gegevens:
 - Uw volledige naam
-- Uw e-mailadres`,
+- Uw burgerservicenummer (BSN)`,
             why: {
                 title: `Waarom worden deze gegevens gevraagd?`,
                 body: `**Uw volledige naam**  \nDe gemeente wil u graag aanspreken met uw naam.\n
-**Uw e-mailadres**  \nVoor diensten waarbij de gemeente niet om uw BSN mag vragen, kan uw e-mailadres gevraagd worden om in te loggen.`
+**Uw burgerservicenummer (BSN)**  \nDe gemeente wil zeker weten dat u het bent. Als u dat met IRMA bewijst, toont de gemeente binnen Mijn Amsterdam welke gegevens ze van u heeft vastgelegd en hoe het met uw aanvragen staat.`
             }
         },
         proven: {
             title: `# Demo 3: Uw naam en e-mailadres`,
             alert: {
-                title: `Uw naam en e-mailadres  `,
-                body: `U heeft bewezen dat u [] bent en dat u toegang heeft tot e-mail die naar [] wordt gestuurd.`
+                title: `Uw naam en burgerservicenummer  `,
+                body: `U heeft bewezen dat u [] bent en u heeft uw burgerservicenummer (BSN) gedeeld.`
             }
         },
         button: 'Inloggen met IRMA',
         result: `## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om in te loggen.
-- U heeft uw naam en uw e-mailadres doorgegeven via IRMA.
+- U heeft uw burgerservicenummer (BSN) en uw naam aan de demosite van Mijn Amsterdam doorgegeven via IRMA.
 
 ## Wat is er anders met IRMA?
 Inloggen met IRMA is anders dan u nu op websites gewend bent.
 U hoeft geen profiel aan te maken en allerlei persoonlijke gegevens prijs te geven.
-- Met uw e-mailadres kan de gemeente gegevens van uw aanvraag of melding tonen.
-- Als u via IRMA uw e-mailadres deelt, kan de gemeente u berichten sturen over de status van uw aanvraag of melding.`
+- Met uw burgerservicenummer (BSN) kan de gemeente uw gegevens ophalen en in ‘Mijn Amsterdam’ aan u tonen.`
     },
 
     demo4: {
