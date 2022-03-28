@@ -44,7 +44,11 @@ const Demo3: React.FC<IProps> = () => {
                         setHasResult(true);
                         setHasError(false);
                         setEmail(result['email']);
-                        setName(result['fullname']);
+                        if (result['fullname'] !== undefined) {
+                            setName(result['fullname']);
+                        } else {
+                            setName(result['firstnames']+' '+result['surname']);
+                        }
                     } else {
                         setHasError(true);
                     }
