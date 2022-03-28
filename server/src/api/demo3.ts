@@ -7,7 +7,13 @@ import { processDemoRequest } from './index';
 // Credentials used in demo
 const demoCredentials: IDemoCredentials = {
     DEMO: [[['irma-demo.gemeente.personalData.fullname', 'irma-demo.gemeente.personalData.bsn']]],
-    PRODUCTION: [[['pbdf.gemeente.personalData.fullname', 'pbdf.gemeente.personalData.bsn']]]
+    PRODUCTION: [
+      [
+        ['pbdf.pilot-amsterdam.passport.firstnames', 'pbdf.pilot-amsterdam.passport.surname', 'pbdf.pilot-amsterdam.passport.personalnumber'],
+        ['pbdf.pilot-amsterdam.idcard.firstnames', 'pbdf.pilot-amsterdam.idcard.surname', 'pbdf.pilot-amsterdam.idcard.personalnumber'],
+        ['pbdf.gemeente.personalData.fullname', 'pbdf.gemeente.personalData.bsn'],
+      ]
+    ]
 };
 
 // Define routes for demo
