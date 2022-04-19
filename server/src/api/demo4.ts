@@ -29,7 +29,7 @@ const demoCredentials: IDemoCredentials = {
                 'pbdf.gemeente.address.city'
             ]
         ],
-        [['pbdf.pbdf.mobilenumber.mobilenumber']],
+        [['pbdf.pbdf.mobilenumber.mobilenumber'], ['pbdf.sidn-pbdf.mobilenumber.mobilenumber']],
         [['pbdf.pbdf.email.email'], ['pbdf.sidn-pbdf.email.email']]
     ]
 };
