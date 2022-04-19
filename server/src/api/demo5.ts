@@ -20,7 +20,7 @@ const demoCredentials: IDemoCredentials = {
     PRODUCTION: ({ mobileNumber, email }: { mobileNumber: boolean; email: boolean }) => {
         const credentials = [];
         if (mobileNumber === true) {
-            credentials.push([['pbdf.pbdf.mobilenumber.mobilenumber']]);
+            credentials.push([['pbdf.pbdf.mobilenumber.mobilenumber'], ['pbdf.sidn-pbdf.mobilenumber.mobilenumber']]);
         }
 
         if (email === true) {
