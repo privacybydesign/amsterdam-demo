@@ -246,7 +246,7 @@ Login bij de gemeente door uzelf bekend te maken met de volgende gegevens:
             title: `# Demo 3: Uw naam en e-mailadres`,
             alert: {
                 title: `Uw naam en e-mailadres`,
-                body: `U heeft bewezen dat u [] bent en dat u toegang heeft tot het e-mailadres.`
+                body: `U heeft bewezen dat u [] bent en dat u toegang heeft tot e-mail die naar [] wordt gestuurd.`
             }
         },
         button: 'Inloggen met IRMA',
