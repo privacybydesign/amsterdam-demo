@@ -62,7 +62,7 @@ Wilt u meer weten over IRMA?
         },
         demo3Card: {
             title: `Demo 3: Inloggen`,
-            body: `Login met uw naam en burgerservicenummer.`
+            body: `Login met uw naam en e-mailadres.`
         },
         demo4Card: {
             title: `Demo 4: Geveltuin aanvragen`,
