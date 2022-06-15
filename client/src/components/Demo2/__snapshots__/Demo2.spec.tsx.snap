@@ -993,7 +993,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
   aria-live="polite"
   class="c0 c1"
   data-testid="hasResultAlert"
-  id="alert-sc-ksXhwv c1"
+  id="alert-sc-cvdZrU c1"
   role="alert"
   tabindex="-1"
 >
@@ -1005,12 +1005,11 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
     >
       <span
         class="c3 c4 icon"
-        color=""
-        size="22"
       >
         <svg
           focusable="false"
           viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             d="M33.63 30.9H2.37L18 3zm-24.44-4h17.62L18 11.19z"
@@ -1760,7 +1759,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
   aria-live="polite"
   class="c0 c1"
   data-testid="hasResultAlert"
-  id="alert-sc-ksXhwv c1"
+  id="alert-sc-cvdZrU c1"
   role="alert"
   tabindex="-1"
 >
@@ -1772,12 +1771,11 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
     >
       <span
         class="c3 c4 icon"
-        color=""
-        size="22"
       >
         <svg
           focusable="false"
           viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             d="M33.63 30.9H2.37L18 3zm-24.44-4h17.62L18 11.19z"
@@ -2534,7 +2532,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
   aria-live="polite"
   class="c0 c1"
   data-testid="hasResultAlert"
-  id="alert-sc-ksXhwv c1"
+  id="alert-sc-cvdZrU c1"
   role="alert"
   tabindex="-1"
 >
@@ -2546,12 +2544,11 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
     >
       <span
         class="c3 c4 icon"
-        color="#ffffff"
-        size="14"
       >
         <svg
           focusable="false"
           viewBox="0 0 32 32"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             d="M12.216 27.016L0 14.168l2.91-2.77 9.346 9.837L29.129 4 32 6.8z"
@@ -3299,7 +3296,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
   aria-live="polite"
   class="c0 c1"
   data-testid="hasResultAlert"
-  id="alert-sc-ksXhwv c1"
+  id="alert-sc-cvdZrU c1"
   role="alert"
   tabindex="-1"
 >
@@ -3311,12 +3308,11 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
     >
       <span
         class="c3 c4 icon"
-        color=""
-        size="22"
       >
         <svg
           focusable="false"
           viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             d="M33.63 30.9H2.37L18 3zm-24.44-4h17.62L18 11.19z"
@@ -3796,7 +3792,7 @@ exports[`Demo2 should update the page after failing the IRMA flow 1`] = `
   aria-live="polite"
   class="c0 c1"
   data-testid="hasErrorAlert"
-  id="alert-sc-ksXhwv c1"
+  id="alert-sc-cvdZrU c1"
   role="alert"
   tabindex="-1"
 >
@@ -3808,12 +3804,11 @@ exports[`Demo2 should update the page after failing the IRMA flow 1`] = `
     >
       <span
         class="c3 c4 icon"
-        color=""
-        size="22"
       >
         <svg
           focusable="false"
           viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
             d="M33.63 30.9H2.37L18 3zm-24.44-4h17.62L18 11.19z"

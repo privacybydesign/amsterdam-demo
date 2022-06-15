@@ -152,8 +152,7 @@ Bewijs dat u ouder bent dan 18 jaar of 65 jaar door uzelf bekend te maken met de
       `,
         why: {
             title: 'Waarom worden deze gegevens gevraagd?',
-            body:
-                '**Ouder dan 18, Ouder dan 65**  \nDe gemeente kan u dan toegang geven tot dienstverlening op basis van uw leeftijd.'
+            body: '**Ouder dan 18, Ouder dan 65**  \nDe gemeente kan u dan toegang geven tot dienstverlening op basis van uw leeftijd.'
         },
         button18: `18+ bewijzen met IRMA`,
         button65: `65+ bewijzen met IRMA`,

@@ -47,7 +47,7 @@ const Demo3: React.FC<IProps> = () => {
                         if (result['fullname'] !== undefined) {
                             setName(result['fullname']);
                         } else {
-                            setName(result['firstnames']+' '+result['surname']);
+                            setName(`${result['firstnames']} ${result['surname']}`);
                         }
                     } else {
                         setHasError(true);
