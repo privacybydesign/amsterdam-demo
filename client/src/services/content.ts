@@ -152,8 +152,7 @@ Bewijs dat u ouder bent dan 18 jaar of 65 jaar door uzelf bekend te maken met de
       `,
         why: {
             title: 'Waarom worden deze gegevens gevraagd?',
-            body:
-                '**Ouder dan 18, Ouder dan 65**  \nDe gemeente kan u dan toegang geven tot dienstverlening op basis van uw leeftijd.'
+            body: '**Ouder dan 18, Ouder dan 65**  \nDe gemeente kan u dan toegang geven tot dienstverlening op basis van uw leeftijd.'
         },
         button18: `18+ bewijzen met IRMA`,
         button65: `65+ bewijzen met IRMA`,
@@ -168,7 +167,7 @@ Bewijs dat u ouder bent dan 18 jaar of 65 jaar door uzelf bekend te maken met de
             isNotOver65: `- U heeft IRMA gebruikt om door te geven dat u jonger bent dan 65 jaar.
 - U heeft uw geboortedatum (en andere gegevens) niet doorgegeven.`,
             whatsDifferentWithIrma: `## Wat is er anders met IRMA?  \nAls u via IRMA uw leeftijd doorgeeft, is bij de website bekend of u aan de leeftijdsgrens voldoet. U blijft anoniem.  \n  \nDit kan worden gebruikt voor:
-- Toegang en korting op basis van uw leeftijd.
+- Toegang en/of korting op basis van uw leeftijd.
 - Alcohol kopen.
 - Stemmen voor lokale initiatieven.
 `
@@ -245,17 +244,17 @@ Login bij de gemeente door uzelf bekend te maken met de volgende gegevens:
         proven: {
             title: `# Demo 3: Uw naam en e-mailadres`,
             alert: {
-                title: `Uw naam en e-mailadres  `,
+                title: `Uw naam en e-mailadres`,
                 body: `U heeft bewezen dat u [] bent en dat u toegang heeft tot e-mail die naar [] wordt gestuurd.`
             }
         },
         button: 'Inloggen met IRMA',
         result: `## Wat heeft u zojuist gedaan?
 - U heeft IRMA gebruikt om in te loggen.
-- U heeft uw naam en uw e-mailadres doorgegeven via IRMA.
+- U heeft uw e-mailadres en uw naam aan de demosite doorgegeven via IRMA.
 
 ## Wat is er anders met IRMA?
-Inloggen met IRMA is anders dan u nu op websites gewend bent.
+Inloggen met IRMA is anders dan u nu op websites gewend bent. U hoeft geen profiel aan te maken en allerlei persoonlijke gegevens prijs te geven.
 U hoeft geen profiel aan te maken en allerlei persoonlijke gegevens prijs te geven.
 - Met uw e-mailadres kan de gemeente gegevens van uw aanvraag of melding tonen.
 - Als u via IRMA uw e-mailadres deelt, kan de gemeente u berichten sturen over de status van uw aanvraag of melding.`

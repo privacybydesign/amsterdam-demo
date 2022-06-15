@@ -1028,7 +1028,7 @@ exports[`Demo3 should update the page after completing the IRMA flow 2`] = `
         <h2
           class="c5 c6 c7"
         >
-          Uw naam en e-mailadres  
+          Uw naam en e-mailadres
         </h2>
         <p
           class="c8 c9 c10"
