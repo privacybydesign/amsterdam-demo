@@ -1,4 +1,5 @@
-import content, { insertInPlaceholders } from '@services/content';
+import { insertInPlaceholders } from '@services/content-helpers';
+import { useContent } from '@services/ContentProvider';
 import React, { useEffect, useCallback, useState, useRef } from 'react';
 
 interface IProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -7,6 +8,7 @@ interface IProps extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 const IrmaSessionCounter: React.FC<IProps> = ({ className, minutes = 5, QRIsShowing }) => {
+    const content = useContent();
     const [timeLeftLabel, setTimeLeftLabel] = useState<string>('');
     const intervalRef = useRef<any>();
 

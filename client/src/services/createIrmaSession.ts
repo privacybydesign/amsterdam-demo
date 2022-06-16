@@ -99,7 +99,8 @@ const createIrmaSession = async (
     holderElementId: string,
     query = {},
     callBackMapping?: IStateChangeCallbackMapping,
-    alwaysShowQRCode = false
+    alwaysShowQRCode = false,
+    language = 'nl'
 ): Promise<unknown> => {
     const queryString = Object.keys(query)
         .map((key, index) => `${index === 0 ? '?' : ''}${key}=${(query as any)[key]}`)
@@ -110,6 +111,7 @@ const createIrmaSession = async (
         element: `#${holderElementId}`,
         callBackMapping,
         alwaysShowQRCode,
+        language,
         session: {
             url: `/${dataType}${queryString}`,
 

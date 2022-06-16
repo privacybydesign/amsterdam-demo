@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import ReactMarkDown from 'react-markdown';
 import { Button, Modal, themeSpacing, themeColor } from '@amsterdam/asc-ui';
 import { Close } from '@amsterdam/asc-assets';
-import content from '@services/content';
 import { OL } from '@components/LocalAsc/LocalAsc';
 import IrmaSessionCounter from '@components/IrmaSessionCounter/IrmaSessionCounter';
 import { isMobile } from '@services/createIrmaSession';
+import { useContent } from '@services/ContentProvider';
 export interface IProps extends React.HTMLAttributes<any> {
     showModal: boolean;
     QRIsShowing: boolean;
@@ -21,6 +21,8 @@ const IrmaSessionModal: React.FC<IProps> = ({
     className,
     hideForMobileFlow = false
 }) => {
+    const content = useContent();
+
     return (
         <StyledModal
             backdropOpacity={0.5}

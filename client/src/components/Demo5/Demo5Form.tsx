@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import content from '@services/content';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { themeSpacing, RadioGroup, Label, Radio } from '@amsterdam/asc-ui';
 import MapComponent from '@components/Map/Map';
 import { ILocation } from '@components/Map/reducer';
+import { useContent } from '@services/ContentProvider';
 
 export enum FormFields {
     LOCATION = 'location',
@@ -22,6 +22,7 @@ export interface IProps {
 }
 
 const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateLocationCallback }) => {
+    const content = useContent();
     const validateOnChange = useCallback(() => validateForm(false), [validateForm]);
     const onSubmit = useCallback(event => event.preventDefault(), []);
 

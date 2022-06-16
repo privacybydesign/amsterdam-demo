@@ -1,6 +1,7 @@
 import React, { useCallback, useLayoutEffect, useState } from 'react';
 import IrmaSessionModal from '@components/IrmaSessionModal/IrmaSessionModal';
 import createIrmaSession, { isMobile } from '@services/createIrmaSession';
+import { useCurrentLanguage } from '@services/ContentProvider';
 
 interface IIrmaSessionInputData {
     demoPath: string;
@@ -18,6 +19,7 @@ export interface IIrmaSessionOutputData {
 const useIrmaSession = (): IIrmaSessionOutputData => {
     const [QRIsShowing, setQRIsShowing] = useState<boolean>(false);
     const [activeIrmaSessionData, setActiveIrmaSessionData] = useState<IIrmaSessionInputData | undefined>();
+    const language = useCurrentLanguage();
 
     // Create a trigger function that opens the modal with session data and wait for it to be rendered
     const startIrmaSession = (irmaSessionInputData: IIrmaSessionInputData) => {
@@ -61,7 +63,8 @@ const useIrmaSession = (): IIrmaSessionOutputData => {
                 'irma-qr',
                 { demo: activeIrmaSessionData.useDemoCredentials, ...activeIrmaSessionData.extraQuery },
                 callBackMapping,
-                activeIrmaSessionData.alwaysShowQRCode
+                activeIrmaSessionData.alwaysShowQRCode,
+                language
             );
             activeIrmaSessionData.resultCallback(result);
             closeModal();

@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { breakpoint, themeColor, themeSpacing } from '@amsterdam/asc-ui';
-import content from '@services/content';
+import { useContent } from '@services/ContentProvider';
 
 interface IProps {}
 
 const WhyIRMA: React.FC<IProps> = () => {
+    const content = useContent();
+
     return (
         <BoxLink href={content.home.sidebar.boxLink} aria-label={content.home.sidebar.boxLabel}>
             <Container>

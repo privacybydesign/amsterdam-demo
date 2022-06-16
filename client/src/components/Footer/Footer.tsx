@@ -15,43 +15,47 @@ import {
     breakpoint
 } from '@amsterdam/asc-ui';
 import ReactMarkDown from 'react-markdown';
-import content from '@services/content';
 import { LinkWithChevron } from '@components/LocalAsc/LocalAsc';
 import { SkipLinkFooterEntry } from '@components/SkipLink/SkipLink';
+import { useContent } from '@services/ContentProvider';
 
 interface IFooterProps {}
 
-const Footer: React.FC<IFooterProps> = () => (
-    <StyledASCFooter>
-        {SkipLinkFooterEntry}
-        <FooterTop>
-            <StyledRow>
-                <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
-                    <FooterSection>
-                        <ReactMarkDown source={content.footer.column1} renderers={FooterMarkDownRenderers} />
-                    </FooterSection>
-                </Column>
-                <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
-                    <FooterSection>
-                        <ReactMarkDown source={content.footer.column2} renderers={FooterMarkDownRenderers} />
-                    </FooterSection>
-                </Column>
-                <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
-                    <FooterSection>
-                        <ReactMarkDown source={content.footer.column3} renderers={FooterMarkDownRenderers} />
-                    </FooterSection>
-                </Column>
-            </StyledRow>
-        </FooterTop>
-        <div className="footer-bottom">
-            <StyledFooterBottom>
-                <StyledRow halign="flex-start">
-                    <ReactMarkDown source={content.footer.bottom} renderers={{ link: LinkWithChevron }} />
+const Footer: React.FC<IFooterProps> = () => {
+    const content = useContent();
+
+    return (
+        <StyledASCFooter>
+            {SkipLinkFooterEntry}
+            <FooterTop>
+                <StyledRow>
+                    <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
+                        <FooterSection>
+                            <ReactMarkDown source={content.footer.column1} renderers={FooterMarkDownRenderers} />
+                        </FooterSection>
+                    </Column>
+                    <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
+                        <FooterSection>
+                            <ReactMarkDown source={content.footer.column2} renderers={FooterMarkDownRenderers} />
+                        </FooterSection>
+                    </Column>
+                    <Column wrap span={{ small: 1, medium: 2, big: 2, large: 4, xLarge: 4 }}>
+                        <FooterSection>
+                            <ReactMarkDown source={content.footer.column3} renderers={FooterMarkDownRenderers} />
+                        </FooterSection>
+                    </Column>
                 </StyledRow>
-            </StyledFooterBottom>
-        </div>
-    </StyledASCFooter>
-);
+            </FooterTop>
+            <div className="footer-bottom">
+                <StyledFooterBottom>
+                    <StyledRow halign="flex-start">
+                        <ReactMarkDown source={content.footer.bottom} renderers={{ link: LinkWithChevron }} />
+                    </StyledRow>
+                </StyledFooterBottom>
+            </div>
+        </StyledASCFooter>
+    );
+};
 
 interface IFooterLinkProps {
     href: string;

@@ -1,22 +1,6 @@
 /* eslint-disable no-irregular-whitespace */
 // This file contains all textual content in Markdown markup
 // Content values can be changed freely, but don't change the data structure of this file.
-export const insertInPlaceholders = (sentence: string, values: string | string[]): string => {
-    if (!(values instanceof Array)) {
-        return sentence.replace('[]', values as string);
-    } else {
-        values.forEach((value: string) => {
-            sentence = sentence.replace('[]', value);
-        });
-        return sentence;
-    }
-};
-
-export const reduceAndTranslateEmptyVars = (emptyVars: string[]): string => {
-    return emptyVars
-        .reduce((acc, varToTranslate) => acc + `${(content.translatedIrmaAttributes as any)[varToTranslate]}, `, '')
-        .slice(0, -2);
-};
 
 const content = {
     header: {

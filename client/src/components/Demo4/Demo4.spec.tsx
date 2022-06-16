@@ -3,7 +3,7 @@ import { screen, act, fireEvent } from '@testing-library/react';
 import { setupMocks, wrappedRender } from '@test/utils';
 import Demo4 from '@components/Demo4/Demo4';
 import createIrmaSession from '@services/createIrmaSession';
-import content from '@services/content';
+import content from '@services/content-nl';
 
 // Setup all the generic mocks
 setupMocks();

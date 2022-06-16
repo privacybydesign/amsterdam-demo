@@ -9,13 +9,14 @@ import { ListItem, Icon, themeColor, themeSpacing } from '@amsterdam/asc-ui';
 import { ChevronRight } from '@amsterdam/asc-assets';
 import { LeafletMouseEvent } from 'leaflet';
 import { UnderlinedLink } from '@components/LocalAsc/LocalAsc';
-import content from '@services/content';
+import { useContent } from '@services/ContentProvider';
 
 interface IProps {
     updateLocationCallback: (location: ILocation | null) => void;
 }
 
 const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
+    const content = useContent();
     const [state, dispatch] = useReducer(reducer, initialState);
     const locationInputRef = useRef(null);
     const wrapperRef = useRef(null);

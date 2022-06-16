@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import content, { insertInPlaceholders } from '@services/content';
+import { insertInPlaceholders } from '@services/content-helpers';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion } from '@amsterdam/asc-ui';
@@ -19,6 +19,7 @@ import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 import useIrmaSession, { IIrmaSessionOutputData } from '@hooks/useIrmaSession';
 import { isMobile } from '@services/createIrmaSession';
+import { useContent } from '@services/ContentProvider';
 
 export interface IProps {}
 // @todo add error flow with incorrect data
@@ -29,6 +30,7 @@ const Demo3: React.FC<IProps> = () => {
     const [hasError, setHasError] = useState<boolean>(false);
     const [email, setEmail] = useState<string>('');
     const [name, setName] = useState<string>('');
+    const content = useContent();
 
     const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
@@ -90,7 +92,7 @@ const Demo3: React.FC<IProps> = () => {
                 {!hasResult && !hasError && <DemoNotification />}
                 <ReactMarkDown
                     source={content.demo3.breadcrumbs}
-                    renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
+                    renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item, link: AscLocal.MarkDownToLink }}
                 />
                 {SkipLinkEntry}
                 <ReactMarkDown
@@ -224,7 +226,7 @@ const Demo3: React.FC<IProps> = () => {
                                         heading: AscLocal.H2,
                                         paragraph: AscLocal.Paragraph,
                                         list: AscLocal.UL,
-                                        link: AscLocal.InlineLink
+                                        link: AscLocal.MarkDownToLink
                                     }}
                                 />
                             </section>

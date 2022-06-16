@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button, themeSpacing } from '@amsterdam/asc-ui';
-import content from '@services/content';
+import { useContent } from '@services/ContentProvider';
 
 interface IProps {
     className?: string;
@@ -10,6 +10,8 @@ interface IProps {
 export const SkipLinkTargetIds = { content: 'skiplink-entry', footer: 'skiplink-footer-entry' };
 
 export const SkipLink: React.FC<IProps> = ({ className }) => {
+    const content = useContent();
+
     return (
         <SkipLinkContainer className={className}>
             <Button variant="textButton" as="a" href={`#${SkipLinkTargetIds.content}`}>

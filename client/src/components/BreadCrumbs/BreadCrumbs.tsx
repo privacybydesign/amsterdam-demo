@@ -15,6 +15,7 @@ interface IBreadCrumbsComposition {
 const BreadCrumbs: React.FC<IBreadCrumbsProps> & IBreadCrumbsComposition = ({ children, className }) => {
     const themeContext = { theme: useContext(ThemeContext) as Theme.ThemeInterface };
     const iconColor = themeColor('tint', 'level5')(themeContext);
+
     return (
         <Container className={className} aria-label="Breadcrumbs" data-testid="breadCrumbs">
             {React.Children.map(children, (child, index) => (

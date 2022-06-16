@@ -4,8 +4,9 @@ import { Route, Switch } from 'react-router-dom';
 import { GlobalStyle, ThemeProvider, themeColor } from '@amsterdam/asc-ui';
 import theme from '@services/theme';
 import usePageViews from '@hooks/usePageViews';
-import AppRoutes from './AppRoutes';
 import ScrollToTop from '@components/ScrollToTop/ScrollToTop';
+import { ContentProvider } from '@services/ContentProvider';
+import AppRoutes from './AppRoutes';
 
 interface IProps {}
 
@@ -14,16 +15,18 @@ const App: React.FC<IProps> = () => {
 
     return (
         <ThemeProvider overrides={theme}>
-            <Bg>
-                <GlobalStyle />
-                <ScrollToTop />
-                <Switch>
-                    {Object.keys(AppRoutes).map(key => {
-                        const { path, component, exact } = AppRoutes[key];
-                        return <Route key={key} path={path} component={component} exact={exact} />;
-                    })}
-                </Switch>
-            </Bg>
+            <ContentProvider>
+                <Bg>
+                    <GlobalStyle />
+                    <ScrollToTop />
+                    <Switch>
+                        {Object.keys(AppRoutes).map(key => {
+                            const { path, component, exact } = AppRoutes[key];
+                            return <Route key={key} path={path} component={component} exact={exact} />;
+                        })}
+                    </Switch>
+                </Bg>
+            </ContentProvider>
         </ThemeProvider>
     );
 };

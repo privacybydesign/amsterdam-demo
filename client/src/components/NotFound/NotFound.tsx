@@ -1,16 +1,18 @@
 import React, { useContext } from 'react';
 import ReactMarkDown from 'react-markdown';
 import styled, { ThemeContext } from 'styled-components';
-import content from '@services/content';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 import { breakpoint, themeSpacing, Theme } from '@amsterdam/asc-ui';
+import { useContent } from '@services/ContentProvider';
 
 export interface IProps {}
 
 const NotFound: React.FC<IProps> = () => {
+    const content = useContent();
     const themeContext = { theme: useContext(ThemeContext) as Theme.ThemeInterface };
+
     return (
         <PageTemplate>
             {SkipLinkEntry}

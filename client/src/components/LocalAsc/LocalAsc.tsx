@@ -1,4 +1,5 @@
 import React, { useContext, useCallback, useState, useLayoutEffect, ReactElement } from 'react';
+import { Link as RRLink } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import {
@@ -19,6 +20,7 @@ import {
     Button
 } from '@amsterdam/asc-ui';
 import { TextAreaProps as AscTextAreaProps } from '@amsterdam/asc-ui/lib/components/TextArea';
+import { Language, useCurrentLanguage } from '@services/ContentProvider';
 
 const lineHeight = '1.5em';
 
@@ -335,6 +337,10 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
         flex-wrap: nowrap;
         padding: 0;
 
+        @media ${breakpoint('max-width', 'tabletM')} {
+            flex-wrap: wrap;
+        }
+
         @media ${breakpoint('max-width', 'laptopM')} {
             height: 68px;
             h1:first-child a {
@@ -363,6 +369,33 @@ export const Header = styled(AscHeader).attrs(({ theme }) => ({
             justify-content: flex-start;
             font-weight: 500;
             font-size: 1.2rem;
+
+            @media ${breakpoint('max-width', 'tabletM')} {
+                padding-right: 215px;
+            }
+
+            @media ${breakpoint('max-width', 'tabletS')} {
+                padding-right: 125px;
+            }
+
+            @media ${breakpoint('max-width', 'mobileL')} {
+                padding-right: 40px;
+            }
+        }
+
+        > div {
+            display: flex !important;
+
+            @media ${breakpoint('max-width', 'tabletM')} {
+                background-color: ${themeColor('tint', 'level2')} !important;
+                position: static;
+                flex-grow: 1;
+                margin-right: -30px;
+                margin-left: -20px;
+                padding-left: 20px;
+                padding-bottom: 2px;
+                justify-content: flex-start;
+            }
         }
     }
 `;
@@ -391,6 +424,7 @@ interface ITextAreaProps {
 }
 
 export const TextArea = styled(({ showCounter, className, ...props }: AscTextAreaProps & ITextAreaProps) => {
+    const language = useCurrentLanguage();
     const [counter, setCounter] = useState<number>(0);
     const onChange = useCallback(event => {
         setCounter(event.target.value.length);
@@ -401,7 +435,7 @@ export const TextArea = styled(({ showCounter, className, ...props }: AscTextAre
             <AscTextArea {...props} className="textarea" onChange={onChange} />
             {showCounter && props.maxLength && (
                 <div className="counter">
-                    {counter}/{props.maxLength} tekens
+                    {counter}/{props.maxLength} {language === Language.EN ? 'characters' : 'tekens'}
                 </div>
             )}
         </div>
@@ -422,3 +456,7 @@ export const IrmaLogoIcon = styled.img.attrs({ src: '/assets/irma_logo.svg', alt
 export const ErrorMessage = styled(AscErrorMessage)`
 margin - top: ${themeSpacing(2)};
 `;
+
+export const MarkDownToLink: React.FC<{
+    href: string;
+}> = ({ href, children }) => <RRLink to={href}>{children}</RRLink>;

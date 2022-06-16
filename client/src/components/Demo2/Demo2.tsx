@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect, useReducer, useCallback } from 'react';
 import getGGW from '@services/getGGW';
-import content, { insertInPlaceholders, reduceAndTranslateEmptyVars } from '@services/content';
+import { insertInPlaceholders, reduceAndTranslateEmptyVars } from '@services/content-helpers';
 import ReactMarkDown from 'react-markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion } from '@amsterdam/asc-ui';
@@ -20,6 +20,7 @@ import { startSurvey as startUsabillaSurvey } from '@services/usabilla';
 import { SkipLinkEntry } from '@components/SkipLink/SkipLink';
 import useIrmaSession, { IIrmaSessionOutputData } from '@hooks/useIrmaSession';
 import { isMobile } from '@services/createIrmaSession';
+import { useContent } from '@services/ContentProvider';
 
 export interface IProps {}
 
@@ -48,6 +49,7 @@ function reducer(state: IState, newState: IState) {
 }
 
 const Demo2: React.FC<IProps> = () => {
+    const content = useContent();
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -160,7 +162,10 @@ const Demo2: React.FC<IProps> = () => {
                     icon={<AlertIcon />}
                     iconSize={22}
                     heading={content.demoEmptyVarsAlert.heading}
-                    content={`${content.demoEmptyVarsAlert.content}${reduceAndTranslateEmptyVars(state.emptyVars)}.`}
+                    content={`${content.demoEmptyVarsAlert.content}${reduceAndTranslateEmptyVars(
+                        state.emptyVars,
+                        content
+                    )}.`}
                     dataTestId="hasErrorAlert"
                 />
             );
@@ -218,7 +223,7 @@ const Demo2: React.FC<IProps> = () => {
                 {!hasResult && <DemoNotification />}
                 <ReactMarkDown
                     source={content.demo2.breadcrumbs}
-                    renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item }}
+                    renderers={{ list: BreadCrumbs, listItem: BreadCrumbs.Item, link: AscLocal.MarkDownToLink }}
                 />
                 {SkipLinkEntry}
                 <ReactMarkDown
@@ -334,7 +339,7 @@ const Demo2: React.FC<IProps> = () => {
                                     heading: AscLocal.H2,
                                     paragraph: AscLocal.Paragraph,
                                     list: AscLocal.UL,
-                                    link: AscLocal.InlineLink
+                                    link: AscLocal.MarkDownToLink
                                 }}
                             />
                         </section>

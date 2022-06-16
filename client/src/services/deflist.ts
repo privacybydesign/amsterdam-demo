@@ -12,43 +12,44 @@ const isdeflist = (node: any, i: number, parent: any) =>
     node.type === 'paragraph' &&
     parent.children[i - 1].type === 'paragraph';
 
-export default () => (tree: unknown): void => {
-    visit(tree, ['paragraph'], (node: any, i: number, parent: any) => {
-        const isdef = isdeflist(node, i, parent);
-        if (!isdef) {
-            return;
-        }
-
-        // Remove the ": " that we use to identify a deflist to begin with.
-        visit(node, (n: any) => {
-            if (typeof n.value !== 'undefined') {
-                n.value = n.value.replace(/^:\s+/, '');
+export default () =>
+    (tree: unknown): void => {
+        visit(tree, ['paragraph'], (node: any, i: number, parent: any) => {
+            const isdef = isdeflist(node, i, parent);
+            if (!isdef) {
+                return;
             }
-        });
 
-        const child = {
-            type: 'descriptionlist',
-            data: {
-                hName: 'dl'
-            },
-            children: [
-                {
-                    type: 'descriptionterm',
-                    data: {
-                        hName: 'dt'
-                    },
-                    children: parent.children[i - 1].children
-                },
-                {
-                    type: 'descriptiondetails',
-                    data: {
-                        hName: 'dd'
-                    },
-                    children: node.children
+            // Remove the ": " that we use to identify a deflist to begin with.
+            visit(node, (n: any) => {
+                if (typeof n.value !== 'undefined') {
+                    n.value = n.value.replace(/^:\s+/, '');
                 }
-            ]
-        };
+            });
 
-        parent.children.splice(i - 1, 2, child);
-    });
-};
+            const child = {
+                type: 'descriptionlist',
+                data: {
+                    hName: 'dl'
+                },
+                children: [
+                    {
+                        type: 'descriptionterm',
+                        data: {
+                            hName: 'dt'
+                        },
+                        children: parent.children[i - 1].children
+                    },
+                    {
+                        type: 'descriptiondetails',
+                        data: {
+                            hName: 'dd'
+                        },
+                        children: node.children
+                    }
+                ]
+            };
+
+            parent.children.splice(i - 1, 2, child);
+        });
+    };
