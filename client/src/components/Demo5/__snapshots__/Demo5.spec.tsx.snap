@@ -439,9 +439,18 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
 }
 
 .c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   width: 100%;
-  overflow-wrap: anywhere;
-  overflow: hidden;
 }
 
 .c2 > *:last-child {
@@ -452,7 +461,7 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
   position: relative;
   width: 100%;
   padding: 16px;
-  background-color: #e6e6e6;
+  background-color: #E6E6E6;
 }
 
 .c10 {
@@ -775,7 +784,7 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
   aria-live="polite"
   class="c0 c1"
   data-testid="hasResultAlert"
-  id="alert-sc-geBCVM c1"
+  id="alert-sc-cvdZrU c1"
   role="alert"
   tabindex="-1"
 >
@@ -794,7 +803,7 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M12.216 27.016 0 14.168l2.91-2.77 9.346 9.837L29.129 4 32 6.8z"
+            d="M12.216 27.016L0 14.168l2.91-2.77 9.346 9.837L29.129 4 32 6.8z"
             fill-rule="evenodd"
           />
         </svg>
@@ -1250,9 +1259,18 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 }
 
 .c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   width: 100%;
-  overflow-wrap: anywhere;
-  overflow: hidden;
 }
 
 .c2 > *:last-child {
@@ -1263,7 +1281,7 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
   position: relative;
   width: 100%;
   padding: 16px;
-  background-color: #e6e6e6;
+  background-color: #E6E6E6;
 }
 
 .c10 {
@@ -1275,7 +1293,7 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
 .c1 {
   margin-bottom: 16px;
   pointer-events: none;
-  background-color: #fec813;
+  background-color: #FEC813;
 }
 
 .c1 .alert-content {
@@ -1586,7 +1604,7 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
   aria-live="polite"
   class="c0 c1"
   data-testid="hasNoIrmaFlowAlert"
-  id="alert-sc-geBCVM c1"
+  id="alert-sc-cvdZrU c1"
   role="alert"
   tabindex="-1"
 >
@@ -2367,9 +2385,18 @@ exports[`Demo5 should update the page after failing the IRMA flow 2`] = `
 }
 
 .c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   width: 100%;
-  overflow-wrap: anywhere;
-  overflow: hidden;
 }
 
 .c2 > *:last-child {
@@ -2380,7 +2407,7 @@ exports[`Demo5 should update the page after failing the IRMA flow 2`] = `
   position: relative;
   width: 100%;
   padding: 16px;
-  background-color: #e6e6e6;
+  background-color: #E6E6E6;
 }
 
 .c10 {
@@ -2392,7 +2419,7 @@ exports[`Demo5 should update the page after failing the IRMA flow 2`] = `
 .c1 {
   margin-bottom: 16px;
   pointer-events: none;
-  background-color: #fec813;
+  background-color: #FEC813;
 }
 
 .c1 .alert-content {
@@ -2703,7 +2730,7 @@ exports[`Demo5 should update the page after failing the IRMA flow 2`] = `
   aria-live="polite"
   class="c0 c1"
   data-testid="hasErrorAlert"
-  id="alert-sc-geBCVM c1"
+  id="alert-sc-cvdZrU c1"
   role="alert"
   tabindex="-1"
 >

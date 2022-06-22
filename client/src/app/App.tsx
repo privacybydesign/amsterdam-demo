@@ -7,6 +7,7 @@ import usePageViews from '@hooks/usePageViews';
 import ScrollToTop from '@components/ScrollToTop/ScrollToTop';
 import { ContentProvider } from '@services/ContentProvider';
 import AppRoutes from './AppRoutes';
+import { UsabillaProvider } from '@services/usabilla';
 
 interface IProps {}
 
@@ -17,6 +18,7 @@ const App: React.FC<IProps> = () => {
         <ThemeProvider overrides={theme}>
             <ContentProvider>
                 <Bg>
+                    <UsabillaProvider />
                     <GlobalStyle />
                     <ScrollToTop />
                     <Switch>
