@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { safeSessionStorage } from 'safe-storage';
 import contentNL from './content-nl';
 import contentEN from './content-en';
@@ -31,16 +31,16 @@ export const ContentContext = React.createContext<ContentContextType>(defaultCon
 
 export const ContentProvider: React.FC = ({ children }) => {
     const sessionLanguage = safeSessionStorage.getItem(STORAGE_KEY) ?? Language.NL;
-    const [language, setLanguage] = useState<Language>(sessionLanguage);
 
     return (
         <ContentContext.Provider
             value={{
-                language,
-                content: language === Language.NL ? contentNL : contentEN,
+                language: sessionLanguage,
+                content: sessionLanguage === Language.NL ? contentNL : contentEN,
                 switchLanguage: l => {
                     safeSessionStorage.setItem(STORAGE_KEY, l);
-                    setLanguage(l);
+                    // eslint-disable-next-line no-self-assign
+                    window.location = window.location;
                 }
             }}
         >
