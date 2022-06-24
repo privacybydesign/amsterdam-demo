@@ -42,7 +42,7 @@ exports[`BreadCrumbs should render 3 items correctly 1`] = `
 
 .c1 a *:focus {
   outline: auto;
-  outline-color: #FEC813;
+  outline-color: #fec813;
   outline-style: solid;
   outline-width: 2px;
   outline-offset: 4px;
@@ -93,7 +93,7 @@ exports[`BreadCrumbs should render 3 items correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+        d="m9.757 32-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
         fill-rule="evenodd"
       />
     </svg>
@@ -116,7 +116,7 @@ exports[`BreadCrumbs should render 3 items correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M9.757 32l-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
+        d="m9.757 32-2.9-2.91L19.937 16 6.857 2.91 9.757 0l16 16z"
         fill-rule="evenodd"
       />
     </svg>
