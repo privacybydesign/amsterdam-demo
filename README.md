@@ -4,8 +4,8 @@ This project provides the source code of the Amsterdam IRMA demo website.
 It consists of a React frontend and NodeJS backend which is in charge of communicating with an IRMA server. 
 This project does not provide a locally running IRMA server.
 
-- [https//acc.id.amsterdam.nl](https://acc.id.amsterdam.nl)
-- [https//acc.amsterdam.nl](https://id.amsterdam.nl)
+- PROD: [https://id.amsterdam.nl](https://id.amsterdam.nl)
+- ACC: [https://acc.id.amsterdam.nl](https://acc.id.amsterdam.nl)
 
 ## Configure
 
