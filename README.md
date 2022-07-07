@@ -4,6 +4,9 @@ This project provides the source code of the Amsterdam IRMA demo website.
 It consists of a React frontend and NodeJS backend which is in charge of communicating with an IRMA server. 
 This project does not provide a locally running IRMA server.
 
+- [https//acc.id.amsterdam.nl](https://acc.id.amsterdam.nl)
+- [https//acc.amsterdam.nl](https://id.amsterdam.nl)
+
 ## Configure
 
 Make sure to configure the backend properly. By default it is configured to connect to the Amsterdam IRMA server on the Acceptance environment. To be able to connect locally you will need to obtain the PRIVATE key.
