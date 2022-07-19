@@ -29,7 +29,7 @@ Download the IRMA app for iOS or Android:  \n
 [![Play Store](/assets/download-play-store.svg "Download IRMA from Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
 
 Would you like to know more about IRMA?
-[Go to the IRMA website](https://irma.app/?lang=nl)`
+[Go to the IRMA website](https://irma.app/?lang=en)`
         },
         subtitle: `## Getting started with IRMA`,
         demo1Card: {
@@ -64,7 +64,7 @@ Would you like to know more about IRMA?
         heading: `This is a demo site`,
         content: `You can find out here what you can do with the IRMA app. Your details will not be kept.`
     },
-    downloadIrma: `Do you not yet have IRMA?  \n[Download IRMA](https://irma.app/?lang=nl)`,
+    downloadIrma: `Do you not yet have IRMA?  \n[Download IRMA](https://irma.app/?lang=en)`,
     noSavePromise: `**The data you have just shared with IRMA will not be kept.**`,
     callToAction: `[Try the other demos](/)`,
     demoErrorAlert: {
