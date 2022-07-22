@@ -476,7 +476,6 @@ Everyone should be able to use local and central government websites. This is wh
 - Our employees keep their knowledge about accessibility up to date.
 ## Areas that are not yet accessible
 - If style sheets are deactivated, the IRMA QR code appears at the bottom of the page. In that case, the QR code can only get focus using the keyboard.
-- In the Usabilla feedback panel, no tooltips are displayed with any of the five rating stars.
 - In the Usabilla feedback panel, the ‘Powered by GetFeedback’ text is lacking a 'UK’ language attribute.
 - In the Usabilla feedback panel, ‘Reporting something specific’ is not clearly recognizable for a screen reader.\n
 Have you found a page that you cannot read or use? Please let us know, using our [contact form](https://formulieren.amsterdam.nl/TripleForms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx).
