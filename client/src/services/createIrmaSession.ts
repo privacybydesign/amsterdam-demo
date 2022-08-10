@@ -26,7 +26,7 @@ export const getConfig = async (): Promise<IIrmaServerConfig> => {
 };
 
 export const isMobile = (): boolean => {
-    return true || userAgent === 'Android' || userAgent === 'iOS';
+    return userAgent === 'Android' || userAgent === 'iOS';
 };
 
 // Types for Irma Plugins
