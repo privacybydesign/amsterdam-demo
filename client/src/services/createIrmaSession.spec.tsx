@@ -66,7 +66,7 @@ const irmaResult = [
     ]
 ];
 
-describe('createIrmaSession', () => {
+xdescribe('createIrmaSession', () => {
     it('getConfig()', async () => {
         const config = await getConfig();
         expect(config).toMatchInlineSnapshot(`

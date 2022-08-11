@@ -775,7 +775,7 @@ exports[`Demo5 should update the page after completing the IRMA flow 1`] = `
   aria-live="polite"
   class="c0 c1"
   data-testid="hasResultAlert"
-  id="alert-sc-geBCVM c1"
+  id="alert-sc-clGGWX c1"
   role="alert"
   tabindex="-1"
 >
@@ -1157,7 +1157,13 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
   flex-shrink: 0;
 }
 
-.c17 .c3 {
+.c15 .c3 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c18 .c3 {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
@@ -1230,18 +1236,18 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
   justify-content: space-between;
 }
 
-.c16 .c3 svg circle,
-.c16:hover .c3 svg circle,
-.c16 .c3 svg rect,
-.c16:hover .c3 svg rect,
-.c16 .c3 svg polygon,
-.c16:hover .c3 svg polygon,
-.c16 .c3 svg path,
-.c16:hover .c3 svg path {
+.c17 .c3 svg circle,
+.c17:hover .c3 svg circle,
+.c17 .c3 svg rect,
+.c17:hover .c3 svg rect,
+.c17 .c3 svg polygon,
+.c17:hover .c3 svg polygon,
+.c17 .c3 svg path,
+.c17:hover .c3 svg path {
   fill: #ffffff;
 }
 
-.c15 .c6 {
+.c16 .c6 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1586,7 +1592,7 @@ exports[`Demo5 should update the page after completing the demo without IRMA flo
   aria-live="polite"
   class="c0 c1"
   data-testid="hasNoIrmaFlowAlert"
-  id="alert-sc-geBCVM c1"
+  id="alert-sc-clGGWX c1"
   role="alert"
   tabindex="-1"
 >
@@ -2703,7 +2709,7 @@ exports[`Demo5 should update the page after failing the IRMA flow 2`] = `
   aria-live="polite"
   class="c0 c1"
   data-testid="hasErrorAlert"
-  id="alert-sc-geBCVM c1"
+  id="alert-sc-clGGWX c1"
   role="alert"
   tabindex="-1"
 >

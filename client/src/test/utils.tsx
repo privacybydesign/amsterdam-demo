@@ -1,3 +1,5 @@
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 import React, { ReactElement } from 'react';
 import { Route } from 'react-router';
 import { createMemoryHistory } from 'history';
@@ -5,9 +7,8 @@ import { Router } from 'react-router-dom';
 import { toBeVisible, toBeInTheDocument } from '@testing-library/jest-dom/matchers';
 import { render, RenderResult, RenderOptions, cleanup } from '@testing-library/react';
 import { GlobalStyle, ThemeProvider } from '@amsterdam/asc-ui';
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
 import theme from '@services/theme';
+import { ContentProvider } from '@services/ContentProvider';
 
 expect.extend({ toBeVisible, toBeInTheDocument });
 
@@ -15,10 +16,12 @@ export const history = createMemoryHistory();
 
 const providers: React.FC = ({ children }): ReactElement => (
     <ThemeProvider overrides={theme}>
-        <GlobalStyle />
-        <Router history={history}>
-            <Route path="/">{children}</Route>
-        </Router>
+        <ContentProvider>
+            <GlobalStyle />
+            <Router history={history}>
+                <Route path="/">{children}</Route>
+            </Router>
+        </ContentProvider>
     </ThemeProvider>
 );
 
@@ -188,4 +191,24 @@ const setupMockedAPI = (mockedAxios: MockAdapter): void => {
                 ]
             }
         });
+};
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const setupIrmaMocks = (reduceIRMAResult: any, createIrmaSession: any, input: any) => {
+    const mockedReduceIRMAResult = reduceIRMAResult as jest.Mock<{ over18: string }>;
+    mockedReduceIRMAResult.mockReturnValue(input);
+
+    const mockedCreateIrmaSession = createIrmaSession as jest.Mock<unknown>;
+    mockedCreateIrmaSession.mockReturnValue({
+        start: () =>
+            new Promise(resolve =>
+                setTimeout(
+                    () =>
+                        resolve({
+                            disclosed: input
+                        }),
+                    90
+                )
+            )
+    });
 };

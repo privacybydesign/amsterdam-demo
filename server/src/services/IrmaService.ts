@@ -42,7 +42,8 @@ export default class {
         Logger.info(`IrmaService.createDisclosureRequest called with request ${JSON.stringify(request)}`);
 
         // Return sessionPtr (QR Code) and token
-        return await this.irmaBackend.startSession(jwt);
+        const res = await this.irmaBackend.startSession(jwt);
+        return res;
     };
 
     public requestDisclosureSession = async (

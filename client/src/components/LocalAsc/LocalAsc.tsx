@@ -175,6 +175,65 @@ export const QRCodeButton: React.FC<any> = styled(Button).attrs(props => ({
     margin: ${themeSpacing(0, 6, 6, 0)};
 `;
 
+export const QRCodeLink: React.FC<any> = styled(
+    ({
+        dataTestId,
+        href,
+        children,
+        className,
+        onClick
+    }: {
+        dataTestId: string;
+        href: string;
+        children: React.ReactNode;
+        className: string;
+        onClick?: (e: React.SyntheticEvent) => void;
+    }) => {
+        return (
+            <Link dataTestId={dataTestId} href={href} className={className} onClick={onClick}>
+                <span className="icon-wrapper">
+                    <IrmaLogoIcon />
+                </span>
+                {children}
+            </Link>
+        );
+    }
+).attrs(props => ({
+    'data-testid': (props as any).dataTestId || 'qrCodeButton',
+    variant: 'secondary',
+    iconSize: 24,
+    iconLeft: <IrmaLogoIcon />
+}))`
+    margin: ${themeSpacing(0, 6, 6, 0)};
+    height: 44px;
+    white-space: nowrap;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 12px 16px;
+    transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
+    min-width: 90px;
+    background-color: #ec0000;
+    color: #ffffff;
+
+    &:hover {
+        color: white;
+        text-decoration: none;
+        background-color: #b90000;
+    }
+
+    > .icon-wrapper {
+        display: flex;
+        width: 24px;
+        height: 24px;
+        box-sizing: content-box;
+
+        margin-right: 10px;
+    }
+`;
+
 interface IAlertProps {
     className?: string;
     children?: React.ReactNode;
@@ -460,3 +519,8 @@ margin - top: ${themeSpacing(2)};
 export const MarkDownToLink: React.FC<{
     href: string;
 }> = ({ href, children }) => <RRLink to={href}>{children}</RRLink>;
+
+export const ShowQRLink = styled(UnderlinedLink)`
+    display: block;
+    margin: ${themeSpacing(2)} 0;
+`;

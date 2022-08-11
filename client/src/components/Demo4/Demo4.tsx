@@ -63,44 +63,43 @@ const Demo4: React.FC<IProps> = () => {
         return false;
     };
 
-    const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
-
-    const getSession = useCallback(
-        (event, alwaysShowQRCode = false) => {
-            event.persist();
-            if (validateForm()) {
-                startIrmaSession({
-                    demoPath: 'demos/demo4',
-                    useDemoCredentials: credentialSource === CredentialSource.DEMO,
-                    alwaysShowQRCode,
-                    resultCallback: async (result: any) => {
-                        if (result) {
-                            dispatch({
-                                type: 'setProperties',
-                                payload: {
-                                    name: result['fullname'],
-                                    street: result['street'],
-                                    houseNumber: result['houseNumber'],
-                                    zipcode: result['zipcode'],
-                                    city: result['city'],
-                                    telephone: result['mobilenumber'],
-                                    email: result['email']
-                                }
-                            });
-                        } else {
-                            dispatch({
-                                type: 'setError'
-                            });
-                        }
-
-                        window.scrollTo(0, 0);
-                        startUsabillaSurvey();
+    const { modal, url, showModal, irmaSession }: IIrmaSessionOutputData = useIrmaSession({
+        irmaQrId: 'irma-qr-geveltuin',
+        demoPath: 'demos/demo4',
+        useDemoCredentials: credentialSource === CredentialSource.DEMO,
+        alwaysShowQRCode: isMobile(),
+        resultCallback: async (result: any) => {
+            if (result) {
+                dispatch({
+                    type: 'setProperties',
+                    payload: {
+                        name: result['fullname'],
+                        street: result['street'],
+                        houseNumber: result['houseNumber'],
+                        zipcode: result['zipcode'],
+                        city: result['city'],
+                        telephone: result['mobilenumber'],
+                        email: result['email']
                     }
                 });
+            } else {
+                dispatch({
+                    type: 'setError'
+                });
             }
-        },
-        [credentialSource, startIrmaSession]
-    );
+
+            window.scrollTo(0, 0);
+            startUsabillaSurvey();
+        }
+    });
+
+    useEffect(() => {
+        return () => {
+            if (typeof irmaSession?.abort === 'function') {
+                irmaSession.abort();
+            }
+        };
+    }, [irmaSession]);
 
     const [headerImg, setHeaderImg] = useState<IHeaderImageProps>({
         filename: content.responsiveImages.demo4.header.src,
@@ -260,9 +259,30 @@ const Demo4: React.FC<IProps> = () => {
                                 />
                             </section>
                             <section>
-                                <AscLocal.QRCodeButton onClick={getSession}>
-                                    {content.demo4.button}
-                                </AscLocal.QRCodeButton>
+                                {isMobile() ? (
+                                    <AscLocal.QRCodeLink
+                                        onClick={(e: React.SyntheticEvent) => {
+                                            if (!validateForm()) {
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                            }
+                                        }}
+                                        dataTestId="qrCodeButtonGeveltuin"
+                                        href={url}
+                                    >
+                                        {content.demo4.button}
+                                    </AscLocal.QRCodeLink>
+                                ) : (
+                                    <AscLocal.QRCodeButton
+                                        onClick={() => {
+                                            if (validateForm()) {
+                                                showModal();
+                                            }
+                                        }}
+                                    >
+                                        {content.demo4.button}
+                                    </AscLocal.QRCodeButton>
+                                )}
                                 {modal}
                             </section>
                             <section>
@@ -276,11 +296,15 @@ const Demo4: React.FC<IProps> = () => {
                                     <p>
                                         {content.showQrOnMobile.label}
                                         <br />
-                                        <AscLocal.UnderlinedLink
-                                            onClick={(e: React.SyntheticEvent) => getSession(e, true)}
+                                        <AscLocal.ShowQRLink
+                                            onClick={() => {
+                                                if (validateForm()) {
+                                                    showModal();
+                                                }
+                                            }}
                                         >
                                             {content.showQrOnMobile.link}
-                                        </AscLocal.UnderlinedLink>
+                                        </AscLocal.ShowQRLink>
                                     </p>
                                 </section>
                             )}

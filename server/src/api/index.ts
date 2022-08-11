@@ -58,11 +58,8 @@ export const processDemoRequest = async (
         const credentialsToRequest = selectCredentialsToRequest(req, demoCredentials, ...args);
         const { token, sessionPtr } = await irmaServiceInstance.requestDisclosureSession(credentialsToRequest);
 
-        // Store token in session
-        (req.session as any)!.token = token;
-
         // Return QR Code and also the signed session id
-        const sessionId = encodeURIComponent(req.sessionID);
+        const sessionId = encodeURIComponent(token);
         return res.status(200).json({ sessionPtr, sessionId });
     } catch (e) {
         Logger.error('🔥 error: %o', e);

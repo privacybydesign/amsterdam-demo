@@ -103,7 +103,7 @@ const Demo5: React.FC<IProps> = () => {
 
     // IRMA session
     // Only use IRMA flow when the user selected the Yes option phone, email or both
-    const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
+    const { modal, showModal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
     const getSession = useCallback(
         (event, alwaysShowQRCode = false) => {
@@ -116,7 +116,10 @@ const Demo5: React.FC<IProps> = () => {
                     email: Boolean(validatedForm.values.optionEmail)
                 };
 
+                showModal();
+
                 startIrmaSession({
+                    irmaQrId: 'irma-qr',
                     demoPath: 'demos/demo5',
                     useDemoCredentials: credentialSource === CredentialSource.DEMO,
                     alwaysShowQRCode,

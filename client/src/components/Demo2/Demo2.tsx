@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useReducer, useCallback } from 'react';
+import React, { useState, useMemo, useEffect, useReducer } from 'react';
 import getGGW from '@services/getGGW';
 import { insertInPlaceholders, reduceAndTranslateEmptyVars } from '@services/content-helpers';
 import ReactMarkDown from 'react-markdown';
@@ -53,56 +53,57 @@ const Demo2: React.FC<IProps> = () => {
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
+    const { modal, url, showModal, irmaSession }: IIrmaSessionOutputData = useIrmaSession({
+        irmaQrId: 'irma-qr-buurt',
+        demoPath: 'demos/demo2',
+        useDemoCredentials: credentialSource === CredentialSource.DEMO,
+        alwaysShowQRCode: isMobile(),
+        resultCallback: async (result: any) => {
+            const newState: IState = { ...initialState };
+            if (result) {
+                newState.hasResult = true;
+                newState.hasError = false;
 
-    const getSession = useCallback(
-        (event, alwaysShowQRCode = false) => {
-            event.persist();
-            startIrmaSession({
-                demoPath: 'demos/demo2',
-                useDemoCredentials: credentialSource === CredentialSource.DEMO,
-                alwaysShowQRCode,
-                resultCallback: async (result: any) => {
-                    const newState: IState = { ...initialState };
-                    if (result) {
-                        newState.hasResult = true;
-                        newState.hasError = false;
+                newState.isOver18 =
+                    result['over18'] === 'Yes' ||
+                    result['over18'] === 'yes' ||
+                    result['over18'] === 'Ja' ||
+                    result['over18'] === 'ja';
 
-                        newState.isOver18 =
-                            result['over18'] === 'Yes' ||
-                            result['over18'] === 'yes' ||
-                            result['over18'] === 'Ja' ||
-                            result['over18'] === 'ja';
-
-                        if (result['over18']?.length === 0) {
-                            newState.emptyVars.push('over18');
-                        }
-
-                        if (!result['zipcode']) {
-                            newState.emptyVars.push('zipcode');
-                        } else {
-                            const postcode = result['zipcode'].replace(/ /, '');
-
-                            const ggwResponse = await getGGW(postcode);
-
-                            if (ggwResponse) {
-                                newState.wijk = ggwResponse.buurtcombinatieNamen;
-                                newState.code = ggwResponse.ggwCode;
-                                newState.ggw = ggwResponse.ggwNaam;
-                            }
-                        }
-                    } else {
-                        newState.hasError = true;
-                    }
-
-                    dispatch(newState);
-                    window.scrollTo(0, 0);
-                    startUsabillaSurvey();
+                if (result['over18']?.length === 0) {
+                    newState.emptyVars.push('over18');
                 }
-            });
-        },
-        [credentialSource, startIrmaSession]
-    );
+
+                if (!result['zipcode']) {
+                    newState.emptyVars.push('zipcode');
+                } else {
+                    const postcode = result['zipcode'].replace(/ /, '');
+
+                    const ggwResponse = await getGGW(postcode);
+
+                    if (ggwResponse) {
+                        newState.wijk = ggwResponse.buurtcombinatieNamen;
+                        newState.code = ggwResponse.ggwCode;
+                        newState.ggw = ggwResponse.ggwNaam;
+                    }
+                }
+            } else {
+                newState.hasError = true;
+            }
+
+            dispatch(newState);
+            window.scrollTo(0, 0);
+            startUsabillaSurvey();
+        }
+    });
+
+    useEffect(() => {
+        return () => {
+            if (typeof irmaSession?.abort === 'function') {
+                irmaSession.abort();
+            }
+        };
+    }, [irmaSession]);
 
     const { hasResult, hasError, emptyVars, isOver18, wijk, ggw, code } = state;
 
@@ -268,9 +269,15 @@ const Demo2: React.FC<IProps> = () => {
                                 </AscLocal.AccordionContainer>
                             </section>
                             <section>
-                                <AscLocal.QRCodeButton onClick={getSession}>
-                                    {content.demo2.button}
-                                </AscLocal.QRCodeButton>
+                                {isMobile() ? (
+                                    <AscLocal.QRCodeLink dataTestId="qrCodeButtonBuurt" href={url}>
+                                        {content.demo2.button}
+                                    </AscLocal.QRCodeLink>
+                                ) : (
+                                    <AscLocal.QRCodeButton onClick={showModal}>
+                                        {content.demo2.button}
+                                    </AscLocal.QRCodeButton>
+                                )}
                                 {modal}
                             </section>
                             <section>
@@ -287,11 +294,9 @@ const Demo2: React.FC<IProps> = () => {
                                     <p>
                                         {content.showQrOnMobile.label}
                                         <br />
-                                        <AscLocal.UnderlinedLink
-                                            onClick={(e: React.SyntheticEvent) => getSession(e, true)}
-                                        >
+                                        <AscLocal.ShowQRLink onClick={showModal}>
                                             {content.showQrOnMobile.link}
-                                        </AscLocal.UnderlinedLink>
+                                        </AscLocal.ShowQRLink>
                                     </p>
                                 </section>
                             )}

@@ -1,8 +1,9 @@
 import React from 'react';
 import { screen, act, fireEvent } from '@testing-library/react';
-import { setupMocks, wrappedRender } from '@test/utils';
+import { setupIrmaMocks, setupMocks, wrappedRender } from '@test/utils';
 import Demo4 from '@components/Demo4/Demo4';
 import createIrmaSession from '@services/createIrmaSession';
+import reduceIRMAResult from '@services/reduceIRMAResult';
 import content from '@services/content-nl';
 
 // Setup all the generic mocks
@@ -10,6 +11,7 @@ setupMocks();
 
 // MockcreateIrmaSession
 jest.mock('@services/createIrmaSession');
+jest.mock('@services/reduceIRMAResult');
 
 describe('Demo4', () => {
     it('should render the initial header image', async () => {
@@ -27,15 +29,15 @@ describe('Demo4', () => {
         const QRCodeButton = screen.getByTestId('qrCodeButton');
         await act(async (): Promise<any> => await fireEvent.click(QRCodeButton));
 
-        // Expect modal not to be shown
-        const QRCodeModal = screen.queryByTestId('qrCodeModal');
-        expect(QRCodeModal).not.toBeInTheDocument();
+        // Expect error message to be shown.
+        expect(
+            screen.getByText('Vergeet niet om aan te geven of u eigenaar bent van de woning waar de geveltuin komt.')
+        ).toBeInTheDocument();
     });
 
     it('should update the page after completing the IRMA flow', async () => {
         // Adjust mocked CreateIrmaSession to return a correct credentials
-        const mockedCreateIrmaSession = createIrmaSession as jest.Mock<unknown>;
-        mockedCreateIrmaSession.mockReturnValue({
+        setupIrmaMocks(reduceIRMAResult, createIrmaSession, {
             fullname: 'Test test',
             street: 'Teststraat',
             houseNumber: 100,
@@ -45,11 +47,20 @@ describe('Demo4', () => {
             email: 'test@test.com'
         });
 
+        // Need to use fakeTimers to control when results come in
+        jest.useFakeTimers();
+
         // Render demo 4
         await act(async (): Promise<any> => await wrappedRender(<Demo4 />));
 
+        await screen.findByText('Demo-aanvraag Geveltuin');
+
+        screen.getByRole('group', {
+            name: /bent u eigenaar van de woning waar de geveltuin komt\?/i
+        });
+
         // Fill in form
-        const radioOption = screen.getByLabelText(content.demo4.form.optionYes);
+        const radioOption = screen.getByText(content.demo4.form.optionYes);
         act(() => {
             fireEvent.click(radioOption);
         });
@@ -57,6 +68,10 @@ describe('Demo4', () => {
         // Trigger IRMA flow
         const QRCodeButton = screen.getByTestId('qrCodeButton');
         await act(async (): Promise<any> => await fireEvent.click(QRCodeButton));
+
+        jest.advanceTimersByTime(110);
+
+        await screen.findByRole('alert');
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');
@@ -73,8 +88,9 @@ describe('Demo4', () => {
 
     it('should update the page after failing the IRMA flow', async () => {
         // Adjust mocked CreateIrmaSession to return a correct credentials
-        const mockedCreateIrmaSession = createIrmaSession as jest.Mock<unknown>;
-        mockedCreateIrmaSession.mockReturnValue(null);
+        setupIrmaMocks(reduceIRMAResult, createIrmaSession, null);
+
+        jest.useFakeTimers();
 
         // Render demo 4
         await act(async (): Promise<any> => await wrappedRender(<Demo4 />));
@@ -88,6 +104,10 @@ describe('Demo4', () => {
         // Trigger IRMA flow
         const QRCodeButton = screen.getByTestId('qrCodeButton');
         await act(async (): Promise<any> => await fireEvent.click(QRCodeButton));
+
+        jest.advanceTimersByTime(110);
+
+        await screen.findAllByRole('alert');
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');

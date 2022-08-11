@@ -12,6 +12,7 @@ export interface IProps extends React.HTMLAttributes<any> {
     QRIsShowing: boolean;
     hideForMobileFlow?: boolean;
     closeModal: () => void;
+    irmaQrId: string;
 }
 
 const IrmaSessionModal: React.FC<IProps> = ({
@@ -19,7 +20,8 @@ const IrmaSessionModal: React.FC<IProps> = ({
     QRIsShowing,
     closeModal,
     className,
-    hideForMobileFlow = false
+    hideForMobileFlow = false,
+    irmaQrId
 }) => {
     const content = useContent();
 
@@ -33,6 +35,7 @@ const IrmaSessionModal: React.FC<IProps> = ({
             zIndexOffset={2}
             title={content.qrcode.title}
             hideForMobileFlow={hideForMobileFlow}
+            disablePortal
         >
             <>
                 <StyledHeader>
@@ -56,7 +59,7 @@ const IrmaSessionModal: React.FC<IProps> = ({
                         <QRCodeTopRight />
                         <QRCodeBottomRight />
                         <QRCodeBottomLeft />
-                        <IrmaWebElement id="irma-qr" />
+                        <IrmaWebElement id={irmaQrId} />
                     </CanvasWrapper>
                 </ModalWrapper>
             </>

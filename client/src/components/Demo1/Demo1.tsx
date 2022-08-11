@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactMarkDown from 'react-markdown';
 import styled from 'styled-components';
 import { Accordion, themeSpacing } from '@amsterdam/asc-ui';
@@ -32,65 +32,77 @@ const Demo1: React.FC<IProps> = () => {
     const [hasResult65, setHasResult65] = useState<boolean>(false);
     const [hasError, setHasError] = useState<boolean>(false);
 
-    const { modal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
+    const {
+        modal: modalOver18,
+        url: urlOver18,
+        showModal: showModalOver18,
+        irmaSession: sessionOver18
+    }: IIrmaSessionOutputData = useIrmaSession({
+        irmaQrId: 'irma-qr-18',
+        demoPath: 'demos/demo1/18',
+        useDemoCredentials: credentialSource === CredentialSource.DEMO,
+        alwaysShowQRCode: isMobile(),
+        resultCallback: (result: any) => {
+            if (result && result?.over18 !== undefined) {
+                setIsOver18(
+                    result['over18'] === 'Yes' ||
+                        result['over18'] === 'yes' ||
+                        result['over18'] === 'Ja' ||
+                        result['over18'] === 'ja'
+                );
+                setHasResult18(true);
+                setHasError(false);
+            } else {
+                setHasError(true);
+            }
 
-    const getSessionOver18 = useCallback(
-        (event, alwaysShowQRCode = false) => {
-            event.persist();
-            startIrmaSession({
-                demoPath: 'demos/demo1/18',
-                useDemoCredentials: credentialSource === CredentialSource.DEMO,
-                alwaysShowQRCode,
-                resultCallback: (result: any) => {
-                    if (result) {
-                        setIsOver18(
-                            result['over18'] === 'Yes' ||
-                                result['over18'] === 'yes' ||
-                                result['over18'] === 'Ja' ||
-                                result['over18'] === 'ja'
-                        );
-                        setHasResult18(true);
-                        setHasError(false);
-                    } else {
-                        setHasError(true);
-                    }
+            window.scrollTo(0, 0);
+            startUsabillaSurvey();
+        }
+    });
 
-                    window.scrollTo(0, 0);
-                    startUsabillaSurvey();
-                }
-            });
-        },
-        [credentialSource, startIrmaSession]
-    );
+    const {
+        modal: modalOver65,
+        url: urlOver65,
+        showModal: showModalOver65,
+        irmaSession: sessionOver65
+    } = useIrmaSession({
+        irmaQrId: 'irma-qr-65',
+        demoPath: 'demos/demo1/65',
+        useDemoCredentials: credentialSource === CredentialSource.DEMO,
+        alwaysShowQRCode: isMobile(),
+        resultCallback: (result: any) => {
+            if (result && result?.over65 !== undefined) {
+                setIsOver65(
+                    (result as any)['over65'] === 'Yes' ||
+                        (result as any)['over65'] === 'yes' ||
+                        (result as any)['over65'] === 'Ja' ||
+                        (result as any)['over65'] === 'ja'
+                );
+                setHasResult65(true);
+                setHasError(false);
+            } else {
+                setHasError(true);
+            }
 
-    const getSessionOver65 = useCallback(
-        (event, alwaysShowQRCode = false) => {
-            event.persist();
-            startIrmaSession({
-                demoPath: 'demos/demo1/65',
-                useDemoCredentials: credentialSource === CredentialSource.DEMO,
-                alwaysShowQRCode,
-                resultCallback: (result: any) => {
-                    if (result) {
-                        setIsOver65(
-                            (result as any)['over65'] === 'Yes' ||
-                                (result as any)['over65'] === 'yes' ||
-                                (result as any)['over65'] === 'Ja' ||
-                                (result as any)['over65'] === 'ja'
-                        );
-                        setHasResult65(true);
-                        setHasError(false);
-                    } else {
-                        setHasError(true);
-                    }
+            window.scrollTo(0, 0);
+            startUsabillaSurvey();
+        }
+    });
 
-                    window.scrollTo(0, 0);
-                    startUsabillaSurvey();
-                }
-            });
-        },
-        [credentialSource, startIrmaSession]
-    );
+    useEffect(() => {
+        return () => {
+            if (typeof sessionOver18?.abort === 'function') {
+                console.log('abort session 18');
+                sessionOver18.abort();
+            }
+
+            if (typeof sessionOver65?.abort === 'function') {
+                console.log('abort session 65');
+                sessionOver65.abort();
+            }
+        };
+    }, [sessionOver18, sessionOver65]);
 
     // Preload demo images
     useEffect(() => {
@@ -240,13 +252,27 @@ const Demo1: React.FC<IProps> = () => {
                                 </AscLocal.AccordionContainer>
                             </section>
                             <section>
-                                <AscLocal.QRCodeButton dataTestId="qrCodeButton18" onClick={getSessionOver18}>
-                                    {content.demo1.button18}
-                                </AscLocal.QRCodeButton>
-                                <AscLocal.QRCodeButton dataTestId="qrCodeButton65" onClick={getSessionOver65}>
-                                    {content.demo1.button65}
-                                </AscLocal.QRCodeButton>
-                                {modal}
+                                {isMobile() ? (
+                                    <>
+                                        <AscLocal.QRCodeLink dataTestId="qrCodeButton18" href={urlOver18}>
+                                            {content.demo1.button18}
+                                        </AscLocal.QRCodeLink>
+                                        <AscLocal.QRCodeLink dataTestId="qrCodeButton65" href={urlOver65}>
+                                            {content.demo1.button65}
+                                        </AscLocal.QRCodeLink>
+                                    </>
+                                ) : (
+                                    <>
+                                        <AscLocal.QRCodeButton dataTestId="qrCodeButton18" onClick={showModalOver18}>
+                                            {content.demo1.button18}
+                                        </AscLocal.QRCodeButton>
+                                        <AscLocal.QRCodeButton dataTestId="qrCodeButton65" onClick={showModalOver65}>
+                                            {content.demo1.button65}
+                                        </AscLocal.QRCodeButton>
+                                    </>
+                                )}
+                                {modalOver18}
+                                {modalOver65}
                             </section>
                             <section>
                                 <ReactMarkDown
@@ -258,12 +284,12 @@ const Demo1: React.FC<IProps> = () => {
                                 <section>
                                     <p>
                                         {content.showQrOnMobile.label}
-                                        <ShowQRLink onClick={(e: React.SyntheticEvent) => getSessionOver18(e, true)}>
+                                        <AscLocal.ShowQRLink onClick={showModalOver18}>
                                             {content.demo1.showQrOnMobile.link18}
-                                        </ShowQRLink>
-                                        <ShowQRLink onClick={(e: React.SyntheticEvent) => getSessionOver65(e, true)}>
+                                        </AscLocal.ShowQRLink>
+                                        <AscLocal.ShowQRLink onClick={showModalOver65}>
                                             {content.demo1.showQrOnMobile.link65}
-                                        </ShowQRLink>
+                                        </AscLocal.ShowQRLink>
                                     </p>
                                 </section>
                             )}
@@ -353,10 +379,5 @@ const Demo1: React.FC<IProps> = () => {
         </PageTemplate>
     );
 };
-
-const ShowQRLink = styled(AscLocal.UnderlinedLink)`
-    display: block;
-    margin: ${themeSpacing(2)} 0;
-`;
 
 export default Demo1;

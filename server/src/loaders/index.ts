@@ -14,7 +14,6 @@ export interface ILoaderArgs {
 // Main app setup
 export default async (loaderArgs: ILoaderArgs) => {
     await expressLoader(loaderArgs);
-    await sessionLoader(loaderArgs);
     await routesLoader(loaderArgs);
     await frontendLoader(loaderArgs);
 
