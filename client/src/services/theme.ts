@@ -38,7 +38,8 @@ const theme: Partial<Theme.ThemeInterface> = {
             margin: 20,
             max: sizes.mobileL
         }
-    }
+    },
+    typography: { ...ascDefaultTheme.typography, fontFamily: 'Amsterdam Sans, Arial, Helvetica, sans-serif' }
 };
 
 // SIZES:
