@@ -138,7 +138,7 @@ const IrmaWebElement = styled.div`
     p,
     a {
         color: ${themeColor('tint', 'level7')} !important;
-        font-family: 'Avenir Next' !important;
+        font-family: 'Amsterdam Sans' !important;
         font-size: 17px !important;
     }
 `;
