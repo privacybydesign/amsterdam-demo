@@ -67,7 +67,7 @@ const IrmaSessionModal: React.FC<IProps> = ({
     );
 };
 
-const IrmaLogo = styled.img.attrs({ src: '/assets/irma_logo.svg', role: 'presentation' })`
+const IrmaLogo = styled.img.attrs({ src: '/assets/yivi_logo_button.svg', role: 'presentation' })`
     position: absolute;
     width: 65px;
     height: 65px;
