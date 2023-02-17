@@ -3,7 +3,7 @@
 
 const content = {
     header: {
-        title: `Give IRMA a try`,
+        title: `Give Yivi a try`,
         homeLink: `https://amsterdam.nl/`,
         skipLink: {
             content: `Directly to content `,
@@ -12,26 +12,26 @@ const content = {
     },
     home: {
         breadcrumbs: `- [Home](/)`,
-        title: `# Discover IRMA with the help of five demos`,
-        intro: `IRMA is an app you can use to prove who you are when online. IRMA offers a new way of logging in, and is different to other familiar methods like DigiD. You will soon be able to use IRMA in Amsterdam.
-Various demos are already available that you can use to find out how IRMA works. Use your own details to see the demos. The City of Amsterdam will not store this data.
+        title: `# Discover Yivi with the help of five demos`,
+        intro: `Yivi is an app you can use to prove who you are when online. Yivi offers a new way of logging in, and is different to other familiar methods like DigiD. You will soon be able to use IRMA in Amsterdam.
+Various demos are already available that you can use to find out how Yivi works. Use your own details to see the demos. The City of Amsterdam will not store this data.
         `,
         requirements: {
             title: `What do you need?`,
-            body: `You can do the demo&apos;s with IRMA if you have installed the IRMA app on your phone and if you have added the following details to IRMA:
+            body: `You can do the demo&apos;s with Yivi if you have installed the Yivi app on your phone and if you have added the following details to Yivi:
 - Your personal data
 - Your address
 - Your e-mail address
 - Your telephone number
-## Installing IRMA
-Download the IRMA app for iOS or Android:  \n
-[![App Store](/assets/download-app-store.svg "Download IRMA from the App Store")](https://apps.apple.com/nl/app/irma-authenticatie/id1294092994)
-[![Play Store](/assets/download-play-store.svg "Download IRMA from Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
+## Installing Yivi
+Download the Yivi app for iOS or Android:  \n
+[![App Store](/assets/download-app-store.svg "Download Yivi from the App Store")](https://apps.apple.com/nl/app/irma-authenticatie/id1294092994)
+[![Play Store](/assets/download-play-store.svg "Download Yivi from Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
 
-Would you like to know more about IRMA?
-[Go to the IRMA website](https://irma.app/?lang=en)`
+Would you like to know more about Yivi?
+[Go to the Yivi website](https://irma.app/?lang=en)`
         },
-        subtitle: `## Getting started with IRMA`,
+        subtitle: `## Getting started with Yivi`,
         demo1Card: {
             title: `Demo 1: Proving your age`,
             body: `Prove that you are at least 18 or 65, but without revealing your date of birth.`
@@ -53,19 +53,19 @@ Would you like to know more about IRMA?
             body: `Report anti-social behaviour and keep informed about your report by disclosing your contact information.`
         },
         sidebar: {
-            box: `Prove who you are with IRMA, simply and in a way that suits you
-![IRMA Logo](/assets/irma_logo.svg "Read more about IRMA")
-# Why IRMA?`,
+            box: `Prove who you are with Yivi, simply and in a way that suits you
+![Yivi Logo](/assets/yivi_logo.svg "Read more about Yivi")
+# Why Yivi?`,
             boxLink: `https://www.amsterdam.nl/inloggen-met-irma`,
-            boxLabel: `Why IRMA?`
+            boxLabel: `Why Yivi?`
         }
     },
     demoNotification: {
         heading: `This is a demo site`,
-        content: `You can find out here what you can do with the IRMA app. Your details will not be kept.`
+        content: `You can find out here what you can do with the Yivi app. Your details will not be kept.`
     },
-    downloadIrma: `Do you not yet have IRMA?  \n[Download IRMA](https://irma.app/?lang=en)`,
-    noSavePromise: `**The data you have just shared with IRMA will not be kept.**`,
+    downloadIrma: `Do you not yet have Yivi?  \n[Download Yivi](https://irma.app/?lang=en)`,
+    noSavePromise: `**The data you have just shared with Yivi will not be kept.**`,
     callToAction: `[Try the other demos](/)`,
     demoErrorAlert: {
         heading: `Nothing shared`,
@@ -79,7 +79,7 @@ Would you like to know more about IRMA?
   
   &nbsp;
   
-The **Give IRMA a try** website uses the most recent technology and web standards. The outdated Microsoft Internet Explorer browser is becoming less and less suitable. Supporting the browser is therefore an obstacle for the purpose of optimizing the functionality of the site.
+The **Give Yivi a try** website uses the most recent technology and web standards. The outdated Microsoft Internet Explorer browser is becoming less and less suitable. Supporting the browser is therefore an obstacle for the purpose of optimizing the functionality of the site.
 In practical terms, the non-support of Internet Explorer means that the site would work much more slowly than in modern browsers, that pages would look different to how they have been designed, and that more complex functions (in the interactive map, for example) would not work properly.
 If you are still using Internet Explorer, you are advised to change to a different browser, such as [Firefox](https://www.mozilla.org/nl/firefox/new/) or [Chrome](https://www.google.com/intl/nl_nl/chrome/). Microsoft itself [advises](https://docs.microsoft.com/nl-nl/lifecycle/faq/internet-explorer-microsoft-edge#what-is-the-lifecycle-policy-for-internet-explorer) the use of a different browser.`,
         errorAlert: {
@@ -91,8 +91,8 @@ If you are still using Internet Explorer, you are advised to change to a differe
     },
     notFound: {
         title: `# Sorry, page not found`,
-        content: `The page you are looking for no longer exists or has been moved. Fortunately, the IRMA demos are still here.`,
-        link: `Take a look at [Give IRMA a try](/).`
+        content: `The page you are looking for no longer exists or has been moved. Fortunately, the Yivi demos are still here.`,
+        link: `Take a look at [Give Yivi a try](/).`
     },
     demoEmptyVarsAlert: {
         heading: `Missing information`,
@@ -122,7 +122,7 @@ The following information is missing: `
             heading: `Your age`,
             content: `You are younger than 65.`
         },
-        intro: `**You can use IRMA to prove your age without revealing your date of birth. You will therefore remain anonymous.**
+        intro: `**You can use Yivi to prove your age without revealing your date of birth. You will therefore remain anonymous.**
 # Give it a try
 Prove you are at least 18 or 65 by using the following information to identify yourself:
 - At least 18
@@ -132,19 +132,19 @@ Prove you are at least 18 or 65 by using the following information to identify y
             title: 'Why is this information being requested?',
             body: '**At least 18, at least 65** The city council can grant you access to services based on your age.'
         },
-        button18: `prove 18+ using IRMA`,
-        button65: `prove 65+ using IRMA`,
+        button18: `prove 18+ using Yivi`,
+        button65: `prove 65+ using Yivi`,
         result: {
             title: `## What have you just done?`,
-            isOver18: `- You have used IRMA to prove that you are at least 18.
+            isOver18: `- You have used Yivi to prove that you are at least 18.
 - You have not provided your date of birth (or other information).`,
-            isNotOver18: `- You have used IRMA to prove that you are younger than 18.
+            isNotOver18: `- You have used Yivi to prove that you are younger than 18.
 - You have not provided your date of birth (or other information).`,
-            isOver65: `- You have used IRMA to prove that you are at least 65.
+            isOver65: `- You have used Yivi to prove that you are at least 65.
 - You have not provided your date of birth (or other information).`,
-            isNotOver65: `- You have used IRMA to prove that you are younger than 65.
+            isNotOver65: `- You have used Yivi to prove that you are younger than 65.
 - You have not provided your date of birth (or other information).`,
-            whatsDifferentWithIrma: `## What is different about IRMA?  \nIf you provide your age via IRMA, the website knows whether you have reached the relevant age. You will remain anonymous.  \n  \nThis can be used for:
+            whatsDifferentWithIrma: `## What is different about Yivi?  \nIf you provide your age via Yivi, the website knows whether you have reached the relevant age. You will remain anonymous.  \n  \nThis can be used for:
 - Age-related access or discounts.
 - Buying alcohol.
 - Voting for local initiatives.
@@ -159,7 +159,7 @@ Prove you are at least 18 or 65 by using the following information to identify y
     demo2: {
         breadcrumbs: `- [Home](/)
 - [Demo 2: Ideas for your neighbourhood](/ideeen-voor-uw-buurt)`,
-        intro: `**With IRMA, you can prove which district you live in, and therefore contribute your input for ideas for your neighbourhood without revealing your home address and date of birth. You will therefore remain anonymous.**
+        intro: `**With Yivi, you can prove which district you live in, and therefore contribute your input for ideas for your neighbourhood without revealing your home address and date of birth. You will therefore remain anonymous.**
 # Give it a try
 Prove which district you live in and that you are at least 18 years of age by identifying yourself with the following information:
 - Postcode
@@ -184,13 +184,13 @@ Prove which district you live in and that you are at least 18 years of age by id
             body: `**Your postcode**  \nThe city council then knows which district you live in.\n
 **At least 18**  \nThe city council then knows whether you may vote.`
         },
-        button: `Prove with IRMA`,
+        button: `Prove with Yivi`,
         result: `## What have you just done?
-- You have used IRMA to state what district you live in.
-- You have used IRMA to state whether you are at least 18.
+- You have used Yivi to state what district you live in.
+- You have used Yivi to state whether you are at least 18.
 - You have not shared personal information, such as your name, address, or date of birth.
-## What is different about IRMA?
-If you provide your postcode and age via IRMA, it is known whereabouts you live and that you have reached the relevant age. You will remain anonymous.
+## What is different about Yivi?
+If you provide your postcode and age via Yivi, it is known whereabouts you live and that you have reached the relevant age. You will remain anonymous.
 This can be used for:
 - Voting for local initiatives.
 - Age-related access or discounts in your neighbourhood.
@@ -204,9 +204,9 @@ This can be used for:
             title: `# Demo 3: Log in`,
             alert: {
                 title: `Your name and e-mail address`,
-                body: `You can find out here what you can do with the IRMA app. Your details will not be kept.`
+                body: `You can find out here what you can do with the Yivi app. Your details will not be kept.`
             },
-            intro: `**Use IRMA to log into websites without first creating a username and password.**
+            intro: `**Use Yivi to log into websites without first creating a username and password.**
 ## Give it a try
 Log in with the city council by using the following information to identify yourself:
 - Your full name
@@ -224,15 +224,15 @@ Log in with the city council by using the following information to identify your
                 body: `You have proven that you are [] and that you have access to e-mails that are sent to [].`
             }
         },
-        button: `Logging in with IRMA`,
+        button: `Logging in with Yivi`,
         result: `## What have you just done?
-- You have used IRMA to log in.
-- You have provided your e-mail address and your name via IRMA to the demo site.
-## What is different about IRMA?
-Logging in with IRMA is different to what you are currently used to on websites. You do not have to create a profile or share all kinds of personal information.
+- You have used Yivi to log in.
+- You have provided your e-mail address and your name via Yivi to the demo site.
+## What is different about Yivi?
+Logging in with Yivi is different to what you are currently used to on websites. You do not have to create a profile or share all kinds of personal information.
 You do not have to create a profile or share all kinds of personal information.
 - Using your e-mail address, the city council can show the details of your application or notification.
-- If you share your e-mail address via IRMA, the city council can send you updates about the status of your application or notification.`
+- If you share your e-mail address via Yivi, the city council can send you updates about the status of your application or notification.`
     },
 
     demo4: {
@@ -244,7 +244,7 @@ You do not have to create a profile or share all kinds of personal information.
                 title: `This is a demo`,
                 body: `Your demo application will not be sent to the city council.`
             },
-            intro1: `**Using IRMA, you can make an application and use information in the application that is contained in your IRMA app.**\n
+            intro1: `**Using Yivi, you can make an application and use information in the application that is contained in your IRMA app.**\n
 **The amount of information you need to provide is reduced and the city council can be certain that it is you making the application and that the details are correct.**
 ## Give it a try
 Do a demo application by using the following information to identify yourself:
@@ -265,8 +265,8 @@ Do a demo application by using the following information to identify yourself:
 `
             },
             intro2: `
-## Using IRMA to add details
-Use IRMA to add details to your demo application
+## Using Yivi to add details
+Use Yivi to add details to your demo application
 `
         },
         proven: {
@@ -283,9 +283,9 @@ Use IRMA to add details to your demo application
             optionYes: 'Yes',
             optionNo: 'No'
         },
-        button: 'Using IRMA to add details',
+        button: 'Using Yivi to add details',
         result: {
-            intro: `**The data you have just shared with IRMA will not be kept.\nThis is a demo; you have not actually started an application for a façade garden.**
+            intro: `**The data you have just shared with Yivi will not be kept.\nThis is a demo; you have not actually started an application for a façade garden.**
 You can find all the details of your demo application below:`,
             yourDemoRequest: `### Your demo application
 Your choice  \n
@@ -306,10 +306,10 @@ E-mail  \n
 :   [email]  \n
 `,
             rest: `## What have you just done?
-- You have used IRMA to fill in a form with your details.
+- You have used Yivi to fill in a form with your details.
 - You have filled in a form with data from official sources. The city council knows that this information is correct and is able to process applications of this kind more quickly.
-## What is different about IRMA?
-If you use IRMA to complete a form, it is impossible to make any mistakes so you can be certain that the information is correct.
+## What is different about Yivi?
+If you use Yivi to complete a form, it is impossible to make any mistakes so you can be certain that the information is correct.
 This can be used for:
 - Applications you make using the City of Amsterdam website.
 - Forms on other websites.
@@ -322,8 +322,8 @@ This can be used for:
 - [Demo 5: Reporting anti-social behaviour](/overlast-melden)`,
         unproven: {
             title: `# Demo 5: Reporting anti-social behaviour`,
-            intro1: `**With IRMA, you can report anti-social behaviour using the mobile number on which you can be reached for questions and the e-mail address at which you wish to receive status updates.**\n
-**You use information stored in your IRMA app. The city council can then contact you and keep you informed.**
+            intro1: `**With Yivi, you can report anti-social behaviour using the mobile number on which you can be reached for questions and the e-mail address at which you wish to receive status updates.**\n
+**You use information stored in your Yivi app. The city council can then contact you and keep you informed.**
 ## Give it a try
 Make a demo report by using the following information to identify yourself:
 - E-mail address
@@ -339,10 +339,10 @@ Make a demo report by using the following information to identify yourself:
                 title: `This is a demo`,
                 body: `Your demo notification will not be sent to the city council.`
             },
-            callToAction: `## Using IRMA to add details
-Add your e-mail address and/or telephone number to your demo application from IRMA.`,
+            callToAction: `## Using Yivi to add details
+Add your e-mail address and/or telephone number to your demo application from Yivi.`,
             callToActionNoIRMA: `## Reporting anonymously
-Make your report using IRMA, but without revealing your e-mail address or telephone number.`
+Make your report using Yivi, but without revealing your e-mail address or telephone number.`
         },
         proven: {
             title: `# Demo 5: Reporting anti-social behaviour`,
@@ -393,10 +393,10 @@ Do not type in any personal details in this description; this information will b
                 required: 'Do not forget to state whether you wish to be kept up to date on the progress we are making'
             }
         },
-        button: 'Using IRMA to add details',
+        button: 'Using Yivi to add details',
         buttonNoIRMA: 'Making a demo report',
         result: {
-            intro: `**The data you have just shared with IRMA will not be kept or sent to anyone. \nThis is a demo; you have not actually reported any anti-social behaviour.**
+            intro: `**The data you have just shared with Yivi will not be kept or sent to anyone. \nThis is a demo; you have not actually reported any anti-social behaviour.**
 You can find all the details of your demo report below:`,
             yourReportBeforeMap: `### Your demo report of anti-social behaviour\n
 Location  \n
@@ -411,21 +411,21 @@ Your telephone number  \n
 Your e-mail address  \n
 :   [email]  \n`,
             rest: `## What have you just done?
-- You have used IRMA to share your telephone number and/or e-mail address.
+- You have used Yivi to share your telephone number and/or e-mail address.
 - You have made a report with your details from official sources.\n The city council knows that this information is correct and is able to process forms of this kind more quickly. \n
-## What is different about IRMA?
-If you use IRMA to report anti-social behaviour, it is impossible to make any mistakes so you can be certain that the information is correct.\n
+## What is different about Yivi?
+If you use Yivi to report anti-social behaviour, it is impossible to make any mistakes so you can be certain that the information is correct.\n
 This can be used for:
 - Reporting something using the City of Amsterdam website.
 - Giving you access so you can monitor the progress of your report on Mijn Amsterdam.`,
             restNoIRMA: `## What have you just done?
-- You have not used any details from IRMA.`,
+- You have not used any details from Yivi.`,
             disclaimerError: `This is a demo; you have not actually reported any anti-social behaviour.`
         }
     },
 
     showQrOnMobile: {
-        label: `Do you have IRMA on another device?`,
+        label: `Do you have Yivi on another device?`,
         link: `Show QR code`
     },
 
@@ -468,14 +468,14 @@ This means we can ask you once for feedback, after going through a demo.
         intro: `# Complete accessibility statement
 **The City of Amsterdam would like everyone to be able to use the ‘Give IRMA a try’ website.**`,
         article: `
-## Accessible ‘Give IRMA a try’
-Everyone should be able to use local and central government websites. This is what we are aiming to achieve, by making ‘Give IRMA a try’ accessible to everyone, and keeping it that way:
-- We are developing ‘Give IRMA a try’ in partnership with you, the people of Amsterdam.
-- We regularly carry out user surveys and test the accessibility of ‘Give IRMA a try’.
+## Accessible ‘Give Yivi a try’
+Everyone should be able to use local and central government websites. This is what we are aiming to achieve, by making ‘Give Yivi a try’ accessible to everyone, and keeping it that way:
+- We are developing ‘Give Yivi a try’ in partnership with you, the people of Amsterdam.
+- We regularly carry out user surveys and test the accessibility of ‘Give Yivi a try’.
 - We resolve any problem areas.
 - Our employees keep their knowledge about accessibility up to date.
 ## Areas that are not yet accessible
-- If style sheets are deactivated, the IRMA QR code appears at the bottom of the page. In that case, the QR code can only get focus using the keyboard.
+- If style sheets are deactivated, the Yivi QR code appears at the bottom of the page. In that case, the QR code can only get focus using the keyboard.
 - In the Usabilla feedback panel, the ‘Powered by GetFeedback’ text is lacking a 'UK’ language attribute.
 - In the Usabilla feedback panel, ‘Reporting something specific’ is not clearly recognizable for a screen reader.\n
 Have you found a page that you cannot read or use? Please let us know, using our [contact form](https://formulieren.amsterdam.nl/TripleForms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx).
@@ -487,9 +487,9 @@ Have you found a page that you cannot read or use? Please let us know, using our
 Are you dissatisfied about how your question or complaint has been dealt with? Or have we not responded on time?
 If so, you can get in touch using the [National ombudsman complaints form](https://www.nationaleombudsman.nl/klacht-indienen/uw-klacht).
 ## Accessibility statement
-The ‘Give IRMA a try’ website is in partial compliance with the Decree on Digital Accessibility of the Government.
+The ‘Give Yivi a try’ website is in partial compliance with the Decree on Digital Accessibility of the Government.
 The accessibility statement is available in the [Register van toegankelijkheidsverklaringen (register of accessibility statements)](https://www.toegankelijkheidsverklaring.nl/register/4096).
-This statement is based on the [‘Give IRMA a try’ accessibility check](/assets/toegankelijkheidscheck_website_Probeer_IRMA_uit.pdf). This check includes all WCAG 2.1 success criteria on which this website has been tested.  
+This statement is based on the [‘Give Yivi a try’ accessibility check](/assets/toegankelijkheidscheck_website_Probeer_IRMA_uit.pdf). This check includes all WCAG 2.1 success criteria on which this website has been tested.  
 `
     },
 
@@ -580,9 +580,9 @@ Information about tourism, culture, nightlife, events, and more can be found at 
     qrcode: {
         title: '### Identify yourself',
         steps: `Follow these steps: \n
-1. Scan the QR code below with your IRMA app.  \n
-2. In your IRMA app, select whether you would like to share the requested details.`,
-        button: `Logging in with IRMA`,
+1. Scan the QR code below with your Yivi app.  \n
+2. In your Yivi app, select whether you would like to share the requested details.`,
+        button: `Logging in with Yivi`,
         close: 'Close',
         counter: 'This QR code is valid for [].',
         minute: 'minute',
