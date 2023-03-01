@@ -29,7 +29,7 @@ Download the Yivi app for iOS or Android:  \n
 [![Play Store](/assets/download-play-store.svg "Download Yivi from Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
 
 Would you like to know more about Yivi?
-[Go to the Yivi website](https://irma.app/?lang=en)`
+[Go to the Yivi website](https://www.yivi.app/en)`
         },
         subtitle: `## Getting started with Yivi`,
         demo1Card: {
@@ -64,7 +64,7 @@ Would you like to know more about Yivi?
         heading: `This is a demo site`,
         content: `You can find out here what you can do with the Yivi app. Your details will not be kept.`
     },
-    downloadIrma: `Do you not yet have Yivi?  \n[Download Yivi](https://irma.app/?lang=en)`,
+    downloadIrma: `Do you not yet have Yivi?  \n[Download Yivi](https://www.yivi.app/en)`,
     noSavePromise: `**The data you have just shared with Yivi will not be kept.**`,
     callToAction: `[Try the other demos](/)`,
     demoErrorAlert: {
