@@ -29,7 +29,7 @@ Ervaar nu vast wat u met Yivi kunt via verschillende demo’s. U doet de demo's 
 ## Yivi installeren
 
 Download de Yivi-app voor iOS of Android:  \n
-[![App Store](/assets/download-app-store.svg "Download Yivi in de App Store")](https://apps.apple.com/nl/app/irma-authenticatie/id1294092994)
+[![App Store](/assets/download-app-store.svg "Download Yivi in de App Store")](https://testflight.apple.com/join/rCbKypnS)
 [![Play Store](/assets/download-play-store.svg "Download Yivi in de Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
 
 Wilt u meer weten over Yivi?
@@ -68,7 +68,7 @@ Wilt u meer weten over Yivi?
         heading: `Dit is een demosite`,
         content: `U kunt hier ervaren wat u met uw Yivi-app kunt. Uw gegevens worden niet bewaard.`
     },
-    downloadIrma: `Heeft u nog geen Yivi?  \n[Download Yivi](https://www.yivi.app)`,
+    downloadIrma: `Heeft u nog geen Yivi?  \n[Download Yivi](https://www.yivi.app/download)`,
     noSavePromise: `**De gegevens die u zojuist via Yivi heeft doorgegeven, worden niet bewaard.**`,
     callToAction: `[Probeer de andere demo’s](/)`,
     demoErrorAlert: {
