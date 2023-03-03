@@ -16,7 +16,7 @@ const demoCredentials: IDemoCredentials = {
                 'irma-demo.gemeente.address.city'
             ]
         ],
-        ['irma-demo.sidn-pbdf.email.email']
+        [['irma-demo.sidn-pbdf.email.email']]
     ],
     PRODUCTION: [
         [
@@ -28,8 +28,8 @@ const demoCredentials: IDemoCredentials = {
                 'pbdf.gemeente.address.city'
             ]
         ],
-        ['pbdf.sidn-pbdf.mobilenumber.mobilenumber'],
-        ['pbdf.sidn-pbdf.email.email']
+        [['pbdf.sidn-pbdf.mobilenumber.mobilenumber']],
+        [['pbdf.sidn-pbdf.email.email']]
     ]
 };
 
