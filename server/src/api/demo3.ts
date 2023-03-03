@@ -13,7 +13,7 @@ const demoCredentials: IDemoCredentials = {
             ['pbdf.pilot-amsterdam.passport.firstnames', 'pbdf.pilot-amsterdam.passport.surname'],
             ['pbdf.pilot-amsterdam.idcard.firstnames', 'pbdf.pilot-amsterdam.idcard.surname']           
         ],
-        ['pbdf.sidn-pbdf.email.email']
+        [['pbdf.sidn-pbdf.email.email']]
     ]
 };
 
