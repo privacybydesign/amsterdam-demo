@@ -13,7 +13,7 @@ const demoCredentials: IDemoCredentials = {
             ['pbdf.pilot-amsterdam.idcard.firstnames', 'pbdf.pilot-amsterdam.idcard.surname'],
             ['pbdf.gemeente.personalData.fullname']
         ],
-        [['pbdf.pbdf.email.email'], ['pbdf.sidn-pbdf.email.email']]
+        ['pbdf.sidn-pbdf.email.email']
     ]
 };
 
