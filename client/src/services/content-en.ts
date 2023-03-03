@@ -25,7 +25,7 @@ Various demos are already available that you can use to find out how Yivi works.
 - Your telephone number
 ## Installing Yivi
 Download the Yivi app for iOS or Android:  \n
-[![App Store](/assets/download-app-store.svg "Download Yivi from the App Store")](https://apps.apple.com/nl/app/irma-authenticatie/id1294092994)
+[![App Store](/assets/download-app-store.svg "Download Yivi from the App Store")](https://testflight.apple.com/join/rCbKypnS)
 [![Play Store](/assets/download-play-store.svg "Download Yivi from Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
 
 Would you like to know more about Yivi?
@@ -64,7 +64,7 @@ Would you like to know more about Yivi?
         heading: `This is a demo site`,
         content: `You can find out here what you can do with the Yivi app. Your details will not be kept.`
     },
-    downloadIrma: `Do you not yet have Yivi?  \n[Download Yivi](https://www.yivi.app/en)`,
+    downloadIrma: `Do you not yet have Yivi?  \n[Download Yivi](https://yivi.app/download)`,
     noSavePromise: `**The data you have just shared with Yivi will not be kept.**`,
     callToAction: `[Try the other demos](/)`,
     demoErrorAlert: {
