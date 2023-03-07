@@ -56,7 +56,7 @@ Would you like to know more about Yivi?
             box: `Prove who you are with Yivi, simply and in a way that suits you
 ![Yivi Logo](/assets/yivi_logo.svg "Read more about Yivi")
 # Why Yivi?`,
-            boxLink: `https://www.amsterdam.nl/inloggen-met-yivi`,
+            boxLink: `https://www.amsterdam.nl/inloggen-met-irma`,
             boxLabel: `Why Yivi?`
         }
     },
