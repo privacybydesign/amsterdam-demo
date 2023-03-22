@@ -56,7 +56,7 @@ Would you like to know more about IRMA?
             box: `Prove who you are with IRMA, simply and in a way that suits you
 ![IRMA Logo](/assets/irma_logo.svg "Read more about IRMA")
 # Why IRMA?`,
-            boxLink: `https://www.amsterdam.nl/inloggen-met-irma`,
+            boxLink: `https://www.amsterdam.nl/innovation/digitalisation-technology/digitalisation/irma-new-login-method/`,
             boxLabel: `Why IRMA?`
         }
     },
