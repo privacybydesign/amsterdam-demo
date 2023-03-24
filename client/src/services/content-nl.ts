@@ -56,13 +56,6 @@ Wilt u meer weten over Yivi?
             title: `Demo 5: Overlast melden`,
             body: `Doe een melding van overlast en blijf op de hoogte door uw contactgegevens vrij te geven.`
         },
-        sidebar: {
-            box: `Meldingen openbare ruimte volgen met Yivi
-![Yivi Logo](/assets/irma_logo.svg "Lees meer over Yivi")
-# Waarom Yivi?`,
-            boxLink: `https://www.amsterdam.nl/inloggen-met-irma`,
-            boxLabel: `Bekijk uw meldingen`
-        },
       sidebar: {
             box: `Eenvoudig en op maat online aantonen wie je bent met Yivi
 ![Yivi Logo](/assets/yivi_logo.svg "Lees meer over Yivi")
