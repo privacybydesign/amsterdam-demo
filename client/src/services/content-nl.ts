@@ -14,7 +14,7 @@ const content = {
     home: {
         breadcrumbs: `- [Home](/)`,
         title: `# Ontdek Yivi via vijf demo’s`,
-        intro: `Yivi is een app waarmee u online kunt aantonen wie u bent. Yivi biedt een nieuwe manier van inloggen, anders dan u kent van bijvoorbeeld DigiD. Binnenkort kunt u Yivi gebruiken in Amsterdam om de status van uw melding openbare ruimte te volgen, zie [Melding openbare ruimte volgen via  Yivi](https://www.figma.com/file/BacFf7lfFdUhIBODmLYoI1/Mijn-Amsterdam?node-id=2361%3A50763&t=FqP7uN1BlacoOWxq-1).
+        intro: `Yivi is een app waarmee u online kunt aantonen wie u bent. Yivi biedt een nieuwe manier van inloggen, anders dan u kent van bijvoorbeeld DigiD. Binnenkort kunt u Yivi gebruiken in Amsterdam om de status van uw melding openbare ruimte te volgen, zie [Melding openbare ruimte volgen via  Yivi](https://www.figma.com/proto/BacFf7lfFdUhIBODmLYoI1/Mijn-Amsterdam?page-id=2344%3A50211&node-id=2361-50763&viewport=-185%2C251%2C0.18&scaling=min-zoom&starting-point-node-id=2361%3A50763&show-proto-sidebar=1&hide-ui=1).
 
 Ervaar nu vast wat u met Yivi kunt via verschillende demo’s. U doet de demo's met uw eigen gegevens. De gemeente Amsterdam slaat deze gegevens niet op.
         `,
