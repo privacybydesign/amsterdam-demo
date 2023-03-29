@@ -24,7 +24,8 @@ Ervaar nu vast wat u met Yivi kunt via verschillende demo’s. U doet de demo's 
 - Uw persoonsgegevens
 - Uw adres
 - Uw e-mailadres
-- Uw telefoonnummer
+- Uw telefoonnummer\n
+
 U voegt uw persoonsgegevens en uw adres toe aan Yivi door eenmalig met uw DigiD in te loggen bij de Gemeente Nijmegen. U logt dus niet in bij de gemeente Amsterdam. Gemeente Nijmegen verstrekt de gegevens uit de Basisregistratie Personen aan alle Yivi-gebruikers.
 
 
