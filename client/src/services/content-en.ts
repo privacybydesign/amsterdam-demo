@@ -22,7 +22,10 @@ Various demos are already available that you can use to find out how Yivi works.
 - Your personal data
 - Your address
 - Your e-mail address
-- Your telephone number
+- Your telephone number\n
+
+You can add your personal data and address to Yivi by logging in once with your DigiD at the Municipality of Nijmegen. So you won't login to the Muncipality of Amsterdam.  The Municipality of Nijmegen issues data of the Municipal Personal Records Database (Basisregistratie Personen - BRP) to all Yivi users.
+
 ## Installing Yivi
 Download the Yivi app for iOS or Android:  \n
 [![App Store](/assets/download-app-store.svg "Download Yivi from the App Store")](https://www.yivi.app/en/download)
