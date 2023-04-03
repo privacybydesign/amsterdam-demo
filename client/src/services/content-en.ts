@@ -55,13 +55,7 @@ Would you like to know more about Yivi?
             title: `Demo 5: Reporting anti-social behaviour`,
             body: `Report anti-social behaviour and keep informed about your report by disclosing your contact information.`
         },
-        sidebar: {
-            box: `Prove who you are with Yivi, simply and in a way that suits you
-![Yivi Logo](/assets/yivi_logo.svg "Read more about Yivi")
-# Why Yivi?`,
-            boxLink: `https://www.amsterdam.nl/innovation/digitalisation-technology/digitalisation/irma-new-login-method`,
-            boxLabel: `Why Yivi?`
-        }
+        vis
     },
     demoNotification: {
         heading: `This is a demo site`,
