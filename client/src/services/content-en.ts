@@ -13,7 +13,7 @@ const content = {
     home: {
         breadcrumbs: `- [Home](/)`,
         title: `# Discover Yivi with the help of five demos`,
-        intro: `Yivi is an app you can use to prove who you are when online. Yivi offers a new way of logging in, and is different to other familiar methods like DigiD. You will soon be able to use IRMA in Amsterdam.
+        intro: `Yivi is an app you can use to prove who you are when online. Yivi offers a new way of logging in, and is different to other familiar methods like DigiD. Soon you will be able to view your reports of anti-social behaviour using Yivi.
 Various demos are already available that you can use to find out how Yivi works. Use your own details to see the demos. The City of Amsterdam will not store this data.
         `,
         requirements: {
@@ -25,8 +25,8 @@ Various demos are already available that you can use to find out how Yivi works.
 - Your telephone number
 ## Installing Yivi
 Download the Yivi app for iOS or Android:  \n
-[![App Store](/assets/download-app-store.svg "Download Yivi from the App Store")](https://testflight.apple.com/join/rCbKypnS)
-[![Play Store](/assets/download-play-store.svg "Download Yivi from Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
+[![App Store](/assets/download-app-store.svg "Download Yivi from the App Store")](https://www.yivi.app/en/download)
+[![Play Store](/assets/download-play-store.svg "Download Yivi from Play Store")](https://www.yivi.app/en/download)
 
 Would you like to know more about Yivi?
 [Go to the Yivi website](https://www.yivi.app/en)`
