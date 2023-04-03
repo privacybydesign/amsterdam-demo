@@ -32,8 +32,8 @@ U voegt uw persoonsgegevens en uw adres toe aan Yivi door eenmalig met uw DigiD 
 ## Yivi installeren
 
 Download de Yivi-app voor iOS of Android:  \n
-[![App Store](/assets/download-app-store.svg "Download Yivi in de App Store")](https://testflight.apple.com/join/rCbKypnS)
-[![Play Store](/assets/download-play-store.svg "Download Yivi in de Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
+[![App Store](/assets/download-app-store.svg "Download Yivi in de App Store")](https://www.yivi.app/download)
+[![Play Store](/assets/download-play-store.svg "Download Yivi in de Play Store")](https://www.yivi.app/download)
 
 Wilt u meer weten over Yivi?
 [Ga naar de website van Yivi](https://yivi.app)`
