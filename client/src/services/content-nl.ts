@@ -4,7 +4,7 @@
 
 const content = {
     header: {
-        title: `Probeer IRMA uit`,
+        title: `Probeer Yivi uit`,
         homeLink: `https://amsterdam.nl/`,
         skipLink: {
             content: `Direct naar hoofdinhoud`,
@@ -13,29 +13,32 @@ const content = {
     },
     home: {
         breadcrumbs: `- [Home](/)`,
-        title: `# Ontdek IRMA via vijf demo’s`,
-        intro: `IRMA is een app waarmee u online kunt aantonen wie u bent. IRMA biedt een nieuwe manier van inloggen, anders dan u kent van bijvoorbeeld DigiD. Binnenkort kunt u IRMA gebruiken in Amsterdam.
+        title: `# Ontdek Yivi via vijf demo’s`,
+        intro: `Yivi is een app waarmee u online kunt aantonen wie u bent. Yivi biedt een nieuwe manier van inloggen, anders dan u kent van bijvoorbeeld DigiD. Binnenkort kunt u Yivi gebruiken in Amsterdam om de status van uw melding openbare ruimte te volgen.
 
-Ervaar nu vast wat u met IRMA kunt via verschillende demo’s. U doet de demo's met uw eigen gegevens. De gemeente Amsterdam slaat deze gegevens niet op.
+Ervaar nu vast wat u met Yivi kunt via verschillende demo’s. U doet de demo's met uw eigen gegevens. De gemeente Amsterdam slaat deze gegevens niet op.
         `,
         requirements: {
             title: `Wat heeft u nodig?`,
-            body: `U kunt de demo&apos;s met IRMA doen als u de IRMA-app op uw telefoon heeft geïnstalleerd en als u in IRMA de volgende gegevens heeft toegevoegd:
+            body: `U kunt de demo&apos;s met Yivi doen als u de Yivi-app op uw telefoon heeft geïnstalleerd en als u in Yivi de volgende gegevens heeft toegevoegd:
 - Uw persoonsgegevens
 - Uw adres
 - Uw e-mailadres
-- Uw telefoonnummer
+- Uw telefoonnummer\n
 
-## IRMA installeren
+U voegt uw persoonsgegevens en uw adres toe aan Yivi door eenmalig met uw DigiD in te loggen bij de Gemeente Nijmegen. U logt dus niet in bij de gemeente Amsterdam. Gemeente Nijmegen verstrekt de gegevens uit de Basisregistratie Personen aan alle Yivi-gebruikers.
 
-Download de IRMA-app voor iOS of Android:  \n
-[![App Store](/assets/download-app-store.svg "Download IRMA in de App Store")](https://apps.apple.com/nl/app/irma-authenticatie/id1294092994)
-[![Play Store](/assets/download-play-store.svg "Download IRMA in de Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu)
 
-Wilt u meer weten over IRMA?
-[Ga naar de website van IRMA](https://irma.app/?lang=nl)`
+## Yivi installeren
+
+Download de Yivi-app voor iOS of Android:  \n
+[![App Store](/assets/download-app-store.svg "Download Yivi in de App Store")](https://www.yivi.app/download)
+[![Play Store](/assets/download-play-store.svg "Download Yivi in de Play Store")](https://www.yivi.app/download)
+
+Wilt u meer weten over Yivi?
+[Ga naar de website van Yivi](https://yivi.app)`
         },
-        subtitle: `## Aan de slag met IRMA`,
+        subtitle: `## Aan de slag met Yivi`,
         demo1Card: {
             title: `Demo 1: Leeftijd aantonen`,
             body: `Bewijs dat u ouder dan 18 of 65 bent zonder uw geboortedatum prijs te geven.`
@@ -56,20 +59,20 @@ Wilt u meer weten over IRMA?
             title: `Demo 5: Overlast melden`,
             body: `Doe een melding van overlast en blijf op de hoogte door uw contactgegevens vrij te geven.`
         },
-        sidebar: {
-            box: `Eenvoudig en op maat online aantonen wie je bent met IRMA
-![IRMA Logo](/assets/irma_logo.svg "Lees meer over IRMA")
-# Waarom IRMA?`,
-            boxLink: `https://www.amsterdam.nl/inloggen-met-irma`,
-            boxLabel: `Waarom IRMA?`
+      sidebar: {
+            box: `Eenvoudig en op maat online aantonen wie je bent met Yivi
+![Yivi Logo](/assets/yivi_logo.svg "Lees meer over Yivi")
+# Waarom Yivi?`,
+            boxLink: `http://amsterdam.nl/inloggenmetyivi`,
+            boxLabel: `Waarom Yivi?`
         }
-    },
+},
     demoNotification: {
         heading: `Dit is een demosite`,
-        content: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
+        content: `U kunt hier ervaren wat u met uw Yivi-app kunt. Uw gegevens worden niet bewaard.`
     },
-    downloadIrma: `Heeft u nog geen IRMA?  \n[Download IRMA](https://irma.app/?lang=nl)`,
-    noSavePromise: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard.**`,
+    downloadIrma: `Heeft u nog geen Yivi?  \n[Download Yivi](https://yivi.app/download)`,
+    noSavePromise: `**De gegevens die u zojuist via Yivi heeft doorgegeven, worden niet bewaard.**`,
     callToAction: `[Probeer de andere demo’s](/)`,
     demoErrorAlert: {
         heading: `Niets doorgegeven`,
@@ -83,7 +86,7 @@ Wilt u meer weten over IRMA?
   
   &nbsp;
   
-De website **Probeer IRMA uit** maakt gebruik van de meest recente technologie en webstandaarden. De verouderde browser Internet Explorer van Microsoft kan daar steeds minder goed mee overweg. Het ondersteunen van die browser is daardoor een drempel voor het optimaliseren van de functionaliteit van de site.
+De website **Probeer Yivi uit** maakt gebruik van de meest recente technologie en webstandaarden. De verouderde browser Internet Explorer van Microsoft kan daar steeds minder goed mee overweg. Het ondersteunen van die browser is daardoor een drempel voor het optimaliseren van de functionaliteit van de site.
 
 Concreet betekent het niet meer ondersteunen van Internet Explorer dat de site in die browser (veel) trager werkt dan in moderne browsers, pagina's er anders uitzien dan ze zijn ontworpen en meer complexe functies (bijvoorbeeld in de interactieve kaart) niet goed werken.
 
@@ -97,8 +100,8 @@ Als je nog gebruik maakt van Internet Explorer, adviseren we je om zo snel mogel
     },
     notFound: {
         title: `# Sorry, pagina niet gevonden`,
-        content: `De pagina die u zoekt bestaat niet meer of is verhuisd. Gelukkig zijn de IRMA-demo’s er nog wel.`,
-        link: `Kijkt u maar op [Probeer IRMA uit](/).`
+        content: `De pagina die u zoekt bestaat niet meer of is verhuisd. Gelukkig zijn de Yivi-demo’s er nog wel.`,
+        link: `Kijkt u maar op [Probeer Yivi uit](/).`
     },
     demoEmptyVarsAlert: {
         heading: `Ontbrekende gegevens`,
@@ -128,7 +131,7 @@ De volgende gegevens ontbreken: `
             heading: `Uw leeftijd`,
             content: `U bent jonger dan 65 jaar.`
         },
-        intro: `**Met IRMA kunt u bewijzen hoe oud u bent zonder uw geboortedatum prijs te geven. U blijft dus anoniem.**
+        intro: `**Met Yivi kunt u bewijzen hoe oud u bent zonder uw geboortedatum prijs te geven. U blijft dus anoniem.**
 # Probeer het uit
 Bewijs dat u ouder bent dan 18 jaar of 65 jaar door uzelf bekend te maken met de volgende gegevens:
 - Ouder dan 18
@@ -138,19 +141,19 @@ Bewijs dat u ouder bent dan 18 jaar of 65 jaar door uzelf bekend te maken met de
             title: 'Waarom worden deze gegevens gevraagd?',
             body: '**Ouder dan 18, Ouder dan 65**  \nDe gemeente kan u dan toegang geven tot dienstverlening op basis van uw leeftijd.'
         },
-        button18: `18+ bewijzen met IRMA`,
-        button65: `65+ bewijzen met IRMA`,
+        button18: `18+ bewijzen met Yivi`,
+        button65: `65+ bewijzen met Yivi`,
         result: {
             title: `## Wat heeft u zojuist gedaan?`,
-            isOver18: `- U heeft IRMA gebruikt om door te geven dat u ouder bent dan 18 jaar.
+            isOver18: `- U heeft Yivi gebruikt om door te geven dat u ouder bent dan 18 jaar.
 - U heeft uw geboortedatum (en andere gegevens) niet doorgegeven.`,
-            isNotOver18: `- U heeft IRMA gebruikt om door te geven dat u jonger bent dan 18 jaar.
+            isNotOver18: `- U heeft Yivi gebruikt om door te geven dat u jonger bent dan 18 jaar.
 - U heeft uw geboortedatum (en andere gegevens) niet doorgegeven.`,
-            isOver65: `- U heeft IRMA gebruikt om door te geven dat u ouder bent dan 65 jaar.
+            isOver65: `- U heeft Yivi gebruikt om door te geven dat u ouder bent dan 65 jaar.
 - U heeft uw geboortedatum (en andere gegevens) niet doorgegeven.`,
-            isNotOver65: `- U heeft IRMA gebruikt om door te geven dat u jonger bent dan 65 jaar.
+            isNotOver65: `- U heeft Yivi gebruikt om door te geven dat u jonger bent dan 65 jaar.
 - U heeft uw geboortedatum (en andere gegevens) niet doorgegeven.`,
-            whatsDifferentWithIrma: `## Wat is er anders met IRMA?  \nAls u via IRMA uw leeftijd doorgeeft, is bij de website bekend of u aan de leeftijdsgrens voldoet. U blijft anoniem.  \n  \nDit kan worden gebruikt voor:
+            whatsDifferentWithIrma: `## Wat is er anders met Yivi?  \nAls u via Yivi uw leeftijd doorgeeft, is bij de website bekend of u aan de leeftijdsgrens voldoet. U blijft anoniem.  \n  \nDit kan worden gebruikt voor:
 - Toegang en/of korting op basis van uw leeftijd.
 - Alcohol kopen.
 - Stemmen voor lokale initiatieven.
@@ -165,7 +168,7 @@ Bewijs dat u ouder bent dan 18 jaar of 65 jaar door uzelf bekend te maken met de
     demo2: {
         breadcrumbs: `- [Home](/)
 - [Demo 2: Ideeën voor uw buurt](/ideeen-voor-uw-buurt)`,
-        intro: `**Met IRMA kunt u bewijzen in welke wijk u woont en zo meebeslissen over ideeën voor uw buurt zonder uw woonadres en geboortedatum prijs te geven. U blijft dus anoniem.**
+        intro: `**Met Yivi kunt u bewijzen in welke wijk u woont en zo meebeslissen over ideeën voor uw buurt zonder uw woonadres en geboortedatum prijs te geven. U blijft dus anoniem.**
 # Probeer het uit
 Bewijs in welke wijk u woont en dat u ouder bent dan 18 jaar door uzelf bekend te maken met de volgende gegevens:
 - Postcode
@@ -190,14 +193,14 @@ Bewijs in welke wijk u woont en dat u ouder bent dan 18 jaar door uzelf bekend t
             body: `**Uw postcode**  \nDe gemeente weet dan in welke wijk u woont.\n
 **Ouder dan 18 jaar**  \nDe gemeente weet dan of u mag stemmen.`
         },
-        button: `Bewijzen met IRMA`,
+        button: `Bewijzen met Yivi`,
         result: `## Wat heeft u zojuist gedaan?
-- U heeft IRMA gebruikt om door te geven in welke wijk u woont.
-- U heeft IRMA gebruikt om door te geven of u ouder bent dan 18 jaar.
+- U heeft Yivi gebruikt om door te geven in welke wijk u woont.
+- U heeft Yivi gebruikt om door te geven of u ouder bent dan 18 jaar.
 - U heeft geen persoonlijke informatie zoals uw naam, adres en geboortedatum doorgegeven.
 
-## Wat is er anders met IRMA?
-Als u via IRMA uw postcode en leeftijd doorgeeft, is bekend waar u ongeveer woont en dat u aan de leeftijdsgrens voldoet. U blijft anoniem.
+## Wat is er anders met Yivi?
+Als u via Yivi uw postcode en leeftijd doorgeeft, is bekend waar u ongeveer woont en dat u aan de leeftijdsgrens voldoet. U blijft anoniem.
 
 Dit kan worden gebruikt voor:
 - Stemmen voor lokale initiatieven.
@@ -212,9 +215,9 @@ Dit kan worden gebruikt voor:
             title: `# Demo 3: Inloggen`,
             alert: {
                 title: `Uw naam en e-mailadres`,
-                body: `U kunt hier ervaren wat u met uw IRMA-app kunt. Uw gegevens worden niet bewaard.`
+                body: `U kunt hier ervaren wat u met uw Yivi-app kunt. Uw gegevens worden niet bewaard.`
             },
-            intro: `**Met IRMA kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord aan te maken.**
+            intro: `**Met Yivi kunt u inloggen bij websites zonder eerst een gebruikersnaam en wachtwoord aan te maken.**
 ## Probeer het uit
 Login bij de gemeente door uzelf bekend te maken met de volgende gegevens:
 - Uw volledige naam
@@ -232,16 +235,16 @@ Login bij de gemeente door uzelf bekend te maken met de volgende gegevens:
                 body: `U heeft bewezen dat u [] bent en dat u toegang heeft tot e-mail die naar [] wordt gestuurd.`
             }
         },
-        button: 'Inloggen met IRMA',
+        button: 'Inloggen met Yivi',
         result: `## Wat heeft u zojuist gedaan?
-- U heeft IRMA gebruikt om in te loggen.
-- U heeft uw e-mailadres en uw naam aan de demosite doorgegeven via IRMA.
+- U heeft Yivi gebruikt om in te loggen.
+- U heeft uw e-mailadres en uw naam aan de demosite doorgegeven via Yivi.
 
-## Wat is er anders met IRMA?
-Inloggen met IRMA is anders dan u nu op websites gewend bent. U hoeft geen profiel aan te maken en allerlei persoonlijke gegevens prijs te geven.
+## Wat is er anders met Yivi?
+Inloggen met Yivi is anders dan u nu op websites gewend bent. U hoeft geen profiel aan te maken en allerlei persoonlijke gegevens prijs te geven.
 U hoeft geen profiel aan te maken en allerlei persoonlijke gegevens prijs te geven.
 - Met uw e-mailadres kan de gemeente gegevens van uw aanvraag of melding tonen.
-- Als u via IRMA uw e-mailadres deelt, kan de gemeente u berichten sturen over de status van uw aanvraag of melding.`
+- Als u via Yivi uw e-mailadres deelt, kan de gemeente u berichten sturen over de status van uw aanvraag of melding.`
     },
 
     demo4: {
@@ -253,7 +256,7 @@ U hoeft geen profiel aan te maken en allerlei persoonlijke gegevens prijs te gev
                 title: `Dit is een demo`,
                 body: `Uw demo-aanvraag wordt niet naar de gemeente verstuurd.`
             },
-            intro1: `**Met IRMA kunt u een aanvraag doen en hierin gegevens gebruiken die in uw IRMA-app staan.**\n
+            intro1: `**Met Yivi kunt u een aanvraag doen en hierin gegevens gebruiken die in uw Yivi-app staan.**\n
 **U hoeft minder in te vullen en de gemeente weet zeker dat u de aanvraag doet en dat de gegevens juist zijn.**
 
 ## Probeer het uit
@@ -275,8 +278,8 @@ Doe een demo-aanvraag door uzelf bekend te maken met de volgende gegevens:
 `
             },
             intro2: `
-## Gegevens aanvullen met IRMA
-Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
+## Gegevens aanvullen met Yivi
+Vul uw demo-aanvraag aan met uw gegevens uit Yivi.
 `
         },
         proven: {
@@ -292,9 +295,9 @@ Vul uw demo-aanvraag aan met uw gegevens uit IRMA.
             optionYes: 'Ja',
             optionNo: 'Nee'
         },
-        button: 'Aanvullen met IRMA',
+        button: 'Aanvullen met Yivi',
         result: {
-            intro: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard.\nDit is een demo; u bent geen aanvraag voor een geveltuin gestart.**
+            intro: `**De gegevens die u zojuist via Yivi heeft doorgegeven, worden niet bewaard.\nDit is een demo; u bent geen aanvraag voor een geveltuin gestart.**
 
 Hieronder vindt u alle gegevens van uw demo-aanvraag:`,
             yourDemoRequest: `### Uw demo-aanvraag
@@ -316,11 +319,11 @@ E-mail  \n
 :   [email]  \n
 `,
             rest: `## Wat heeft u zojuist gedaan?
-- U heeft IRMA gebruikt om een formulier in te vullen met uw gegevens.
+- U heeft Yivi gebruikt om een formulier in te vullen met uw gegevens.
 - U heeft een formulier ingevuld met gegevens uit officiële bronnen. De gemeente weet dat deze gegevens kloppen en kan zo’n aanvraag sneller behandelen.
 
-## Wat is er anders met IRMA?
-Als u via IRMA een formulier invult, kunt u geen fouten maken bij invullen en is het zeker dat de gegevens kloppen.
+## Wat is er anders met Yivi?
+Als u via Yivi een formulier invult, kunt u geen fouten maken bij invullen en is het zeker dat de gegevens kloppen.
 Dit kan worden gebruikt voor:
 - Aanvragen die u op de website van de gemeente Amsterdam doet.
 - Formulieren op andere websites.
@@ -333,8 +336,8 @@ Dit kan worden gebruikt voor:
 - [Demo 5: Overlast melden](/overlast-melden)`,
         unproven: {
             title: `# Demo 5: Overlast melden`,
-            intro1: `**Met IRMA kunt u een melding van overlast aanvullen met het 06-nummer waarop u bereikbaar bent voor vragen en het e-mailadres waarop u een statusupdate wilt ontvangen.**\n
-**U gebruikt gegevens die in uw IRMA-app staan. De gemeente kan u dan benaderen en informeren.**
+            intro1: `**Met Yivi kunt u een melding van overlast aanvullen met het 06-nummer waarop u bereikbaar bent voor vragen en het e-mailadres waarop u een statusupdate wilt ontvangen.**\n
+**U gebruikt gegevens die in uw Yivi-app staan. De gemeente kan u dan benaderen en informeren.**
 
 ## Probeer het uit
 Doe een demo-melding door uzelf bekend te maken met de volgende gegevens:
@@ -351,10 +354,10 @@ Doe een demo-melding door uzelf bekend te maken met de volgende gegevens:
                 title: `Dit is een demo`,
                 body: `Uw demo-melding wordt niet naar de gemeente verstuurd.`
             },
-            callToAction: `## Gegevens aanvullen met IRMA
-Vul uw demo-aanvraag aan met uw e-mail en/of telefoonnummer uit IRMA.`,
+            callToAction: `## Gegevens aanvullen met Yivi
+Vul uw demo-aanvraag aan met uw e-mail en/of telefoonnummer uit Yivi.`,
             callToActionNoIRMA: `## Anonieme melding
-Doe uw demo-melding zonder uw e-mailadres en/of telefoonnummer vrij te geven met IRMA.`
+Doe uw demo-melding zonder uw e-mailadres en/of telefoonnummer vrij te geven met Yivi.`
         },
         proven: {
             title: `# Demo 5: Overlast melden`,
@@ -405,10 +408,10 @@ Typ geen persoonsgegevens in deze omschrijving, dit wordt apart gevraagd.`,
                 required: 'Vergeet niet om aan te geven of u op de hoogte gehouden wilt worden.'
             }
         },
-        button: 'Aanvullen met IRMA',
+        button: 'Aanvullen met Yivi',
         buttonNoIRMA: 'Demo-melding doen',
         result: {
-            intro: `**De gegevens die u zojuist via IRMA heeft doorgegeven, worden niet bewaard of verstuurd.\nDit is een demo; u heeft geen melding overlast gedaan.**
+            intro: `**De gegevens die u zojuist via Yivi heeft doorgegeven, worden niet bewaard of verstuurd.\nDit is een demo; u heeft geen melding overlast gedaan.**
 
 Hieronder vindt u alle gegevens van uw demo-melding:`,
             yourReportBeforeMap: `### Uw demo-melding overlast\n
@@ -424,21 +427,21 @@ Uw telefoonnummer  \n
 Uw e-mailadres  \n
 :   [email]  \n`,
             rest: `## Wat heeft u zojuist gedaan?
-- U heeft IRMA gebruikt om uw telefoonnummer en/of e-mailadres door te geven.
+- U heeft Yivi gebruikt om uw telefoonnummer en/of e-mailadres door te geven.
 - U heeft een melding gedaan met uw gegevens uit officiële bronnen.\n De gemeente weet dat deze gegevens kloppen en kan zo'n formulier sneller behandelen. \n
-## Wat is er anders met IRMA?
-Als u via IRMA een melding overlast doet, kunt u geen fouten maken bij invullen en is het zeker dat de gegevens kloppen.\n
+## Wat is er anders met Yivi?
+Als u via Yivi een melding overlast doet, kunt u geen fouten maken bij invullen en is het zeker dat de gegevens kloppen.\n
 Dit kan worden gebruikt voor:
 - Meldingen die u op de website van de gemeente Amsterdam doet.
 - U toegang te geven om de voortgang van uw melding te volgen via Mijn Amsterdam.`,
             restNoIRMA: `## Wat heeft u zojuist gedaan?
-- U heeft geen gegevens uit IRMA gebruikt.`,
+- U heeft geen gegevens uit Yivi gebruikt.`,
             disclaimerError: `Dit is een demo; u heeft geen melding overlast gedaan.`
         }
     },
 
     showQrOnMobile: {
-        label: `Heeft u IRMA op een ander apparaat?`,
+        label: `Heeft u Yivi op een ander apparaat?`,
         link: `Toon QR-code`
     },
 
@@ -482,16 +485,16 @@ Zo kunnen wij u na het doorlopen van een demo eenmalig om feedback vragen.
         breadcrumbs: `- [Home](/)
 - [Toegankelijkheidsverklaring](/toegankelijkheidsverklaring)`,
         intro: `# Volledige toegankelijkheidsverklaring
-**De gemeente Amsterdam wil dat iedereen de website ‘Probeer IRMA uit’ kan gebruiken.**`,
+**De gemeente Amsterdam wil dat iedereen de website ‘Probeer Yivi uit’ kan gebruiken.**`,
         article: `
-## Toegankelijk ‘Probeer IRMA uit’
-Iedereen moet websites van de overheid kunnen gebruiken. Dit is wat wij doen om ‘Probeer IRMA uit’ toegankelijk te maken en te houden voor iedereen:
-- Wij ontwikkelen ‘Probeer IRMA uit’ samen met u, de Amsterdammer.
-- We doen regelmatig gebruikersonderzoek en testen ‘Probeer IRMA uit’ op toegankelijkheid.
+## Toegankelijk ‘Probeer Yivi uit’
+Iedereen moet websites van de overheid kunnen gebruiken. Dit is wat wij doen om ‘Probeer Yivi uit’ toegankelijk te maken en te houden voor iedereen:
+- Wij ontwikkelen ‘Probeer Yivi uit’ samen met u, de Amsterdammer.
+- We doen regelmatig gebruikersonderzoek en testen ‘Probeer Yivi uit’ op toegankelijkheid.
 - We lossen knelpunten op.
 - Onze medewerkers houden hun kennis over toegankelijkheid op peil.
 ## Onderdelen die nog niet toegankelijk zijn
-- Als stylesheets uitstaan, verschijnt de IRMA-QR-code onderin de pagina. De QR-code kan dan alleen via toetsenbord focus krijgen.
+- Als stylesheets uitstaan, verschijnt de Yivi-QR-code onderin de pagina. De QR-code kan dan alleen via toetsenbord focus krijgen.
 - In het Usabilla feedback panel mist de tekst ‘Powered by GetFeedback’ een taalattribuut 'UK'.
 - In het Usabilla feedback panel is ‘Iets specifieks melden’ niet goed herkenbaar voor een screenreader.\n
 Komt u nog een pagina tegen die u niet kunt lezen of gebruiken? Meld het via ons [contactformulier](https://formulieren.amsterdam.nl/TripleForms/DirectRegelen/formulier/nl-NL/evAmsterdam/Klachtenformulier.aspx).
@@ -506,9 +509,9 @@ Bent u niet tevreden met de manier waarop uw vraag of klacht is behandeld? Of he
 Dan kunt u contact opnemen via het [klachtenformulier van de nationale ombudsman](https://www.nationaleombudsman.nl/klacht-indienen/uw-klacht).
 
 ## Toegankelijkheidsverklaring
-De website ‘Probeer IRMA uit’ voldoet gedeeltelijk aan het Besluit digitale toegankelijkheid overheid.
+De website ‘Probeer Yivi uit’ voldoet gedeeltelijk aan het Besluit digitale toegankelijkheid overheid.
 De toegankelijkheidsverklaring is beschikbaar in het [Register van toegankelijkheidsverklaringen](https://www.toegankelijkheidsverklaring.nl/register/4096).
-Deze verklaring is gebaseerd op de [Toegankelijkheidcheck 'Probeer IRMA uit'](/assets/toegankelijkheidscheck_website_Probeer_IRMA_uit.pdf). In deze check vindt u alle WCAG 2.1 succescriteria waarop deze website is getoetst.  
+Deze verklaring is gebaseerd op de [Toegankelijkheidcheck 'Probeer Yivi uit'](/assets/toegankelijkheidscheck_website_Probeer_IRMA_uit.pdf). In deze check vindt u alle WCAG 2.1 succescriteria waarop deze website is getoetst.  
 `
     },
 
@@ -569,9 +572,9 @@ Informatie over toerisme, cultuur, uitgaan, evenementen en meer vindt u op [I am
     qrcode: {
         title: '### Maak uzelf bekend',
         steps: `Doorloop de volgende stappen: \n
-1. Scan de QR-code hieronder met uw IRMA-app.  \n
-2. Kies in uw IRMA-app of u de gevraagde gegevens wilt doorgeven.`,
-        button: 'Inloggen met IRMA',
+1. Scan de QR-code hieronder met uw Yivi-app.  \n
+2. Kies in uw Yivi-app of u de gevraagde gegevens wilt doorgeven.`,
+        button: 'Inloggen met Yivi',
         close: 'Sluiten',
         counter: 'Deze QR-code is nog [] geldig.',
         minute: 'minuut',
