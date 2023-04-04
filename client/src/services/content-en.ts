@@ -55,7 +55,6 @@ Would you like to know more about Yivi?
             title: `Demo 5: Reporting anti-social behaviour`,
             body: `Report anti-social behaviour and keep informed about your report by disclosing your contact information.`
         },
-        vis
     },
     demoNotification: {
         heading: `This is a demo site`,
