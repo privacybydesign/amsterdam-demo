@@ -59,7 +59,7 @@ Would you like to know more about Yivi?
             box: `Prove who you are with Yivi, simply and in a way that suits you
 ![Yivi Logo](/assets/yivi_logo.svg "Read more about Yivi")
 # Why Yivi?`,
-            boxLink: `https://www.amsterdam.nl/innovation/digitalisation-technology/digitalisation/irma-new-login-method`,
+            boxLink: `https://www.amsterdam.nl/innovation/digitalisation-technology/digitalisation/yivi-new-login-method`,
             boxLabel: `Why Yivi?`
         }
 },
