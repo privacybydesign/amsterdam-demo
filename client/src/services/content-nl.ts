@@ -32,8 +32,8 @@ U voegt uw persoonsgegevens en uw adres toe aan Yivi door eenmalig met uw DigiD 
 ## Yivi installeren
 
 Download de Yivi-app voor iOS of Android:  \n
-[![App Store](/assets/download-app-store.svg "Download Yivi in de App Store")](https://www.yivi.app/download)
-[![Play Store](/assets/download-play-store.svg "Download Yivi in de Play Store")](https://www.yivi.app/download)
+[![App Store](/assets/download-app-store.svg "Download Yivi in de App Store")](https://apps.apple.com/nl/app/irma-authenticatie/id1294092994)
+[![Play Store](/assets/download-play-store.svg "Download Yivi in de Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu&pli=1)
 
 Wilt u meer weten over Yivi?
 [Ga naar de website van Yivi](https://yivi.app)`
@@ -63,7 +63,7 @@ Wilt u meer weten over Yivi?
             box: `Eenvoudig en op maat online aantonen wie je bent met Yivi
 ![Yivi Logo](/assets/yivi_logo.svg "Lees meer over Yivi")
 # Waarom Yivi?`,
-            boxLink: `http://amsterdam.nl/inloggenmetyivi`,
+            boxLink: `https://www.amsterdam.nl/innovatie/digitalisering-technologie/digitalisering/yivi-nieuwe-manier-inloggen`,
             boxLabel: `Waarom Yivi?`
         }
 },

@@ -28,8 +28,8 @@ You can add your personal data and address to Yivi by logging in once with your 
 
 ## Installing Yivi
 Download the Yivi app for iOS or Android:  \n
-[![App Store](/assets/download-app-store.svg "Download Yivi from the App Store")](https://www.yivi.app/en/download)
-[![Play Store](/assets/download-play-store.svg "Download Yivi from Play Store")](https://www.yivi.app/en/download)
+[![App Store](/assets/download-app-store.svg "Download Yivi from the App Store")](https://apps.apple.com/nl/app/irma-authenticatie/id1294092994)
+[![Play Store](/assets/download-play-store.svg "Download Yivi from Play Store")](https://play.google.com/store/apps/details?id=org.irmacard.cardemu&pli=1)
 
 Would you like to know more about Yivi?
 [Go to the Yivi website](https://www.yivi.app/en)`
@@ -59,7 +59,7 @@ Would you like to know more about Yivi?
             box: `Prove who you are with Yivi, simply and in a way that suits you
 ![Yivi Logo](/assets/yivi_logo.svg "Read more about Yivi")
 # Why Yivi?`,
-            boxLink: `https://www.amsterdam.nl/innovation/digitalisation-technology/digitalisation/irma-new-login-method`,
+            boxLink: `https://www.amsterdam.nl/innovation/digitalisation-technology/digitalisation/yivi-new-login-method`,
             boxLabel: `Why Yivi?`
         }
 },
