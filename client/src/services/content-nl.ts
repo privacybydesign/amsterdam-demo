@@ -63,7 +63,7 @@ Wilt u meer weten over Yivi?
             box: `Eenvoudig en op maat online aantonen wie je bent met Yivi
 ![Yivi Logo](/assets/yivi_logo.svg "Lees meer over Yivi")
 # Waarom Yivi?`,
-            boxLink: `http://amsterdam.nl/inloggenmetyivi`,
+            boxLink: `https://www.amsterdam.nl/innovatie/digitalisering-technologie/digitalisering/yivi-nieuwe-manier-inloggen`,
             boxLabel: `Waarom Yivi?`
         }
 },
