@@ -48,6 +48,13 @@ function reducer(state: IState, newState: IState) {
     return { ...state, ...newState };
 }
 
+// Temporary fix 
+// Previous GGW codes were prefixed with 'DX' instead of the current dynamic format
+// Ideally images are named to reflect their GGW code, but this is not the case for the old images
+function mapGgwCodeToOldFormat(ggwCode: string){ 
+    return 'DX' + ggwCode.slice(2);
+}
+
 const Demo2: React.FC<IProps> = () => {
     const content = useContent();
     const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
@@ -124,7 +131,7 @@ const Demo2: React.FC<IProps> = () => {
             };
         } else if (wijk.length) {
             return {
-                filename: code ? `wijken/${code}` : content.responsiveImages.demo2.headerWithAmsterdam.src,
+                filename: code ? `wijken/${mapGgwCodeToOldFormat(code)}` : content.responsiveImages.demo2.headerWithAmsterdam.src,
                 alt: code
                     ? insertInPlaceholders(content.responsiveImages.demo2.headerWithWijk.alt, ggw)
                     : content.responsiveImages.demo2.headerWithAmsterdam.alt
