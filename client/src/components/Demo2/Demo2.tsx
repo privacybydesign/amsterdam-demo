@@ -49,7 +49,7 @@ function reducer(state: IState, newState: IState) {
 }
 
 // Temporary fix 
-// Previous GGW codes were prefixed with 'DX' instead the current dynamic format
+// Previous GGW codes were prefixed with 'DX' instead of the current dynamic format
 // Ideally images are named to reflect their GGW code, but this is not the case for the old images
 function mapGgwCodeToOldFormat(ggwCode: string){ 
     return 'DX' + ggwCode.slice(2);
