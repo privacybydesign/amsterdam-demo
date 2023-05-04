@@ -17,7 +17,13 @@ export default ({ app }: { app: express.Application }) => {
             contentSecurityPolicy: false
         })
     );
-
+app.use((req, res, next) => {
+  res.set({
+    'Permissions-Policy':
+      'geolocation=(),midi=(),sync-xhr=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()',
+  });
+  next();
+});
     // Parse request body as JSON
     app.use(express.json());
 };
