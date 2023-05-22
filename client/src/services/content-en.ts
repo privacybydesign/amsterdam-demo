@@ -17,7 +17,7 @@ const content = {
 
 Did you report public nuisance in Amsterdam? Please [check your reports via Yivi (in Dutch)](https://www.amsterdam.nl/veelgevraagd/?caseid=%7Bfbeab9ad-81e4-4fee-9dfc-3fd62eb92719%7D).
 
-Try out Yivi first? Please find various demos you can use to find out how Yivi works. Use your own details to see the demos. The City of Amsterdam will not store this data.
+Try out Yivi first? Please find various demos to find out how Yivi works. Use your own details to see the demos. The City of Amsterdam will not store this data.
         `,
         requirements: {
             title: `What do you need?`,
