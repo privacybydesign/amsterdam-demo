@@ -8,9 +8,9 @@ import { processDemoRequest } from './index';
 const demoCredentials: IDemoCredentials = {
     DEMO: [
         [
-            ['irma-demo.gemeente.personalData.fullname'],
             ['pbdf.pilot-amsterdam.passport.firstnames', 'pbdf.pilot-amsterdam.passport.surname'],
-            ['pbdf.pilot-amsterdam.idcard.firstnames', 'pbdf.pilot-amsterdam.idcard.surname']
+            ['pbdf.pilot-amsterdam.idcard.firstnames', 'pbdf.pilot-amsterdam.idcard.surname'],
+            ['irma-demo.gemeente.personalData.fullname']
         ],
         [['irma-demo.sidn-pbdf.email.email']]
       ],
