@@ -14,7 +14,7 @@ export enum CredentialSource {
 }
 
 const CredentialSelector: React.FC<IProps> = ({
-    credentialSource = CredentialSource.DEMO,
+    credentialSource = CredentialSource.PRODUCTION,
     setCredentialSource
 }) => {
     const [config, setConfig] = useState<IIrmaServerConfig | null>(null);
