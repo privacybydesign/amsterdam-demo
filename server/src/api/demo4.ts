@@ -16,6 +16,7 @@ const demoCredentials: IDemoCredentials = {
                 'irma-demo.gemeente.address.city'
             ]
         ],
+        [['irma-demo.sidn-pbdf.mobilenumber.mobilenumber']],
         [['irma-demo.sidn-pbdf.email.email']]
     ],
     PRODUCTION: [
