@@ -6,7 +6,7 @@ import { processDemoRequest } from './index';
 
 // Credentials used in demo
 const demoCredentials18: IDemoCredentials = {
-    DEMO: [[['irma-demo.gemeente.personalData.over18']]],
+    DEMO: [[['pbdf.pilot-amsterdam.passport.over18'], ['pbdf.pilot-amsterdam.idcard.over18'], ['irma-demo.gemeente.personalData.over18']]],
     PRODUCTION: () => {
         const credentials = [[['pbdf.gemeente.personalData.over18']]];
         if (process.env.NODE_ENV !== 'production') {
@@ -17,7 +17,7 @@ const demoCredentials18: IDemoCredentials = {
 };
 
 const demoCredentials65: IDemoCredentials = {
-    DEMO: [[['irma-demo.gemeente.personalData.over65']]],
+    DEMO: [[['pbdf.pilot-amsterdam.passport.over65'], ['pbdf.pilot-amsterdam.idcard.over65'], ['irma-demo.gemeente.personalData.over65']]],
     PRODUCTION: () => {
         const credentials = [[['pbdf.gemeente.personalData.over65']]];
         if (process.env.NODE_ENV !== 'production') {

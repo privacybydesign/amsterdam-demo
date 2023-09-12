@@ -50,7 +50,7 @@ function reducer(state: IState, newState: IState) {
 
 const Demo2: React.FC<IProps> = () => {
     const content = useContent();
-    const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
+    const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const { modal, url, showModal, irmaSession }: IIrmaSessionOutputData = useIrmaSession({

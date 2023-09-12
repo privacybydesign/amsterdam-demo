@@ -31,7 +31,7 @@ const Demo4: React.FC<IProps> = () => {
     const content = useContent();
     const formEl = useRef(null);
 
-    const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
+    const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
     const [state, dispatch] = useReducer(reducer, initialState);
 
     function replaceVars(str: string, p1: keyof IState['irmaAttributes']) {

@@ -35,7 +35,7 @@ export interface IDemo5Query {
 
 const Demo5: React.FC<IProps> = () => {
     const content = useContent();
-    const [credentialSource, setCredentialSource] = useState(CredentialSource.PRODUCTION);
+    const [credentialSource, setCredentialSource] = useState(CredentialSource.DEMO);
     const [state, dispatch] = useReducer(reducer, initialState);
     const formRef = useRef<HTMLFormElement>(null);
 
