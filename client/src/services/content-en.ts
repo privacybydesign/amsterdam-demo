@@ -15,7 +15,7 @@ const content = {
         title: `# Discover Yivi with the help of five demos`,
         intro: `Yivi is an app you can use to prove who you are when online. Yivi offers a new way of logging in, and is different to other familiar methods like DigiD.
 
-Did you report public nuisance in Amsterdam? Until October 1st, [you could check your reports via Yivi (in Dutch)](https://www.amsterdam.nl/veelgevraagd/?caseid=%7Bfbeab9ad-81e4-4fee-9dfc-3fd62eb92719%7D).
+Did you report public nuisance in Amsterdam? Until October 1st, [you could check your reports via Yivi (in Dutch only)](https://www.amsterdam.nl/veelgevraagd/?caseid=%7Bfbeab9ad-81e4-4fee-9dfc-3fd62eb92719%7D).
 
 Try out Yivi first? Please find various demos to find out how Yivi works. Use your own details to see the demos. The City of Amsterdam will not store this data.
         `,
