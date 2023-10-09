@@ -52,7 +52,7 @@ const PageTemplate: React.FC<IProps> = ({ children, className, hideTitle }) => {
                 navigation={title}
                 links={
                     <>
-                        <SmallLinkWithChevron href="https://mijn.amsterdam.nl/inloggen-met-yivi">Mijn Amsterdam</SmallLinkWithChevron>
+                        <SmallLinkWithChevron href="https://mijn.amsterdam.nl">Mijn Amsterdam</SmallLinkWithChevron>
                         <SmallLinkWithChevron
                             role="button"
                             onClick={() => switchLanguage(language === Language.EN ? Language.NL : Language.EN)}
