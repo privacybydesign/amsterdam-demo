@@ -1,5 +1,19 @@
-version: "3.5"
+---
 services:
+  irma:
+    image: ghcr.io/privacybydesign/irma:edge
+    command: >
+      server -v --url ${IRMA_SERVER_URL:-http://localhost:8080} --port 8080 --config /mnt/config/config.json
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    volumes:
+      - ./downloads:/schemes:rw
+      - ./irma_config.json:/mnt/config/config.json:ro
+      - ./.secrets/public.crt:/mnt/requestors/ams-di-demo.crt:ro
+    environment:
+      IRMASERVER_SCHEMES_PATH: /schemes
+
   fe:
     container_name: fe
     build:
@@ -7,6 +21,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./client:/usr/src/app
+
   be:
     container_name: be
     build:
@@ -18,6 +33,8 @@ services:
       - ./server:/usr/src/app
     environment:
       - NODE_ENV=development
-      - CONFIG=config.json
       - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
       - FE_URL=http://fe:9000
+
+volumes:
+  irma-schemes:

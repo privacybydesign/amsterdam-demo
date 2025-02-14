@@ -9,3 +9,5 @@ coverage
 .awcache
 yarn-error.log
 package-lock.json
+downloads/
+.secrets

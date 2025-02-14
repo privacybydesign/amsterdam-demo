@@ -1,0 +1,12 @@
+{
+    "no_auth": false,
+    "requestors": {
+        "ams-di-demo": {
+            "auth_method": "publickey",
+            "key_file": "/mnt/requestors/ams-di-demo.crt",
+            "issue_perms": [
+                "*"
+            ]
+        }
+    }
+}

@@ -1,7 +1,5 @@
 import dotenv from 'dotenv';
-import configDev from './config.dev';
-import configAcc from './config.acc';
-import configProd from './config.prod';
+import configDev from './config';
 
 // Load .env file (if present)
 dotenv.config();
@@ -22,11 +20,6 @@ export interface IConfig {
 }
 
 let configToUse: IConfig = configDev;
-if (process.env.NODE_ENV === 'acceptance') {
-    configToUse = configAcc;
-} else if (process.env.NODE_ENV === 'production') {
-    configToUse = configProd;
-}
 
 configToUse.environment = process.env.NODE_ENV;
 
