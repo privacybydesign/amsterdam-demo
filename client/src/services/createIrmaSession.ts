@@ -126,9 +126,9 @@ const createIrmaSession = (
                 }
             },
 
-            // mapping: {
-            //     sessionPtr: (sessionPtr: any) => ({ ...sessionPtr, u: sessionPtr.u.replace(/\/irma/g, '/irma/irma') })
-            // },
+            mapping: {
+                sessionPtr: (sessionPtr: any) => sessionPtr
+            },
 
             result: {
                 url: () => `/demos/result?sid=${sessionStorage.getItem(`irma-demo.sid.${holderElementId}`)}`
