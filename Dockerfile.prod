@@ -14,7 +14,7 @@ RUN yarn build
 ##################################
 
 # Build server backend
-FROM node:14.4-alpine AS be-builder
+FROM node:lts-alpine AS be-builder
 LABEL maintainer="support@yivi.app"
 
 ENV NODE_ENV=${ENVIRONMENT}
@@ -40,12 +40,12 @@ COPY ./server/static ./dist/static
 ##################################
 
 # Build server and include frontend (docroot is set to ../client in config.json)
-FROM node:14.4-alpine
+FROM node:lts-alpine
 
 COPY --from=be-builder /app/dist/. /server
 COPY --from=fe-builder /app/dist/. /client
 
-RUN npm install pm2 -g
+RUN apk update && apk upgrade && npm install pm2 -g
 WORKDIR /server
 
 RUN adduser -D irma

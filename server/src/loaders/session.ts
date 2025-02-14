@@ -30,6 +30,7 @@ export default ({ app, config }: ILoaderArgs) => {
         }
     }
 
+    /** @ts-ignore */
     app.use(session(sessionOptions));
     Logger.info('Session management initialized.');
 };
