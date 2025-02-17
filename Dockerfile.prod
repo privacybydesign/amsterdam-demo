@@ -1,12 +1,9 @@
 # Build client frontend
-FROM node:14.4-alpine3.12 AS fe-builder
-LABEL maintainer="datapunt@amsterdam.nl"
+FROM node:14.4-alpine AS fe-builder
+LABEL maintainer="support@yivi.app"
 
 ENV NODE_ENV=${ENVIRONMENT}
-ENV PATH /app/node_modules/.bin:$PATH
-
-ENV NODE_EXTRA_CA_CERTS=/adp_rootca.crt
-COPY adp_rootca.crt /adp_rootca.crt
+ENV PATH=/app/node_modules/.bin:$PATH
 
 WORKDIR /app
 COPY ./client ./
@@ -17,14 +14,11 @@ RUN yarn build
 ##################################
 
 # Build server backend
-FROM node:14.4-alpine3.12 AS be-builder
-LABEL maintainer="datapunt@amsterdam.nl"
+FROM node:lts-alpine AS be-builder
+LABEL maintainer="support@yivi.app"
 
 ENV NODE_ENV=${ENVIRONMENT}
-ENV PATH /app/node_modules/.bin:$PATH
-
-ENV NODE_EXTRA_CA_CERTS=/adp_rootca.crt
-COPY adp_rootca.crt /adp_rootca.crt
+ENV PATH=/app/node_modules/.bin:$PATH
 
 WORKDIR /app
 
@@ -34,7 +28,7 @@ COPY ./server/yarn.lock ./
 COPY ./server/tsconfig.json ./
 COPY ./server/src ./src
 
-RUN yarn install 
+RUN yarn install
 RUN yarn build
 
 ## Install production modules in /dist
@@ -46,16 +40,12 @@ COPY ./server/static ./dist/static
 ##################################
 
 # Build server and include frontend (docroot is set to ../client in config.json)
-FROM node:14.4-alpine3.12
-
-
-ENV NODE_EXTRA_CA_CERTS=/adp_rootca.crt
-COPY adp_rootca.crt /adp_rootca.crt
+FROM node:lts-alpine
 
 COPY --from=be-builder /app/dist/. /server
 COPY --from=fe-builder /app/dist/. /client
 
-RUN npm install pm2 -g
+RUN apk update && apk upgrade && npm install pm2 -g
 WORKDIR /server
 
 RUN adduser -D irma

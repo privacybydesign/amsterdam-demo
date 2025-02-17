@@ -1,8 +1,8 @@
 import { IConfig } from '@config/index';
 
 const config: IConfig = {
-    requestorname: 'irma-demo',
-    irma: 'https://id.amsterdam.nl/irma',
+    requestorname: 'ams-di-demo',
+    irma: process.env.IRMA_SERVER_URL ?? 'http://localhost:8080',
     docroot: '../client',
     port: 8000
 };

@@ -34,7 +34,7 @@ export interface IStateChangeCallbackMapping {
     [stateName: string]: (payload?: any) => void;
 }
 
-export interface IIrmaSessionData {}
+export interface IIrmaSessionData { }
 
 export interface IStateMachine {
     transition: (state: string, payload?: any) => void;
@@ -45,7 +45,7 @@ class IrmaSkipMobileChoice {
     _stateMachine: IStateMachine;
     _alwaysShowQRCode = false;
 
-    constructor({ stateMachine, options }: { stateMachine: any; options: any }) {
+    constructor({ stateMachine, options }: { stateMachine: any; options: any; }) {
         this._stateMachine = stateMachine;
         if (options.alwaysShowQRCode) {
             this._alwaysShowQRCode = options.alwaysShowQRCode;
@@ -53,7 +53,7 @@ class IrmaSkipMobileChoice {
     }
 
     // Skip the qr/app choice screen on mobile and decide for ourselves.
-    stateChange({ newState, payload }: { newState: any; payload: any }) {
+    stateChange({ newState, payload }: { newState: any; payload: any; }) {
         if (newState === 'ShowingIrmaButton') {
             if (this._alwaysShowQRCode) {
                 this._stateMachine.transition('chooseQR', payload);
@@ -63,11 +63,11 @@ class IrmaSkipMobileChoice {
 }
 class IrmaStateChangeCallback {
     _mapping: IStateChangeCallbackMapping;
-    constructor({ options }: { options: any }) {
+    constructor({ options }: { options: any; }) {
         this._mapping = options.callBackMapping;
     }
 
-    stateChange({ newState, payload }: { newState: any; payload: any }) {
+    stateChange({ newState, payload }: { newState: any; payload: any; }) {
         if (Object.keys(this._mapping).indexOf(newState) !== -1 && typeof this._mapping[newState] === 'function') {
             this._mapping[newState](payload);
         } else if (this._mapping.rest && typeof this._mapping.rest === 'function') {
@@ -82,10 +82,10 @@ class IrmaStateChangeCallback {
 
 export class IrmaAbortOnCancel {
     _stateMachine: IStateMachine;
-    constructor({ stateMachine }: { stateMachine: any }) {
+    constructor({ stateMachine }: { stateMachine: any; }) {
         this._stateMachine = stateMachine;
     }
-    stateChange({ newState }: { newState: any }): void {
+    stateChange({ newState }: { newState: any; }): void {
         if (newState === 'Cancelled') this._stateMachine.transition('abort');
     }
 }
@@ -127,7 +127,7 @@ const createIrmaSession = (
             },
 
             mapping: {
-                sessionPtr: (sessionPtr: any) => ({ ...sessionPtr, u: sessionPtr.u.replace(/\/irma/g, '/irma/irma') })
+                sessionPtr: (sessionPtr: any) => sessionPtr
             },
 
             result: {
