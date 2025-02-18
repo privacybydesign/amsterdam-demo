@@ -40,9 +40,6 @@ COPY ./server/static ./dist/static
 # Build server and include frontend (docroot is set to ../client in config.json)
 FROM node:lts-alpine
 
-ARG ENVIRONMENT=production
-ENV NODE_ENV=${ENVIRONMENT}
-
 COPY --from=be-builder /app/dist/. /server
 COPY --from=fe-builder /app/dist/. /client
 
@@ -54,6 +51,7 @@ RUN mkdir sessions
 RUN chmod -R 777 sessions
 USER irma
 
+ENV NODE_ENV=production
 ENV DEBUG=express-session
 
 CMD ["pm2-runtime","./app.js"]
