@@ -2,7 +2,6 @@
 FROM node:14.4-alpine AS fe-builder
 LABEL maintainer="support@yivi.app"
 
-ENV NODE_ENV=${ENVIRONMENT}
 ENV PATH=/app/node_modules/.bin:$PATH
 
 WORKDIR /app
@@ -17,7 +16,6 @@ RUN yarn build
 FROM node:lts-alpine AS be-builder
 LABEL maintainer="support@yivi.app"
 
-ENV NODE_ENV=${ENVIRONMENT}
 ENV PATH=/app/node_modules/.bin:$PATH
 
 WORKDIR /app
@@ -53,6 +51,7 @@ RUN mkdir sessions
 RUN chmod -R 777 sessions
 USER irma
 
+ENV NODE_ENV=production
 ENV DEBUG=express-session
 
 CMD ["pm2-runtime","./app.js"]
