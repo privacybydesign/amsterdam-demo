@@ -16,9 +16,6 @@ const content = {
         title: `# Ontdek Yivi via vijf demo’s`,
         intro: `Yivi is een app waarmee u online kunt aantonen wie u bent. Yivi biedt een nieuwe manier van inloggen, anders dan u kent van bijvoorbeeld DigiD.
 
-
-Heeft u een melding openbare ruimte en overlast heeft gedaan in Amsterdam? Tot 1 oktober kon u de [status van uw meldingen volgen via Yivi](https://www.amsterdam.nl/veelgevraagd/?caseid=%7Bfbeab9ad-81e4-4fee-9dfc-3fd62eb92719%7D).
-
 Wilt u Yivi uitproberen? Dat kan via verschillende demo’s. U doet de demo's met uw eigen gegevens. De gemeente Amsterdam slaat deze gegevens niet op.
         `,
         requirements: {
@@ -62,14 +59,14 @@ Wilt u meer weten over Yivi?
             title: `Demo 5: Overlast melden`,
             body: `Doe een melding van overlast en blijf op de hoogte door uw contactgegevens vrij te geven.`
         },
-      sidebar: {
+        sidebar: {
             box: `Eenvoudig en op maat online aantonen wie je bent met Yivi
 ![Yivi Logo](/assets/yivi_logo.svg "Lees meer over Yivi")
 # Waarom Yivi?`,
             boxLink: `https://www.amsterdam.nl/innovatie/digitalisering-technologie/digitalisering/yivi-nieuwe-manier-inloggen`,
             boxLabel: `Waarom Yivi?`
         }
-},
+    },
     demoNotification: {
         heading: `Dit is een demosite`,
         content: `U kunt hier ervaren wat u met uw Yivi-app kunt. Uw gegevens worden niet bewaard.`
@@ -86,9 +83,9 @@ Wilt u meer weten over Yivi?
         content: `# Internet Explorer niet meer ondersteund
 **Deze demosite werkt niet goed in Internet Explorer. We raden je aan een andere browser te gebruiken. We adviseren je zo snel mogelijk over te stappen naar een andere browser zoals Firefox of Chrome.**
   &nbsp;
-  
+
   &nbsp;
-  
+
 De website **Probeer Yivi uit** maakt gebruik van de meest recente technologie en webstandaarden. De verouderde browser Internet Explorer van Microsoft kan daar steeds minder goed mee overweg. Het ondersteunen van die browser is daardoor een drempel voor het optimaliseren van de functionaliteit van de site.
 
 Concreet betekent het niet meer ondersteunen van Internet Explorer dat de site in die browser (veel) trager werkt dan in moderne browsers, pagina's er anders uitzien dan ze zijn ontworpen en meer complexe functies (bijvoorbeeld in de interactieve kaart) niet goed werken.
@@ -97,7 +94,7 @@ Als je nog gebruik maakt van Internet Explorer, adviseren we je om zo snel mogel
         errorAlert: {
             heading: `Let op`,
             content: `Deze demosite werkt niet goed in Internet Explorer. We raden je aan een andere browser te gebruiken.
-                
+
 [Wat kan ik doen?](/ie-support)`
         }
     },
@@ -514,7 +511,7 @@ Dan kunt u contact opnemen via het [klachtenformulier van de nationale ombudsman
 ## Toegankelijkheidsverklaring
 De website ‘Probeer Yivi uit’ voldoet gedeeltelijk aan het Besluit digitale toegankelijkheid overheid.
 De toegankelijkheidsverklaring is beschikbaar in het [Register van toegankelijkheidsverklaringen](https://www.toegankelijkheidsverklaring.nl/register/4096).
-Deze verklaring is gebaseerd op de [Toegankelijkheidcheck 'Probeer Yivi uit'](/assets/toegankelijkheidscheck_website_Probeer_IRMA_uit.pdf). In deze check vindt u alle WCAG 2.1 succescriteria waarop deze website is getoetst.  
+Deze verklaring is gebaseerd op de [Toegankelijkheidcheck 'Probeer Yivi uit'](/assets/toegankelijkheidscheck_website_Probeer_IRMA_uit.pdf). In deze check vindt u alle WCAG 2.1 succescriteria waarop deze website is getoetst.
 `
     },
 
