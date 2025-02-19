@@ -15,8 +15,6 @@ const content = {
         title: `# Discover Yivi with the help of five demos`,
         intro: `Yivi is an app you can use to prove who you are when online. Yivi offers a new way of logging in, and is different to other familiar methods like DigiD.
 
-Did you report public nuisance in Amsterdam? Until October 1st, [you could check your reports via Yivi (in Dutch only)](https://www.amsterdam.nl/veelgevraagd/?caseid=%7Bfbeab9ad-81e4-4fee-9dfc-3fd62eb92719%7D).
-
 Try out Yivi first? Please find various demos to find out how Yivi works. Use your own details to see the demos. The City of Amsterdam will not store this data.
         `,
         requirements: {
@@ -58,14 +56,14 @@ Would you like to know more about Yivi?
             title: `Demo 5: Reporting public nuisance`,
             body: `Report public nuisance and keep informed about your report by disclosing your contact information.`
         },
-      sidebar: {
+        sidebar: {
             box: `Prove who you are with Yivi, simply and in a way that suits you
 ![Yivi Logo](/assets/yivi_logo.svg "Read more about Yivi")
 # Why Yivi?`,
             boxLink: `https://www.amsterdam.nl/innovation/digitalisation-technology/digitalisation/yivi-new-login-method`,
             boxLabel: `Why Yivi?`
         }
-},
+    },
     demoNotification: {
         heading: `This is a demo site`,
         content: `You can find out here what you can do with the Yivi app. Your details will not be kept.`
@@ -82,16 +80,16 @@ Would you like to know more about Yivi?
         content: `# Internet Explorer no longer supported
 **This demo site does not work properly in Internet Explorer. You are advised to use a different browser. You are advised to change browser as quickly as possible, such as Firefox or Chrome.**
   &nbsp;
-  
+
   &nbsp;
-  
+
 The **Give Yivi a try** website uses the most recent technology and web standards. The outdated Microsoft Internet Explorer browser is becoming less and less suitable. Supporting the browser is therefore an obstacle for the purpose of optimizing the functionality of the site.
 In practical terms, the non-support of Internet Explorer means that the site would work much more slowly than in modern browsers, that pages would look different to how they have been designed, and that more complex functions (in the interactive map, for example) would not work properly.
 If you are still using Internet Explorer, you are advised to change to a different browser, such as [Firefox](https://www.mozilla.org/nl/firefox/new/) or [Chrome](https://www.google.com/intl/nl_nl/chrome/). Microsoft itself [advises](https://docs.microsoft.com/nl-nl/lifecycle/faq/internet-explorer-microsoft-edge#what-is-the-lifecycle-policy-for-internet-explorer) the use of a different browser.`,
         errorAlert: {
             heading: `Please note`,
             content: `This demo site does not work properly in Internet Explorer. You are advised to use a different browser.
-                
+
 [What can I do?](/ie-support)`
         }
     },
@@ -495,7 +493,7 @@ If so, you can get in touch using the [National ombudsman complaints form](https
 ## Accessibility statement
 The ‘Give Yivi a try’ website is in partial compliance with the Decree on Digital Accessibility of the Government.
 The accessibility statement is available in the [Register van toegankelijkheidsverklaringen (register of accessibility statements)](https://www.toegankelijkheidsverklaring.nl/register/4096).
-This statement is based on the [‘Give Yivi a try’ accessibility check](/assets/toegankelijkheidscheck_website_Probeer_IRMA_uit.pdf). This check includes all WCAG 2.1 success criteria on which this website has been tested.  
+This statement is based on the [‘Give Yivi a try’ accessibility check](/assets/toegankelijkheidscheck_website_Probeer_IRMA_uit.pdf). This check includes all WCAG 2.1 success criteria on which this website has been tested.
 `
     },
 
