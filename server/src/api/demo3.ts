@@ -13,12 +13,12 @@ const demoCredentials: IDemoCredentials = {
             ['irma-demo.gemeente.personalData.fullname']
         ],
         [['irma-demo.sidn-pbdf.email.email']]
-      ],
+    ],
     PRODUCTION: [
         [
-            ['pbdf.gemeente.personalData.fullname'],
             ['pbdf.pilot-amsterdam.passport.firstnames', 'pbdf.pilot-amsterdam.passport.surname'],
-            ['pbdf.pilot-amsterdam.idcard.firstnames', 'pbdf.pilot-amsterdam.idcard.surname']           
+            ['pbdf.pilot-amsterdam.idcard.firstnames', 'pbdf.pilot-amsterdam.idcard.surname'],
+            ['pbdf.gemeente.personalData.fullname'],
         ],
         [['pbdf.sidn-pbdf.email.email']]
     ]
