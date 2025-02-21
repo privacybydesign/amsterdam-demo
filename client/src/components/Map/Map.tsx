@@ -22,10 +22,10 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
     const wrapperRef = useRef(null);
     const mapRef = useRef(null);
     const autosuggestUrl =
-        'https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&fl=id,weergavenaam,type,score,lat,lon&q=';
+        'https://api.pdok.nl/bzk/locatieserver/search/v3_1/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&fl=id,weergavenaam,type,score,lat,lon&q=';
     const locationUrl =
-        'https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&distance=50&';
-    const lookupUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/v3/lookup?id=';
+        'https://api.pdok.nl/bzk/locatieserver/search/v3_1/reverse?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&distance=50&';
+    const lookupUrl = 'https://api.pdok.nl/bzk/locatieserver/search/v3_1/lookup?id=';
 
     const { mapInstance, url, query, autosuggest, location, showAutosuggest } = state;
 
