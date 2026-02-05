@@ -11,8 +11,21 @@ const demoCredentials18: IDemoCredentials = {
 };
 
 const demoCredentials65: IDemoCredentials = {
-    DEMO: [[['pbdf.pilot-amsterdam.passport.over65'], ['pbdf.pilot-amsterdam.idcard.over65'], ['irma-demo.gemeente.personalData.over65']]],
-    PRODUCTION: () => [[['pbdf.pilot-amsterdam.passport.over65'], ['pbdf.pilot-amsterdam.idcard.over65'], ['pbdf.gemeente.personalData.over65']]],
+  DEMO: [
+    [
+      ['pbdf.pilot-amsterdam.passport.over65'],
+      ['pbdf.pilot-amsterdam.idcard.over65'],
+      ['irma-demo.gemeente.personalData.over65'],
+    ],
+  ],
+  PRODUCTION: () => [
+    [
+      ['pbdf.gemeente.personalData.over65'],
+      ['pbdf.pbdf.idcard.over65'],
+      ['pbdf.pbdf.drivinglicence.over65'],
+      ['pbdf.pbdf.passport.over65'],
+    ],
+  ],
 };
 
 // Define routes for demo
