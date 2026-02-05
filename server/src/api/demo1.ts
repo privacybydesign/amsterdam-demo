@@ -6,8 +6,21 @@ import { processDemoRequest } from './index';
 
 // Credentials used in demo
 const demoCredentials18: IDemoCredentials = {
-    DEMO: [[['pbdf.pilot-amsterdam.passport.over18'], ['pbdf.pilot-amsterdam.idcard.over18'], ['irma-demo.gemeente.personalData.over18']]],
-    PRODUCTION: () => [[['pbdf.pilot-amsterdam.passport.over18'], ['pbdf.pilot-amsterdam.idcard.over18'], ['pbdf.gemeente.personalData.over18']]],
+  DEMO: [
+    [
+      ['pbdf.pilot-amsterdam.passport.over18'],
+      ['pbdf.pilot-amsterdam.idcard.over18'],
+      ['irma-demo.gemeente.personalData.over18']
+    ],
+  ],
+  PRODUCTION: () => [
+    [
+      ['pbdf.gemeente.personalData.over18'],
+      ['pbdf.pbdf.idcard.over18'],
+      ['pbdf.pbdf.drivinglicence.over18'],
+      ['pbdf.pbdf.passport.over18'],
+    ],
+  ],
 };
 
 const demoCredentials65: IDemoCredentials = {
