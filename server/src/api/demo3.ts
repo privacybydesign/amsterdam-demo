@@ -20,6 +20,8 @@ const demoCredentials: IDemoCredentials = {
       ['pbdf.pbdf.drivinglicence.firstName', 'pbdf.pbdf.drivinglicence.lastName'],
       ['pbdf.pbdf.idcard.firstName', 'pbdf.pbdf.idcard.lastName'],
       ['pbdf.gemeente.personalData.fullname'],
+      ['pbdf.pilot-amsterdam.passport.firstnames', 'pbdf.pilot-amsterdam.passport.surname'],
+      ['pbdf.pilot-amsterdam.idcard.firstnames', 'pbdf.pilot-amsterdam.idcard.surname'],
     ],
     [
       ['pbdf.sidn-pbdf.email.email'],
