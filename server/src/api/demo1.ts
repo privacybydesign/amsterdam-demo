@@ -10,7 +10,9 @@ const demoCredentials18: IDemoCredentials = {
     [
       ['pbdf.pilot-amsterdam.passport.over18'],
       ['pbdf.pilot-amsterdam.idcard.over18'],
-      ['irma-demo.gemeente.personalData.over18']
+      ['irma-demo.gemeente.personalData.over18'],
+      ['pbdf.pilot-amsterdam.passport.over18'],
+      ['pbdf.pilot-amsterdam.idcard.over18'],
     ],
   ],
   PRODUCTION: () => [
@@ -37,6 +39,8 @@ const demoCredentials65: IDemoCredentials = {
       ['pbdf.pbdf.idcard.over65'],
       ['pbdf.pbdf.drivinglicence.over65'],
       ['pbdf.pbdf.passport.over65'],
+      ['pbdf.pilot-amsterdam.passport.over65'],
+      ['pbdf.pilot-amsterdam.idcard.over65'],
     ],
   ],
 };
