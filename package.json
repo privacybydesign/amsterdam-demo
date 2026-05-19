@@ -7,7 +7,7 @@
         "precommit-be": "cd server && yarn format && yarn lint ",
         "prepush-fe": "cd client && yarn format && yarn lint",
         "prepush-be": "cd server && yarn format && yarn lint && yarn test",
-        "prepare": "husky install"
+        "prepare": "husky"
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx}": "echo 'No precommit'"
@@ -16,8 +16,8 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "husky": "^7.0.4",
-        "lint-staged": "^12.4.1"
+        "husky": "^9.1.7",
+        "lint-staged": "^17.0.5"
     },
     "dependencies": {
         "server": "file:server"
