@@ -1,1 +1,1 @@
-yarn prepush-fe && yarn prepush-be
+npm run prepush-fe && npm run prepush-be

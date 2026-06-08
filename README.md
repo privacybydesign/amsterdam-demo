@@ -18,12 +18,9 @@ popd
 
 ## Install npm packages
 
-This project requires Node 14 to install packages. Use nvm (or similar) to switch to Node 14.
-
 ```sh
-nvm use 14
-pushd client; yarn; popd
-pushd server; yarn; popd
+pushd client; npm install; popd
+pushd server; npm install; popd
 ```
 
 ## Run with docker-compose

@@ -1,5 +1,5 @@
 # Build client frontend
-FROM node:14.4-alpine AS fe-builder
+FROM node:lts-alpine AS fe-builder
 LABEL maintainer="support@yivi.app"
 
 ENV PATH=/app/node_modules/.bin:$PATH
@@ -7,8 +7,8 @@ ENV PATH=/app/node_modules/.bin:$PATH
 WORKDIR /app
 COPY ./client ./
 
-RUN yarn install
-RUN yarn build
+RUN npm ci
+RUN npm run build
 
 ##################################
 
@@ -22,15 +22,16 @@ WORKDIR /app
 
 ## Compile typescript to js in /dist
 COPY ./server/package.json ./
-COPY ./server/yarn.lock ./
+COPY ./server/package-lock.json ./
 COPY ./server/tsconfig.json ./
 COPY ./server/src ./src
 
-RUN yarn install
-RUN yarn build
+RUN npm ci
+RUN npm run build
 
-## Install production modules in /dist
-RUN yarn install --production --modules-folder ./dist/node_modules
+## Install production modules in /dist/node_modules
+RUN cp package.json package-lock.json ./dist/
+RUN npm ci --omit=dev --prefix ./dist
 
 ## Copy static assets in /dist
 COPY ./server/static ./dist/static
