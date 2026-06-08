@@ -34,7 +34,12 @@ services:
     environment:
       - NODE_ENV=development
       - PRIVATE_KEY=${IRMA_PRIVATE_KEY}
+      # Frontend dev server (webpack-dev-server), reached over the compose network.
       - FE_URL=http://fe:9000
+      # IRMA server API, reached over the compose network by its service name.
+      # This is the server-to-server URL; the URL the Yivi app/browser scans is
+      # set on the `irma` service's --url flag below.
+      - IRMA_SERVER_URL=http://irma:8080
 
 volumes:
   irma-schemes:
