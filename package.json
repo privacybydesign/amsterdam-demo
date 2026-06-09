@@ -3,10 +3,10 @@
     "version": "1.0.0",
     "description": "IRMA Demo repo",
     "scripts": {
-        "precommit-fe": "cd client && yarn format && yarn lint",
-        "precommit-be": "cd server && yarn format && yarn lint ",
-        "prepush-fe": "cd client && yarn format && yarn lint",
-        "prepush-be": "cd server && yarn format && yarn lint && yarn test",
+        "precommit-fe": "cd client && npm run format && npm run lint",
+        "precommit-be": "cd server && npm run format && npm run lint ",
+        "prepush-fe": "cd client && npm run format && npm run lint",
+        "prepush-be": "cd server && npm run format && npm run lint && npm test",
         "prepare": "husky"
     },
     "lint-staged": {
@@ -18,8 +18,5 @@
     "devDependencies": {
         "husky": "^9.1.7",
         "lint-staged": "^17.0.5"
-    },
-    "dependencies": {
-        "server": "file:server"
     }
 }

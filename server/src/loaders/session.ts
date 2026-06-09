@@ -1,5 +1,5 @@
 import Logger from '@loaders/logger';
-import session, { SessionOptions } from 'express-session';
+import session, { CookieOptions, SessionOptions } from 'express-session';
 const FileStore = require('session-file-store')(session);
 import { ILoaderArgs } from '.';
 
@@ -24,7 +24,7 @@ export default ({ app, config }: ILoaderArgs) => {
     // Enable secure cookies on TLS environments
     if (process.env.NODE_ENV === 'acceptance' || process.env.NODE_ENV === 'production') {
         app.set('trust proxy', 1);
-        sessionOptions!.cookie!.secure = true;
+        (sessionOptions.cookie as CookieOptions).secure = true;
         if (process.env.SESSION_KEY) {
             sessionOptions.secret = process.env.SESSION_KEY;
         }

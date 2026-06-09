@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { ILoaderArgs } from '.';
 import Logger from './logger';
-const createProxyMiddleware = require('http-proxy-middleware');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 
 // Setup frontend

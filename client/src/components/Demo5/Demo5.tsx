@@ -408,7 +408,6 @@ const Demo5: React.FC<IProps> = () => {
                                             center: (state.location as any).latLng,
                                             zoom: 13,
                                             keyboard: false,
-                                            tap: false,
                                             scrollWheelZoom: false,
                                             touchZoom: false
                                         }}
