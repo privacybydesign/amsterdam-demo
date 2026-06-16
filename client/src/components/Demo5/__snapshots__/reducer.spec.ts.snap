@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Demo5 reducer should not update state when an unknown action is dispatched 1`] = `
-Object {
+{
   "email": "",
-  "formErrors": Array [],
+  "formErrors": [],
   "hasError": false,
   "hasResult": false,
   "location": null,
@@ -15,9 +15,9 @@ Object {
 `;
 
 exports[`Demo5 reducer should update when action setError is dispatched 1`] = `
-Object {
+{
   "email": "",
-  "formErrors": Array [],
+  "formErrors": [],
   "hasError": true,
   "hasResult": false,
   "location": null,
@@ -29,12 +29,12 @@ Object {
 `;
 
 exports[`Demo5 reducer should update when action setLocation is dispatched 1`] = `
-Object {
+{
   "email": "",
-  "formErrors": Array [],
+  "formErrors": [],
   "hasError": false,
   "hasResult": false,
-  "location": Object {
+  "location": {
     "displayName": "Test",
     "id": "testId",
   },
@@ -46,9 +46,9 @@ Object {
 `;
 
 exports[`Demo5 reducer should update when action setResult is dispatched 1`] = `
-Object {
+{
   "email": "test@amsterdam.nl",
-  "formErrors": Array [],
+  "formErrors": [],
   "hasError": false,
   "hasResult": true,
   "location": null,
@@ -60,12 +60,12 @@ Object {
 `;
 
 exports[`Demo5 reducer should update when action validateForm is dispatched 1`] = `
-Object {
+{
   "email": "",
-  "formErrors": Array [],
+  "formErrors": [],
   "hasError": false,
   "hasResult": false,
-  "location": Object {
+  "location": {
     "displayName": "Test",
     "id": "testId",
   },

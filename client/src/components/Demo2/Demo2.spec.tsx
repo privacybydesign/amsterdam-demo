@@ -29,7 +29,7 @@ describe('Demo2', () => {
             zipcode: '1011PT'
         });
 
-        jest.useFakeTimers();
+        jest.useFakeTimers({ advanceTimers: true });
 
         // Adjust mocked getGGW to return a proper response in Amsterdam
         const mockedGetGGW = getGGW as jest.Mock<unknown>;
@@ -70,7 +70,7 @@ describe('Demo2', () => {
             zipcode: '3011AA'
         });
 
-        jest.useFakeTimers();
+        jest.useFakeTimers({ advanceTimers: true });
 
         // Adjust mocked getGGW to return a proper response outside Amsterdam
         const mockedGetGGW = getGGW as jest.Mock<unknown>;
@@ -107,7 +107,7 @@ describe('Demo2', () => {
             zipcode: '1011PT'
         });
 
-        jest.useFakeTimers();
+        jest.useFakeTimers({ advanceTimers: true });
 
         // Adjust mocked getGGW to return a proper response in Amsterdam
         const mockedGetGGW = getGGW as jest.Mock<unknown>;
@@ -148,7 +148,7 @@ describe('Demo2', () => {
             zipcode: '3011AA'
         });
 
-        jest.useFakeTimers();
+        jest.useFakeTimers({ advanceTimers: true });
 
         // Adjust mocked getGGW to return a proper response in Amsterdam
         const mockedGetGGW = getGGW as jest.Mock<unknown>;

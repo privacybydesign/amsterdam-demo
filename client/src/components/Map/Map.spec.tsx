@@ -37,7 +37,7 @@ describe('Map', () => {
             await fireEvent.mouseDown(autoSuggestOption);
         });
 
-        expect(spy).toBeCalled();
+        expect(spy).toHaveBeenCalled();
     });
 
     it('should trigger the callback when the user clicks on the map', async () => {
@@ -47,6 +47,6 @@ describe('Map', () => {
         const map = screen.getByTestId('map');
         await act(async (): Promise<any> => await fireEvent.click(map));
 
-        expect(spy).toBeCalled();
+        expect(spy).toHaveBeenCalled();
     });
 });

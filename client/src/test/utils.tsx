@@ -32,8 +32,10 @@ export const setupMocks = (): void => {
     let mockedAxios: MockAdapter;
 
     beforeEach(() => {
-        // Mock timers
-        jest.useFakeTimers();
+        // Mock timers. advanceTimers lets the fake clock progress alongside real
+        // promise microtasks so testing-library's async findBy* queries resolve
+        // (jest's modern fake timers otherwise deadlock them).
+        jest.useFakeTimers({ advanceTimers: true });
 
         // Mock axios
         mockedAxios = new MockAdapter(axios);
@@ -89,7 +91,7 @@ const setupMockedAPI = (mockedAxios: MockAdapter): void => {
 
     mockedAxios
         .onGet(
-            'https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&distance=50&&lat=52.37311439594963&lon=4.893314257120113'
+            'https://api.pdok.nl/bzk/locatieserver/search/v3_1/reverse?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&distance=50&&lat=52.37311439594963&lon=4.893314257120113'
         )
         .reply(200, {
             response: {
@@ -112,7 +114,7 @@ const setupMockedAPI = (mockedAxios: MockAdapter): void => {
 
     mockedAxios
         .onGet(
-            'https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&fl=id,weergavenaam,type,score,lat,lon&q=Dam%201'
+            'https://api.pdok.nl/bzk/locatieserver/search/v3_1/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&fl=id,weergavenaam,type,score,lat,lon&q=Dam%201'
         )
         .reply(200, {
             response: {
@@ -146,7 +148,7 @@ const setupMockedAPI = (mockedAxios: MockAdapter): void => {
 
     mockedAxios
         .onGet(
-            'https://geodata.nationaalgeoregister.nl/locatieserver/v3/lookup?id=adr-2a8dc1af055da20b8bcdc8e4dbda1eaa'
+            'https://api.pdok.nl/bzk/locatieserver/search/v3_1/lookup?id=adr-2a8dc1af055da20b8bcdc8e4dbda1eaa'
         )
         .reply(200, {
             response: {

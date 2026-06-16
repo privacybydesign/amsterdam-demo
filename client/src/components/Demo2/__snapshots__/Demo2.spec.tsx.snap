@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Demo2 should render the initial header image 1`] = `
 .c0 {
@@ -244,7 +244,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
   aria-live="polite"
   class="c0 c1"
   data-testid="hasResultAlert"
-  id="alert-sc-fmzyuX c1"
+  id="alert-LocalAsc__Alert-sc-7yk83i-22 c1"
   role="alert"
   tabindex="-1"
 >
@@ -509,7 +509,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for not pro
   aria-live="polite"
   class="c0 c1"
   data-testid="hasResultAlert"
-  id="alert-sc-fmzyuX c1"
+  id="alert-LocalAsc__Alert-sc-7yk83i-22 c1"
   role="alert"
   tabindex="-1"
 >
@@ -781,7 +781,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
   aria-live="polite"
   class="c0 c1"
   data-testid="hasResultAlert"
-  id="alert-sc-fmzyuX c1"
+  id="alert-LocalAsc__Alert-sc-7yk83i-22 c1"
   role="alert"
   tabindex="-1"
 >
@@ -1044,7 +1044,7 @@ exports[`Demo2 should update the page after completing the IRMA flow for proving
   aria-live="polite"
   class="c0 c1"
   data-testid="hasResultAlert"
-  id="alert-sc-fmzyuX c1"
+  id="alert-LocalAsc__Alert-sc-7yk83i-22 c1"
   role="alert"
   tabindex="-1"
 >
@@ -1287,7 +1287,7 @@ exports[`Demo2 should update the page after failing the IRMA flow 1`] = `
   aria-live="polite"
   class="c0 c1"
   data-testid="hasErrorAlert"
-  id="alert-sc-fmzyuX c1"
+  id="alert-LocalAsc__Alert-sc-7yk83i-22 c1"
   role="alert"
   tabindex="-1"
 >
