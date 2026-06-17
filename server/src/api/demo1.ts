@@ -11,8 +11,6 @@ const demoCredentials18: IDemoCredentials = {
       ['pbdf.pilot-amsterdam.passport.over18'],
       ['pbdf.pilot-amsterdam.idcard.over18'],
       ['irma-demo.gemeente.personalData.over18'],
-      ['pbdf.pilot-amsterdam.passport.over18'],
-      ['pbdf.pilot-amsterdam.idcard.over18'],
     ],
   ],
   PRODUCTION: () => [
