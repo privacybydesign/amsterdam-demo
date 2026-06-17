@@ -5,7 +5,7 @@ import { IDemoCredentials } from '@typedefs/index';
 import { processDemoRequest } from './index';
 
 // Credentials used in demo
-const demoCredentials18: IDemoCredentials = {
+export const demoCredentials18: IDemoCredentials = {
   DEMO: [
     [
       ['pbdf.pilot-amsterdam.passport.over18'],
@@ -23,7 +23,7 @@ const demoCredentials18: IDemoCredentials = {
   ],
 };
 
-const demoCredentials65: IDemoCredentials = {
+export const demoCredentials65: IDemoCredentials = {
   DEMO: [
     [
       ['pbdf.pilot-amsterdam.passport.over65'],
