@@ -33,7 +33,6 @@ const IrmaSessionModal: React.FC<IProps> = ({
             onClose={closeModal}
             data-testid="qrCodeModal"
             zIndexOffset={2}
-            title={content.qrcode.title}
             hideForMobileFlow={hideForMobileFlow}
             disablePortal
         >
