@@ -38,7 +38,7 @@ describe('Demo5', () => {
             mobilenumber: '0612345678'
         });
 
-        jest.useFakeTimers();
+        jest.useFakeTimers({ advanceTimers: true });
 
         // Render demo 5
         await act(async (): Promise<any> => await wrappedRender(<Demo5 />));

@@ -6,36 +6,42 @@ interface GgwResult {
     ggwNaam: string;
 }
 
+const BASE = 'https://api.data.amsterdam.nl/v1';
+
 const getGGW = async (postcode: string): Promise<GgwResult | null> => {
-    const response = await axios.get(`https://api.data.amsterdam.nl/dataselectie/bag/?size=1&postcode=${postcode}`);
+    // Step 1: find a verblijfsobject for the postcode.
+    const nraResponse = await axios.get(
+        `${BASE}/bag/nummeraanduidingen/?postcode=${postcode}&_pageSize=1`
+    );
 
-    let buurtcombinatieNamen!: string;
-    let ggwCode!: string;
-    let ggwNaam!: string;
+    const items = nraResponse.data._embedded?.nummeraanduidingen;
+    if (!items?.length) return null;
 
-    if (response.data.aggs_list.buurtcombinatie_naam.doc_count > 0) {
-        const namesArray = response.data.aggs_list.buurtcombinatie_naam.buckets.map(
-            (wijk: { key: string }) => wijk.key
-        );
-        buurtcombinatieNamen = namesArray.join(', ');
-        if (namesArray.length > 2) {
-            buurtcombinatieNamen = buurtcombinatieNamen.replace(/(, )(?!.*,)/g, ' of ');
-        }
-    }
+    const vboHref: string | undefined = items[0]._links?.adresseertVerblijfsobject?.href;
+    if (!vboHref) return null;
 
-    if (response.data.aggs_list.ggw_code.doc_count > 0) {
-        ggwCode = response.data.aggs_list.ggw_code.buckets[0].key;
-    }
+    const vboId = vboHref.match(/verblijfsobjecten\/(\d+)/)?.[1];
+    if (!vboId) return null;
 
-    if (response.data.aggs_list.ggw_naam.doc_count > 0) {
-        ggwNaam = response.data.aggs_list.ggw_naam.buckets[0].key;
-    }
+    // Step 2: resolve buurt → wijk (buurtcombinatie) + ggwgebied in one call.
+    const vboResponse = await axios.get(
+        `${BASE}/bag/verblijfsobjecten/${vboId}?_expandScope=ligtInBuurt,ligtInBuurt.ligtInWijk,ligtInBuurt.ligtInGgwgebied`
+    );
 
-    if (buurtcombinatieNamen) {
-        return { buurtcombinatieNamen, ggwCode, ggwNaam };
-    }
+    const buurt = vboResponse.data._embedded?.ligtInBuurt;
+    if (!buurt) return null;
 
-    return null;
+    const wijk = buurt._embedded?.ligtInWijk;
+    const ggwgebied = buurt._embedded?.ligtInGgwgebied;
+
+    const buurtcombinatieNamen: string = wijk?.naam;
+    if (!buurtcombinatieNamen) return null;
+
+    return {
+        buurtcombinatieNamen,
+        ggwCode: ggwgebied?.code ?? '',
+        ggwNaam: ggwgebied?.naam ?? ''
+    };
 };
 
 export default getGGW;

@@ -29,7 +29,6 @@
         "skipLibCheck": true,
         "importHelpers": true,
         "incremental": true,
-        "watch": true,
         "sourceMap": true,
         "target": "es5",
         "baseUrl": "src",
@@ -56,11 +55,5 @@
                 "test/*"
             ]
         }
-    },
-    "awesomeTypescriptLoaderOptions": {
-        "useBabel": true,
-        "babelCore": "@babel/core",
-        "useCache": true,
-        "forceIsolatedModules": true
     }
 }

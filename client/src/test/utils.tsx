@@ -32,8 +32,10 @@ export const setupMocks = (): void => {
     let mockedAxios: MockAdapter;
 
     beforeEach(() => {
-        // Mock timers
-        jest.useFakeTimers();
+        // Mock timers. advanceTimers lets the fake clock progress alongside real
+        // promise microtasks so testing-library's async findBy* queries resolve
+        // (jest's modern fake timers otherwise deadlock them).
+        jest.useFakeTimers({ advanceTimers: true });
 
         // Mock axios
         mockedAxios = new MockAdapter(axios);
@@ -70,26 +72,41 @@ const setupMockedAPI = (mockedAxios: MockAdapter): void => {
         token: 'fake-test-token'
     });
 
-    mockedAxios.onGet('https://api.data.amsterdam.nl/dataselectie/bag/?size=1&postcode=1011PT').reply(200, {
-        aggs_list: {
-            ggw_code: {
-                buckets: [{ key: 'DX02', doc_count: 22 }],
-                doc_count: 1
-            },
-            buurtcombinatie_naam: {
-                buckets: [{ key: 'Test buurt', doc_count: 22 }],
-                doc_count: 1
-            },
-            ggw_naam: {
-                buckets: [{ key: 'Test gebied', doc_count: 22 }],
-                doc_count: 1
+    mockedAxios
+        .onGet('https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/?postcode=1011PT&_pageSize=1')
+        .reply(200, {
+            _embedded: {
+                nummeraanduidingen: [
+                    {
+                        _links: {
+                            adresseertVerblijfsobject: {
+                                href: 'https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000000001?volgnummer=1'
+                            }
+                        }
+                    }
+                ]
             }
-        }
-    });
+        });
 
     mockedAxios
         .onGet(
-            'https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&distance=50&&lat=52.37311439594963&lon=4.893314257120113'
+            'https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000000001?_expandScope=ligtInBuurt,ligtInBuurt.ligtInWijk,ligtInBuurt.ligtInGgwgebied'
+        )
+        .reply(200, {
+            _embedded: {
+                ligtInBuurt: {
+                    naam: 'Test buurt',
+                    _embedded: {
+                        ligtInWijk: { naam: 'Test buurt', code: 'DX' },
+                        ligtInGgwgebied: { naam: 'Test gebied', code: 'DX02' }
+                    }
+                }
+            }
+        });
+
+    mockedAxios
+        .onGet(
+            'https://api.pdok.nl/bzk/locatieserver/search/v3_1/reverse?type=adres&rows=1&fl=id,weergavenaam,straatnaam,huis_nlt,postcode,woonplaatsnaam,centroide_ll&distance=50&&lat=52.37311439594963&lon=4.893314257120113'
         )
         .reply(200, {
             response: {
@@ -112,7 +129,7 @@ const setupMockedAPI = (mockedAxios: MockAdapter): void => {
 
     mockedAxios
         .onGet(
-            'https://geodata.nationaalgeoregister.nl/locatieserver/v3/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&fl=id,weergavenaam,type,score,lat,lon&q=Dam%201'
+            'https://api.pdok.nl/bzk/locatieserver/search/v3_1/suggest?fq=gemeentenaam:amsterdam&fq=type:adres&fl=id,weergavenaam,type,score,lat,lon&q=Dam%201'
         )
         .reply(200, {
             response: {
@@ -146,7 +163,7 @@ const setupMockedAPI = (mockedAxios: MockAdapter): void => {
 
     mockedAxios
         .onGet(
-            'https://geodata.nationaalgeoregister.nl/locatieserver/v3/lookup?id=adr-2a8dc1af055da20b8bcdc8e4dbda1eaa'
+            'https://api.pdok.nl/bzk/locatieserver/search/v3_1/lookup?id=adr-2a8dc1af055da20b8bcdc8e4dbda1eaa'
         )
         .reply(200, {
             response: {

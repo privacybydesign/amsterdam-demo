@@ -1,12 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Demo4 reducer should not update state when an unknown action is dispatched 1`] = `
-Object {
-  "emptyVars": Array [],
+{
+  "emptyVars": [],
   "formValid": true,
   "hasError": false,
   "hasResult": false,
-  "irmaAttributes": Object {
+  "irmaAttributes": {
     "city": "",
     "email": "",
     "houseNumber": "",
@@ -20,12 +20,12 @@ Object {
 `;
 
 exports[`Demo4 reducer should update when action invalidateForm is dispatched 1`] = `
-Object {
-  "emptyVars": Array [],
+{
+  "emptyVars": [],
   "formValid": false,
   "hasError": false,
   "hasResult": false,
-  "irmaAttributes": Object {
+  "irmaAttributes": {
     "city": "",
     "email": "",
     "houseNumber": "",
@@ -39,12 +39,12 @@ Object {
 `;
 
 exports[`Demo4 reducer should update when action setError is dispatched 1`] = `
-Object {
-  "emptyVars": Array [],
+{
+  "emptyVars": [],
   "formValid": true,
   "hasError": true,
   "hasResult": false,
-  "irmaAttributes": Object {
+  "irmaAttributes": {
     "city": "",
     "email": "",
     "houseNumber": "",
@@ -58,12 +58,12 @@ Object {
 `;
 
 exports[`Demo4 reducer should update when action setProperties is dispatched 1`] = `
-Object {
-  "emptyVars": Array [],
+{
+  "emptyVars": [],
   "formValid": true,
   "hasError": false,
   "hasResult": true,
-  "irmaAttributes": Object {
+  "irmaAttributes": {
     "city": "Amsterdam",
     "email": undefined,
     "houseNumber": undefined,
@@ -77,12 +77,12 @@ Object {
 `;
 
 exports[`Demo4 reducer should update when action validateForm is dispatched 1`] = `
-Object {
-  "emptyVars": Array [],
+{
+  "emptyVars": [],
   "formValid": true,
   "hasError": false,
   "hasResult": false,
-  "irmaAttributes": Object {
+  "irmaAttributes": {
     "city": "",
     "email": "",
     "houseNumber": "",
