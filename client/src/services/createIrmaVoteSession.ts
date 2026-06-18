@@ -1,6 +1,6 @@
-import IrmaCore from '@privacybydesign/irma-core';
-import Web from '@privacybydesign/irma-web';
-import Client from '@privacybydesign/irma-client';
+import YiviCore from '@privacybydesign/yivi-core';
+import YiviWeb from '@privacybydesign/yivi-web';
+import YiviClient from '@privacybydesign/yivi-client';
 import { IrmaAbortOnCancel, isMobile, IStateChangeCallbackMapping, IStateMachine } from '@services/createIrmaSession';
 import { HOLDER_ELEMENT_ID } from '../pages/Vote';
 
@@ -75,7 +75,7 @@ const createIrmaVoteSession = async (
     objectToSign: IQueryObj,
     callBackMapping?: IStateChangeCallbackMapping
 ): Promise<IIrmaResult | undefined> => {
-    const irma = new IrmaCore({
+    const irma = new YiviCore({
         debugging: true,
         element: `#${HOLDER_ELEMENT_ID}`,
         callBackMapping,
@@ -99,8 +99,8 @@ const createIrmaVoteSession = async (
         }
     });
 
-    irma.use(Client);
-    irma.use(Web);
+    irma.use(YiviClient);
+    irma.use(YiviWeb);
 
     if (isMobile()) {
         irma.use(IrmaSkipMobileChoice);

@@ -1,8 +1,8 @@
 import axios from 'axios';
-import '@privacybydesign/irma-css';
-import IrmaCore from '@privacybydesign/irma-core';
-import Web from '@privacybydesign/irma-web';
-import Client from '@privacybydesign/irma-client';
+import '@privacybydesign/yivi-css';
+import YiviCore from '@privacybydesign/yivi-core';
+import YiviWeb from '@privacybydesign/yivi-web';
+import YiviClient from '@privacybydesign/yivi-client';
 import userAgent from './userAgent';
 
 // Types
@@ -99,12 +99,12 @@ const createIrmaSession = (
     callBackMapping?: IStateChangeCallbackMapping,
     alwaysShowQRCode = false,
     language = 'nl'
-): typeof IrmaCore => {
+): typeof YiviCore => {
     const queryString = Object.keys(query)
         .map((key, index) => `${index === 0 ? '?' : ''}${key}=${(query as any)[key]}`)
         .join('&');
 
-    const irma = new IrmaCore({
+    const irma = new YiviCore({
         debugging: process.env.NODE_ENV !== 'production',
         element: `#${holderElementId}`,
         callBackMapping,
@@ -136,8 +136,8 @@ const createIrmaSession = (
         }
     });
 
-    irma.use(Client);
-    irma.use(Web);
+    irma.use(YiviClient);
+    irma.use(YiviWeb);
 
     if (isMobile()) {
         irma.use(IrmaSkipMobileChoice);

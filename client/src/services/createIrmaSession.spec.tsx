@@ -1,5 +1,5 @@
 import React from 'react';
-import IrmaCore from '@privacybydesign/irma-core';
+import YiviCore from '@privacybydesign/yivi-core';
 import { setupMocks, wrappedRender } from '@test/utils';
 import { act } from 'react-dom/test-utils';
 import createIrmaSession, { getConfig } from './createIrmaSession';
@@ -79,7 +79,7 @@ xdescribe('createIrmaSession', () => {
     it('createIrmaSession()', async () => {
         await act(async (): Promise<any> => await wrappedRender(<div id="test-elementID"></div>));
 
-        IrmaCore.prototype.start = jest.fn().mockReturnValue({
+        YiviCore.prototype.start = jest.fn().mockReturnValue({
             token: '1234567890abcdefg',
             status: 'DONE',
             type: 'disclosing',

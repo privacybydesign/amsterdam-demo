@@ -6,6 +6,7 @@ module.exports = {
         '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
             '<rootDir>/src/test/fileMock.ts',
         '\\.(css)$': '<rootDir>/src/test/styleMock.ts',
+        '@privacybydesign/yivi-css': '<rootDir>/src/test/styleMock.ts',
         '^@config/(.*)$': '<rootDir>/src/config/$1',
         '^@app/(.*)$': '<rootDir>/src/app/$1',
         '^@components/(.*)$': '<rootDir>/src/components/$1',
