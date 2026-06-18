@@ -47,7 +47,7 @@ COPY --from=fe-builder /app/dist/. /client
 RUN apk update && apk upgrade && \
     npm install -g npm@latest && \
     npm install -g pm2 && \
-    npm install --prefix /usr/local/lib/node_modules/pm2 \
+    npm install --prefix /usr/local/lib/node_modules/pm2 --omit=dev \
         ws@8.21.0 js-yaml@4.2.0 serialize-javascript@7.0.6 diff@5.2.2
 WORKDIR /server
 
