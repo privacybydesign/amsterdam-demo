@@ -118,20 +118,9 @@ const IrmaWebElement = styled.div`
     min-height: ${() => (isMobile() ? '250' : '300')}px;
     background-color: transparent;
 
-    & .irma-web-header {
-        display: none;
-    }
-    & .irma-web-content {
-        margin: 0;
-        & .irma-web-waiting-for-user-animation {
-        }
-    }
-    & .irma-web-qr-canvas {
+    & .yivi-web-qr-code {
         width: ${() => (isMobile() ? '250' : '300')}px !important;
         height: ${() => (isMobile() ? '250' : '300')}px !important;
-        & + p {
-            display: none;
-        }
     }
 
     p,

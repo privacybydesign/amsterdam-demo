@@ -79,6 +79,7 @@ const createIrmaVoteSession = async (
         debugging: true,
         element: `#${HOLDER_ELEMENT_ID}`,
         callBackMapping,
+        minimal: true,
         session: {
             url: `demos/vote`,
 

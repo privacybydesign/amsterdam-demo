@@ -110,6 +110,7 @@ const createIrmaSession = (
         callBackMapping,
         alwaysShowQRCode,
         language,
+        minimal: true,
         session: {
             url: `/${dataType}${queryString}`,
 
