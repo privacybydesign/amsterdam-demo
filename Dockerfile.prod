@@ -1,5 +1,5 @@
 # Build client frontend
-FROM node:lts-alpine AS fe-builder
+FROM node:24-alpine AS fe-builder
 LABEL maintainer="support@yivi.app"
 
 ENV PATH=/app/node_modules/.bin:$PATH
@@ -13,7 +13,7 @@ RUN npm run build
 ##################################
 
 # Build server backend
-FROM node:lts-alpine AS be-builder
+FROM node:24-alpine AS be-builder
 LABEL maintainer="support@yivi.app"
 
 ENV PATH=/app/node_modules/.bin:$PATH
@@ -39,7 +39,7 @@ COPY ./server/static ./dist/static
 ##################################
 
 # Build server and include frontend (docroot is set to ../client in config.json)
-FROM node:lts-alpine
+FROM node:24-alpine
 
 COPY --from=be-builder /app/dist/. /server
 COPY --from=fe-builder /app/dist/. /client
