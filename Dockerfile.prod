@@ -48,7 +48,9 @@ RUN apk update && apk upgrade && \
     npm install -g npm@latest && \
     npm install -g pm2 && \
     npm install --prefix /usr/local/lib/node_modules/pm2 \
-        ws@8.21.0 js-yaml@4.2.0 serialize-javascript@7.0.6 diff@5.2.2
+        ws@8.21.0 js-yaml@4.2.0 serialize-javascript@7.0.6 diff@5.2.2 && \
+    npm install --prefix /usr/local/lib/node_modules/pm2/node_modules/mocha \
+        serialize-javascript@7.0.6 diff@8.0.3
 WORKDIR /server
 
 RUN adduser -D irma
