@@ -72,22 +72,37 @@ const setupMockedAPI = (mockedAxios: MockAdapter): void => {
         token: 'fake-test-token'
     });
 
-    mockedAxios.onGet('https://api.data.amsterdam.nl/dataselectie/bag/?size=1&postcode=1011PT').reply(200, {
-        aggs_list: {
-            ggw_code: {
-                buckets: [{ key: 'DX02', doc_count: 22 }],
-                doc_count: 1
-            },
-            buurtcombinatie_naam: {
-                buckets: [{ key: 'Test buurt', doc_count: 22 }],
-                doc_count: 1
-            },
-            ggw_naam: {
-                buckets: [{ key: 'Test gebied', doc_count: 22 }],
-                doc_count: 1
+    mockedAxios
+        .onGet('https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/?postcode=1011PT&_pageSize=1')
+        .reply(200, {
+            _embedded: {
+                nummeraanduidingen: [
+                    {
+                        _links: {
+                            adresseertVerblijfsobject: {
+                                href: 'https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000000001?volgnummer=1'
+                            }
+                        }
+                    }
+                ]
             }
-        }
-    });
+        });
+
+    mockedAxios
+        .onGet(
+            'https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000000001?_expandScope=ligtInBuurt,ligtInBuurt.ligtInWijk,ligtInBuurt.ligtInGgwgebied'
+        )
+        .reply(200, {
+            _embedded: {
+                ligtInBuurt: {
+                    naam: 'Test buurt',
+                    _embedded: {
+                        ligtInWijk: { naam: 'Test buurt', code: 'DX' },
+                        ligtInGgwgebied: { naam: 'Test gebied', code: 'DX02' }
+                    }
+                }
+            }
+        });
 
     mockedAxios
         .onGet(

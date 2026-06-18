@@ -78,13 +78,15 @@ const Demo2: React.FC<IProps> = () => {
                     newState.emptyVars.push('zipcode');
                 } else {
                     const postcode = result['zipcode'].replace(/ /, '');
-
-                    const ggwResponse = await getGGW(postcode);
-
-                    if (ggwResponse) {
-                        newState.wijk = ggwResponse.buurtcombinatieNamen;
-                        newState.code = ggwResponse.ggwCode;
-                        newState.ggw = ggwResponse.ggwNaam;
+                    try {
+                        const ggwResponse = await getGGW(postcode);
+                        if (ggwResponse) {
+                            newState.wijk = ggwResponse.buurtcombinatieNamen;
+                            newState.code = ggwResponse.ggwCode;
+                            newState.ggw = ggwResponse.ggwNaam;
+                        }
+                    } catch {
+                        // Neighbourhood lookup failed; show result without wijk info.
                     }
                 }
             } else {
