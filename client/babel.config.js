@@ -4,6 +4,11 @@ module.exports = api => {
 
     return {
         babelrc: false,
+        // Detect CJS files (no import/export) as scripts so useBuiltIns:'usage' adds
+        // require() polyfills instead of import statements. Without this, babel injects
+        // ESM import polyfills into already-compiled CJS packages (@amsterdam, @privacybydesign),
+        // causing webpack 5 to treat them as ES modules where `exports` is undefined.
+        sourceType: 'unambiguous',
         presets: [
             [
                 '@babel/preset-env',

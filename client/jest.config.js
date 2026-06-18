@@ -15,7 +15,7 @@ module.exports = {
         '^@test/(.*)$': '<rootDir>/src/test/$1'
     },
     setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-    testRegex: '.spec.(js|ts|tsx)$',
+    testRegex: 'src/.+\\.spec\\.(js|ts|tsx)$',
     transform: {
         '^.+\\.(js|jsx|mjs|ts|tsx)$': 'babel-jest'
     }

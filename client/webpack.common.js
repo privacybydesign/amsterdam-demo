@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     entry: [path.resolve(__dirname, 'src/index.tsx')],
@@ -49,6 +50,11 @@ module.exports = {
         ]
     },
     plugins: [
+        // webpack 5 no longer shims process automatically; packages like proxy-from-env
+        // (pulled in by axios) reference process.env at runtime in the browser.
+        new webpack.ProvidePlugin({
+            process: 'process/browser.js'
+        }),
         new HtmlWebpackPlugin({
             template: './src/index.ejs',
             inject: true,
