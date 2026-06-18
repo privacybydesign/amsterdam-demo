@@ -1,6 +1,6 @@
-import YiviCore from '@privacybydesign/yivi-core';
-import YiviWeb from '@privacybydesign/yivi-web';
-import YiviClient from '@privacybydesign/yivi-client';
+import { YiviCore } from '@privacybydesign/yivi-core';
+import { YiviWeb } from '@privacybydesign/yivi-web';
+import { YiviClient } from '@privacybydesign/yivi-client';
 import { IrmaAbortOnCancel, isMobile, IStateChangeCallbackMapping, IStateMachine } from '@services/createIrmaSession';
 import { HOLDER_ELEMENT_ID } from '../pages/Vote';
 

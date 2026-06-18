@@ -1,5 +1,5 @@
 import React from 'react';
-import YiviCore from '@privacybydesign/yivi-core';
+import { YiviCore } from '@privacybydesign/yivi-core';
 import { setupMocks, wrappedRender } from '@test/utils';
 import { act } from 'react-dom/test-utils';
 import createIrmaSession, { getConfig } from './createIrmaSession';

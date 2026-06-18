@@ -1,8 +1,8 @@
 import axios from 'axios';
 import '@privacybydesign/yivi-css';
-import YiviCore from '@privacybydesign/yivi-core';
-import YiviWeb from '@privacybydesign/yivi-web';
-import YiviClient from '@privacybydesign/yivi-client';
+import { YiviCore } from '@privacybydesign/yivi-core';
+import { YiviWeb } from '@privacybydesign/yivi-web';
+import { YiviClient } from '@privacybydesign/yivi-client';
 import userAgent from './userAgent';
 
 // Types
@@ -99,7 +99,7 @@ const createIrmaSession = (
     callBackMapping?: IStateChangeCallbackMapping,
     alwaysShowQRCode = false,
     language = 'nl'
-): typeof YiviCore => {
+): InstanceType<typeof YiviCore> => {
     const queryString = Object.keys(query)
         .map((key, index) => `${index === 0 ? '?' : ''}${key}=${(query as any)[key]}`)
         .join('&');
