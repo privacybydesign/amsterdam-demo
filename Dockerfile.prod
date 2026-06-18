@@ -44,7 +44,8 @@ FROM node:24-alpine
 COPY --from=be-builder /app/dist/. /server
 COPY --from=fe-builder /app/dist/. /client
 
-RUN apk update && apk upgrade && npm install pm2 -g
+RUN apk update && apk upgrade && npm install pm2 -g && \
+    npm install --prefix /usr/local/lib/node_modules/pm2 ws@8.21.0 js-yaml@4.2.0
 WORKDIR /server
 
 RUN adduser -D irma
