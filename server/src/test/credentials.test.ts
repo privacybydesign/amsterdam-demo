@@ -61,6 +61,18 @@ describe('demo credential sets contain no duplicate disclosure options', () => {
         });
     });
 
+    // Explicit regression for issue #25: the demo5 DEMO mobilenumber request must
+    // use the `sidn-pbdf` issuer (matching demo4's DEMO set and demo5's own
+    // PRODUCTION set), not the non-existent `irma-demo.pbdf` issuer.
+    it('requests demo5 DEMO mobilenumber under the sidn-pbdf issuer (regression for #25)', () => {
+        const flatOptions = (set: IDemoCredentials['DEMO']) => resolve(set).flat(2) as unknown as string[];
+
+        expect(flatOptions(demo5Credentials.DEMO)).toContain('irma-demo.sidn-pbdf.mobilenumber.mobilenumber');
+        expect(flatOptions(demo5Credentials.DEMO)).not.toContain('irma-demo.pbdf.mobilenumber.mobilenumber');
+        // Consistent with demo4's DEMO set.
+        expect(flatOptions(demo4Credentials.DEMO)).toContain('irma-demo.sidn-pbdf.mobilenumber.mobilenumber');
+    });
+
     // Explicit regression for issue #26: the 18+ DEMO disjunction must list each
     // over18 option exactly once.
     it('lists each demo1 18+ over18 option exactly once (regression for #26)', () => {
