@@ -11,7 +11,9 @@ const IrmaJwt = require('@privacybydesign/irma-jwt');
 @Service()
 export default class {
     private irmaBackend = new IrmaBackend(config.irma, {
-        debugging: true
+        // Verbose request/response logging is useful in development but leaks
+        // payloads to stdout in production, so gate it on the environment.
+        debugging: process.env.NODE_ENV !== 'production'
     });
 
     private createDisclosureRequest = (content: any) => {
