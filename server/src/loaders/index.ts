@@ -14,6 +14,10 @@ export interface ILoaderArgs {
 // Main app setup
 export default async (loaderArgs: ILoaderArgs) => {
     await expressLoader(loaderArgs);
+    // Session middleware must be registered before the routes that read
+    // req.session (e.g. the vote endpoint), otherwise req.session is undefined
+    // at request time and the handler throws.
+    await sessionLoader(loaderArgs);
     await routesLoader(loaderArgs);
     await frontendLoader(loaderArgs);
 
