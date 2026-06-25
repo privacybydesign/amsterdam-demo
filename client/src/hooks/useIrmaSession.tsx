@@ -57,7 +57,10 @@ const useIrmaSession = (activeIrmaSessionDataInput?: IIrmaSessionInputData): IIr
             ShowingQRCodeInstead: () => {
                 setQRIsShowing(true);
             },
-            ShowingIrmaButton: (payload: { mobile: string }) => {
+            // yivi-core renamed this state from 'ShowingIrmaButton' to
+            // 'ShowingYiviButton'; the mobile flow's deep-link button reads this
+            // url, so listening on the old name left it empty (no-op tap, #49).
+            ShowingYiviButton: (payload: { mobile: string }) => {
                 setUrl(payload?.mobile ?? '');
                 if (
                     isMobile() &&
