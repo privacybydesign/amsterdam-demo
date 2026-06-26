@@ -54,7 +54,9 @@ class IrmaSkipMobileChoice {
 
     // Skip the qr/app choice screen on mobile and decide for ourselves.
     stateChange({ newState, payload }: { newState: any; payload: any; }) {
-        if (newState === 'ShowingIrmaButton') {
+        // yivi-core renamed this state from 'ShowingIrmaButton' to
+        // 'ShowingYiviButton' in the @privacybydesign/yivi-* packages.
+        if (newState === 'ShowingYiviButton') {
             if (this._alwaysShowQRCode) {
                 this._stateMachine.transition('chooseQR', payload);
             }
