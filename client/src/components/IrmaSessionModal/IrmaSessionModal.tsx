@@ -129,6 +129,16 @@ const IrmaWebElement = styled.div`
         font-family: 'Amsterdam Sans' !important;
         font-size: 17px !important;
     }
+
+    /*
+     * The yivi-web "Open Yivi-app" call-to-action is an anchor with a red
+     * background (.yivi-web-button). The broad 'a' rule above forces dark text
+     * on it, producing black-on-red which fails WCAG 2.2 AA contrast (see #51).
+     * Keep this button's label white so it has sufficient contrast on red.
+     */
+    & a.yivi-web-button {
+        color: #ffffff !important;
+    }
 `;
 
 const QRCodeTopLeft = styled.img.attrs({ src: '/assets/qr-top-left.svg', role: 'presentation' })`
