@@ -9,7 +9,7 @@ export const demoCredentials: IDemoCredentials = {
     DEMO: ({ mobileNumber, email }: { mobileNumber: boolean; email: boolean }) => {
         const credentials = [];
         if (mobileNumber === true) {
-            credentials.push([['irma-demo.pbdf.mobilenumber.mobilenumber']]);
+            credentials.push([['irma-demo.sidn-pbdf.mobilenumber.mobilenumber']]);
         }
 
         if (email === true) {
