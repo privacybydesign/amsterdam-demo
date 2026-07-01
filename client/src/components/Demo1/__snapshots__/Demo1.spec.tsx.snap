@@ -259,6 +259,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
       >
         <svg
           focusable="false"
+          role="img"
           viewBox="0 0 36 36"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -524,6 +525,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for not pro
       >
         <svg
           focusable="false"
+          role="img"
           viewBox="0 0 36 36"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -796,6 +798,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
       >
         <svg
           focusable="false"
+          role="img"
           viewBox="0 0 32 32"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1066,6 +1069,7 @@ exports[`Demo1 should update the page after completing the IRMA flow for proving
       >
         <svg
           focusable="false"
+          role="img"
           viewBox="0 0 32 32"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -1307,6 +1311,7 @@ exports[`Demo1 should update the page after failing the IRMA flow 1`] = `
       >
         <svg
           focusable="false"
+          role="img"
           viewBox="0 0 36 36"
           xmlns="http://www.w3.org/2000/svg"
         >
