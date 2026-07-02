@@ -1,7 +1,7 @@
 const js = require('@eslint/js');
 const tseslint = require('typescript-eslint');
 const prettierRecommended = require('eslint-plugin-prettier/recommended');
-const importPlugin = require('eslint-plugin-import');
+const importPlugin = require('eslint-plugin-import-x');
 const nodePlugin = require('eslint-plugin-n');
 const globals = require('globals');
 
@@ -22,7 +22,7 @@ module.exports = tseslint.config(
     nodePlugin.configs['flat/recommended'],
     {
         plugins: {
-            import: importPlugin
+            'import-x': importPlugin
         },
         languageOptions: {
             ecmaVersion: 2020,
