@@ -6,6 +6,7 @@ import { UnderlinedLink } from '@components/LocalAsc/LocalAsc';
 
 interface IExternalLinkProps {
     href: string;
+    children?: React.ReactNode;
 }
 
 const ExternalLink: React.FC<IExternalLinkProps> = props => {

@@ -17,7 +17,12 @@ const providers: React.FC<{ children?: ReactNode }> = ({ children }): ReactEleme
     <ThemeProvider overrides={theme}>
         <ContentProvider>
             <GlobalStyle />
-            <HistoryRouter history={history}>{children}</HistoryRouter>
+            {/* The `history` package's MemoryHistory lacks createURL/encodeLocation that
+                react-router's own History type declares; the runtime object is compatible,
+                so cast to satisfy the prop type. */}
+            <HistoryRouter history={history as unknown as React.ComponentProps<typeof HistoryRouter>['history']}>
+                {children}
+            </HistoryRouter>
         </ContentProvider>
     </ThemeProvider>
 );

@@ -7,6 +7,7 @@
         "dist/**/*"
     ],
     "compilerOptions": {
+        "ignoreDeprecations": "6.0",
         "jsx": "react",
         "lib": [
             "es5",
@@ -32,6 +33,11 @@
         "sourceMap": true,
         "target": "es5",
         "baseUrl": "src",
+        "types": [
+            "node",
+            "jest",
+            "@testing-library/jest-dom"
+        ],
         "paths": {
             "@config/*": [
                 "config/*"

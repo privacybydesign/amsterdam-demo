@@ -26,9 +26,11 @@ const CredentialSelector: React.FC<IProps> = ({
     }, []);
 
     const onChange = useCallback(
-        event => {
+        (event: React.ChangeEvent<HTMLSelectElement>) => {
             if (setCredentialSource) {
-                setCredentialSource(event.target.value);
+                // The <option> values are exactly the CredentialSource enum members,
+                // so the selected value is always a CredentialSource at runtime.
+                setCredentialSource(event.target.value as CredentialSource);
             }
         },
         [setCredentialSource]

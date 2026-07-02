@@ -18,13 +18,13 @@ export interface IProps {
     errors?: string[];
     forwardRef: React.MutableRefObject<HTMLFormElement>;
     validateForm: (setErrors: boolean) => unknown;
-    updateLocationCallback: (location: ILocation) => void;
+    updateLocationCallback: (location: ILocation | null) => void;
 }
 
 const Demo5Form: React.FC<IProps> = ({ errors, forwardRef, validateForm, updateLocationCallback }) => {
     const content = useContent();
     const validateOnChange = useCallback(() => validateForm(false), [validateForm]);
-    const onSubmit = useCallback(event => event.preventDefault(), []);
+    const onSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => event.preventDefault(), []);
 
     return (
         <form ref={forwardRef} onSubmit={onSubmit}>

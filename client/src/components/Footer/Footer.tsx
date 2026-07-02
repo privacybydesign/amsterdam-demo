@@ -59,6 +59,7 @@ const Footer: React.FC<IFooterProps> = () => {
 
 interface IFooterLinkProps {
     href: string;
+    children?: React.ReactNode;
 }
 
 const FooterLink: React.FC<IFooterLinkProps> = ({ href, children }) => (
