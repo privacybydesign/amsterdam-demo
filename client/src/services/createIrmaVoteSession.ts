@@ -78,7 +78,9 @@ const createIrmaVoteSession = async (
     callBackMapping?: IStateChangeCallbackMapping
 ): Promise<IIrmaResult | undefined> => {
     const irma = new YiviCore({
-        debugging: true,
+        // Verbose Yivi logging leaks session details to the browser console, so
+        // keep it off in production (matches createIrmaSession).
+        debugging: process.env.NODE_ENV !== 'production',
         element: `#${HOLDER_ELEMENT_ID}`,
         callBackMapping,
         minimal: true,
