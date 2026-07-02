@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import ReactMarkDown from 'react-markdown';
+import ReactMarkDown from '@services/Markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { themeSpacing, RadioGroup, Label, Radio } from '@amsterdam/asc-ui';
 import MapComponent from '@components/Map/Map';

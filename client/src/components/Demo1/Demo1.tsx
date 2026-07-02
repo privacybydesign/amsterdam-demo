@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ReactMarkDown from 'react-markdown';
+import ReactMarkDown from '@services/Markdown';
 import styled from 'styled-components';
 import { Accordion, themeSpacing } from '@amsterdam/asc-ui';
 import { Alert as AlertIcon } from '@amsterdam/asc-assets';

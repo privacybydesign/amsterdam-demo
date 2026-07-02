@@ -7,6 +7,8 @@ node_modules
 dist
 coverage
 .awcache
+test-results
+playwright-report
 yarn-error.log
 yarn.lock
 downloads/

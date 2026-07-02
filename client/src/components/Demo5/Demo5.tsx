@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, useReducer } from 'react';
 import styled from 'styled-components';
-import ReactMarkDown from 'react-markdown';
+import ReactMarkDown from '@services/Markdown';
 import { Accordion, themeSpacing, Button } from '@amsterdam/asc-ui';
 import { Alert as AlertIcon } from '@amsterdam/asc-assets';
 import { Map, BaseLayer, Marker, getCrsRd } from '@amsterdam/arm-core';

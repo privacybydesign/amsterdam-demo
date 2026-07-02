@@ -1,7 +1,7 @@
 import React, { useContext, useCallback, useState, useLayoutEffect, ReactElement } from 'react';
 import { Link as RRLink } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from '@services/Markdown';
 import {
     Heading,
     breakpoint,

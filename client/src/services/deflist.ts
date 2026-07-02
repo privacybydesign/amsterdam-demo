@@ -2,8 +2,8 @@
  * Remark DefinitionList plugin.
  */
 
-import visit from 'unist-util-visit';
-import toString from 'mdast-util-to-string';
+import { visit } from 'unist-util-visit';
+import { toString } from 'mdast-util-to-string';
 
 const isdeflist = (node: any, i: number, parent: any) =>
     i > 0 &&

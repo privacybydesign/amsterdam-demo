@@ -24,7 +24,7 @@ describe('Demo1', () => {
         // Adjust mocked CreateIrmaSession to return a correct credential
         setupIrmaMocks(reduceIRMAResult, createIrmaSession, { over18: 'Yes' });
 
-        jest.useFakeTimers();
+        jest.useFakeTimers({ advanceTimers: true });
 
         // Render demo 3
         await act(async (): Promise<any> => await wrappedRender(<Demo1 />));
@@ -35,7 +35,7 @@ describe('Demo1', () => {
 
         jest.advanceTimersByTime(110);
 
-        await screen.findAllByRole('alert');
+        await screen.findAllByTestId(/has(Result|Error)Alert/);
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');
@@ -54,7 +54,7 @@ describe('Demo1', () => {
         // Adjust mocked CreateIrmaSession to return a correct credential
         setupIrmaMocks(reduceIRMAResult, createIrmaSession, { over18: 'No' });
 
-        jest.useFakeTimers();
+        jest.useFakeTimers({ advanceTimers: true });
 
         // Render demo 3
         await act(async (): Promise<any> => await wrappedRender(<Demo1 />));
@@ -65,7 +65,7 @@ describe('Demo1', () => {
 
         jest.advanceTimersByTime(110);
 
-        await screen.findAllByRole('alert');
+        await screen.findAllByTestId(/has(Result|Error)Alert/);
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');
@@ -84,7 +84,7 @@ describe('Demo1', () => {
         // Adjust mocked CreateIrmaSession to return a correct credential
         setupIrmaMocks(reduceIRMAResult, createIrmaSession, { over65: 'Yes' });
 
-        jest.useFakeTimers();
+        jest.useFakeTimers({ advanceTimers: true });
 
         await act(async (): Promise<any> => await wrappedRender(<Demo1 />));
 
@@ -94,7 +94,7 @@ describe('Demo1', () => {
 
         jest.advanceTimersByTime(110);
 
-        await screen.findAllByRole('alert');
+        await screen.findAllByTestId(/has(Result|Error)Alert/);
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');
@@ -113,7 +113,7 @@ describe('Demo1', () => {
         // Adjust mocked CreateIrmaSession to return a correct credential
         setupIrmaMocks(reduceIRMAResult, createIrmaSession, { over65: 'No' });
 
-        jest.useFakeTimers();
+        jest.useFakeTimers({ advanceTimers: true });
 
         await act(async (): Promise<any> => await wrappedRender(<Demo1 />));
 
@@ -123,7 +123,7 @@ describe('Demo1', () => {
 
         jest.advanceTimersByTime(110);
 
-        await screen.findAllByRole('alert');
+        await screen.findAllByTestId(/has(Result|Error)Alert/);
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');
@@ -141,7 +141,7 @@ describe('Demo1', () => {
     it('should update the page after failing the IRMA flow', async () => {
         // Adjust mocked CreateIrmaSession to return a negative response
         setupIrmaMocks(reduceIRMAResult, createIrmaSession, null);
-        jest.useFakeTimers();
+        jest.useFakeTimers({ advanceTimers: true });
 
         // Render demo 1
         await act(async (): Promise<any> => await wrappedRender(<Demo1 />));
@@ -152,7 +152,7 @@ describe('Demo1', () => {
 
         jest.advanceTimersByTime(110);
 
-        await screen.findAllByRole('alert');
+        await screen.findAllByTestId(/has(Result|Error)Alert/);
 
         // Check if demo notification is not visible
         const demoNotification = screen.queryByTestId('demoNotification');

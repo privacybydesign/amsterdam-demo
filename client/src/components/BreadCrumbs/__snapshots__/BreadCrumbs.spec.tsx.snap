@@ -76,6 +76,7 @@ exports[`BreadCrumbs should render 3 items correctly 1`] = `
   data-testid="breadCrumbs"
 >
   <a
+    data-discover="true"
     href="/"
   >
     <span
@@ -100,6 +101,7 @@ exports[`BreadCrumbs should render 3 items correctly 1`] = `
     </svg>
   </span>
   <a
+    data-discover="true"
     href="/innovatie"
   >
     <span
@@ -124,6 +126,7 @@ exports[`BreadCrumbs should render 3 items correctly 1`] = `
     </svg>
   </span>
   <a
+    data-discover="true"
     href="/innovatie/demo"
   >
     <span

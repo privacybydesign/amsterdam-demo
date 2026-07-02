@@ -48,7 +48,7 @@ describe('Demo4', () => {
         });
 
         // Need to use fakeTimers to control when results come in
-        jest.useFakeTimers();
+        jest.useFakeTimers({ advanceTimers: true });
 
         // Render demo 4
         await act(async (): Promise<any> => await wrappedRender(<Demo4 />));
@@ -71,7 +71,7 @@ describe('Demo4', () => {
 
         jest.advanceTimersByTime(110);
 
-        await screen.findByRole('alert');
+        await screen.findAllByTestId(/has(Result|Error)Alert/);
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');
@@ -90,7 +90,7 @@ describe('Demo4', () => {
         // Adjust mocked CreateIrmaSession to return a correct credentials
         setupIrmaMocks(reduceIRMAResult, createIrmaSession, null);
 
-        jest.useFakeTimers();
+        jest.useFakeTimers({ advanceTimers: true });
 
         // Render demo 4
         await act(async (): Promise<any> => await wrappedRender(<Demo4 />));
@@ -107,7 +107,7 @@ describe('Demo4', () => {
 
         jest.advanceTimersByTime(110);
 
-        await screen.findAllByRole('alert');
+        await screen.findAllByTestId(/has(Result|Error)Alert/);
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');

@@ -1,9 +1,8 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import React, { ReactElement } from 'react';
-import { Route } from 'react-router';
+import React, { ReactElement, ReactNode } from 'react';
 import { createMemoryHistory } from 'history';
-import { Router } from 'react-router-dom';
+import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
 import { toBeVisible, toBeInTheDocument } from '@testing-library/jest-dom/matchers';
 import { render, RenderResult, RenderOptions, cleanup } from '@testing-library/react';
 import { GlobalStyle, ThemeProvider } from '@amsterdam/asc-ui';
@@ -14,13 +13,11 @@ expect.extend({ toBeVisible, toBeInTheDocument });
 
 export const history = createMemoryHistory();
 
-const providers: React.FC = ({ children }): ReactElement => (
+const providers: React.FC<{ children?: ReactNode }> = ({ children }): ReactElement => (
     <ThemeProvider overrides={theme}>
         <ContentProvider>
             <GlobalStyle />
-            <Router history={history}>
-                <Route path="/">{children}</Route>
-            </Router>
+            <HistoryRouter history={history}>{children}</HistoryRouter>
         </ContentProvider>
     </ThemeProvider>
 );
