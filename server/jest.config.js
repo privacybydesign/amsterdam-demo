@@ -5,6 +5,17 @@ module.exports = {
     rootDir: '.',
     roots: ['<rootDir>/src'],
     setupFiles: ['<rootDir>/jest.setup.js'],
+    // Compile tests with a tsconfig that includes the test files and explicitly
+    // pulls in the jest global type defs (the base tsconfig excludes tests and,
+    // with baseUrl set, TS 6 does not auto-discover @types for them).
+    transform: {
+        '^.+\\.tsx?$': [
+            'ts-jest',
+            {
+                tsconfig: 'tsconfig.spec.json'
+            }
+        ]
+    },
     // Mirror the path aliases declared in tsconfig.json so imports resolve under Jest.
     moduleNameMapper: {
         '^@config/(.*)$': '<rootDir>/src/config/$1',

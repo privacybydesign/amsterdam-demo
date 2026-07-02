@@ -25,7 +25,6 @@ const instantiateWithNodeEnv = (nodeEnv: string | undefined): { debugging: boole
 
     let options: { debugging: boolean };
     jest.isolateModules(() => {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
         const IrmaService = require('@services/IrmaService').default;
         new IrmaService();
         options = irmaBackendCalls[irmaBackendCalls.length - 1].options;

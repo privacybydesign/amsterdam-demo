@@ -6,22 +6,16 @@ import { processDemoRequest } from './index';
 
 // Credentials used in demo
 export const demoCredentials: IDemoCredentials = {
-  DEMO: [
-    [
-      ['irma-demo.RU.idinData.zipcode', 'irma-demo.gemeente.personalData.over18'],
-    ],
-  ],
-  PRODUCTION: [
-    [
-      ['pbdf.gemeente.address.zipcode'],
-    ],
-    [
-      ['pbdf.gemeente.personalData.over18'],
-      ['pbdf.pbdf.passport.over18'],
-      ['pbdf.pbdf.idcard.over18'],
-      ['pbdf.pbdf.drivinglicence.over18'],
-    ],
-  ]
+    DEMO: [[['irma-demo.RU.idinData.zipcode', 'irma-demo.gemeente.personalData.over18']]],
+    PRODUCTION: [
+        [['pbdf.gemeente.address.zipcode']],
+        [
+            ['pbdf.gemeente.personalData.over18'],
+            ['pbdf.pbdf.passport.over18'],
+            ['pbdf.pbdf.idcard.over18'],
+            ['pbdf.pbdf.drivinglicence.over18']
+        ]
+    ]
 };
 
 // Define routes for demo

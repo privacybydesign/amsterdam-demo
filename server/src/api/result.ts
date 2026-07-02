@@ -8,7 +8,7 @@ import Logger from '@loaders/logger';
 // Define routes for demo
 export default (router: Router) => {
     router.get('/demos/result', cors(), async (req: Request, res: Response) => {
-        let sessionToken = req.query.sid as string;
+        const sessionToken = req.query.sid as string;
 
         Logger.info(`Incoming request for session result for session ${sessionToken}`);
 

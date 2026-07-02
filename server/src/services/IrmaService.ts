@@ -37,7 +37,7 @@ export default class {
         return jwt;
     };
 
-    private requestSession = async (request: unknown): Promise<{ sessionPtr: string; token: string; }> => {
+    private requestSession = async (request: unknown): Promise<{ sessionPtr: string; token: string }> => {
         const authmethod = 'publickey';
         const jwt = this.createJWT(authmethod, process.env.PRIVATE_KEY as string, config.requestorname, request);
 
@@ -50,7 +50,7 @@ export default class {
 
     public requestDisclosureSession = async (
         credentialsToRequest: CredentialSet
-    ): Promise<{ sessionPtr: string; token: string; }> => {
+    ): Promise<{ sessionPtr: string; token: string }> => {
         const request = this.createDisclosureRequest(credentialsToRequest);
         return await this.requestSession(request);
     };
@@ -58,7 +58,7 @@ export default class {
     public requestSignatureSession = async (
         credentialsToRequest: CredentialSet,
         message: string
-    ): Promise<{ sessionPtr: string; token: string; }> => {
+    ): Promise<{ sessionPtr: string; token: string }> => {
         const request = this.createSignatureRequest(credentialsToRequest, message);
         return await this.requestSession(request);
     };

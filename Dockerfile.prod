@@ -23,6 +23,7 @@ WORKDIR /app
 ## Compile typescript to js in /dist
 COPY ./server/package.json ./
 COPY ./server/package-lock.json ./
+COPY ./server/.npmrc ./
 COPY ./server/tsconfig.json ./
 COPY ./server/src ./src
 
@@ -30,7 +31,7 @@ RUN npm ci
 RUN npm run build
 
 ## Install production modules in /dist/node_modules
-RUN cp package.json package-lock.json ./dist/
+RUN cp package.json package-lock.json .npmrc ./dist/
 RUN npm ci --omit=dev --prefix ./dist
 
 ## Copy static assets in /dist

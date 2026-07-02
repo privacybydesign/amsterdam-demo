@@ -19,7 +19,7 @@ export interface IConfig {
     environment?: string;
 }
 
-let configToUse: IConfig = configDev;
+const configToUse: IConfig = configDev;
 
 configToUse.environment = process.env.NODE_ENV;
 

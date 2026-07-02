@@ -4,12 +4,13 @@ import { ILoaderArgs } from '.';
 import Logger from './logger';
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
-
 // Setup frontend
 export default ({ app, config }: ILoaderArgs) => {
     if (process.env.NODE_ENV !== 'development') {
         app.use(express.static(config.docroot, { index: false }));
-        app.get('*', function (req, res) {
+        // Express 5 (path-to-regexp v8) no longer accepts the bare '*' string.
+        // Use a middleware fallback to serve the SPA index.html for any route.
+        app.use(function (req, res) {
             res.sendFile(path.join(process.cwd(), config.docroot, 'index.html'));
         });
     } else {
