@@ -3,7 +3,7 @@ const tseslint = require('typescript-eslint');
 const react = require('eslint-plugin-react');
 const reactHooks = require('eslint-plugin-react-hooks');
 const jsxA11y = require('eslint-plugin-jsx-a11y');
-const importPlugin = require('eslint-plugin-import');
+const importPlugin = require('eslint-plugin-import-x');
 const prettierRecommended = require('eslint-plugin-prettier/recommended');
 const globals = require('globals');
 
@@ -41,7 +41,7 @@ module.exports = tseslint.config(
         // react-hooks@7's `recommended-latest` config still ships a legacy string
         // `plugins` array, so register it manually and set its rules below.
         plugins: {
-            import: importPlugin,
+            'import-x': importPlugin,
             'react-hooks': reactHooks
         },
         languageOptions: {
@@ -67,7 +67,7 @@ module.exports = tseslint.config(
             'react/jsx-props-no-spreading': 0,
             'react/jsx-wrap-multilines': 0,
             'react/prop-types': 0,
-            'import/prefer-default-export': 0,
+            'import-x/prefer-default-export': 0,
             'react-hooks/rules-of-hooks': 2,
             'react-hooks/exhaustive-deps': 1,
             'no-unused-vars': 0,
