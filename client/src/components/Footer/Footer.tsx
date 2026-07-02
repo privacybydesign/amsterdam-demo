@@ -14,7 +14,7 @@ import {
     themeSpacing,
     breakpoint
 } from '@amsterdam/asc-ui';
-import ReactMarkDown from 'react-markdown';
+import ReactMarkDown from '@services/Markdown';
 import { LinkWithChevron } from '@components/LocalAsc/LocalAsc';
 import { SkipLinkFooterEntry } from '@components/SkipLink/SkipLink';
 import { useContent } from '@services/ContentProvider';
@@ -59,6 +59,7 @@ const Footer: React.FC<IFooterProps> = () => {
 
 interface IFooterLinkProps {
     href: string;
+    children?: React.ReactNode;
 }
 
 const FooterLink: React.FC<IFooterLinkProps> = ({ href, children }) => (

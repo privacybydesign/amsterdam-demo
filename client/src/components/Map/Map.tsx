@@ -30,7 +30,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
     const { mapInstance, url, query, autosuggest, location, showAutosuggest } = state;
 
     const fetchAutosuggest = useCallback(
-        async url => {
+        async (url: string) => {
             const response: AxiosResponse = await axios.get(url);
             dispatch({
                 type: 'setAutosuggest',
@@ -148,7 +148,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
     );
 
     const onInputKeyPress = useCallback(
-        event => {
+        (event: React.KeyboardEvent<HTMLInputElement>) => {
             /*
                 keyCode is deprecated but key is not supported by all browsers.
                 Then, a fallback to keyCode is still the best solution.
@@ -188,7 +188,7 @@ const MapComponent: React.FC<IProps> = ({ updateLocationCallback }) => {
         return returnItem;
     };
 
-    const onInputChange = useCallback(e => {
+    const onInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.value.length < 3) return;
         const value = encodeURIComponent(e.target.value);
         dispatch({
@@ -284,6 +284,9 @@ const MapParent = styled.div`
     margin-bottom: ${themeSpacing(5)};
 `;
 
+// arm-core's Map is typed as FunctionComponent<MapProps> which drops the underlying
+// HTMLProps (and therefore `children`), yet it renders children at runtime. Re-add
+// `children` to the styled component's prop type without widening anything else.
 const StyledMap = styled(Map)`
     height: 500px;
     width: 100%;
@@ -293,7 +296,7 @@ const StyledMap = styled(Map)`
     .leaflet-control-attribution {
         display: none;
     }
-`;
+` as React.FC<React.ComponentProps<typeof Map> & { children?: React.ReactNode }>;
 
 const StyledViewerContainer = styled(ViewerContainer)`
     > div {

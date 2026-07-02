@@ -6,6 +6,7 @@ import { BreadCrumbItem, IBreadCrumbItemProps } from './BreadCrumbItem';
 
 interface IBreadCrumbsProps {
     className?: string;
+    children?: React.ReactNode;
 }
 
 interface IBreadCrumbsComposition {

@@ -1,7 +1,3 @@
-interface IDisclosedCredentialSet {
-    [index: number]: IDisclosedCredential;
-}
-
 interface IDisclosedCredential {
     id: string;
     rawvalue: string;
@@ -10,9 +6,12 @@ interface IDisclosedCredential {
     issuancetime: number;
 }
 
+// A disclosed set is a conjunction: an array of disclosed credentials.
+type IDisclosedCredentialSet = IDisclosedCredential[];
+
 const reduceIRMAResult = (disclosedCredentialSets: IDisclosedCredentialSet[]) => {
     let joinedResults = {};
-    disclosedCredentialSets.forEach((conjunction: IDisclosedCredential[]) => {
+    disclosedCredentialSets.forEach((conjunction: IDisclosedCredentialSet) => {
         joinedResults = {
             ...joinedResults,
             ...conjunction.reduce(

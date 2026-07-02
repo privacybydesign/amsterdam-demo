@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
 import configDev from './config';
 
-// Load .env file (if present)
-dotenv.config();
+// Load .env file (if present); quiet:true silences dotenv v17 promo tip lines on boot
+dotenv.config({ quiet: true });
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -19,7 +19,7 @@ export interface IConfig {
     environment?: string;
 }
 
-let configToUse: IConfig = configDev;
+const configToUse: IConfig = configDev;
 
 configToUse.environment = process.env.NODE_ENV;
 

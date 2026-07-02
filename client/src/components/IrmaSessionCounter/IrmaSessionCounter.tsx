@@ -19,7 +19,7 @@ const IrmaSessionCounter: React.FC<IProps> = ({ className, minutes = 5, QRIsShow
     }, []);
 
     const onIntervalUpdate = useCallback(
-        startTime => {
+        (startTime: number) => {
             const timeElapsed = Date.now() - startTime;
             const durationInMs = minutes * 60 * 1000;
             const timeLeftInSec = Math.round((durationInMs - timeElapsed) / 1000);

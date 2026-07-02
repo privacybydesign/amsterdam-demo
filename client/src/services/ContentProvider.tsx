@@ -29,7 +29,7 @@ const defaultContentContext = {
 
 export const ContentContext = React.createContext<ContentContextType>(defaultContentContext);
 
-export const ContentProvider: React.FC = ({ children }) => {
+export const ContentProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
     const sessionLanguage = safeSessionStorage.getItem(STORAGE_KEY) ?? Language.NL;
 
     return (
@@ -40,7 +40,9 @@ export const ContentProvider: React.FC = ({ children }) => {
                 switchLanguage: l => {
                     safeSessionStorage.setItem(STORAGE_KEY, l);
                     // eslint-disable-next-line no-self-assign
-                    window.location = window.location;
+                    // Self-assign to trigger a page reload; the DOM setter's type is `string & Location`
+                    // but a plain Location instance is valid at runtime, so cast to satisfy the setter.
+                    window.location = window.location as string & Location;
                 }
             }}
         >

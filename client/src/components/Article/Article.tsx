@@ -13,6 +13,7 @@ export interface IProps {
     text?: string;
     href: string;
     className?: string;
+    children?: React.ReactNode;
 }
 
 const Container = styled.section`

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, useReducer } from 'react';
 import styled from 'styled-components';
-import ReactMarkDown from 'react-markdown';
+import ReactMarkDown from '@services/Markdown';
 import { Accordion, themeSpacing, Button } from '@amsterdam/asc-ui';
 import { Alert as AlertIcon } from '@amsterdam/asc-assets';
 import { Map, BaseLayer, Marker, getCrsRd } from '@amsterdam/arm-core';
@@ -106,7 +106,7 @@ const Demo5: React.FC<IProps> = () => {
     const { modal, showModal, startIrmaSession }: IIrmaSessionOutputData = useIrmaSession();
 
     const getSession = useCallback(
-        (event, alwaysShowQRCode = false) => {
+        (event: React.SyntheticEvent, alwaysShowQRCode = false) => {
             event.persist();
             const validatedForm = validateForm();
             if (validatedForm !== undefined && !validatedForm.errors.length) {
@@ -508,11 +508,14 @@ const StyledButton = styled(Button)`
     margin: ${themeSpacing(0, 6, 6, 0)};
 `;
 
+// arm-core's Map is typed as FunctionComponent<MapProps> which drops the underlying
+// HTMLProps (and therefore `children`), yet it renders children at runtime. Re-add
+// `children` to the styled component's prop type without widening anything else.
 const StyledMap = styled(Map)`
     height: 128px;
     width: 100%;
     margin: ${themeSpacing(4)} 0;
     z-index: 0;
-`;
+` as React.FC<React.ComponentProps<typeof Map> & { children?: React.ReactNode }>;
 
 export default Demo5;
