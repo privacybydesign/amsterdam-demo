@@ -78,7 +78,8 @@ const createIrmaVoteSession = async (
     callBackMapping?: IStateChangeCallbackMapping
 ): Promise<IIrmaResult | undefined> => {
     const irma = new YiviCore({
-        debugging: true,
+        // Verbose logging is a development aid only (matches createIrmaSession).
+        debugging: process.env.NODE_ENV !== 'production',
         element: `#${HOLDER_ELEMENT_ID}`,
         callBackMapping,
         minimal: true,

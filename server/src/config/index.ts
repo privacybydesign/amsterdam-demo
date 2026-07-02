@@ -17,6 +17,8 @@ export interface IConfig {
     docroot: string;
     port: number;
     environment?: string;
+    allowedOrigins: string[];
+    cspConnectSrc: string[];
 }
 
 let configToUse: IConfig = configDev;
