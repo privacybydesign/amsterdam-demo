@@ -74,9 +74,9 @@ export default class {
             }
 
             return result;
-        } catch (e: any) {
-            // TODO: Fix error handling
-            throw new Error(e);
+        } catch (e) {
+            Logger.error('IrmaService.requestSessionResult failed for session %s: %o', token, e);
+            throw e;
         }
     };
 }
