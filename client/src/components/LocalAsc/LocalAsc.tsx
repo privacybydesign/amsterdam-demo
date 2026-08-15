@@ -1,7 +1,7 @@
 import React, { useContext, useCallback, useState, useLayoutEffect, ReactElement } from 'react';
 import { Link as RRLink } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from '@services/Markdown';
 import {
     Heading,
     breakpoint,
@@ -255,6 +255,7 @@ export enum AlertColor {
 
 type IExternalLinkRendererProps = {
     href: string;
+    children?: React.ReactNode;
 };
 
 export const ExternalLinkRenderer: React.FC<IExternalLinkRendererProps> = (props): ReactElement => {
@@ -471,7 +472,9 @@ export const Column = styled(AscColumn)`
     justify-content: flex-start;
 `;
 
-interface IStrongParagraphProps {}
+interface IStrongParagraphProps {
+    children?: React.ReactNode;
+}
 
 export const StrongParagraph: React.FC<IStrongParagraphProps> = ({ children }) => (
     <Paragraph strong>{children}</Paragraph>
@@ -485,7 +488,7 @@ interface ITextAreaProps {
 export const TextArea = styled(({ showCounter, className, ...props }: AscTextAreaProps & ITextAreaProps) => {
     const language = useCurrentLanguage();
     const [counter, setCounter] = useState<number>(0);
-    const onChange = useCallback(event => {
+    const onChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setCounter(event.target.value.length);
     }, []);
 
@@ -518,6 +521,7 @@ margin - top: ${themeSpacing(2)};
 
 export const MarkDownToLink: React.FC<{
     href: string;
+    children?: React.ReactNode;
 }> = ({ href, children }) => <RRLink to={href}>{children}</RRLink>;
 
 export const ShowQRLink = styled(UnderlinedLink)`

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useReducer, useCallback } from 'react';
 import { reduceAndTranslateEmptyVars } from '@services/content-helpers';
-import ReactMarkDown from 'react-markdown';
+import ReactMarkDown from '@services/Markdown';
 import defList from '@services/deflist';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion } from '@amsterdam/asc-ui';

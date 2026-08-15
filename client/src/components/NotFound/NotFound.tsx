@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import ReactMarkDown from 'react-markdown';
+import ReactMarkDown from '@services/Markdown';
 import styled, { ThemeContext } from 'styled-components';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import PageTemplate from '@components/PageTemplate/PageTemplate';

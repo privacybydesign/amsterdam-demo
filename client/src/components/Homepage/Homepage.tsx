@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import BreadCrumbs from '@components/BreadCrumbs';
 import { Accordion, breakpoint } from '@amsterdam/asc-ui';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
-import ReactMarkDown from 'react-markdown';
+import ReactMarkDown from '@services/Markdown';
 import AppRoutes from '@app/AppRoutes';
 import PageTemplate from '@components/PageTemplate/PageTemplate';
 import Article from '@components/Article/Article';

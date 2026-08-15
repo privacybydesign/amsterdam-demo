@@ -26,7 +26,7 @@ describe('Demo3', () => {
             fullname: 'Test test'
         });
 
-        jest.useFakeTimers();
+        jest.useFakeTimers({ advanceTimers: true });
 
         // Render demo 3
         await act(async (): Promise<any> => await wrappedRender(<Demo3 />));
@@ -37,7 +37,7 @@ describe('Demo3', () => {
 
         jest.advanceTimersByTime(110);
 
-        await screen.findByRole('alert');
+        await screen.findAllByTestId(/has(Result|Error)Alert/);
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');

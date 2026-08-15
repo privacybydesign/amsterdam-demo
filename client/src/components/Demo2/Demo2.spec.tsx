@@ -48,7 +48,7 @@ describe('Demo2', () => {
 
         jest.advanceTimersByTime(110);
 
-        await screen.findAllByRole('alert');
+        await screen.findAllByTestId(/has(Result|Error)Alert/);
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');
@@ -85,7 +85,7 @@ describe('Demo2', () => {
 
         jest.advanceTimersByTime(110);
 
-        await screen.findAllByRole('alert');
+        await screen.findAllByTestId(/has(Result|Error)Alert/);
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');
@@ -126,7 +126,7 @@ describe('Demo2', () => {
 
         jest.advanceTimersByTime(110);
 
-        await screen.findAllByRole('alert');
+        await screen.findAllByTestId(/has(Result|Error)Alert/);
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');
@@ -163,7 +163,7 @@ describe('Demo2', () => {
 
         jest.advanceTimersByTime(110);
 
-        await screen.findAllByRole('alert');
+        await screen.findAllByTestId(/has(Result|Error)Alert/);
 
         // Check if header image is updated
         const headerImage = screen.getByTestId('headerImage');

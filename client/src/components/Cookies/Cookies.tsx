@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactMarkDown from 'react-markdown';
+import ReactMarkDown from '@services/Markdown';
 import { Accordion } from '@amsterdam/asc-ui';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import PageTemplate from '@components/PageTemplate/PageTemplate';

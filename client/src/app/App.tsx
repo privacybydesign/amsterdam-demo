@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { GlobalStyle, ThemeProvider, themeColor } from '@amsterdam/asc-ui';
 import theme from '@services/theme';
 import usePageViews from '@hooks/usePageViews';
@@ -45,12 +45,12 @@ const App: React.FC<IProps> = () => {
                     <AmsterdamSansFont />
                     <GlobalStyle />
                     <ScrollToTop />
-                    <Switch>
+                    <Routes>
                         {Object.keys(AppRoutes).map(key => {
-                            const { path, component, exact } = AppRoutes[key];
-                            return <Route key={key} path={path} component={component} exact={exact} />;
+                            const { path, component } = AppRoutes[key];
+                            return <Route key={key} path={path} element={React.createElement(component)} />;
                         })}
-                    </Switch>
+                    </Routes>
                 </Bg>
             </ContentProvider>
         </ThemeProvider>

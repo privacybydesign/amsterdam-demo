@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ReactMarkDown from 'react-markdown';
+import ReactMarkDown from '@services/Markdown';
 import { Button, Modal, themeSpacing, themeColor } from '@amsterdam/asc-ui';
 import { Close } from '@amsterdam/asc-assets';
 import { OL } from '@components/LocalAsc/LocalAsc';

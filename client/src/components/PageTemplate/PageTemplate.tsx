@@ -12,6 +12,7 @@ import { Language, useContent, useCurrentLanguage, useSwichLanguage } from '@ser
 interface IProps {
     className?: string;
     hideTitle?: boolean;
+    children?: React.ReactNode;
 }
 
 declare global {

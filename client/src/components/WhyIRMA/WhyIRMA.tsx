@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from '@services/Markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { breakpoint, themeColor, themeSpacing } from '@amsterdam/asc-ui';
 import { useContent } from '@services/ContentProvider';

@@ -6,6 +6,7 @@ import { themeColor } from '@amsterdam/asc-ui';
 export interface IBreadCrumbItemProps {
     className?: string;
     href?: string;
+    children?: React.ReactNode;
 }
 
 export const BreadCrumbItem: React.FC<IBreadCrumbItemProps> = ({ className, href, children }) => {

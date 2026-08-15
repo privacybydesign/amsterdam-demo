@@ -68,7 +68,7 @@ describe('Demo5', () => {
 
         jest.advanceTimersByTime(110);
 
-        await screen.findByRole('alert');
+        await screen.findAllByTestId(/has(Result|Error)Alert/);
 
         // Wait for update and check if correct alert is shown
         const hasResultAlert = screen.getByTestId('hasResultAlert');

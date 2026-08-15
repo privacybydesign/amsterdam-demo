@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { insertInPlaceholders } from '@services/content-helpers';
-import ReactMarkDown from 'react-markdown';
+import ReactMarkDown from '@services/Markdown';
 import * as AscLocal from '@components/LocalAsc/LocalAsc';
 import { Accordion } from '@amsterdam/asc-ui';
 import { Alert as AlertIcon } from '@amsterdam/asc-assets';

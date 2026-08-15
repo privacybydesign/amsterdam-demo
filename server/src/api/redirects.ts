@@ -8,7 +8,8 @@ export default (router: Router) => {
     });
     // Waarom Yivi?
     router.get('/inloggen-met-yivi', (req, res: Response) => {
-        res.status(301).redirect('https://www.amsterdam.nl/innovatie/digitalisering-technologie/digitalisering/irma-nieuwe-manier-inloggen');
+        res.status(301).redirect(
+            'https://www.amsterdam.nl/innovatie/digitalisering-technologie/digitalisering/irma-nieuwe-manier-inloggen'
+        );
     });
-
 };

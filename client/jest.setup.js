@@ -1,3 +1,8 @@
+// jsdom does not expose TextEncoder/TextDecoder, which react-router v7 requires at import time.
+const { TextEncoder, TextDecoder } = require('util');
+global.TextEncoder = global.TextEncoder || TextEncoder;
+global.TextDecoder = global.TextDecoder || TextDecoder;
+
 import 'jest-styled-components';
 import '@testing-library/jest-dom';
 

@@ -13,7 +13,7 @@ import NotFound from '@components/NotFound/NotFound';
 interface IRoute {
     path: string;
     exact?: boolean;
-    component: React.ComponentType<unknown>;
+    component: React.ComponentType;
 }
 interface IAppRoutes {
     [key: string]: IRoute;
