@@ -23,14 +23,14 @@ const cookieName = (token: string): string =>
 
 const sign = (token: string): string => createHmac('sha256', getSessionSecret()).update(token).digest('base64url');
 
-const cookieOptions = (): CookieOptions => ({
+export const cookieOptions = (): CookieOptions => ({
     path: '/demos',
     httpOnly: true,
     sameSite: 'strict',
     secure: isTlsEnvironment()
 });
 
-const readCookie = (req: Request, name: string): string | undefined => {
+export const readCookie = (req: Request, name: string): string | undefined => {
     const header = req.headers.cookie;
     if (!header) {
         return undefined;

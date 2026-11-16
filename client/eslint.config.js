@@ -20,6 +20,7 @@ module.exports = tseslint.config(
             '.vscode/**',
             'dist/**',
             'node_modules/**',
+            'vendor/**',
             'coverage/**',
             '**/*.d.ts',
             // Build/tooling config is CommonJS and not part of the TS source graph.

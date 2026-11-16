@@ -4,6 +4,7 @@ import { Container } from 'typedi';
 import { config } from '@config/index';
 import IrmaService from '@services/IrmaService';
 import appLoader from '@loaders/index';
+import { startVote } from '@test/helpers';
 
 /**
  * Tests for the /demos/result session-binding behaviour: results can only be
@@ -42,10 +43,7 @@ describe('GET /demos/result session binding', () => {
     it('rejects a request whose sid does not match the session token', async () => {
         // Bind a token to the session by starting a vote, keeping the cookie.
         const agent = request.agent(app);
-        await agent
-            .post('/demos/vote/start')
-            .send({ msg: { vote: 'Light sculpture #3' } })
-            .set('Content-Type', 'application/json');
+        await startVote(agent);
 
         const response = await agent.get('/demos/result').query({ sid: 'some-other-token' });
         expect(response.status).toBe(403);
@@ -53,10 +51,7 @@ describe('GET /demos/result session binding', () => {
 
     it('serves the result for the session-bound token when no sid is supplied', async () => {
         const agent = request.agent(app);
-        await agent
-            .post('/demos/vote/start')
-            .send({ msg: { vote: 'Light sculpture #3' } })
-            .set('Content-Type', 'application/json');
+        await startVote(agent);
 
         const response = await agent.get('/demos/result');
         expect(response.status).toBe(200);
@@ -65,10 +60,7 @@ describe('GET /demos/result session binding', () => {
 
     it('serves the result when the supplied sid matches the session-bound token', async () => {
         const agent = request.agent(app);
-        await agent
-            .post('/demos/vote/start')
-            .send({ msg: { vote: 'Light sculpture #3' } })
-            .set('Content-Type', 'application/json');
+        await startVote(agent);
 
         const response = await agent.get('/demos/result').query({ sid: fakeToken });
         expect(response.status).toBe(200);
