@@ -3,12 +3,20 @@ import session, { CookieOptions, SessionOptions } from 'express-session';
 const FileStore = require('session-file-store')(session);
 import { ILoaderArgs } from '.';
 
+// TLS is terminated in front of the app on these environments.
+export const isTlsEnvironment = (): boolean =>
+    process.env.NODE_ENV === 'acceptance' || process.env.NODE_ENV === 'production';
+
+// Secret used to sign the session cookie and the result-binding cookies.
+export const getSessionSecret = (): string =>
+    isTlsEnvironment() && process.env.SESSION_KEY ? process.env.SESSION_KEY : 'local';
+
 // Setup session management
 export default ({ app, config }: ILoaderArgs) => {
     const sessionOptions: SessionOptions = {
         store: new FileStore({ ttl: 360 }),
         name: `${config.requestorname}.sid`,
-        secret: 'local',
+        secret: getSessionSecret(),
         cookie: {
             path: '/demos',
             httpOnly: true,
@@ -22,12 +30,9 @@ export default ({ app, config }: ILoaderArgs) => {
     };
 
     // Enable secure cookies on TLS environments
-    if (process.env.NODE_ENV === 'acceptance' || process.env.NODE_ENV === 'production') {
+    if (isTlsEnvironment()) {
         app.set('trust proxy', 1);
         (sessionOptions.cookie as CookieOptions).secure = true;
-        if (process.env.SESSION_KEY) {
-            sessionOptions.secret = process.env.SESSION_KEY;
-        }
     }
 
     /** @ts-ignore */
