@@ -4,5 +4,10 @@
 .idea
 node_modules
 dist
+**/node_modules
+**/dist
+**/.DS_Store
+.secrets
+server/sessions
 Dockerfile
 Dockerfile.prod

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { YiviCore } from '@privacybydesign/yivi-core';
 import { YiviWeb } from '@privacybydesign/yivi-web';
 import { YiviClient } from '@privacybydesign/yivi-client';
@@ -73,15 +74,38 @@ class IrmaStateChangeCallback {
     }
 }
 
+// The backend only accepts the start request with the CSRF token of this
+// browser. The token is fetched once and shared: the page can start more than
+// one session, and parallel first requests would each get a different token.
+let csrfTokenRequest: Promise<string | undefined> | undefined;
+
+const getCsrfToken = (): Promise<string | undefined> => {
+    if (!csrfTokenRequest) {
+        csrfTokenRequest = axios
+            .get('/demos/vote/csrf-token')
+            .then(response => response.data.csrfToken as string)
+            .catch(() => {
+                // Try again on the next session start.
+                csrfTokenRequest = undefined;
+                return undefined;
+            });
+    }
+    return csrfTokenRequest;
+};
+
 const createIrmaVoteSession = async (
     objectToSign: IQueryObj,
     callBackMapping?: IStateChangeCallbackMapping
 ): Promise<IIrmaResult | undefined> => {
+    const csrfToken = await getCsrfToken();
+    if (!csrfToken) {
+        return undefined;
+    }
     // Session id returned when the session is started; the result is requested with it.
     let sessionId = '';
 
     const irma = new YiviCore({
-        debugging: true,
+        debugging: process.env.NODE_ENV !== 'production',
         element: `#${HOLDER_ELEMENT_ID}`,
         callBackMapping,
         minimal: true,
@@ -91,7 +115,7 @@ const createIrmaVoteSession = async (
             start: {
                 url: (o: any) => `${o.url}/start`,
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
                 body: JSON.stringify({ msg: objectToSign }),
                 parseResponse: async (response: any) => {
                     const body = await response.json();

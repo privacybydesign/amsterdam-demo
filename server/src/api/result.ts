@@ -1,5 +1,4 @@
 import { Router, Request, Response } from 'express';
-import cors from 'cors';
 import { Container } from 'typedi';
 import { config } from '@config/index';
 import IrmaService from '@services/IrmaService';
@@ -8,7 +7,7 @@ import { isResultTokenBound, unbindResultToken } from '@services/resultBinding';
 
 // Define routes for demo
 export default (router: Router) => {
-    router.get('/demos/result', cors(), async (req: Request, res: Response) => {
+    router.get('/demos/result', async (req: Request, res: Response) => {
         // Results can only be read by the browser that started the flow —
         // knowing an IRMA token alone is not enough.
         //

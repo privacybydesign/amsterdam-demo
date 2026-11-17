@@ -1,5 +1,7 @@
+# The base image is pinned by version and digest; Dependabot updates both.
+
 # Build client frontend
-FROM node:24-alpine AS fe-builder
+FROM node:24.22.3-alpine@sha256:116b800c3754b440ee0aa3ed2f20f5bf3d99a554bfd9adeea09ea8017f6e85f5 AS fe-builder
 LABEL maintainer="support@yivi.app"
 
 ENV PATH=/app/node_modules/.bin:$PATH
@@ -13,7 +15,7 @@ RUN npm run build
 ##################################
 
 # Build server backend
-FROM node:24-alpine AS be-builder
+FROM node:24.22.3-alpine@sha256:116b800c3754b440ee0aa3ed2f20f5bf3d99a554bfd9adeea09ea8017f6e85f5 AS be-builder
 LABEL maintainer="support@yivi.app"
 
 ENV PATH=/app/node_modules/.bin:$PATH
@@ -39,25 +41,36 @@ COPY ./server/static ./dist/static
 ##################################
 
 # Build server and include frontend (docroot is set to ../client in config.json)
-FROM node:24-alpine
+FROM node:24.22.3-alpine@sha256:116b800c3754b440ee0aa3ed2f20f5bf3d99a554bfd9adeea09ea8017f6e85f5
 
 COPY --from=be-builder /app/dist/. /server
 COPY --from=fe-builder /app/dist/. /client
 
-RUN apk update && apk upgrade && \
-    npm install -g npm@latest && \
-    npm install -g pm2 && \
-    npm install --prefix /usr/local/lib/node_modules/pm2 --omit=dev \
-        ws@8.21.0 js-yaml@4.3.2 serialize-javascript@7.1.3 diff@5.2.2
 WORKDIR /server
 
-RUN adduser -D irma
-RUN mkdir sessions
-RUN chmod -R 777 sessions
+# The app only needs the node binary at runtime, so after installing the latest
+# OS security updates and preparing the user and the sessions directory:
+# - remove the package managers that ship with the base image (npm, yarn,
+#   corepack), so their bundled dependencies are not part of the image;
+# - remove busybox (the shell and its tools) and the packages that need it.
+# This must stay the last shell RUN instruction: there is no shell afterwards.
+RUN apk upgrade --no-cache && \
+    adduser -D irma && \
+    mkdir sessions && \
+    chown irma:irma sessions && \
+    rm -rf /usr/local/lib/node_modules /usr/local/bin/npm /usr/local/bin/npx \
+        /usr/local/bin/corepack /usr/local/bin/yarn /usr/local/bin/yarnpkg /opt/yarn-* \
+        /usr/local/bin/docker-entrypoint.sh /root/.npm && \
+    apk del --no-network ssl_client busybox busybox-binsh alpine-baselayout
+
+# Removing the base layout also removed the (empty) /tmp; recreate it.
+RUN ["node", "-e", "fs.mkdirSync('/tmp'); fs.chmodSync('/tmp', 0o1777)"]
+
 USER irma
 
 ENV NODE_ENV=production
-ENV DEBUG=express-session
 
-CMD ["pm2-runtime","./app.js"]
+# The entrypoint of the base image is a shell script; run node directly.
+ENTRYPOINT []
+CMD ["node","./app.js"]
 EXPOSE 8000
