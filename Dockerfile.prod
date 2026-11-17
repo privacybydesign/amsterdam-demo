@@ -1,5 +1,7 @@
+# The base image is pinned by version and digest; Dependabot updates both.
+
 # Build client frontend
-FROM node:24-alpine AS fe-builder
+FROM node:24.22.3-alpine@sha256:116b800c3754b440ee0aa3ed2f20f5bf3d99a554bfd9adeea09ea8017f6e85f5 AS fe-builder
 LABEL maintainer="support@yivi.app"
 
 ENV PATH=/app/node_modules/.bin:$PATH
@@ -13,7 +15,7 @@ RUN npm run build
 ##################################
 
 # Build server backend
-FROM node:24-alpine AS be-builder
+FROM node:24.22.3-alpine@sha256:116b800c3754b440ee0aa3ed2f20f5bf3d99a554bfd9adeea09ea8017f6e85f5 AS be-builder
 LABEL maintainer="support@yivi.app"
 
 ENV PATH=/app/node_modules/.bin:$PATH
@@ -24,15 +26,13 @@ WORKDIR /app
 COPY ./server/package.json ./
 COPY ./server/package-lock.json ./
 COPY ./server/tsconfig.json ./
-COPY ./server/vendor ./vendor
 COPY ./server/src ./src
 
 RUN npm ci
 RUN npm run build
 
 ## Install production modules in /dist/node_modules
-## (vendor holds the patched deepmerge that package.json refers to)
-RUN cp -R package.json package-lock.json vendor ./dist/
+RUN cp package.json package-lock.json ./dist/
 RUN npm ci --omit=dev --prefix ./dist
 
 ## Copy static assets in /dist
@@ -41,7 +41,7 @@ COPY ./server/static ./dist/static
 ##################################
 
 # Build server and include frontend (docroot is set to ../client in config.json)
-FROM node:24-alpine
+FROM node:24.22.3-alpine@sha256:116b800c3754b440ee0aa3ed2f20f5bf3d99a554bfd9adeea09ea8017f6e85f5
 
 COPY --from=be-builder /app/dist/. /server
 COPY --from=fe-builder /app/dist/. /client

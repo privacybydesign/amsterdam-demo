@@ -24,7 +24,6 @@
         "@privacybydesign/yivi-web": "^1.0.2",
         "axios": "^1.18.1",
         "core-js": "3",
-        "deepmerge": "file:vendor/deepmerge",
         "leaflet": "^1.6.0",
         "mdast-util-to-string": "^4.0.0",
         "react": "^18.3.1",
@@ -114,9 +113,11 @@
         "js-yaml": "^4.2.0",
         "form-data": "^4.0.6",
         "glob": "^14.0.6",
+        "test-exclude": {
+            "glob": "^7.2.3"
+        },
         "minimatch@>=7": "^11.0.8",
         "brace-expansion@<2": "^1.1.22",
-        "qs": "^6.17.1",
-        "deepmerge": "$deepmerge"
+        "qs": "^6.17.1"
     }
 }

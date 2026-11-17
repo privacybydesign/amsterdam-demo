@@ -15,7 +15,7 @@ const globals = require('globals');
 module.exports = tseslint.config(
     // Ignore build artifacts and type declaration files (ports .eslintignore).
     {
-        ignores: ['.vscode/**', 'dist/**', 'node_modules/**', 'vendor/**', '**/*.d.ts', '**/*.spec.{ts,tsx,js,jsx}']
+        ignores: ['.vscode/**', 'dist/**', 'node_modules/**', '**/*.d.ts', '**/*.spec.{ts,tsx,js,jsx}']
     },
     js.configs.recommended,
     ...tseslint.configs.recommended,
