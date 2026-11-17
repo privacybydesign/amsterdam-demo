@@ -77,6 +77,9 @@ const createIrmaVoteSession = async (
     objectToSign: IQueryObj,
     callBackMapping?: IStateChangeCallbackMapping
 ): Promise<IIrmaResult | undefined> => {
+    // Session id returned when the session is started; the result is requested with it.
+    let sessionId = '';
+
     const irma = new YiviCore({
         debugging: true,
         element: `#${HOLDER_ELEMENT_ID}`,
@@ -89,7 +92,12 @@ const createIrmaVoteSession = async (
                 url: (o: any) => `${o.url}/start`,
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ msg: objectToSign })
+                body: JSON.stringify({ msg: objectToSign }),
+                parseResponse: async (response: any) => {
+                    const body = await response.json();
+                    sessionId = body.sessionId;
+                    return body.sessionPtr;
+                }
             },
 
             mapping: {
@@ -97,7 +105,7 @@ const createIrmaVoteSession = async (
             },
 
             result: {
-                url: () => `/demos/result`
+                url: () => `/demos/result?sid=${sessionId}`
             }
         }
     });

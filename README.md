@@ -16,6 +16,8 @@ openssl rsa -in private.key -pubout -out public.crt
 popd
 ```
 
+Set `SESSION_KEY` on deployed environments: the secret that signs the session and result-binding cookies. Use a long random value (`openssl rand -base64 32`) and give every instance the same one. Without it the backend signs with a random key that it generates on each start and logs a warning, so cookies stop working after a restart and are not valid on another instance.
+
 ## Install npm packages
 
 ```sh
