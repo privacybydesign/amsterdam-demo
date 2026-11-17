@@ -4,6 +4,7 @@ import Logger from '@loaders/logger';
 import { Container } from 'typedi';
 import IrmaService from '@services/IrmaService';
 import { CredentialSet } from 'typedefs/index';
+import { bindResultToken } from '@services/resultBinding';
 
 const IRMA_CONF = {
     ELECTION_NAME: 'Best of Amsterdam Light Festival'
@@ -31,11 +32,13 @@ const processVoteRequest = async (message: string, req: Request, res: Response, 
 
         const { token, sessionPtr } = await irmaServiceInstance.requestSignatureSession(credentialsToRequest, message);
 
-        // Store token in session
-        (req.session as any)!.token = token;
+        // Bind the token to this browser so /demos/result can verify the
+        // caller is the one who started the session (see result.ts).
+        bindResultToken(res, token);
 
-        // Return QR Code
-        return res.status(200).json(sessionPtr);
+        // Return QR Code and the session id to request the result with
+        const sessionId = encodeURIComponent(token);
+        return res.status(200).json({ sessionPtr, sessionId });
     } catch (e) {
         Logger.error('🔥 error: %o', e);
         return next(e);

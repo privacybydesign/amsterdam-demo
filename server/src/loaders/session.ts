@@ -1,3 +1,4 @@
+import { randomBytes } from 'crypto';
 import Logger from '@loaders/logger';
 import session, { CookieOptions, SessionOptions } from 'express-session';
 const FileStore = require('session-file-store')(session);
@@ -7,9 +8,19 @@ import { ILoaderArgs } from '.';
 export const isTlsEnvironment = (): boolean =>
     process.env.NODE_ENV === 'acceptance' || process.env.NODE_ENV === 'production';
 
-// Secret used to sign the session cookie and the result-binding cookies.
-export const getSessionSecret = (): string =>
-    isTlsEnvironment() && process.env.SESSION_KEY ? process.env.SESSION_KEY : 'local';
+// Used when SESSION_KEY is not set: a key that only this process knows.
+const generatedSecret = randomBytes(32).toString('hex');
+if (!process.env.SESSION_KEY) {
+    Logger.warn(
+        'SESSION_KEY is not set: signing cookies with a random key for this process. ' +
+            'Cookies stop working after a restart and are not valid on other instances.'
+    );
+}
+
+// Secret used to sign the session cookie and the result-binding cookies. The
+// binding cookie is the only thing that protects a result, so there is no
+// well-known fallback value: without SESSION_KEY a random key is used.
+export const getSessionSecret = (): string => process.env.SESSION_KEY || generatedSecret;
 
 // Setup session management
 export default ({ app, config }: ILoaderArgs) => {
