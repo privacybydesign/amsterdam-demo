@@ -4,7 +4,7 @@ import { config } from '@config/index';
 import { getSessionSecret, isTlsEnvironment } from '@loaders/session';
 
 /**
- * Binds an IRMA session token to the browser that started the disclosure, so
+ * Binds an IRMA session token to the browser that started the IRMA session, so
  * /demos/result only serves a result to that browser.
  *
  * Every started IRMA session gets its own signed, httpOnly cookie. A single
@@ -14,14 +14,18 @@ import { getSessionSecret, isTlsEnvironment } from '@loaders/session';
  * earlier session could never fetch its result (#66).
  */
 
-// Comfortably longer than an IRMA session can live (15 minutes by default),
-// since the session is started on page load and may sit idle for a while.
-const BINDING_MAX_AGE_MS = 30 * 60 * 1000;
+// The maximum lifetime of an IRMA session (15 minutes by default). A binding
+// for a session that no longer exists is useless, and every binding cookie is
+// sent along with each /demos request.
+const BINDING_MAX_AGE_MS = 15 * 60 * 1000;
 
 const cookieName = (token: string): string =>
     `${config.requestorname}.result.${createHash('sha256').update(token).digest('hex').slice(0, 24)}`;
 
-const sign = (token: string): string => createHmac('sha256', getSessionSecret()).update(token).digest('base64url');
+// The prefix keeps these signatures apart from the express-session cookie
+// signatures, which are made with the same key.
+const sign = (token: string): string =>
+    createHmac('sha256', getSessionSecret()).update(`result-binding:${token}`).digest('base64url');
 
 export const cookieOptions = (): CookieOptions => ({
     path: '/demos',

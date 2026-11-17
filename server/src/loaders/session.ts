@@ -14,24 +14,19 @@ export const isTlsEnvironment = (): boolean =>
 // Header in which the frontend sends the CSRF token for state-changing requests.
 export const CSRF_HEADER = 'x-csrf-token';
 
-let generatedSecret: string | undefined;
+// Used when SESSION_KEY is not set: a key that only this process knows.
+const generatedSecret = randomBytes(32).toString('hex');
+if (!process.env.SESSION_KEY) {
+    Logger.warn(
+        'SESSION_KEY is not set: signing cookies with a random key for this process. ' +
+            'Cookies stop working after a restart and are not valid on other instances.'
+    );
+}
 
-// Secret used to sign the session cookie and the result-binding cookies.
-// SESSION_KEY is required on deployed environments. Without it (local
-// development, tests) a random secret is generated for this process, so there
-// is no well-known value that could be used to forge cookies.
-export const getSessionSecret = (): string => {
-    if (process.env.SESSION_KEY) {
-        return process.env.SESSION_KEY;
-    }
-    if (isTlsEnvironment()) {
-        throw new Error('SESSION_KEY is not set!');
-    }
-    if (!generatedSecret) {
-        generatedSecret = randomBytes(32).toString('hex');
-    }
-    return generatedSecret;
-};
+// Secret used to sign the session, result-binding and CSRF cookies. The
+// binding cookie is the only thing that protects a result, so there is no
+// well-known fallback value: without SESSION_KEY a random key is used.
+export const getSessionSecret = (): string => process.env.SESSION_KEY || generatedSecret;
 
 // Setup session management
 export default ({ app, config }: ILoaderArgs) => {

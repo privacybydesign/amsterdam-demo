@@ -11,25 +11,13 @@ export default (router: Router) => {
         // Results can only be read by the browser that started the flow —
         // knowing an IRMA token alone is not enough.
         //
-        // The disclosure demos send their token as ?sid and must present the
-        // binding cookie that was set for exactly that token when the session
-        // was started. Binding per token (rather than one token per browser
+        // Every flow sends its token as ?sid and must present the binding
+        // cookie that was set for exactly that token when the session was
+        // started. Binding per token (rather than one token per browser
         // session) keeps sessions started in parallel from locking each other
-        // out. The vote flow omits the sid and relies on the token stored on
-        // the server-side session.
-        const sid = req.query.sid;
-        const sessionToken = (req.session as { token?: string } | undefined)?.token;
-        let token: string;
-
-        if (sid === undefined) {
-            if (!sessionToken) {
-                Logger.error('Rejected result request: no IRMA token bound to this session');
-                return res.status(403).send('Forbidden');
-            }
-            token = sessionToken;
-        } else if (typeof sid === 'string' && sid !== '' && (isResultTokenBound(req, sid) || sid === sessionToken)) {
-            token = sid;
-        } else {
+        // out, and does not depend on the server-side session still existing.
+        const token = req.query.sid;
+        if (typeof token !== 'string' || token === '' || !isResultTokenBound(req, token)) {
             Logger.error('Rejected result request: supplied sid is not bound to this browser');
             return res.status(403).send('Forbidden');
         }

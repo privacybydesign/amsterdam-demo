@@ -1,3 +1,4 @@
+import { createHash, createHmac } from 'crypto';
 import express from 'express';
 import request from 'supertest';
 import { Container } from 'typedi';
@@ -7,9 +8,9 @@ import appLoader from '@loaders/index';
 import { startVote } from '@test/helpers';
 
 /**
- * Tests for the /demos/result session-binding behaviour: results can only be
- * read by the same browser session that started the flow, so knowing an IRMA
- * token alone no longer grants access to the disclosed attributes.
+ * Tests for the /demos/result binding behaviour: results can only be read by
+ * the browser that started the IRMA session, so knowing an IRMA token alone
+ * does not grant access to the disclosed attributes.
  */
 describe('GET /demos/result session binding', () => {
     const fakeToken = 'fake-irma-token';
@@ -35,13 +36,27 @@ describe('GET /demos/result session binding', () => {
         Container.reset();
     });
 
-    it('rejects a request with no bound session token', async () => {
+    // The name=value pairs of the cookies a response sets.
+    const cookiesOf = (res: request.Response): string[] =>
+        ([] as string[]).concat(res.headers['set-cookie'] ?? []).map(c => c.split(';')[0]);
+
+    const bindingCookieOf = (res: request.Response): string =>
+        cookiesOf(res).find(c => c.includes('.result.')) as string;
+
+    it('rejects a request without a sid', async () => {
         const response = await request(app).get('/demos/result');
         expect(response.status).toBe(403);
     });
 
-    it('rejects a request whose sid does not match the session token', async () => {
-        // Bind a token to the session by starting a vote, keeping the cookie.
+    it('rejects a request without a sid, also after a session was started', async () => {
+        const agent = request.agent(app);
+        await startVote(agent);
+
+        const response = await agent.get('/demos/result');
+        expect(response.status).toBe(403);
+    });
+
+    it('rejects a request whose sid does not match a started session', async () => {
         const agent = request.agent(app);
         await startVote(agent);
 
@@ -49,22 +64,50 @@ describe('GET /demos/result session binding', () => {
         expect(response.status).toBe(403);
     });
 
-    it('serves the result for the session-bound token when no sid is supplied', async () => {
+    it('binds the token on the vote flow so a matching sid is served', async () => {
         const agent = request.agent(app);
-        await startVote(agent);
-
-        const response = await agent.get('/demos/result');
-        expect(response.status).toBe(200);
-        expect(response.body).toEqual(doneResult);
-    });
-
-    it('serves the result when the supplied sid matches the session-bound token', async () => {
-        const agent = request.agent(app);
-        await startVote(agent);
+        const start = await startVote(agent);
+        expect(start.status).toBe(200);
+        expect(start.body).toEqual({ sessionPtr: fakeSessionPtr, sessionId: encodeURIComponent(fakeToken) });
 
         const response = await agent.get('/demos/result').query({ sid: fakeToken });
         expect(response.status).toBe(200);
         expect(response.body).toEqual(doneResult);
+    });
+
+    it('rejects a vote token that was started by another browser', async () => {
+        await startVote(request.agent(app));
+
+        const response = await request.agent(app).get('/demos/result').query({ sid: fakeToken });
+        expect(response.status).toBe(403);
+    });
+
+    describe('when the server-side session has expired (#66)', () => {
+        // The session is started on page load, so the QR code can be on screen
+        // for longer than the server-side session lives (6 minutes). Only the
+        // binding cookie is sent here, as if the express-session was gone.
+        it('still serves the result of a disclosure session', async () => {
+            startDisclosure.mockResolvedValueOnce({ token: 'token-idle', sessionPtr: fakeSessionPtr });
+            const start = await request(app).get('/demos/demo4');
+            const binding = bindingCookieOf(start);
+            expect(binding).toBeDefined();
+
+            const response = await request(app)
+                .get('/demos/result')
+                .set('Cookie', binding)
+                .query({ sid: 'token-idle' });
+            expect(response.status).toBe(200);
+            expect(response.body).toEqual(doneResult);
+        });
+
+        it('still serves the result of a vote session', async () => {
+            const start = await startVote(request.agent(app));
+            const binding = bindingCookieOf(start);
+            expect(binding).toBeDefined();
+
+            const response = await request(app).get('/demos/result').set('Cookie', binding).query({ sid: fakeToken });
+            expect(response.status).toBe(200);
+        });
     });
 
     describe('disclosure sessions started in parallel (#66)', () => {
@@ -96,8 +139,6 @@ describe('GET /demos/result session binding', () => {
                 request(app).get('/demos/demo1/18'),
                 request(app).get('/demos/demo1/65')
             ]);
-            const cookiesOf = (res: request.Response) =>
-                ([] as string[]).concat(res.headers['set-cookie'] ?? []).map(c => c.split(';')[0]);
             // The browser keeps the cookies of both responses; same-named ones are overwritten.
             const jar = new Map<string, string>();
             for (const cookie of [...cookiesOf(start18), ...cookiesOf(start65)]) {
@@ -127,10 +168,7 @@ describe('GET /demos/result session binding', () => {
         it('rejects a forged binding cookie', async () => {
             startDisclosure.mockResolvedValueOnce({ token: 'token-forged', sessionPtr: fakeSessionPtr });
             const start = await request(app).get('/demos/demo4');
-            const binding = ([] as string[])
-                .concat(start.headers['set-cookie'] ?? [])
-                .map(c => c.split(';')[0])
-                .find(c => c.includes('.result.')) as string;
+            const binding = bindingCookieOf(start);
             expect(binding).toBeDefined();
 
             const response = await request(app)
@@ -139,6 +177,39 @@ describe('GET /demos/result session binding', () => {
                 .query({ sid: 'token-forged' });
             expect(response.status).toBe(403);
         });
+
+        it.each(['production', 'acceptance', 'test'])(
+            'rejects a binding cookie signed with a well-known key when SESSION_KEY is unset (NODE_ENV=%s)',
+            async environment => {
+                // Everything needed to forge the cookie can be derived from the
+                // token, except the key. 'local' used to be the fallback key.
+                expect(process.env.SESSION_KEY).toBeUndefined();
+                const token = 'token-known-key';
+                const name = `${config.requestorname}.result.${createHash('sha256')
+                    .update(token)
+                    .digest('hex')
+                    .slice(0, 24)}`;
+                const forgeries = ['local', ''].flatMap(key =>
+                    [token, `result-binding:${token}`].map(input =>
+                        createHmac('sha256', key).update(input).digest('base64url')
+                    )
+                );
+
+                const originalEnvironment = process.env.NODE_ENV;
+                process.env.NODE_ENV = environment;
+                try {
+                    for (const forgery of forgeries) {
+                        const response = await request(app)
+                            .get('/demos/result')
+                            .set('Cookie', `${name}=${forgery}`)
+                            .query({ sid: token });
+                        expect(response.status).toBe(403);
+                    }
+                } finally {
+                    process.env.NODE_ENV = originalEnvironment;
+                }
+            }
+        );
 
         it('drops the binding once the result is done', async () => {
             startDisclosure.mockResolvedValueOnce({ token: 'token-done', sessionPtr: fakeSessionPtr });

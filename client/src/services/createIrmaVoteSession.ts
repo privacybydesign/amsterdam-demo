@@ -101,6 +101,8 @@ const createIrmaVoteSession = async (
     if (!csrfToken) {
         return undefined;
     }
+    // Session id returned when the session is started; the result is requested with it.
+    let sessionId = '';
 
     const irma = new YiviCore({
         debugging: process.env.NODE_ENV !== 'production',
@@ -114,7 +116,12 @@ const createIrmaVoteSession = async (
                 url: (o: any) => `${o.url}/start`,
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfToken },
-                body: JSON.stringify({ msg: objectToSign })
+                body: JSON.stringify({ msg: objectToSign }),
+                parseResponse: async (response: any) => {
+                    const body = await response.json();
+                    sessionId = body.sessionId;
+                    return body.sessionPtr;
+                }
             },
 
             mapping: {
@@ -122,7 +129,7 @@ const createIrmaVoteSession = async (
             },
 
             result: {
-                url: () => `/demos/result`
+                url: () => `/demos/result?sid=${sessionId}`
             }
         }
     });

@@ -73,18 +73,14 @@ describe('getSessionSecret', () => {
         expect(getSessionSecret()).toBe('configured-secret');
     });
 
-    it('refuses to start without SESSION_KEY on a deployed environment', () => {
-        delete process.env.SESSION_KEY;
-        process.env.NODE_ENV = 'production';
-        expect(() => getSessionSecret()).toThrow('SESSION_KEY is not set!');
-    });
-
-    it('generates a random secret for local development', () => {
-        delete process.env.SESSION_KEY;
-        process.env.NODE_ENV = 'development';
-        const secret = getSessionSecret();
-        expect(secret).toMatch(/^[0-9a-f]{64}$/);
-        expect(secret).not.toBe('local');
-        expect(getSessionSecret()).toBe(secret);
-    });
+    it.each(['production', 'acceptance', 'development'])(
+        'uses a random secret, not a well-known one, without SESSION_KEY (NODE_ENV=%s)',
+        environment => {
+            delete process.env.SESSION_KEY;
+            process.env.NODE_ENV = environment;
+            const secret = getSessionSecret();
+            expect(secret).toMatch(/^[0-9a-f]{64}$/);
+            expect(getSessionSecret()).toBe(secret);
+        }
+    );
 });

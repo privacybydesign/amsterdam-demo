@@ -16,7 +16,7 @@ openssl rsa -in private.key -pubout -out public.crt
 popd
 ```
 
-On deployed environments (`NODE_ENV` set to `production` or `acceptance`) the backend also needs `SESSION_KEY`: the secret that signs the session, result-binding and CSRF cookies. The backend does not start without it. Use a long random value (`openssl rand -base64 32`) and give every replica the same one. Locally a random secret is generated on each start.
+Set `SESSION_KEY` on deployed environments: the secret that signs the session, result-binding and CSRF cookies. Use a long random value (`openssl rand -base64 32`) and give every instance the same one. Without it the backend signs with a random key that it generates on each start and logs a warning, so cookies stop working after a restart and are not valid on another instance.
 
 ## Install npm packages
 

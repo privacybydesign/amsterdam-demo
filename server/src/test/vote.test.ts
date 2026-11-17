@@ -12,9 +12,7 @@ import { startVote } from '@test/helpers';
  * /demos/vote/start threw a TypeError when the handler wrote to req.session.
  *
  * This test boots the real loader chain (loaders/index.ts) and exercises the
- * vote endpoint. IrmaService is stubbed so no IRMA server is needed; the only
- * thing under test is that req.session is a real object at request time, which
- * it only is when the session middleware is registered before the routes.
+ * vote endpoint. IrmaService is stubbed so no IRMA server is needed.
  */
 describe('POST /demos/vote/start', () => {
     const fakeSessionPtr = { u: 'https://irma.example/session/abc', irmaqr: 'signing' };
@@ -40,23 +38,19 @@ describe('POST /demos/vote/start', () => {
         Container.reset();
     });
 
-    it('stores the IRMA token on the session and returns the session pointer', async () => {
+    it('returns the session pointer and binds the IRMA token to the browser', async () => {
         const response = await startVote(request.agent(app));
 
-        // Before the fix req.session was undefined, so the handler threw a
-        // TypeError, was caught and forwarded to the default error handler,
-        // and the response came back as 500 instead of 200.
+        // Before the fix for #24 req.session was undefined, so the handler
+        // threw a TypeError and the response came back as 500 instead of 200.
         expect(response.status).toBe(200);
-        expect(response.body).toEqual(fakeSessionPtr);
+        expect(response.body).toEqual({ sessionPtr: fakeSessionPtr, sessionId: encodeURIComponent(fakeToken) });
 
-        // The handler must have been able to store the token on the session.
+        // The result is requested with the binding cookie of this session.
+        expect(String(response.headers['set-cookie'])).toContain(`${config.requestorname}.result.`);
+
         const requestSignatureSession = Container.get(IrmaService).requestSignatureSession as jest.Mock;
         expect(requestSignatureSession).toHaveBeenCalledWith(expect.anything(), 'vote: Light sculpture #3');
-    });
-
-    it('sets the session cookie when the vote is started', async () => {
-        const response = await startVote(request.agent(app));
-        expect(String(response.headers['set-cookie'])).toContain(`${config.requestorname}.sid`);
     });
 
     it('rejects a CSRF token that was issued to another browser', async () => {
