@@ -5,6 +5,7 @@ import { Container } from 'typedi';
 import { config } from '@config/index';
 import IrmaService from '@services/IrmaService';
 import appLoader from '@loaders/index';
+import { startVote } from '@test/helpers';
 
 /**
  * Tests for the /demos/result binding behaviour: results can only be read by
@@ -34,12 +35,6 @@ describe('GET /demos/result session binding', () => {
     afterAll(() => {
         Container.reset();
     });
-
-    const startVote = (agent: ReturnType<typeof request.agent>) =>
-        agent
-            .post('/demos/vote/start')
-            .send({ msg: { vote: 'Light sculpture #3' } })
-            .set('Content-Type', 'application/json');
 
     // The name=value pairs of the cookies a response sets.
     const cookiesOf = (res: request.Response): string[] =>
