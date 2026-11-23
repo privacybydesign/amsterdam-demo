@@ -7,10 +7,6 @@ import userAgent from './userAgent';
 
 // Types
 export interface IIrmaServerConfig {
-    requestorname: string;
-    irma: string;
-    docroot: string;
-    port: number;
     environment: string;
 }
 

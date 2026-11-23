@@ -3,6 +3,7 @@ import { Container } from 'typedi';
 import { CredentialSet, CredentialSetFunction, IDemoCredentials } from '@typedefs/index';
 import Logger from '@loaders/logger';
 import IrmaService from '@services/IrmaService';
+import { bindResultToken } from '@services/resultBinding';
 import config from './config';
 import demo1 from './demo1';
 import demo2 from './demo2';
@@ -58,9 +59,9 @@ export const processDemoRequest = async (
         const credentialsToRequest = selectCredentialsToRequest(req, demoCredentials, ...args);
         const { token, sessionPtr } = await irmaServiceInstance.requestDisclosureSession(credentialsToRequest);
 
-        // Bind the token to this browser session so /demos/result can verify
-        // the caller is the one who started the disclosure (see result.ts).
-        (req.session as { token?: string }).token = token;
+        // Bind the token to this browser so /demos/result can verify the
+        // caller is the one who started the disclosure (see result.ts).
+        bindResultToken(res, token);
 
         // Return QR Code and also the signed session id
         const sessionId = encodeURIComponent(token);

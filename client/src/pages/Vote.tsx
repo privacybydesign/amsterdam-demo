@@ -7,6 +7,20 @@ import { isMobile as mobile } from '@services/createIrmaSession';
 
 export const HOLDER_ELEMENT_ID = 'irma-web-form';
 
+// The redirect target comes from the query string, so only follow web URLs
+// (not javascript: or data: URLs, which would run in this page's origin).
+export const isHttpUrl = (url: string | undefined): boolean => {
+    if (!url) {
+        return false;
+    }
+    try {
+        const { protocol } = new URL(url, window.location.origin);
+        return protocol === 'https:' || protocol === 'http:';
+    } catch (e) {
+        return false;
+    }
+};
+
 const VotePage: React.FC = () => {
     const searchParams = useLocation().search;
     const isMobile: boolean = mobile();
@@ -50,7 +64,7 @@ const VotePage: React.FC = () => {
 
     useEffect(() => {
         let { redirectUrl } = queryObj;
-        if (sessionResult) {
+        if (sessionResult && isHttpUrl(redirectUrl)) {
             redirectUrl += (redirectUrl.match(/\?/) ? '&' : '?') + 'result=';
             setTimeout(() => {
                 window.location.href = redirectUrl + encodeURIComponent(JSON.stringify(sessionResult));

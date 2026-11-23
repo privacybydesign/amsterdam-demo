@@ -13,4 +13,6 @@ yarn-error.log
 yarn.lock
 downloads/
 .secrets
+*.pem
+*.key
 *.tsbuildinfo
